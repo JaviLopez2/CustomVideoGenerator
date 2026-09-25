@@ -1803,11 +1803,23 @@ Return exactly {amount} objects and nothing else.
                         )
                     required_features = []
                     forbidden_features = []
-                    if _reference_inventory_roles(reference_inventory) & {"identity"}:
+                    available_roles = _reference_inventory_roles(reference_inventory)
+                    unsupported_scope = evidence_scope
+                    if (
+                        unsupported_scope
+                        in {"hidden_internal", "specialized_visible"}
+                        and "identity" in available_roles
+                    ):
+                        # A safe fallback may still show the real subject externally.
                         reference_need = "identity"
-                    elif _reference_inventory_roles(reference_inventory) & {"context"}:
+                    elif (
+                        requested_reference_need == "context"
+                        and "context" in available_roles
+                    ):
                         reference_need = "context"
                     else:
+                        # Generic context/effect shots do not need an unrelated identity
+                        # reference merely because one exists in the task library.
                         reference_need = "none"
                     evidence_scope = (
                         "externally_visible"
