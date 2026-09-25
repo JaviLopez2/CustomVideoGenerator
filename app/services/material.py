@@ -415,6 +415,21 @@ def _precision_diagnostics_add_candidate(
         entry["model"] = str(source.get("model"))
     if source.get("route"):
         entry["route"] = str(source.get("route"))
+    for field in (
+        "requested_model",
+        "requested_size",
+        "seed",
+        "steps",
+        "generation_seconds",
+        "generation_attempt",
+    ):
+        value = source.get(field)
+        if value not in (None, ""):
+            entry[field] = value
+    if isinstance(source.get("near_duplicate_qa"), dict):
+        entry["near_duplicate_qa"] = _precision_diagnostics_json_safe(
+            source.get("near_duplicate_qa")
+        )
 
     candidates = scene_record.setdefault("candidates", [])
     # Replace a matching index instead of duplicating it when partial diagnostics
@@ -2619,6 +2634,141 @@ def _precision_retry_on_true_failure_enabled() -> bool:
     return bool(value)
 
 
+def _qwen_request_seed() -> int:
+    """Return a reproducible debug seed when configured, otherwise a fresh local seed."""
+    configured = config.app.get("openai_image_qwen_debug_seed")
+    if configured not in (None, ""):
+        try:
+            return max(0, min(int(configured), 0x7FFFFFFFFFFFFFFF))
+        except (TypeError, ValueError, OverflowError):
+            logger.warning(
+                "invalid openai_image_qwen_debug_seed; falling back to a random seed: "
+                f"value={configured!r}"
+            )
+    return random.SystemRandom().randrange(0, 1_000_000_000)
+
+
+def _openai_image_near_duplicate_enabled() -> bool:
+    value = config.app.get("openai_image_near_duplicate_qa_enabled", True)
+    if isinstance(value, str):
+        return value.strip().lower() not in {"0", "false", "no", "off"}
+    return bool(value)
+
+
+def _openai_image_near_duplicate_threshold() -> float:
+    try:
+        value = float(config.app.get("openai_image_near_duplicate_threshold", 0.94))
+    except (TypeError, ValueError):
+        value = 0.94
+    if not math.isfinite(value):
+        value = 0.94
+    return max(0.75, min(value, 1.0))
+
+
+def _image_dhash64(image_path: str) -> int | None:
+    """Return a 64-bit perceptual difference hash using only Pillow."""
+    try:
+        with Image.open(image_path) as image:
+            sample = image.convert("L").resize((9, 8), Image.Resampling.LANCZOS)
+            pixels = list(sample.getdata())
+        value = 0
+        bit = 0
+        for row in range(8):
+            offset = row * 9
+            for column in range(8):
+                if pixels[offset + column] > pixels[offset + column + 1]:
+                    value |= 1 << bit
+                bit += 1
+        return value
+    except Exception as exc:
+        logger.warning(
+            "failed to compute generated-image dHash: "
+            f"image={image_path!r}, error={type(exc).__name__}, detail={exc}"
+        )
+        return None
+
+
+def _dhash_similarity(left: int | None, right: int | None) -> float | None:
+    if left is None or right is None:
+        return None
+    distance = int(left ^ right).bit_count()
+    return 1.0 - (distance / 64.0)
+
+
+def _near_duplicate_assessment(
+    image_path: str,
+    recent_scenes: list[dict[str, Any]] | None,
+    *,
+    composition_key: str = "",
+    shot_type: str = "",
+) -> dict[str, Any]:
+    """Cheap structural duplicate check against the previous two accepted scenes.
+
+    A high dHash similarity is actionable only when the planner explicitly asked
+    for a different composition family or shot type. This keeps continuity shots
+    from being penalized just because they intentionally resemble one another.
+    """
+    threshold = _openai_image_near_duplicate_threshold()
+    current_hash = _image_dhash64(image_path)
+    result: dict[str, Any] = {
+        "enabled": _openai_image_near_duplicate_enabled(),
+        "available": current_hash is not None,
+        "threshold": round(threshold, 4),
+        "current_dhash": f"{current_hash:016x}" if current_hash is not None else "",
+        "actionable": False,
+        "best_similarity": None,
+        "matched_scene": None,
+        "planned_difference": False,
+        "comparisons": [],
+    }
+    if not result["enabled"] or current_hash is None:
+        return result
+
+    current_composition = str(composition_key or "").strip().lower()
+    current_shot = str(shot_type or "").strip().lower()
+    best_actionable: tuple[float, int] | None = None
+
+    for previous in list(recent_scenes or [])[-2:]:
+        previous_hash = previous.get("dhash")
+        if previous_hash is None and previous.get("path"):
+            previous_hash = _image_dhash64(str(previous.get("path")))
+        similarity = _dhash_similarity(current_hash, previous_hash)
+        if similarity is None:
+            continue
+
+        previous_composition = str(previous.get("composition_key") or "").strip().lower()
+        previous_shot = str(previous.get("shot_type") or "").strip().lower()
+        composition_differs = bool(
+            current_composition
+            and previous_composition
+            and current_composition != previous_composition
+        )
+        shot_differs = bool(
+            current_shot and previous_shot and current_shot != previous_shot
+        )
+        planned_difference = composition_differs or shot_differs
+        scene_number = int(previous.get("scene") or 0)
+        result["comparisons"].append(
+            {
+                "scene": scene_number,
+                "similarity": round(similarity, 4),
+                "planned_difference": planned_difference,
+                "composition_differs": composition_differs,
+                "shot_differs": shot_differs,
+            }
+        )
+        if planned_difference:
+            result["planned_difference"] = True
+            if best_actionable is None or similarity > best_actionable[0]:
+                best_actionable = (similarity, scene_number)
+
+    if best_actionable is not None:
+        result["best_similarity"] = round(best_actionable[0], 4)
+        result["matched_scene"] = best_actionable[1]
+        result["actionable"] = best_actionable[0] >= threshold
+    return result
+
+
 def _precision_keep_judges_loaded_between_scenes() -> bool:
     value = config.app.get(
         "openai_image_precision_keep_judges_loaded_between_scenes",
@@ -4432,6 +4582,10 @@ def generate_images_openai(
     generation_steps = _openai_image_generation_steps(route, requested_model)
     if generation_steps is not None:
         payload["steps"] = generation_steps
+    generation_seed: int | None = None
+    if _is_qwen_image_21_model(requested_model):
+        generation_seed = _qwen_request_seed()
+        payload["seed"] = generation_seed
     # The audited Qwen 2.1 workflow runs KSampler at CFG=1. ComfyUI skips
     # unconditional/negative sampling at CFG=1, so factual exclusions must live
     # in the positive scene prompt instead of an inert negative_prompt payload.
@@ -4444,7 +4598,10 @@ def generate_images_openai(
         f"model={requested_model}, route={route}, refs={len(references)}, "
         f"term={search_term!r}, size={image_size}, steps={generation_steps or 'workflow-default'}"
     )
+    request_started = time.perf_counter()
     image_bytes, failure_detail = _request_openai_image(endpoint, payload)
+    primary_generation_seconds = max(0.0, time.perf_counter() - request_started)
+    fallback_generation_seconds = 0.0
 
     fallback_model = _precision_fallback_model() if route == "precision" else ""
     can_fallback = bool(
@@ -4469,8 +4626,14 @@ def generate_images_openai(
             "size": image_size,
             "reference_image": references[0],
         }
+        if generation_seed is not None:
+            fallback_payload["seed"] = generation_seed
+        fallback_started = time.perf_counter()
         image_bytes, fallback_detail = _request_openai_image(
             endpoint, fallback_payload
+        )
+        fallback_generation_seconds = max(
+            0.0, time.perf_counter() - fallback_started
         )
         if image_bytes is not None:
             fallback_from_model = requested_model
@@ -4510,14 +4673,28 @@ def generate_images_openai(
         "requested_model": requested_model,
         "reference_count": used_reference_count,
         "reference": reference_info if references else None,
+        "requested_size": image_size,
+        "generation_seconds": round(
+            primary_generation_seconds + fallback_generation_seconds, 3
+        ),
         "rendition": {
             "id": None,
             "width": width,
             "height": height,
         },
     }
+    if generation_steps is not None:
+        item.source_info["steps"] = int(generation_steps)
+    if generation_seed is not None:
+        item.source_info["seed"] = int(generation_seed)
     if fallback_from_model:
         item.source_info["fallback_from_model"] = fallback_from_model
+        item.source_info["primary_generation_seconds"] = round(
+            primary_generation_seconds, 3
+        )
+        item.source_info["fallback_generation_seconds"] = round(
+            fallback_generation_seconds, 3
+        )
     if item.source_info.get("reference") is None:
         item.source_info.pop("reference", None)
     return [item]
@@ -6633,6 +6810,7 @@ def _download_videos_openai_image_on_demand(
     precision_reference_cache: dict[str, tuple[str, dict[str, Any]]] = {}
     manual_reference_pack_cache: tuple[list[str], dict[str, Any]] | None = None
     latest_standard_style_profile: dict[str, tuple[float, float, float]] | None = None
+    recent_generated_scene_visuals: list[dict[str, Any]] = []
     for scene_index, search_term in enumerate(search_terms):
         if semantic_timing:
             try:
@@ -6998,6 +7176,55 @@ def _download_videos_openai_image_on_demand(
                         image_size = _openai_image_size(video_aspect, route=route, model=scene_model)
                         valid, validation_reason = _validate_generated_image_basic(candidate.url, image_size)
                         if valid:
+                            duplicate_qa = _near_duplicate_assessment(
+                                candidate.url,
+                                recent_generated_scene_visuals,
+                                composition_key=composition_key,
+                                shot_type=shot_type,
+                            )
+                            if not isinstance(candidate.source_info, dict):
+                                candidate.source_info = {}
+                            candidate.source_info["generation_attempt"] = (
+                                generation_attempt + 1
+                            )
+                            candidate.source_info["near_duplicate_qa"] = duplicate_qa
+                            if precision_scene_diagnostic is not None:
+                                precision_scene_diagnostic.setdefault(
+                                    "generation_attempts", []
+                                ).append(
+                                    {
+                                        "attempt": generation_attempt + 1,
+                                        "file": Path(candidate.url).name,
+                                        "technical_validation": validation_reason,
+                                        "seed": candidate.source_info.get("seed"),
+                                        "steps": candidate.source_info.get("steps"),
+                                        "generation_seconds": candidate.source_info.get(
+                                            "generation_seconds"
+                                        ),
+                                        "near_duplicate_qa": duplicate_qa,
+                                    }
+                                )
+                            if (
+                                duplicate_qa.get("actionable")
+                                and generation_attempt + 1 < failure_attempts
+                            ):
+                                logger.warning(
+                                    "Qwen image is a near-duplicate of a recent scene despite a planned visual change; "
+                                    f"scene={scene_index + 1}, matched_scene={duplicate_qa.get('matched_scene')}, "
+                                    f"similarity={duplicate_qa.get('best_similarity')}, retrying within the existing corrective budget"
+                                )
+                                search_term = (
+                                    search_term
+                                    + ". CORRECTION: the previous render repeated the framing/composition of a recent scene. "
+                                    "Keep the same factual subject and evidence, but make this scene visibly distinct according to "
+                                    f"the planned composition '{composition_key or 'current scene'}' and shot type '{shot_type or 'current shot'}'. "
+                                    "Change camera position, framing and spatial arrangement as needed; do not repeat the previous composition."
+                                )
+                                _precision_diagnostics_persist(
+                                    task_id, precision_diagnostics
+                                )
+                                continue
+
                             selected_precision_item = candidate
                             candidate_items.append(selected_precision_item)
                             _record_precision_selection(
@@ -7077,6 +7304,11 @@ def _download_videos_openai_image_on_demand(
                         )
                         continue
 
+                    if not isinstance(generated_items[0].source_info, dict):
+                        generated_items[0].source_info = {}
+                    generated_items[0].source_info["generation_attempt"] = (
+                        candidate_index + 1
+                    )
                     candidate_items.append(generated_items[0])
 
                     if precision_scene_diagnostic is not None:
@@ -7268,6 +7500,47 @@ def _download_videos_openai_image_on_demand(
                     "precision scene has no preceding standard style anchor; "
                     "keeping generated colors unchanged"
                 )
+
+        if items:
+            final_duplicate_qa = None
+            if isinstance(items[0].source_info, dict):
+                existing_duplicate_qa = items[0].source_info.get(
+                    "near_duplicate_qa"
+                )
+                if isinstance(existing_duplicate_qa, dict):
+                    final_duplicate_qa = existing_duplicate_qa
+            if final_duplicate_qa is None:
+                final_duplicate_qa = _near_duplicate_assessment(
+                    items[0].url,
+                    recent_generated_scene_visuals,
+                    composition_key=composition_key,
+                    shot_type=shot_type,
+                )
+                if not isinstance(items[0].source_info, dict):
+                    items[0].source_info = {}
+                items[0].source_info["near_duplicate_qa"] = final_duplicate_qa
+
+            if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
+                precision_diagnostics["plan_scenes"][scene_index][
+                    "near_duplicate_qa"
+                ] = _precision_diagnostics_json_safe(final_duplicate_qa)
+            if precision_scene_diagnostic is not None:
+                precision_scene_diagnostic["near_duplicate_qa"] = (
+                    _precision_diagnostics_json_safe(final_duplicate_qa)
+                )
+            _precision_diagnostics_persist(task_id, precision_diagnostics)
+
+            accepted_hash = _image_dhash64(items[0].url)
+            recent_generated_scene_visuals.append(
+                {
+                    "scene": scene_index + 1,
+                    "path": items[0].url,
+                    "dhash": accepted_hash,
+                    "composition_key": composition_key,
+                    "shot_type": shot_type,
+                }
+            )
+            recent_generated_scene_visuals = recent_generated_scene_visuals[-2:]
 
         if not items and semantic_timing:
             # Dropping a semantic scene would shift every later image against the
