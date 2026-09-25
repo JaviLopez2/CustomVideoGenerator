@@ -1749,7 +1749,10 @@ Return exactly {amount} objects and nothing else.
             )
             runtime_config = app_config if app_config is not None else config.app
             audit_enabled = _coerce_scene_bool(
-                runtime_config.get("openai_image_scene_factual_audit_enabled", True),
+                runtime_config.get(
+                    "openai_image_scene_factual_audit_enabled",
+                    runtime_config.get("openai_image_scene_diversity_repair_enabled", True),
+                ),
                 True,
             )
             factual_audit_status = "disabled"
