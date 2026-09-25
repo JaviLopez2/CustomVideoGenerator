@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
+import tempfile
 import unittest
+from pathlib import Path
+
+from PIL import Image
 
 from app.config import config
 from app.services import llm, material, task
@@ -218,6 +222,48 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertIn("Explicitly do not depict or introduce", prompt)
         self.assertIn("fake extra dial", prompt)
         self.assertIn("invented label", prompt)
+
+    def test_near_duplicate_only_actionable_when_plan_expected_difference(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            image_path = Path(tmp) / "scene.png"
+            image = Image.new("RGB", (128, 128), "white")
+            for x in range(64):
+                for y in range(128):
+                    image.putpixel((x, y), (20, 20, 20))
+            image.save(image_path)
+
+            image_hash = material._image_dhash64(str(image_path))
+            recent = [
+                {
+                    "scene": 1,
+                    "path": str(image_path),
+                    "dhash": image_hash,
+                    "composition_key": "front_full",
+                    "shot_type": "full",
+                }
+            ]
+
+            same_plan = material._near_duplicate_assessment(
+                str(image_path),
+                recent,
+                composition_key="front_full",
+                shot_type="full",
+            )
+            different_plan = material._near_duplicate_assessment(
+                str(image_path),
+                recent,
+                composition_key="macro_controls",
+                shot_type="detail",
+            )
+
+        self.assertFalse(same_plan["actionable"])
+        self.assertTrue(different_plan["actionable"])
+        self.assertEqual(different_plan["best_similarity"], 1.0)
+        self.assertEqual(different_plan["matched_scene"], 1)
+
+    def test_qwen_debug_seed_is_honored(self):
+        config.app["openai_image_qwen_debug_seed"] = "12345"
+        self.assertEqual(material._qwen_request_seed(), 12345)
 
 
 if __name__ == "__main__":
