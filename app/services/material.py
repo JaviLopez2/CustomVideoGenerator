@@ -2209,10 +2209,12 @@ def _manual_precision_reference_mode_default() -> str:
 
 def _manual_precision_reference_max_images() -> int:
     try:
-        value = int(config.app.get("openai_image_manual_reference_max_images", 8) or 8)
+        value = int(config.app.get("openai_image_manual_reference_max_images", 12) or 12)
     except (TypeError, ValueError):
-        value = 8
-    return max(1, min(value, 8))
+        value = 12
+    # The library can be larger than the per-scene Qwen pack. Keep a generous
+    # safety ceiling while scene routing still sends at most three references.
+    return max(1, min(value, 20))
 
 
 def _manual_precision_reference_manifest(save_dir: str) -> Path:
@@ -2252,16 +2254,26 @@ def _load_manual_precision_reference_manifest(
             original = str(raw.get("original") or "").strip()
             role = str(raw.get("role") or "identity").strip().lower()
             description = str(raw.get("description") or "").strip()
+            anchor = bool(raw.get("anchor"))
         else:
             stored = str(raw or "").strip()
             original = ""
             role = "identity"
             description = ""
+            anchor = False
         if not stored:
             continue
         if role not in {"identity", "detail", "internal", "context", "other"}:
             role = "identity"
-        entries.append({"stored": stored, "original": original, "role": role, "description": description})
+        entries.append(
+            {
+                "stored": stored,
+                "original": original,
+                "role": role,
+                "description": description,
+                "anchor": anchor,
+            }
+        )
     return mode, entries
 
 
@@ -2320,6 +2332,7 @@ def _prepare_manual_precision_reference_pack(
                 "original_file": entry.get("original") or None,
                 "role": entry.get("role") or "identity",
                 "description": entry.get("description") or None,
+                "anchor": bool(entry.get("anchor")),
                 "comfyui_input": comfyui_name,
                 "width": int(width or 0),
                 "height": int(height or 0),
@@ -2361,46 +2374,158 @@ def _select_manual_references_for_scene(
     reference_query: str,
     max_refs: int = 3,
 ) -> tuple[list[str], dict[str, Any]]:
-    """Choose a small theme-agnostic reference pack for one scene."""
+    """Select anchor + scene-specific + complementary evidence for one Precision scene."""
     info = dict(reference_info or {})
-    pack = [dict(item) for item in (info.get("reference_pack") or []) if isinstance(item, dict)]
+    pack = [
+        dict(item)
+        for item in (info.get("reference_pack") or [])
+        if isinstance(item, dict)
+    ]
     if not pack:
         return list(all_inputs or [])[:max_refs], info
-    need = str(reference_need or "identity").strip().lower()
-    query_tokens = {tok for tok in re.findall(r"[a-z0-9]+", str(reference_query or "").lower()) if len(tok) >= 3}
 
-    def score(item: dict) -> tuple[float, int]:
+    limit = max(1, min(int(max_refs or 3), 3))
+    need = str(reference_need or "identity").strip().lower()
+    query_text = str(reference_query or "").strip()
+    query_tokens = {
+        tok
+        for tok in re.findall(r"[a-z0-9]+", query_text.lower())
+        if len(tok) >= 3
+    }
+
+    def _item_tokens(item: dict) -> set[str]:
+        # User description is the strongest text signal. Original/local filenames
+        # are useful retrieval hints (front/profile/rear/etc.) but never factual proof.
+        text = " ".join(
+            str(value or "")
+            for value in (
+                item.get("description"),
+                item.get("original_file"),
+                item.get("local_file"),
+            )
+        ).lower()
+        return {
+            tok
+            for tok in re.findall(r"[a-z0-9]+", text)
+            if len(tok) >= 3
+        }
+
+    def _scene_score(item: dict) -> float:
         role = str(item.get("role") or "identity").strip().lower()
         role_score = 0.0
-        if role == "identity": role_score += 3.0
-        if role == need: role_score += 6.0
-        if need == "detail" and role == "internal": role_score += 1.0
-        if need == "internal" and role == "detail": role_score += 1.5
-        if need == "context" and role == "context": role_score += 4.0
-        desc_tokens = {tok for tok in re.findall(r"[a-z0-9]+", str(item.get("description") or "").lower()) if len(tok) >= 3}
-        semantic = len(query_tokens & desc_tokens) * 0.75
-        return (role_score + semantic, -int(item.get("slot") or 999))
+        if role == need:
+            role_score += 8.0
+        if role == "identity":
+            role_score += 2.0
+        if need == "detail" and role == "internal":
+            role_score += 0.5
+        if need == "internal" and role == "detail":
+            role_score += 0.25
+        if need == "context" and role == "context":
+            role_score += 3.0
+        semantic_overlap = len(query_tokens & _item_tokens(item))
+        return role_score + semantic_overlap * 2.0
 
-    identity = [item for item in pack if str(item.get("role") or "identity") == "identity"]
+    identity = [
+        item
+        for item in pack
+        if str(item.get("role") or "identity").strip().lower() == "identity"
+    ]
+    explicit_anchors = [item for item in identity if bool(item.get("anchor"))]
+    anchor = None
+    if explicit_anchors:
+        anchor = min(
+            explicit_anchors,
+            key=lambda item: int(item.get("slot") or 999),
+        )
+    elif identity:
+        # Upload order is intentional: default to the first whole-subject identity
+        # reference instead of reusing whichever view happens to score highest.
+        anchor = min(identity, key=lambda item: int(item.get("slot") or 999))
+
     selected: list[dict] = []
-    if identity:
-        selected.append(max(identity, key=score))
-    for item in sorted(pack, key=score, reverse=True):
-        if item not in selected:
-            selected.append(item)
-        if len(selected) >= max(1, min(max_refs, 3)):
-            break
-    selected_inputs = [str(item.get("comfyui_input") or "").strip() for item in selected]
+    selection_rows: list[dict] = []
+    if anchor is not None:
+        selected.append(anchor)
+        selection_rows.append(
+            {
+                "kind": "identity_anchor",
+                "slot": anchor.get("slot"),
+                "file": anchor.get("original_file") or anchor.get("local_file"),
+                "role": anchor.get("role"),
+                "score": round(_scene_score(anchor), 3),
+            }
+        )
+
+    remaining = [item for item in pack if item not in selected]
+    scene_specific = max(remaining, key=_scene_score) if remaining else None
+    if scene_specific is not None and len(selected) < limit:
+        selected.append(scene_specific)
+        selection_rows.append(
+            {
+                "kind": "scene_specific",
+                "slot": scene_specific.get("slot"),
+                "file": scene_specific.get("original_file")
+                or scene_specific.get("local_file"),
+                "role": scene_specific.get("role"),
+                "score": round(_scene_score(scene_specific), 3),
+            }
+        )
+
+    if len(selected) < limit:
+        remaining = [item for item in pack if item not in selected]
+        if remaining:
+            specific_tokens = (
+                _item_tokens(scene_specific)
+                if scene_specific is not None
+                else set()
+            )
+            specific_role = (
+                str(scene_specific.get("role") or "").strip().lower()
+                if scene_specific is not None
+                else ""
+            )
+
+            def _complement_score(item: dict) -> tuple[float, int]:
+                role = str(item.get("role") or "identity").strip().lower()
+                tokens = _item_tokens(item)
+                uniqueness = len(tokens - specific_tokens) * 0.15
+                role_diversity = 0.5 if role and role != specific_role else 0.0
+                return (
+                    _scene_score(item) + uniqueness + role_diversity,
+                    -int(item.get("slot") or 999),
+                )
+
+            complementary = max(remaining, key=_complement_score)
+            selected.append(complementary)
+            selection_rows.append(
+                {
+                    "kind": "complementary",
+                    "slot": complementary.get("slot"),
+                    "file": complementary.get("original_file")
+                    or complementary.get("local_file"),
+                    "role": complementary.get("role"),
+                    "score": round(_complement_score(complementary)[0], 3),
+                }
+            )
+
+    selected_inputs = [
+        str(item.get("comfyui_input") or "").strip()
+        for item in selected
+    ]
     selected_inputs = [value for value in selected_inputs if value]
     info["reference_pack_all"] = pack
     info["reference_pack"] = selected
     info["reference_selection"] = {
-        "status": "scene_adaptive_manual_pack",
+        "status": "anchor_scene_specific_complementary",
         "requested_need": need,
-        "reference_query": str(reference_query or "").strip(),
+        "reference_query": query_text,
         "selected_count": len(selected_inputs),
         "available_count": len(pack),
-        "stable_identity_across_precision_scenes": bool(identity),
+        "stable_identity_across_precision_scenes": bool(anchor),
+        "anchor_reference": selection_rows[0] if selection_rows and selection_rows[0].get("kind") == "identity_anchor" else None,
+        "selected_references": selection_rows,
+        "selection_strategy": "identity anchor + best scene-specific evidence + complementary evidence",
     }
     return selected_inputs, info
 
