@@ -773,49 +773,111 @@ def _apply_openai_image_precision_budget(
     structured_image_plan: list[dict],
     settings: dict,
 ) -> list[dict]:
-    """Keep Precision distributed across the video; downgrade the rest to fast Standard."""
+    """Keep Precision distributed while never silently downgrading reference-critical scenes."""
     if not structured_image_plan:
         return structured_image_plan
-    ratio = float(settings.get("precision_ratio", 1.0) or 0.0)
-    if ratio >= 0.999:
-        return structured_image_plan
 
+    ratio = float(settings.get("precision_ratio", 1.0) or 0.0)
     candidates = [
         index
         for index, item in enumerate(structured_image_plan)
         if str(item.get("route") or "").strip().lower() == "precision"
     ]
+    for index, item in enumerate(structured_image_plan):
+        if index not in candidates:
+            item.setdefault("routing_reason", "planner_standard")
+
     if not candidates:
         return structured_image_plan
 
-    keep_count = max(1, min(len(candidates), int(math.ceil(len(structured_image_plan) * ratio))))
-    if keep_count >= len(candidates):
+    critical = {
+        index
+        for index in candidates
+        if bool(structured_image_plan[index].get("reference_critical"))
+    }
+    for index in critical:
+        structured_image_plan[index]["routing_reason"] = "reference_critical_precision"
+
+    if ratio >= 0.999:
+        for index in candidates:
+            structured_image_plan[index].setdefault(
+                "routing_reason",
+                "planner_precision_no_budget_limit",
+            )
         return structured_image_plan
 
-    # Farthest-point sampling keeps expensive Precision shots spread over the whole
-    # narration instead of spending them all at the beginning. First/last identity
-    # shots are protected when the budget allows it.
-    selected = {candidates[0]}
-    if keep_count > 1:
+    base_keep_count = max(
+        1,
+        min(
+            len(candidates),
+            int(math.ceil(len(structured_image_plan) * ratio)),
+        ),
+    )
+    # The planner is told the same budget and should keep critical scenes within it.
+    # If it still exceeds the budget, factual identity wins over silent substitution:
+    # keep the critical scenes and log the budget overrun for diagnostics.
+    keep_count = max(base_keep_count, len(critical))
+    keep_count = min(keep_count, len(candidates))
+    if len(critical) > base_keep_count:
+        logger.warning(
+            "AI image precision budget exceeded by reference-critical scenes: "
+            f"profile={settings.get('profile')}, critical={len(critical)}, "
+            f"budget={base_keep_count}; preserving critical Precision scenes"
+        )
+
+    if keep_count >= len(candidates):
+        for index in candidates:
+            structured_image_plan[index].setdefault(
+                "routing_reason",
+                "precision_budget_kept",
+            )
+        return structured_image_plan
+
+    # Start with protected factual scenes. Fill remaining budget using a combination
+    # of semantic importance and timeline distance so expensive shots stay useful
+    # instead of clustering at one end of the video.
+    selected = set(critical)
+    if not selected:
+        selected.add(candidates[0])
+    if len(selected) < keep_count and candidates[-1] not in selected:
         selected.add(candidates[-1])
+
     while len(selected) < keep_count:
         remaining = [idx for idx in candidates if idx not in selected]
+        if not remaining:
+            break
 
         def _selection_score(idx: int):
             item = structured_image_plan[idx]
             try:
-                importance = max(0.0, min(1.0, float(item.get("precision_importance", 0.7))))
+                importance = max(
+                    0.0,
+                    min(1.0, float(item.get("precision_importance", 0.7))),
+                )
             except (TypeError, ValueError):
                 importance = 0.7
-            reference_need = str(item.get("reference_need") or "identity").strip().lower()
+            reference_need = str(
+                item.get("reference_need") or "identity"
+            ).strip().lower()
             role = str(item.get("shot_role") or "evidence").strip().lower()
-            need_bonus = 0.25 if reference_need in {"identity", "detail", "internal"} else 0.0
-            role_bonus = 0.15 if role in {"identity", "detail", "evidence", "process"} else 0.0
+            need_bonus = (
+                0.25
+                if reference_need in {"identity", "detail", "internal"}
+                else 0.0
+            )
+            role_bonus = (
+                0.15
+                if role in {"identity", "detail", "evidence", "process"}
+                else 0.0
+            )
             distance = min(abs(idx - kept) for kept in selected)
             feature_count = len(item.get("required_features") or [])
-            # Entirely theme-agnostic: trust the planner's factual importance/role metadata,
-            # then spread expensive shots across the timeline.
-            return (importance + need_bonus + role_bonus, distance, feature_count, -idx)
+            return (
+                importance + need_bonus + role_bonus,
+                distance,
+                feature_count,
+                -idx,
+            )
 
         chosen = max(remaining, key=_selection_score)
         selected.add(chosen)
@@ -823,15 +885,25 @@ def _apply_openai_image_precision_budget(
     downgraded = []
     for index in candidates:
         if index in selected:
+            structured_image_plan[index].setdefault(
+                "routing_reason",
+                "precision_budget_kept",
+            )
             continue
         structured_image_plan[index]["route"] = "standard"
-        structured_image_plan[index]["performance_route_override"] = "precision_budget_to_standard"
+        structured_image_plan[index][
+            "performance_route_override"
+        ] = "precision_budget_to_standard"
+        structured_image_plan[index][
+            "routing_reason"
+        ] = "precision_budget_to_standard"
         downgraded.append(index + 1)
 
     logger.info(
         "AI image performance routing: "
         f"profile={settings.get('profile')}, precision={len(selected)}/{len(candidates)} "
-        f"requested precision scenes, downgraded_to_standard={downgraded}"
+        f"requested precision scenes, critical={sorted(index + 1 for index in critical)}, "
+        f"downgraded_to_standard={downgraded}"
     )
     return structured_image_plan
 
@@ -1047,7 +1119,15 @@ def get_video_materials(
     openai_image_scene_required_features: list[list[str]] | None = None,
     openai_image_scene_forbidden_features: list[list[str]] | None = None,
     openai_image_scene_reference_needs: list[str] | None = None,
+    openai_image_scene_requested_reference_needs: list[str] | None = None,
     openai_image_scene_reference_queries: list[str] | None = None,
+    openai_image_scene_evidence_scopes: list[str] | None = None,
+    openai_image_scene_reference_critical: list[bool] | None = None,
+    openai_image_scene_coverage_statuses: list[str] | None = None,
+    openai_image_scene_coverage_reasons: list[str] | None = None,
+    openai_image_scene_composition_keys: list[str] | None = None,
+    openai_image_scene_routing_reasons: list[str] | None = None,
+    openai_image_scene_planner_validation: list[str] | None = None,
     openai_image_scene_shot_types: list[str] | None = None,
     openai_image_scene_framing_intents: list[str] | None = None,
 ):
@@ -1156,7 +1236,15 @@ def get_video_materials(
                 scene_required_features=openai_image_scene_required_features,
                 scene_forbidden_features=openai_image_scene_forbidden_features,
                 scene_reference_needs=openai_image_scene_reference_needs,
+                scene_requested_reference_needs=openai_image_scene_requested_reference_needs,
                 scene_reference_queries=openai_image_scene_reference_queries,
+                scene_evidence_scopes=openai_image_scene_evidence_scopes,
+                scene_reference_critical=openai_image_scene_reference_critical,
+                scene_coverage_statuses=openai_image_scene_coverage_statuses,
+                scene_coverage_reasons=openai_image_scene_coverage_reasons,
+                scene_composition_keys=openai_image_scene_composition_keys,
+                scene_routing_reasons=openai_image_scene_routing_reasons,
+                scene_planner_validation=openai_image_scene_planner_validation,
                 scene_shot_types=openai_image_scene_shot_types,
                 scene_framing_intents=openai_image_scene_framing_intents,
             )
@@ -1856,7 +1944,15 @@ def _run_pipeline(
     openai_image_scene_required_features = None
     openai_image_scene_forbidden_features = None
     openai_image_scene_reference_needs = None
+    openai_image_scene_requested_reference_needs = None
     openai_image_scene_reference_queries = None
+    openai_image_scene_evidence_scopes = None
+    openai_image_scene_reference_critical = None
+    openai_image_scene_coverage_statuses = None
+    openai_image_scene_coverage_reasons = None
+    openai_image_scene_composition_keys = None
+    openai_image_scene_routing_reasons = None
+    openai_image_scene_planner_validation = None
     openai_image_scene_shot_types = None
     openai_image_scene_framing_intents = None
 
@@ -1957,6 +2053,7 @@ def _run_pipeline(
                 video_subject=params.video_subject,
                 scene_plan=scene_plan,
                 reference_inventory=reference_inventory,
+                precision_budget_ratio=image_profile_settings["precision_ratio"],
             )
             structured_image_plan = _apply_openai_image_precision_budget(
                 structured_image_plan,
@@ -1997,10 +2094,58 @@ def _run_pipeline(
                 ]
                 for scene in structured_image_plan
             ]
-            openai_image_scene_reference_needs = [str(scene.get("reference_need") or "none").strip().lower() for scene in structured_image_plan]
-            openai_image_scene_reference_queries = [str(scene.get("reference_query") or "").strip() for scene in structured_image_plan]
-            openai_image_scene_shot_types = [str(scene.get("shot_type") or "full").strip().lower() for scene in structured_image_plan]
-            openai_image_scene_framing_intents = [str(scene.get("framing_intent") or "full_subject").strip().lower() for scene in structured_image_plan]
+            openai_image_scene_reference_needs = [
+                str(scene.get("reference_need") or "none").strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_requested_reference_needs = [
+                str(
+                    scene.get("requested_reference_need")
+                    or scene.get("reference_need")
+                    or "none"
+                ).strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_reference_queries = [
+                str(scene.get("reference_query") or "").strip()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_evidence_scopes = [
+                str(scene.get("evidence_scope") or "contextual").strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_reference_critical = [
+                bool(scene.get("reference_critical"))
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_coverage_statuses = [
+                str(scene.get("coverage_status") or "unknown").strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_coverage_reasons = [
+                str(scene.get("coverage_reason") or "").strip()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_composition_keys = [
+                str(scene.get("composition_key") or "").strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_routing_reasons = [
+                str(scene.get("routing_reason") or "").strip()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_planner_validation = [
+                str(scene.get("planner_validation") or "pass").strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_shot_types = [
+                str(scene.get("shot_type") or "full").strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_framing_intents = [
+                str(scene.get("framing_intent") or "full_subject").strip().lower()
+                for scene in structured_image_plan
+            ]
             openai_image_scene_durations = [
                 float(scene["duration"]) for scene in scene_plan
             ]
@@ -2031,7 +2176,15 @@ def _run_pipeline(
             openai_image_scene_required_features = [[] for _ in range(scene_count)]
             openai_image_scene_forbidden_features = [[] for _ in range(scene_count)]
             openai_image_scene_reference_needs = ["none"] * scene_count
+            openai_image_scene_requested_reference_needs = ["none"] * scene_count
             openai_image_scene_reference_queries = [""] * scene_count
+            openai_image_scene_evidence_scopes = ["contextual"] * scene_count
+            openai_image_scene_reference_critical = [False] * scene_count
+            openai_image_scene_coverage_statuses = ["unknown"] * scene_count
+            openai_image_scene_coverage_reasons = [""] * scene_count
+            openai_image_scene_composition_keys = [""] * scene_count
+            openai_image_scene_routing_reasons = ["fallback_standard"] * scene_count
+            openai_image_scene_planner_validation = ["fallback"] * scene_count
             openai_image_scene_shot_types = ["full"] * scene_count
             openai_image_scene_framing_intents = ["full_subject"] * scene_count
 
@@ -2074,7 +2227,15 @@ def _run_pipeline(
 
         for label, values in (
             ("reference-need", openai_image_scene_reference_needs),
+            ("requested-reference-need", openai_image_scene_requested_reference_needs),
             ("reference-query", openai_image_scene_reference_queries),
+            ("evidence-scope", openai_image_scene_evidence_scopes),
+            ("reference-critical", openai_image_scene_reference_critical),
+            ("coverage-status", openai_image_scene_coverage_statuses),
+            ("coverage-reason", openai_image_scene_coverage_reasons),
+            ("composition-key", openai_image_scene_composition_keys),
+            ("routing-reason", openai_image_scene_routing_reasons),
+            ("planner-validation", openai_image_scene_planner_validation),
             ("shot-type", openai_image_scene_shot_types),
             ("framing-intent", openai_image_scene_framing_intents),
         ):
@@ -2108,7 +2269,15 @@ def _run_pipeline(
         openai_image_scene_required_features=openai_image_scene_required_features,
         openai_image_scene_forbidden_features=openai_image_scene_forbidden_features,
         openai_image_scene_reference_needs=openai_image_scene_reference_needs,
+        openai_image_scene_requested_reference_needs=openai_image_scene_requested_reference_needs,
         openai_image_scene_reference_queries=openai_image_scene_reference_queries,
+        openai_image_scene_evidence_scopes=openai_image_scene_evidence_scopes,
+        openai_image_scene_reference_critical=openai_image_scene_reference_critical,
+        openai_image_scene_coverage_statuses=openai_image_scene_coverage_statuses,
+        openai_image_scene_coverage_reasons=openai_image_scene_coverage_reasons,
+        openai_image_scene_composition_keys=openai_image_scene_composition_keys,
+        openai_image_scene_routing_reasons=openai_image_scene_routing_reasons,
+        openai_image_scene_planner_validation=openai_image_scene_planner_validation,
         openai_image_scene_shot_types=openai_image_scene_shot_types,
         openai_image_scene_framing_intents=openai_image_scene_framing_intents,
     )
