@@ -4271,6 +4271,7 @@ def _qwen_precision_prompt_with_references(
     subject: str,
     reference_count: int,
     reference_info: dict[str, Any] | None = None,
+    forbidden_features: list[str] | None = None,
 ) -> str:
     """Give Qwen explicit ordered evidence roles while keeping composition text-driven."""
     subject = _normalized_reference_subject(subject) or "the factual subject"
@@ -4339,6 +4340,21 @@ def _qwen_precision_prompt_with_references(
         role_lines.append(f"<image{index}> is {purpose}")
 
     role_text = "; ".join(role_lines)
+    clean_forbidden = []
+    seen_forbidden = set()
+    for value in forbidden_features or []:
+        value = str(value or "").strip()
+        key = value.lower()
+        if value and key not in seen_forbidden:
+            clean_forbidden.append(value)
+            seen_forbidden.add(key)
+    forbidden_clause = (
+        " Explicitly do not depict or introduce: "
+        + "; ".join(clean_forbidden[:12])
+        + "."
+        if clean_forbidden
+        else ""
+    )
     return (
         f"Reference evidence: {role_text}. "
         f"The target factual subject is {subject}. Treat the identity reference as the authority for identity instead of reconstructing identity from descriptive text. "
@@ -4348,7 +4364,7 @@ def _qwen_precision_prompt_with_references(
         "lighting, color cast, watermark, stock-site text, captions, labels, borders or presentation layout unless the scene explicitly asks for that property. "
         "Do not invent accessories, modifications, anatomy or structures merely because one reference contains an incidental element. "
         "Create a completely new coherent edge-to-edge scene and follow the scene direction for composition, environment, camera and lighting. Scene direction: "
-        f"{prompt}"
+        f"{prompt}{forbidden_clause}"
     )
 
 
@@ -4398,6 +4414,7 @@ def generate_images_openai(
             reference_subject or search_term,
             len(references),
             reference_info=reference_info,
+            forbidden_features=forbidden_features,
         )
     elif references:
         final_prompt = _precision_prompt_with_reference(
@@ -4415,8 +4432,9 @@ def generate_images_openai(
     generation_steps = _openai_image_generation_steps(route, requested_model)
     if generation_steps is not None:
         payload["steps"] = generation_steps
-    if references and _is_qwen_image_21_model(requested_model):
-        payload["negative_prompt"] = _qwen_negative_prompt(forbidden_features)
+    # The audited Qwen 2.1 workflow runs KSampler at CFG=1. ComfyUI skips
+    # unconditional/negative sampling at CFG=1, so factual exclusions must live
+    # in the positive scene prompt instead of an inert negative_prompt payload.
     for index, reference in enumerate(references, start=1):
         field = "reference_image" if index == 1 else f"reference_image_{index}"
         payload[field] = reference
