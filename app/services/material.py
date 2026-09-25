@@ -331,7 +331,15 @@ def _precision_diagnostics_scene_record(
     forbidden_features: list[str],
     reference_info: dict[str, Any] | None,
     reference_need: str = "",
+    requested_reference_need: str = "",
     reference_query: str = "",
+    evidence_scope: str = "",
+    reference_critical: bool = False,
+    coverage_status: str = "",
+    coverage_reason: str = "",
+    composition_key: str = "",
+    routing_reason: str = "",
+    planner_validation: str = "",
     shot_type: str = "",
     framing_intent: str = "",
 ) -> dict[str, Any]:
@@ -344,7 +352,17 @@ def _precision_diagnostics_scene_record(
         "required_features": list(required_features or []),
         "forbidden_features": list(forbidden_features or []),
         "reference_need": str(reference_need or ""),
+        "requested_reference_need": str(
+            requested_reference_need or reference_need or ""
+        ),
         "reference_query": str(reference_query or ""),
+        "evidence_scope": str(evidence_scope or ""),
+        "reference_critical": bool(reference_critical),
+        "coverage_status": str(coverage_status or ""),
+        "coverage_reason": str(coverage_reason or ""),
+        "composition_key": str(composition_key or ""),
+        "routing_reason": str(routing_reason or ""),
+        "planner_validation": str(planner_validation or ""),
         "shot_type": str(shot_type or ""),
         "framing_intent": str(framing_intent or ""),
         "reference": _precision_diagnostics_reference_info(reference_info),
@@ -397,6 +415,21 @@ def _precision_diagnostics_add_candidate(
         entry["model"] = str(source.get("model"))
     if source.get("route"):
         entry["route"] = str(source.get("route"))
+    for field in (
+        "requested_model",
+        "requested_size",
+        "seed",
+        "steps",
+        "generation_seconds",
+        "generation_attempt",
+    ):
+        value = source.get(field)
+        if value not in (None, ""):
+            entry[field] = value
+    if isinstance(source.get("near_duplicate_qa"), dict):
+        entry["near_duplicate_qa"] = _precision_diagnostics_json_safe(
+            source.get("near_duplicate_qa")
+        )
 
     candidates = scene_record.setdefault("candidates", [])
     # Replace a matching index instead of duplicating it when partial diagnostics
@@ -2209,10 +2242,12 @@ def _manual_precision_reference_mode_default() -> str:
 
 def _manual_precision_reference_max_images() -> int:
     try:
-        value = int(config.app.get("openai_image_manual_reference_max_images", 8) or 8)
+        value = int(config.app.get("openai_image_manual_reference_max_images", 12) or 12)
     except (TypeError, ValueError):
-        value = 8
-    return max(1, min(value, 8))
+        value = 12
+    # The library can be larger than the per-scene Qwen pack. Keep a generous
+    # safety ceiling while scene routing still sends at most three references.
+    return max(1, min(value, 20))
 
 
 def _manual_precision_reference_manifest(save_dir: str) -> Path:
@@ -2252,16 +2287,26 @@ def _load_manual_precision_reference_manifest(
             original = str(raw.get("original") or "").strip()
             role = str(raw.get("role") or "identity").strip().lower()
             description = str(raw.get("description") or "").strip()
+            anchor = bool(raw.get("anchor"))
         else:
             stored = str(raw or "").strip()
             original = ""
             role = "identity"
             description = ""
+            anchor = False
         if not stored:
             continue
         if role not in {"identity", "detail", "internal", "context", "other"}:
             role = "identity"
-        entries.append({"stored": stored, "original": original, "role": role, "description": description})
+        entries.append(
+            {
+                "stored": stored,
+                "original": original,
+                "role": role,
+                "description": description,
+                "anchor": anchor,
+            }
+        )
     return mode, entries
 
 
@@ -2320,6 +2365,7 @@ def _prepare_manual_precision_reference_pack(
                 "original_file": entry.get("original") or None,
                 "role": entry.get("role") or "identity",
                 "description": entry.get("description") or None,
+                "anchor": bool(entry.get("anchor")),
                 "comfyui_input": comfyui_name,
                 "width": int(width or 0),
                 "height": int(height or 0),
@@ -2361,46 +2407,158 @@ def _select_manual_references_for_scene(
     reference_query: str,
     max_refs: int = 3,
 ) -> tuple[list[str], dict[str, Any]]:
-    """Choose a small theme-agnostic reference pack for one scene."""
+    """Select anchor + scene-specific + complementary evidence for one Precision scene."""
     info = dict(reference_info or {})
-    pack = [dict(item) for item in (info.get("reference_pack") or []) if isinstance(item, dict)]
+    pack = [
+        dict(item)
+        for item in (info.get("reference_pack") or [])
+        if isinstance(item, dict)
+    ]
     if not pack:
         return list(all_inputs or [])[:max_refs], info
-    need = str(reference_need or "identity").strip().lower()
-    query_tokens = {tok for tok in re.findall(r"[a-z0-9]+", str(reference_query or "").lower()) if len(tok) >= 3}
 
-    def score(item: dict) -> tuple[float, int]:
+    limit = max(1, min(int(max_refs or 3), 3))
+    need = str(reference_need or "identity").strip().lower()
+    query_text = str(reference_query or "").strip()
+    query_tokens = {
+        tok
+        for tok in re.findall(r"[a-z0-9]+", query_text.lower())
+        if len(tok) >= 3
+    }
+
+    def _item_tokens(item: dict) -> set[str]:
+        # User description is the strongest text signal. Original/local filenames
+        # are useful retrieval hints (front/profile/rear/etc.) but never factual proof.
+        text = " ".join(
+            str(value or "")
+            for value in (
+                item.get("description"),
+                item.get("original_file"),
+                item.get("local_file"),
+            )
+        ).lower()
+        return {
+            tok
+            for tok in re.findall(r"[a-z0-9]+", text)
+            if len(tok) >= 3
+        }
+
+    def _scene_score(item: dict) -> float:
         role = str(item.get("role") or "identity").strip().lower()
         role_score = 0.0
-        if role == "identity": role_score += 3.0
-        if role == need: role_score += 6.0
-        if need == "detail" and role == "internal": role_score += 1.0
-        if need == "internal" and role == "detail": role_score += 1.5
-        if need == "context" and role == "context": role_score += 4.0
-        desc_tokens = {tok for tok in re.findall(r"[a-z0-9]+", str(item.get("description") or "").lower()) if len(tok) >= 3}
-        semantic = len(query_tokens & desc_tokens) * 0.75
-        return (role_score + semantic, -int(item.get("slot") or 999))
+        if role == need:
+            role_score += 8.0
+        if role == "identity":
+            role_score += 2.0
+        if need == "detail" and role == "internal":
+            role_score += 0.5
+        if need == "internal" and role == "detail":
+            role_score += 0.25
+        if need == "context" and role == "context":
+            role_score += 3.0
+        semantic_overlap = len(query_tokens & _item_tokens(item))
+        return role_score + semantic_overlap * 2.0
 
-    identity = [item for item in pack if str(item.get("role") or "identity") == "identity"]
+    identity = [
+        item
+        for item in pack
+        if str(item.get("role") or "identity").strip().lower() == "identity"
+    ]
+    explicit_anchors = [item for item in identity if bool(item.get("anchor"))]
+    anchor = None
+    if explicit_anchors:
+        anchor = min(
+            explicit_anchors,
+            key=lambda item: int(item.get("slot") or 999),
+        )
+    elif identity:
+        # Upload order is intentional: default to the first whole-subject identity
+        # reference instead of reusing whichever view happens to score highest.
+        anchor = min(identity, key=lambda item: int(item.get("slot") or 999))
+
     selected: list[dict] = []
-    if identity:
-        selected.append(max(identity, key=score))
-    for item in sorted(pack, key=score, reverse=True):
-        if item not in selected:
-            selected.append(item)
-        if len(selected) >= max(1, min(max_refs, 3)):
-            break
-    selected_inputs = [str(item.get("comfyui_input") or "").strip() for item in selected]
+    selection_rows: list[dict] = []
+    if anchor is not None:
+        selected.append(anchor)
+        selection_rows.append(
+            {
+                "kind": "identity_anchor",
+                "slot": anchor.get("slot"),
+                "file": anchor.get("original_file") or anchor.get("local_file"),
+                "role": anchor.get("role"),
+                "score": round(_scene_score(anchor), 3),
+            }
+        )
+
+    remaining = [item for item in pack if item not in selected]
+    scene_specific = max(remaining, key=_scene_score) if remaining else None
+    if scene_specific is not None and len(selected) < limit:
+        selected.append(scene_specific)
+        selection_rows.append(
+            {
+                "kind": "scene_specific",
+                "slot": scene_specific.get("slot"),
+                "file": scene_specific.get("original_file")
+                or scene_specific.get("local_file"),
+                "role": scene_specific.get("role"),
+                "score": round(_scene_score(scene_specific), 3),
+            }
+        )
+
+    if len(selected) < limit:
+        remaining = [item for item in pack if item not in selected]
+        if remaining:
+            specific_tokens = (
+                _item_tokens(scene_specific)
+                if scene_specific is not None
+                else set()
+            )
+            specific_role = (
+                str(scene_specific.get("role") or "").strip().lower()
+                if scene_specific is not None
+                else ""
+            )
+
+            def _complement_score(item: dict) -> tuple[float, int]:
+                role = str(item.get("role") or "identity").strip().lower()
+                tokens = _item_tokens(item)
+                uniqueness = len(tokens - specific_tokens) * 0.15
+                role_diversity = 0.5 if role and role != specific_role else 0.0
+                return (
+                    _scene_score(item) + uniqueness + role_diversity,
+                    -int(item.get("slot") or 999),
+                )
+
+            complementary = max(remaining, key=_complement_score)
+            selected.append(complementary)
+            selection_rows.append(
+                {
+                    "kind": "complementary",
+                    "slot": complementary.get("slot"),
+                    "file": complementary.get("original_file")
+                    or complementary.get("local_file"),
+                    "role": complementary.get("role"),
+                    "score": round(_complement_score(complementary)[0], 3),
+                }
+            )
+
+    selected_inputs = [
+        str(item.get("comfyui_input") or "").strip()
+        for item in selected
+    ]
     selected_inputs = [value for value in selected_inputs if value]
     info["reference_pack_all"] = pack
     info["reference_pack"] = selected
     info["reference_selection"] = {
-        "status": "scene_adaptive_manual_pack",
+        "status": "anchor_scene_specific_complementary",
         "requested_need": need,
-        "reference_query": str(reference_query or "").strip(),
+        "reference_query": query_text,
         "selected_count": len(selected_inputs),
         "available_count": len(pack),
-        "stable_identity_across_precision_scenes": bool(identity),
+        "stable_identity_across_precision_scenes": bool(anchor),
+        "anchor_reference": selection_rows[0] if selection_rows and selection_rows[0].get("kind") == "identity_anchor" else None,
+        "selected_references": selection_rows,
+        "selection_strategy": "identity anchor + best scene-specific evidence + complementary evidence",
     }
     return selected_inputs, info
 
@@ -2474,6 +2632,141 @@ def _precision_retry_on_true_failure_enabled() -> bool:
     if isinstance(value, str):
         return value.strip().lower() not in {"0", "false", "no", "off"}
     return bool(value)
+
+
+def _qwen_request_seed() -> int:
+    """Return a reproducible debug seed when configured, otherwise a fresh local seed."""
+    configured = config.app.get("openai_image_qwen_debug_seed")
+    if configured not in (None, ""):
+        try:
+            return max(0, min(int(configured), 0x7FFFFFFFFFFFFFFF))
+        except (TypeError, ValueError, OverflowError):
+            logger.warning(
+                "invalid openai_image_qwen_debug_seed; falling back to a random seed: "
+                f"value={configured!r}"
+            )
+    return random.SystemRandom().randrange(0, 1_000_000_000)
+
+
+def _openai_image_near_duplicate_enabled() -> bool:
+    value = config.app.get("openai_image_near_duplicate_qa_enabled", True)
+    if isinstance(value, str):
+        return value.strip().lower() not in {"0", "false", "no", "off"}
+    return bool(value)
+
+
+def _openai_image_near_duplicate_threshold() -> float:
+    try:
+        value = float(config.app.get("openai_image_near_duplicate_threshold", 0.94))
+    except (TypeError, ValueError):
+        value = 0.94
+    if not math.isfinite(value):
+        value = 0.94
+    return max(0.75, min(value, 1.0))
+
+
+def _image_dhash64(image_path: str) -> int | None:
+    """Return a 64-bit perceptual difference hash using only Pillow."""
+    try:
+        with Image.open(image_path) as image:
+            sample = image.convert("L").resize((9, 8), Image.Resampling.LANCZOS)
+            pixels = list(sample.tobytes())
+        value = 0
+        bit = 0
+        for row in range(8):
+            offset = row * 9
+            for column in range(8):
+                if pixels[offset + column] > pixels[offset + column + 1]:
+                    value |= 1 << bit
+                bit += 1
+        return value
+    except Exception as exc:
+        logger.warning(
+            "failed to compute generated-image dHash: "
+            f"image={image_path!r}, error={type(exc).__name__}, detail={exc}"
+        )
+        return None
+
+
+def _dhash_similarity(left: int | None, right: int | None) -> float | None:
+    if left is None or right is None:
+        return None
+    distance = int(left ^ right).bit_count()
+    return 1.0 - (distance / 64.0)
+
+
+def _near_duplicate_assessment(
+    image_path: str,
+    recent_scenes: list[dict[str, Any]] | None,
+    *,
+    composition_key: str = "",
+    shot_type: str = "",
+) -> dict[str, Any]:
+    """Cheap structural duplicate check against the previous two accepted scenes.
+
+    A high dHash similarity is actionable only when the planner explicitly asked
+    for a different composition family or shot type. This keeps continuity shots
+    from being penalized just because they intentionally resemble one another.
+    """
+    threshold = _openai_image_near_duplicate_threshold()
+    current_hash = _image_dhash64(image_path)
+    result: dict[str, Any] = {
+        "enabled": _openai_image_near_duplicate_enabled(),
+        "available": current_hash is not None,
+        "threshold": round(threshold, 4),
+        "current_dhash": f"{current_hash:016x}" if current_hash is not None else "",
+        "actionable": False,
+        "best_similarity": None,
+        "matched_scene": None,
+        "planned_difference": False,
+        "comparisons": [],
+    }
+    if not result["enabled"] or current_hash is None:
+        return result
+
+    current_composition = str(composition_key or "").strip().lower()
+    current_shot = str(shot_type or "").strip().lower()
+    best_actionable: tuple[float, int] | None = None
+
+    for previous in list(recent_scenes or [])[-2:]:
+        previous_hash = previous.get("dhash")
+        if previous_hash is None and previous.get("path"):
+            previous_hash = _image_dhash64(str(previous.get("path")))
+        similarity = _dhash_similarity(current_hash, previous_hash)
+        if similarity is None:
+            continue
+
+        previous_composition = str(previous.get("composition_key") or "").strip().lower()
+        previous_shot = str(previous.get("shot_type") or "").strip().lower()
+        composition_differs = bool(
+            current_composition
+            and previous_composition
+            and current_composition != previous_composition
+        )
+        shot_differs = bool(
+            current_shot and previous_shot and current_shot != previous_shot
+        )
+        planned_difference = composition_differs or shot_differs
+        scene_number = int(previous.get("scene") or 0)
+        result["comparisons"].append(
+            {
+                "scene": scene_number,
+                "similarity": round(similarity, 4),
+                "planned_difference": planned_difference,
+                "composition_differs": composition_differs,
+                "shot_differs": shot_differs,
+            }
+        )
+        if planned_difference:
+            result["planned_difference"] = True
+            if best_actionable is None or similarity > best_actionable[0]:
+                best_actionable = (similarity, scene_number)
+
+    if best_actionable is not None:
+        result["best_similarity"] = round(best_actionable[0], 4)
+        result["matched_scene"] = best_actionable[1]
+        result["actionable"] = best_actionable[0] >= threshold
+    return result
 
 
 def _precision_keep_judges_loaded_between_scenes() -> bool:
@@ -4128,38 +4421,100 @@ def _qwen_precision_prompt_with_references(
     subject: str,
     reference_count: int,
     reference_info: dict[str, Any] | None = None,
+    forbidden_features: list[str] | None = None,
 ) -> str:
-    """Give Qwen explicit per-reference roles without assuming every image is the same view."""
+    """Give Qwen explicit ordered evidence roles while keeping composition text-driven."""
     subject = _normalized_reference_subject(subject) or "the factual subject"
     reference_count = max(1, min(int(reference_count or 1), 10))
-    pack = [dict(item) for item in ((reference_info or {}).get("reference_pack") or []) if isinstance(item, dict)]
+    reference_info = reference_info or {}
+    pack = [
+        dict(item)
+        for item in (reference_info.get("reference_pack") or [])
+        if isinstance(item, dict)
+    ]
+    selection_rows = [
+        dict(item)
+        for item in (
+            (reference_info.get("reference_selection") or {}).get(
+                "selected_references"
+            )
+            or []
+        )
+        if isinstance(item, dict)
+    ]
+
     role_lines = []
     for index in range(1, reference_count + 1):
         item = pack[index - 1] if index - 1 < len(pack) else {}
+        selection = (
+            selection_rows[index - 1]
+            if index - 1 < len(selection_rows)
+            else {}
+        )
         role = str(item.get("role") or "identity").strip().lower()
+        kind = str(selection.get("kind") or "").strip().lower()
         description = str(item.get("description") or "").strip()
-        if role == "identity":
+
+        if kind == "identity_anchor":
+            purpose = (
+                f"the authoritative whole-subject identity anchor for {subject}; "
+                "use it for overall identity, silhouette, proportions and stable geometry"
+            )
+        elif kind == "scene_specific":
+            purpose = (
+                f"the scene-specific factual evidence for {subject}; "
+                "use only the visible information relevant to this scene"
+            )
+        elif kind == "complementary":
+            purpose = (
+                f"complementary factual evidence for {subject}; "
+                "use it only to resolve information not already established by earlier references"
+            )
+        elif role == "identity":
             purpose = f"identity/whole-subject evidence for {subject}"
         elif role == "detail":
             purpose = f"detail evidence for a visible feature of {subject}"
         elif role == "internal":
-            purpose = f"internal/anatomical/mechanical evidence related to {subject}"
+            purpose = (
+                f"internal/anatomical/mechanical evidence related to {subject}"
+            )
         elif role == "context":
-            purpose = "context/environment evidence only; do not treat it as subject identity"
+            purpose = (
+                "context/environment evidence only; do not treat it as subject identity"
+            )
         else:
             purpose = f"supporting factual evidence related to {subject}"
+
         if description:
             purpose += f" ({description})"
         role_lines.append(f"<image{index}> is {purpose}")
+
     role_text = "; ".join(role_lines)
+    clean_forbidden = []
+    seen_forbidden = set()
+    for value in forbidden_features or []:
+        value = str(value or "").strip()
+        key = value.lower()
+        if value and key not in seen_forbidden:
+            clean_forbidden.append(value)
+            seen_forbidden.add(key)
+    forbidden_clause = (
+        " Explicitly do not depict or introduce: "
+        + "; ".join(clean_forbidden[:12])
+        + "."
+        if clean_forbidden
+        else ""
+    )
     return (
         f"Reference evidence: {role_text}. "
-        f"The target factual subject is {subject}. Preserve identity from identity references and use specialized references only for the factual detail they actually show. "
+        f"The target factual subject is {subject}. Treat the identity reference as the authority for identity instead of reconstructing identity from descriptive text. "
+        "Use scene-specific and complementary references only for the facts they visibly establish. "
+        "If text and a supplied identity reference describe the same identity trait differently, preserve the visible reference identity unless the scene explicitly requests a real transformation. "
         "Never force a detail/context reference to redefine the whole subject. Do not inherit any reference background, crop, camera angle, pose, "
         "lighting, color cast, watermark, stock-site text, captions, labels, borders or presentation layout unless the scene explicitly asks for that property. "
         "Do not invent accessories, modifications, anatomy or structures merely because one reference contains an incidental element. "
         "Create a completely new coherent edge-to-edge scene and follow the scene direction for composition, environment, camera and lighting. Scene direction: "
-        f"{prompt}"
+        f"{prompt}{forbidden_clause}"
     )
 
 
@@ -4209,6 +4564,7 @@ def generate_images_openai(
             reference_subject or search_term,
             len(references),
             reference_info=reference_info,
+            forbidden_features=forbidden_features,
         )
     elif references:
         final_prompt = _precision_prompt_with_reference(
@@ -4226,8 +4582,13 @@ def generate_images_openai(
     generation_steps = _openai_image_generation_steps(route, requested_model)
     if generation_steps is not None:
         payload["steps"] = generation_steps
-    if references and _is_qwen_image_21_model(requested_model):
-        payload["negative_prompt"] = _qwen_negative_prompt(forbidden_features)
+    generation_seed: int | None = None
+    if _is_qwen_image_21_model(requested_model):
+        generation_seed = _qwen_request_seed()
+        payload["seed"] = generation_seed
+    # The audited Qwen 2.1 workflow runs KSampler at CFG=1. ComfyUI skips
+    # unconditional/negative sampling at CFG=1, so factual exclusions must live
+    # in the positive scene prompt instead of an inert negative_prompt payload.
     for index, reference in enumerate(references, start=1):
         field = "reference_image" if index == 1 else f"reference_image_{index}"
         payload[field] = reference
@@ -4237,7 +4598,10 @@ def generate_images_openai(
         f"model={requested_model}, route={route}, refs={len(references)}, "
         f"term={search_term!r}, size={image_size}, steps={generation_steps or 'workflow-default'}"
     )
+    request_started = time.perf_counter()
     image_bytes, failure_detail = _request_openai_image(endpoint, payload)
+    primary_generation_seconds = max(0.0, time.perf_counter() - request_started)
+    fallback_generation_seconds = 0.0
 
     fallback_model = _precision_fallback_model() if route == "precision" else ""
     can_fallback = bool(
@@ -4262,8 +4626,14 @@ def generate_images_openai(
             "size": image_size,
             "reference_image": references[0],
         }
+        if generation_seed is not None:
+            fallback_payload["seed"] = generation_seed
+        fallback_started = time.perf_counter()
         image_bytes, fallback_detail = _request_openai_image(
             endpoint, fallback_payload
+        )
+        fallback_generation_seconds = max(
+            0.0, time.perf_counter() - fallback_started
         )
         if image_bytes is not None:
             fallback_from_model = requested_model
@@ -4303,14 +4673,28 @@ def generate_images_openai(
         "requested_model": requested_model,
         "reference_count": used_reference_count,
         "reference": reference_info if references else None,
+        "requested_size": image_size,
+        "generation_seconds": round(
+            primary_generation_seconds + fallback_generation_seconds, 3
+        ),
         "rendition": {
             "id": None,
             "width": width,
             "height": height,
         },
     }
+    if generation_steps is not None:
+        item.source_info["steps"] = int(generation_steps)
+    if generation_seed is not None:
+        item.source_info["seed"] = int(generation_seed)
     if fallback_from_model:
         item.source_info["fallback_from_model"] = fallback_from_model
+        item.source_info["primary_generation_seconds"] = round(
+            primary_generation_seconds, 3
+        )
+        item.source_info["fallback_generation_seconds"] = round(
+            fallback_generation_seconds, 3
+        )
     if item.source_info.get("reference") is None:
         item.source_info.pop("reference", None)
     return [item]
@@ -6316,7 +6700,15 @@ def _download_videos_openai_image_on_demand(
     scene_required_features: list[list[str]] | None = None,
     scene_forbidden_features: list[list[str]] | None = None,
     scene_reference_needs: list[str] | None = None,
+    scene_requested_reference_needs: list[str] | None = None,
     scene_reference_queries: list[str] | None = None,
+    scene_evidence_scopes: list[str] | None = None,
+    scene_reference_critical: list[bool] | None = None,
+    scene_coverage_statuses: list[str] | None = None,
+    scene_coverage_reasons: list[str] | None = None,
+    scene_composition_keys: list[str] | None = None,
+    scene_routing_reasons: list[str] | None = None,
+    scene_planner_validation: list[str] | None = None,
     scene_shot_types: list[str] | None = None,
     scene_framing_intents: list[str] | None = None,
 ) -> List[str]:
@@ -6334,10 +6726,11 @@ def _download_videos_openai_image_on_demand(
     total_duration = 0.0
 
     precision_diagnostics: dict[str, Any] = {
-        "schema_version": 1,
+        "schema_version": 2,
         "task_id": str(task_id),
         "status": "running",
         "scene_count": len(search_terms),
+        "plan_scenes": [],
         "scenes": [],
     }
     _precision_diagnostics_persist(task_id, precision_diagnostics)
@@ -6391,10 +6784,33 @@ def _download_videos_openai_image_on_demand(
         _persist_material_sources(task_id, material_sources)
         return []
 
+    for label, values in (
+        ("reference-needs", scene_reference_needs),
+        ("requested-reference-needs", scene_requested_reference_needs),
+        ("reference-queries", scene_reference_queries),
+        ("evidence-scopes", scene_evidence_scopes),
+        ("reference-critical", scene_reference_critical),
+        ("coverage-statuses", scene_coverage_statuses),
+        ("coverage-reasons", scene_coverage_reasons),
+        ("composition-keys", scene_composition_keys),
+        ("routing-reasons", scene_routing_reasons),
+        ("planner-validation", scene_planner_validation),
+        ("shot-types", scene_shot_types),
+        ("framing-intents", scene_framing_intents),
+    ):
+        if values is not None and len(values) != len(search_terms):
+            logger.error(
+                f"semantic OpenAI image {label} mismatch: "
+                f"prompts={len(search_terms)}, metadata={len(values)}"
+            )
+            _persist_material_sources(task_id, material_sources)
+            return []
+
     precision_fallback_logged = False
     precision_reference_cache: dict[str, tuple[str, dict[str, Any]]] = {}
     manual_reference_pack_cache: tuple[list[str], dict[str, Any]] | None = None
     latest_standard_style_profile: dict[str, tuple[float, float, float]] | None = None
+    recent_generated_scene_visuals: list[dict[str, Any]] = []
     for scene_index, search_term in enumerate(search_terms):
         if semantic_timing:
             try:
@@ -6458,10 +6874,106 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_forbidden_features)
             else []
         )
-        reference_need = (str(scene_reference_needs[scene_index] or "identity").strip().lower() if scene_reference_needs is not None and scene_index < len(scene_reference_needs) else "identity")
-        reference_query = (str(scene_reference_queries[scene_index] or "").strip() if scene_reference_queries is not None and scene_index < len(scene_reference_queries) else "")
-        shot_type = (str(scene_shot_types[scene_index] or "full").strip().lower() if scene_shot_types is not None and scene_index < len(scene_shot_types) else "full")
-        framing_intent = (str(scene_framing_intents[scene_index] or "full_subject").strip().lower() if scene_framing_intents is not None and scene_index < len(scene_framing_intents) else "full_subject")
+        reference_need = (
+            str(scene_reference_needs[scene_index] or "identity").strip().lower()
+            if scene_reference_needs is not None
+            and scene_index < len(scene_reference_needs)
+            else "identity"
+        )
+        requested_reference_need = (
+            str(
+                scene_requested_reference_needs[scene_index]
+                or reference_need
+            ).strip().lower()
+            if scene_requested_reference_needs is not None
+            and scene_index < len(scene_requested_reference_needs)
+            else reference_need
+        )
+        reference_query = (
+            str(scene_reference_queries[scene_index] or "").strip()
+            if scene_reference_queries is not None
+            and scene_index < len(scene_reference_queries)
+            else ""
+        )
+        evidence_scope = (
+            str(scene_evidence_scopes[scene_index] or "contextual").strip().lower()
+            if scene_evidence_scopes is not None
+            and scene_index < len(scene_evidence_scopes)
+            else "contextual"
+        )
+        reference_critical = bool(
+            scene_reference_critical[scene_index]
+            if scene_reference_critical is not None
+            and scene_index < len(scene_reference_critical)
+            else False
+        )
+        coverage_status = (
+            str(scene_coverage_statuses[scene_index] or "unknown").strip().lower()
+            if scene_coverage_statuses is not None
+            and scene_index < len(scene_coverage_statuses)
+            else "unknown"
+        )
+        coverage_reason = (
+            str(scene_coverage_reasons[scene_index] or "").strip()
+            if scene_coverage_reasons is not None
+            and scene_index < len(scene_coverage_reasons)
+            else ""
+        )
+        composition_key = (
+            str(scene_composition_keys[scene_index] or "").strip().lower()
+            if scene_composition_keys is not None
+            and scene_index < len(scene_composition_keys)
+            else ""
+        )
+        routing_reason = (
+            str(scene_routing_reasons[scene_index] or "").strip()
+            if scene_routing_reasons is not None
+            and scene_index < len(scene_routing_reasons)
+            else ""
+        )
+        planner_validation = (
+            str(scene_planner_validation[scene_index] or "pass").strip().lower()
+            if scene_planner_validation is not None
+            and scene_index < len(scene_planner_validation)
+            else "pass"
+        )
+        shot_type = (
+            str(scene_shot_types[scene_index] or "full").strip().lower()
+            if scene_shot_types is not None
+            and scene_index < len(scene_shot_types)
+            else "full"
+        )
+        framing_intent = (
+            str(
+                scene_framing_intents[scene_index] or "full_subject"
+            ).strip().lower()
+            if scene_framing_intents is not None
+            and scene_index < len(scene_framing_intents)
+            else "full_subject"
+        )
+
+        precision_diagnostics["plan_scenes"].append(
+            {
+                "scene": scene_index + 1,
+                "route": route,
+                "routing_reason": routing_reason,
+                "canonical_subject": reference_subject,
+                "reference_need": reference_need,
+                "requested_reference_need": requested_reference_need,
+                "reference_query": reference_query,
+                "evidence_scope": evidence_scope,
+                "reference_critical": reference_critical,
+                "coverage_status": coverage_status,
+                "coverage_reason": coverage_reason,
+                "composition_key": composition_key,
+                "planner_validation": planner_validation,
+                "shot_type": shot_type,
+                "framing_intent": framing_intent,
+                "prompt": search_term,
+            }
+        )
+        _precision_diagnostics_persist(task_id, precision_diagnostics)
+
         if route == "precision" and not precision_fallback:
             manual_mode, manual_entries = _load_manual_precision_reference_manifest(
                 material_directory
@@ -6587,7 +7099,15 @@ def _download_videos_openai_image_on_demand(
                 forbidden_features=forbidden_features,
                 reference_info=reference_info,
                 reference_need=reference_need,
+                requested_reference_need=requested_reference_need,
                 reference_query=reference_query,
+                evidence_scope=evidence_scope,
+                reference_critical=reference_critical,
+                coverage_status=coverage_status,
+                coverage_reason=coverage_reason,
+                composition_key=composition_key,
+                routing_reason=routing_reason,
+                planner_validation=planner_validation,
                 shot_type=shot_type,
                 framing_intent=framing_intent,
             )
@@ -6656,6 +7176,55 @@ def _download_videos_openai_image_on_demand(
                         image_size = _openai_image_size(video_aspect, route=route, model=scene_model)
                         valid, validation_reason = _validate_generated_image_basic(candidate.url, image_size)
                         if valid:
+                            duplicate_qa = _near_duplicate_assessment(
+                                candidate.url,
+                                recent_generated_scene_visuals,
+                                composition_key=composition_key,
+                                shot_type=shot_type,
+                            )
+                            if not isinstance(candidate.source_info, dict):
+                                candidate.source_info = {}
+                            candidate.source_info["generation_attempt"] = (
+                                generation_attempt + 1
+                            )
+                            candidate.source_info["near_duplicate_qa"] = duplicate_qa
+                            if precision_scene_diagnostic is not None:
+                                precision_scene_diagnostic.setdefault(
+                                    "generation_attempts", []
+                                ).append(
+                                    {
+                                        "attempt": generation_attempt + 1,
+                                        "file": Path(candidate.url).name,
+                                        "technical_validation": validation_reason,
+                                        "seed": candidate.source_info.get("seed"),
+                                        "steps": candidate.source_info.get("steps"),
+                                        "generation_seconds": candidate.source_info.get(
+                                            "generation_seconds"
+                                        ),
+                                        "near_duplicate_qa": duplicate_qa,
+                                    }
+                                )
+                            if (
+                                duplicate_qa.get("actionable")
+                                and generation_attempt + 1 < failure_attempts
+                            ):
+                                logger.warning(
+                                    "Qwen image is a near-duplicate of a recent scene despite a planned visual change; "
+                                    f"scene={scene_index + 1}, matched_scene={duplicate_qa.get('matched_scene')}, "
+                                    f"similarity={duplicate_qa.get('best_similarity')}, retrying within the existing corrective budget"
+                                )
+                                search_term = (
+                                    search_term
+                                    + ". CORRECTION: the previous render repeated the framing/composition of a recent scene. "
+                                    "Keep the same factual subject and evidence, but make this scene visibly distinct according to "
+                                    f"the planned composition '{composition_key or 'current scene'}' and shot type '{shot_type or 'current shot'}'. "
+                                    "Change camera position, framing and spatial arrangement as needed; do not repeat the previous composition."
+                                )
+                                _precision_diagnostics_persist(
+                                    task_id, precision_diagnostics
+                                )
+                                continue
+
                             selected_precision_item = candidate
                             candidate_items.append(selected_precision_item)
                             _record_precision_selection(
@@ -6735,6 +7304,11 @@ def _download_videos_openai_image_on_demand(
                         )
                         continue
 
+                    if not isinstance(generated_items[0].source_info, dict):
+                        generated_items[0].source_info = {}
+                    generated_items[0].source_info["generation_attempt"] = (
+                        candidate_index + 1
+                    )
                     candidate_items.append(generated_items[0])
 
                     if precision_scene_diagnostic is not None:
@@ -6926,6 +7500,47 @@ def _download_videos_openai_image_on_demand(
                     "precision scene has no preceding standard style anchor; "
                     "keeping generated colors unchanged"
                 )
+
+        if items:
+            final_duplicate_qa = None
+            if isinstance(items[0].source_info, dict):
+                existing_duplicate_qa = items[0].source_info.get(
+                    "near_duplicate_qa"
+                )
+                if isinstance(existing_duplicate_qa, dict):
+                    final_duplicate_qa = existing_duplicate_qa
+            if final_duplicate_qa is None:
+                final_duplicate_qa = _near_duplicate_assessment(
+                    items[0].url,
+                    recent_generated_scene_visuals,
+                    composition_key=composition_key,
+                    shot_type=shot_type,
+                )
+                if not isinstance(items[0].source_info, dict):
+                    items[0].source_info = {}
+                items[0].source_info["near_duplicate_qa"] = final_duplicate_qa
+
+            if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
+                precision_diagnostics["plan_scenes"][scene_index][
+                    "near_duplicate_qa"
+                ] = _precision_diagnostics_json_safe(final_duplicate_qa)
+            if precision_scene_diagnostic is not None:
+                precision_scene_diagnostic["near_duplicate_qa"] = (
+                    _precision_diagnostics_json_safe(final_duplicate_qa)
+                )
+            _precision_diagnostics_persist(task_id, precision_diagnostics)
+
+            accepted_hash = _image_dhash64(items[0].url)
+            recent_generated_scene_visuals.append(
+                {
+                    "scene": scene_index + 1,
+                    "path": items[0].url,
+                    "dhash": accepted_hash,
+                    "composition_key": composition_key,
+                    "shot_type": shot_type,
+                }
+            )
+            recent_generated_scene_visuals = recent_generated_scene_visuals[-2:]
 
         if not items and semantic_timing:
             # Dropping a semantic scene would shift every later image against the
@@ -7128,7 +7743,15 @@ def download_videos(
     scene_required_features: list[list[str]] | None = None,
     scene_forbidden_features: list[list[str]] | None = None,
     scene_reference_needs: list[str] | None = None,
+    scene_requested_reference_needs: list[str] | None = None,
     scene_reference_queries: list[str] | None = None,
+    scene_evidence_scopes: list[str] | None = None,
+    scene_reference_critical: list[bool] | None = None,
+    scene_coverage_statuses: list[str] | None = None,
+    scene_coverage_reasons: list[str] | None = None,
+    scene_composition_keys: list[str] | None = None,
+    scene_routing_reasons: list[str] | None = None,
+    scene_planner_validation: list[str] | None = None,
     scene_shot_types: list[str] | None = None,
     scene_framing_intents: list[str] | None = None,
 ) -> List[str]:
@@ -7225,7 +7848,15 @@ def download_videos(
             scene_required_features=scene_required_features,
             scene_forbidden_features=scene_forbidden_features,
             scene_reference_needs=scene_reference_needs,
+            scene_requested_reference_needs=scene_requested_reference_needs,
             scene_reference_queries=scene_reference_queries,
+            scene_evidence_scopes=scene_evidence_scopes,
+            scene_reference_critical=scene_reference_critical,
+            scene_coverage_statuses=scene_coverage_statuses,
+            scene_coverage_reasons=scene_coverage_reasons,
+            scene_composition_keys=scene_composition_keys,
+            scene_routing_reasons=scene_routing_reasons,
+            scene_planner_validation=scene_planner_validation,
             scene_shot_types=scene_shot_types,
             scene_framing_intents=scene_framing_intents,
         )

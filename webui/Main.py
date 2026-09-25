@@ -604,11 +604,27 @@ def _normalize_precision_reference_mode(value: str | None) -> str:
 
 def _precision_reference_upload_limit() -> int:
     try:
-        value = int(config.app.get("openai_image_manual_reference_max_images", 8) or 8)
+        value = int(config.app.get("openai_image_manual_reference_max_images", 12) or 12)
     except (TypeError, ValueError):
-        value = 8
-    # Store a larger reference library; per-scene routing sends at most three images to Qwen.
-    return max(1, min(value, 8))
+        value = 12
+    # Store a larger library; scene routing still sends at most three references to Qwen.
+    return max(1, min(value, 20))
+
+
+def _deduplicate_uploaded_precision_references(uploaded_files):
+    """Keep the first byte-identical upload and report later duplicates."""
+    unique = []
+    duplicate_names = []
+    seen: dict[str, str] = {}
+    for uploaded_file in list(uploaded_files or []):
+        digest = hashlib.sha256(bytes(uploaded_file.getbuffer())).hexdigest()
+        name = os.path.basename(str(uploaded_file.name or "reference"))
+        if digest in seen:
+            duplicate_names.append(f"{name} = {seen[digest]}")
+            continue
+        seen[digest] = name
+        unique.append(uploaded_file)
+    return unique, duplicate_names
 
 
 def _save_manual_precision_references(
@@ -629,33 +645,54 @@ def _save_manual_precision_references(
     os.makedirs(references_dir, exist_ok=True)
 
     manifest = {
-        "schema_version": 3,
+        "schema_version": 4,
         "mode": reference_mode,
         "model": "qwen-image-2.1-precision",
         "max_images": _precision_reference_upload_limit(),
         "files": [],
     }
 
-    for index, uploaded_file in enumerate(files, start=1):
+    seen_sha256: dict[str, str] = {}
+    stored_index = 0
+    for source_index, uploaded_file in enumerate(files):
+        payload = bytes(uploaded_file.getbuffer())
+        digest = hashlib.sha256(payload).hexdigest()
+        original_name = os.path.basename(str(uploaded_file.name or ""))
+        if digest in seen_sha256:
+            logger.warning(
+                "skip exact duplicate Precision reference upload: "
+                f"file={original_name!r}, duplicate_of={seen_sha256[digest]!r}"
+            )
+            continue
+
+        stored_index += 1
         file_path = _build_uploaded_file_path(
             uploaded_file,
             references_dir,
             PRECISION_REFERENCE_EXTENSIONS,
-            f"reference-{index:02d}",
+            f"reference-{stored_index:02d}",
         )
         with open(file_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        meta = metadata[index - 1] if index - 1 < len(metadata) and isinstance(metadata[index - 1], dict) else {}
+            f.write(payload)
+        seen_sha256[digest] = original_name
+        meta = (
+            metadata[source_index]
+            if source_index < len(metadata)
+            and isinstance(metadata[source_index], dict)
+            else {}
+        )
         role = str(meta.get("role") or "identity").strip().lower()
         if role not in {"identity", "detail", "internal", "context", "other"}:
             role = "identity"
         manifest["files"].append(
             {
                 "stored": os.path.basename(file_path),
-                "original": os.path.basename(str(uploaded_file.name or "")),
-                "slot": index,
+                "original": original_name,
+                "slot": stored_index,
                 "role": role,
                 "description": str(meta.get("description") or "").strip()[:240],
+                "anchor": bool(meta.get("anchor")) if role == "identity" else False,
+                "sha256": digest,
             }
         )
 
@@ -5136,13 +5173,26 @@ def _render_video_settings(panel, params):
                     accept_multiple_files=True,
                     key="openai_image_precision_reference_uploader",
                     help=(
-                        "Upload up to 8 useful references. MPT stores the library and automatically selects at most 3 per Precision scene. "
+                        f"Upload up to {_precision_reference_upload_limit()} useful references. MPT stores the library and automatically selects at most 3 per Precision scene. "
                         "References can cover the whole identity, a detail, internal/anatomical/mechanical structure, or context."
                     ),
                 ) or []
+                uploaded_precision_references, duplicate_reference_names = (
+                    _deduplicate_uploaded_precision_references(
+                        uploaded_precision_references
+                    )
+                )
+                if duplicate_reference_names:
+                    st.warning(
+                        "Exact duplicate reference image(s) were ignored: "
+                        + ", ".join(duplicate_reference_names[:6])
+                        + ("…" if len(duplicate_reference_names) > 6 else "")
+                    )
                 upload_limit = _precision_reference_upload_limit()
                 if len(uploaded_precision_references) > upload_limit:
-                    st.warning(f"Only the first {upload_limit} reference images will be stored for this task.")
+                    st.warning(
+                        f"Only the first {upload_limit} unique reference images will be stored for this task."
+                    )
                     uploaded_precision_references = uploaded_precision_references[:upload_limit]
                 if uploaded_precision_references:
                     role_options = ["identity", "detail", "internal", "context", "other"]
@@ -5154,6 +5204,7 @@ def _render_video_settings(panel, params):
                         "other": "Other",
                     }
                     with st.expander("Reference roles (recommended)", expanded=len(uploaded_precision_references) > 3):
+                        anchor_claimed = False
                         for ref_index, ref_file in enumerate(uploaded_precision_references, start=1):
                             ref_name = os.path.basename(str(ref_file.name or f"Reference {ref_index}"))
                             role = stable_selectbox(
@@ -5168,7 +5219,27 @@ def _render_video_settings(panel, params):
                                 key=f"precision_reference_description_{ref_index}_{ref_name}",
                                 placeholder="e.g. full subject, underside detail, internal structure, habitat/context...",
                             )
-                            uploaded_precision_reference_metadata.append({"role": role, "description": description})
+                            anchor = False
+                            if role == "identity":
+                                anchor = st.checkbox(
+                                    "Primary identity anchor",
+                                    value=not anchor_claimed,
+                                    key=f"precision_reference_anchor_{ref_index}_{ref_name}",
+                                    disabled=anchor_claimed,
+                                    help=(
+                                        "The anchor is the canonical whole-subject identity reference. "
+                                        "MPT keeps it first and combines it with scene-specific evidence."
+                                    ),
+                                )
+                                if anchor:
+                                    anchor_claimed = True
+                            uploaded_precision_reference_metadata.append(
+                                {
+                                    "role": role,
+                                    "description": description,
+                                    "anchor": anchor,
+                                }
+                            )
                     st.caption(
                         f"Reference library: {len(uploaded_precision_references)}/{upload_limit} image(s). "
                         "MPT will choose up to 3 relevant references per Precision scene while keeping identity continuity."

@@ -607,7 +607,9 @@ class TestOpenAIImageProvider(unittest.TestCase):
             "term-3": [self._generated_item("term-3", "/tmp/img-3.png")],
         }
 
-        def fake_generate(search_term, minimum_duration, video_aspect, save_dir=""):
+        def fake_generate(
+            search_term, minimum_duration, video_aspect, save_dir="", **kwargs
+        ):
             return generated[search_term]
 
         def fake_render(image_path, clip_duration):
@@ -697,7 +699,9 @@ class TestOpenAIImageProvider(unittest.TestCase):
             "term-3": [self._generated_item("term-3", "/tmp/img-3.png")],
         }
 
-        def fake_generate(search_term, minimum_duration, video_aspect, save_dir=""):
+        def fake_generate(
+            search_term, minimum_duration, video_aspect, save_dir="", **kwargs
+        ):
             return generated[search_term]
 
         with (
@@ -761,7 +765,9 @@ class TestOpenAIImageProvider(unittest.TestCase):
             "term-3": [self._generated_item("term-3", "/tmp/img-3.png")],
         }
 
-        def fake_generate(search_term, minimum_duration, video_aspect, save_dir=""):
+        def fake_generate(
+            search_term, minimum_duration, video_aspect, save_dir="", **kwargs
+        ):
             return generated[search_term]
 
         def fake_render(image_path, clip_duration):
