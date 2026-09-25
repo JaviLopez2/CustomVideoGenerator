@@ -604,11 +604,11 @@ def _normalize_precision_reference_mode(value: str | None) -> str:
 
 def _precision_reference_upload_limit() -> int:
     try:
-        value = int(config.app.get("openai_image_manual_reference_max_images", 8) or 8)
+        value = int(config.app.get("openai_image_manual_reference_max_images", 12) or 12)
     except (TypeError, ValueError):
-        value = 8
-    # Store a larger reference library; per-scene routing sends at most three images to Qwen.
-    return max(1, min(value, 8))
+        value = 12
+    # Store a larger library; scene routing still sends at most three references to Qwen.
+    return max(1, min(value, 20))
 
 
 def _save_manual_precision_references(
@@ -629,7 +629,7 @@ def _save_manual_precision_references(
     os.makedirs(references_dir, exist_ok=True)
 
     manifest = {
-        "schema_version": 3,
+        "schema_version": 4,
         "mode": reference_mode,
         "model": "qwen-image-2.1-precision",
         "max_images": _precision_reference_upload_limit(),
@@ -656,6 +656,7 @@ def _save_manual_precision_references(
                 "slot": index,
                 "role": role,
                 "description": str(meta.get("description") or "").strip()[:240],
+                "anchor": bool(meta.get("anchor")) if role == "identity" else False,
             }
         )
 
@@ -5136,7 +5137,7 @@ def _render_video_settings(panel, params):
                     accept_multiple_files=True,
                     key="openai_image_precision_reference_uploader",
                     help=(
-                        "Upload up to 8 useful references. MPT stores the library and automatically selects at most 3 per Precision scene. "
+                        f"Upload up to {_precision_reference_upload_limit()} useful references. MPT stores the library and automatically selects at most 3 per Precision scene. "
                         "References can cover the whole identity, a detail, internal/anatomical/mechanical structure, or context."
                     ),
                 ) or []
@@ -5154,6 +5155,7 @@ def _render_video_settings(panel, params):
                         "other": "Other",
                     }
                     with st.expander("Reference roles (recommended)", expanded=len(uploaded_precision_references) > 3):
+                        anchor_claimed = False
                         for ref_index, ref_file in enumerate(uploaded_precision_references, start=1):
                             ref_name = os.path.basename(str(ref_file.name or f"Reference {ref_index}"))
                             role = stable_selectbox(
@@ -5168,7 +5170,27 @@ def _render_video_settings(panel, params):
                                 key=f"precision_reference_description_{ref_index}_{ref_name}",
                                 placeholder="e.g. full subject, underside detail, internal structure, habitat/context...",
                             )
-                            uploaded_precision_reference_metadata.append({"role": role, "description": description})
+                            anchor = False
+                            if role == "identity":
+                                anchor = st.checkbox(
+                                    "Primary identity anchor",
+                                    value=not anchor_claimed,
+                                    key=f"precision_reference_anchor_{ref_index}_{ref_name}",
+                                    disabled=anchor_claimed,
+                                    help=(
+                                        "The anchor is the canonical whole-subject identity reference. "
+                                        "MPT keeps it first and combines it with scene-specific evidence."
+                                    ),
+                                )
+                                if anchor:
+                                    anchor_claimed = True
+                            uploaded_precision_reference_metadata.append(
+                                {
+                                    "role": role,
+                                    "description": description,
+                                    "anchor": anchor,
+                                }
+                            )
                     st.caption(
                         f"Reference library: {len(uploaded_precision_references)}/{upload_limit} image(s). "
                         "MPT will choose up to 3 relevant references per Precision scene while keeping identity continuity."
