@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 from PIL import Image
@@ -59,6 +61,179 @@ class TestQwenQualityV31(unittest.TestCase):
             any("reference_need='internal'" in issue for issue in issues),
             issues,
         )
+
+    def test_output_target_is_not_covered_by_primary_identity_pack(self):
+        inventory = [
+            {"slot": 1, "role": "identity", "description": "whole primary subject"},
+            {"slot": 2, "role": "detail", "description": "primary subject controls"},
+        ]
+
+        status, reason = llm._scene_reference_coverage(
+            {
+                "reference_need": "identity",
+                "reference_target": "output",
+                "evidence_scope": "externally_visible",
+                "reference_critical": True,
+            },
+            inventory,
+        )
+
+        self.assertEqual(status, "unsupported")
+        self.assertIn("output", reason)
+
+    def test_preflight_flags_unsupported_even_with_safe_alternative(self):
+        issues = llm._scene_plan_preflight_issues(
+            [
+                {
+                    "reference_need": "internal",
+                    "reference_target": "primary_subject",
+                    "evidence_scope": "hidden_internal",
+                    "safe_visual_alternative": "show only the externally visible result",
+                    "reference_critical": True,
+                    "required_features": [],
+                    "forbidden_features": [],
+                    "environment_key": "inside",
+                    "composition_key": "macro_internal",
+                    "shot_type": "macro",
+                    "environment": "inside device",
+                }
+            ],
+            reference_inventory=[
+                {"slot": 1, "role": "identity", "description": "whole subject"}
+            ],
+        )
+
+        self.assertTrue(any("must be rewritten" in issue for issue in issues), issues)
+
+    def test_hard_coverage_fallback_removes_unsupported_visual_fields(self):
+        draft = [
+            {
+                "subject": "internal rollers and chemical pods",
+                "canonical_subject": "device internal rollers",
+                "route": "precision",
+                "scene_description": "open body showing two rollers and chemical pods",
+                "required_features": ["two rollers", "chemical pods"],
+                "forbidden_features": [],
+                "environment": "dark internal cavity",
+                "environment_key": "internal_cavity",
+                "composition": "macro top-down cutaway inside the device",
+                "composition_key": "macro_internal",
+                "lighting": "internal fill light",
+                "shot_type": "macro",
+                "framing_intent": "detail",
+                "shot_role": "process",
+                "reference_need": "internal",
+                "reference_target": "primary_subject",
+                "reference_query": "internal rollers and pods",
+                "evidence_scope": "hidden_internal",
+                "reference_critical": True,
+                "safe_visual_alternative": "show the externally visible result",
+                "precision_importance": 1.0,
+            }
+        ]
+        scene_plan = [
+            {
+                "narration": "An internal mechanism causes the visible result.",
+                "beat": 1,
+                "beats": 1,
+                "duration": 5.0,
+            }
+        ]
+
+        with patch.object(
+            llm,
+            "_generate_response",
+            side_effect=[json.dumps(draft), json.dumps(draft)],
+        ):
+            result = llm.generate_scene_image_plan(
+                "generic mechanism",
+                scene_plan,
+                reference_inventory=[
+                    {"slot": 1, "role": "identity", "description": "whole subject"}
+                ],
+                precision_budget_ratio=1.0,
+            )
+
+        self.assertEqual(len(result), 1)
+        scene = result[0]
+        self.assertEqual(scene["route"], "standard")
+        self.assertEqual(scene["reference_need"], "none")
+        self.assertEqual(scene["reference_target"], "none")
+        self.assertEqual(scene["evidence_scope"], "contextual")
+        self.assertEqual(scene["planner_validation"], "coverage_fallback")
+        self.assertEqual(scene["factual_audit_status"], "applied")
+        prompt_text = scene["prompt"].lower()
+        self.assertNotIn("chemical pods", prompt_text)
+        self.assertNotIn("two rollers", prompt_text)
+        self.assertNotIn("dark internal cavity", prompt_text)
+        self.assertNotIn("macro top-down cutaway", prompt_text)
+        self.assertIn("externally visible result or context", prompt_text)
+
+    def test_factual_audit_can_reclassify_apparently_visible_process_before_gpu(self):
+        draft = [
+            {
+                "subject": "visible process",
+                "canonical_subject": "primary device",
+                "route": "standard",
+                "scene_description": "a process visibly spreading across the output",
+                "required_features": [],
+                "forbidden_features": [],
+                "environment": "table",
+                "environment_key": "table",
+                "composition": "close view",
+                "composition_key": "close_process",
+                "lighting": "soft light",
+                "shot_type": "close",
+                "framing_intent": "detail",
+                "shot_role": "process",
+                "reference_need": "none",
+                "reference_target": "output",
+                "reference_query": "",
+                "evidence_scope": "externally_visible",
+                "reference_critical": False,
+                "safe_visual_alternative": "show the visible before and after state",
+                "precision_importance": 0.2,
+            }
+        ]
+        audited = [dict(draft[0])]
+        audited[0].update(
+            {
+                "subject": "hidden process between layers",
+                "route": "precision",
+                "reference_need": "internal",
+                "reference_target": "output",
+                "reference_query": "process between hidden layers",
+                "evidence_scope": "hidden_internal",
+                "reference_critical": True,
+            }
+        )
+        scene_plan = [
+            {
+                "narration": "A hidden reaction produces the visible change.",
+                "beat": 1,
+                "beats": 1,
+                "duration": 5.0,
+            }
+        ]
+
+        with patch.object(
+            llm,
+            "_generate_response",
+            side_effect=[json.dumps(draft), json.dumps(audited)],
+        ):
+            result = llm.generate_scene_image_plan(
+                "generic layered process",
+                scene_plan,
+                reference_inventory=[
+                    {"slot": 1, "role": "identity", "description": "primary subject"}
+                ],
+                precision_budget_ratio=1.0,
+            )
+
+        self.assertEqual(result[0]["planner_validation"], "coverage_fallback")
+        self.assertEqual(result[0]["route"], "standard")
+        self.assertEqual(result[0]["reference_target"], "none")
+        self.assertNotIn("hidden process between layers", result[0]["prompt"].lower())
 
     def test_preflight_limits_reference_critical_to_precision_budget(self):
         scenes = []
@@ -190,6 +365,42 @@ class TestQwenQualityV31(unittest.TestCase):
             selection["anchor_reference"]["file"],
             "01_general_identity.jpg",
         )
+
+    def test_reference_selector_suppresses_primary_anchor_for_output_target(self):
+        info = {
+            "reference_pack": [
+                {
+                    "slot": 1,
+                    "role": "identity",
+                    "anchor": True,
+                    "original_file": "01_primary_identity.jpg",
+                    "description": "whole primary subject",
+                    "comfyui_input": "ref-1",
+                },
+                {
+                    "slot": 2,
+                    "role": "detail",
+                    "original_file": "02_primary_detail.jpg",
+                    "description": "primary subject detail",
+                    "comfyui_input": "ref-2",
+                },
+            ]
+        }
+
+        selected, selected_info = material._select_manual_references_for_scene(
+            ["ref-1", "ref-2"],
+            info,
+            "identity",
+            "final produced output",
+            reference_target="output",
+            max_refs=3,
+        )
+
+        self.assertEqual(selected, [])
+        selection = selected_info["reference_selection"]
+        self.assertEqual(selection["status"], "reference_target_not_covered")
+        self.assertEqual(selection["reference_target"], "output")
+        self.assertIsNone(selection["anchor_reference"])
 
     def test_reference_library_default_is_twelve_but_scene_pack_remains_three(self):
         config.app.pop("openai_image_manual_reference_max_images", None)
