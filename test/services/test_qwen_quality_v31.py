@@ -249,6 +249,169 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertEqual(result[0]["reference_target"], "none")
         self.assertNotIn("hidden process between layers", result[0]["prompt"].lower())
 
+    def test_hidden_view_language_overrides_visible_identity_classification(self):
+        draft = [
+            {
+                "subject": "device internal component",
+                "canonical_subject": "device",
+                "route": "precision",
+                "scene_description": "cutaway view inside the housing showing the mechanism",
+                "required_features": ["internal component"],
+                "forbidden_features": [],
+                "environment": "interior cavity",
+                "environment_key": "device",
+                "composition": "direct cutaway through the casing",
+                "composition_key": "cutaway",
+                "lighting": "soft light",
+                "shot_type": "detail",
+                "framing_intent": "detail",
+                "shot_role": "process",
+                "reference_need": "identity",
+                "reference_target": "primary_subject",
+                "reference_query": "internal mechanism",
+                "evidence_scope": "externally_visible",
+                "reference_critical": True,
+                "safe_visual_alternative": "show the external result",
+                "continuity_key": "none",
+                "continuity_description": "",
+                "precision_importance": 1.0,
+            }
+        ]
+        scene_plan = [
+            {
+                "narration": "An internal mechanism produces the result.",
+                "beat": 1,
+                "beats": 1,
+                "duration": 5.0,
+            }
+        ]
+
+        with patch.object(
+            llm,
+            "_generate_response",
+            side_effect=[json.dumps(draft), json.dumps(draft)],
+        ):
+            result = llm.generate_scene_image_plan(
+                "generic device",
+                scene_plan,
+                reference_inventory=[
+                    {"slot": 1, "role": "identity", "description": "whole device"}
+                ],
+                precision_budget_ratio=1.0,
+            )
+
+        self.assertEqual(result[0]["planner_validation"], "coverage_fallback")
+        self.assertEqual(result[0]["route"], "standard")
+        self.assertEqual(result[0]["reference_need"], "none")
+        self.assertEqual(result[0]["reference_target"], "none")
+        self.assertNotIn("cutaway", result[0]["prompt"].lower())
+        self.assertNotIn("internal component", result[0]["prompt"].lower())
+
+    def test_continuity_preflight_rejects_changing_underlying_content(self):
+        base = {
+            "reference_need": "none",
+            "reference_target": "output",
+            "evidence_scope": "externally_visible",
+            "reference_critical": False,
+            "required_features": [],
+            "forbidden_features": [],
+            "environment_key": "desk",
+            "shot_type": "medium",
+            "environment": "desk",
+            "canonical_subject": "developing print",
+            "continuity_key": "same_print",
+        }
+        first = dict(base)
+        first.update(
+            {
+                "composition_key": "stage_1",
+                "continuity_description": "the same photograph showing a quiet room",
+            }
+        )
+        second = dict(base)
+        second.update(
+            {
+                "composition_key": "stage_2",
+                "continuity_description": "the same photograph showing an ocean",
+            }
+        )
+
+        issues = llm._scene_plan_preflight_issues(
+            [first, second],
+            reference_inventory=[],
+            precision_budget_ratio=1.0,
+        )
+
+        self.assertTrue(
+            any("changes continuity_description" in issue for issue in issues),
+            issues,
+        )
+
+    def test_continuity_description_is_injected_into_model_prompt(self):
+        draft = [
+            {
+                "subject": "developing instant photograph",
+                "canonical_subject": "same print",
+                "route": "standard",
+                "scene_description": "the image is becoming clearer",
+                "required_features": [],
+                "forbidden_features": [],
+                "environment": "wooden desk",
+                "environment_key": "desk",
+                "composition": "slight high angle",
+                "composition_key": "development_stage",
+                "lighting": "soft daylight",
+                "shot_type": "medium",
+                "framing_intent": "medium_subject",
+                "shot_role": "process",
+                "reference_need": "none",
+                "reference_target": "output",
+                "reference_query": "",
+                "evidence_scope": "externally_visible",
+                "reference_critical": False,
+                "safe_visual_alternative": "show the print on a desk",
+                "continuity_key": "print_a",
+                "continuity_description": "one photograph showing the same softly lit room",
+                "precision_importance": 0.2,
+            }
+        ]
+        scene_plan = [
+            {
+                "narration": "The same photograph continues developing.",
+                "beat": 1,
+                "beats": 1,
+                "duration": 5.0,
+            }
+        ]
+
+        with patch.object(
+            llm,
+            "_generate_response",
+            side_effect=[json.dumps(draft), json.dumps(draft)],
+        ):
+            result = llm.generate_scene_image_plan(
+                "instant photograph development",
+                scene_plan,
+                reference_inventory=[],
+                precision_budget_ratio=1.0,
+            )
+
+        self.assertEqual(result[0]["continuity_key"], "print_a")
+        self.assertIn(
+            "exact same physical instance/content",
+            result[0]["prompt"].lower(),
+        )
+        self.assertIn(
+            "one photograph showing the same softly lit room",
+            result[0]["prompt"].lower(),
+        )
+
+    def test_default_script_prompt_discourages_plausible_specific_inventions(self):
+        prompt = llm.build_script_prompt("how a generic mechanism works")
+
+        self.assertIn("never invent exact mechanisms", prompt.lower())
+        self.assertIn("plausible-sounding specificity", prompt.lower())
+
     def test_preflight_limits_reference_critical_to_precision_budget(self):
         scenes = []
         for index in range(4):
