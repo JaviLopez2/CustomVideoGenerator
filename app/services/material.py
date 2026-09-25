@@ -332,6 +332,7 @@ def _precision_diagnostics_scene_record(
     reference_info: dict[str, Any] | None,
     reference_need: str = "",
     requested_reference_need: str = "",
+    reference_target: str = "",
     reference_query: str = "",
     evidence_scope: str = "",
     reference_critical: bool = False,
@@ -340,6 +341,7 @@ def _precision_diagnostics_scene_record(
     composition_key: str = "",
     routing_reason: str = "",
     planner_validation: str = "",
+    factual_audit_status: str = "",
     shot_type: str = "",
     framing_intent: str = "",
 ) -> dict[str, Any]:
@@ -355,6 +357,7 @@ def _precision_diagnostics_scene_record(
         "requested_reference_need": str(
             requested_reference_need or reference_need or ""
         ),
+        "reference_target": str(reference_target or ""),
         "reference_query": str(reference_query or ""),
         "evidence_scope": str(evidence_scope or ""),
         "reference_critical": bool(reference_critical),
@@ -363,6 +366,7 @@ def _precision_diagnostics_scene_record(
         "composition_key": str(composition_key or ""),
         "routing_reason": str(routing_reason or ""),
         "planner_validation": str(planner_validation or ""),
+        "factual_audit_status": str(factual_audit_status or ""),
         "shot_type": str(shot_type or ""),
         "framing_intent": str(framing_intent or ""),
         "reference": _precision_diagnostics_reference_info(reference_info),
@@ -2405,6 +2409,7 @@ def _select_manual_references_for_scene(
     reference_info: dict[str, Any] | None,
     reference_need: str,
     reference_query: str,
+    reference_target: str = "primary_subject",
     max_refs: int = 3,
 ) -> tuple[list[str], dict[str, Any]]:
     """Select anchor + scene-specific + complementary evidence for one Precision scene."""
@@ -2419,6 +2424,7 @@ def _select_manual_references_for_scene(
 
     limit = max(1, min(int(max_refs or 3), 3))
     need = str(reference_need or "identity").strip().lower()
+    target = str(reference_target or "primary_subject").strip().lower()
     query_text = str(reference_query or "").strip()
     query_tokens = {
         tok
@@ -2458,6 +2464,59 @@ def _select_manual_references_for_scene(
             role_score += 3.0
         semantic_overlap = len(query_tokens & _item_tokens(item))
         return role_score + semantic_overlap * 2.0
+
+    if target != "primary_subject":
+        # The manual pack currently describes the primary subject. Without
+        # explicit per-reference target metadata, applying its identity images to
+        # an output/result or a different entity creates identity contamination.
+        # Environment scenes may still use explicitly-role=context evidence.
+        target_candidates = []
+        if target == "environment" and need == "context":
+            target_candidates = [
+                item
+                for item in pack
+                if str(item.get("role") or "").strip().lower() == "context"
+            ]
+        target_candidates = sorted(
+            target_candidates,
+            key=lambda item: (_scene_score(item), -int(item.get("slot") or 999)),
+            reverse=True,
+        )[:limit]
+        selected_inputs = [
+            str(item.get("comfyui_input") or "").strip()
+            for item in target_candidates
+            if str(item.get("comfyui_input") or "").strip()
+        ]
+        info["reference_pack_all"] = pack
+        info["reference_pack"] = target_candidates
+        info["reference_selection"] = {
+            "status": (
+                "target_specific_context"
+                if selected_inputs
+                else "reference_target_not_covered"
+            ),
+            "requested_need": need,
+            "reference_target": target,
+            "reference_query": query_text,
+            "selected_count": len(selected_inputs),
+            "available_count": len(pack),
+            "stable_identity_across_precision_scenes": False,
+            "anchor_reference": None,
+            "selected_references": [
+                {
+                    "kind": "scene_specific",
+                    "slot": item.get("slot"),
+                    "file": item.get("original_file") or item.get("local_file"),
+                    "role": item.get("role"),
+                    "score": round(_scene_score(item), 3),
+                }
+                for item in target_candidates
+            ],
+            "selection_strategy": (
+                "target-specific context only; primary identity anchor suppressed"
+            ),
+        }
+        return selected_inputs, info
 
     identity = [
         item
@@ -2552,6 +2611,7 @@ def _select_manual_references_for_scene(
     info["reference_selection"] = {
         "status": "anchor_scene_specific_complementary",
         "requested_need": need,
+        "reference_target": target,
         "reference_query": query_text,
         "selected_count": len(selected_inputs),
         "available_count": len(pack),
@@ -6701,6 +6761,7 @@ def _download_videos_openai_image_on_demand(
     scene_forbidden_features: list[list[str]] | None = None,
     scene_reference_needs: list[str] | None = None,
     scene_requested_reference_needs: list[str] | None = None,
+    scene_reference_targets: list[str] | None = None,
     scene_reference_queries: list[str] | None = None,
     scene_evidence_scopes: list[str] | None = None,
     scene_reference_critical: list[bool] | None = None,
@@ -6709,6 +6770,7 @@ def _download_videos_openai_image_on_demand(
     scene_composition_keys: list[str] | None = None,
     scene_routing_reasons: list[str] | None = None,
     scene_planner_validation: list[str] | None = None,
+    scene_factual_audit_statuses: list[str] | None = None,
     scene_shot_types: list[str] | None = None,
     scene_framing_intents: list[str] | None = None,
 ) -> List[str]:
@@ -6787,6 +6849,7 @@ def _download_videos_openai_image_on_demand(
     for label, values in (
         ("reference-needs", scene_reference_needs),
         ("requested-reference-needs", scene_requested_reference_needs),
+        ("reference-targets", scene_reference_targets),
         ("reference-queries", scene_reference_queries),
         ("evidence-scopes", scene_evidence_scopes),
         ("reference-critical", scene_reference_critical),
@@ -6795,6 +6858,7 @@ def _download_videos_openai_image_on_demand(
         ("composition-keys", scene_composition_keys),
         ("routing-reasons", scene_routing_reasons),
         ("planner-validation", scene_planner_validation),
+        ("factual-audit-statuses", scene_factual_audit_statuses),
         ("shot-types", scene_shot_types),
         ("framing-intents", scene_framing_intents),
     ):
@@ -6889,6 +6953,12 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_requested_reference_needs)
             else reference_need
         )
+        reference_target = (
+            str(scene_reference_targets[scene_index] or "primary_subject").strip().lower()
+            if scene_reference_targets is not None
+            and scene_index < len(scene_reference_targets)
+            else "primary_subject"
+        )
         reference_query = (
             str(scene_reference_queries[scene_index] or "").strip()
             if scene_reference_queries is not None
@@ -6937,6 +7007,12 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_planner_validation)
             else "pass"
         )
+        factual_audit_status = (
+            str(scene_factual_audit_statuses[scene_index] or "").strip().lower()
+            if scene_factual_audit_statuses is not None
+            and scene_index < len(scene_factual_audit_statuses)
+            else ""
+        )
         shot_type = (
             str(scene_shot_types[scene_index] or "full").strip().lower()
             if scene_shot_types is not None
@@ -6960,6 +7036,7 @@ def _download_videos_openai_image_on_demand(
                 "canonical_subject": reference_subject,
                 "reference_need": reference_need,
                 "requested_reference_need": requested_reference_need,
+                "reference_target": reference_target,
                 "reference_query": reference_query,
                 "evidence_scope": evidence_scope,
                 "reference_critical": reference_critical,
@@ -6967,12 +7044,21 @@ def _download_videos_openai_image_on_demand(
                 "coverage_reason": coverage_reason,
                 "composition_key": composition_key,
                 "planner_validation": planner_validation,
+                "factual_audit_status": factual_audit_status,
                 "shot_type": shot_type,
                 "framing_intent": framing_intent,
                 "prompt": search_term,
             }
         )
         _precision_diagnostics_persist(task_id, precision_diagnostics)
+
+        if route == "precision" and reference_target != "primary_subject":
+            logger.warning(
+                "precision route suppressed because the current manual identity pack does not target "
+                f"reference_target={reference_target!r}; scene={scene_index + 1}"
+            )
+            route = "standard"
+            scene_model, _ = _openai_image_model_for_route("standard")
 
         if route == "precision" and not precision_fallback:
             manual_mode, manual_entries = _load_manual_precision_reference_manifest(
@@ -7000,7 +7086,12 @@ def _download_videos_openai_image_on_demand(
                         reference_subject
                     )
                     reference_images, reference_info = _select_manual_references_for_scene(
-                        reference_images, reference_info, reference_need, reference_query, max_refs=3
+                        reference_images,
+                        reference_info,
+                        reference_need,
+                        reference_query,
+                        reference_target=reference_target,
+                        max_refs=3,
                     )
                     reference_image = reference_images[0] if reference_images else ""
                     logger.info(
@@ -7100,6 +7191,7 @@ def _download_videos_openai_image_on_demand(
                 reference_info=reference_info,
                 reference_need=reference_need,
                 requested_reference_need=requested_reference_need,
+                reference_target=reference_target,
                 reference_query=reference_query,
                 evidence_scope=evidence_scope,
                 reference_critical=reference_critical,
@@ -7108,6 +7200,7 @@ def _download_videos_openai_image_on_demand(
                 composition_key=composition_key,
                 routing_reason=routing_reason,
                 planner_validation=planner_validation,
+                factual_audit_status=factual_audit_status,
                 shot_type=shot_type,
                 framing_intent=framing_intent,
             )
@@ -7744,6 +7837,7 @@ def download_videos(
     scene_forbidden_features: list[list[str]] | None = None,
     scene_reference_needs: list[str] | None = None,
     scene_requested_reference_needs: list[str] | None = None,
+    scene_reference_targets: list[str] | None = None,
     scene_reference_queries: list[str] | None = None,
     scene_evidence_scopes: list[str] | None = None,
     scene_reference_critical: list[bool] | None = None,
@@ -7752,6 +7846,7 @@ def download_videos(
     scene_composition_keys: list[str] | None = None,
     scene_routing_reasons: list[str] | None = None,
     scene_planner_validation: list[str] | None = None,
+    scene_factual_audit_statuses: list[str] | None = None,
     scene_shot_types: list[str] | None = None,
     scene_framing_intents: list[str] | None = None,
 ) -> List[str]:
@@ -7849,6 +7944,7 @@ def download_videos(
             scene_forbidden_features=scene_forbidden_features,
             scene_reference_needs=scene_reference_needs,
             scene_requested_reference_needs=scene_requested_reference_needs,
+            scene_reference_targets=scene_reference_targets,
             scene_reference_queries=scene_reference_queries,
             scene_evidence_scopes=scene_evidence_scopes,
             scene_reference_critical=scene_reference_critical,
@@ -7857,6 +7953,7 @@ def download_videos(
             scene_composition_keys=scene_composition_keys,
             scene_routing_reasons=scene_routing_reasons,
             scene_planner_validation=scene_planner_validation,
+            scene_factual_audit_statuses=scene_factual_audit_statuses,
             scene_shot_types=scene_shot_types,
             scene_framing_intents=scene_framing_intents,
         )
