@@ -1,0 +1,16 @@
+﻿ComfyUI snapshot used by MoneyPrinterTurbo V3.1
+
+Path:
+C:\Users\JAVIER\ComfyUI-Installs\ComfyUI\ComfyUI
+
+Git branch:
+
+
+Git commit:
+73c9bad4d21e7addbe1d13bc92eee0f1431b017d
+
+Runtime:
+127.0.0.1:8188
+
+Launch flags:
+--listen 127.0.0.1 --port 8188 --disable-async-offload --disable-pinned-memory

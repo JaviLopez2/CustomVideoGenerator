@@ -1,0 +1,16 @@
+﻿log_level: "debug"
+
+server:
+  host: "127.0.0.1"
+  port: 8090
+
+comfyui_backend:
+  host: "127.0.0.1"
+  port: 8188
+  client_id: "moneyprinter-comfy"
+  workflows_folder: "./workflows"
+  use_ws: true
+
+routing:
+  timeout_seconds: 600
+  max_payload_size_mb: 10
