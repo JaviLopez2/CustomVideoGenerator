@@ -2414,17 +2414,31 @@ def _select_manual_references_for_scene(
 ) -> tuple[list[str], dict[str, Any]]:
     """Select anchor + scene-specific + complementary evidence for one Precision scene."""
     info = dict(reference_info or {})
+    target = str(reference_target or "primary_subject").strip().lower()
     pack = [
         dict(item)
         for item in (info.get("reference_pack") or [])
         if isinstance(item, dict)
     ]
     if not pack:
+        if target != "primary_subject":
+            info["reference_selection"] = {
+                "status": "reference_target_not_covered",
+                "requested_need": str(reference_need or "identity").strip().lower(),
+                "reference_target": target,
+                "reference_query": str(reference_query or "").strip(),
+                "selected_count": 0,
+                "available_count": 0,
+                "stable_identity_across_precision_scenes": False,
+                "anchor_reference": None,
+                "selected_references": [],
+                "selection_strategy": "primary identity anchor suppressed for non-primary target",
+            }
+            return [], info
         return list(all_inputs or [])[:max_refs], info
 
     limit = max(1, min(int(max_refs or 3), 3))
     need = str(reference_need or "identity").strip().lower()
-    target = str(reference_target or "primary_subject").strip().lower()
     query_text = str(reference_query or "").strip()
     query_tokens = {
         tok
@@ -7028,6 +7042,16 @@ def _download_videos_openai_image_on_demand(
             else "full_subject"
         )
 
+        if route == "precision" and reference_target != "primary_subject":
+            logger.warning(
+                "precision route suppressed because the current manual identity pack does not target "
+                f"reference_target={reference_target!r}; scene={scene_index + 1}"
+            )
+            route = "standard"
+            routing_reason = "reference_target_to_standard"
+            reference_critical = False
+            scene_model, _ = _openai_image_model_for_route("standard")
+
         precision_diagnostics["plan_scenes"].append(
             {
                 "scene": scene_index + 1,
@@ -7051,14 +7075,6 @@ def _download_videos_openai_image_on_demand(
             }
         )
         _precision_diagnostics_persist(task_id, precision_diagnostics)
-
-        if route == "precision" and reference_target != "primary_subject":
-            logger.warning(
-                "precision route suppressed because the current manual identity pack does not target "
-                f"reference_target={reference_target!r}; scene={scene_index + 1}"
-            )
-            route = "standard"
-            scene_model, _ = _openai_image_model_for_route("standard")
 
         if route == "precision" and not precision_fallback:
             manual_mode, manual_entries = _load_manual_precision_reference_manifest(
