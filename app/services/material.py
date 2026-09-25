@@ -331,7 +331,15 @@ def _precision_diagnostics_scene_record(
     forbidden_features: list[str],
     reference_info: dict[str, Any] | None,
     reference_need: str = "",
+    requested_reference_need: str = "",
     reference_query: str = "",
+    evidence_scope: str = "",
+    reference_critical: bool = False,
+    coverage_status: str = "",
+    coverage_reason: str = "",
+    composition_key: str = "",
+    routing_reason: str = "",
+    planner_validation: str = "",
     shot_type: str = "",
     framing_intent: str = "",
 ) -> dict[str, Any]:
@@ -344,7 +352,17 @@ def _precision_diagnostics_scene_record(
         "required_features": list(required_features or []),
         "forbidden_features": list(forbidden_features or []),
         "reference_need": str(reference_need or ""),
+        "requested_reference_need": str(
+            requested_reference_need or reference_need or ""
+        ),
         "reference_query": str(reference_query or ""),
+        "evidence_scope": str(evidence_scope or ""),
+        "reference_critical": bool(reference_critical),
+        "coverage_status": str(coverage_status or ""),
+        "coverage_reason": str(coverage_reason or ""),
+        "composition_key": str(composition_key or ""),
+        "routing_reason": str(routing_reason or ""),
+        "planner_validation": str(planner_validation or ""),
         "shot_type": str(shot_type or ""),
         "framing_intent": str(framing_intent or ""),
         "reference": _precision_diagnostics_reference_info(reference_info),
@@ -6441,7 +6459,15 @@ def _download_videos_openai_image_on_demand(
     scene_required_features: list[list[str]] | None = None,
     scene_forbidden_features: list[list[str]] | None = None,
     scene_reference_needs: list[str] | None = None,
+    scene_requested_reference_needs: list[str] | None = None,
     scene_reference_queries: list[str] | None = None,
+    scene_evidence_scopes: list[str] | None = None,
+    scene_reference_critical: list[bool] | None = None,
+    scene_coverage_statuses: list[str] | None = None,
+    scene_coverage_reasons: list[str] | None = None,
+    scene_composition_keys: list[str] | None = None,
+    scene_routing_reasons: list[str] | None = None,
+    scene_planner_validation: list[str] | None = None,
     scene_shot_types: list[str] | None = None,
     scene_framing_intents: list[str] | None = None,
 ) -> List[str]:
@@ -6459,10 +6485,11 @@ def _download_videos_openai_image_on_demand(
     total_duration = 0.0
 
     precision_diagnostics: dict[str, Any] = {
-        "schema_version": 1,
+        "schema_version": 2,
         "task_id": str(task_id),
         "status": "running",
         "scene_count": len(search_terms),
+        "plan_scenes": [],
         "scenes": [],
     }
     _precision_diagnostics_persist(task_id, precision_diagnostics)
@@ -6515,6 +6542,28 @@ def _download_videos_openai_image_on_demand(
         )
         _persist_material_sources(task_id, material_sources)
         return []
+
+    for label, values in (
+        ("reference-needs", scene_reference_needs),
+        ("requested-reference-needs", scene_requested_reference_needs),
+        ("reference-queries", scene_reference_queries),
+        ("evidence-scopes", scene_evidence_scopes),
+        ("reference-critical", scene_reference_critical),
+        ("coverage-statuses", scene_coverage_statuses),
+        ("coverage-reasons", scene_coverage_reasons),
+        ("composition-keys", scene_composition_keys),
+        ("routing-reasons", scene_routing_reasons),
+        ("planner-validation", scene_planner_validation),
+        ("shot-types", scene_shot_types),
+        ("framing-intents", scene_framing_intents),
+    ):
+        if values is not None and len(values) != len(search_terms):
+            logger.error(
+                f"semantic OpenAI image {label} mismatch: "
+                f"prompts={len(search_terms)}, metadata={len(values)}"
+            )
+            _persist_material_sources(task_id, material_sources)
+            return []
 
     precision_fallback_logged = False
     precision_reference_cache: dict[str, tuple[str, dict[str, Any]]] = {}
@@ -6583,10 +6632,106 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_forbidden_features)
             else []
         )
-        reference_need = (str(scene_reference_needs[scene_index] or "identity").strip().lower() if scene_reference_needs is not None and scene_index < len(scene_reference_needs) else "identity")
-        reference_query = (str(scene_reference_queries[scene_index] or "").strip() if scene_reference_queries is not None and scene_index < len(scene_reference_queries) else "")
-        shot_type = (str(scene_shot_types[scene_index] or "full").strip().lower() if scene_shot_types is not None and scene_index < len(scene_shot_types) else "full")
-        framing_intent = (str(scene_framing_intents[scene_index] or "full_subject").strip().lower() if scene_framing_intents is not None and scene_index < len(scene_framing_intents) else "full_subject")
+        reference_need = (
+            str(scene_reference_needs[scene_index] or "identity").strip().lower()
+            if scene_reference_needs is not None
+            and scene_index < len(scene_reference_needs)
+            else "identity"
+        )
+        requested_reference_need = (
+            str(
+                scene_requested_reference_needs[scene_index]
+                or reference_need
+            ).strip().lower()
+            if scene_requested_reference_needs is not None
+            and scene_index < len(scene_requested_reference_needs)
+            else reference_need
+        )
+        reference_query = (
+            str(scene_reference_queries[scene_index] or "").strip()
+            if scene_reference_queries is not None
+            and scene_index < len(scene_reference_queries)
+            else ""
+        )
+        evidence_scope = (
+            str(scene_evidence_scopes[scene_index] or "contextual").strip().lower()
+            if scene_evidence_scopes is not None
+            and scene_index < len(scene_evidence_scopes)
+            else "contextual"
+        )
+        reference_critical = bool(
+            scene_reference_critical[scene_index]
+            if scene_reference_critical is not None
+            and scene_index < len(scene_reference_critical)
+            else False
+        )
+        coverage_status = (
+            str(scene_coverage_statuses[scene_index] or "unknown").strip().lower()
+            if scene_coverage_statuses is not None
+            and scene_index < len(scene_coverage_statuses)
+            else "unknown"
+        )
+        coverage_reason = (
+            str(scene_coverage_reasons[scene_index] or "").strip()
+            if scene_coverage_reasons is not None
+            and scene_index < len(scene_coverage_reasons)
+            else ""
+        )
+        composition_key = (
+            str(scene_composition_keys[scene_index] or "").strip().lower()
+            if scene_composition_keys is not None
+            and scene_index < len(scene_composition_keys)
+            else ""
+        )
+        routing_reason = (
+            str(scene_routing_reasons[scene_index] or "").strip()
+            if scene_routing_reasons is not None
+            and scene_index < len(scene_routing_reasons)
+            else ""
+        )
+        planner_validation = (
+            str(scene_planner_validation[scene_index] or "pass").strip().lower()
+            if scene_planner_validation is not None
+            and scene_index < len(scene_planner_validation)
+            else "pass"
+        )
+        shot_type = (
+            str(scene_shot_types[scene_index] or "full").strip().lower()
+            if scene_shot_types is not None
+            and scene_index < len(scene_shot_types)
+            else "full"
+        )
+        framing_intent = (
+            str(
+                scene_framing_intents[scene_index] or "full_subject"
+            ).strip().lower()
+            if scene_framing_intents is not None
+            and scene_index < len(scene_framing_intents)
+            else "full_subject"
+        )
+
+        precision_diagnostics["plan_scenes"].append(
+            {
+                "scene": scene_index + 1,
+                "route": route,
+                "routing_reason": routing_reason,
+                "canonical_subject": reference_subject,
+                "reference_need": reference_need,
+                "requested_reference_need": requested_reference_need,
+                "reference_query": reference_query,
+                "evidence_scope": evidence_scope,
+                "reference_critical": reference_critical,
+                "coverage_status": coverage_status,
+                "coverage_reason": coverage_reason,
+                "composition_key": composition_key,
+                "planner_validation": planner_validation,
+                "shot_type": shot_type,
+                "framing_intent": framing_intent,
+                "prompt": search_term,
+            }
+        )
+        _precision_diagnostics_persist(task_id, precision_diagnostics)
+
         if route == "precision" and not precision_fallback:
             manual_mode, manual_entries = _load_manual_precision_reference_manifest(
                 material_directory
@@ -6712,7 +6857,15 @@ def _download_videos_openai_image_on_demand(
                 forbidden_features=forbidden_features,
                 reference_info=reference_info,
                 reference_need=reference_need,
+                requested_reference_need=requested_reference_need,
                 reference_query=reference_query,
+                evidence_scope=evidence_scope,
+                reference_critical=reference_critical,
+                coverage_status=coverage_status,
+                coverage_reason=coverage_reason,
+                composition_key=composition_key,
+                routing_reason=routing_reason,
+                planner_validation=planner_validation,
                 shot_type=shot_type,
                 framing_intent=framing_intent,
             )
@@ -7253,7 +7406,15 @@ def download_videos(
     scene_required_features: list[list[str]] | None = None,
     scene_forbidden_features: list[list[str]] | None = None,
     scene_reference_needs: list[str] | None = None,
+    scene_requested_reference_needs: list[str] | None = None,
     scene_reference_queries: list[str] | None = None,
+    scene_evidence_scopes: list[str] | None = None,
+    scene_reference_critical: list[bool] | None = None,
+    scene_coverage_statuses: list[str] | None = None,
+    scene_coverage_reasons: list[str] | None = None,
+    scene_composition_keys: list[str] | None = None,
+    scene_routing_reasons: list[str] | None = None,
+    scene_planner_validation: list[str] | None = None,
     scene_shot_types: list[str] | None = None,
     scene_framing_intents: list[str] | None = None,
 ) -> List[str]:
@@ -7350,7 +7511,15 @@ def download_videos(
             scene_required_features=scene_required_features,
             scene_forbidden_features=scene_forbidden_features,
             scene_reference_needs=scene_reference_needs,
+            scene_requested_reference_needs=scene_requested_reference_needs,
             scene_reference_queries=scene_reference_queries,
+            scene_evidence_scopes=scene_evidence_scopes,
+            scene_reference_critical=scene_reference_critical,
+            scene_coverage_statuses=scene_coverage_statuses,
+            scene_coverage_reasons=scene_coverage_reasons,
+            scene_composition_keys=scene_composition_keys,
+            scene_routing_reasons=scene_routing_reasons,
+            scene_planner_validation=scene_planner_validation,
             scene_shot_types=scene_shot_types,
             scene_framing_intents=scene_framing_intents,
         )
