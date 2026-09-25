@@ -203,9 +203,12 @@ openai_image_performance_profile = "balanced" # "fast", "balanced", or "quality"
 openai_image_manual_reference_mode = "user_first" # "user_first", "user_only", "auto_only"
 openai_image_manual_reference_max_images = 12
 
-# Planner QA runs before any GPU generation. When deterministic diversity,
-# coverage, contradiction, or routing checks fail, MPT allows one text-only
-# repair pass instead of spending an image generation on a bad plan.
+# Planner QA runs before any GPU generation. One text-only factual/observability
+# audit reviews every draft scene (including apparently "covered" scenes) so hidden
+# causes are not mislabeled as directly visible. Any unsupported scene that remains
+# after the audit is hard-sanitized to an external/contextual fallback before GPU use.
+openai_image_scene_factual_audit_enabled = true
+# Legacy alias retained for older local configs; the new key takes precedence.
 openai_image_scene_diversity_repair_enabled = true
 
 # Fast/Balanced keep one Qwen candidate and direct-accept after lightweight
