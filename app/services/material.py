@@ -2670,7 +2670,7 @@ def _image_dhash64(image_path: str) -> int | None:
     try:
         with Image.open(image_path) as image:
             sample = image.convert("L").resize((9, 8), Image.Resampling.LANCZOS)
-            pixels = list(sample.getdata())
+            pixels = list(sample.tobytes())
         value = 0
         bit = 0
         for row in range(8):
