@@ -192,6 +192,52 @@ openai_image_size = ""
 # Example: "cinematic photo of {term}, photorealistic, high detail"
 openai_image_prompt_template = ""
 
+# Optional two-route image workflow. Standard scenes use openai_image_model;
+# Precision scenes use this model when exact identity or factual evidence matters.
+# Leave empty to fall back to openai_image_model.
+openai_image_precision_model = ""
+openai_image_performance_profile = "balanced" # "fast", "balanced", or "quality"
+
+# Manual Precision reference library. The library can contain more images than
+# a scene sends to Qwen; scene routing selects at most three useful references.
+openai_image_manual_reference_mode = "user_first" # "user_first", "user_only", "auto_only"
+openai_image_manual_reference_max_images = 12
+
+# Planner QA runs before any GPU generation. When deterministic diversity,
+# coverage, contradiction, or routing checks fail, MPT allows one text-only
+# repair pass instead of spending an image generation on a bad plan.
+openai_image_scene_diversity_repair_enabled = true
+
+# Fast/Balanced keep one Qwen candidate and direct-accept after lightweight
+# technical validation. One corrective retry is allowed only on a true failure.
+openai_image_precision_retry_on_true_failure_enabled = true
+
+# Profile defaults can be overridden independently. Balanced intentionally keeps
+# ~9 scenes, one Qwen candidate, and 20 Qwen steps.
+openai_image_fast_scene_budget = 7
+openai_image_fast_target_scene_duration = 7.5
+openai_image_fast_precision_ratio = 0.45
+openai_image_fast_min_scene_duration = 5.0
+openai_image_fast_precision_size = "736x1312"
+openai_image_fast_qwen_steps = 18
+openai_image_fast_precision_candidates = 1
+
+openai_image_balanced_scene_budget = 9
+openai_image_balanced_target_scene_duration = 6.0
+openai_image_balanced_precision_ratio = 0.65
+openai_image_balanced_min_scene_duration = 4.0
+openai_image_balanced_precision_size = "768x1376"
+openai_image_balanced_qwen_steps = 20
+openai_image_balanced_precision_candidates = 1
+
+openai_image_quality_scene_budget = 14
+openai_image_quality_target_scene_duration = 4.0
+openai_image_quality_precision_ratio = 1.0
+openai_image_quality_min_scene_duration = 2.6
+openai_image_quality_precision_size = "864x1536"
+openai_image_quality_qwen_steps = 25
+openai_image_quality_precision_candidates = 2
+
 # Optional TwelveLabs integration for semantic material ranking and video QA.
 # Install the optional dependency with: uv sync --extra twelvelabs
 # Create an API key at https://playground.twelvelabs.io/
