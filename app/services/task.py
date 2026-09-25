@@ -1120,6 +1120,7 @@ def get_video_materials(
     openai_image_scene_forbidden_features: list[list[str]] | None = None,
     openai_image_scene_reference_needs: list[str] | None = None,
     openai_image_scene_requested_reference_needs: list[str] | None = None,
+    openai_image_scene_reference_targets: list[str] | None = None,
     openai_image_scene_reference_queries: list[str] | None = None,
     openai_image_scene_evidence_scopes: list[str] | None = None,
     openai_image_scene_reference_critical: list[bool] | None = None,
@@ -1128,6 +1129,7 @@ def get_video_materials(
     openai_image_scene_composition_keys: list[str] | None = None,
     openai_image_scene_routing_reasons: list[str] | None = None,
     openai_image_scene_planner_validation: list[str] | None = None,
+    openai_image_scene_factual_audit_statuses: list[str] | None = None,
     openai_image_scene_shot_types: list[str] | None = None,
     openai_image_scene_framing_intents: list[str] | None = None,
 ):
@@ -1237,6 +1239,7 @@ def get_video_materials(
                 scene_forbidden_features=openai_image_scene_forbidden_features,
                 scene_reference_needs=openai_image_scene_reference_needs,
                 scene_requested_reference_needs=openai_image_scene_requested_reference_needs,
+                scene_reference_targets=openai_image_scene_reference_targets,
                 scene_reference_queries=openai_image_scene_reference_queries,
                 scene_evidence_scopes=openai_image_scene_evidence_scopes,
                 scene_reference_critical=openai_image_scene_reference_critical,
@@ -1245,6 +1248,7 @@ def get_video_materials(
                 scene_composition_keys=openai_image_scene_composition_keys,
                 scene_routing_reasons=openai_image_scene_routing_reasons,
                 scene_planner_validation=openai_image_scene_planner_validation,
+                scene_factual_audit_statuses=openai_image_scene_factual_audit_statuses,
                 scene_shot_types=openai_image_scene_shot_types,
                 scene_framing_intents=openai_image_scene_framing_intents,
             )
@@ -1945,6 +1949,7 @@ def _run_pipeline(
     openai_image_scene_forbidden_features = None
     openai_image_scene_reference_needs = None
     openai_image_scene_requested_reference_needs = None
+    openai_image_scene_reference_targets = None
     openai_image_scene_reference_queries = None
     openai_image_scene_evidence_scopes = None
     openai_image_scene_reference_critical = None
@@ -1953,6 +1958,7 @@ def _run_pipeline(
     openai_image_scene_composition_keys = None
     openai_image_scene_routing_reasons = None
     openai_image_scene_planner_validation = None
+    openai_image_scene_factual_audit_statuses = None
     openai_image_scene_shot_types = None
     openai_image_scene_framing_intents = None
 
@@ -2106,6 +2112,10 @@ def _run_pipeline(
                 ).strip().lower()
                 for scene in structured_image_plan
             ]
+            openai_image_scene_reference_targets = [
+                str(scene.get("reference_target") or "none").strip().lower()
+                for scene in structured_image_plan
+            ]
             openai_image_scene_reference_queries = [
                 str(scene.get("reference_query") or "").strip()
                 for scene in structured_image_plan
@@ -2136,6 +2146,10 @@ def _run_pipeline(
             ]
             openai_image_scene_planner_validation = [
                 str(scene.get("planner_validation") or "pass").strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_factual_audit_statuses = [
+                str(scene.get("factual_audit_status") or "").strip().lower()
                 for scene in structured_image_plan
             ]
             openai_image_scene_shot_types = [
@@ -2177,6 +2191,7 @@ def _run_pipeline(
             openai_image_scene_forbidden_features = [[] for _ in range(scene_count)]
             openai_image_scene_reference_needs = ["none"] * scene_count
             openai_image_scene_requested_reference_needs = ["none"] * scene_count
+            openai_image_scene_reference_targets = ["none"] * scene_count
             openai_image_scene_reference_queries = [""] * scene_count
             openai_image_scene_evidence_scopes = ["contextual"] * scene_count
             openai_image_scene_reference_critical = [False] * scene_count
@@ -2185,6 +2200,7 @@ def _run_pipeline(
             openai_image_scene_composition_keys = [""] * scene_count
             openai_image_scene_routing_reasons = ["fallback_standard"] * scene_count
             openai_image_scene_planner_validation = ["fallback"] * scene_count
+            openai_image_scene_factual_audit_statuses = [""] * scene_count
             openai_image_scene_shot_types = ["full"] * scene_count
             openai_image_scene_framing_intents = ["full_subject"] * scene_count
 
@@ -2228,6 +2244,7 @@ def _run_pipeline(
         for label, values in (
             ("reference-need", openai_image_scene_reference_needs),
             ("requested-reference-need", openai_image_scene_requested_reference_needs),
+            ("reference-target", openai_image_scene_reference_targets),
             ("reference-query", openai_image_scene_reference_queries),
             ("evidence-scope", openai_image_scene_evidence_scopes),
             ("reference-critical", openai_image_scene_reference_critical),
@@ -2236,6 +2253,7 @@ def _run_pipeline(
             ("composition-key", openai_image_scene_composition_keys),
             ("routing-reason", openai_image_scene_routing_reasons),
             ("planner-validation", openai_image_scene_planner_validation),
+            ("factual-audit-status", openai_image_scene_factual_audit_statuses),
             ("shot-type", openai_image_scene_shot_types),
             ("framing-intent", openai_image_scene_framing_intents),
         ):
@@ -2270,6 +2288,7 @@ def _run_pipeline(
         openai_image_scene_forbidden_features=openai_image_scene_forbidden_features,
         openai_image_scene_reference_needs=openai_image_scene_reference_needs,
         openai_image_scene_requested_reference_needs=openai_image_scene_requested_reference_needs,
+        openai_image_scene_reference_targets=openai_image_scene_reference_targets,
         openai_image_scene_reference_queries=openai_image_scene_reference_queries,
         openai_image_scene_evidence_scopes=openai_image_scene_evidence_scopes,
         openai_image_scene_reference_critical=openai_image_scene_reference_critical,
@@ -2278,6 +2297,7 @@ def _run_pipeline(
         openai_image_scene_composition_keys=openai_image_scene_composition_keys,
         openai_image_scene_routing_reasons=openai_image_scene_routing_reasons,
         openai_image_scene_planner_validation=openai_image_scene_planner_validation,
+        openai_image_scene_factual_audit_statuses=openai_image_scene_factual_audit_statuses,
         openai_image_scene_shot_types=openai_image_scene_shot_types,
         openai_image_scene_framing_intents=openai_image_scene_framing_intents,
     )
