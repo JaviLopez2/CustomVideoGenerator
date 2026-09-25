@@ -81,6 +81,20 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertEqual(status, "unsupported")
         self.assertIn("output", reason)
 
+    def test_critical_output_with_no_reference_need_is_still_not_covered_by_primary_pack(self):
+        status, reason = llm._scene_reference_coverage(
+            {
+                "reference_need": "none",
+                "reference_target": "output",
+                "evidence_scope": "externally_visible",
+                "reference_critical": True,
+            },
+            [{"slot": 1, "role": "identity", "description": "primary subject"}],
+        )
+
+        self.assertEqual(status, "unsupported")
+        self.assertIn("output", reason)
+
     def test_preflight_flags_unsupported_even_with_safe_alternative(self):
         issues = llm._scene_plan_preflight_issues(
             [
@@ -401,6 +415,22 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertEqual(selection["status"], "reference_target_not_covered")
         self.assertEqual(selection["reference_target"], "output")
         self.assertIsNone(selection["anchor_reference"])
+
+    def test_reference_selector_suppresses_output_target_without_pack_metadata(self):
+        selected, selected_info = material._select_manual_references_for_scene(
+            ["ref-1"],
+            {},
+            "identity",
+            "produced output",
+            reference_target="output",
+            max_refs=3,
+        )
+
+        self.assertEqual(selected, [])
+        self.assertEqual(
+            selected_info["reference_selection"]["status"],
+            "reference_target_not_covered",
+        )
 
     def test_reference_library_default_is_twelve_but_scene_pack_remains_three(self):
         config.app.pop("openai_image_manual_reference_max_images", None)
