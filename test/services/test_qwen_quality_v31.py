@@ -406,6 +406,70 @@ class TestQwenQualityV31(unittest.TestCase):
             result[0]["prompt"].lower(),
         )
 
+    def test_continuity_gate_locks_later_scene_to_first_description(self):
+        scenes = []
+        descriptions = [
+            "one photograph showing a quiet room",
+            "one photograph showing an ocean",
+        ]
+        for index, description in enumerate(descriptions):
+            scenes.append(
+                {
+                    "subject": "developing print",
+                    "canonical_subject": "same print",
+                    "route": "standard",
+                    "scene_description": f"development stage {index + 1}",
+                    "required_features": [],
+                    "forbidden_features": [],
+                    "environment": "wooden desk",
+                    "environment_key": "desk",
+                    "composition": "slight high angle",
+                    "composition_key": f"stage_{index + 1}",
+                    "lighting": "soft daylight",
+                    "shot_type": "medium",
+                    "framing_intent": "medium_subject",
+                    "shot_role": "process",
+                    "reference_need": "none",
+                    "reference_target": "output",
+                    "reference_query": "",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": False,
+                    "safe_visual_alternative": "show the same print",
+                    "continuity_key": "print_a",
+                    "continuity_description": description,
+                    "precision_importance": 0.2,
+                }
+            )
+        scene_plan = [
+            {"narration": "Stage one.", "beat": 1, "beats": 2, "duration": 5.0},
+            {"narration": "Stage two.", "beat": 2, "beats": 2, "duration": 5.0},
+        ]
+
+        with patch.object(
+            llm,
+            "_generate_response",
+            side_effect=[json.dumps(scenes), json.dumps(scenes)],
+        ):
+            result = llm.generate_scene_image_plan(
+                "developing output",
+                scene_plan,
+                reference_inventory=[],
+                precision_budget_ratio=1.0,
+            )
+
+        self.assertEqual(
+            result[0]["continuity_description"],
+            result[1]["continuity_description"],
+        )
+        self.assertIn(
+            "one photograph showing a quiet room",
+            result[1]["prompt"].lower(),
+        )
+        self.assertNotIn(
+            "one photograph showing an ocean",
+            result[1]["prompt"].lower(),
+        )
+
     def test_default_script_prompt_discourages_plausible_specific_inventions(self):
         prompt = llm.build_script_prompt("how a generic mechanism works")
 
