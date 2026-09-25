@@ -209,8 +209,15 @@ openai_image_manual_reference_max_images = 12
 openai_image_scene_diversity_repair_enabled = true
 
 # Fast/Balanced keep one Qwen candidate and direct-accept after lightweight
-# technical validation. One corrective retry is allowed only on a true failure.
+# technical validation. The same single corrective retry budget may also be used
+# when a perceptual hash detects an unintended near-duplicate of a recent scene.
 openai_image_precision_retry_on_true_failure_enabled = true
+openai_image_near_duplicate_qa_enabled = true
+openai_image_near_duplicate_threshold = 0.94
+
+# Optional reproducibility aid for local Qwen diagnostics. Leave unset/commented
+# in normal use so every request receives a fresh seed.
+# openai_image_qwen_debug_seed = 123456789
 
 # Profile defaults can be overridden independently. Balanced intentionally keeps
 # ~9 scenes, one Qwen candidate, and 20 Qwen steps.
