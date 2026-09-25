@@ -1817,9 +1817,15 @@ Return exactly {amount} objects and nothing else.
                     reference_critical = bool(
                         reference_critical and reference_need == "identity"
                     )
+                    route = (
+                        "precision"
+                        if reference_need == "identity"
+                        else "standard"
+                    )
                     logger.warning(
                         "scene-plan coverage gate rewrote unsupported evidence before GPU generation: "
                         f"scene={index + 1}, requested_need={requested_reference_need!r}, "
+                        f"safe_need={reference_need!r}, safe_route={route!r}, "
                         f"reason={coverage_reason!r}"
                     )
 
