@@ -46,6 +46,13 @@ Generate a script for a video, depending on the subject of the video.
 6. do not include "voiceover", "narrator" or similar indicators of what should be spoken at the beginning of each paragraph or line.
 7. you must not mention the prompt, or anything about the script itself. also, never talk about the amount of paragraphs or lines. just write the script.
 8. respond in the same language as the video subject.
+9. for factual or explanatory topics, never invent exact mechanisms, hidden geometry, component counts, chemical names,
+   material names, timings, causal steps or branded technical details merely because they sound plausible.
+10. when a highly specific technical claim is uncertain, prefer a broader accurate description over a confident
+    unsupported detail. Do not fill knowledge gaps with plausible-sounding specificity.
+11. keep setup, exposure/action, output and later transformation steps in physically coherent chronological order.
+12. distinguish what is directly observable from what happens inside an opaque object, between hidden layers or inside
+    a closed system; do not narrate an inferred hidden process as if it were visibly observed.
 """.strip()
 
 # Claude Code CLI 默认使用编码 agent 的系统提示词，其中大量约束与文案写作
@@ -1281,6 +1288,48 @@ def _reference_inventory_roles(reference_inventory: list[dict] | None) -> set[st
     }
 
 
+def _scene_hidden_evidence_signals(item: dict) -> list[str]:
+    """Detect generic language that explicitly asks for a normally hidden view.
+
+    This is intentionally topic-agnostic. It does not try to know whether a
+    particular mechanism is real; it only notices when the requested camera view
+    itself admits that the evidence is internal, layered, cut away or disassembled.
+    """
+    if not isinstance(item, dict):
+        return []
+    values = [
+        item.get("scene_description"),
+        item.get("environment"),
+        item.get("composition"),
+        item.get("reference_query"),
+        " ".join(_normalize_visual_feature_list(item.get("required_features"))),
+    ]
+    text = " ".join(str(value or "") for value in values).lower()
+    phrases = (
+        "cutaway",
+        "cross-section",
+        "cross section",
+        "inside the ",
+        "inside a ",
+        "inside an ",
+        "internal ",
+        "internal-",
+        "interior cavity",
+        "inside cavity",
+        "between layers",
+        "between the layers",
+        "within layers",
+        "beneath the surface",
+        "under the surface",
+        "opened housing",
+        "open housing",
+        "disassembled",
+        "transparent enclosure",
+        "transparent housing",
+    )
+    return [phrase.strip() for phrase in phrases if phrase in text]
+
+
 def _scene_reference_coverage(
     item: dict,
     reference_inventory: list[dict] | None,
@@ -1348,10 +1397,8 @@ def _scene_reference_coverage(
     if scope == "hidden_internal":
         required_role = "internal"
     elif scope == "specialized_visible":
-        if need in {"detail", "context"}:
-            required_role = need
-        elif need == "identity":
-            required_role = "identity"
+        if need == "context":
+            required_role = "context"
         else:
             required_role = "detail"
     elif scope == "externally_visible" and critical:
@@ -1414,6 +1461,11 @@ def _scene_plan_preflight_issues(
                 else "externally_visible"
             ),
         )
+        hidden_signals = _scene_hidden_evidence_signals(item)
+        if hidden_signals and scope != "hidden_internal":
+            issues.append(
+                f"scene {index} explicitly requests a hidden/cutaway view ({hidden_signals!r}) but evidence_scope is {scope!r}; use hidden_internal"
+            )
         if scope == "hidden_internal" and need != "internal":
             issues.append(
                 f"scene {index} depicts hidden/internal evidence but reference_need is {need!r}; use reference_need='internal'"
@@ -1426,6 +1478,47 @@ def _scene_plan_preflight_issues(
         if coverage_status == "unsupported":
             issues.append(
                 f"scene {index} lacks evidence coverage and must be rewritten as a covered external/contextual scene before generation: {coverage_reason}"
+            )
+
+    continuity_groups: dict[str, dict[str, str]] = {}
+    for index, item in enumerate(items, start=1):
+        if not isinstance(item, dict):
+            continue
+        key = re.sub(
+            r"[^a-z0-9_]+",
+            "_",
+            str(item.get("continuity_key") or "none").strip().lower(),
+        ).strip("_") or "none"
+        if key == "none":
+            continue
+        description = " ".join(
+            str(item.get("continuity_description") or "").strip().lower().split()
+        )
+        canonical = " ".join(
+            str(item.get("canonical_subject") or item.get("subject") or "")
+            .strip()
+            .lower()
+            .split()
+        )
+        if not description:
+            issues.append(
+                f"scene {index} continuity_key={key!r} has no continuity_description"
+            )
+            continue
+        previous = continuity_groups.get(key)
+        if previous is None:
+            continuity_groups[key] = {
+                "description": description,
+                "canonical_subject": canonical,
+            }
+            continue
+        if description != previous["description"]:
+            issues.append(
+                f"scene {index} changes continuity_description inside continuity_key={key!r}; keep the same underlying instance/content"
+            )
+        if canonical and previous["canonical_subject"] and canonical != previous["canonical_subject"]:
+            issues.append(
+                f"scene {index} changes canonical_subject inside continuity_key={key!r}"
             )
 
     try:
@@ -1657,6 +1750,8 @@ Return ONLY a valid JSON array containing exactly {amount} objects. Every object
 - "evidence_scope": one of externally_visible, specialized_visible, hidden_internal, contextual
 - "reference_critical": JSON boolean; true only when a generic/wrong subject or unsupported view would materially mislead
 - "safe_visual_alternative": concise externally supported or contextual scene description to use if requested specialized evidence is unavailable
+- "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
+- "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
 - "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
 
 ## Routing
@@ -1705,6 +1800,13 @@ remain precision before later performance budgeting.
 20. Treat mechanically/chemically/biologically specific narration conservatively. Do not turn an asserted cause into a
     visible structure or process unless the narration/reference evidence really makes that view observable. Prefer an
     observable before/after/result/context shot over plausible-looking invented documentary evidence.
+21. primary_subject means the actual whole entity represented by the manual identity pack. A cartridge, film sheet,
+    reagent pod, roller assembly, internal component, emitted result or produced image is not automatically the
+    primary_subject merely because it belongs to that object or shares its brand/model name.
+22. If consecutive scenes show temporal stages of the SAME physical instance or produced output, use one continuity_key
+    and exactly the same continuity_description in every stage. Keep the underlying depicted content, object identity and
+    setting stable; change only the narrated state/progression. Do not silently switch to a different photograph, person,
+    room, landscape, object instance or output between stages.
 
 ## Manual reference inventory available to this task
 Each item may include role=identity/detail/internal/context/other and an optional user description.
@@ -1770,8 +1872,11 @@ Return exactly {amount} objects and nothing else.
                       "could really see the described feature/process. Internal mechanisms, processes between layers, "
                       "contents behind opaque surfaces, cutaways and inferred hidden causes are hidden_internal. "
                       "An externally visible consequence does not make its hidden cause externally_visible. "
-                      "Correct reference_target as well: the primary subject's produced result/output is output, not "
-                      "primary_subject. Never route the primary identity pack to an output or distinct secondary entity. "
+                      "Correct reference_target as well: primary_subject means the whole entity represented by the manual "
+                      "identity pack. A cartridge, film sheet, reagent pod, roller assembly, internal component, produced "
+                      "result/output or distinct entity is not automatically primary_subject. Never use whole-subject identity "
+                      "photos as proof of an internal/subcomponent view. Preserve continuity_key groups so the exact same "
+                      "physical instance/output and underlying depicted content remain stable across temporal stages. "
                       "When evidence is unavailable, redesign the scene around an observable consequence, before/after, "
                       "external behavior or context so that the resulting scene is covered; do not merely preserve the "
                       "unsupported hidden scene and label an alternative. Preserve narration meaning, timing, diversity "
@@ -1850,6 +1955,16 @@ Return exactly {amount} objects and nothing else.
                         else "externally_visible"
                     ),
                 )
+                hidden_signals = _scene_hidden_evidence_signals(item)
+                if hidden_signals:
+                    if evidence_scope != "hidden_internal" or requested_reference_need != "internal":
+                        logger.warning(
+                            "scene-plan observability gate overrode LLM evidence classification: "
+                            f"scene={index + 1}, signals={hidden_signals!r}, "
+                            f"scope={evidence_scope!r}, need={requested_reference_need!r}"
+                        )
+                    evidence_scope = "hidden_internal"
+                    requested_reference_need = "internal"
                 reference_target = _normalize_scene_enum(
                     item.get("reference_target"),
                     _SCENE_REFERENCE_TARGETS,
@@ -1878,7 +1993,22 @@ Return exactly {amount} objects and nothing else.
                 safe_visual_alternative = str(
                     item.get("safe_visual_alternative") or ""
                 ).strip()
+                continuity_key = re.sub(
+                    r"[^a-z0-9_]+",
+                    "_",
+                    str(item.get("continuity_key") or "none").strip().lower(),
+                ).strip("_") or "none"
+                continuity_description = " ".join(
+                    str(item.get("continuity_description") or "").strip().split()
+                )
                 scene_description = str(item.get("scene_description") or "").strip()
+                if continuity_key != "none" and continuity_description:
+                    scene_description = (
+                        scene_description.rstrip(" .")
+                        + ". Continuity requirement: this is the exact same physical instance/content across all "
+                        + f"stages of continuity group '{continuity_key}': {continuity_description}. "
+                        + "Do not change the underlying depicted subject/content; change only the narrated state."
+                    ).strip()
                 environment = str(item.get("environment") or "").strip()
                 composition = str(item.get("composition") or "").strip()
                 lighting = str(item.get("lighting") or "").strip()
@@ -1916,6 +2046,8 @@ Return exactly {amount} objects and nothing else.
                     reference_need = "none"
                     reference_target = "none"
                     evidence_scope = "contextual"
+                    continuity_key = "none"
+                    continuity_description = ""
                     reference_critical = False
                     route = "standard"
                     logger.warning(
@@ -1981,6 +2113,8 @@ Return exactly {amount} objects and nothing else.
                     "safe_visual_alternative": safe_visual_alternative,
                     "planner_validation": planner_validation,
                     "factual_audit_status": factual_audit_status,
+                    "continuity_key": continuity_key,
+                    "continuity_description": continuity_description,
                     "precision_importance": precision_importance,
                 })
 
