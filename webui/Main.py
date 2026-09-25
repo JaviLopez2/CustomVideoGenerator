@@ -636,27 +636,47 @@ def _save_manual_precision_references(
         "files": [],
     }
 
-    for index, uploaded_file in enumerate(files, start=1):
+    seen_sha256: dict[str, str] = {}
+    stored_index = 0
+    for source_index, uploaded_file in enumerate(files):
+        payload = bytes(uploaded_file.getbuffer())
+        digest = hashlib.sha256(payload).hexdigest()
+        original_name = os.path.basename(str(uploaded_file.name or ""))
+        if digest in seen_sha256:
+            logger.warning(
+                "skip exact duplicate Precision reference upload: "
+                f"file={original_name!r}, duplicate_of={seen_sha256[digest]!r}"
+            )
+            continue
+
+        stored_index += 1
         file_path = _build_uploaded_file_path(
             uploaded_file,
             references_dir,
             PRECISION_REFERENCE_EXTENSIONS,
-            f"reference-{index:02d}",
+            f"reference-{stored_index:02d}",
         )
         with open(file_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        meta = metadata[index - 1] if index - 1 < len(metadata) and isinstance(metadata[index - 1], dict) else {}
+            f.write(payload)
+        seen_sha256[digest] = original_name
+        meta = (
+            metadata[source_index]
+            if source_index < len(metadata)
+            and isinstance(metadata[source_index], dict)
+            else {}
+        )
         role = str(meta.get("role") or "identity").strip().lower()
         if role not in {"identity", "detail", "internal", "context", "other"}:
             role = "identity"
         manifest["files"].append(
             {
                 "stored": os.path.basename(file_path),
-                "original": os.path.basename(str(uploaded_file.name or "")),
-                "slot": index,
+                "original": original_name,
+                "slot": stored_index,
                 "role": role,
                 "description": str(meta.get("description") or "").strip()[:240],
                 "anchor": bool(meta.get("anchor")) if role == "identity" else False,
+                "sha256": digest,
             }
         )
 
