@@ -206,6 +206,7 @@ class TestQwenQualityV31(unittest.TestCase):
                     {"role": "context", "description": "natural habitat"},
                 ]
             },
+            forbidden_features=["fake extra dial", "invented label"],
         )
 
         self.assertIn("<image1>", prompt)
@@ -214,6 +215,9 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertIn("identity/whole-subject evidence", prompt)
         self.assertIn("detail evidence", prompt)
         self.assertIn("context/environment evidence", prompt)
+        self.assertIn("Explicitly do not depict or introduce", prompt)
+        self.assertIn("fake extra dial", prompt)
+        self.assertIn("invented label", prompt)
 
 
 if __name__ == "__main__":
