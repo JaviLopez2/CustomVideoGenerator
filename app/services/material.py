@@ -4272,32 +4272,78 @@ def _qwen_precision_prompt_with_references(
     reference_count: int,
     reference_info: dict[str, Any] | None = None,
 ) -> str:
-    """Give Qwen explicit per-reference roles without assuming every image is the same view."""
+    """Give Qwen explicit ordered evidence roles while keeping composition text-driven."""
     subject = _normalized_reference_subject(subject) or "the factual subject"
     reference_count = max(1, min(int(reference_count or 1), 10))
-    pack = [dict(item) for item in ((reference_info or {}).get("reference_pack") or []) if isinstance(item, dict)]
+    reference_info = reference_info or {}
+    pack = [
+        dict(item)
+        for item in (reference_info.get("reference_pack") or [])
+        if isinstance(item, dict)
+    ]
+    selection_rows = [
+        dict(item)
+        for item in (
+            (reference_info.get("reference_selection") or {}).get(
+                "selected_references"
+            )
+            or []
+        )
+        if isinstance(item, dict)
+    ]
+
     role_lines = []
     for index in range(1, reference_count + 1):
         item = pack[index - 1] if index - 1 < len(pack) else {}
+        selection = (
+            selection_rows[index - 1]
+            if index - 1 < len(selection_rows)
+            else {}
+        )
         role = str(item.get("role") or "identity").strip().lower()
+        kind = str(selection.get("kind") or "").strip().lower()
         description = str(item.get("description") or "").strip()
-        if role == "identity":
+
+        if kind == "identity_anchor":
+            purpose = (
+                f"the authoritative whole-subject identity anchor for {subject}; "
+                "use it for overall identity, silhouette, proportions and stable geometry"
+            )
+        elif kind == "scene_specific":
+            purpose = (
+                f"the scene-specific factual evidence for {subject}; "
+                "use only the visible information relevant to this scene"
+            )
+        elif kind == "complementary":
+            purpose = (
+                f"complementary factual evidence for {subject}; "
+                "use it only to resolve information not already established by earlier references"
+            )
+        elif role == "identity":
             purpose = f"identity/whole-subject evidence for {subject}"
         elif role == "detail":
             purpose = f"detail evidence for a visible feature of {subject}"
         elif role == "internal":
-            purpose = f"internal/anatomical/mechanical evidence related to {subject}"
+            purpose = (
+                f"internal/anatomical/mechanical evidence related to {subject}"
+            )
         elif role == "context":
-            purpose = "context/environment evidence only; do not treat it as subject identity"
+            purpose = (
+                "context/environment evidence only; do not treat it as subject identity"
+            )
         else:
             purpose = f"supporting factual evidence related to {subject}"
+
         if description:
             purpose += f" ({description})"
         role_lines.append(f"<image{index}> is {purpose}")
+
     role_text = "; ".join(role_lines)
     return (
         f"Reference evidence: {role_text}. "
-        f"The target factual subject is {subject}. Preserve identity from identity references and use specialized references only for the factual detail they actually show. "
+        f"The target factual subject is {subject}. Treat the identity reference as the authority for identity instead of reconstructing identity from descriptive text. "
+        "Use scene-specific and complementary references only for the facts they visibly establish. "
+        "If text and a supplied identity reference describe the same identity trait differently, preserve the visible reference identity unless the scene explicitly requests a real transformation. "
         "Never force a detail/context reference to redefine the whole subject. Do not inherit any reference background, crop, camera angle, pose, "
         "lighting, color cast, watermark, stock-site text, captions, labels, borders or presentation layout unless the scene explicitly asks for that property. "
         "Do not invent accessories, modifications, anatomy or structures merely because one reference contains an incidental element. "
