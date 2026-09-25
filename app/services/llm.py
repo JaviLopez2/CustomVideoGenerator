@@ -1329,11 +1329,11 @@ def _scene_reference_coverage(
     # The current manual library is an identity/evidence pack for the primary
     # subject. Do not silently treat those images as proof of a produced output or
     # a distinct secondary entity just because they belong to the same topic.
-    if target in {"output", "secondary_subject", "none"} and need in {
-        "identity",
-        "detail",
-        "internal",
-    }:
+    if target in {"output", "secondary_subject", "none"} and (
+        need in {"identity", "detail", "internal"}
+        or scope in {"specialized_visible", "hidden_internal"}
+        or critical
+    ):
         return (
             "unsupported",
             f"manual reference inventory targets the primary subject, not reference_target={target!r}",
