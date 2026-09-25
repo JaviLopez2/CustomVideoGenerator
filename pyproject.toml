@@ -44,6 +44,17 @@ twelvelabs = [
     "twelvelabs>=1.2.8",
 ]
 
+# Optional local vision judge for precision-image identity/anatomy validation.
+# PyTorch is intentionally optional because its Windows wheel is large.
+precision_vision = [
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "transformers>=4.56.1,<5",
+    "timm>=1.0",
+    "einops>=0.8",
+    "safetensors>=0.4",
+]
+
 [dependency-groups]
 dev = [
     "coverage==7.15.1",

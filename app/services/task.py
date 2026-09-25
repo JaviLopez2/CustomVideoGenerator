@@ -1,3 +1,4 @@
+import json
 import math
 import os
 import re
@@ -7,6 +8,7 @@ import time
 from concurrent.futures import CancelledError, Future, ThreadPoolExecutor
 from functools import partial
 from os import path
+from pathlib import Path
 from uuid import uuid4
 
 from loguru import logger
@@ -633,6 +635,405 @@ def generate_subtitle(task_id, params, video_script, sub_maker, audio_file):
 
     return subtitle_path
 
+def _srt_timestamp_to_seconds(timestamp: str) -> float:
+    """Convert an SRT timestamp such as ``00:00:04,250`` into seconds."""
+    hours, minutes, rest = timestamp.strip().split(":")
+    seconds, milliseconds = rest.split(",")
+    return (
+        int(hours) * 3600
+        + int(minutes) * 60
+        + int(seconds)
+        + int(milliseconds) / 1000.0
+    )
+
+
+
+def _openai_image_performance_profile() -> str:
+    value = str(config.app.get("openai_image_performance_profile", "balanced") or "balanced").strip().lower()
+    return value if value in {"fast", "balanced", "quality"} else "balanced"
+
+
+def _openai_image_profile_settings() -> dict:
+    profile = _openai_image_performance_profile()
+    defaults = {
+        "fast": {
+            "scene_budget": 7,
+            "target_scene_duration": 7.5,
+            "precision_ratio": 0.45,
+            "reuse_visual_beats": True,
+            "min_scene_duration": 5.0,
+        },
+        "balanced": {
+            "scene_budget": 9,
+            "target_scene_duration": 6.0,
+            "precision_ratio": 0.65,
+            "reuse_visual_beats": True,
+            "min_scene_duration": 4.0,
+        },
+        "quality": {
+            "scene_budget": 14,
+            "target_scene_duration": 4.0,
+            "precision_ratio": 1.0,
+            "reuse_visual_beats": False,
+            "min_scene_duration": 2.6,
+        },
+    }
+    values = dict(defaults[profile])
+    try:
+        values["scene_budget"] = max(
+            1,
+            int(config.app.get(f"openai_image_{profile}_scene_budget", values["scene_budget"]) or values["scene_budget"]),
+        )
+    except (TypeError, ValueError):
+        pass
+    try:
+        values["target_scene_duration"] = max(
+            2.5,
+            float(config.app.get(f"openai_image_{profile}_target_scene_duration", values["target_scene_duration"]) or values["target_scene_duration"]),
+        )
+    except (TypeError, ValueError):
+        pass
+    try:
+        values["precision_ratio"] = max(
+            0.0,
+            min(1.0, float(config.app.get(f"openai_image_{profile}_precision_ratio", values["precision_ratio"]) or values["precision_ratio"])),
+        )
+    except (TypeError, ValueError):
+        pass
+    try:
+        values["min_scene_duration"] = max(1.75, float(config.app.get(f"openai_image_{profile}_min_scene_duration", values["min_scene_duration"]) or values["min_scene_duration"]))
+    except (TypeError, ValueError):
+        pass
+    values["profile"] = profile
+    return values
+
+
+def _merge_semantic_blocks_to_budget(blocks: list[dict], max_blocks: int) -> list[dict]:
+    """Merge the least-disruptive adjacent blocks until one-image-per-block fits budget."""
+    result = [dict(block, texts=list(block.get("texts") or [])) for block in blocks]
+    max_blocks = max(1, int(max_blocks or 1))
+    while len(result) > max_blocks:
+        best_index = 0
+        best_cost = None
+        for index in range(len(result) - 1):
+            left, right = result[index], result[index + 1]
+            combined_duration = float(right["end"]) - float(left["start"])
+            # Prefer joining short neighbors. This preserves major narration boundaries
+            # while eliminating rapid image churn.
+            cost = combined_duration
+            if best_cost is None or cost < best_cost:
+                best_cost = cost
+                best_index = index
+        left, right = result[best_index], result[best_index + 1]
+        merged = {
+            "start": left["start"],
+            "end": right["end"],
+            "texts": list(left.get("texts") or []) + list(right.get("texts") or []),
+        }
+        result[best_index : best_index + 2] = [merged]
+    return result
+
+
+def _allocate_scene_beats(
+    blocks: list[dict],
+    *,
+    target_scene_duration: float,
+    max_scenes: int,
+    reuse_visual_beats: bool,
+) -> list[int]:
+    if not blocks:
+        return []
+    target = max(2.5, float(target_scene_duration or 4.0))
+    budget = max(len(blocks), int(max_scenes or len(blocks)))
+    desired = []
+    for block in blocks:
+        duration = max(0.0, float(block["end"]) - float(block["start"]))
+        raw = max(1, math.ceil(duration / target))
+        if reuse_visual_beats and duration <= target * 1.55:
+            raw = 1
+        desired.append(raw)
+
+    allocated = [1 for _ in blocks]
+    remaining = max(0, budget - len(blocks))
+    while remaining > 0:
+        eligible = [i for i in range(len(blocks)) if allocated[i] < desired[i]]
+        if not eligible:
+            break
+        # Split the block whose current image would otherwise stay on screen longest.
+        index = max(
+            eligible,
+            key=lambda i: (float(blocks[i]["end"]) - float(blocks[i]["start"])) / allocated[i],
+        )
+        allocated[index] += 1
+        remaining -= 1
+    return allocated
+
+
+def _apply_openai_image_precision_budget(
+    structured_image_plan: list[dict],
+    settings: dict,
+) -> list[dict]:
+    """Keep Precision distributed across the video; downgrade the rest to fast Standard."""
+    if not structured_image_plan:
+        return structured_image_plan
+    ratio = float(settings.get("precision_ratio", 1.0) or 0.0)
+    if ratio >= 0.999:
+        return structured_image_plan
+
+    candidates = [
+        index
+        for index, item in enumerate(structured_image_plan)
+        if str(item.get("route") or "").strip().lower() == "precision"
+    ]
+    if not candidates:
+        return structured_image_plan
+
+    keep_count = max(1, min(len(candidates), int(math.ceil(len(structured_image_plan) * ratio))))
+    if keep_count >= len(candidates):
+        return structured_image_plan
+
+    # Farthest-point sampling keeps expensive Precision shots spread over the whole
+    # narration instead of spending them all at the beginning. First/last identity
+    # shots are protected when the budget allows it.
+    selected = {candidates[0]}
+    if keep_count > 1:
+        selected.add(candidates[-1])
+    while len(selected) < keep_count:
+        remaining = [idx for idx in candidates if idx not in selected]
+
+        def _selection_score(idx: int):
+            item = structured_image_plan[idx]
+            try:
+                importance = max(0.0, min(1.0, float(item.get("precision_importance", 0.7))))
+            except (TypeError, ValueError):
+                importance = 0.7
+            reference_need = str(item.get("reference_need") or "identity").strip().lower()
+            role = str(item.get("shot_role") or "evidence").strip().lower()
+            need_bonus = 0.25 if reference_need in {"identity", "detail", "internal"} else 0.0
+            role_bonus = 0.15 if role in {"identity", "detail", "evidence", "process"} else 0.0
+            distance = min(abs(idx - kept) for kept in selected)
+            feature_count = len(item.get("required_features") or [])
+            # Entirely theme-agnostic: trust the planner's factual importance/role metadata,
+            # then spread expensive shots across the timeline.
+            return (importance + need_bonus + role_bonus, distance, feature_count, -idx)
+
+        chosen = max(remaining, key=_selection_score)
+        selected.add(chosen)
+
+    downgraded = []
+    for index in candidates:
+        if index in selected:
+            continue
+        structured_image_plan[index]["route"] = "standard"
+        structured_image_plan[index]["performance_route_override"] = "precision_budget_to_standard"
+        downgraded.append(index + 1)
+
+    logger.info(
+        "AI image performance routing: "
+        f"profile={settings.get('profile')}, precision={len(selected)}/{len(candidates)} "
+        f"requested precision scenes, downgraded_to_standard={downgraded}"
+    )
+    return structured_image_plan
+
+def build_openai_image_scene_plan(
+    subtitle_path: str,
+    audio_duration: float,
+    preferred_scene_duration: float = 4.0,
+    max_scenes: int | None = None,
+    reuse_visual_beats: bool = True,
+    target_scene_duration: float | None = None,
+    min_scene_duration_override: float | None = None,
+) -> list[dict]:
+    """Build a narration-aligned visual timeline with a hard generation budget.
+
+    Fast/Balanced deliberately let one strong image cover a longer semantic beat.
+    This is the "reuse image between beats" optimization: fewer independent image
+    generations, while exact float durations still cover the complete narration.
+    """
+    subtitle_items = subtitle.file_to_subtitles(subtitle_path)
+    if not subtitle_items:
+        return []
+
+    try:
+        total_audio_duration = max(0.0, float(audio_duration))
+    except (TypeError, ValueError):
+        total_audio_duration = 0.0
+    if total_audio_duration <= 0:
+        return []
+
+    units = []
+    for _, time_range, text_value in subtitle_items:
+        narration = str(text_value or "").strip()
+        if not narration:
+            continue
+        try:
+            start_text, end_text = time_range.split(" --> ", 1)
+            start = _srt_timestamp_to_seconds(start_text.strip())
+            end = _srt_timestamp_to_seconds(end_text.strip())
+        except Exception:
+            continue
+        start = max(0.0, min(float(start), total_audio_duration))
+        end = max(start, min(float(end), total_audio_duration))
+        units.append({"start": start, "end": end, "text": narration})
+
+    if not units:
+        return []
+
+    units.sort(key=lambda item: item["start"])
+    for index, unit in enumerate(units):
+        unit["visual_start"] = 0.0 if index == 0 else unit["start"]
+        if index + 1 < len(units):
+            unit["visual_end"] = max(unit["visual_start"], units[index + 1]["start"])
+        else:
+            unit["visual_end"] = total_audio_duration
+
+    try:
+        preferred = max(1.0, float(preferred_scene_duration))
+    except (TypeError, ValueError):
+        preferred = 4.0
+    target = max(2.5, float(target_scene_duration or preferred))
+    min_scene_duration = max(1.75, min(preferred * 0.65, 3.0))
+    if min_scene_duration_override is not None:
+        try:
+            min_scene_duration = max(1.75, float(min_scene_duration_override))
+        except (TypeError, ValueError):
+            pass
+
+    semantic_blocks = []
+    current = None
+    for unit in units:
+        if current is None:
+            current = {
+                "start": unit["visual_start"],
+                "end": unit["visual_end"],
+                "texts": [unit["text"]],
+            }
+            continue
+        current_duration = current["end"] - current["start"]
+        if current_duration < min_scene_duration:
+            current["end"] = unit["visual_end"]
+            current["texts"].append(unit["text"])
+        else:
+            semantic_blocks.append(current)
+            current = {
+                "start": unit["visual_start"],
+                "end": unit["visual_end"],
+                "texts": [unit["text"]],
+            }
+    if current is not None:
+        semantic_blocks.append(current)
+
+    if len(semantic_blocks) > 1:
+        last = semantic_blocks[-1]
+        if last["end"] - last["start"] < min_scene_duration:
+            previous = semantic_blocks[-2]
+            previous["end"] = last["end"]
+            previous["texts"].extend(last["texts"])
+            semantic_blocks.pop()
+
+    budget = max(1, int(max_scenes or max(len(semantic_blocks), math.ceil(total_audio_duration / target))))
+    if len(semantic_blocks) > budget:
+        semantic_blocks = _merge_semantic_blocks_to_budget(semantic_blocks, budget)
+
+    beat_counts = _allocate_scene_beats(
+        semantic_blocks,
+        target_scene_duration=target,
+        max_scenes=budget,
+        reuse_visual_beats=bool(reuse_visual_beats),
+    )
+
+    scenes = []
+    for block, beats in zip(semantic_blocks, beat_counts):
+        segment_start = max(0.0, float(block["start"]))
+        segment_end = min(total_audio_duration, max(segment_start, float(block["end"])))
+        segment_duration = segment_end - segment_start
+        if segment_duration <= 0:
+            continue
+        narration = " ".join(text.strip() for text in block["texts"] if text.strip())
+        beats = max(1, int(beats or 1))
+        beat_duration = segment_duration / beats
+        for beat_index in range(beats):
+            scene_start = segment_start + beat_index * beat_duration
+            scene_end = segment_end if beat_index == beats - 1 else scene_start + beat_duration
+            scenes.append(
+                {
+                    "start": scene_start,
+                    "end": scene_end,
+                    "duration": scene_end - scene_start,
+                    "narration": narration,
+                    "beat": beat_index + 1,
+                    "beats": beats,
+                }
+            )
+
+    # Avoid spending a full generation on a tiny visual beat. Merge only genuinely
+    # short neighbors; narration order and exact total duration remain unchanged.
+    while len(scenes) > 1:
+        short_index = next((i for i, scene in enumerate(scenes) if float(scene.get("duration", 0) or 0) < min_scene_duration), None)
+        if short_index is None:
+            break
+        if short_index == 0:
+            neighbor = 1
+        elif short_index == len(scenes) - 1:
+            neighbor = short_index - 1
+        else:
+            left_total = float(scenes[short_index]["end"]) - float(scenes[short_index - 1]["start"])
+            right_total = float(scenes[short_index + 1]["end"]) - float(scenes[short_index]["start"])
+            neighbor = short_index - 1 if left_total <= right_total else short_index + 1
+        a, b = sorted((short_index, neighbor))
+        left, right = scenes[a], scenes[b]
+        narrations = []
+        for value in (left.get("narration"), right.get("narration")):
+            value = str(value or "").strip()
+            if value and value not in narrations:
+                narrations.append(value)
+        merged = {
+            "start": float(left["start"]),
+            "end": float(right["end"]),
+            "duration": float(right["end"]) - float(left["start"]),
+            "narration": " ".join(narrations),
+            "beat": 1,
+            "beats": 1,
+        }
+        scenes[a:b + 1] = [merged]
+
+    logger.info(
+        "semantic visual timeline: "
+        f"{len(units)} subtitle blocks -> {len(semantic_blocks)} semantic blocks -> "
+        f"{len(scenes)} visual scenes (budget={budget}, target={target:.2f}s, "
+        f"reuse_beats={bool(reuse_visual_beats)})"
+    )
+    for index, scene in enumerate(scenes):
+        logger.info(
+            f"scene {index + 1:02d}: "
+            f"{scene['start']:.2f}s -> {scene['end']:.2f}s "
+            f"({scene['duration']:.2f}s), "
+            f"beat={scene['beat']}/{scene['beats']}, "
+            f"narration={scene['narration']!r}"
+        )
+    return scenes
+
+def _load_openai_image_reference_inventory(task_id: str) -> list[dict]:
+    """Expose only user-authored reference metadata to the planner, never image pixels."""
+    manifest_path = Path(utils.task_dir(task_id)) / "user_references" / "manifest.json"
+    if not manifest_path.is_file():
+        return []
+    try:
+        payload = json.loads(manifest_path.read_text(encoding="utf-8")) or {}
+    except Exception as exc:
+        logger.warning(f"failed to read reference inventory: {type(exc).__name__}: {exc}")
+        return []
+    result = []
+    for item in payload.get("files") or []:
+        if not isinstance(item, dict):
+            continue
+        result.append({
+            "slot": item.get("slot"),
+            "role": str(item.get("role") or "identity"),
+            "description": str(item.get("description") or "").strip(),
+        })
+    return result
+
 
 def get_video_materials(
     task_id,
@@ -640,6 +1041,15 @@ def get_video_materials(
     video_terms,
     audio_duration,
     loomloom_video_request: loomloom.LoomLoomConfirmedVideoRequest | None = None,
+    openai_image_scene_durations: list[float] | None = None,
+    openai_image_scene_routes: list[str] | None = None,
+    openai_image_scene_subjects: list[str] | None = None,
+    openai_image_scene_required_features: list[list[str]] | None = None,
+    openai_image_scene_forbidden_features: list[list[str]] | None = None,
+    openai_image_scene_reference_needs: list[str] | None = None,
+    openai_image_scene_reference_queries: list[str] | None = None,
+    openai_image_scene_shot_types: list[str] | None = None,
+    openai_image_scene_framing_intents: list[str] | None = None,
 ):
     if params.video_source == "local":
         logger.info("\n\n## preprocess local materials")
@@ -727,12 +1137,28 @@ def get_video_materials(
                 video_aspect=params.video_aspect,
                 video_concat_mode=(
                     VideoConcatMode.sequential
-                    if params.match_materials_to_script
+                    if (
+                        params.match_materials_to_script
+                        or params.video_source == "openai_image"
+                    )
                     else params.video_concat_mode
                 ),
-                audio_duration=audio_duration * params.video_count,
+                audio_duration=(
+                    audio_duration
+                    if params.video_source == "openai_image"
+                    else audio_duration * params.video_count
+                ),
                 max_clip_duration=params.video_clip_duration,
                 match_script_order=params.match_materials_to_script,
+                scene_durations=openai_image_scene_durations,
+                scene_routes=openai_image_scene_routes,
+                scene_subjects=openai_image_scene_subjects,
+                scene_required_features=openai_image_scene_required_features,
+                scene_forbidden_features=openai_image_scene_forbidden_features,
+                scene_reference_needs=openai_image_scene_reference_needs,
+                scene_reference_queries=openai_image_scene_reference_queries,
+                scene_shot_types=openai_image_scene_shot_types,
+                scene_framing_intents=openai_image_scene_framing_intents,
             )
         except volcengine_seedance.VolcEngineSeedanceError as exc:
             # 未确认状态和已生成但下载失败都对应一个可在方舟控制台恢复的远端
@@ -846,7 +1272,7 @@ def generate_final_videos(
     )
     # 多视频生成默认会打散素材以增加差异；但“按文案顺序匹配素材”追求的是
     # 时间线稳定性和可解释性，所以开启后所有输出都使用顺序拼接。
-    if params.match_materials_to_script:
+    if params.match_materials_to_script or params.video_source == "openai_image":
         video_concat_mode = VideoConcatMode.sequential
     elif params.video_count == 1:
         video_concat_mode = params.video_concat_mode
@@ -861,6 +1287,19 @@ def generate_final_videos(
             utils.task_dir(task_id), f"combined-{index}.mp4"
         )
         logger.info(f"\n\n## combining video: {index} => {combined_video_path}")
+
+        # Semantic OpenAI-image clips already carry narration-aligned durations.
+        # Do not crop them back to the generic clip duration or alter their speed.
+        if params.video_source == "openai_image":
+            combine_max_clip_duration = max(
+                float(audio_duration),
+                float(params.video_clip_duration),
+            )
+            combine_clip_speed = 1.0
+        else:
+            combine_max_clip_duration = params.video_clip_duration
+            combine_clip_speed = params.video_clip_speed
+
         video.combine_videos(
             combined_video_path=combined_video_path,
             video_paths=downloaded_videos,
@@ -869,9 +1308,9 @@ def generate_final_videos(
             video_fit_mode=params.video_fit_mode,
             video_concat_mode=video_concat_mode,
             video_transition_mode=video_transition_mode,
-            max_clip_duration=params.video_clip_duration,
+            max_clip_duration=combine_max_clip_duration,
             threads=params.n_threads,
-            clip_speed=params.video_clip_speed,
+            clip_speed=combine_clip_speed,
         )
 
         _progress += 50 / params.video_count / 2
@@ -1409,9 +1848,27 @@ def _run_pipeline(
         )
         return {"script": video_script}
 
-    # 2. Generate terms
+    # 2. Generate terms / visual prompts
     video_terms = ""
-    if params.video_source != "local":
+    openai_image_scene_durations = None
+    openai_image_scene_routes = None
+    openai_image_scene_subjects = None
+    openai_image_scene_required_features = None
+    openai_image_scene_forbidden_features = None
+    openai_image_scene_reference_needs = None
+    openai_image_scene_reference_queries = None
+    openai_image_scene_shot_types = None
+    openai_image_scene_framing_intents = None
+
+    # AI image prompts need the real narration duration, so automatic prompt
+    # generation is postponed until after TTS for complete material/video jobs.
+    defer_openai_image_prompts = (
+        params.video_source == "openai_image"
+        and not params.video_terms
+        and stop_at in {"materials", "video"}
+    )
+
+    if params.video_source != "local" and not defer_openai_image_prompts:
         video_terms = generate_terms(task_id, params, video_script)
         if not video_terms:
             return _mark_task_failed(
@@ -1420,7 +1877,8 @@ def _run_pipeline(
                 "failed to generate video search terms",
             )
 
-    save_script_data(task_id, video_script, video_terms, params)
+    if not defer_openai_image_prompts:
+        save_script_data(task_id, video_script, video_terms, params)
 
     if stop_at == "terms":
         sm.state.update_task(
@@ -1470,6 +1928,171 @@ def _run_pipeline(
         )
         return {"subtitle_path": subtitle_path}
 
+    if defer_openai_image_prompts:
+        logger.info("\n\n## building semantic AI image timeline")
+        image_profile_settings = _openai_image_profile_settings()
+        logger.info(
+            "AI image performance profile: "
+            f"{image_profile_settings['profile']} | "
+            f"scene_budget={image_profile_settings['scene_budget']}, "
+            f"target_scene_duration={image_profile_settings['target_scene_duration']:.2f}s, "
+            f"precision_ratio={image_profile_settings['precision_ratio']:.2f}, min_scene={image_profile_settings['min_scene_duration']:.2f}s"
+        )
+        scene_plan = build_openai_image_scene_plan(
+            subtitle_path=subtitle_path,
+            audio_duration=audio_duration,
+            preferred_scene_duration=params.video_clip_duration,
+            max_scenes=image_profile_settings["scene_budget"],
+            reuse_visual_beats=image_profile_settings["reuse_visual_beats"],
+            target_scene_duration=image_profile_settings["target_scene_duration"],
+            min_scene_duration_override=image_profile_settings["min_scene_duration"],
+        )
+
+        if scene_plan:
+            logger.info(
+                f"semantic scene planner created {len(scene_plan)} visual scenes"
+            )
+            reference_inventory = _load_openai_image_reference_inventory(task_id)
+            structured_image_plan = llm.generate_scene_image_plan(
+                video_subject=params.video_subject,
+                scene_plan=scene_plan,
+                reference_inventory=reference_inventory,
+            )
+            structured_image_plan = _apply_openai_image_precision_budget(
+                structured_image_plan,
+                image_profile_settings,
+            )
+            video_terms = [
+                str(scene.get("prompt") or "").strip()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_routes = [
+                str(scene.get("route") or "standard").strip().lower()
+                for scene in structured_image_plan
+            ]
+            # Reference identity must stay stable across close-up/profile/detail
+            # scenes. The visible per-scene subject still lives inside the rendered
+            # prompt; this metadata is only for factual reference search/cache.
+            openai_image_scene_subjects = [
+                str(
+                    scene.get("canonical_subject")
+                    or scene.get("subject")
+                    or ""
+                ).strip()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_required_features = [
+                [
+                    str(feature).strip()
+                    for feature in (scene.get("required_features") or [])
+                    if str(feature or "").strip()
+                ]
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_forbidden_features = [
+                [
+                    str(feature).strip()
+                    for feature in (scene.get("forbidden_features") or [])
+                    if str(feature or "").strip()
+                ]
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_reference_needs = [str(scene.get("reference_need") or "none").strip().lower() for scene in structured_image_plan]
+            openai_image_scene_reference_queries = [str(scene.get("reference_query") or "").strip() for scene in structured_image_plan]
+            openai_image_scene_shot_types = [str(scene.get("shot_type") or "full").strip().lower() for scene in structured_image_plan]
+            openai_image_scene_framing_intents = [str(scene.get("framing_intent") or "full_subject").strip().lower() for scene in structured_image_plan]
+            openai_image_scene_durations = [
+                float(scene["duration"]) for scene in scene_plan
+            ]
+        else:
+            # Subtitles can be disabled or unavailable. Keep a safe fallback so
+            # OpenAI-image generation still works, albeit with uniform timing.
+            try:
+                clip_duration = max(1, int(params.video_clip_duration))
+            except (TypeError, ValueError):
+                clip_duration = 4
+            scene_count = max(
+                1,
+                math.ceil(float(audio_duration) / clip_duration),
+            )
+            logger.warning(
+                "semantic subtitle timeline unavailable; "
+                f"fallback to {scene_count} uniform scenes"
+            )
+            video_terms = llm.generate_image_prompts(
+                video_subject=params.video_subject,
+                video_script=video_script,
+                amount=scene_count,
+            )
+            fallback_duration = float(audio_duration) / scene_count
+            openai_image_scene_durations = [fallback_duration] * scene_count
+            openai_image_scene_routes = ["standard"] * scene_count
+            openai_image_scene_subjects = [""] * scene_count
+            openai_image_scene_required_features = [[] for _ in range(scene_count)]
+            openai_image_scene_forbidden_features = [[] for _ in range(scene_count)]
+            openai_image_scene_reference_needs = ["none"] * scene_count
+            openai_image_scene_reference_queries = [""] * scene_count
+            openai_image_scene_shot_types = ["full"] * scene_count
+            openai_image_scene_framing_intents = ["full_subject"] * scene_count
+
+        if not video_terms:
+            return _mark_task_failed(
+                task_id,
+                "terms",
+                "failed to generate semantic AI image prompts",
+            )
+        if len(video_terms) != len(openai_image_scene_durations or []):
+            return _mark_task_failed(
+                task_id,
+                "terms",
+                "AI image prompt count does not match semantic scene duration count",
+            )
+        if len(video_terms) != len(openai_image_scene_routes or []):
+            return _mark_task_failed(
+                task_id,
+                "terms",
+                "AI image prompt count does not match semantic scene route count",
+            )
+        if len(video_terms) != len(openai_image_scene_subjects or []):
+            return _mark_task_failed(
+                task_id,
+                "terms",
+                "AI image prompt count does not match semantic scene subject count",
+            )
+        if len(video_terms) != len(openai_image_scene_required_features or []):
+            return _mark_task_failed(
+                task_id,
+                "terms",
+                "AI image prompt count does not match required-feature metadata count",
+            )
+        if len(video_terms) != len(openai_image_scene_forbidden_features or []):
+            return _mark_task_failed(
+                task_id,
+                "terms",
+                "AI image prompt count does not match forbidden-feature metadata count",
+            )
+
+        for label, values in (
+            ("reference-need", openai_image_scene_reference_needs),
+            ("reference-query", openai_image_scene_reference_queries),
+            ("shot-type", openai_image_scene_shot_types),
+            ("framing-intent", openai_image_scene_framing_intents),
+        ):
+            if len(video_terms) != len(values or []):
+                return _mark_task_failed(task_id, "terms", f"AI image prompt count does not match {label} metadata count")
+
+        route_counts = {
+            route: openai_image_scene_routes.count(route)
+            for route in set(openai_image_scene_routes)
+        }
+        logger.info(
+            "semantic AI image plan ready: "
+            f"scenes={len(video_terms)}, routes={route_counts}, "
+            f"total_visual_duration={sum(openai_image_scene_durations):.2f}s, "
+            f"audio_duration={float(audio_duration):.2f}s"
+        )
+        save_script_data(task_id, video_script, video_terms, params)
+
     sm.state.update_task(task_id, state=const.TASK_STATE_PROCESSING, progress=40)
 
     # 5. Get video materials
@@ -1479,6 +2102,15 @@ def _run_pipeline(
         video_terms,
         audio_duration,
         loomloom_video_request=loomloom_video_request,
+        openai_image_scene_durations=openai_image_scene_durations,
+        openai_image_scene_routes=openai_image_scene_routes,
+        openai_image_scene_subjects=openai_image_scene_subjects,
+        openai_image_scene_required_features=openai_image_scene_required_features,
+        openai_image_scene_forbidden_features=openai_image_scene_forbidden_features,
+        openai_image_scene_reference_needs=openai_image_scene_reference_needs,
+        openai_image_scene_reference_queries=openai_image_scene_reference_queries,
+        openai_image_scene_shot_types=openai_image_scene_shot_types,
+        openai_image_scene_framing_intents=openai_image_scene_framing_intents,
     )
     if not downloaded_videos:
         return _mark_task_failed(

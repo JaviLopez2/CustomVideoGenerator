@@ -194,6 +194,7 @@ LOCAL_MATERIAL_EXTENSIONS = {
     ".jpeg",
     ".png",
 }
+PRECISION_REFERENCE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
 CUSTOM_AUDIO_EXTENSIONS = {".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg"}
 _FINAL_VIDEO_PATTERN = re.compile(
     r"^final-(?P<index>\d+)\.(?P<extension>mp4|mov|mkv|webm)$",
@@ -592,6 +593,77 @@ def _build_uploaded_file_path(uploaded_file, target_dir, allowed_extensions, pre
         logger.warning(f"invalid uploaded file path: {file_path}")
         raise ValueError("invalid uploaded file path")
     return file_path
+
+
+def _normalize_precision_reference_mode(value: str | None) -> str:
+    normalized = str(value or "").strip().lower()
+    if normalized not in {"auto_only", "user_first", "user_only"}:
+        return "user_first"
+    return normalized
+
+
+def _precision_reference_upload_limit() -> int:
+    try:
+        value = int(config.app.get("openai_image_manual_reference_max_images", 8) or 8)
+    except (TypeError, ValueError):
+        value = 8
+    # Store a larger reference library; per-scene routing sends at most three images to Qwen.
+    return max(1, min(value, 8))
+
+
+def _save_manual_precision_references(
+    task_id: str,
+    uploaded_reference_files,
+    reference_mode: str,
+    reference_metadata=None,
+) -> int:
+    """Persist a stable user identity pack inside the task folder."""
+    files = list(uploaded_reference_files or [])[: _precision_reference_upload_limit()]
+    if not files:
+        return 0
+
+    reference_mode = _normalize_precision_reference_mode(reference_mode)
+    metadata = list(reference_metadata or [])
+    task_dir = utils.task_dir(task_id)
+    references_dir = os.path.join(task_dir, "user_references")
+    os.makedirs(references_dir, exist_ok=True)
+
+    manifest = {
+        "schema_version": 3,
+        "mode": reference_mode,
+        "model": "qwen-image-2.1-precision",
+        "max_images": _precision_reference_upload_limit(),
+        "files": [],
+    }
+
+    for index, uploaded_file in enumerate(files, start=1):
+        file_path = _build_uploaded_file_path(
+            uploaded_file,
+            references_dir,
+            PRECISION_REFERENCE_EXTENSIONS,
+            f"reference-{index:02d}",
+        )
+        with open(file_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        meta = metadata[index - 1] if index - 1 < len(metadata) and isinstance(metadata[index - 1], dict) else {}
+        role = str(meta.get("role") or "identity").strip().lower()
+        if role not in {"identity", "detail", "internal", "context", "other"}:
+            role = "identity"
+        manifest["files"].append(
+            {
+                "stored": os.path.basename(file_path),
+                "original": os.path.basename(str(uploaded_file.name or "")),
+                "slot": index,
+                "role": role,
+                "description": str(meta.get("description") or "").strip()[:240],
+            }
+        )
+
+    manifest_path = os.path.join(references_dir, "manifest.json")
+    with open(manifest_path, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+
+    return len(manifest["files"])
 
 
 def _initialize_session_state():
@@ -4908,8 +4980,13 @@ def _render_script_settings(panel, params):
 
 
 def _render_video_settings(panel, params):
-    """渲染视频设置并返回本次选择的本地素材。"""
+    """渲染视频设置并返回本地素材与 Precision identity pack。"""
     uploaded_files = []
+    uploaded_precision_references = []
+    uploaded_precision_reference_metadata = []
+    manual_precision_reference_mode = _normalize_precision_reference_mode(
+        config.app.get("openai_image_manual_reference_mode", "user_first")
+    )
     with panel:
         with st.container(border=True):
             st.write(tr("Video Settings"))
@@ -4977,6 +5054,125 @@ def _render_video_settings(panel, params):
                     accept_multiple_files=True,
                     key="local_video_materials_uploader",
                 )
+            elif params.video_source == "openai_image":
+                performance_profiles = [
+                    ("Fast", "fast"),
+                    ("Balanced", "balanced"),
+                    ("Quality / strict review", "quality"),
+                ]
+                performance_labels = {value: label for label, value in performance_profiles}
+                current_profile = str(
+                    config.app.get("openai_image_performance_profile", "balanced") or "balanced"
+                ).strip().lower()
+                if current_profile not in performance_labels:
+                    current_profile = "balanced"
+                selected_profile = stable_selectbox(
+                    "AI Image Performance",
+                    options=[value for _, value in performance_profiles],
+                    default_value=_saved_ui_choice(
+                        "openai_image_performance_profile",
+                        [value for _, value in performance_profiles],
+                        current_profile,
+                    ),
+                    key="openai_image_performance_profile_select",
+                    format_func=lambda value: performance_labels[value],
+                    help=(
+                        "Fast: ~7 scenes, ~45% Precision, 18 Qwen steps, one image per Precision scene. "
+                        "Balanced: ~8–9 scenes, ~65% Precision, 20 steps, one image per Precision scene, scene-aware references. "
+                        "Quality: up to ~14 scenes, full Precision routing, 25 steps and strict multi-candidate review."
+                    ),
+                )
+                _set_runtime_config("app", "openai_image_performance_profile", selected_profile)
+                profile_caption = {
+                    "fast": "Fast · fewer/longer visual beats · Qwen direct accept · 736×1312 portrait",
+                    "balanced": "Balanced · ~8–9 visual scenes · scene-aware Qwen references · direct accept · 768×1376 portrait",
+                    "quality": "Quality · detailed scene cadence · strict candidate scoring · 864×1536 portrait",
+                }
+                st.caption(profile_caption[selected_profile])
+                if selected_profile in {"fast", "balanced"}:
+                    st.caption(
+                        "Fast/Balanced intentionally route some contextual shots through the faster Standard model. "
+                        "Your uploaded identity pack is used on Precision shots; Quality keeps full Precision routing."
+                    )
+
+                reference_modes = [
+                    ("User first", "user_first"),
+                    ("User only", "user_only"),
+                    ("Auto only", "auto_only"),
+                ]
+                mode_labels = {value: label for label, value in reference_modes}
+                manual_precision_reference_mode = stable_selectbox(
+                    "Precision Reference Mode",
+                    options=[value for _, value in reference_modes],
+                    default_value=_saved_ui_choice(
+                        "openai_image_manual_reference_mode",
+                        [value for _, value in reference_modes],
+                        manual_precision_reference_mode,
+                    ),
+                    key="openai_image_manual_reference_mode_select",
+                    format_func=lambda value: mode_labels[value],
+                    help=(
+                        "User first = use your uploaded identity pack when present; otherwise auto-search. "
+                        "User only = require your uploaded pack. Auto only = ignore manual references."
+                    ),
+                )
+                manual_precision_reference_mode = _normalize_precision_reference_mode(
+                    manual_precision_reference_mode
+                )
+                _set_runtime_config(
+                    "app",
+                    "openai_image_manual_reference_mode",
+                    manual_precision_reference_mode,
+                )
+
+                precision_reference_file_types = sorted(
+                    extension.removeprefix(".")
+                    for extension in PRECISION_REFERENCE_EXTENSIONS
+                )
+                uploaded_precision_references = st.file_uploader(
+                    "Precision identity references (Qwen Image 2.1)",
+                    type=precision_reference_file_types
+                    + [file_type.upper() for file_type in precision_reference_file_types],
+                    accept_multiple_files=True,
+                    key="openai_image_precision_reference_uploader",
+                    help=(
+                        "Upload up to 8 useful references. MPT stores the library and automatically selects at most 3 per Precision scene. "
+                        "References can cover the whole identity, a detail, internal/anatomical/mechanical structure, or context."
+                    ),
+                ) or []
+                upload_limit = _precision_reference_upload_limit()
+                if len(uploaded_precision_references) > upload_limit:
+                    st.warning(f"Only the first {upload_limit} reference images will be stored for this task.")
+                    uploaded_precision_references = uploaded_precision_references[:upload_limit]
+                if uploaded_precision_references:
+                    role_options = ["identity", "detail", "internal", "context", "other"]
+                    role_labels = {
+                        "identity": "Identity / whole subject",
+                        "detail": "Detail / visible feature",
+                        "internal": "Internal / anatomy / mechanism",
+                        "context": "Context / environment",
+                        "other": "Other",
+                    }
+                    with st.expander("Reference roles (recommended)", expanded=len(uploaded_precision_references) > 3):
+                        for ref_index, ref_file in enumerate(uploaded_precision_references, start=1):
+                            ref_name = os.path.basename(str(ref_file.name or f"Reference {ref_index}"))
+                            role = stable_selectbox(
+                                f"Reference {ref_index}: {ref_name}",
+                                options=role_options,
+                                default_value="identity",
+                                key=f"precision_reference_role_{ref_index}_{ref_name}",
+                                format_func=lambda value, labels=role_labels: labels[value],
+                            )
+                            description = st.text_input(
+                                f"What does reference {ref_index} show? (optional)",
+                                key=f"precision_reference_description_{ref_index}_{ref_name}",
+                                placeholder="e.g. full subject, underside detail, internal structure, habitat/context...",
+                            )
+                            uploaded_precision_reference_metadata.append({"role": role, "description": description})
+                    st.caption(
+                        f"Reference library: {len(uploaded_precision_references)}/{upload_limit} image(s). "
+                        "MPT will choose up to 3 relevant references per Precision scene while keeping identity continuity."
+                    )
 
             # 文案顺序匹配会从关键词生成到最终合成全程保持叙事顺序，因此开启时
             # 顺序拼接是唯一符合实际执行逻辑的选项。同步控件值可避免界面仍显示
@@ -5208,7 +5404,12 @@ def _render_video_settings(panel, params):
                 _render_ofox_video_settings(params)
             if params.video_source == "metaso_minimax":
                 _render_metaso_minimax_video_settings(params)
-    return uploaded_files
+    return (
+        uploaded_files,
+        uploaded_precision_references,
+        uploaded_precision_reference_metadata,
+        manual_precision_reference_mode,
+    )
 
 
 def _render_wavespeed_video_settings(params):
@@ -7163,7 +7364,14 @@ def _render_subtitle_settings(panel, params):
 
 
 def _render_generation_controls(
-    params, uploaded_files, uploaded_audio_file, uploaded_bgm_file, voice_mode
+    params,
+    uploaded_files,
+    uploaded_precision_references,
+    uploaded_precision_reference_metadata,
+    manual_precision_reference_mode,
+    uploaded_audio_file,
+    uploaded_bgm_file,
+    voice_mode,
 ):
     """
     校验生成依赖、提交任务，并渲染日志与成片结果。
@@ -7177,6 +7385,10 @@ def _render_generation_controls(
     )
     has_local_materials = bool(
         uploaded_files or st.session_state.get("local_video_materials", [])
+    )
+    has_manual_precision_references = bool(uploaded_precision_references)
+    manual_precision_reference_mode = _normalize_precision_reference_mode(
+        manual_precision_reference_mode
     )
     has_custom_audio = bool(uploaded_audio_file)
     unmet_restore_requirements = _get_unmet_restore_upload_requirements(
@@ -7322,6 +7534,15 @@ def _render_generation_controls(
             st.error(tr("Please Configure the OpenAI Image Source"))
             st.stop()
 
+        if (
+            params.video_source == "openai_image"
+            and manual_precision_reference_mode == "user_only"
+            and not has_manual_precision_references
+        ):
+            _remove_active_generation_task(task_id)
+            st.error("Please upload at least one Precision reference image first")
+            st.stop()
+
         loomloom_video_request = None
         if params.video_source == "loomloom":
             current_batch, current_signature = _current_loomloom_video_quote_context(
@@ -7440,6 +7661,28 @@ def _render_generation_controls(
             with open(custom_audio_path, "wb") as f:
                 f.write(uploaded_audio_file.getbuffer())
             params.custom_audio_file = custom_audio_path
+
+        if (
+            params.video_source == "openai_image"
+            and has_manual_precision_references
+            and manual_precision_reference_mode != "auto_only"
+        ):
+            try:
+                saved_reference_count = _save_manual_precision_references(
+                    task_id,
+                    uploaded_precision_references,
+                    manual_precision_reference_mode,
+                    uploaded_precision_reference_metadata,
+                )
+                logger.info(
+                    "saved manual precision identity pack: "
+                    f"task_id={task_id}, count={saved_reference_count}, "
+                    f"mode={manual_precision_reference_mode}"
+                )
+            except ValueError:
+                _remove_active_generation_task(task_id)
+                st.error(tr("Unsupported Upload File Type"))
+                st.stop()
 
         if uploaded_files:
             local_videos_dir = utils.storage_dir("local_videos", create=True)
@@ -7567,7 +7810,12 @@ def _render_application():
     )
     _render_script_settings(left_panel, params)
 
-    uploaded_files = _render_video_settings(middle_panel, params)
+    (
+        uploaded_files,
+        uploaded_precision_references,
+        uploaded_precision_reference_metadata,
+        manual_precision_reference_mode,
+    ) = _render_video_settings(middle_panel, params)
     uploaded_audio_file, uploaded_bgm_file, voice_mode = _render_audio_settings(
         audio_panel, params
     )
@@ -7577,6 +7825,9 @@ def _render_application():
     generation_submitted = _render_generation_controls(
         params,
         uploaded_files,
+        uploaded_precision_references,
+        uploaded_precision_reference_metadata,
+        manual_precision_reference_mode,
         uploaded_audio_file,
         uploaded_bgm_file,
         voice_mode,

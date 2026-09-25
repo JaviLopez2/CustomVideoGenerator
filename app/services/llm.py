@@ -860,6 +860,7 @@ def generate_terms(
     prompt = f"""
 # Role: Video Search Terms Generator
 
+
 ## Goals:
 {goal}
 
@@ -971,6 +972,639 @@ DEFAULT_SOCIAL_HASHTAGS = [
     "#content",
 ]
 
+def generate_image_prompts(
+    video_subject: str,
+    video_script: str,
+    amount: int,
+    app_config=None,
+) -> List[str]:
+    """
+    Generate chronological, detailed visual prompts for AI image generation.
+
+    Unlike generate_terms(), these are not stock-video search keywords.
+    Each item describes one concrete visual scene for image models such as
+    Z-Image, FLUX or SDXL.
+    """
+    amount = max(1, int(amount))
+
+    prompt = f"""
+# Role: AI Video Scene Prompt Generator
+
+## Goal
+Create exactly {amount} detailed image-generation prompts that visually follow
+the narration from beginning to end.
+
+## Rules
+1. Return ONLY a valid JSON array containing exactly {amount} strings.
+2. Prompts must be in English.
+3. Each prompt represents one chronological visual scene.
+4. Cover the entire script from beginning to end.
+5. Do not repeat the same scene or composition unless the narration requires it.
+6. Each prompt should be approximately 20-45 words.
+7. Describe the concrete subject, environment, composition, camera/framing and lighting.
+8. Prefer visually specific descriptions instead of abstract concepts.
+9. When depicting real animals, organisms, objects, places or scientific concepts,
+   make them visually and scientifically plausible.
+10. Use a vertical composition with the important subject near the center and
+    important details away from the extreme edges.
+11. Do not generate visible text, captions, logos, watermarks or UI elements.
+12. Do not write labels such as "Scene 1", "Scene 2", etc.
+13. Do not return stock-video search keywords. These prompts will be sent directly
+    to an AI image generator.
+14. Earlier prompts must correspond to earlier narration and later prompts to later narration.
+
+## Video Subject
+{video_subject}
+
+## Full Narration
+{video_script}
+
+Return exactly {amount} prompts as a JSON array and nothing else.
+""".strip()
+
+    response = ""
+
+    for i in range(_max_retries):
+        try:
+            if app_config is None:
+                response = _generate_response(prompt)
+            else:
+                response = _generate_response(prompt, app_config=app_config)
+
+            if response.startswith("Error: "):
+                logger.error(f"failed to generate image prompts: {response}")
+                return []
+
+            image_prompts = json.loads(_strip_code_fence(response))
+
+            if not isinstance(image_prompts, list):
+                raise ValueError("response is not a JSON list")
+
+            image_prompts = [
+                str(item).strip()
+                for item in image_prompts
+                if isinstance(item, str) and item.strip()
+            ]
+
+            if len(image_prompts) != amount:
+                raise ValueError(
+                    f"expected exactly {amount} image prompts, "
+                    f"but received {len(image_prompts)}"
+                )
+
+            logger.success(
+                f"generated {len(image_prompts)} chronological AI image prompts"
+            )
+            logger.debug(
+                f"AI image prompts:\n{json.dumps(image_prompts, ensure_ascii=False, indent=2)}"
+            )
+            return image_prompts
+
+        except Exception as e:
+            logger.warning(
+                f"failed to generate AI image prompts: {type(e).__name__}: {e}"
+            )
+
+        if i < _max_retries - 1:
+            logger.warning(
+                f"retrying AI image prompt generation... {i + 1}"
+            )
+
+    return []
+
+_KNOWN_VISUAL_IDENTITY_FALLBACKS = (
+    (
+        ("tardigrade", "tardigrado", "tardígrado", "water bear"),
+        "microscopic tardigrade (water bear), plump segmented translucent body, "
+        "exactly four pairs of short stubby lobopod legs (eight legs total), "
+        "tiny terminal claws, compact soft-bodied anatomy, no antennae, no wings, "
+        "no long jointed insect-like legs, no hard crustacean carapace",
+    ),
+    (
+        ("copepod", "copepods", "copepodo", "copépodo", "copépodos"),
+        "microscopic planktonic copepod crustacean, small translucent teardrop or elongated body, "
+        "long paired antennae, compact segmented trunk, forked tail region, delicate swimming appendages, "
+        "not shaped like an insect or large shrimp",
+    ),
+    (
+        ("diatom", "diatoms", "diatomea", "diatomeas"),
+        "single-celled diatom microalga with a rigid glass-like silica frustule, "
+        "fine geometric pores and radial or bilateral symmetry, intricate mineral shell, "
+        "no animal limbs or multicellular body",
+    ),
+    (
+        ("dinoflagellate", "dinoflagellates", "dinoflagelado", "dinoflagelados"),
+        "single-celled dinoflagellate plankton, compact unicellular body with sculpted surface or armored plates, "
+        "two flagellar grooves/flagella when visible, microscopic scale, blue bioluminescent emission when relevant, "
+        "no multicellular animal anatomy",
+    ),
+    (
+        ("bacteria", "bacterium", "bacteria", "bacterias", "bacteria marina", "bacterias marinas"),
+        "microscopic bacterial cells at true cellular scale, rods, cocci or curved cells as appropriate, "
+        "simple prokaryotic cell morphology, no limbs, no animal anatomy",
+    ),
+    (
+        ("virus", "viruses", "virus marino", "virus marinos", "marine virus", "marine viruses"),
+        "nanoscale virus particles shown as a scientific visualization, compact capsids or bacteriophage-like forms "
+        "only when appropriate, clearly non-cellular particles, no animal anatomy or oversized fantasy creatures",
+    ),
+)
+
+
+def _known_visual_identity_fallback(narration: str) -> str:
+    """Return an optional safety-net identity hint for a few known difficult subjects.
+
+    The structured LLM planner remains the general mechanism for every topic. These
+    entries only reinforce subjects that have historically been confused by image
+    models; they are not required for routing or for unrelated themes to work.
+    """
+    normalized = (narration or "").strip().lower()
+    for aliases, hint in _KNOWN_VISUAL_IDENTITY_FALLBACKS:
+        if any(alias in normalized for alias in aliases):
+            return hint
+    return ""
+
+
+def _normalize_visual_feature_list(value, *, max_items: int = 8) -> list[str]:
+    """Normalize LLM-provided visual constraints into a compact list of strings."""
+    if not isinstance(value, list):
+        return []
+    result: list[str] = []
+    for item in value:
+        text = str(item or "").strip().strip(".;")
+        if text and text.lower() not in {entry.lower() for entry in result}:
+            result.append(text)
+        if len(result) >= max_items:
+            break
+    return result
+
+
+
+_ARTIFICIAL_REFERENCE_PRESENTATION_RE = re.compile(
+    r"\b(?:"
+    r"microscope\s+(?:eyepiece|field|viewport|frame|circle|oval)|"
+    r"through\s+(?:a|the)\s+microscope|"
+    r"circular\s+(?:microscope\s+)?(?:field|frame|viewport|viewing\s+area|crop|border)|"
+    r"oval\s+(?:microscope\s+)?(?:field|frame|viewport|viewing\s+area|crop|border)|"
+    r"eyepiece\s+(?:view|frame|border|circle)|"
+    r"petri\s+dish\s+(?:frame|framing|view|presentation)|"
+    r"specimen\s+(?:plate|slide)\s+(?:frame|framing|presentation)|"
+    r"isolated\s+specimen\s+(?:presentation|display)"
+    r")\b",
+    re.IGNORECASE,
+)
+
+_EXPLICIT_PRESENTATION_REQUEST_RE = re.compile(
+    r"\b(?:"
+    r"microscope|microscopy|eyepiece|petri\s+dish|specimen\s+slide|specimen\s+plate|"
+    r"microscopio|microscopía|microscopia|ocular|placa\s+de\s+petri|portaobjetos|"
+    r"campo\s+circular|campo\s+oval(?:ado)?"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _sanitize_precision_scene_field(
+    value: str,
+    *,
+    field_name: str,
+    narration: str,
+) -> str:
+    """Prevent the LLM scene plan from reintroducing reference-photo framing.
+
+    This is intentionally topic-agnostic: it only intervenes when a precision scene
+    contains an artificial presentation device that the narration itself did not ask
+    for. Literal requests for a microscope/slide/Petri-dish view remain untouched.
+    """
+    text = str(value or "").strip().rstrip(" .")
+    if not text or _EXPLICIT_PRESENTATION_REQUEST_RE.search(narration or ""):
+        return text
+    if not _ARTIFICIAL_REFERENCE_PRESENTATION_RE.search(text):
+        return text
+
+    logger.warning(
+        "sanitized precision scene direction that introduced artificial reference framing: "
+        f"field={field_name!r}, original={text!r}"
+    )
+    if field_name == "composition":
+        return (
+            "natural full-frame composition at a scientifically plausible scale, "
+            "clear visual focus appropriate to the narration, no artificial viewing boundary"
+        )
+    if field_name == "environment":
+        return (
+            "continuous edge-to-edge environment appropriate to the narration and the "
+            "subject's real scale"
+        )
+
+    # For prose fields, remove only the offending presentation phrase and preserve
+    # the factual scene content around it.
+    cleaned = _ARTIFICIAL_REFERENCE_PRESENTATION_RE.sub("full-frame view", text)
+    return re.sub(r"\s{2,}", " ", cleaned).strip(" ,;.-")
+
+
+def _resolve_semantic_image_route(
+    requested_route: str,
+    narration: str,
+    identity_hint: str,
+    shared_visual_style: str,
+) -> str:
+    """Choose a stable scene route and never let the LLM downgrade known hard subjects."""
+    route = str(requested_route or "").strip().lower()
+    if identity_hint:
+        return "precision"
+
+    # Let the director request precision for other literal/factual scenes, but keep
+    # the public route vocabulary deliberately tiny so material.py can route it safely.
+    if route in {"precision", "scientific", "reference", "factual"}:
+        return "precision"
+    return "standard"
+
+
+DEFAULT_OPENAI_IMAGE_VISUAL_STYLE = (
+    "high-end factual documentary realism, photorealistic rendering, natural color science, "
+    "controlled cinematic contrast, restrained saturation, realistic optics, subtle depth of field, "
+    "coherent lighting, clean detail, no fantasy stylization"
+)
+
+
+def _openai_image_shared_visual_style(app_config=None) -> str:
+    runtime_config = app_config if app_config is not None else config.app
+    configured = str(runtime_config.get("openai_image_visual_style", "") or "").strip()
+    return configured or DEFAULT_OPENAI_IMAGE_VISUAL_STYLE
+
+
+def _normalize_scene_enum(value: str, allowed: set[str], default: str) -> str:
+    value = str(value or "").strip().lower().replace("-", "_").replace(" ", "_")
+    return value if value in allowed else default
+
+
+_SCENE_SHOT_TYPES = {"wide", "full", "medium", "close", "detail", "macro", "context"}
+_SCENE_FRAMING_INTENTS = {"full_subject", "medium_subject", "detail", "context", "macro"}
+_SCENE_REFERENCE_NEEDS = {"none", "identity", "detail", "internal", "context"}
+_SCENE_ROLES = {"establish", "identity", "detail", "context", "process", "evidence", "transition", "closing"}
+
+
+def _scene_plan_diversity_issues(items: list[dict]) -> list[str]:
+    """Cheap deterministic QA for the LLM plan before any GPU image is generated."""
+    if len(items) < 4:
+        return []
+    issues: list[str] = []
+    env_keys = [str(i.get("environment_key") or "").strip().lower() for i in items]
+    shot_types = [str(i.get("shot_type") or "").strip().lower() for i in items]
+    environments = [str(i.get("environment") or "").strip().lower() for i in items]
+
+    # No environment family should dominate a normal multi-scene video.
+    nonempty_env = [x for x in env_keys if x]
+    if len(items) >= 6 and nonempty_env and len(set(nonempty_env)) < 3:
+        issues.append("use at least three meaningfully different environment families")
+    for key in sorted(set(nonempty_env)):
+        if nonempty_env.count(key) > max(2, (len(items) + 3) // 4):
+            issues.append(f"environment family {key!r} is repeated too often")
+
+    # Three identical shot scales in a row usually reads like a slideshow/catalogue.
+    for idx in range(len(shot_types) - 2):
+        triple = shot_types[idx:idx + 3]
+        if triple[0] and len(set(triple)) == 1:
+            issues.append(f"shot type {triple[0]!r} repeats for three consecutive scenes")
+            break
+    if len(items) >= 7 and len({x for x in shot_types if x}) < 3:
+        issues.append("use at least three shot types across the video")
+
+    # Controlled/plain presentation is valid, but should not silently become the whole video.
+    controlled_terms = ("studio", "showroom", "plain background", "neutral background", "seamless background")
+    controlled_count = sum(any(term in env for term in controlled_terms) for env in environments)
+    if len(items) >= 6 and controlled_count > 2:
+        issues.append("controlled/studio/plain-background scenes are overused; prefer narration-grounded context")
+    return issues
+
+
+def _build_structured_scene_image_prompt(
+    *,
+    subject: str,
+    route: str,
+    narration: str,
+    scene_description: str,
+    required_features: list[str],
+    forbidden_features: list[str],
+    environment: str,
+    composition: str,
+    lighting: str,
+    identity_hint: str,
+    shared_visual_style: str,
+    shot_type: str = "full",
+    framing_intent: str = "full_subject",
+) -> str:
+    """Build a theme-agnostic, model-facing prompt from the structured scene plan."""
+    subject = str(subject or "").strip()
+    narration = str(narration or "").strip()
+    scene_description = str(scene_description or "").strip().rstrip(" .")
+    environment = str(environment or "").strip().rstrip(" .")
+    composition = str(composition or "").strip().rstrip(" .")
+    lighting = str(lighting or "").strip().rstrip(" .")
+    shot_type = _normalize_scene_enum(shot_type, _SCENE_SHOT_TYPES, "full")
+    framing_intent = _normalize_scene_enum(
+        framing_intent, _SCENE_FRAMING_INTENTS, "full_subject"
+    )
+
+    if route == "precision":
+        scene_description = _sanitize_precision_scene_field(
+            scene_description, field_name="scene_description", narration=narration
+        )
+        environment = _sanitize_precision_scene_field(
+            environment, field_name="environment", narration=narration
+        )
+        composition = _sanitize_precision_scene_field(
+            composition, field_name="composition", narration=narration
+        )
+
+    parts: list[str] = []
+    if route == "precision":
+        parts.append(
+            f"{subject}, rendered with accurate factual identity, morphology, proportions and physically plausible scale"
+        )
+        if required_features:
+            parts.append("Clearly preserve these subject-defining visible traits: " + "; ".join(required_features))
+        elif identity_hint:
+            parts.append(f"Subject-defining morphology: {identity_hint}")
+    else:
+        parts.append(f"Main visible subject: {subject}")
+        if required_features:
+            parts.append("Important visible details: " + "; ".join(required_features))
+
+    if scene_description:
+        parts.append(f"Scene action and visual content: {scene_description}")
+    elif narration:
+        parts.append(f"Visualize this narration literally: {narration}")
+    if environment:
+        parts.append(f"Environment: {environment}")
+    if composition:
+        parts.append(f"Camera and composition: {composition}")
+    if lighting:
+        parts.append(f"Lighting: {lighting}")
+
+    # Deterministic framing constraints prevent accidental catalogue crops while still
+    # allowing intentional details/macro shots for any topic.
+    if framing_intent == "full_subject":
+        parts.append(
+            "Framing rule: show the complete important subject comfortably inside the vertical frame with safe margins; "
+            "do not crop defining extremities, edges, wheels, limbs, top or base unless physically impossible"
+        )
+    elif framing_intent == "medium_subject":
+        parts.append(
+            "Framing rule: a deliberate medium crop is allowed, but keep the complete identifying region and enough context to read the subject clearly"
+        )
+    elif framing_intent == "detail":
+        parts.append(
+            "Framing rule: a deliberate close crop is allowed only around the narrated feature; make the feature unambiguous and physically connected to the subject"
+        )
+    elif framing_intent == "macro":
+        parts.append(
+            "Framing rule: macro/microscopic framing is intentional; preserve plausible scale cues and do not add artificial circular viewports or presentation borders"
+        )
+    else:
+        parts.append(
+            "Framing rule: prioritize the narration-grounded environment while keeping the main subject clearly readable and intentionally composed"
+        )
+
+    parts.append(
+        "Render one complete physically coherent edge-to-edge scene in a single pass. Subject and environment must share continuous lighting, focus, depth of field, atmosphere and photographic response"
+    )
+    if forbidden_features:
+        # Keep this concise; Qwen also receives the same constraints through a real negative prompt.
+        parts.append("Avoid factual substitutions or misleading structures such as: " + "; ".join(forbidden_features[:6]))
+    if shared_visual_style:
+        parts.append(shared_visual_style)
+
+    parts.append(
+        "Vertical 9:16 composition. No captions, watermarks, UI overlays or unrelated readable text. "
+        "Do not invent or garble branding, labels or markings; if an authentic marking cannot be reproduced reliably, leave it unobtrusive rather than fabricating substitute text"
+    )
+    return ". ".join(part for part in parts if part).strip() + "."
+
+
+def generate_scene_image_plan(
+    video_subject: str,
+    scene_plan: list[dict],
+    app_config=None,
+    reference_inventory: list[dict] | None = None,
+) -> list[dict]:
+    """Create a factual, diverse and reference-aware visual plan before GPU generation."""
+    if not scene_plan:
+        return []
+
+    amount = len(scene_plan)
+    scene_context = []
+    identity_hints: list[str] = []
+    shared_visual_style = _openai_image_shared_visual_style(app_config)
+    reference_inventory = [dict(item) for item in (reference_inventory or []) if isinstance(item, dict)]
+
+    for index, scene in enumerate(scene_plan):
+        narration = str(scene.get("narration", "")).strip()
+        identity_hint = _known_visual_identity_fallback(narration)
+        identity_hints.append(identity_hint)
+        scene_context.append(
+            {
+                "scene": index + 1,
+                "narration": narration,
+                "beat": f"{scene.get('beat', 1)}/{scene.get('beats', 1)}",
+                "duration_seconds": round(float(scene.get("duration", 0) or 0), 2),
+                "known_identity_constraint": identity_hint or None,
+            }
+        )
+
+    inventory_text = json.dumps(reference_inventory, ensure_ascii=False, indent=2) if reference_inventory else "[]"
+    prompt = f"""
+# Role: Documentary Visual Director and Factual Scene Planner
+
+Create a chronological visual plan for AI image generation. The topic can be anything. Do not assume vehicles,
+animals, products, science, history, people or any other fixed subject category. Plan from the narration itself.
+
+## Output
+Return ONLY a valid JSON array containing exactly {amount} objects. Every object MUST contain:
+- "subject": concrete English name of the visible subject in this scene
+- "canonical_subject": stable factual identity shared by scenes that depict the same real subject
+- "route": "standard" or "precision"
+- "scene_description": literal visible content
+- "required_features": 0-7 concrete factual visible traits
+- "forbidden_features": 0-7 likely misleading substitutions/structural errors
+- "environment": narration-grounded environment/background
+- "environment_key": short lowercase semantic family name for that environment
+- "composition": camera position, angle and layout for a vertical image
+- "lighting": realistic lighting
+- "shot_type": one of wide, full, medium, close, detail, macro, context
+- "framing_intent": one of full_subject, medium_subject, detail, context, macro
+- "shot_role": one of establish, identity, detail, context, process, evidence, transition, closing
+- "reference_need": one of none, identity, detail, internal, context
+- "reference_query": short phrase describing what a useful reference should visibly show
+- "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
+
+## Routing
+Use precision only when exact factual appearance materially matters. Use standard for atmosphere, generic context,
+landscapes, broad concepts and shots where a generic rendering is not misleading. A known identity constraint must
+remain precision before later performance budgeting.
+
+## Direction and diversity rules
+1. Visualize the current narration beat, not the whole topic.
+2. Treat the sequence as a documentary/edit, not a product catalogue or nine unrelated hero photos.
+3. Do not repeat the same environment_key more than necessary. For 6+ scenes, normally use at least three
+   meaningful environment families unless continuity genuinely requires otherwise.
+4. Do not use the same shot_type for three consecutive scenes. For 7+ scenes, normally use at least three shot types.
+5. Controlled/studio/plain backgrounds are valid when narratively useful but should not become the default background.
+6. Vary visual function: establishing/context/evidence/detail/process/closing as appropriate to the narration.
+7. Full-subject shots must leave safe margins. Close/detail crops must be intentional and tied to the narrated feature.
+8. References, when supplied later, are identity/evidence sources only; never design a scene around copying their
+   background, pose, crop, lighting or presentation.
+9. Never invent readable captions, fake branding, fake UI or fake documentary evidence.
+10. If narration mentions internal, microscopic, mechanical, anatomical or otherwise hidden detail, request a matching
+    reference_need. If the available manual reference inventory does NOT contain a suitable role, prefer a truthful
+    externally visible or contextual shot that still supports the narration rather than fabricating unsupported detail.
+11. Preserve continuity of canonical_subject across close-ups/details. Do not silently change the real subject identity.
+12. Respect real scale and physical context. No artificial circular/oval viewports, cards, cutouts or collage layouts
+    unless the narration explicitly requires them.
+
+## Manual reference inventory available to this task
+Each item may include role=identity/detail/internal/context/other and an optional user description.
+Use this only to decide whether a requested view is actually supported; filenames are not factual evidence.
+{inventory_text}
+
+## Shared visual language
+{shared_visual_style}
+
+## Video subject
+{video_subject}
+
+## Timed narration scenes
+{json.dumps(scene_context, ensure_ascii=False, indent=2)}
+
+Return exactly {amount} objects and nothing else.
+""".strip()
+
+    response = ""
+    for i in range(_max_retries):
+        try:
+            response = _generate_response(prompt) if app_config is None else _generate_response(prompt, app_config=app_config)
+            if response.startswith("Error: "):
+                logger.error(f"failed to generate structured image scene plan: {response}")
+                return []
+            payload = json.loads(_strip_code_fence(response))
+            if not isinstance(payload, list) or len(payload) != amount:
+                raise ValueError(f"expected {amount} scene objects")
+
+            # Conditional one-shot repair: an LLM text call is cheap compared with wasting GPU
+            # generations on a repetitive catalogue-like plan.
+            issues = _scene_plan_diversity_issues(payload)
+            runtime_config = app_config if app_config is not None else config.app
+            repair_enabled = bool(runtime_config.get("openai_image_scene_diversity_repair_enabled", True))
+            if issues and repair_enabled:
+                repair_prompt = (
+                    prompt
+                    + "\n\n## Draft plan that needs diversity repair\n"
+                    + json.dumps(payload, ensure_ascii=False, indent=2)
+                    + "\n\n## Deterministic QA issues\n- "
+                    + "\n- ".join(issues)
+                    + "\nReturn a corrected JSON array with the same scene count/order/narrative facts. "
+                      "Change only presentation choices needed to fix these issues; do not reduce factual accuracy."
+                )
+                try:
+                    repaired_response = _generate_response(repair_prompt) if app_config is None else _generate_response(repair_prompt, app_config=app_config)
+                    repaired = json.loads(_strip_code_fence(repaired_response))
+                    if isinstance(repaired, list) and len(repaired) == amount:
+                        repaired_issues = _scene_plan_diversity_issues(repaired)
+                        if len(repaired_issues) < len(issues):
+                            logger.info(
+                                "scene-plan diversity repair applied: "
+                                f"issues_before={issues!r}, issues_after={repaired_issues!r}"
+                            )
+                            payload = repaired
+                except Exception as repair_exc:
+                    logger.warning(
+                        "scene-plan diversity repair failed; keeping original valid plan: "
+                        f"{type(repair_exc).__name__}: {repair_exc}"
+                    )
+
+            result: list[dict] = []
+            for index, item in enumerate(payload):
+                if not isinstance(item, dict):
+                    raise ValueError(f"scene {index + 1} is not a JSON object")
+                narration = str(scene_plan[index].get("narration", "")).strip()
+                identity_hint = identity_hints[index]
+                subject = str(item.get("subject") or "").strip()
+                if not subject:
+                    raise ValueError(f"scene {index + 1} has an empty subject")
+                canonical_subject = str(item.get("canonical_subject") or subject).strip() or subject
+                route = _resolve_semantic_image_route(
+                    requested_route=str(item.get("route") or ""),
+                    narration=narration,
+                    identity_hint=identity_hint,
+                    shared_visual_style=shared_visual_style,
+                )
+                required_features = _normalize_visual_feature_list(item.get("required_features"))
+                forbidden_features = _normalize_visual_feature_list(item.get("forbidden_features"))
+                shot_type = _normalize_scene_enum(item.get("shot_type"), _SCENE_SHOT_TYPES, "full")
+                framing_intent = _normalize_scene_enum(item.get("framing_intent"), _SCENE_FRAMING_INTENTS, "full_subject")
+                shot_role = _normalize_scene_enum(item.get("shot_role"), _SCENE_ROLES, "evidence")
+                reference_need = _normalize_scene_enum(item.get("reference_need"), _SCENE_REFERENCE_NEEDS, "identity" if route == "precision" else "none")
+                environment_key = re.sub(r"[^a-z0-9_]+", "_", str(item.get("environment_key") or "context").strip().lower()).strip("_")[:48] or "context"
+                try:
+                    precision_importance = max(0.0, min(1.0, float(item.get("precision_importance", 0.7 if route == "precision" else 0.2))))
+                except (TypeError, ValueError):
+                    precision_importance = 0.7 if route == "precision" else 0.2
+
+                final_prompt = _build_structured_scene_image_prompt(
+                    subject=subject,
+                    route=route,
+                    narration=narration,
+                    scene_description=str(item.get("scene_description") or ""),
+                    required_features=required_features,
+                    forbidden_features=forbidden_features,
+                    environment=str(item.get("environment") or ""),
+                    composition=str(item.get("composition") or ""),
+                    lighting=str(item.get("lighting") or ""),
+                    identity_hint=identity_hint,
+                    shared_visual_style=shared_visual_style,
+                    shot_type=shot_type,
+                    framing_intent=framing_intent,
+                )
+                result.append({
+                    "subject": subject,
+                    "canonical_subject": canonical_subject,
+                    "route": route,
+                    "prompt": final_prompt,
+                    "required_features": required_features,
+                    "forbidden_features": forbidden_features,
+                    "environment": str(item.get("environment") or "").strip(),
+                    "environment_key": environment_key,
+                    "shot_type": shot_type,
+                    "framing_intent": framing_intent,
+                    "shot_role": shot_role,
+                    "reference_need": reference_need,
+                    "reference_query": str(item.get("reference_query") or "").strip(),
+                    "precision_importance": precision_importance,
+                })
+
+            route_counts = {route: sum(1 for item in result if item["route"] == route) for route in {item["route"] for item in result}}
+            logger.success(f"generated {amount} structured timed image scenes, routes={route_counts}")
+            logger.debug("structured timed image scene plan:\n" + json.dumps(result, ensure_ascii=False, indent=2))
+            return result
+        except Exception as e:
+            logger.warning(f"failed to generate structured timed image scene plan: {type(e).__name__}: {e}")
+        if i < _max_retries - 1:
+            logger.warning(f"retrying structured timed image scene plan... {i + 1}")
+    return []
+
+def generate_scene_image_prompts(
+    video_subject: str,
+    scene_plan: list[dict],
+    app_config=None,
+) -> List[str]:
+    """Backward-compatible wrapper returning only prompts from the structured plan."""
+    structured = generate_scene_image_plan(
+        video_subject=video_subject,
+        scene_plan=scene_plan,
+        app_config=app_config,
+    )
+    return [str(item.get("prompt") or "") for item in structured if item.get("prompt")]
 
 def _resolve_social_platform(platform: str | None) -> str:
     value = (platform or "").strip().lower()
