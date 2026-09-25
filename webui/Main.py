@@ -611,6 +611,22 @@ def _precision_reference_upload_limit() -> int:
     return max(1, min(value, 20))
 
 
+def _deduplicate_uploaded_precision_references(uploaded_files):
+    """Keep the first byte-identical upload and report later duplicates."""
+    unique = []
+    duplicate_names = []
+    seen: dict[str, str] = {}
+    for uploaded_file in list(uploaded_files or []):
+        digest = hashlib.sha256(bytes(uploaded_file.getbuffer())).hexdigest()
+        name = os.path.basename(str(uploaded_file.name or "reference"))
+        if digest in seen:
+            duplicate_names.append(f"{name} = {seen[digest]}")
+            continue
+        seen[digest] = name
+        unique.append(uploaded_file)
+    return unique, duplicate_names
+
+
 def _save_manual_precision_references(
     task_id: str,
     uploaded_reference_files,
@@ -5161,9 +5177,22 @@ def _render_video_settings(panel, params):
                         "References can cover the whole identity, a detail, internal/anatomical/mechanical structure, or context."
                     ),
                 ) or []
+                uploaded_precision_references, duplicate_reference_names = (
+                    _deduplicate_uploaded_precision_references(
+                        uploaded_precision_references
+                    )
+                )
+                if duplicate_reference_names:
+                    st.warning(
+                        "Exact duplicate reference image(s) were ignored: "
+                        + ", ".join(duplicate_reference_names[:6])
+                        + ("…" if len(duplicate_reference_names) > 6 else "")
+                    )
                 upload_limit = _precision_reference_upload_limit()
                 if len(uploaded_precision_references) > upload_limit:
-                    st.warning(f"Only the first {upload_limit} reference images will be stored for this task.")
+                    st.warning(
+                        f"Only the first {upload_limit} unique reference images will be stored for this task."
+                    )
                     uploaded_precision_references = uploaded_precision_references[:upload_limit]
                 if uploaded_precision_references:
                     role_options = ["identity", "detail", "internal", "context", "other"]
