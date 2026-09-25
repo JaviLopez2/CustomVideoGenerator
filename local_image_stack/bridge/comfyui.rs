@@ -510,8 +510,8 @@ async fn create_json_payload(
                             // MPT_QWEN21_MULTI_REFERENCE_PATCH:
                             // Subject Reference 1 -> reference_image
                             // Subject Reference N -> reference_image_N (N = 2..10)
-                            // Missing extra subject references fall back to reference_image so
-                            // a single-reference caller never leaks the workflow's saved demo image.
+                            // Missing extra subject references stay absent; TextEncodeQwenImage21
+                            // disconnects their workflow slots so saved demo images cannot leak.
                             // Style Reference -> style_reference_image (legacy compatibility).
                             "LoadImage" => {
                                 let node_title = node_data["_meta"]["title"]
@@ -540,17 +540,8 @@ async fn create_json_payload(
                                         .get(&request_field)
                                         .and_then(|v| v.as_str())
                                         .filter(|value| !value.trim().is_empty());
-                                    let fallback_reference = if request_field.starts_with("reference_image_") {
-                                        openai_request
-                                            .get("reference_image")
-                                            .and_then(|v| v.as_str())
-                                            .filter(|value| !value.trim().is_empty())
-                                    } else {
-                                        None
-                                    };
 
-                                    if let Some(reference_image) =
-                                        specific_reference.or(fallback_reference)
+                                    if let Some(reference_image) = specific_reference
                                     {
                                         inputs_data_image.insert(
                                             "image".to_string(),
@@ -566,6 +557,25 @@ async fn create_json_payload(
                             // Qwen-Image 2.1 edit prompt node.
                             "TextEncodeQwenImage21" => {
                                 if let Some(inputs_data) = node_data["inputs"].as_object_mut() {
+                                    // The checked-in Qwen workflow has three reference slots.
+                                    // Remove any slot that the caller did not actually provide so
+                                    // saved demo images (or duplicated ref1 fallbacks) cannot leak
+                                    // into conditioning.
+                                    for (input_name, request_name) in [
+                                        ("images.image_1", "reference_image"),
+                                        ("images.image_2", "reference_image_2"),
+                                        ("images.image_3", "reference_image_3"),
+                                    ] {
+                                        let has_reference = openai_request
+                                            .get(request_name)
+                                            .and_then(|v| v.as_str())
+                                            .map(|value| !value.trim().is_empty())
+                                            .unwrap_or(false);
+                                        if !has_reference {
+                                            inputs_data.remove(input_name);
+                                        }
+                                    }
+
                                     if let Some(prompt_input) =
                                         openai_request.get("prompt").and_then(|v| v.as_str())
                                     {
