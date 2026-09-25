@@ -1917,6 +1917,7 @@ Return exactly {amount} objects and nothing else.
                     )
 
             result: list[dict] = []
+            continuity_registry: dict[str, dict[str, str]] = {}
             for index, item in enumerate(payload):
                 if not isinstance(item, dict):
                     raise ValueError(f"scene {index + 1} is not a JSON object")
@@ -2001,6 +2002,24 @@ Return exactly {amount} objects and nothing else.
                 continuity_description = " ".join(
                     str(item.get("continuity_description") or "").strip().split()
                 )
+                if continuity_key != "none":
+                    if not continuity_description:
+                        continuity_description = canonical_subject or subject
+                    existing_continuity = continuity_registry.get(continuity_key)
+                    if existing_continuity is None:
+                        continuity_registry[continuity_key] = {
+                            "description": continuity_description,
+                            "canonical_subject": canonical_subject,
+                        }
+                    else:
+                        if continuity_description != existing_continuity["description"]:
+                            logger.warning(
+                                "scene-plan continuity gate normalized changing content description: "
+                                f"scene={index + 1}, continuity_key={continuity_key!r}"
+                            )
+                        continuity_description = existing_continuity["description"]
+                        if existing_continuity.get("canonical_subject"):
+                            canonical_subject = existing_continuity["canonical_subject"]
                 scene_description = str(item.get("scene_description") or "").strip()
                 if continuity_key != "none" and continuity_description:
                     scene_description = (
