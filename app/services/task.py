@@ -1124,6 +1124,9 @@ def get_video_materials(
     openai_image_scene_reference_queries: list[str] | None = None,
     openai_image_scene_evidence_scopes: list[str] | None = None,
     openai_image_scene_reference_critical: list[bool] | None = None,
+    openai_image_scene_includes_primary_subject: list[bool] | None = None,
+    openai_image_scene_continuity_keys: list[str] | None = None,
+    openai_image_scene_continuity_descriptions: list[str] | None = None,
     openai_image_scene_coverage_statuses: list[str] | None = None,
     openai_image_scene_coverage_reasons: list[str] | None = None,
     openai_image_scene_composition_keys: list[str] | None = None,
@@ -1243,6 +1246,9 @@ def get_video_materials(
                 scene_reference_queries=openai_image_scene_reference_queries,
                 scene_evidence_scopes=openai_image_scene_evidence_scopes,
                 scene_reference_critical=openai_image_scene_reference_critical,
+                scene_includes_primary_subject=openai_image_scene_includes_primary_subject,
+                scene_continuity_keys=openai_image_scene_continuity_keys,
+                scene_continuity_descriptions=openai_image_scene_continuity_descriptions,
                 scene_coverage_statuses=openai_image_scene_coverage_statuses,
                 scene_coverage_reasons=openai_image_scene_coverage_reasons,
                 scene_composition_keys=openai_image_scene_composition_keys,
@@ -1953,6 +1959,9 @@ def _run_pipeline(
     openai_image_scene_reference_queries = None
     openai_image_scene_evidence_scopes = None
     openai_image_scene_reference_critical = None
+    openai_image_scene_includes_primary_subject = None
+    openai_image_scene_continuity_keys = None
+    openai_image_scene_continuity_descriptions = None
     openai_image_scene_coverage_statuses = None
     openai_image_scene_coverage_reasons = None
     openai_image_scene_composition_keys = None
@@ -2128,6 +2137,18 @@ def _run_pipeline(
                 bool(scene.get("reference_critical"))
                 for scene in structured_image_plan
             ]
+            openai_image_scene_includes_primary_subject = [
+                bool(scene.get("includes_primary_subject"))
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_continuity_keys = [
+                str(scene.get("continuity_key") or "none").strip().lower()
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_continuity_descriptions = [
+                str(scene.get("continuity_description") or "").strip()
+                for scene in structured_image_plan
+            ]
             openai_image_scene_coverage_statuses = [
                 str(scene.get("coverage_status") or "unknown").strip().lower()
                 for scene in structured_image_plan
@@ -2195,6 +2216,9 @@ def _run_pipeline(
             openai_image_scene_reference_queries = [""] * scene_count
             openai_image_scene_evidence_scopes = ["contextual"] * scene_count
             openai_image_scene_reference_critical = [False] * scene_count
+            openai_image_scene_includes_primary_subject = [False] * scene_count
+            openai_image_scene_continuity_keys = ["none"] * scene_count
+            openai_image_scene_continuity_descriptions = [""] * scene_count
             openai_image_scene_coverage_statuses = ["unknown"] * scene_count
             openai_image_scene_coverage_reasons = [""] * scene_count
             openai_image_scene_composition_keys = [""] * scene_count
@@ -2248,6 +2272,9 @@ def _run_pipeline(
             ("reference-query", openai_image_scene_reference_queries),
             ("evidence-scope", openai_image_scene_evidence_scopes),
             ("reference-critical", openai_image_scene_reference_critical),
+            ("includes-primary-subject", openai_image_scene_includes_primary_subject),
+            ("continuity-key", openai_image_scene_continuity_keys),
+            ("continuity-description", openai_image_scene_continuity_descriptions),
             ("coverage-status", openai_image_scene_coverage_statuses),
             ("coverage-reason", openai_image_scene_coverage_reasons),
             ("composition-key", openai_image_scene_composition_keys),
@@ -2292,6 +2319,9 @@ def _run_pipeline(
         openai_image_scene_reference_queries=openai_image_scene_reference_queries,
         openai_image_scene_evidence_scopes=openai_image_scene_evidence_scopes,
         openai_image_scene_reference_critical=openai_image_scene_reference_critical,
+        openai_image_scene_includes_primary_subject=openai_image_scene_includes_primary_subject,
+        openai_image_scene_continuity_keys=openai_image_scene_continuity_keys,
+        openai_image_scene_continuity_descriptions=openai_image_scene_continuity_descriptions,
         openai_image_scene_coverage_statuses=openai_image_scene_coverage_statuses,
         openai_image_scene_coverage_reasons=openai_image_scene_coverage_reasons,
         openai_image_scene_composition_keys=openai_image_scene_composition_keys,
