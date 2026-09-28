@@ -5215,10 +5215,25 @@ def _render_video_settings(panel, params):
                                 format_func=lambda value, labels=role_labels: labels[value],
                             )
                             description = st.text_input(
-                                f"What does reference {ref_index} show? (optional)",
+                                (
+                                    f"What does reference {ref_index} show? "
+                                    + (
+                                        "(required for factual coverage)"
+                                        if role in {"detail", "internal", "context"}
+                                        else "(optional)"
+                                    )
+                                ),
                                 key=f"precision_reference_description_{ref_index}_{ref_name}",
-                                placeholder="e.g. full subject, underside detail, internal structure, habitat/context...",
+                                placeholder="e.g. front control buttons, rear roller assembly, internal gear train, natural habitat...",
+                                help=(
+                                    "MPT uses the description as factual evidence for Detail/Internal/Context roles. "
+                                    "A specialized reference without a description can still be stored, but it will not prove an unrelated specialized scene."
+                                ),
                             )
+                            if role in {"detail", "internal", "context"} and not str(description or "").strip():
+                                st.caption(
+                                    "Add a short factual description if you want this specialized reference to satisfy scene evidence checks."
+                                )
                             anchor = False
                             if role == "identity":
                                 anchor = st.checkbox(
