@@ -476,6 +476,238 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertIn("never invent exact mechanisms", prompt.lower())
         self.assertIn("plausible-sounding specificity", prompt.lower())
 
+    def test_specialized_detail_requires_semantic_match_not_role_presence_only(self):
+        inventory = [
+            {"slot": 1, "role": "identity", "description": "whole device"},
+            {"slot": 2, "role": "detail", "description": "front control buttons and lens ring"},
+        ]
+
+        status, reason = llm._scene_reference_coverage(
+            {
+                "reference_need": "detail",
+                "reference_target": "primary_subject",
+                "reference_query": "rear roller assembly and pressure plate",
+                "evidence_scope": "specialized_visible",
+                "reference_critical": True,
+            },
+            inventory,
+        )
+
+        self.assertEqual(status, "unsupported")
+        self.assertIn("none of their user descriptions", reason)
+
+    def test_specialized_detail_is_covered_when_user_description_matches_query(self):
+        inventory = [
+            {"slot": 1, "role": "identity", "description": "whole device"},
+            {"slot": 2, "role": "detail", "description": "rear roller assembly and pressure plate"},
+        ]
+
+        status, reason = llm._scene_reference_coverage(
+            {
+                "reference_need": "detail",
+                "reference_target": "primary_subject",
+                "reference_query": "roller assembly pressure plate close view",
+                "evidence_scope": "specialized_visible",
+                "reference_critical": True,
+            },
+            inventory,
+        )
+
+        self.assertEqual(status, "covered")
+        self.assertIn("semantically matches", reason)
+
+    def test_primary_identity_relation_guard_reclassifies_non_primary_output(self):
+        rows = llm._normalize_scene_identity_and_continuity(
+            [
+                {
+                    "subject": "Example Model X",
+                    "canonical_subject": "Example Model X",
+                    "route": "precision",
+                    "reference_need": "identity",
+                    "reference_target": "primary_subject",
+                    "reference_query": "Example Model X whole body",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": True,
+                    "shot_role": "identity",
+                    "continuity_key": "none",
+                },
+                {
+                    "subject": "finished produced photograph",
+                    "canonical_subject": "developed photograph",
+                    "route": "precision",
+                    "reference_need": "identity",
+                    "reference_target": "primary_subject",
+                    "reference_query": "finished output",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": False,
+                    "shot_role": "closing",
+                    "continuity_key": "none",
+                },
+            ]
+        )
+
+        self.assertEqual(rows[0]["reference_target"], "primary_subject")
+        self.assertTrue(rows[0]["includes_primary_subject"])
+        self.assertEqual(rows[1]["reference_target"], "secondary_subject")
+        self.assertEqual(rows[1]["reference_need"], "none")
+        self.assertEqual(rows[1]["route"], "standard")
+        self.assertEqual(
+            rows[1]["identity_relation_guard"],
+            "reclassified_non_primary",
+        )
+
+    def test_temporal_non_primary_stages_get_inferred_continuity_chain(self):
+        rows = llm._normalize_scene_identity_and_continuity(
+            [
+                {
+                    "subject": "Example Model X",
+                    "canonical_subject": "Example Model X",
+                    "route": "precision",
+                    "reference_need": "identity",
+                    "reference_target": "primary_subject",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": True,
+                    "shot_role": "identity",
+                    "continuity_key": "none",
+                },
+                {
+                    "subject": "developing print",
+                    "canonical_subject": "instant print development",
+                    "route": "standard",
+                    "reference_need": "none",
+                    "reference_target": "output",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": False,
+                    "shot_role": "process",
+                    "scene_description": "initial stage of the same print developing",
+                    "continuity_key": "none",
+                },
+                {
+                    "subject": "print development",
+                    "canonical_subject": "instant print developing",
+                    "route": "standard",
+                    "reference_need": "none",
+                    "reference_target": "output",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": False,
+                    "shot_role": "process",
+                    "scene_description": "mid-development stage with details emerging",
+                    "continuity_key": "none",
+                },
+                {
+                    "subject": "developed print",
+                    "canonical_subject": "finished print developed",
+                    "route": "standard",
+                    "reference_need": "none",
+                    "reference_target": "output",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": False,
+                    "shot_role": "closing",
+                    "scene_description": "final developed stage",
+                    "continuity_key": "none",
+                },
+            ]
+        )
+
+        keys = [rows[index]["continuity_key"] for index in (1, 2, 3)]
+        self.assertNotEqual(keys[0], "none")
+        self.assertEqual(keys[0], keys[1])
+        self.assertEqual(keys[1], keys[2])
+        self.assertEqual(
+            rows[1]["continuity_description"],
+            rows[3]["continuity_description"],
+        )
+
+    def test_primary_identity_request_is_hard_locked_to_precision(self):
+        draft = [
+            {
+                "subject": "Example Model X",
+                "canonical_subject": "Example Model X",
+                "route": "standard",
+                "scene_description": "whole product on a table",
+                "required_features": [],
+                "forbidden_features": [],
+                "environment": "table",
+                "environment_key": "table",
+                "composition": "three quarter view",
+                "composition_key": "threequarter",
+                "lighting": "soft daylight",
+                "shot_type": "full",
+                "framing_intent": "full_subject",
+                "shot_role": "identity",
+                "reference_need": "identity",
+                "reference_target": "primary_subject",
+                "reference_query": "Example Model X whole body",
+                "evidence_scope": "externally_visible",
+                "reference_critical": False,
+                "includes_primary_subject": True,
+                "safe_visual_alternative": "whole product on a table",
+                "continuity_key": "none",
+                "continuity_description": "",
+                "precision_importance": 0.6,
+            }
+        ]
+        scene_plan = [
+            {
+                "narration": "This is the Example Model X.",
+                "beat": 1,
+                "beats": 1,
+                "duration": 5.0,
+            }
+        ]
+
+        with patch.object(
+            llm,
+            "_generate_response",
+            side_effect=[json.dumps(draft), json.dumps(draft)],
+        ):
+            result = llm.generate_scene_image_plan(
+                "Example Model X",
+                scene_plan,
+                reference_inventory=[
+                    {"slot": 1, "role": "identity", "description": "whole Example Model X"}
+                ],
+                precision_budget_ratio=1.0,
+            )
+
+        self.assertEqual(result[0]["route"], "precision")
+        self.assertTrue(result[0]["reference_critical"])
+        self.assertTrue(result[0]["includes_primary_subject"])
+
+    def test_qwen_continuity_reference_is_authoritative_previous_stage(self):
+        prompt = material._qwen_precision_prompt_with_references(
+            "make the image slightly more developed",
+            "the same output",
+            1,
+            reference_info={
+                "reference_pack": [
+                    {
+                        "role": "continuity",
+                        "description": "same physical output at the previous stage",
+                    }
+                ],
+                "reference_selection": {
+                    "selected_references": [
+                        {
+                            "kind": "continuity_anchor",
+                            "role": "continuity",
+                        }
+                    ]
+                },
+            },
+        )
+
+        prompt_lower = prompt.lower()
+        self.assertIn("authoritative previous-stage image", prompt_lower)
+        self.assertIn("same physical instance/content", prompt_lower)
+        self.assertIn("changing only the state/progression", prompt_lower)
+
+    def test_continuity_edit_chain_enabled_by_default(self):
+        config.app.pop("openai_image_continuity_edit_chain_enabled", None)
+        self.assertTrue(material._continuity_edit_chain_enabled())
+        config.app["openai_image_continuity_edit_chain_enabled"] = "false"
+        self.assertFalse(material._continuity_edit_chain_enabled())
+
     def test_preflight_limits_reference_critical_to_precision_budget(self):
         scenes = []
         for index in range(4):
