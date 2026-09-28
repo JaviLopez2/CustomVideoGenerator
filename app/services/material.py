@@ -336,6 +336,10 @@ def _precision_diagnostics_scene_record(
     reference_query: str = "",
     evidence_scope: str = "",
     reference_critical: bool = False,
+    includes_primary_subject: bool = False,
+    continuity_key: str = "",
+    continuity_description: str = "",
+    continuity_source_scene: int | None = None,
     coverage_status: str = "",
     coverage_reason: str = "",
     composition_key: str = "",
@@ -361,6 +365,10 @@ def _precision_diagnostics_scene_record(
         "reference_query": str(reference_query or ""),
         "evidence_scope": str(evidence_scope or ""),
         "reference_critical": bool(reference_critical),
+        "includes_primary_subject": bool(includes_primary_subject),
+        "continuity_key": str(continuity_key or "none"),
+        "continuity_description": str(continuity_description or ""),
+        "continuity_source_scene": continuity_source_scene,
         "coverage_status": str(coverage_status or ""),
         "coverage_reason": str(coverage_reason or ""),
         "composition_key": str(composition_key or ""),
@@ -4529,7 +4537,13 @@ def _qwen_precision_prompt_with_references(
         kind = str(selection.get("kind") or "").strip().lower()
         description = str(item.get("description") or "").strip()
 
-        if kind == "identity_anchor":
+        if kind == "continuity_anchor" or role == "continuity":
+            purpose = (
+                "the authoritative previous-stage image of the exact same physical instance/content; "
+                "preserve its underlying depicted content, object identity, geometry, border/orientation and defining details, "
+                "changing only the state/progression explicitly requested by this scene"
+            )
+        elif kind == "identity_anchor":
             purpose = (
                 f"the authoritative whole-subject identity anchor for {subject}; "
                 "use it for overall identity, silhouette, proportions and stable geometry"
@@ -4581,7 +4595,8 @@ def _qwen_precision_prompt_with_references(
     )
     return (
         f"Reference evidence: {role_text}. "
-        f"The target factual subject is {subject}. Treat the identity reference as the authority for identity instead of reconstructing identity from descriptive text. "
+        f"The target factual subject is {subject}. Treat authoritative identity and continuity references as stronger evidence than descriptive text for traits they visibly establish. "
+        "A continuity reference is the same physical instance/content at an earlier stage: preserve its underlying content and identity unless the scene explicitly requests a real state change. "
         "Use scene-specific and complementary references only for the facts they visibly establish. "
         "If text and a supplied identity reference describe the same identity trait differently, preserve the visible reference identity unless the scene explicitly requests a real transformation. "
         "Never force a detail/context reference to redefine the whole subject. Do not inherit any reference background, crop, camera angle, pose, "
@@ -6779,6 +6794,9 @@ def _download_videos_openai_image_on_demand(
     scene_reference_queries: list[str] | None = None,
     scene_evidence_scopes: list[str] | None = None,
     scene_reference_critical: list[bool] | None = None,
+    scene_includes_primary_subject: list[bool] | None = None,
+    scene_continuity_keys: list[str] | None = None,
+    scene_continuity_descriptions: list[str] | None = None,
     scene_coverage_statuses: list[str] | None = None,
     scene_coverage_reasons: list[str] | None = None,
     scene_composition_keys: list[str] | None = None,
@@ -6867,6 +6885,9 @@ def _download_videos_openai_image_on_demand(
         ("reference-queries", scene_reference_queries),
         ("evidence-scopes", scene_evidence_scopes),
         ("reference-critical", scene_reference_critical),
+        ("includes-primary-subject", scene_includes_primary_subject),
+        ("continuity-keys", scene_continuity_keys),
+        ("continuity-descriptions", scene_continuity_descriptions),
         ("coverage-statuses", scene_coverage_statuses),
         ("coverage-reasons", scene_coverage_reasons),
         ("composition-keys", scene_composition_keys),
@@ -6889,6 +6910,8 @@ def _download_videos_openai_image_on_demand(
     manual_reference_pack_cache: tuple[list[str], dict[str, Any]] | None = None
     latest_standard_style_profile: dict[str, tuple[float, float, float]] | None = None
     recent_generated_scene_visuals: list[dict[str, Any]] = []
+    continuity_latest_images: dict[str, str] = {}
+    continuity_latest_scenes: dict[str, int] = {}
     for scene_index, search_term in enumerate(search_terms):
         if semantic_timing:
             try:
@@ -6991,6 +7014,95 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_reference_critical)
             else False
         )
+        includes_primary_subject = bool(
+            scene_includes_primary_subject[scene_index]
+            if scene_includes_primary_subject is not None
+            and scene_index < len(scene_includes_primary_subject)
+            else reference_target == "primary_subject"
+        )
+        continuity_key = (
+            str(scene_continuity_keys[scene_index] or "none").strip().lower()
+            if scene_continuity_keys is not None
+            and scene_index < len(scene_continuity_keys)
+            else "none"
+        )
+        continuity_description = (
+            str(scene_continuity_descriptions[scene_index] or "").strip()
+            if scene_continuity_descriptions is not None
+            and scene_index < len(scene_continuity_descriptions)
+            else ""
+        )
+        continuity_chain_enabled = _coerce_bool_config(
+            config.app.get("openai_image_continuity_edit_chain_enabled", True),
+            True,
+        )
+        continuity_source_path = (
+            continuity_latest_images.get(continuity_key, "")
+            if continuity_chain_enabled and continuity_key not in {"", "none"}
+            else ""
+        )
+        continuity_source_scene = (
+            continuity_latest_scenes.get(continuity_key)
+            if continuity_source_path
+            else None
+        )
+        continuity_reference_ready = False
+        if continuity_source_path:
+            comfyui_name = _upload_reference_to_comfyui(continuity_source_path)
+            if comfyui_name:
+                reference_image = comfyui_name
+                reference_images = [comfyui_name]
+                reference_info = {
+                    "provider": "generated_continuity",
+                    "subject": reference_subject,
+                    "title": "previous continuity stage",
+                    "license": "generated-in-task",
+                    "query": continuity_description or reference_subject,
+                    "manual_reference_mode": "continuity_chain",
+                    "comfyui_input": comfyui_name,
+                    "local_path": continuity_source_path,
+                    "original_local_path": continuity_source_path,
+                    "reference_pack": [
+                        {
+                            "slot": 1,
+                            "local_file": Path(continuity_source_path).name,
+                            "original_file": Path(continuity_source_path).name,
+                            "role": "continuity",
+                            "description": continuity_description or None,
+                            "anchor": True,
+                            "comfyui_input": comfyui_name,
+                        }
+                    ],
+                    "reference_selection": {
+                        "status": "continuity_edit_chain",
+                        "selected_count": 1,
+                        "selected_references": [
+                            {
+                                "kind": "continuity_anchor",
+                                "slot": 1,
+                                "file": Path(continuity_source_path).name,
+                                "role": "continuity",
+                                "score": 100.0,
+                            }
+                        ],
+                        "selection_strategy": "previous accepted stage is the authoritative continuity anchor",
+                    },
+                }
+                route = "precision"
+                scene_model, precision_fallback = _openai_image_model_for_route("precision")
+                routing_reason = "continuity_edit_chain"
+                continuity_reference_ready = True
+                logger.info(
+                    "continuity edit chain activated: "
+                    f"scene={scene_index + 1}, key={continuity_key!r}, "
+                    f"source_scene={continuity_source_scene}, source={Path(continuity_source_path).name!r}"
+                )
+            else:
+                logger.warning(
+                    "continuity source could not be uploaded to ComfyUI; keeping planned route: "
+                    f"scene={scene_index + 1}, key={continuity_key!r}"
+                )
+
         coverage_status = (
             str(scene_coverage_statuses[scene_index] or "unknown").strip().lower()
             if scene_coverage_statuses is not None
@@ -7042,7 +7154,11 @@ def _download_videos_openai_image_on_demand(
             else "full_subject"
         )
 
-        if route == "precision" and reference_target != "primary_subject":
+        if (
+            route == "precision"
+            and reference_target != "primary_subject"
+            and not continuity_reference_ready
+        ):
             logger.warning(
                 "precision route suppressed because the current manual identity pack does not target "
                 f"reference_target={reference_target!r}; scene={scene_index + 1}"
@@ -7064,6 +7180,10 @@ def _download_videos_openai_image_on_demand(
                 "reference_query": reference_query,
                 "evidence_scope": evidence_scope,
                 "reference_critical": reference_critical,
+                "includes_primary_subject": includes_primary_subject,
+                "continuity_key": continuity_key,
+                "continuity_description": continuity_description,
+                "continuity_source_scene": continuity_source_scene,
                 "coverage_status": coverage_status,
                 "coverage_reason": coverage_reason,
                 "composition_key": composition_key,
@@ -7081,7 +7201,9 @@ def _download_videos_openai_image_on_demand(
                 material_directory
             )
             use_manual_pack = bool(
-                manual_entries and manual_mode in {"user_first", "user_only"}
+                manual_entries
+                and manual_mode in {"user_first", "user_only"}
+                and not continuity_reference_ready
             )
 
             if use_manual_pack:
@@ -7126,6 +7248,62 @@ def _download_videos_openai_image_on_demand(
                             "specialized reference coverage unavailable; prompt constrained against fabrication: "
                             f"scene={scene_index + 1}, need={reference_need!r}, roles={sorted(selected_roles)!r}"
                         )
+
+            if (
+                continuity_reference_ready
+                and includes_primary_subject
+                and manual_entries
+                and manual_mode in {"user_first", "user_only"}
+                and len(reference_images) < 3
+            ):
+                if manual_reference_pack_cache is None:
+                    manual_reference_pack_cache = _prepare_manual_precision_reference_pack(
+                        reference_subject,
+                        material_directory,
+                    )
+                cached_images, cached_info = manual_reference_pack_cache
+                identity_images, identity_info = _select_manual_references_for_scene(
+                    list(cached_images or []),
+                    dict(cached_info or {}),
+                    "identity",
+                    reference_subject,
+                    reference_target="primary_subject",
+                    max_refs=1,
+                )
+                if identity_images:
+                    identity_input = identity_images[0]
+                    if identity_input not in reference_images:
+                        reference_images.append(identity_input)
+                    combined_pack = list((reference_info or {}).get("reference_pack") or [])
+                    identity_pack = list((identity_info or {}).get("reference_pack") or [])
+                    if identity_pack:
+                        combined_pack.append(identity_pack[0])
+                    combined_rows = list(
+                        ((reference_info or {}).get("reference_selection") or {}).get(
+                            "selected_references"
+                        )
+                        or []
+                    )
+                    identity_rows = list(
+                        ((identity_info or {}).get("reference_selection") or {}).get(
+                            "selected_references"
+                        )
+                        or []
+                    )
+                    if identity_rows:
+                        identity_row = dict(identity_rows[0])
+                        identity_row["kind"] = "identity_anchor"
+                        combined_rows.append(identity_row)
+                    reference_info["reference_pack"] = combined_pack
+                    reference_info["reference_selection"]["selected_references"] = combined_rows
+                    reference_info["reference_selection"]["selected_count"] = len(reference_images)
+                    reference_info["reference_selection"]["selection_strategy"] = (
+                        "previous continuity stage + primary identity anchor"
+                    )
+                    logger.info(
+                        "continuity scene also includes the primary subject; appended stable identity anchor: "
+                        f"scene={scene_index + 1}, refs={len(reference_images)}"
+                    )
 
             if not reference_images and manual_mode != "user_only":
                 cache_key = _normalized_reference_subject(reference_subject).lower()
@@ -7211,6 +7389,10 @@ def _download_videos_openai_image_on_demand(
                 reference_query=reference_query,
                 evidence_scope=evidence_scope,
                 reference_critical=reference_critical,
+                includes_primary_subject=includes_primary_subject,
+                continuity_key=continuity_key,
+                continuity_description=continuity_description,
+                continuity_source_scene=continuity_source_scene,
                 coverage_status=coverage_status,
                 coverage_reason=coverage_reason,
                 composition_key=composition_key,
@@ -7639,6 +7821,23 @@ def _download_videos_openai_image_on_demand(
                 )
             _precision_diagnostics_persist(task_id, precision_diagnostics)
 
+            if continuity_key not in {"", "none"}:
+                continuity_latest_images[continuity_key] = items[0].url
+                continuity_latest_scenes[continuity_key] = scene_index + 1
+                if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
+                    precision_diagnostics["plan_scenes"][scene_index][
+                        "continuity_output_file"
+                    ] = Path(items[0].url).name
+                if precision_scene_diagnostic is not None:
+                    precision_scene_diagnostic["continuity_output_file"] = Path(
+                        items[0].url
+                    ).name
+                logger.info(
+                    "continuity stage accepted and registered: "
+                    f"scene={scene_index + 1}, key={continuity_key!r}, "
+                    f"image={Path(items[0].url).name!r}"
+                )
+
             accepted_hash = _image_dhash64(items[0].url)
             recent_generated_scene_visuals.append(
                 {
@@ -7857,6 +8056,9 @@ def download_videos(
     scene_reference_queries: list[str] | None = None,
     scene_evidence_scopes: list[str] | None = None,
     scene_reference_critical: list[bool] | None = None,
+    scene_includes_primary_subject: list[bool] | None = None,
+    scene_continuity_keys: list[str] | None = None,
+    scene_continuity_descriptions: list[str] | None = None,
     scene_coverage_statuses: list[str] | None = None,
     scene_coverage_reasons: list[str] | None = None,
     scene_composition_keys: list[str] | None = None,
@@ -7964,6 +8166,9 @@ def download_videos(
             scene_reference_queries=scene_reference_queries,
             scene_evidence_scopes=scene_evidence_scopes,
             scene_reference_critical=scene_reference_critical,
+            scene_includes_primary_subject=scene_includes_primary_subject,
+            scene_continuity_keys=scene_continuity_keys,
+            scene_continuity_descriptions=scene_continuity_descriptions,
             scene_coverage_statuses=scene_coverage_statuses,
             scene_coverage_reasons=scene_coverage_reasons,
             scene_composition_keys=scene_composition_keys,
