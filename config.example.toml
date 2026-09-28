@@ -208,6 +208,14 @@ openai_image_manual_reference_max_images = 12
 # causes are not mislabeled as directly visible. Any unsupported scene that remains
 # after the audit is hard-sanitized to an external/contextual fallback before GPU use.
 openai_image_scene_factual_audit_enabled = true
+# When the manual reference pack establishes a real primary subject, any scene
+# that claims whole-subject identity is forced through Precision rather than
+# allowing the performance budget to swap in an unrelated generic substitute.
+openai_image_primary_identity_lock_enabled = true
+# Temporal stages of the same physical output/object reuse the previously
+# accepted generated image as the first Qwen reference. This is a sequential
+# edit chain, not a second independent text-to-image generation.
+openai_image_continuity_edit_chain_enabled = true
 # Legacy alias retained for older local configs; the new key takes precedence.
 openai_image_scene_diversity_repair_enabled = true
 
