@@ -2716,6 +2716,13 @@ def _precision_retry_on_true_failure_enabled() -> bool:
     return bool(value)
 
 
+def _continuity_edit_chain_enabled() -> bool:
+    value = config.app.get("openai_image_continuity_edit_chain_enabled", True)
+    if isinstance(value, str):
+        return value.strip().lower() not in {"0", "false", "no", "off"}
+    return bool(value)
+
+
 def _qwen_request_seed() -> int:
     """Return a reproducible debug seed when configured, otherwise a fresh local seed."""
     configured = config.app.get("openai_image_qwen_debug_seed")
@@ -7032,10 +7039,7 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_continuity_descriptions)
             else ""
         )
-        continuity_chain_enabled = _coerce_bool_config(
-            config.app.get("openai_image_continuity_edit_chain_enabled", True),
-            True,
-        )
+        continuity_chain_enabled = _continuity_edit_chain_enabled()
         continuity_source_path = (
             continuity_latest_images.get(continuity_key, "")
             if continuity_chain_enabled and continuity_key not in {"", "none"}
@@ -7127,6 +7131,8 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_routing_reasons)
             else ""
         )
+        if continuity_reference_ready:
+            routing_reason = "continuity_edit_chain"
         planner_validation = (
             str(scene_planner_validation[scene_index] or "pass").strip().lower()
             if scene_planner_validation is not None
