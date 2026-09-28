@@ -1698,7 +1698,7 @@ def _scene_reference_coverage(
             required_role = "context"
         else:
             required_role = "detail"
-    elif scope == "externally_visible" and critical:
+    elif scope == "externally_visible" and (critical or need == "identity"):
         required_role = "identity"
     elif scope == "contextual" and need == "context":
         required_role = "context"
