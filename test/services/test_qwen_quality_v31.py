@@ -496,6 +496,24 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertEqual(status, "unsupported")
         self.assertIn("none of their user descriptions", reason)
 
+    def test_specialized_detail_without_description_is_not_factual_coverage(self):
+        status, reason = llm._scene_reference_coverage(
+            {
+                "reference_need": "detail",
+                "reference_target": "primary_subject",
+                "reference_query": "rear roller assembly",
+                "evidence_scope": "specialized_visible",
+                "reference_critical": True,
+            },
+            [
+                {"slot": 1, "role": "identity", "description": ""},
+                {"slot": 2, "role": "detail", "description": ""},
+            ],
+        )
+
+        self.assertEqual(status, "unsupported")
+        self.assertIn("no user description", reason)
+
     def test_specialized_detail_is_covered_when_user_description_matches_query(self):
         inventory = [
             {"slot": 1, "role": "identity", "description": "whole device"},
