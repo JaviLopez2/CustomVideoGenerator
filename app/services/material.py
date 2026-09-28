@@ -6827,7 +6827,7 @@ def _download_videos_openai_image_on_demand(
     total_duration = 0.0
 
     precision_diagnostics: dict[str, Any] = {
-        "schema_version": 2,
+        "schema_version": 3,
         "task_id": str(task_id),
         "status": "running",
         "scene_count": len(search_terms),
