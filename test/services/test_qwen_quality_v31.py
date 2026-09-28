@@ -304,8 +304,11 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertEqual(result[0]["route"], "standard")
         self.assertEqual(result[0]["reference_need"], "none")
         self.assertEqual(result[0]["reference_target"], "none")
-        self.assertNotIn("cutaway", result[0]["prompt"].lower())
-        self.assertNotIn("internal component", result[0]["prompt"].lower())
+        prompt_lower = result[0]["prompt"].lower()
+        self.assertNotIn("cutaway view inside", prompt_lower)
+        self.assertNotIn("direct cutaway through the casing", prompt_lower)
+        self.assertNotIn("internal component", prompt_lower)
+        self.assertIn("no cutaway", prompt_lower)
 
     def test_continuity_preflight_rejects_changing_underlying_content(self):
         base = {
