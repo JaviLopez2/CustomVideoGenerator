@@ -1600,6 +1600,10 @@ def _normalize_scene_identity_and_continuity(items: list[dict]) -> list[dict]:
             item["identity_relation_guard"] = "reclassified_derived_output"
             item["reference_need"] = "none"
             item["reference_critical"] = False
+            if item.get("includes_primary_subject") is None:
+                includes_primary = same_primary
+            if not includes_primary:
+                item["route"] = "standard"
             target = "output"
             need = "none"
         elif (
