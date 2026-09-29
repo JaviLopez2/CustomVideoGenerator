@@ -1,0 +1,460 @@
+# MPT Agent Factory — Project State
+
+> Source of truth for agents working on this repository.
+> Update this file after meaningful architecture, runtime, benchmark or branch changes.
+> Do not store secrets, API keys or credentials here.
+
+## 1. Objective
+
+Turn the current MoneyPrinterTurbo customization into an autonomous development + video-production system that can:
+
+1. generate videos from queued benchmark or production jobs;
+2. inspect generated images/video and diagnostics;
+3. detect systematic failures such as identity drift, continuity breaks or unsupported factual visuals;
+4. create isolated code experiments;
+5. run tests and benchmark candidate changes;
+6. keep only changes that improve quality without regressions;
+7. later add a publishing agent for approved TikTok / YouTube Shorts outputs.
+
+Core philosophy:
+
+```text
+plan well -> generate once -> check the minimum necessary
+```
+
+Avoid:
+
+```text
+generate many candidates -> score everything heavily -> attempt to rescue
+```
+
+Do not add topic-specific keyword hacks. Changes should generalize across subjects.
+
+## 2. Current Repository
+
+Repository:
+
+```text
+JaviLopez2/CustomVideoGenerator
+```
+
+Active development branch:
+
+```text
+moneyprinter_qwen21_quality_v3_1
+```
+
+Primary local path:
+
+```text
+D:\Apps\MoneyPrinterTurbo-Portable-Windows-1.3.6\MoneyPrinterTurbo
+```
+
+Portable Python:
+
+```text
+D:\Apps\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\python.exe
+```
+
+Do not assume Windows Store `python.exe` is the intended interpreter.
+
+Untracked `.bak` and backup directories intentionally exist locally. Do not use `git add .`.
+
+## 3. Hardware
+
+Current development machine:
+
+```text
+CPU: Intel Core i7-12700
+RAM: 32 GB
+GPU: NVIDIA RTX 3060 12 GB
+OS: Windows
+```
+
+GPU-heavy services should normally run sequentially where possible. Avoid assuming enough VRAM exists to keep multiple large vision/image models loaded simultaneously.
+
+## 4. Runtime Services
+
+Expected local stack:
+
+```text
+8080 -> llama.cpp / local Qwen text model
+8188 -> ComfyUI
+8090 -> ComfyUI-to-OpenAI bridge
+8501 -> MoneyPrinterTurbo Streamlit UI
+```
+
+Current local text model:
+
+```text
+HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive:IQ3_M
+```
+
+ComfyUI launch currently uses:
+
+```text
+--disable-async-offload --disable-pinned-memory
+```
+
+Qwen Image 2.1 is the Precision image generator.
+Klein is fallback only.
+
+## 5. Current Image-Generation Architecture
+
+Balanced target:
+
+- approximately 9 scenes;
+- one Qwen Precision candidate;
+- direct accept;
+- max 3 references per Qwen scene;
+- 20 Balanced steps;
+- no heavy image selector in Balanced;
+- only one corrective retry after a true technical failure or actionable near-duplicate;
+- no Florence/BiRefNet in Balanced generation path.
+
+Quality mode may retain heavier multi-candidate logic.
+
+Qwen workflow:
+
+```text
+qwen-image-2.1-precision
+```
+
+Important: audited Qwen workflow runs CFG=1. Do not blindly raise CFG. Important exclusions belong in positive conditioning because the unconditional/negative branch is skipped at CFG=1.
+
+## 6. Reference System
+
+Manual references support roles such as:
+
+```text
+identity
+detail
+internal
+context
+continuity
+```
+
+Key rules:
+
+- identity = whole primary referenced entity;
+- a produced output is not automatically the primary subject;
+- detail/internal/context evidence must be semantically supported by the user description;
+- max 3 Qwen references;
+- identity anchor should preserve the source entity, not contaminate a produced output;
+- continuity anchor represents the same physical instance/content at a previous stage.
+
+## 7. Current Planner / Safety Gates
+
+Current planner has structured metadata including:
+
+```text
+canonical_subject
+reference_need
+reference_target
+evidence_scope
+reference_critical
+includes_primary_subject
+safe_visual_alternative
+continuity_key
+continuity_description
+coverage_status
+planner_validation
+factual_audit_status
+```
+
+Evidence scopes:
+
+```text
+externally_visible
+specialized_visible
+hidden_internal
+contextual
+```
+
+Reference targets:
+
+```text
+primary_subject
+output
+secondary_subject
+environment
+none
+```
+
+Unsupported hidden/specialized scenes should fall back to externally observable evidence instead of fabricating convincing internal mechanisms.
+
+## 8. Current Version — V3.2.1
+
+Latest implemented direction builds on V3.2.
+
+V3.2 introduced:
+
+- hard primary identity lock;
+- semantic evidence checks;
+- automatic temporal continuity groups;
+- sequential continuity edit chain;
+- continuity diagnostics;
+- stronger reference descriptions in UI;
+- diagnostics schema version 3.
+
+V3.2.1 adds generalized fixes discovered during the Polaroid benchmark:
+
+- produced outputs are separated from the primary source entity even if the source model name appears in the output description;
+- externally-visible `detail` scenes still require matching detail evidence;
+- continuity chains reset when the primary/source object leaves frame so the entire source frame is not recursively copied into the produced output;
+- Qwen prompt explicitly blocks recursive picture-in-picture / nested copies of reference frames;
+- identity references can be scoped only to a visible source entity in composite scenes;
+- closing scenes can inherit the previous output continuity group when the final output and source entity appear together.
+
+Relevant V3.2.1 commits created during the latest iteration include:
+
+```text
+8c87159  V3.2.1 planner: separate produced outputs, enforce semantic detail evidence
+730c6ea  V3.2.1 continuity: isolate output stages and prevent identity recursion
+6fadab1  V3.2.1 planner: keep derived outputs separate without false primary visibility
+54c560b  V3.2.1 tests: output identity separation and continuity anti-recursion
+```
+
+## 9. Current Validation Status
+
+Latest reported focused/full test run after pulling current changes:
+
+```text
+126 passed
+2 skipped
+20 subtests passed
+~50.67 seconds
+```
+
+Do not treat future code as validated until its own compile/tests and benchmark run complete.
+
+## 10. Current Benchmark
+
+Primary benchmark topic:
+
+```text
+Cómo funciona una Polaroid SX-70: desde que pulsas el disparador hasta que aparece la fotografía.
+```
+
+Purpose of benchmark:
+
+- preserve real product identity;
+- avoid fabricated hidden/internal mechanics when references do not support them;
+- keep the same produced instant photo across development stages;
+- preserve both output continuity and source-camera identity when they appear together;
+- avoid recursive image-in-image contamination.
+
+Manual SX-70 reference pack currently uses:
+
+```text
+01_sx70_general_identity.png          identity anchor
+02_sx70_primary_front.jpg             identity
+03_sx70_alternate_threequarter.jpg    identity
+04_sx70_profile_side.jpg              identity
+05_sx70_rear_specialized.jpg          identity
+06_sx70_detail_front_controls.jpg     detail
+```
+
+There is intentionally no internal reference.
+
+The benchmark is a generalization test, not a reason to add SX-70-specific code.
+
+## 11. Current Observed Failure Pattern Before V3.2.1
+
+V3.2 proved that the continuity chain technically works, but exposed three structural issues:
+
+1. continuity started from a frame containing both source camera + produced photo, causing the source camera to be copied inside the photo;
+2. externally-visible `detail` could incorrectly be accepted through generic identity evidence;
+3. a final composite scene could show the primary camera but still route Standard and drift to a different camera.
+
+V3.2.1 is intended to address these three failures generically.
+
+## 12. Next Immediate Product Goal
+
+Build a separate project, tentatively:
+
+```text
+D:\Apps\MPT-Agent-Factory
+```
+
+Do not place the orchestration supervisor inside the core MPT codebase unless there is a strong architectural reason.
+
+Initial autonomous architecture:
+
+```text
+Supervisor
+  -> Video Agent
+  -> Evaluator Agent
+  -> Engineer Agent
+  -> benchmark / tests / git gates
+```
+
+The Supervisor should be deterministic application code, not an unrestricted LLM.
+
+## 13. Proposed Agent Responsibilities
+
+### Supervisor
+
+Owns:
+
+- job queue;
+- state machine;
+- retries;
+- resource locks;
+- service health;
+- SQLite state;
+- artifact paths;
+- benchmark selection;
+- approval gates.
+
+### Video Agent
+
+Can:
+
+- create/run MPT generation jobs;
+- start/stop/check required services;
+- wait for generation completion;
+- collect scene images, MP4 and diagnostics;
+- never modify stable code directly.
+
+### Evaluator Agent
+
+Can inspect:
+
+- `precision_diagnostics.json`;
+- scene images;
+- final video;
+- identity consistency;
+- continuity;
+- factual evidence support;
+- visual coherence;
+- obvious technical failures.
+
+A local VLM or cloud multimodal model will likely be needed for reliable autonomous visual QA.
+
+### Engineer Agent
+
+Can:
+
+- inspect evaluator findings;
+- create a Git worktree / experiment branch;
+- edit code only inside the isolated experiment;
+- run compile/tests;
+- regenerate benchmark(s);
+- compare candidate against baseline;
+- create a candidate commit/PR.
+
+It must not directly rewrite the stable branch.
+
+## 14. Autonomous Improvement Loop
+
+Target loop:
+
+```text
+QUEUE
+  -> GENERATE
+  -> EVALUATE
+      -> PASS -> archive result -> next job
+      -> FAIL
+          -> classify failure
+          -> isolated experiment branch/worktree
+          -> patch
+          -> compile + tests
+          -> benchmark suite
+          -> compare against stable
+              -> better -> candidate
+              -> worse / regression -> discard
+```
+
+A single random image must never be enough evidence to conclude a code change improved quality.
+
+## 15. Benchmark Suite Requirement
+
+Before allowing autonomous code promotion, create multiple fixed benchmarks covering at least:
+
+- real product identity;
+- unsupported internal mechanism;
+- temporal continuity;
+- human/character scene;
+- environment/landscape;
+- generic object without references.
+
+Use repeated seeds or enough repeated runs to distinguish code effects from generative randomness.
+
+## 16. Git Safety Model
+
+Do not let autonomous agents edit the stable working tree directly.
+
+Preferred approach:
+
+```text
+stable repo
+MPT-worktrees/
+  exp-0001/
+  exp-0002/
+  exp-0003/
+```
+
+Candidate promotion gates should include:
+
+```text
+compileall PASS
+pytest PASS
+benchmark suite PASS
+no significant quality regression
+acceptable runtime / VRAM impact
+human review initially
+```
+
+No automatic merge to stable until the system has demonstrated reliability over time.
+
+## 17. Agent Factory v0.1 Scope
+
+First version should aim for:
+
+- Python supervisor;
+- SQLite database;
+- deterministic state machine;
+- queue of generation jobs;
+- service manager for ports 8080/8090/8188/8501;
+- MPT generation tool/API wrapper;
+- artifact collector;
+- diagnostics parser;
+- evaluator interface;
+- Git worktree manager;
+- test runner;
+- Streamlit dashboard on a separate port, e.g. 8600;
+- structured logs;
+- manual approval for candidate code promotion.
+
+Do not build decorative office/spaceship UI yet. It is presentation only.
+
+## 18. Future Scope
+
+Later:
+
+- local/cloud VLM for visual QA;
+- more benchmark types;
+- scheduled continuous production;
+- automatic candidate PR generation;
+- publishing agent for approved TikTok / YouTube Shorts;
+- title/description/hashtags;
+- platform API integrations;
+- optional visual office/spaceship representation of agent state.
+
+## 19. Operating Rules for Future Agents
+
+Before changing code:
+
+1. read this file;
+2. inspect current branch and `git status`;
+3. inspect latest relevant diagnostics;
+4. state the hypothesis being tested;
+5. use a worktree/experiment branch for autonomous changes;
+6. keep changes topic-agnostic;
+7. run focused tests, then broader tests;
+8. benchmark against stable;
+9. record results;
+10. update this file only when the project state meaningfully changes.
+
+Never invent test results, commits, benchmark results or runtime measurements.
