@@ -537,6 +537,116 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertEqual(status, "covered")
         self.assertIn("semantically matches", reason)
 
+    def test_externally_visible_detail_still_requires_matching_detail_evidence(self):
+        inventory = [
+            {"slot": 1, "role": "identity", "description": "whole device exterior"},
+            {"slot": 2, "role": "detail", "description": "front control buttons and lens ring"},
+        ]
+
+        status, reason = llm._scene_reference_coverage(
+            {
+                "reference_need": "detail",
+                "reference_target": "primary_subject",
+                "reference_query": "rear roller assembly and exit gap",
+                "evidence_scope": "externally_visible",
+                "reference_critical": True,
+            },
+            inventory,
+        )
+
+        self.assertEqual(status, "unsupported")
+        self.assertIn("none of their user descriptions", reason)
+
+    def test_named_primary_output_is_reclassified_even_when_name_repeats(self):
+        rows = llm._normalize_scene_identity_and_continuity(
+            [
+                {
+                    "subject": "Example Model X",
+                    "canonical_subject": "Example Model X",
+                    "route": "precision",
+                    "reference_need": "identity",
+                    "reference_target": "primary_subject",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": True,
+                    "continuity_key": "none",
+                },
+                {
+                    "subject": "Example Model X instant print",
+                    "canonical_subject": "Example Model X instant print",
+                    "scene_description": "a freshly ejected blank photo sheet from Example Model X",
+                    "route": "precision",
+                    "reference_need": "identity",
+                    "reference_target": "primary_subject",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": True,
+                    "includes_primary_subject": True,
+                    "continuity_key": "same_output",
+                    "continuity_description": "the same instant print sheet",
+                },
+            ]
+        )
+
+        self.assertEqual(rows[1]["reference_target"], "output")
+        self.assertEqual(rows[1]["reference_need"], "none")
+        self.assertTrue(rows[1]["includes_primary_subject"])
+        self.assertEqual(
+            rows[1]["identity_relation_guard"],
+            "reclassified_derived_output",
+        )
+
+    def test_closing_composite_inherits_previous_output_continuity_group(self):
+        rows = llm._normalize_scene_identity_and_continuity(
+            [
+                {
+                    "subject": "Example Model X",
+                    "canonical_subject": "Example Model X",
+                    "route": "precision",
+                    "reference_need": "identity",
+                    "reference_target": "primary_subject",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": True,
+                    "includes_primary_subject": True,
+                    "continuity_key": "none",
+                },
+                {
+                    "subject": "finished print",
+                    "canonical_subject": "finished print",
+                    "scene_description": "final developed photo on a neutral surface",
+                    "route": "standard",
+                    "reference_need": "none",
+                    "reference_target": "output",
+                    "evidence_scope": "externally_visible",
+                    "reference_critical": False,
+                    "includes_primary_subject": False,
+                    "continuity_key": "print_chain",
+                    "continuity_description": "the same produced print progressing to its final state",
+                },
+                {
+                    "subject": "Example Model X with final photo",
+                    "canonical_subject": "Example Model X",
+                    "scene_description": "camera and final developed photo arranged together",
+                    "reference_query": "final developed photo beside the source device",
+                    "route": "standard",
+                    "reference_need": "none",
+                    "reference_target": "environment",
+                    "evidence_scope": "contextual",
+                    "reference_critical": False,
+                    "includes_primary_subject": True,
+                    "continuity_key": "none",
+                },
+            ]
+        )
+
+        self.assertEqual(rows[2]["continuity_key"], "print_chain")
+        self.assertEqual(
+            rows[2]["continuity_description"],
+            rows[1]["continuity_description"],
+        )
+        self.assertEqual(
+            rows[2]["continuity_inference"],
+            "adjacent_closing_output_composite",
+        )
+
     def test_primary_identity_relation_guard_reclassifies_non_primary_output(self):
         rows = llm._normalize_scene_identity_and_continuity(
             [
@@ -569,12 +679,13 @@ class TestQwenQualityV31(unittest.TestCase):
 
         self.assertEqual(rows[0]["reference_target"], "primary_subject")
         self.assertTrue(rows[0]["includes_primary_subject"])
-        self.assertEqual(rows[1]["reference_target"], "secondary_subject")
+        self.assertEqual(rows[1]["reference_target"], "output")
         self.assertEqual(rows[1]["reference_need"], "none")
+        self.assertFalse(rows[1]["includes_primary_subject"])
         self.assertEqual(rows[1]["route"], "standard")
         self.assertEqual(
             rows[1]["identity_relation_guard"],
-            "reclassified_non_primary",
+            "reclassified_derived_output",
         )
 
     def test_temporal_non_primary_stages_get_inferred_continuity_chain(self):
@@ -722,6 +833,38 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertIn("authoritative previous-stage image", prompt_lower)
         self.assertIn("same physical instance/content", prompt_lower)
         self.assertIn("changing only the state/progression", prompt_lower)
+
+    def test_qwen_continuity_prompt_blocks_recursive_reference_content(self):
+        prompt = material._qwen_precision_prompt_with_references(
+            "show the output at a later development stage",
+            "the produced output",
+            2,
+            reference_info={
+                "primary_identity_only": True,
+                "reference_pack": [
+                    {
+                        "role": "continuity",
+                        "description": "same output at previous stage",
+                    },
+                    {
+                        "role": "identity",
+                        "description": "whole source device",
+                    },
+                ],
+                "reference_selection": {
+                    "selected_references": [
+                        {"kind": "continuity_anchor", "role": "continuity"},
+                        {"kind": "identity_anchor", "role": "identity"},
+                    ]
+                },
+            },
+        )
+
+        prompt_lower = prompt.lower()
+        self.assertIn("never reinterpret the whole reference frame", prompt_lower)
+        self.assertIn("recursive picture-in-picture", prompt_lower)
+        self.assertIn("visible primary/source entity only", prompt_lower)
+        self.assertIn("never as the visual content of an output", prompt_lower)
 
     def test_continuity_edit_chain_enabled_by_default(self):
         config.app.pop("openai_image_continuity_edit_chain_enabled", None)
