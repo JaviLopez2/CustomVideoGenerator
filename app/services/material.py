@@ -4516,6 +4516,7 @@ def _qwen_precision_prompt_with_references(
     subject = _normalized_reference_subject(subject) or "the factual subject"
     reference_count = max(1, min(int(reference_count or 1), 10))
     reference_info = reference_info or {}
+    primary_identity_only = bool(reference_info.get("primary_identity_only"))
     pack = [
         dict(item)
         for item in (reference_info.get("reference_pack") or [])
@@ -4551,10 +4552,17 @@ def _qwen_precision_prompt_with_references(
                 "changing only the state/progression explicitly requested by this scene"
             )
         elif kind == "identity_anchor":
-            purpose = (
-                f"the authoritative whole-subject identity anchor for {subject}; "
-                "use it for overall identity, silhouette, proportions and stable geometry"
-            )
+            if primary_identity_only:
+                purpose = (
+                    "the authoritative identity anchor for the visible primary/source entity only; "
+                    "use it only to preserve that entity's silhouette, proportions and stable geometry, "
+                    "never as the visual content of an output, print, screen, document or nested image"
+                )
+            else:
+                purpose = (
+                    f"the authoritative whole-subject identity anchor for {subject}; "
+                    "use it for overall identity, silhouette, proportions and stable geometry"
+                )
         elif kind == "scene_specific":
             purpose = (
                 f"the scene-specific factual evidence for {subject}; "
@@ -4603,7 +4611,9 @@ def _qwen_precision_prompt_with_references(
     return (
         f"Reference evidence: {role_text}. "
         f"The target factual subject is {subject}. Treat authoritative identity and continuity references as stronger evidence than descriptive text for traits they visibly establish. "
-        "A continuity reference is the same physical instance/content at an earlier stage: preserve its underlying content and identity unless the scene explicitly requests a real state change. "
+        "A continuity reference is the previous whole scene containing the same target instance at an earlier stage. Preserve the target instance itself, but never reinterpret the whole reference frame as content that belongs inside that target. "
+        "Do not create recursive picture-in-picture, a miniature copy of the previous frame, a photo/screen/document containing the reference scene, or a nested duplicate of the source entity unless the scene explicitly requests it. "
+        "Change only the continuity target's narrated state; surrounding objects are context, not content to copy inside the target. "
         "Use scene-specific and complementary references only for the facts they visibly establish. "
         "If text and a supplied identity reference describe the same identity trait differently, preserve the visible reference identity unless the scene explicitly requests a real transformation. "
         "Never force a detail/context reference to redefine the whole subject. Do not inherit any reference background, crop, camera angle, pose, "
@@ -6919,6 +6929,7 @@ def _download_videos_openai_image_on_demand(
     recent_generated_scene_visuals: list[dict[str, Any]] = []
     continuity_latest_images: dict[str, str] = {}
     continuity_latest_scenes: dict[str, int] = {}
+    continuity_latest_includes_primary: dict[str, bool] = {}
     for scene_index, search_term in enumerate(search_terms):
         if semantic_timing:
             try:
@@ -7040,6 +7051,11 @@ def _download_videos_openai_image_on_demand(
             else ""
         )
         continuity_chain_enabled = _continuity_edit_chain_enabled()
+        continuity_previous_includes_primary = (
+            continuity_latest_includes_primary.get(continuity_key)
+            if continuity_chain_enabled and continuity_key not in {"", "none"}
+            else None
+        )
         continuity_source_path = (
             continuity_latest_images.get(continuity_key, "")
             if continuity_chain_enabled and continuity_key not in {"", "none"}
@@ -7050,6 +7066,21 @@ def _download_videos_openai_image_on_demand(
             if continuity_source_path
             else None
         )
+        # A whole-frame edit chain should not drag a source/product entity into an
+        # isolated output-only stage. Start a fresh visual root when the primary
+        # subject leaves frame; later output-only stages can then edit that root.
+        if (
+            continuity_source_path
+            and continuity_previous_includes_primary is True
+            and not includes_primary_subject
+        ):
+            logger.info(
+                "continuity edit chain reset at primary-subject exit: "
+                f"scene={scene_index + 1}, key={continuity_key!r}, "
+                f"previous_scene={continuity_source_scene}"
+            )
+            continuity_source_path = ""
+            continuity_source_scene = None
         continuity_reference_ready = False
         if continuity_source_path:
             comfyui_name = _upload_reference_to_comfyui(continuity_source_path)
@@ -7164,6 +7195,7 @@ def _download_videos_openai_image_on_demand(
             route == "precision"
             and reference_target != "primary_subject"
             and not continuity_reference_ready
+            and not includes_primary_subject
         ):
             logger.warning(
                 "precision route suppressed because the current manual identity pack does not target "
@@ -7229,14 +7261,34 @@ def _download_videos_openai_image_on_demand(
                     reference_info["query"] = _normalized_reference_subject(
                         reference_subject
                     )
+                    primary_visibility_identity_only = bool(
+                        includes_primary_subject
+                        and reference_target != "primary_subject"
+                    )
+                    selection_need = (
+                        "identity" if primary_visibility_identity_only else reference_need
+                    )
+                    selection_query = (
+                        "" if primary_visibility_identity_only else reference_query
+                    )
+                    selection_target = (
+                        "primary_subject"
+                        if primary_visibility_identity_only
+                        else reference_target
+                    )
                     reference_images, reference_info = _select_manual_references_for_scene(
                         reference_images,
                         reference_info,
-                        reference_need,
-                        reference_query,
-                        reference_target=reference_target,
-                        max_refs=3,
+                        selection_need,
+                        selection_query,
+                        reference_target=selection_target,
+                        max_refs=1 if primary_visibility_identity_only else 3,
                     )
+                    if primary_visibility_identity_only and reference_info is not None:
+                        reference_info["primary_identity_only"] = True
+                        reference_info["reference_selection"]["selection_strategy"] = (
+                            "primary identity anchor only; scene target remains non-primary"
+                        )
                     reference_image = reference_images[0] if reference_images else ""
                     logger.info(
                         "using scene-adaptive manual references for precision scene: "
@@ -7244,7 +7296,11 @@ def _download_videos_openai_image_on_demand(
                         f"shot={shot_type!r}, framing={framing_intent!r}, subject={reference_subject!r}"
                     )
                     selected_roles = {str(item.get("role") or "identity").strip().lower() for item in (reference_info.get("reference_pack") or []) if isinstance(item, dict)}
-                    if reference_need in {"detail", "internal", "context"} and reference_need not in selected_roles:
+                    if (
+                        not primary_visibility_identity_only
+                        and reference_need in {"detail", "internal", "context"}
+                        and reference_need not in selected_roles
+                    ):
                         search_term = (
                             search_term
                             + f". Reference coverage constraint: no dedicated {reference_need} reference is available for this scene. "
@@ -7258,6 +7314,7 @@ def _download_videos_openai_image_on_demand(
             if (
                 continuity_reference_ready
                 and includes_primary_subject
+                and continuity_previous_includes_primary is False
                 and manual_entries
                 and manual_mode in {"user_first", "user_only"}
                 and len(reference_images) < 3
@@ -7303,8 +7360,9 @@ def _download_videos_openai_image_on_demand(
                     reference_info["reference_pack"] = combined_pack
                     reference_info["reference_selection"]["selected_references"] = combined_rows
                     reference_info["reference_selection"]["selected_count"] = len(reference_images)
+                    reference_info["primary_identity_only"] = True
                     reference_info["reference_selection"]["selection_strategy"] = (
-                        "previous continuity stage + primary identity anchor"
+                        "previous continuity stage + reintroduced primary identity anchor"
                     )
                     logger.info(
                         "continuity scene also includes the primary subject; appended stable identity anchor: "
@@ -7830,6 +7888,9 @@ def _download_videos_openai_image_on_demand(
             if continuity_key not in {"", "none"}:
                 continuity_latest_images[continuity_key] = items[0].url
                 continuity_latest_scenes[continuity_key] = scene_index + 1
+                continuity_latest_includes_primary[continuity_key] = bool(
+                    includes_primary_subject
+                )
                 if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
                     precision_diagnostics["plan_scenes"][scene_index][
                         "continuity_output_file"
