@@ -1355,6 +1355,53 @@ def _scene_same_primary_entity(primary_subject: str, candidate: str) -> bool:
     return overlap >= min(required, len(primary))
 
 
+_DERIVED_OUTPUT_TERMS = {
+    "photo",
+    "photograph",
+    "print",
+    "sheet",
+    "image",
+    "output",
+    "result",
+    "render",
+    "rendering",
+    "recording",
+    "document",
+    "report",
+    "page",
+    "receipt",
+    "ticket",
+    "frame",
+}
+
+
+def _scene_derived_output_terms(value: str) -> set[str]:
+    tokens = {
+        token
+        for token in re.findall(r"[a-z]+", str(value or "").lower())
+        if len(token) >= 4
+    }
+    return tokens & _DERIVED_OUTPUT_TERMS
+
+
+def _scene_looks_like_derived_output(primary_subject: str, item: dict) -> bool:
+    if not primary_subject:
+        return False
+    primary_terms = _scene_derived_output_terms(primary_subject)
+    candidate_text = " ".join(
+        str(item.get(key) or "")
+        for key in (
+            "canonical_subject",
+            "subject",
+            "scene_description",
+            "reference_query",
+            "continuity_description",
+        )
+    )
+    candidate_terms = _scene_derived_output_terms(candidate_text)
+    return bool(candidate_terms - primary_terms)
+
+
 def _reference_evidence_tokens(value: str) -> set[str]:
     stop = {
         "the", "and", "with", "from", "into", "onto", "for", "of", "a", "an",
@@ -1538,7 +1585,24 @@ def _normalize_scene_identity_and_continuity(items: list[dict]) -> list[dict]:
             target == "primary_subject" or same_primary,
         )
 
-        if (
+        # A generated/produced artifact can repeat the primary product/model name
+        # (for example "Model X print/photo/output") while still being a different
+        # entity. Identity references for the producer must not be reinterpreted as
+        # identity evidence for the produced artifact.
+        derived_output = bool(
+            primary_subject
+            and target == "primary_subject"
+            and need == "identity"
+            and _scene_looks_like_derived_output(primary_subject, item)
+        )
+        if derived_output:
+            item["reference_target"] = "output"
+            item["identity_relation_guard"] = "reclassified_derived_output"
+            item["reference_need"] = "none"
+            item["reference_critical"] = False
+            target = "output"
+            need = "none"
+        elif (
             primary_subject
             and target == "primary_subject"
             and candidate
@@ -1551,6 +1615,8 @@ def _normalize_scene_identity_and_continuity(items: list[dict]) -> list[dict]:
                 item["reference_need"] = "none"
                 item["reference_critical"] = False
                 item["route"] = "standard"
+                need = "none"
+                target = "secondary_subject"
         item["includes_primary_subject"] = bool(includes_primary)
 
     # Preserve explicit continuity keys. Infer only adjacent non-primary temporal
@@ -1624,6 +1690,46 @@ def _normalize_scene_identity_and_continuity(items: list[dict]) -> list[dict]:
         ).strip()
         current["continuity_inference"] = "adjacent_temporal_semantic_match"
 
+    # Closing/context scenes often reintroduce the primary subject next to the
+    # final state of a continuity object. Carry the preceding continuity group
+    # forward when the new scene explicitly mentions a final/finished output.
+    for index in range(1, len(rows)):
+        previous = rows[index - 1]
+        current = rows[index]
+        if not isinstance(previous, dict) or not isinstance(current, dict):
+            continue
+        previous_key = re.sub(
+            r"[^a-z0-9_]+",
+            "_",
+            str(previous.get("continuity_key") or "none").strip().lower(),
+        ).strip("_") or "none"
+        current_key = re.sub(
+            r"[^a-z0-9_]+",
+            "_",
+            str(current.get("continuity_key") or "none").strip().lower(),
+        ).strip("_") or "none"
+        if previous_key == "none" or current_key != "none":
+            continue
+        current_text = " ".join(
+            str(current.get(key) or "")
+            for key in (
+                "canonical_subject",
+                "subject",
+                "scene_description",
+                "reference_query",
+                "safe_visual_alternative",
+            )
+        )
+        if not _scene_derived_output_terms(current_text):
+            continue
+        if not _scene_has_temporal_continuity_signal(current):
+            continue
+        current["continuity_key"] = previous_key
+        current["continuity_description"] = str(
+            previous.get("continuity_description") or ""
+        ).strip()
+        current["continuity_inference"] = "adjacent_closing_output_composite"
+
     return rows
 
 
@@ -1691,17 +1797,18 @@ def _scene_reference_coverage(
         )
 
     required_role = ""
-    if scope == "hidden_internal":
+    if need == "internal" or scope == "hidden_internal":
         required_role = "internal"
-    elif scope == "specialized_visible":
-        if need == "context":
-            required_role = "context"
-        else:
-            required_role = "detail"
-    elif scope == "externally_visible" and (critical or need == "identity"):
-        required_role = "identity"
-    elif scope == "contextual" and need == "context":
+    elif need == "detail":
+        required_role = "detail"
+    elif need == "context":
         required_role = "context"
+    elif need == "identity":
+        required_role = "identity"
+    elif scope == "specialized_visible":
+        required_role = "detail"
+    elif scope == "externally_visible" and critical and target == "primary_subject":
+        required_role = "identity"
 
     if not required_role:
         return "covered", "scene does not require a dedicated manual evidence role"
@@ -2311,11 +2418,16 @@ Return exactly {amount} objects and nothing else.
                     runtime_config.get("openai_image_primary_identity_lock_enabled", True),
                     True,
                 )
+                identity_inventory_available = bool(
+                    "identity" in _reference_inventory_roles(
+                        [x for x in (reference_inventory or []) if isinstance(x, dict)]
+                    )
+                )
                 if (
                     primary_identity_lock_enabled
-                    and reference_target == "primary_subject"
-                    and requested_reference_need == "identity"
-                    and coverage_status == "covered"
+                    and includes_primary_subject
+                    and identity_inventory_available
+                    and coverage_status != "unsupported"
                 ):
                     reference_critical = True
                     route = "precision"
