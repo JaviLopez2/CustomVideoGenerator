@@ -635,6 +635,30 @@ def generate_subtitle(task_id, params, video_script, sub_maker, audio_file):
 
     return subtitle_path
 
+
+def prepare_narration_timeline(task_id, video_script, sub_maker, subtitle_path=""):
+    """Reuse visible timing or serialize TTS timing for internal planning only.
+
+    Visibility is owned by generate_subtitle/the renderer. This path never
+    enables subtitles, transcribes audio, or loads Whisper. A missing TTS
+    alignment (e.g. custom audio) leaves the bounded uniform fallback available.
+    """
+    if subtitle_path and subtitle.file_to_subtitles(subtitle_path):
+        return subtitle_path
+    if sub_maker is None:
+        return ""
+    timeline_path = path.join(utils.task_dir(task_id), "narration.srt")
+    voice.create_subtitle(
+        text=video_script,
+        sub_maker=sub_maker,
+        subtitle_file=timeline_path,
+        word_level=False,
+    )
+    if not subtitle.file_to_subtitles(timeline_path):
+        return ""
+    return timeline_path
+
+
 def _srt_timestamp_to_seconds(timestamp: str) -> float:
     """Convert an SRT timestamp such as ``00:00:04,250`` into seconds."""
     hours, minutes, rest = timestamp.strip().split(":")
@@ -2041,6 +2065,9 @@ def _run_pipeline(
 
     if defer_openai_image_prompts:
         logger.info("\n\n## building semantic AI image timeline")
+        narration_timeline_path = prepare_narration_timeline(
+            task_id, video_script, sub_maker, subtitle_path
+        )
         image_profile_settings = _openai_image_profile_settings()
         logger.info(
             "AI image performance profile: "
@@ -2050,7 +2077,7 @@ def _run_pipeline(
             f"precision_ratio={image_profile_settings['precision_ratio']:.2f}, min_scene={image_profile_settings['min_scene_duration']:.2f}s"
         )
         scene_plan = build_openai_image_scene_plan(
-            subtitle_path=subtitle_path,
+            subtitle_path=narration_timeline_path,
             audio_duration=audio_duration,
             preferred_scene_duration=params.video_clip_duration,
             max_scenes=image_profile_settings["scene_budget"],
@@ -2185,8 +2212,8 @@ def _run_pipeline(
                 float(scene["duration"]) for scene in scene_plan
             ]
         else:
-            # Subtitles can be disabled or unavailable. Keep a safe fallback so
-            # OpenAI-image generation still works, albeit with uniform timing.
+            # Narration timing can be unavailable (e.g. custom audio without
+            # alignment). Keep uniform timing within the same generation budget.
             try:
                 clip_duration = max(1, int(params.video_clip_duration))
             except (TypeError, ValueError):
@@ -2195,6 +2222,7 @@ def _run_pipeline(
                 1,
                 math.ceil(float(audio_duration) / clip_duration),
             )
+            scene_count = min(scene_count, image_profile_settings["scene_budget"])
             logger.warning(
                 "semantic subtitle timeline unavailable; "
                 f"fallback to {scene_count} uniform scenes"

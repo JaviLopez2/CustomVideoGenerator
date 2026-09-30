@@ -4,6 +4,54 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Candidate update — 2026-09-30: narration timing independent of rendering
+
+Branch/worktree: `factory/narration-timeline`, based on stable
+`6d27ba4963ffe469d635db71eaeec506a8ff4b61`. Stable is not modified or merged.
+
+The first Factory SX-70 run (`c3ac5e07-4ad2-4a65-bdfa-97cbba9994a8`) completed
+technically but did not exercise Precision: 11 Standard scenes, refs=0. It had
+subtitle_enabled=false and no controlled video_script. The missing subtitle
+timeline bypassed structured planning and the Balanced scene budget. The user
+also confirmed that the supervisor was not running during the collection delay;
+do not infer another PID/ComfyUI/SQLite cause from that delay.
+
+This candidate adds prepare_narration_timeline: reuse existing subtitle timing
+or serialize sub_maker into a sentence-level internal narration.srt. It never
+changes subtitle_enabled, passes that internal path to the renderer, invokes
+Whisper or requests another TTS. The visible subtitle path remains empty when
+disabled. Missing alignment/custom audio retains a uniform fallback capped at
+the profile scene budget. Balanced remains 9 scenes, ratio 0.65, one candidate,
+direct accept, existing steps and reference rules; no heavy evaluator is added.
+
+Factory separately fixes examples/polaroid-job.json to carry the user's exact
+seven-paragraph controlled script. That input must accompany this candidate
+before repeating SX-70; a generated narration is not the same benchmark.
+
+Offline validation in Linux Work (Python 3.12.14):
+
+```text
+MPT_RUN_INTEGRATION_TESTS=0 /workspace/scratch/845a021772d1/MPT-Agent-Factory/.venv/bin/python -m pytest -q test/services/test_narration_timeline.py test/services/test_task.py test/services/test_qwen_quality_v31.py test/services/test_voice.py test/services/test_subtitle.py
+173 passed, 6 skipped, 1 warning, 20 subtests passed in 5.14s
+
+/workspace/scratch/845a021772d1/MPT-Agent-Factory/.venv/bin/python -m compileall -q app test/services/test_narration_timeline.py
+exit 0
+git diff --check
+exit 0
+```
+
+This is the five-file affected-area suite, not a new full-core baseline. Eleven
+new cases cover hidden/visible subtitles, render arguments, nine-scene timing,
+structured Precision output propagation (mock LLM), fixed-script passthrough,
+no Whisper, missing/invalid alignment, existing timing, real Edge SubMaker and
+legacy offsets. No live providers, Qwen, ComfyUI or real video generation ran.
+The warning is pydub's existing Python audioop deprecation. Initial new-test
+fixtures had two missing video_subject errors, corrected before this result.
+The expanded suite initially lacked pydub, then google-genai; the already-declared
+versions 0.25.1 and 2.11.0 were installed only in the test environment. No dependency
+files changed. Native Windows validation and the corrected live benchmark remain
+pending. The historical reported 126/2/20 baseline below is not overwritten.
+
 ## 1. Objective
 
 Turn the current MoneyPrinterTurbo customization into an autonomous development + video-production system that can:
