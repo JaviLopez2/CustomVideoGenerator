@@ -141,7 +141,10 @@ class TestQwenQualityV31(unittest.TestCase):
                 "reference_query": "internal rollers and pods",
                 "evidence_scope": "hidden_internal",
                 "reference_critical": True,
-                "safe_visual_alternative": "show the externally visible result",
+                "safe_visual_alternative": "two rollers squeezing chemical pods outside the housing",
+                "continuity_key": "mechanism",
+                "continuity_description": "two rollers squeezing chemical pods",
+                "includes_primary_subject": True,
                 "precision_importance": 1.0,
             }
         ]
@@ -182,6 +185,43 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertNotIn("dark internal cavity", prompt_text)
         self.assertNotIn("macro top-down cutaway", prompt_text)
         self.assertIn("externally visible result or context", prompt_text)
+        self.assertEqual(scene["reference_query"], "")
+        self.assertEqual(scene["continuity_key"], "none")
+        self.assertEqual(scene["continuity_description"], "")
+        self.assertFalse(scene["includes_primary_subject"])
+        self.assertNotIn("chemical pods", scene["safe_visual_alternative"])
+
+    def test_unsupported_mechanism_can_reuse_only_previously_covered_exterior_identity(self):
+        exterior = {
+            "subject": "electric motor", "canonical_subject": "electric motor",
+            "route": "precision", "scene_description": "closed electric motor on a bench",
+            "reference_need": "identity", "reference_target": "primary_subject",
+            "evidence_scope": "externally_visible", "reference_critical": True,
+            "continuity_key": "none",
+        }
+        hidden = {
+            **exterior, "scene_description": "electric motor cutaway with twin gears spraying lubricant",
+            "reference_need": "internal", "evidence_scope": "hidden_internal",
+            "safe_visual_alternative": "twin gears spraying lubricant outside the motor",
+            "required_features": ["twin gears", "spraying lubricant"],
+        }
+        with patch.object(llm, "_generate_response", side_effect=[json.dumps([exterior, hidden])] * 2):
+            result = llm.generate_scene_image_plan(
+                "electric motor", [{"narration": "The electric motor is enclosed."},
+                                   {"narration": "A hidden mechanism transfers force."}],
+                reference_inventory=[{"role": "identity", "description": "whole electric motor"}],
+            )
+        fallback = result[1]
+        self.assertEqual(fallback["planner_validation"], "coverage_fallback")
+        self.assertEqual(fallback["subject"], "electric motor")
+        self.assertEqual(fallback["reference_target"], "primary_subject")
+        self.assertEqual(fallback["reference_need"], "identity")
+        self.assertEqual(fallback["route"], "precision")
+        self.assertTrue(fallback["includes_primary_subject"])
+        self.assertIn("closed exterior of electric motor", fallback["prompt"])
+        self.assertNotIn("twin gears", fallback["prompt"])
+        self.assertNotIn("spraying lubricant", fallback["prompt"])
+        self.assertEqual(fallback["continuity_key"], "none")
 
     def test_factual_audit_can_reclassify_apparently_visible_process_before_gpu(self):
         draft = [

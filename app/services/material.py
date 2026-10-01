@@ -4548,7 +4548,7 @@ def _qwen_precision_prompt_with_references(
         if kind == "continuity_anchor" or role == "continuity":
             purpose = (
                 "the authoritative previous-stage image of the exact same physical instance/content; "
-                "preserve its underlying depicted content, object identity, geometry, border/orientation and defining details, "
+                "preserve only the intended target's underlying depicted content, object identity, geometry, border/orientation and defining details, "
                 "changing only the state/progression explicitly requested by this scene"
             )
         elif kind == "identity_anchor":
@@ -4610,10 +4610,13 @@ def _qwen_precision_prompt_with_references(
     )
     return (
         f"Reference evidence: {role_text}. "
-        f"The target factual subject is {subject}. Treat authoritative identity and continuity references as stronger evidence than descriptive text for traits they visibly establish. "
+        f"The target factual subject is {subject}. Treat authoritative identity and continuity references as stronger evidence only for the intended target's identity traits they visibly establish. "
         "A continuity reference is the previous whole scene containing the same target instance at an earlier stage. Preserve the target instance itself, but never reinterpret the whole reference frame as content that belongs inside that target. "
         "Do not create recursive picture-in-picture, a miniature copy of the previous frame, a photo/screen/document containing the reference scene, or a nested duplicate of the source entity unless the scene explicitly requests it. "
         "Change only the continuity target's narrated state; surrounding objects are context, not content to copy inside the target. "
+        "Continuity does not require preserving every object or pixel of the previous frame. Remove incidental background objects, "
+        "invented props, duplicate subjects and spurious text unless explicitly required by the current scene. "
+        "A stable identity anchor constrains only its intended primary subject; do not retain accidental alternate instances from the continuity frame. "
         "Use scene-specific and complementary references only for the facts they visibly establish. "
         "If text and a supplied identity reference describe the same identity trait differently, preserve the visible reference identity unless the scene explicitly requests a real transformation. "
         "Never force a detail/context reference to redefine the whole subject. Do not inherit any reference background, crop, camera angle, pose, "
@@ -6773,6 +6776,34 @@ def _color_grade_precision_image(
         )
         return image_path, None
 
+def _select_duplicate_correction(original: MaterialInfo, retry: MaterialInfo | None):
+    """Keep a technically valid original unless the one retry improves dHash similarity."""
+    def metric(item):
+        info = item.source_info if item is not None and isinstance(item.source_info, dict) else {}
+        value = (info.get("near_duplicate_qa") or {}).get("best_similarity")
+        return float(value) if isinstance(value, (int, float)) and math.isfinite(value) else None
+
+    original_metric, retry_metric = metric(original), metric(retry)
+    improved = (
+        original_metric is not None and retry_metric is not None
+        and retry_metric < original_metric
+    )
+    selected = retry if improved else original
+    decision = {
+        "trigger": "near_duplicate",
+        "original_metric": original_metric,
+        "retry_metric": retry_metric,
+        "selected_candidate": "retry" if improved else "original",
+        "reason": "similarity_improved" if improved else (
+            "retry_unavailable_or_invalid" if retry is None else
+            "metric_unavailable" if retry_metric is None or original_metric is None else
+            "similarity_not_improved"
+        ),
+    }
+    logger.info(f"duplicate corrective selection: {decision}")
+    return selected, decision
+
+
 def _render_openai_image_video(image_path: str, clip_duration: float) -> str:
     """
     把生成的图片渲染成 mp4 片段，复用 local 素材的"图片 → 动态片段"管线。
@@ -7206,6 +7237,16 @@ def _download_videos_openai_image_on_demand(
             reference_critical = False
             scene_model, _ = _openai_image_model_for_route("standard")
 
+        if continuity_key not in {"", "none"}:
+            # Apply the same scoped contract to the first (possibly Standard)
+            # frame, before it becomes evidence for subsequent edit stages.
+            search_term += (
+                f". Intended continuity target: {continuity_description or reference_subject}. "
+                "Preserve this target's identity and underlying content while applying the narrated state. "
+                "Continuity is not the entire frame: omit incidental background objects, invented props, "
+                "duplicate subjects and spurious text not explicitly required by this scene."
+            )
+
         precision_diagnostics["plan_scenes"].append(
             {
                 "scene": scene_index + 1,
@@ -7504,9 +7545,11 @@ def _download_videos_openai_image_on_demand(
             if direct_qwen_accept:
                 # Qwen Image 2.1 edit with references is already the identity-preserving
                 # stage. Generate once and accept it directly. A second attempt happens
-                # only if the first request produced no image at all; we never generate
-                # a second image merely because a semantic judge returned UNKNOWN.
+                # only for a technical failure or an actionable cheap duplicate check,
+                # never because a semantic judge returned UNKNOWN.
                 failure_attempts = 2 if _precision_retry_on_true_failure_enabled() else 1
+                duplicate_original = None
+                correction_decision = None
                 for generation_attempt in range(failure_attempts):
                     logger.info(
                         "Qwen precision direct generation: "
@@ -7563,6 +7606,7 @@ def _download_videos_openai_image_on_demand(
                                 duplicate_qa.get("actionable")
                                 and generation_attempt + 1 < failure_attempts
                             ):
+                                duplicate_original = candidate
                                 logger.warning(
                                     "Qwen image is a near-duplicate of a recent scene despite a planned visual change; "
                                     f"scene={scene_index + 1}, matched_scene={duplicate_qa.get('matched_scene')}, "
@@ -7581,23 +7625,10 @@ def _download_videos_openai_image_on_demand(
                                 continue
 
                             selected_precision_item = candidate
-                            candidate_items.append(selected_precision_item)
-                            _record_precision_selection(
-                                selected_precision_item,
-                                {
-                                    "status": "direct_accept",
-                                    "reason": (
-                                        "Qwen Image 2.1 reference edit accepted directly after lightweight technical validation; "
-                                        f"profile={_openai_image_performance_profile()}"
-                                    ),
-                                    "candidate_count": 1,
-                                    "selected_index": 1,
-                                    "selected_score": None,
-                                    "validation": validation_reason,
-                                    "scores": [],
-                                },
-                            )
-                            items = [selected_precision_item]
+                            if duplicate_original is not None:
+                                selected_precision_item, correction_decision = _select_duplicate_correction(
+                                    duplicate_original, candidate
+                                )
                             break
                         logger.warning(
                             "Qwen image failed lightweight technical validation; one corrective retry is allowed: "
@@ -7614,6 +7645,32 @@ def _download_videos_openai_image_on_demand(
                             f"the generation actually failed: scene={scene_index + 1}, "
                             f"attempt={generation_attempt + 1}/{failure_attempts}"
                         )
+                if duplicate_original is not None and selected_precision_item is None:
+                    selected_precision_item, correction_decision = _select_duplicate_correction(
+                        duplicate_original, None
+                    )
+                if selected_precision_item is not None:
+                    if correction_decision is not None:
+                        selected_precision_item.source_info["corrective_retry_selection"] = correction_decision
+                        if precision_scene_diagnostic is not None:
+                            precision_scene_diagnostic["corrective_retry_selection"] = correction_decision
+                    candidate_items.append(selected_precision_item)
+                    _record_precision_selection(
+                        selected_precision_item,
+                        {
+                            "status": "direct_accept",
+                            "reason": (
+                                "Qwen Image 2.1 reference edit accepted directly after lightweight technical validation; "
+                                f"profile={_openai_image_performance_profile()}"
+                            ),
+                            "candidate_count": 1,
+                            "selected_index": 1,
+                            "selected_score": None,
+                            "validation": "ok" if duplicate_original is not None else validation_reason,
+                            "scores": [],
+                        },
+                    )
+                    items = [selected_precision_item]
             else:
                 for candidate_index in range(candidate_limit):
                     if route == "precision":

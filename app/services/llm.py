@@ -2220,8 +2220,9 @@ remain precision before later performance budgeting.
     primary_subject merely because it belongs to that object or shares its brand/model name.
 22. If consecutive scenes show temporal stages of the SAME physical instance or produced output, use one continuity_key
     and exactly the same continuity_description in every stage. Keep the underlying depicted content, object identity and
-    setting stable; change only the narrated state/progression. Do not silently switch to a different photograph, person,
-    room, landscape, object instance or output between stages.
+    target identity stable; change only its narrated state/progression. Scope continuity_description to the intended
+    target and its internal depicted content, not the surrounding frame. Incidental props, background objects and
+    spurious text are not persistent identity and may be removed. Do not silently switch target instances between stages.
 23. Set includes_primary_subject=true whenever the whole referenced primary entity is visibly in frame, even when the scene
     focus is an output/secondary object. This allows identity evidence to constrain the background/secondary appearance
     without falsely redefining the output as the primary subject.
@@ -2299,6 +2300,9 @@ Return exactly {amount} objects and nothing else.
                       "result/output or distinct entity is not automatically primary_subject. Never use whole-subject identity "
                       "photos as proof of an internal/subcomponent view. Preserve continuity_key groups so the exact same "
                       "physical instance/output and underlying depicted content remain stable across temporal stages. "
+                      "Check adjacent stages for contradictory visible properties: do not externalize an internal process "
+                      "as surface material, residue or exposed structure without evidence. Continuity preserves the intended "
+                      "target, not incidental props or background mistakes. "
                       "When evidence is unavailable, redesign the scene around an observable consequence, before/after, "
                       "external behavior or context so that the resulting scene is covered; do not merely preserve the "
                       "unsupported hidden scene and label an alternative. Preserve narration meaning, timing, diversity "
@@ -2447,7 +2451,7 @@ Return exactly {amount} objects and nothing else.
                 continuity_description = " ".join(
                     str(item.get("continuity_description") or "").strip().split()
                 )
-                if continuity_key != "none":
+                if continuity_key != "none" and coverage_status != "unsupported":
                     if not continuity_description:
                         continuity_description = canonical_subject or subject
                     existing_continuity = continuity_registry.get(continuity_key)
@@ -2471,7 +2475,9 @@ Return exactly {amount} objects and nothing else.
                         scene_description.rstrip(" .")
                         + ". Continuity requirement: this is the exact same physical instance/content across all "
                         + f"stages of continuity group '{continuity_key}': {continuity_description}. "
-                        + "Do not change the underlying depicted subject/content; change only the narrated state."
+                        + "Do not change the underlying depicted subject/content; change only the narrated state. "
+                        + "This contract applies only to the intended target, not the entire frame. Remove incidental "
+                        + "background objects, invented props and spurious text unless explicitly required by this scene."
                     ).strip()
                 environment = str(item.get("environment") or "").strip()
                 composition = str(item.get("composition") or "").strip()
@@ -2487,15 +2493,27 @@ Return exactly {amount} objects and nothing else.
                 # specific, but it cannot become convincing fabricated evidence.
                 if coverage_status == "unsupported":
                     planner_validation = "coverage_fallback"
+                    # Preserve relevance only through independently covered identity,
+                    # never through fields from this rejected scene. The manual pack
+                    # describes the primary subject, not an output or secondary entity.
+                    fallback_identity = next((previous for previous in reversed(result)
+                        if previous["coverage_status"] == "covered"
+                        and previous["reference_target"] == "primary_subject"
+                        and previous["reference_need"] == "identity"
+                        and previous["evidence_scope"] == "externally_visible"
+                    ), None) if reference_target == "primary_subject" else None
+                    # An LLM-labelled 'safe' alternative shares the rejected plan's
+                    # provenance. It is not evidence and must not bypass this gate.
                     scene_description = (
-                        safe_visual_alternative
-                        or (
-                            "Show only an externally visible result, behavior, before/after state, "
-                            "or surrounding context relevant to this narration. Do not depict or "
-                            "reconstruct internal mechanisms, hidden layers, cutaways, transparent "
-                            "cross-sections, inferred structures, or an unverified process as directly visible."
-                        )
+                        "Show a quiet external context with no mechanism or process demonstrated. "
+                        "Use a closed exterior view rather than explaining how the subject works. "
+                        if reference_target == "primary_subject"
+                        else "Show a quiet observable surrounding context, without demonstrating a process or its inferred cause. "
+                    ) + (
+                        "Do not depict or reconstruct internal mechanisms, hidden layers, cutaways, transparent "
+                        "cross-sections, inferred structures, material transfer or unverified actions as directly visible."
                     )
+                    safe_visual_alternative = scene_description
                     subject = "externally visible result or context"
                     canonical_subject = subject
                     required_features = []
@@ -2510,20 +2528,30 @@ Return exactly {amount} objects and nothing else.
                     composition_key_source = "coverage_safe_context"
                     shot_type = "context"
                     framing_intent = "context"
-                    fallback_target = reference_target
                     reference_need = "none"
-                    reference_target = (
-                        fallback_target
-                        if continuity_key != "none"
-                        and fallback_target in {"output", "secondary_subject"}
-                        else "none"
-                    )
+                    reference_target = "none"
                     evidence_scope = "contextual"
-                    if reference_target == "none":
-                        continuity_key = "none"
-                        continuity_description = ""
+                    continuity_key = "none"
+                    continuity_description = ""
+                    includes_primary_subject = False
                     reference_critical = False
                     route = "standard"
+                    identity_hint = ""
+                    if fallback_identity is not None:
+                        subject = fallback_identity["subject"]
+                        canonical_subject = subject
+                        scene_description = (
+                            f"Show only the closed exterior of {subject}, as established by the identity references. "
+                            + scene_description
+                        )
+                        reference_need = "identity"
+                        reference_target = "primary_subject"
+                        includes_primary_subject = True
+                        reference_critical = True
+                        route = "precision"
+                        shot_type = "full"
+                        framing_intent = "full_subject"
+                    safe_visual_alternative = scene_description
                     logger.warning(
                         "scene-plan coverage gate hard-sanitized unsupported evidence before GPU generation: "
                         f"scene={index + 1}, requested_need={requested_reference_need!r}, "
@@ -2579,11 +2607,11 @@ Return exactly {amount} objects and nothing else.
                     "reference_need": reference_need,
                     "requested_reference_need": requested_reference_need,
                     "reference_target": reference_target,
-                    "reference_query": str(item.get("reference_query") or "").strip(),
+                    "reference_query": "" if coverage_status == "unsupported" else str(item.get("reference_query") or "").strip(),
                     "evidence_scope": evidence_scope,
                     "reference_critical": reference_critical,
                     "includes_primary_subject": includes_primary_subject,
-                    "identity_relation_guard": str(item.get("identity_relation_guard") or ""),
+                    "identity_relation_guard": "" if coverage_status == "unsupported" else str(item.get("identity_relation_guard") or ""),
                     "coverage_status": coverage_status,
                     "coverage_reason": coverage_reason,
                     "safe_visual_alternative": safe_visual_alternative,

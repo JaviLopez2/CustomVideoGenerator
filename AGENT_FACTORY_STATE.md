@@ -4,6 +4,31 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current candidate — 2026-10-01: evidence, continuity and corrective retry
+
+Isolated branch: `factory/evidence-continuity-fix`, based on published narration
+candidate `188001bf82fee2518002c9105dec77c4a49cb573`. Stable remains unchanged at
+`6d27ba4963ffe469d635db71eaeec506a8ff4b61`. See
+`docs/EVIDENCE_CONTINUITY_HANDOFF.md` for recovery details, tests and manual checks.
+
+The user validated the second controlled Windows SX-70 run
+`15825038-3597-4b77-85ee-0b9f0a9a5c27`: internal narration.srt, 23 subtitle blocks,
+9 semantic scenes, 7 Precision / 2 Standard, active references and continuity,
+completed diagnostics and technically valid MP4. These are user-reported results,
+not a generation performed in this session. Statements below that this corrected
+benchmark remains pending are historical.
+
+The candidate discards rejected visual alternatives at the coverage gate, scopes
+continuity to the intended target, and retains the original when the single cheap
+duplicate correction does not improve similarity. When an earlier scene already
+established covered primary identity, the fallback can reuse that identity for an
+exterior reference shot; no unsupported mechanism or action is reused. Otherwise a
+conservative generic context remains. Diagnostics record both metrics and selection.
+Narration timing, references/anchors, Balanced defaults and its soft planning budget
+remain intact. No Factory changes, new dependency declarations, heavy evaluators or
+live generation. The former worktree was absent from the restored environment; its
+recorded patch was recovered onto the same published base, not redesigned.
+
 ## Candidate update — 2026-09-30: narration timing independent of rendering
 
 Branch/worktree: `factory/narration-timeline`, based on stable
