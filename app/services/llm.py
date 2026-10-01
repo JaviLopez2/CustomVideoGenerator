@@ -1785,10 +1785,14 @@ def _scene_reference_coverage(
     # The current manual library is an identity/evidence pack for the primary
     # subject. Do not silently treat those images as proof of a produced output or
     # a distinct secondary entity just because they belong to the same topic.
+    ordinary_output = (
+        target == "output" and need == "none" and scope == "externally_visible"
+        and not _scene_hidden_evidence_signals(item)
+    )
     if target in {"output", "secondary_subject", "none"} and (
         need in {"identity", "detail", "internal"}
         or scope in {"specialized_visible", "hidden_internal"}
-        or critical
+        or (critical and not ordinary_output)
     ):
         return (
             "unsupported",
@@ -1828,6 +1832,40 @@ def _scene_reference_coverage(
         "unsupported",
         f"{matched_reason}; evidence_scope={scope!r}",
     )
+
+
+def _narrated_observable_fragment(value: object, narration: str, *, state: bool = False) -> str:
+    """Keep only literal narration-grounded exterior semantics, never a 'safe' rewrite.
+
+    The existing planner/audit nominates a subject and visible state separately
+    from mechanism claims. Exact grounding and conservative hidden/causal guards
+    constrain those nominations; missing or ambiguous spans fail closed.
+    """
+    if not isinstance(value, str):
+        return ""
+    fragment = " ".join(value.strip(" .\n\r").split())
+    if not fragment or len(fragment) > 220:
+        return ""
+    if not re.search(r"(?<!\w)" + re.escape(fragment) + r"(?!\w)",
+                     " ".join(narration.split()), re.IGNORECASE):
+        return ""
+    if _scene_hidden_evidence_signals({"scene_description": fragment}) or re.search(
+        r"\b(intern\w*|hidden|ocult\w*|mechanism\w*|mecanism\w*|layers?|capas?|"
+        r"reagent\w*|reactiv\w*|reaction\w*|reacci[oó]n\w*|chemic\w*|qu[ií]mic\w*|"
+        r"caus\w*|pressure|presi[oó]n|transparen\w*|cutaway|gears?|engranaj\w*|"
+        r"rollers?|rodillos?|inside|dentro|drives?|forces?|transfers?|"
+        r"impulsa\w*|transfiere\w*|not|no|invisible)\b", fragment, re.IGNORECASE
+    ):
+        return ""
+    if state:
+        # A visible-sounding action excerpted from a hidden/causal sentence is
+        # still not observable evidence. Do not move it onto an exterior subject.
+        sentences = re.split(r"[.!?;\n]+", narration)
+        if not any(fragment.casefold() in " ".join(sentence.split()).casefold()
+                   and _narrated_observable_fragment(sentence, narration)
+                   for sentence in sentences):
+            return ""
+    return fragment
 
 
 def _scene_plan_preflight_issues(
@@ -2165,6 +2203,8 @@ Return ONLY a valid JSON array containing exactly {amount} objects. Every object
 - "reference_critical": JSON boolean; true only when a generic/wrong subject or unsupported view would materially mislead
 - "includes_primary_subject": JSON boolean; true whenever the actual whole primary referenced entity is visibly present, even if the scene focus/reference_target is an output or secondary entity
 - "safe_visual_alternative": concise externally supported or contextual scene description to use if requested specialized evidence is unavailable
+- "observable_subject": shortest externally observable entity span copied VERBATIM from this scene's narration, in its original language; empty if unavailable. Exclude internal parts and inferred geometry.
+- "observable_state": short visible appearance/result/progression span copied VERBATIM from this scene's narration; empty if unavailable. Exclude mechanisms, hidden causes, chemical reactions and unsupported actions. Keep these two fields separate from safe_visual_alternative and preserve them during the factual audit.
 - "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
 - "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
 - "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
@@ -2488,9 +2528,8 @@ Return exactly {amount} objects and nothing else.
                 planner_validation = "pass"
 
                 # Deterministic coverage gate: if the audited plan is still
-                # unsupported, discard *all* visual directions that could leak the
-                # unverified mechanism. A generic external/context shot is less
-                # specific, but it cannot become convincing fabricated evidence.
+                # unsupported, discard rejected visual directions. Independently
+                # grounded exterior semantics may survive without the mechanism.
                 if coverage_status == "unsupported":
                     planner_validation = "coverage_fallback"
                     # Preserve relevance only through independently covered identity,
@@ -2516,6 +2555,12 @@ Return exactly {amount} objects and nothing else.
                     safe_visual_alternative = scene_description
                     subject = "externally visible result or context"
                     canonical_subject = subject
+                    observable_subject = _narrated_observable_fragment(
+                        item.get("observable_subject"), narration
+                    ) or _narrated_observable_fragment(item.get("canonical_subject"), narration)
+                    observable_state = _narrated_observable_fragment(
+                        item.get("observable_state"), narration, state=True
+                    ) if observable_subject else ""
                     required_features = []
                     forbidden_features = []
                     environment = "natural narration-grounded context with no exposed hidden internals"
@@ -2537,13 +2582,26 @@ Return exactly {amount} objects and nothing else.
                     reference_critical = False
                     route = "standard"
                     identity_hint = ""
+                    if observable_subject:
+                        subject = canonical_subject = observable_subject
+                        scene_description = f"Show {subject} in an ordinary exterior view, with its visible surface clearly readable."
+                        if observable_state:
+                            scene_description += f" Visible state: {observable_state}."
+                        environment = "simple natural surroundings with the observable subject prominent"
+                        composition = "clear documentary exterior view at natural physical scale"
+                        reference_target = _normalize_scene_enum(
+                            item.get("reference_target"), _SCENE_REFERENCE_TARGETS, "none"
+                        )
+                        evidence_scope = "externally_visible"
                     if fallback_identity is not None:
                         subject = fallback_identity["subject"]
                         canonical_subject = subject
                         scene_description = (
                             f"Show only the closed exterior of {subject}, as established by the identity references. "
-                            + scene_description
+                            + (f"Visible state: {observable_state}."
+                               if observable_state and subject.casefold() == observable_subject.casefold() else "")
                         )
+                        evidence_scope = "externally_visible"
                         reference_need = "identity"
                         reference_target = "primary_subject"
                         includes_primary_subject = True

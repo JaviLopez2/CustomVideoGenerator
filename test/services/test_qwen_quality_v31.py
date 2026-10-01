@@ -81,7 +81,7 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertEqual(status, "unsupported")
         self.assertIn("output", reason)
 
-    def test_critical_output_with_no_reference_need_is_still_not_covered_by_primary_pack(self):
+    def test_ordinary_output_importance_does_not_require_primary_pack(self):
         status, reason = llm._scene_reference_coverage(
             {
                 "reference_need": "none",
@@ -92,8 +92,8 @@ class TestQwenQualityV31(unittest.TestCase):
             [{"slot": 1, "role": "identity", "description": "primary subject"}],
         )
 
-        self.assertEqual(status, "unsupported")
-        self.assertIn("output", reason)
+        self.assertEqual(status, "covered")
+        self.assertIn("does not require", reason)
 
     def test_preflight_flags_unsupported_even_with_safe_alternative(self):
         issues = llm._scene_plan_preflight_issues(
