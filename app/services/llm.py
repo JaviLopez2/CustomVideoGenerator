@@ -46,6 +46,13 @@ Generate a script for a video, depending on the subject of the video.
 6. do not include "voiceover", "narrator" or similar indicators of what should be spoken at the beginning of each paragraph or line.
 7. you must not mention the prompt, or anything about the script itself. also, never talk about the amount of paragraphs or lines. just write the script.
 8. respond in the same language as the video subject.
+9. for factual or explanatory topics, never invent exact mechanisms, hidden geometry, component counts, chemical names,
+   material names, timings, causal steps or branded technical details merely because they sound plausible.
+10. when a highly specific technical claim is uncertain, prefer a broader accurate description over a confident
+    unsupported detail. Do not fill knowledge gaps with plausible-sounding specificity.
+11. keep setup, exposure/action, output and later transformation steps in physically coherent chronological order.
+12. distinguish what is directly observable from what happens inside an opaque object, between hidden layers or inside
+    a closed system; do not narrate an inferred hidden process as if it were visibly observed.
 """.strip()
 
 # Claude Code CLI 默认使用编码 agent 的系统提示词，其中大量约束与文案写作
@@ -1243,6 +1250,709 @@ _SCENE_SHOT_TYPES = {"wide", "full", "medium", "close", "detail", "macro", "cont
 _SCENE_FRAMING_INTENTS = {"full_subject", "medium_subject", "detail", "context", "macro"}
 _SCENE_REFERENCE_NEEDS = {"none", "identity", "detail", "internal", "context"}
 _SCENE_ROLES = {"establish", "identity", "detail", "context", "process", "evidence", "transition", "closing"}
+_SCENE_EVIDENCE_SCOPES = {
+    "externally_visible",
+    "specialized_visible",
+    "hidden_internal",
+    "contextual",
+}
+_SCENE_REFERENCE_TARGETS = {
+    "primary_subject",
+    "output",
+    "secondary_subject",
+    "environment",
+    "none",
+}
+
+
+def _coerce_scene_bool(value, default: bool = False) -> bool:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return bool(default)
+    if isinstance(value, (int, float)):
+        return bool(value)
+    text = str(value).strip().lower()
+    if text in {"1", "true", "yes", "on"}:
+        return True
+    if text in {"0", "false", "no", "off"}:
+        return False
+    return bool(default)
+
+
+def _reference_inventory_roles(reference_inventory: list[dict] | None) -> set[str]:
+    return {
+        str(item.get("role") or "identity").strip().lower()
+        for item in (reference_inventory or [])
+        if isinstance(item, dict)
+    }
+
+
+def _scene_hidden_evidence_signals(item: dict) -> list[str]:
+    """Detect generic language that explicitly asks for a normally hidden view.
+
+    This is intentionally topic-agnostic. It does not try to know whether a
+    particular mechanism is real; it only notices when the requested camera view
+    itself admits that the evidence is internal, layered, cut away or disassembled.
+    """
+    if not isinstance(item, dict):
+        return []
+    values = [
+        item.get("scene_description"),
+        item.get("environment"),
+        item.get("composition"),
+        item.get("reference_query"),
+        " ".join(_normalize_visual_feature_list(item.get("required_features"))),
+    ]
+    text = " ".join(str(value or "") for value in values).lower()
+    phrases = (
+        "cutaway",
+        "cross-section",
+        "cross section",
+        "inside the ",
+        "inside a ",
+        "inside an ",
+        "internal ",
+        "internal-",
+        "interior cavity",
+        "inside cavity",
+        "between layers",
+        "between the layers",
+        "within layers",
+        "beneath the surface",
+        "under the surface",
+        "opened housing",
+        "open housing",
+        "disassembled",
+        "transparent enclosure",
+        "transparent housing",
+    )
+    return [phrase.strip() for phrase in phrases if phrase in text]
+
+
+
+def _scene_identity_tokens(value: str) -> set[str]:
+    stop = {
+        "the", "and", "with", "from", "into", "onto", "for", "of", "a", "an",
+        "on", "in", "to", "at", "by", "view", "scene", "showing", "visible",
+    }
+    return {
+        token
+        for token in re.findall(r"[a-z0-9]+", str(value or "").lower())
+        if token not in stop and len(token) >= 2
+    }
+
+
+def _scene_same_primary_entity(primary_subject: str, candidate: str) -> bool:
+    primary = _scene_identity_tokens(primary_subject)
+    current = _scene_identity_tokens(candidate)
+    if not primary or not current:
+        return False
+    overlap = len(primary & current)
+    if len(primary) == 1:
+        return overlap == 1
+    required = max(2, int(math.ceil(len(primary) * 0.66)))
+    return overlap >= min(required, len(primary))
+
+
+_DERIVED_OUTPUT_TERMS = {
+    "photo",
+    "photograph",
+    "print",
+    "sheet",
+    "image",
+    "output",
+    "result",
+    "render",
+    "rendering",
+    "recording",
+    "document",
+    "report",
+    "page",
+    "receipt",
+    "ticket",
+    "frame",
+}
+
+
+def _scene_derived_output_terms(value: str) -> set[str]:
+    tokens = {
+        token
+        for token in re.findall(r"[a-z]+", str(value or "").lower())
+        if len(token) >= 4
+    }
+    return tokens & _DERIVED_OUTPUT_TERMS
+
+
+def _scene_looks_like_derived_output(primary_subject: str, item: dict) -> bool:
+    if not primary_subject:
+        return False
+    primary_terms = _scene_derived_output_terms(primary_subject)
+    candidate_text = " ".join(
+        str(item.get(key) or "")
+        for key in (
+            "canonical_subject",
+            "subject",
+            "scene_description",
+            "reference_query",
+            "continuity_description",
+        )
+    )
+    candidate_terms = _scene_derived_output_terms(candidate_text)
+    return bool(candidate_terms - primary_terms)
+
+
+def _reference_evidence_tokens(value: str) -> set[str]:
+    stop = {
+        "the", "and", "with", "from", "into", "onto", "for", "of", "a", "an",
+        "on", "in", "to", "at", "by", "view", "scene", "showing", "visible",
+        "subject", "overall", "general", "whole",
+    }
+    result: set[str] = set()
+    for raw in re.findall(r"[a-z]+", str(value or "").lower()):
+        if raw in stop or len(raw) < 4:
+            continue
+        token = raw
+        if token.endswith("ies") and len(token) > 5:
+            token = token[:-3] + "y"
+        elif token.endswith("ers") and len(token) > 6:
+            token = token[:-1]
+        elif token.endswith("s") and len(token) > 5:
+            token = token[:-1]
+        result.add(token)
+    return result
+
+
+def _reference_role_has_semantic_evidence(
+    inventory: list[dict],
+    required_role: str,
+    reference_query: str,
+) -> tuple[bool, str]:
+    candidates = [
+        item
+        for item in inventory
+        if str(item.get("role") or "identity").strip().lower() == required_role
+    ]
+    if not candidates:
+        return False, f"manual reference inventory lacks required role {required_role!r}"
+
+    # Whole-subject identity is established by the explicit identity role itself.
+    if required_role == "identity":
+        return True, "manual reference inventory contains whole-subject identity evidence"
+
+    described = [
+        item for item in candidates if str(item.get("description") or "").strip()
+    ]
+    if not described:
+        return (
+            False,
+            f"manual reference inventory has role {required_role!r} but no user description proving what that specialized reference shows",
+        )
+
+    query_tokens = _reference_evidence_tokens(reference_query)
+    if not query_tokens:
+        return (
+            False,
+            f"specialized role {required_role!r} has descriptions but the scene provides no semantic reference_query to verify coverage",
+        )
+
+    best_overlap: set[str] = set()
+    best_description = ""
+    for item in described:
+        description = str(item.get("description") or "").strip()
+        overlap = query_tokens & _reference_evidence_tokens(description)
+        if len(overlap) > len(best_overlap):
+            best_overlap = overlap
+            best_description = description
+
+    if best_overlap:
+        return (
+            True,
+            f"manual {required_role!r} evidence semantically matches the scene query via {sorted(best_overlap)!r}: {best_description!r}",
+        )
+    return (
+        False,
+        f"manual {required_role!r} references exist but none of their user descriptions semantically match reference_query={reference_query!r}",
+    )
+
+
+def _scene_continuity_tokens(item: dict) -> set[str]:
+    text = " ".join(
+        str(item.get(key) or "")
+        for key in ("canonical_subject", "subject")
+    ).lower()
+    tokens: set[str] = set()
+    for raw in re.findall(r"[a-z]+", text):
+        if len(raw) < 4:
+            continue
+        token = raw
+        for suffix in ("ing", "ment", "ed", "es", "s"):
+            if token.endswith(suffix) and len(token) - len(suffix) >= 4:
+                token = token[: -len(suffix)]
+                break
+        tokens.add(token)
+    return tokens
+
+
+def _scene_has_temporal_continuity_signal(item: dict) -> bool:
+    text = " ".join(
+        str(item.get(key) or "")
+        for key in (
+            "canonical_subject",
+            "subject",
+            "scene_description",
+            "safe_visual_alternative",
+        )
+    ).lower()
+    terms = (
+        "same ", "stage", "initial", "early", "mid-", "mid ", "later",
+        "continue", "progress", "develop", "emerg", "becom", "gradual",
+        "final", "finished", "stabil", "matur", "grow", "cool", "dry",
+        "harden", "transform", "change", "forming", "formed",
+    )
+    return any(term in text for term in terms)
+
+
+def _normalize_scene_identity_and_continuity(items: list[dict]) -> list[dict]:
+    """Deterministically protect the manual primary identity pack and infer obvious temporal chains."""
+    rows = [dict(item) if isinstance(item, dict) else item for item in items]
+
+    primary_subject = ""
+    preferred: list[dict] = []
+    fallback: list[dict] = []
+    for item in rows:
+        if not isinstance(item, dict):
+            continue
+        target = _normalize_scene_enum(
+            item.get("reference_target"),
+            _SCENE_REFERENCE_TARGETS,
+            "none",
+        )
+        need = _normalize_scene_enum(
+            item.get("reference_need"),
+            _SCENE_REFERENCE_NEEDS,
+            "none",
+        )
+        scope = _normalize_scene_enum(
+            item.get("evidence_scope"),
+            _SCENE_EVIDENCE_SCOPES,
+            "contextual",
+        )
+        if target == "primary_subject" and need == "identity" and scope == "externally_visible":
+            fallback.append(item)
+            if _coerce_scene_bool(item.get("reference_critical"), False):
+                preferred.append(item)
+    primary_item = preferred[0] if preferred else (fallback[0] if fallback else None)
+    if primary_item:
+        primary_subject = str(
+            primary_item.get("canonical_subject")
+            or primary_item.get("subject")
+            or ""
+        ).strip()
+
+    for item in rows:
+        if not isinstance(item, dict):
+            continue
+        target = _normalize_scene_enum(
+            item.get("reference_target"),
+            _SCENE_REFERENCE_TARGETS,
+            "none",
+        )
+        need = _normalize_scene_enum(
+            item.get("reference_need"),
+            _SCENE_REFERENCE_NEEDS,
+            "none",
+        )
+        scope = _normalize_scene_enum(
+            item.get("evidence_scope"),
+            _SCENE_EVIDENCE_SCOPES,
+            "contextual",
+        )
+        candidate = str(
+            item.get("canonical_subject") or item.get("subject") or ""
+        ).strip()
+        scene_identity_text = " ".join(
+            str(item.get(key) or "")
+            for key in ("canonical_subject", "subject", "scene_description")
+        )
+
+        same_primary = bool(
+            primary_subject
+            and _scene_same_primary_entity(primary_subject, scene_identity_text)
+        )
+        includes_primary = _coerce_scene_bool(
+            item.get("includes_primary_subject"),
+            target == "primary_subject" or same_primary,
+        )
+
+        # A generated/produced artifact can repeat the primary product/model name
+        # (for example "Model X print/photo/output") while still being a different
+        # entity. Identity references for the producer must not be reinterpreted as
+        # identity evidence for the produced artifact.
+        derived_output = bool(
+            primary_subject
+            and target == "primary_subject"
+            and need == "identity"
+            and _scene_looks_like_derived_output(primary_subject, item)
+        )
+        if derived_output:
+            item["reference_target"] = "output"
+            item["identity_relation_guard"] = "reclassified_derived_output"
+            item["reference_need"] = "none"
+            item["reference_critical"] = False
+            if item.get("includes_primary_subject") is None:
+                includes_primary = same_primary
+            if not includes_primary:
+                item["route"] = "standard"
+            target = "output"
+            need = "none"
+        elif (
+            primary_subject
+            and target == "primary_subject"
+            and candidate
+            and not _scene_same_primary_entity(primary_subject, candidate)
+        ):
+            item["reference_target"] = "secondary_subject"
+            item["identity_relation_guard"] = "reclassified_non_primary"
+            includes_primary = same_primary
+            if need == "identity" and scope in {"externally_visible", "contextual"}:
+                item["reference_need"] = "none"
+                item["reference_critical"] = False
+                item["route"] = "standard"
+                need = "none"
+                target = "secondary_subject"
+        item["includes_primary_subject"] = bool(includes_primary)
+
+    # Preserve explicit continuity keys. Infer only adjacent non-primary temporal
+    # stages with semantic overlap, which is conservative enough for arbitrary topics.
+    auto_group_counter = 0
+    for index in range(1, len(rows)):
+        previous = rows[index - 1]
+        current = rows[index]
+        if not isinstance(previous, dict) or not isinstance(current, dict):
+            continue
+        prev_key = re.sub(
+            r"[^a-z0-9_]+",
+            "_",
+            str(previous.get("continuity_key") or "none").strip().lower(),
+        ).strip("_") or "none"
+        cur_key = re.sub(
+            r"[^a-z0-9_]+",
+            "_",
+            str(current.get("continuity_key") or "none").strip().lower(),
+        ).strip("_") or "none"
+        if cur_key != "none":
+            continue
+
+        prev_target = _normalize_scene_enum(
+            previous.get("reference_target"),
+            _SCENE_REFERENCE_TARGETS,
+            "none",
+        )
+        cur_target = _normalize_scene_enum(
+            current.get("reference_target"),
+            _SCENE_REFERENCE_TARGETS,
+            "none",
+        )
+        if prev_target not in {"output", "secondary_subject"} or cur_target not in {
+            "output",
+            "secondary_subject",
+        }:
+            continue
+        if not (
+            _scene_has_temporal_continuity_signal(previous)
+            or _scene_has_temporal_continuity_signal(current)
+        ):
+            continue
+
+        prev_tokens = _scene_continuity_tokens(previous)
+        cur_tokens = _scene_continuity_tokens(current)
+        overlap = prev_tokens & cur_tokens
+        if not overlap:
+            continue
+
+        if prev_key == "none":
+            auto_group_counter += 1
+            prev_key = f"auto_continuity_{index}_{auto_group_counter}"
+            previous["continuity_key"] = prev_key
+            description = " ".join(
+                str(
+                    previous.get("continuity_description")
+                    or previous.get("canonical_subject")
+                    or previous.get("subject")
+                    or "the same physical instance/content"
+                ).strip().split()
+            )
+            previous["continuity_description"] = (
+                f"the exact same physical instance/content of {description}, preserving the same underlying visible content and defining details across stages"
+            )
+            previous["continuity_inference"] = "adjacent_temporal_semantic_match"
+
+        current["continuity_key"] = prev_key
+        current["continuity_description"] = str(
+            previous.get("continuity_description") or ""
+        ).strip()
+        current["continuity_inference"] = "adjacent_temporal_semantic_match"
+
+    # Closing/context scenes often reintroduce the primary subject next to the
+    # final state of a continuity object. Carry the preceding continuity group
+    # forward when the new scene explicitly mentions a final/finished output.
+    for index in range(1, len(rows)):
+        previous = rows[index - 1]
+        current = rows[index]
+        if not isinstance(previous, dict) or not isinstance(current, dict):
+            continue
+        previous_key = re.sub(
+            r"[^a-z0-9_]+",
+            "_",
+            str(previous.get("continuity_key") or "none").strip().lower(),
+        ).strip("_") or "none"
+        current_key = re.sub(
+            r"[^a-z0-9_]+",
+            "_",
+            str(current.get("continuity_key") or "none").strip().lower(),
+        ).strip("_") or "none"
+        if previous_key == "none" or current_key != "none":
+            continue
+        current_text = " ".join(
+            str(current.get(key) or "")
+            for key in (
+                "canonical_subject",
+                "subject",
+                "scene_description",
+                "reference_query",
+                "safe_visual_alternative",
+            )
+        )
+        if not _scene_derived_output_terms(current_text):
+            continue
+        if not _scene_has_temporal_continuity_signal(current):
+            continue
+        current["continuity_key"] = previous_key
+        current["continuity_description"] = str(
+            previous.get("continuity_description") or ""
+        ).strip()
+        current["continuity_inference"] = "adjacent_closing_output_composite"
+
+    return rows
+
+
+def _scene_reference_coverage(
+    item: dict,
+    reference_inventory: list[dict] | None,
+) -> tuple[str, str]:
+    """Return whether the available manual evidence supports this scene's requested view."""
+    inventory = [x for x in (reference_inventory or []) if isinstance(x, dict)]
+    if not inventory:
+        return (
+            "unknown",
+            "no manual reference inventory is available; downstream automatic reference routing may still provide evidence",
+        )
+
+    roles = _reference_inventory_roles(inventory)
+    need = _normalize_scene_enum(
+        item.get("reference_need"),
+        _SCENE_REFERENCE_NEEDS,
+        "none",
+    )
+    default_scope = (
+        "hidden_internal"
+        if need == "internal"
+        else "specialized_visible"
+        if need == "detail"
+        else "contextual"
+        if need in {"none", "context"}
+        else "externally_visible"
+    )
+    scope = _normalize_scene_enum(
+        item.get("evidence_scope"),
+        _SCENE_EVIDENCE_SCOPES,
+        default_scope,
+    )
+    critical = _coerce_scene_bool(item.get("reference_critical"), False)
+    target = _normalize_scene_enum(
+        item.get("reference_target"),
+        _SCENE_REFERENCE_TARGETS,
+        (
+            "primary_subject"
+            if need in {"identity", "detail", "internal"}
+            else "environment"
+            if need == "context"
+            else "none"
+        ),
+    )
+
+    # The current manual library is an identity/evidence pack for the primary
+    # subject. Do not silently treat those images as proof of a produced output or
+    # a distinct secondary entity just because they belong to the same topic.
+    if target in {"output", "secondary_subject", "none"} and (
+        need in {"identity", "detail", "internal"}
+        or scope in {"specialized_visible", "hidden_internal"}
+        or critical
+    ):
+        return (
+            "unsupported",
+            f"manual reference inventory targets the primary subject, not reference_target={target!r}",
+        )
+    if target == "environment" and need not in {"none", "context"}:
+        return (
+            "unsupported",
+            f"environment reference_target cannot satisfy reference_need={need!r}",
+        )
+
+    required_role = ""
+    if need == "internal" or scope == "hidden_internal":
+        required_role = "internal"
+    elif need == "detail":
+        required_role = "detail"
+    elif need == "context":
+        required_role = "context"
+    elif need == "identity":
+        required_role = "identity"
+    elif scope == "specialized_visible":
+        required_role = "detail"
+    elif scope == "externally_visible" and critical and target == "primary_subject":
+        required_role = "identity"
+
+    if not required_role:
+        return "covered", "scene does not require a dedicated manual evidence role"
+
+    matched, matched_reason = _reference_role_has_semantic_evidence(
+        inventory,
+        required_role,
+        str(item.get("reference_query") or ""),
+    )
+    if matched:
+        return "covered", matched_reason
+    return (
+        "unsupported",
+        f"{matched_reason}; evidence_scope={scope!r}",
+    )
+
+
+def _scene_plan_preflight_issues(
+    items: list[dict],
+    *,
+    reference_inventory: list[dict] | None = None,
+    precision_budget_ratio: float = 1.0,
+) -> list[str]:
+    """Cheap deterministic QA for diversity, factual support and routing before GPU work."""
+    issues = list(_scene_plan_diversity_issues(items))
+    for index, item in enumerate(items, start=1):
+        if not isinstance(item, dict):
+            issues.append(f"scene {index} is not a JSON object")
+            continue
+
+        required = {
+            str(value).strip().lower()
+            for value in _normalize_visual_feature_list(item.get("required_features"))
+        }
+        forbidden = {
+            str(value).strip().lower()
+            for value in _normalize_visual_feature_list(item.get("forbidden_features"))
+        }
+        overlap = sorted(required & forbidden)
+        if overlap:
+            issues.append(
+                f"scene {index} has contradictory required/forbidden features: {overlap!r}"
+            )
+
+        need = _normalize_scene_enum(
+            item.get("reference_need"),
+            _SCENE_REFERENCE_NEEDS,
+            "none",
+        )
+        scope = _normalize_scene_enum(
+            item.get("evidence_scope"),
+            _SCENE_EVIDENCE_SCOPES,
+            (
+                "hidden_internal"
+                if need == "internal"
+                else "specialized_visible"
+                if need == "detail"
+                else "contextual"
+                if need in {"none", "context"}
+                else "externally_visible"
+            ),
+        )
+        hidden_signals = _scene_hidden_evidence_signals(item)
+        if hidden_signals and scope != "hidden_internal":
+            issues.append(
+                f"scene {index} explicitly requests a hidden/cutaway view ({hidden_signals!r}) but evidence_scope is {scope!r}; use hidden_internal"
+            )
+        if scope == "hidden_internal" and need != "internal":
+            issues.append(
+                f"scene {index} depicts hidden/internal evidence but reference_need is {need!r}; use reference_need='internal'"
+            )
+
+        coverage_status, coverage_reason = _scene_reference_coverage(
+            item,
+            reference_inventory,
+        )
+        if coverage_status == "unsupported":
+            issues.append(
+                f"scene {index} lacks evidence coverage and must be rewritten as a covered external/contextual scene before generation: {coverage_reason}"
+            )
+
+    continuity_groups: dict[str, dict[str, str]] = {}
+    for index, item in enumerate(items, start=1):
+        if not isinstance(item, dict):
+            continue
+        key = re.sub(
+            r"[^a-z0-9_]+",
+            "_",
+            str(item.get("continuity_key") or "none").strip().lower(),
+        ).strip("_") or "none"
+        if key == "none":
+            continue
+        description = " ".join(
+            str(item.get("continuity_description") or "").strip().lower().split()
+        )
+        canonical = " ".join(
+            str(item.get("canonical_subject") or item.get("subject") or "")
+            .strip()
+            .lower()
+            .split()
+        )
+        if not description:
+            issues.append(
+                f"scene {index} continuity_key={key!r} has no continuity_description"
+            )
+            continue
+        previous = continuity_groups.get(key)
+        if previous is None:
+            continuity_groups[key] = {
+                "description": description,
+                "canonical_subject": canonical,
+            }
+            continue
+        if description != previous["description"]:
+            issues.append(
+                f"scene {index} changes continuity_description inside continuity_key={key!r}; keep the same underlying instance/content"
+            )
+        if canonical and previous["canonical_subject"] and canonical != previous["canonical_subject"]:
+            issues.append(
+                f"scene {index} changes canonical_subject inside continuity_key={key!r}"
+            )
+
+    try:
+        ratio = max(0.0, min(1.0, float(precision_budget_ratio)))
+    except (TypeError, ValueError):
+        ratio = 1.0
+    if items and ratio < 0.999:
+        allowed_critical = max(1, int(math.ceil(len(items) * ratio)))
+        critical_count = sum(
+            _coerce_scene_bool(item.get("reference_critical"), False)
+            for item in items
+            if isinstance(item, dict)
+        )
+        if critical_count > allowed_critical:
+            issues.append(
+                f"reference_critical is over budget ({critical_count}>{allowed_critical}); keep only genuinely identity/factual-critical scenes critical and redesign the others as context/process/transition shots"
+            )
+
+    # Preserve order while deduplicating repeated deterministic findings.
+    return list(dict.fromkeys(issues))
 
 
 def _scene_plan_diversity_issues(items: list[dict]) -> list[str]:
@@ -1253,6 +1963,9 @@ def _scene_plan_diversity_issues(items: list[dict]) -> list[str]:
     env_keys = [str(i.get("environment_key") or "").strip().lower() for i in items]
     shot_types = [str(i.get("shot_type") or "").strip().lower() for i in items]
     environments = [str(i.get("environment") or "").strip().lower() for i in items]
+    composition_keys = [
+        str(i.get("composition_key") or "").strip().lower() for i in items
+    ]
 
     # No environment family should dominate a normal multi-scene video.
     nonempty_env = [x for x in env_keys if x]
@@ -1270,6 +1983,14 @@ def _scene_plan_diversity_issues(items: list[dict]) -> list[str]:
             break
     if len(items) >= 7 and len({x for x in shot_types if x}) < 3:
         issues.append("use at least three shot types across the video")
+
+    for idx in range(len(composition_keys) - 2):
+        triple = composition_keys[idx:idx + 3]
+        if triple[0] and len(set(triple)) == 1:
+            issues.append(
+                f"composition family {triple[0]!r} repeats for three consecutive scenes"
+            )
+            break
 
     # Controlled/plain presentation is valid, but should not silently become the whole video.
     controlled_terms = ("studio", "showroom", "plain background", "neutral background", "seamless background")
@@ -1388,6 +2109,7 @@ def generate_scene_image_plan(
     scene_plan: list[dict],
     app_config=None,
     reference_inventory: list[dict] | None = None,
+    precision_budget_ratio: float = 1.0,
 ) -> list[dict]:
     """Create a factual, diverse and reference-aware visual plan before GPU generation."""
     if not scene_plan:
@@ -1431,12 +2153,20 @@ Return ONLY a valid JSON array containing exactly {amount} objects. Every object
 - "environment": narration-grounded environment/background
 - "environment_key": short lowercase semantic family name for that environment
 - "composition": camera position, angle and layout for a vertical image
+- "composition_key": short lowercase semantic family name for the camera/composition setup
 - "lighting": realistic lighting
 - "shot_type": one of wide, full, medium, close, detail, macro, context
 - "framing_intent": one of full_subject, medium_subject, detail, context, macro
 - "shot_role": one of establish, identity, detail, context, process, evidence, transition, closing
 - "reference_need": one of none, identity, detail, internal, context
+- "reference_target": one of primary_subject, output, secondary_subject, environment, none
 - "reference_query": short phrase describing what a useful reference should visibly show
+- "evidence_scope": one of externally_visible, specialized_visible, hidden_internal, contextual
+- "reference_critical": JSON boolean; true only when a generic/wrong subject or unsupported view would materially mislead
+- "includes_primary_subject": JSON boolean; true whenever the actual whole primary referenced entity is visibly present, even if the scene focus/reference_target is an output or secondary entity
+- "safe_visual_alternative": concise externally supported or contextual scene description to use if requested specialized evidence is unavailable
+- "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
+- "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
 - "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
 
 ## Routing
@@ -1456,17 +2186,56 @@ remain precision before later performance budgeting.
 8. References, when supplied later, are identity/evidence sources only; never design a scene around copying their
    background, pose, crop, lighting or presentation.
 9. Never invent readable captions, fake branding, fake UI or fake documentary evidence.
-10. If narration mentions internal, microscopic, mechanical, anatomical or otherwise hidden detail, request a matching
-    reference_need. If the available manual reference inventory does NOT contain a suitable role, prefer a truthful
-    externally visible or contextual shot that still supports the narration rather than fabricating unsupported detail.
-11. Preserve continuity of canonical_subject across close-ups/details. Do not silently change the real subject identity.
-12. Respect real scale and physical context. No artificial circular/oval viewports, cards, cutouts or collage layouts
+10. Classify evidence_scope independently from shot scale. A close/detail shot can still be hidden_internal if it depicts
+    a mechanism, anatomy, layer or structure that is not normally visible from the outside. Never label hidden evidence
+    as merely "detail" because the camera is close.
+11. If evidence_scope=hidden_internal, reference_need must normally be internal. If the manual reference inventory has no
+    suitable internal evidence, plan safe_visual_alternative around an externally visible cause/effect, context, or other
+    narration-faithful representation. Do not invent the hidden structure.
+12. specialized_visible means a real visible feature/view that needs dedicated evidence. It is not a substitute for
+    hidden_internal.
+13. Set reference_critical=true sparingly when exact identity/factual evidence must survive performance budgeting. The
+    number of critical scenes should fit the Precision budget for this task; redesign non-critical beats as contextual,
+    process or transition shots instead of marking everything critical.
+14. Preserve continuity of canonical_subject across close-ups/details. Do not silently change the real subject identity.
+15. required_features and forbidden_features must not contradict one another. Do not assert exact counts, hidden geometry,
+    mechanisms or branded markings unless supported by narration or available reference metadata.
+16. Respect real scale and physical context. No artificial circular/oval viewports, cards, cutouts or collage layouts
     unless the narration explicitly requires them.
+17. reference_target describes WHAT ENTITY the selected reference would prove. Use primary_subject only when the visible
+    entity is the same real subject as the task identity pack. A photograph, manufactured output, emitted object, result,
+    by-product or image produced by the primary subject is output, not primary_subject. A different real entity is
+    secondary_subject. Background evidence is environment.
+18. Identity references for the primary subject must never be used as evidence for output, secondary_subject or
+    environment merely because those things appear in the same story.
+19. Perform an observability check before declaring evidence externally_visible: a normal camera at the stated vantage
+    must actually be able to see the claimed feature/process. Anything inside an opaque enclosure, beneath a surface,
+    between layers, inside tissue/material, or requiring disassembly/cutaway is hidden_internal even when its external
+    consequence is visible. Represent the visible consequence instead when hidden evidence is unavailable.
+20. Treat mechanically/chemically/biologically specific narration conservatively. Do not turn an asserted cause into a
+    visible structure or process unless the narration/reference evidence really makes that view observable. Prefer an
+    observable before/after/result/context shot over plausible-looking invented documentary evidence.
+21. primary_subject means the actual whole entity represented by the manual identity pack. A cartridge, film sheet,
+    reagent pod, roller assembly, internal component, emitted result or produced image is not automatically the
+    primary_subject merely because it belongs to that object or shares its brand/model name.
+22. If consecutive scenes show temporal stages of the SAME physical instance or produced output, use one continuity_key
+    and exactly the same continuity_description in every stage. Keep the underlying depicted content, object identity and
+    setting stable; change only the narrated state/progression. Do not silently switch to a different photograph, person,
+    room, landscape, object instance or output between stages.
+23. Set includes_primary_subject=true whenever the whole referenced primary entity is visibly in frame, even when the scene
+    focus is an output/secondary object. This allows identity evidence to constrain the background/secondary appearance
+    without falsely redefining the output as the primary subject.
+24. A specialized detail/internal/context reference is evidence only for what its user description explicitly establishes.
+    Do not treat the mere existence of a role=detail/internal/context file as proof of an unrelated specialized view.
 
 ## Manual reference inventory available to this task
 Each item may include role=identity/detail/internal/context/other and an optional user description.
 Use this only to decide whether a requested view is actually supported; filenames are not factual evidence.
 {inventory_text}
+
+## Performance budget
+The current task can normally retain about {max(1, int(math.ceil(amount * max(0.0, min(1.0, float(precision_budget_ratio or 0.0))))))} reference-critical Precision scenes out of {amount}.
+Do not mark more scenes reference_critical unless the narration genuinely cannot be represented truthfully another way.
 
 ## Shared visual language
 {shared_visual_style}
@@ -1491,39 +2260,86 @@ Return exactly {amount} objects and nothing else.
             if not isinstance(payload, list) or len(payload) != amount:
                 raise ValueError(f"expected {amount} scene objects")
 
-            # Conditional one-shot repair: an LLM text call is cheap compared with wasting GPU
-            # generations on a repetitive catalogue-like plan.
-            issues = _scene_plan_diversity_issues(payload)
+            payload = _normalize_scene_identity_and_continuity(payload)
+
+            # One cheap text audit before any GPU work. This is deliberately a
+            # correction pass, not an image judge: it checks whether the draft has
+            # confused an inferred/internal cause with something a camera could
+            # actually observe, and it also receives deterministic preflight issues.
+            issues = _scene_plan_preflight_issues(
+                payload,
+                reference_inventory=reference_inventory,
+                precision_budget_ratio=precision_budget_ratio,
+            )
             runtime_config = app_config if app_config is not None else config.app
-            repair_enabled = bool(runtime_config.get("openai_image_scene_diversity_repair_enabled", True))
-            if issues and repair_enabled:
-                repair_prompt = (
+            audit_enabled = _coerce_scene_bool(
+                runtime_config.get(
+                    "openai_image_scene_factual_audit_enabled",
+                    runtime_config.get("openai_image_scene_diversity_repair_enabled", True),
+                ),
+                True,
+            )
+            factual_audit_status = "disabled"
+            if audit_enabled:
+                issue_text = "\n- ".join(issues) if issues else "(no deterministic issues)"
+                audit_prompt = (
                     prompt
-                    + "\n\n## Draft plan that needs diversity repair\n"
+                    + "\n\n## Draft plan to factually audit before GPU generation\n"
                     + json.dumps(payload, ensure_ascii=False, indent=2)
-                    + "\n\n## Deterministic QA issues\n- "
-                    + "\n- ".join(issues)
-                    + "\nReturn a corrected JSON array with the same scene count/order/narrative facts. "
-                      "Change only presentation choices needed to fix these issues; do not reduce factual accuracy."
+                    + "\n\n## Deterministic pre-GPU QA findings\n- "
+                    + issue_text
+                    + "\n\n## Factual/observability audit\n"
+                      "Return a corrected JSON array with the same scene count and order. Audit every scene, even when "
+                      "the deterministic list is empty. Ask whether a normal documentary camera at the stated vantage "
+                      "could really see the described feature/process. Internal mechanisms, processes between layers, "
+                      "contents behind opaque surfaces, cutaways and inferred hidden causes are hidden_internal. "
+                      "An externally visible consequence does not make its hidden cause externally_visible. "
+                      "Correct reference_target as well: primary_subject means the whole entity represented by the manual "
+                      "identity pack. A cartridge, film sheet, reagent pod, roller assembly, internal component, produced "
+                      "result/output or distinct entity is not automatically primary_subject. Never use whole-subject identity "
+                      "photos as proof of an internal/subcomponent view. Preserve continuity_key groups so the exact same "
+                      "physical instance/output and underlying depicted content remain stable across temporal stages. "
+                      "When evidence is unavailable, redesign the scene around an observable consequence, before/after, "
+                      "external behavior or context so that the resulting scene is covered; do not merely preserve the "
+                      "unsupported hidden scene and label an alternative. Preserve narration meaning, timing, diversity "
+                      "and sequence; do not add new mechanical, chemical, biological or branded facts."
                 )
                 try:
-                    repaired_response = _generate_response(repair_prompt) if app_config is None else _generate_response(repair_prompt, app_config=app_config)
-                    repaired = json.loads(_strip_code_fence(repaired_response))
-                    if isinstance(repaired, list) and len(repaired) == amount:
-                        repaired_issues = _scene_plan_diversity_issues(repaired)
-                        if len(repaired_issues) < len(issues):
-                            logger.info(
-                                "scene-plan diversity repair applied: "
-                                f"issues_before={issues!r}, issues_after={repaired_issues!r}"
+                    audited_response = (
+                        _generate_response(audit_prompt)
+                        if app_config is None
+                        else _generate_response(audit_prompt, app_config=app_config)
+                    )
+                    audited = json.loads(_strip_code_fence(audited_response))
+                    if isinstance(audited, list) and len(audited) == amount:
+                        payload = _normalize_scene_identity_and_continuity(audited)
+                        factual_audit_status = "applied"
+                        issues = _scene_plan_preflight_issues(
+                            payload,
+                            reference_inventory=reference_inventory,
+                            precision_budget_ratio=precision_budget_ratio,
+                        )
+                        if issues:
+                            logger.warning(
+                                "scene-plan factual audit left deterministic issues; hard gates will sanitize them: "
+                                f"{issues!r}"
                             )
-                            payload = repaired
-                except Exception as repair_exc:
+                        else:
+                            logger.info("scene-plan factual/observability audit applied cleanly")
+                    else:
+                        factual_audit_status = "invalid"
+                        logger.warning(
+                            "scene-plan factual audit returned an invalid scene count; keeping draft plan"
+                        )
+                except Exception as audit_exc:
+                    factual_audit_status = "failed"
                     logger.warning(
-                        "scene-plan diversity repair failed; keeping original valid plan: "
-                        f"{type(repair_exc).__name__}: {repair_exc}"
+                        "scene-plan factual/observability audit failed; deterministic hard gates remain active: "
+                        f"{type(audit_exc).__name__}: {audit_exc}"
                     )
 
             result: list[dict] = []
+            continuity_registry: dict[str, dict[str, str]] = {}
             for index, item in enumerate(payload):
                 if not isinstance(item, dict):
                     raise ValueError(f"scene {index + 1} is not a JSON object")
@@ -1544,23 +2360,204 @@ Return exactly {amount} objects and nothing else.
                 shot_type = _normalize_scene_enum(item.get("shot_type"), _SCENE_SHOT_TYPES, "full")
                 framing_intent = _normalize_scene_enum(item.get("framing_intent"), _SCENE_FRAMING_INTENTS, "full_subject")
                 shot_role = _normalize_scene_enum(item.get("shot_role"), _SCENE_ROLES, "evidence")
-                reference_need = _normalize_scene_enum(item.get("reference_need"), _SCENE_REFERENCE_NEEDS, "identity" if route == "precision" else "none")
-                environment_key = re.sub(r"[^a-z0-9_]+", "_", str(item.get("environment_key") or "context").strip().lower()).strip("_")[:48] or "context"
+                requested_reference_need = _normalize_scene_enum(
+                    item.get("reference_need"),
+                    _SCENE_REFERENCE_NEEDS,
+                    "identity" if route == "precision" else "none",
+                )
+                evidence_scope = _normalize_scene_enum(
+                    item.get("evidence_scope"),
+                    _SCENE_EVIDENCE_SCOPES,
+                    (
+                        "hidden_internal"
+                        if requested_reference_need == "internal"
+                        else "specialized_visible"
+                        if requested_reference_need == "detail"
+                        else "contextual"
+                        if requested_reference_need in {"none", "context"}
+                        else "externally_visible"
+                    ),
+                )
+                hidden_signals = _scene_hidden_evidence_signals(item)
+                if hidden_signals:
+                    if evidence_scope != "hidden_internal" or requested_reference_need != "internal":
+                        logger.warning(
+                            "scene-plan observability gate overrode LLM evidence classification: "
+                            f"scene={index + 1}, signals={hidden_signals!r}, "
+                            f"scope={evidence_scope!r}, need={requested_reference_need!r}"
+                        )
+                    evidence_scope = "hidden_internal"
+                    requested_reference_need = "internal"
+                reference_target = _normalize_scene_enum(
+                    item.get("reference_target"),
+                    _SCENE_REFERENCE_TARGETS,
+                    (
+                        "primary_subject"
+                        if requested_reference_need in {"identity", "detail", "internal"}
+                        else "environment"
+                        if requested_reference_need == "context"
+                        else "none"
+                    ),
+                )
+                includes_primary_subject = _coerce_scene_bool(
+                    item.get("includes_primary_subject"),
+                    reference_target == "primary_subject",
+                )
+                reference_critical = _coerce_scene_bool(
+                    item.get("reference_critical"),
+                    False,
+                )
+                coverage_status, coverage_reason = _scene_reference_coverage(
+                    {
+                        **item,
+                        "reference_need": requested_reference_need,
+                        "reference_target": reference_target,
+                        "evidence_scope": evidence_scope,
+                        "reference_critical": reference_critical,
+                    },
+                    reference_inventory,
+                )
+                runtime_config = app_config if app_config is not None else config.app
+                primary_identity_lock_enabled = _coerce_scene_bool(
+                    runtime_config.get("openai_image_primary_identity_lock_enabled", True),
+                    True,
+                )
+                identity_inventory_available = bool(
+                    "identity" in _reference_inventory_roles(
+                        [x for x in (reference_inventory or []) if isinstance(x, dict)]
+                    )
+                )
+                if (
+                    primary_identity_lock_enabled
+                    and includes_primary_subject
+                    and identity_inventory_available
+                    and coverage_status != "unsupported"
+                ):
+                    reference_critical = True
+                    route = "precision"
+
+                safe_visual_alternative = str(
+                    item.get("safe_visual_alternative") or ""
+                ).strip()
+                continuity_key = re.sub(
+                    r"[^a-z0-9_]+",
+                    "_",
+                    str(item.get("continuity_key") or "none").strip().lower(),
+                ).strip("_") or "none"
+                continuity_description = " ".join(
+                    str(item.get("continuity_description") or "").strip().split()
+                )
+                if continuity_key != "none":
+                    if not continuity_description:
+                        continuity_description = canonical_subject or subject
+                    existing_continuity = continuity_registry.get(continuity_key)
+                    if existing_continuity is None:
+                        continuity_registry[continuity_key] = {
+                            "description": continuity_description,
+                            "canonical_subject": canonical_subject,
+                        }
+                    else:
+                        if continuity_description != existing_continuity["description"]:
+                            logger.warning(
+                                "scene-plan continuity gate normalized changing content description: "
+                                f"scene={index + 1}, continuity_key={continuity_key!r}"
+                            )
+                        continuity_description = existing_continuity["description"]
+                        if existing_continuity.get("canonical_subject"):
+                            canonical_subject = existing_continuity["canonical_subject"]
+                scene_description = str(item.get("scene_description") or "").strip()
+                if continuity_key != "none" and continuity_description:
+                    scene_description = (
+                        scene_description.rstrip(" .")
+                        + ". Continuity requirement: this is the exact same physical instance/content across all "
+                        + f"stages of continuity group '{continuity_key}': {continuity_description}. "
+                        + "Do not change the underlying depicted subject/content; change only the narrated state."
+                    ).strip()
+                environment = str(item.get("environment") or "").strip()
+                composition = str(item.get("composition") or "").strip()
+                lighting = str(item.get("lighting") or "").strip()
+                environment_key_source = str(item.get("environment_key") or "context")
+                composition_key_source = str(item.get("composition_key") or shot_type)
+                reference_need = requested_reference_need
+                planner_validation = "pass"
+
+                # Deterministic coverage gate: if the audited plan is still
+                # unsupported, discard *all* visual directions that could leak the
+                # unverified mechanism. A generic external/context shot is less
+                # specific, but it cannot become convincing fabricated evidence.
+                if coverage_status == "unsupported":
+                    planner_validation = "coverage_fallback"
+                    scene_description = (
+                        safe_visual_alternative
+                        or (
+                            "Show only an externally visible result, behavior, before/after state, "
+                            "or surrounding context relevant to this narration. Do not depict or "
+                            "reconstruct internal mechanisms, hidden layers, cutaways, transparent "
+                            "cross-sections, inferred structures, or an unverified process as directly visible."
+                        )
+                    )
+                    subject = "externally visible result or context"
+                    canonical_subject = subject
+                    required_features = []
+                    forbidden_features = []
+                    environment = "natural narration-grounded context with no exposed hidden internals"
+                    composition = (
+                        "clear documentary context view of externally observable evidence; "
+                        "no cutaway, disassembly, transparent enclosure, or invented internal view"
+                    )
+                    lighting = "natural documentary lighting"
+                    environment_key_source = "coverage_safe_context"
+                    composition_key_source = "coverage_safe_context"
+                    shot_type = "context"
+                    framing_intent = "context"
+                    fallback_target = reference_target
+                    reference_need = "none"
+                    reference_target = (
+                        fallback_target
+                        if continuity_key != "none"
+                        and fallback_target in {"output", "secondary_subject"}
+                        else "none"
+                    )
+                    evidence_scope = "contextual"
+                    if reference_target == "none":
+                        continuity_key = "none"
+                        continuity_description = ""
+                    reference_critical = False
+                    route = "standard"
+                    logger.warning(
+                        "scene-plan coverage gate hard-sanitized unsupported evidence before GPU generation: "
+                        f"scene={index + 1}, requested_need={requested_reference_need!r}, "
+                        f"reason={coverage_reason!r}"
+                    )
+
+                environment_key = re.sub(
+                    r"[^a-z0-9_]+",
+                    "_",
+                    environment_key_source.strip().lower(),
+                ).strip("_")[:48] or "context"
+                composition_key = re.sub(
+                    r"[^a-z0-9_]+",
+                    "_",
+                    composition_key_source.strip().lower(),
+                ).strip("_")[:48] or shot_type
                 try:
                     precision_importance = max(0.0, min(1.0, float(item.get("precision_importance", 0.7 if route == "precision" else 0.2))))
                 except (TypeError, ValueError):
                     precision_importance = 0.7 if route == "precision" else 0.2
 
+                if reference_critical and coverage_status != "unsupported":
+                    route = "precision"
+
                 final_prompt = _build_structured_scene_image_prompt(
                     subject=subject,
                     route=route,
                     narration=narration,
-                    scene_description=str(item.get("scene_description") or ""),
+                    scene_description=scene_description,
                     required_features=required_features,
                     forbidden_features=forbidden_features,
-                    environment=str(item.get("environment") or ""),
-                    composition=str(item.get("composition") or ""),
-                    lighting=str(item.get("lighting") or ""),
+                    environment=environment,
+                    composition=composition,
+                    lighting=lighting,
                     identity_hint=identity_hint,
                     shared_visual_style=shared_visual_style,
                     shot_type=shot_type,
@@ -1573,13 +2570,28 @@ Return exactly {amount} objects and nothing else.
                     "prompt": final_prompt,
                     "required_features": required_features,
                     "forbidden_features": forbidden_features,
-                    "environment": str(item.get("environment") or "").strip(),
+                    "environment": environment,
                     "environment_key": environment_key,
+                    "composition_key": composition_key,
                     "shot_type": shot_type,
                     "framing_intent": framing_intent,
                     "shot_role": shot_role,
                     "reference_need": reference_need,
+                    "requested_reference_need": requested_reference_need,
+                    "reference_target": reference_target,
                     "reference_query": str(item.get("reference_query") or "").strip(),
+                    "evidence_scope": evidence_scope,
+                    "reference_critical": reference_critical,
+                    "includes_primary_subject": includes_primary_subject,
+                    "identity_relation_guard": str(item.get("identity_relation_guard") or ""),
+                    "coverage_status": coverage_status,
+                    "coverage_reason": coverage_reason,
+                    "safe_visual_alternative": safe_visual_alternative,
+                    "planner_validation": planner_validation,
+                    "factual_audit_status": factual_audit_status,
+                    "continuity_key": continuity_key,
+                    "continuity_description": continuity_description,
+                    "continuity_inference": str(item.get("continuity_inference") or ""),
                     "precision_importance": precision_importance,
                 })
 
