@@ -184,7 +184,7 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertNotIn("two rollers", prompt_text)
         self.assertNotIn("dark internal cavity", prompt_text)
         self.assertNotIn("macro top-down cutaway", prompt_text)
-        self.assertIn("externally visible result or context", prompt_text)
+        self.assertIn("narration-grounded exterior context", prompt_text)
         self.assertEqual(scene["reference_query"], "")
         self.assertEqual(scene["continuity_key"], "none")
         self.assertEqual(scene["continuity_description"], "")
@@ -441,11 +441,11 @@ class TestQwenQualityV31(unittest.TestCase):
 
         self.assertEqual(result[0]["continuity_key"], "print_a")
         self.assertIn(
-            "exact same physical instance/content",
+            "one photograph showing the same softly lit room",
             result[0]["prompt"].lower(),
         )
-        self.assertIn(
-            "one photograph showing the same softly lit room",
+        self.assertNotIn(
+            "exact same physical instance/content",
             result[0]["prompt"].lower(),
         )
 
@@ -846,7 +846,7 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertTrue(result[0]["reference_critical"])
         self.assertTrue(result[0]["includes_primary_subject"])
 
-    def test_qwen_continuity_reference_is_authoritative_previous_stage(self):
+    def test_qwen_continuity_reference_uses_input_as_edit_canvas(self):
         prompt = material._qwen_precision_prompt_with_references(
             "make the image slightly more developed",
             "the same output",
@@ -855,7 +855,7 @@ class TestQwenQualityV31(unittest.TestCase):
                 "reference_pack": [
                     {
                         "role": "continuity",
-                        "description": "same physical output at the previous stage",
+                        "description": "same physical output at the stable root stage",
                     }
                 ],
                 "reference_selection": {
@@ -870,13 +870,15 @@ class TestQwenQualityV31(unittest.TestCase):
         )
 
         prompt_lower = prompt.lower()
-        self.assertIn("authoritative previous-stage image", prompt_lower)
-        self.assertIn("same physical instance/content", prompt_lower)
-        self.assertIn("changing only the state/progression", prompt_lower)
+        self.assertIn("edit the input image as the canvas", prompt_lower)
+        self.assertIn("same physical output at the stable root stage", prompt_lower)
+        self.assertIn("apply this change", prompt_lower)
+        self.assertIn("keep all other visible content unchanged", prompt_lower)
+        self.assertNotIn("changing only the state/progression", prompt_lower)
 
-    def test_qwen_continuity_prompt_blocks_recursive_reference_content(self):
+    def test_qwen_multi_reference_prompt_assigns_canvas_and_identity_roles(self):
         prompt = material._qwen_precision_prompt_with_references(
-            "show the output at a later development stage",
+            "show the output at a later development stage with the source device beside it",
             "the produced output",
             2,
             reference_info={
@@ -884,7 +886,7 @@ class TestQwenQualityV31(unittest.TestCase):
                 "reference_pack": [
                     {
                         "role": "continuity",
-                        "description": "same output at previous stage",
+                        "description": "same output at stable root stage",
                     },
                     {
                         "role": "identity",
@@ -901,10 +903,12 @@ class TestQwenQualityV31(unittest.TestCase):
         )
 
         prompt_lower = prompt.lower()
-        self.assertIn("never reinterpret the whole reference frame", prompt_lower)
-        self.assertIn("recursive picture-in-picture", prompt_lower)
-        self.assertIn("visible primary/source entity only", prompt_lower)
-        self.assertIn("never as the visual content of an output", prompt_lower)
+        self.assertIn("<image1> is the canvas", prompt_lower)
+        self.assertIn("<image2> is identity evidence", prompt_lower)
+        self.assertIn("edit <image1>", prompt_lower)
+        self.assertIn("use every other image only for the role stated above", prompt_lower)
+        self.assertNotIn("recursive picture-in-picture", prompt_lower)
+        self.assertNotIn("never reinterpret the whole reference frame", prompt_lower)
 
     def test_continuity_edit_chain_enabled_by_default(self):
         config.app.pop("openai_image_continuity_edit_chain_enabled", None)
@@ -1104,7 +1108,7 @@ class TestQwenQualityV31(unittest.TestCase):
 
     def test_qwen_prompt_names_each_reference_role(self):
         prompt = material._qwen_precision_prompt_with_references(
-            "new scene direction",
+            "new scene direction; the frame does not show a fake extra dial or invented label",
             "test subject",
             3,
             reference_info={
@@ -1120,12 +1124,12 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertIn("<image1>", prompt)
         self.assertIn("<image2>", prompt)
         self.assertIn("<image3>", prompt)
-        self.assertIn("identity/whole-subject evidence", prompt)
+        self.assertIn("identity evidence", prompt)
         self.assertIn("detail evidence", prompt)
-        self.assertIn("context/environment evidence", prompt)
-        self.assertIn("Explicitly do not depict or introduce", prompt)
+        self.assertIn("context evidence", prompt)
         self.assertIn("fake extra dial", prompt)
         self.assertIn("invented label", prompt)
+        self.assertNotIn("Explicitly do not depict or introduce", prompt)
 
     def test_near_duplicate_only_actionable_when_plan_expected_difference(self):
         with tempfile.TemporaryDirectory() as tmp:

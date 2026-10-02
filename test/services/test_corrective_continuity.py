@@ -84,7 +84,8 @@ def test_corrective_retry_selects_only_improvement(pipeline, monkeypatch, retry_
     result = run(search_terms=["device close view"], scene_durations=[1], scene_routes=["precision"], scene_subjects=["device"], scene_continuity_keys=["device_instance"])
     assert result == [selected + ".png.mp4"]
     assert len(calls) == 2
-    assert "CORRECTION" in calls[1]["search_term"]
+    assert "clearly different" in calls[1]["search_term"]
+    assert "do not repeat the previous framing" in calls[1]["search_term"]
     scene = diagnostics[-1]["scenes"][0]
     decision = scene["corrective_retry_selection"]
     assert decision["original_metric"] == .97
@@ -131,18 +132,18 @@ def test_standard_root_continuity_and_identity_anchor_keep_scoped_contract(pipel
     )
     assert len(result) == len(calls) == 2  # one normal generation per scene
     assert calls[0]["route"] == "standard"
-    assert "omit incidental background objects" in calls[0]["search_term"]
+    assert "omit incidental background objects" not in calls[0]["search_term"]
     second = calls[1]
     assert second["route"] == "precision"
     assert second["reference_images"] == ["previous-stage.png", "identity.png"]
-    assert second["reference_info"]["primary_identity_only"] is True
     prompt = material._qwen_precision_prompt_with_references(
         second["search_term"], second["reference_subject"], len(second["reference_images"]),
         reference_info=second["reference_info"],
     )
     assert "the same printed landscape and border" in prompt
-    assert "changing only the state/progression" in prompt
-    assert "Remove incidental background objects" in prompt
-    assert "only the intended target's" in prompt
-    assert "visible primary/source entity only" in prompt
-    assert diagnostics[-1]["plan_scenes"][1]["routing_reason"] == "continuity_edit_chain"
+    assert "<image1> is the canvas" in prompt
+    assert "<image2> is identity evidence" in prompt
+    assert "Keep all other content of <image1> unchanged" in prompt
+    assert "changing only the state/progression" not in prompt
+    assert "Remove incidental background objects" not in prompt
+    assert diagnostics[-1]["plan_scenes"][1]["routing_reason"] == "continuity_edit_from_root"

@@ -53,3 +53,54 @@ def test_rejected_alternative_cannot_supply_result_or_context():
     scene = plan([rejected(observable_result="twin gears", observable_context="spraying lubricant")],
                  ["The sealed motor is on a desk."])[0]
     assert_clean(scene)
+
+
+def test_bare_ambiguous_observable_subject_is_rejected():
+    assert llm._observable_subject_is_ambiguous("la hoja")
+    assert llm._observable_subject_is_ambiguous("the sheet")
+    assert not llm._observable_subject_is_ambiguous("instant photograph")
+    assert not llm._observable_subject_is_ambiguous("photographic film sheet")
+
+
+def test_ambiguous_output_noun_falls_back_to_known_exterior_context():
+    exterior = rejected(
+        scene_description="closed exterior of sealed device",
+        reference_need="identity",
+        reference_target="primary_subject",
+        evidence_scope="externally_visible",
+        required_features=[],
+        safe_visual_alternative="",
+        continuity_key="none",
+        continuity_description="",
+    )
+    hidden = rejected(
+        subject="la hoja",
+        canonical_subject="la hoja",
+        observable_subject="la hoja",
+        reference_target="output",
+        reference_need="internal",
+        evidence_scope="hidden_internal",
+    )
+    scene = plan(
+        [exterior, hidden],
+        ["The sealed device.", "La hoja permanece junto al dispositivo mientras el proceso interno continúa."],
+    )[1]
+    assert "la hoja" not in scene["prompt"].lower()
+    assert scene["reference_target"] == "primary_subject"
+    assert scene["reference_need"] == "identity"
+    assert scene["route"] == "precision"
+
+
+def test_supported_visual_rewrite_keeps_model_facing_fallback_in_english():
+    scene = plan(
+        [rejected(
+            observable_result="la fotografía",
+            observable_result_visual="instant photograph",
+            observable_state="apenas muestra información",
+            visual_state="very faint image with minimal visible detail and low contrast",
+        )],
+        ["Al principio, la fotografía apenas muestra información."],
+    )[0]
+    assert scene["canonical_subject"] == "instant photograph"
+    assert "very faint image with minimal visible detail and low contrast" in scene["prompt"]
+    assert "apenas muestra información" not in scene["prompt"]
