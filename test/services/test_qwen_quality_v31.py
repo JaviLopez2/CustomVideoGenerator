@@ -441,11 +441,11 @@ class TestQwenQualityV31(unittest.TestCase):
 
         self.assertEqual(result[0]["continuity_key"], "print_a")
         self.assertIn(
-            "exact same physical instance/content",
+            "one photograph showing the same softly lit room",
             result[0]["prompt"].lower(),
         )
-        self.assertIn(
-            "one photograph showing the same softly lit room",
+        self.assertNotIn(
+            "exact same physical instance/content",
             result[0]["prompt"].lower(),
         )
 
