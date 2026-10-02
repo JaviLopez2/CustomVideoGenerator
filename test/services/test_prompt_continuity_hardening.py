@@ -58,6 +58,35 @@ def test_state_chain_keeps_visual_state_but_not_controller_policy():
     assert "fully bright final result" not in result[0]["prompt"]
 
 
+def test_temporal_visual_state_translates_source_language_without_meta_rules():
+    row = {
+        "subject": "instant photograph",
+        "canonical_subject": "instant photograph",
+        "scene_description": "later fully developed result",
+        "reference_need": "none",
+        "reference_target": "output",
+        "evidence_scope": "externally_visible",
+        "route": "standard",
+        "continuity_key": "photo_progress",
+        "continuity_description": "the same instant photograph and depicted landscape",
+        "observable_state": "apenas muestra información",
+        "visual_state": "The image is extremely faint, with only weak shapes and very low contrast",
+        "temporal_progression": True,
+        "edit_operation": "Keep the image extremely faint with only weak shapes and very low contrast",
+    }
+    with patch.object(llm, "_generate_response", return_value=json.dumps([row])):
+        scene = llm.generate_scene_image_plan(
+            "instant photograph",
+            [{"narration": "La fotografía apenas muestra información."}],
+            app_config={},
+        )[0]
+    assert "The image is extremely faint" in scene["prompt"]
+    assert "apenas muestra información" not in scene["prompt"]
+    assert "later fully developed result" not in scene["prompt"]
+    assert "State instructions govern appearance" not in scene["prompt"]
+    assert scene["visual_state"].startswith("The image is extremely faint")
+
+
 def test_continuity_metadata_stays_structured_not_repeated_in_t2i_prompt():
     row = {
         "subject": "indicator tile",
