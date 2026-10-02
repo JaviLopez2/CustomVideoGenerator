@@ -2108,18 +2108,16 @@ def _build_structured_scene_image_prompt(
 
     if scene_description:
         parts.append(scene_description.rstrip(" .") + ".")
-    elif narration:
-        parts.append(f"The visible scene corresponds directly to this narration beat: {narration}.")
 
     if required_features:
-        parts.append("Visible details: " + "; ".join(required_features[:7]) + ".")
+        parts.append("Visible subject details include " + "; ".join(required_features[:5]) + ".")
     elif route == "precision" and identity_hint:
-        parts.append("Visible identity: " + identity_hint.rstrip(" .") + ".")
+        parts.append("The visible subject identity includes " + identity_hint.rstrip(" .") + ".")
 
     if composition:
-        parts.append("Composition: " + composition + ".")
+        parts.append("The composition uses " + composition + ".")
     if lighting:
-        parts.append("Lighting: " + lighting + ".")
+        parts.append("The lighting is " + lighting + ".")
 
     framing = {
         "full_subject": "The complete main subject is comfortably inside the frame with natural margins.",
@@ -2131,12 +2129,12 @@ def _build_structured_scene_image_prompt(
     parts.append(framing[framing_intent])
 
     if forbidden_features:
-        parts.append("The frame does not show " + "; ".join(forbidden_features[:5]) + ".")
+        parts.append("The frame does not show " + "; ".join(forbidden_features[:3]) + ".")
 
     if shared_visual_style:
         parts.append(shared_visual_style.rstrip(" .") + ".")
 
-    parts.append("No captions, watermarks, UI overlays or invented readable labels.")
+    parts.append("There are no captions, watermarks, UI overlays or invented readable labels.")
     return " ".join(part.strip() for part in parts if part.strip())
 
 
@@ -2213,7 +2211,7 @@ All model-facing descriptive fields (subject, canonical_subject, scene_descripti
 - "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
 - "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
 - "temporal_progression": boolean, true only for a narrated monotonic progression of the same target. Put each scene's concrete visible state in observable_state, copied from narration. Keep the initial state genuinely initial; do not borrow later clarity/completeness. State belongs outside continuity_description, which describes only stable content/identity.
-- "context_subject": natural-language name of a separate physical scene object, if present beside/around the continuity target. Its identity reference controls only that external object, never the target's depicted content. Leave empty when absent. Internal keys/IDs must never be copied into visual prose.
+- "context_subject": natural-language ENGLISH name of a distinct physical entity beside/around the continuity target when that entity may need its own identity evidence. Leave empty for tables, walls, generic surfaces, backgrounds and other environment-only context; those belong in environment. Internal keys/IDs must never be copied into visual prose.
 - "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
 
 ## Routing
@@ -2535,12 +2533,15 @@ Return exactly {amount} objects and nothing else.
                     # Preserve relevance only through independently covered identity,
                     # never through fields from this rejected scene. The manual pack
                     # describes the primary subject, not an output or secondary entity.
-                    fallback_identity = next((previous for previous in reversed(result)
+                    context_identity = next((previous for previous in reversed(result)
                         if previous["coverage_status"] == "covered"
                         and previous["reference_target"] == "primary_subject"
                         and previous["reference_need"] == "identity"
                         and previous["evidence_scope"] == "externally_visible"
-                    ), None) if reference_target == "primary_subject" else None
+                    ), None)
+                    fallback_identity = (
+                        context_identity if reference_target == "primary_subject" else None
+                    )
                     # An LLM-labelled 'safe' alternative shares the rejected plan's
                     # provenance. It is not evidence and must not bypass this gate.
                     scene_description = (
@@ -2584,6 +2585,11 @@ Return exactly {amount} objects and nothing else.
                         # The visible consequence is a different target from the
                         # mechanism's primary identity; do not replace it again.
                         fallback_identity = None
+                    elif not observable_subject and context_identity is not None:
+                        # If the only nominated observable is an ambiguous bare noun,
+                        # prefer a known factual exterior context over inventing a
+                        # semantically unrelated object (e.g. sheet -> tree leaf).
+                        fallback_identity = context_identity
                     required_features = []
                     forbidden_features = []
                     environment = "natural narration-grounded context with no exposed hidden internals"

@@ -2747,11 +2747,11 @@ def _openai_image_near_duplicate_enabled() -> bool:
 
 def _openai_image_near_duplicate_threshold() -> float:
     try:
-        value = float(config.app.get("openai_image_near_duplicate_threshold", 0.94))
+        value = float(config.app.get("openai_image_near_duplicate_threshold", 0.92))
     except (TypeError, ValueError):
-        value = 0.94
+        value = 0.92
     if not math.isfinite(value):
-        value = 0.94
+        value = 0.92
     return max(0.75, min(value, 1.0))
 
 

@@ -224,7 +224,7 @@ openai_image_scene_diversity_repair_enabled = true
 # when a perceptual hash detects an unintended near-duplicate of a recent scene.
 openai_image_precision_retry_on_true_failure_enabled = true
 openai_image_near_duplicate_qa_enabled = true
-openai_image_near_duplicate_threshold = 0.94
+openai_image_near_duplicate_threshold = 0.92
 
 # Optional reproducibility aid for local Qwen diagnostics. Leave unset/commented
 # in normal use so every request receives a fresh seed.
