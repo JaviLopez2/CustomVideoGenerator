@@ -1108,7 +1108,7 @@ class TestQwenQualityV31(unittest.TestCase):
 
     def test_qwen_prompt_names_each_reference_role(self):
         prompt = material._qwen_precision_prompt_with_references(
-            "new scene direction",
+            "new scene direction; the frame does not show a fake extra dial or invented label",
             "test subject",
             3,
             reference_info={
@@ -1124,12 +1124,12 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertIn("<image1>", prompt)
         self.assertIn("<image2>", prompt)
         self.assertIn("<image3>", prompt)
-        self.assertIn("identity/whole-subject evidence", prompt)
+        self.assertIn("identity evidence", prompt)
         self.assertIn("detail evidence", prompt)
-        self.assertIn("context/environment evidence", prompt)
-        self.assertIn("Explicitly do not depict or introduce", prompt)
+        self.assertIn("context evidence", prompt)
         self.assertIn("fake extra dial", prompt)
         self.assertIn("invented label", prompt)
+        self.assertNotIn("Explicitly do not depict or introduce", prompt)
 
     def test_near_duplicate_only_actionable_when_plan_expected_difference(self):
         with tempfile.TemporaryDirectory() as tmp:
