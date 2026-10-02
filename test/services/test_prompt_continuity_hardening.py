@@ -41,16 +41,16 @@ def test_state_chain_keeps_content_and_scene_local_progression():
     result = state_plan()
     for scene, state in zip(result, ["faint amber outline", "clearer amber outline", "fully bright amber outline"]):
         assert state in scene["prompt"]
-        assert "dominant visual instruction" in scene["prompt"]
         assert "same triangular glyph" in scene["prompt"]
-        assert "same direction" in scene["prompt"]
+        assert "Current visible state" not in scene["prompt"]
+        assert "State instructions govern appearance" not in scene["prompt"]
         assert scene["continuity_key"] == "chain_delta_72"
         assert "chain_delta_72" not in scene["prompt"]
     assert "fully bright" not in result[0]["prompt"]
     assert "completed final display" not in result[0]["prompt"]
-    assert "Separate physical context: control console" in result[2]["prompt"]
-    assert "outside and beside" in result[2]["prompt"]
-    assert "existing depicted content intact" in result[2]["prompt"]
+    assert "A separate control console is visible in the surrounding scene" in result[2]["prompt"]
+    assert "outside and beside" not in result[2]["prompt"]
+    assert "existing depicted content intact" not in result[2]["prompt"]
 
 
 def test_continuity_without_state_keeps_natural_language_not_group_id():
@@ -82,8 +82,10 @@ def test_context_anchor_is_spatially_separate_from_content(pipeline, monkeypatch
         prompt = material._qwen_precision_prompt_with_references(
             call["search_term"], call["reference_subject"], len(call["reference_images"]), call["reference_info"])
         assert "same triangular glyph" in prompt
-        assert "outside and beside" in prompt
-        assert "never reinterpret the whole reference frame" in prompt
+        assert "<image1> is the canvas" in prompt
+        assert "<image2> is identity evidence" in prompt
+        assert "outside and beside" not in prompt
+        assert "never reinterpret the whole reference frame" not in prompt
         assert "chain_delta_72" not in prompt
 
 
@@ -151,3 +153,45 @@ def test_same_entity_reference_chain_keeps_anchor_without_context_contract(pipel
             call["search_term"], call["reference_subject"], len(call["reference_images"]), call["reference_info"])
         assert "outside and beside" not in prompt
         assert "model_v2" in prompt
+        if call["reference_images"]:
+            assert "Edit the input image as the canvas" in prompt
+
+
+def test_continuity_uses_stable_root_instead_of_recursive_previous_stage(pipeline, monkeypatch):
+    run, diagnostics = pipeline
+    calls = []
+    generated = [item("root"), item("middle"), item("final")]
+    monkeypatch.setattr(
+        material,
+        "generate_images_openai",
+        lambda **kw: calls.append(kw) or [generated[len(calls) - 1]],
+    )
+    monkeypatch.setattr(
+        material,
+        "_near_duplicate_assessment",
+        lambda *a, **kw: {"actionable": False, "best_similarity": .4},
+    )
+    uploaded = []
+    def upload(path):
+        uploaded.append(path)
+        return path.replace(".png", "") + "-uploaded.png"
+    monkeypatch.setattr(material, "_upload_reference_to_comfyui", upload)
+    monkeypatch.setattr(material, "_continuity_edit_chain_enabled", lambda: True)
+
+    run(
+        search_terms=["early state", "middle state", "final state"],
+        scene_routes=["standard"] * 3,
+        scene_subjects=["output"] * 3,
+        scene_reference_targets=["output"] * 3,
+        scene_includes_primary_subject=[False] * 3,
+        scene_continuity_keys=["stable_output"] * 3,
+        scene_continuity_descriptions=["the same printed scene and border"] * 3,
+    )
+
+    assert len(calls) == 3
+    assert calls[0]["reference_images"] == []
+    assert calls[1]["reference_images"] == ["root-uploaded.png"]
+    assert calls[2]["reference_images"] == ["root-uploaded.png"]
+    assert "middle-uploaded.png" not in calls[2]["reference_images"]
+    assert diagnostics[-1]["plan_scenes"][1]["routing_reason"] == "continuity_edit_from_root"
+    assert diagnostics[-1]["plan_scenes"][2]["continuity_source_scene"] == 1

@@ -53,3 +53,10 @@ def test_rejected_alternative_cannot_supply_result_or_context():
     scene = plan([rejected(observable_result="twin gears", observable_context="spraying lubricant")],
                  ["The sealed motor is on a desk."])[0]
     assert_clean(scene)
+
+
+def test_bare_ambiguous_observable_subject_is_rejected():
+    assert llm._observable_subject_is_ambiguous("la hoja")
+    assert llm._observable_subject_is_ambiguous("the sheet")
+    assert not llm._observable_subject_is_ambiguous("instant photograph")
+    assert not llm._observable_subject_is_ambiguous("photographic film sheet")
