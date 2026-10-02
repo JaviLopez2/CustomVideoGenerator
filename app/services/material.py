@@ -7452,7 +7452,11 @@ def _download_videos_openai_image_on_demand(
                     reference_info["reference_pack"] = combined_pack
                     reference_info["reference_selection"]["selected_references"] = combined_rows
                     reference_info["reference_selection"]["selected_count"] = len(reference_images)
-                    reference_info["primary_identity_only"] = reference_target in {"output", "secondary_subject"}
+                    # This branch only runs when the stable continuity target previously
+                    # existed without the primary subject and the current scene reintroduces
+                    # that subject. The identity anchor is therefore contextual to the canvas,
+                    # regardless of the planner's scene-level reference_target label.
+                    reference_info["primary_identity_only"] = True
                     reference_info["reference_selection"]["selection_strategy"] = (
                         "stable continuity anchor + separate primary identity anchor"
                     )
