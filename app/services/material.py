@@ -340,7 +340,9 @@ def _precision_diagnostics_scene_record(
     includes_primary_subject: bool = False,
     continuity_key: str = "",
     continuity_description: str = "",
+    edit_operation: str = "",
     continuity_source_scene: int | None = None,
+    continuity_strategy: str = "",
     coverage_status: str = "",
     coverage_reason: str = "",
     composition_key: str = "",
@@ -369,7 +371,9 @@ def _precision_diagnostics_scene_record(
         "includes_primary_subject": bool(includes_primary_subject),
         "continuity_key": str(continuity_key or "none"),
         "continuity_description": str(continuity_description or ""),
+        "edit_operation": str(edit_operation or ""),
         "continuity_source_scene": continuity_source_scene,
+        "continuity_strategy": str(continuity_strategy or "none"),
         "coverage_status": str(coverage_status or ""),
         "coverage_reason": str(coverage_reason or ""),
         "composition_key": str(composition_key or ""),
@@ -7554,7 +7558,12 @@ def _download_videos_openai_image_on_demand(
                 includes_primary_subject=includes_primary_subject,
                 continuity_key=continuity_key,
                 continuity_description=continuity_description,
+                edit_operation=edit_operation,
                 continuity_source_scene=continuity_source_scene,
+                continuity_strategy=(
+                    "stable_anchor_delta" if continuity_source_path else
+                    "anchor_root" if continuity_key not in {"", "none"} else "none"
+                ),
                 coverage_status=coverage_status,
                 coverage_reason=coverage_reason,
                 composition_key=composition_key,
