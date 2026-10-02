@@ -2360,6 +2360,7 @@ Return exactly {amount} objects and nothing else.
                       "When evidence is unavailable, redesign the scene around an observable consequence, before/after, "
                       "external behavior or context so that the resulting scene is covered; do not merely preserve the "
                       "unsupported hidden scene and label an alternative. Keep subject labels self-contained and unambiguous. "
+                      "For temporal scenes, keep visual_state to one concrete English observer description of the current visible state. "
                       "For continuity scenes, keep edit_operation to one concrete English visible change and never hide policy "
                       "or reference instructions inside it. Preserve narration meaning, timing, diversity and sequence; do not "
                       "add new mechanical, chemical, biological or branded facts."
