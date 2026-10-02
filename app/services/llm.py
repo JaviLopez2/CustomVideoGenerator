@@ -2544,17 +2544,9 @@ Return exactly {amount} objects and nothing else.
                     )
                     # An LLM-labelled 'safe' alternative shares the rejected plan's
                     # provenance. It is not evidence and must not bypass this gate.
-                    scene_description = (
-                        "Show a quiet external context with no mechanism or process demonstrated. "
-                        "Use a closed exterior view rather than explaining how the subject works. "
-                        if reference_target == "primary_subject"
-                        else "Show a quiet observable surrounding context, without demonstrating a process or its inferred cause. "
-                    ) + (
-                        "Do not depict or reconstruct internal mechanisms, hidden layers, cutaways, transparent "
-                        "cross-sections, inferred structures, material transfer or unverified actions as directly visible."
-                    )
+                    scene_description = "A quiet documentary exterior view grounded in the narration."
                     safe_visual_alternative = scene_description
-                    subject = "externally visible result or context"
+                    subject = "narration-grounded exterior context"
                     canonical_subject = subject
                     observable_subject = _narrated_observable_fragment(
                         item.get("observable_subject"), narration
@@ -2592,11 +2584,8 @@ Return exactly {amount} objects and nothing else.
                         fallback_identity = context_identity
                     required_features = []
                     forbidden_features = []
-                    environment = "natural narration-grounded context with no exposed hidden internals"
-                    composition = (
-                        "clear documentary context view of externally observable evidence; "
-                        "no cutaway, disassembly, transparent enclosure, or invented internal view"
-                    )
+                    environment = "a simple narration-grounded setting"
+                    composition = "the exterior context is clearly framed at natural physical scale"
                     lighting = "natural documentary lighting"
                     environment_key_source = "coverage_safe_context"
                     composition_key_source = "coverage_safe_context"
