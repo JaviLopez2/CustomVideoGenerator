@@ -2593,16 +2593,20 @@ Return exactly {amount} objects and nothing else.
                         ):
                             observable_subject = planner_subject
                         else:
-                            previous_continuity = next(
-                                (
-                                    str(previous.get("continuity_description") or "").strip()
-                                    for previous in reversed(result)
-                                    if previous.get("coverage_status") == "covered"
+                            previous_continuity = ""
+                            if result:
+                                previous = result[-1]
+                                if (
+                                    previous.get("coverage_status") == "covered"
                                     and previous.get("continuity_description")
-                                ),
-                                "",
-                            )
+                                ):
+                                    previous_continuity = str(
+                                        previous.get("continuity_description") or ""
+                                    ).strip()
                             if previous_continuity:
+                                # A bare demonstrative/generic noun most safely resolves
+                                # to the immediately preceding visible continuity target,
+                                # not to an arbitrary earlier scene in the video.
                                 observable_subject = previous_continuity
                                 observable_state = ""
                     required_features = []
