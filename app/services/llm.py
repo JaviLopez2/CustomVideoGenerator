@@ -2553,13 +2553,9 @@ Return exactly {amount} objects and nothing else.
                     # An LLM-labelled 'safe' alternative shares the rejected plan's
                     # provenance. It is not evidence and must not bypass this gate.
                     scene_description = (
-                        "Show a quiet external context with no mechanism or process demonstrated. "
-                        "Use a closed exterior view rather than explaining how the subject works. "
+                        "A quiet documentary exterior view of the subject."
                         if reference_target == "primary_subject"
-                        else "Show a quiet observable surrounding context, without demonstrating a process or its inferred cause. "
-                    ) + (
-                        "Do not depict or reconstruct internal mechanisms, hidden layers, cutaways, transparent "
-                        "cross-sections, inferred structures, material transfer or unverified actions as directly visible."
+                        else "A quiet documentary view of an externally observable result or surrounding context."
                     )
                     safe_visual_alternative = scene_description
                     subject = "externally visible result or context"
@@ -2648,11 +2644,9 @@ Return exactly {amount} objects and nothing else.
                     if fallback_identity is not None:
                         subject = fallback_identity["subject"]
                         canonical_subject = subject
-                        scene_description = (
-                            f"Show only the closed exterior of {subject}, as established by the identity references. "
-                            + (f"Visible state: {observable_state}."
-                               if observable_state and subject.casefold() == observable_subject.casefold() else "")
-                        )
+                        scene_description = f"A closed exterior documentary view of {subject}."
+                        if observable_state and subject.casefold() == observable_subject.casefold():
+                            scene_description += f" Its visible state is {observable_state}."
                         evidence_scope = "externally_visible"
                         reference_need = "identity"
                         reference_target = "primary_subject"
