@@ -148,13 +148,18 @@ def test_same_entity_reference_chain_keeps_anchor_without_context_contract(pipel
         scene_reference_targets=[target] * 2, scene_includes_primary_subject=[True] * 2,
         scene_continuity_keys=["vehicle_state_7"] * 2, scene_continuity_descriptions=["same vehicle model_v2"] * 2)
     assert calls[1]["reference_images"] == ["previous-stage.png"]
-    for call in calls:
-        prompt = material._qwen_precision_prompt_with_references(
-            call["search_term"], call["reference_subject"], len(call["reference_images"]), call["reference_info"])
-        assert "outside and beside" not in prompt
-        assert "model_v2" in prompt
-        if call["reference_images"]:
-            assert "Edit the input image as the canvas" in prompt
+    first_prompt = material._qwen_precision_prompt_with_references(
+        calls[0]["search_term"], calls[0]["reference_subject"],
+        len(calls[0]["reference_images"]), calls[0]["reference_info"])
+    second_prompt = material._qwen_precision_prompt_with_references(
+        calls[1]["search_term"], calls[1]["reference_subject"],
+        len(calls[1]["reference_images"]), calls[1]["reference_info"])
+    assert "outside and beside" not in first_prompt
+    assert "outside and beside" not in second_prompt
+    assert "model_v2" in first_prompt
+    assert "model_v2" in second_prompt
+    assert "Use the input image only as identity/reference evidence" in first_prompt
+    assert "Edit the input image as the canvas" in second_prompt
 
 
 def test_continuity_uses_stable_root_instead_of_recursive_previous_stage(pipeline, monkeypatch):

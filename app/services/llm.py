@@ -2544,7 +2544,10 @@ Return exactly {amount} objects and nothing else.
                     )
                     # An LLM-labelled 'safe' alternative shares the rejected plan's
                     # provenance. It is not evidence and must not bypass this gate.
-                    scene_description = "A quiet documentary exterior view grounded in the narration."
+                    scene_description = (
+                        "A quiet documentary exterior view grounded in the narration. "
+                        "The frame has no cutaway, transparent housing or exposed internal mechanism."
+                    )
                     safe_visual_alternative = scene_description
                     subject = "narration-grounded exterior context"
                     canonical_subject = subject
@@ -2674,6 +2677,8 @@ Return exactly {amount} objects and nothing else.
                         # than injecting the original-language grounding span.
                         scene_description = str(item.get("scene_description") or scene_description).strip()
                     required_features = []
+                    if _coerce_scene_bool(item.get("temporal_progression"), False):
+                        composition = "a clear view centered on the current visible state at natural physical scale"
                 elif continuity_key != "none" and coverage_status != "unsupported" and continuity_description:
                     scene_description = (
                         scene_description.rstrip(" .")

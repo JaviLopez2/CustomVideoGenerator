@@ -84,7 +84,8 @@ def test_corrective_retry_selects_only_improvement(pipeline, monkeypatch, retry_
     result = run(search_terms=["device close view"], scene_durations=[1], scene_routes=["precision"], scene_subjects=["device"], scene_continuity_keys=["device_instance"])
     assert result == [selected + ".png.mp4"]
     assert len(calls) == 2
-    assert "CORRECTION" in calls[1]["search_term"]
+    assert "clearly different" in calls[1]["search_term"]
+    assert "do not repeat the previous framing" in calls[1]["search_term"]
     scene = diagnostics[-1]["scenes"][0]
     decision = scene["corrective_retry_selection"]
     assert decision["original_metric"] == .97
