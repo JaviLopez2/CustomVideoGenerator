@@ -1407,10 +1407,13 @@ def _reference_evidence_tokens(value: str) -> set[str]:
         "the", "and", "with", "from", "into", "onto", "for", "of", "a", "an",
         "on", "in", "to", "at", "by", "view", "scene", "showing", "visible",
         "subject", "overall", "general", "whole",
+        "area", "close", "detail", "details", "front", "rear", "side", "panel",
+        "control", "controls", "show", "shows", "placement", "position", "part",
+        "parts", "located", "including", "external", "internal", "mechanism",
     }
     result: set[str] = set()
     for raw in re.findall(r"[a-z]+", str(value or "").lower()):
-        if raw in stop or len(raw) < 4:
+        if raw in stop or len(raw) < 3:
             continue
         token = raw
         if token.endswith("ies") and len(token) > 5:
@@ -1465,14 +1468,16 @@ def _reference_role_has_semantic_evidence(
             best_overlap = overlap
             best_description = description
 
-    if best_overlap:
+    # A shared topic or viewpoint is not evidence for the other concepts in the
+    # query. One described reference must support the complete specialized query.
+    if best_overlap == query_tokens:
         return (
             True,
             f"manual {required_role!r} evidence semantically matches the scene query via {sorted(best_overlap)!r}: {best_description!r}",
         )
     return (
         False,
-        f"manual {required_role!r} references exist but none of their user descriptions semantically match reference_query={reference_query!r}",
+        f"manual {required_role!r} references: none of their user descriptions cover all query concepts; missing {sorted(query_tokens - best_overlap)!r}; matched {sorted(best_overlap)!r}",
     )
 
 
@@ -2205,6 +2210,8 @@ Return ONLY a valid JSON array containing exactly {amount} objects. Every object
 - "safe_visual_alternative": concise externally supported or contextual scene description to use if requested specialized evidence is unavailable
 - "observable_subject": shortest externally observable entity span copied VERBATIM from this scene's narration, in its original language; empty if unavailable. Exclude internal parts and inferred geometry.
 - "observable_state": short visible appearance/result/progression span copied VERBATIM from this scene's narration; empty if unavailable. Exclude mechanisms, hidden causes, chemical reactions and unsupported actions. Keep these two fields separate from safe_visual_alternative and preserve them during the factual audit.
+- "observable_result": externally observable output/entity span copied VERBATIM from narration, separate from the unsupported explanation of its cause; empty if unavailable.
+- "observable_context": short externally observable surroundings span copied VERBATIM from narration; empty if unavailable. Preserve observable fields during audit independently of safe_visual_alternative.
 - "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
 - "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
 - "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
@@ -2561,6 +2568,20 @@ Return exactly {amount} objects and nothing else.
                     observable_state = _narrated_observable_fragment(
                         item.get("observable_state"), narration, state=True
                     ) if observable_subject else ""
+                    observable_result = _narrated_observable_fragment(
+                        item.get("observable_result"), narration
+                    )
+                    observable_context = _narrated_observable_fragment(
+                        item.get("observable_context"), narration, state=True
+                    )
+                    if observable_result:
+                        observable_subject = observable_result
+                        observable_state = _narrated_observable_fragment(
+                            item.get("observable_state"), narration, state=True
+                        )
+                        # The visible consequence is a different target from the
+                        # mechanism's primary identity; do not replace it again.
+                        fallback_identity = None
                     required_features = []
                     forbidden_features = []
                     environment = "natural narration-grounded context with no exposed hidden internals"
@@ -2592,6 +2613,10 @@ Return exactly {amount} objects and nothing else.
                         reference_target = _normalize_scene_enum(
                             item.get("reference_target"), _SCENE_REFERENCE_TARGETS, "none"
                         )
+                        if observable_result:
+                            reference_target = "output"
+                        if observable_context:
+                            environment = observable_context
                         evidence_scope = "externally_visible"
                     if fallback_identity is not None:
                         subject = fallback_identity["subject"]
