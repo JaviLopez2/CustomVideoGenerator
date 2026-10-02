@@ -184,7 +184,7 @@ class TestQwenQualityV31(unittest.TestCase):
         self.assertNotIn("two rollers", prompt_text)
         self.assertNotIn("dark internal cavity", prompt_text)
         self.assertNotIn("macro top-down cutaway", prompt_text)
-        self.assertIn("externally visible result or context", prompt_text)
+        self.assertIn("narration-grounded exterior context", prompt_text)
         self.assertEqual(scene["reference_query"], "")
         self.assertEqual(scene["continuity_key"], "none")
         self.assertEqual(scene["continuity_description"], "")
