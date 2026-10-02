@@ -213,3 +213,66 @@ def test_three_stage_continuity_reuses_root_not_previous_generated_stage(pipelin
     assert final_plan[2]["continuity_strategy"] == "stable_anchor_delta"
     assert final_plan[1]["continuity_source_scene"] == 1
     assert final_plan[2]["continuity_source_scene"] == 1
+
+
+def test_continuity_duplicate_threshold_only_retries_almost_unchanged(monkeypatch):
+    # Two bits differ => 62/64 = 0.96875. This is a useful state edit, not an
+    # unchanged render, even though it would exceed the ordinary 0.94 threshold.
+    hashes = {"current.png": 0, "previous.png": 3}
+    monkeypatch.setattr(material, "_image_dhash64", lambda path: hashes[path])
+    monkeypatch.setattr(material, "_openai_image_near_duplicate_enabled", lambda: True)
+    monkeypatch.setattr(material, "_openai_image_near_duplicate_threshold", lambda: 0.94)
+    recent = [{
+        "scene": 1,
+        "path": "previous.png",
+        "dhash": 3,
+        "composition_key": "same_frame",
+        "shot_type": "full",
+        "continuity_key": "same_print",
+    }]
+
+    continuity = material._near_duplicate_assessment(
+        "current.png",
+        recent,
+        composition_key="same_frame",
+        shot_type="full",
+        continuity_key="same_print",
+        continuity_edit=True,
+    )
+    assert continuity["best_similarity"] == 0.9688
+    assert continuity["threshold"] == 0.985
+    assert continuity["planned_difference"] is True
+    assert continuity["actionable"] is False
+
+    ordinary = material._near_duplicate_assessment(
+        "current.png",
+        recent,
+        composition_key="different_frame",
+        shot_type="full",
+    )
+    assert ordinary["threshold"] == 0.94
+    assert ordinary["actionable"] is True
+
+
+def test_continuity_duplicate_threshold_retries_exact_repeat(monkeypatch):
+    monkeypatch.setattr(material, "_image_dhash64", lambda path: 0)
+    monkeypatch.setattr(material, "_openai_image_near_duplicate_enabled", lambda: True)
+    monkeypatch.setattr(material, "_openai_image_near_duplicate_threshold", lambda: 0.94)
+    recent = [{
+        "scene": 1,
+        "path": "previous.png",
+        "dhash": 0,
+        "composition_key": "same_frame",
+        "shot_type": "full",
+        "continuity_key": "same_print",
+    }]
+    result = material._near_duplicate_assessment(
+        "current.png",
+        recent,
+        composition_key="same_frame",
+        shot_type="full",
+        continuity_key="same_print",
+        continuity_edit=True,
+    )
+    assert result["best_similarity"] == 1.0
+    assert result["actionable"] is True
