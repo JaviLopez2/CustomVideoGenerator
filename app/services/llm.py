@@ -1230,9 +1230,7 @@ def _resolve_semantic_image_route(
 
 
 DEFAULT_OPENAI_IMAGE_VISUAL_STYLE = (
-    "high-end factual documentary realism, photorealistic rendering, natural color science, "
-    "controlled cinematic contrast, restrained saturation, realistic optics, subtle depth of field, "
-    "coherent lighting, clean detail, no fantasy stylization"
+    "photorealistic documentary photograph with natural color, realistic optics and coherent lighting"
 )
 
 
@@ -1841,6 +1839,27 @@ def _scene_reference_coverage(
     )
 
 
+def _is_context_dependent_subject(value: object) -> bool:
+    """Return True for short labels whose meaning depends on missing discourse context."""
+    text = " ".join(str(value or "").strip().split())
+    words = re.findall(r"[a-záéíóúüñ]+", text.casefold())
+    if not words:
+        return True
+    determiners = {
+        "a", "an", "the", "this", "that", "these", "those", "it",
+        "el", "la", "los", "las", "un", "una", "este", "esta", "ese", "esa",
+    }
+    generic_heads = {
+        "thing", "object", "item", "result", "output", "image", "photo", "picture",
+        "sheet", "page", "surface", "it",
+        "cosa", "objeto", "elemento", "resultado", "salida", "imagen", "foto",
+        "hoja", "página", "superficie", "esto", "eso",
+    }
+    if len(words) == 1 and words[0] in generic_heads:
+        return True
+    return len(words) <= 3 and words[0] in determiners and words[-1] in generic_heads
+
+
 def _narrated_observable_fragment(value: object, narration: str, *, state: bool = False) -> str:
     """Keep only literal narration-grounded exterior semantics, never a 'safe' rewrite.
 
@@ -2061,7 +2080,7 @@ def _build_structured_scene_image_prompt(
     shot_type: str = "full",
     framing_intent: str = "full_subject",
 ) -> str:
-    """Build a theme-agnostic, model-facing prompt from the structured scene plan."""
+    """Build compact observer-style T2I prose; editing policy lives downstream."""
     subject = str(subject or "").strip()
     narration = str(narration or "").strip()
     scene_description = str(scene_description or "").strip().rstrip(" .")
@@ -2084,68 +2103,44 @@ def _build_structured_scene_image_prompt(
             composition, field_name="composition", narration=narration
         )
 
-    parts: list[str] = []
-    if route == "precision":
-        parts.append(
-            f"{subject}, rendered with accurate factual identity, morphology, proportions and physically plausible scale"
-        )
-        if required_features:
-            parts.append("Clearly preserve these subject-defining visible traits: " + "; ".join(required_features))
-        elif identity_hint:
-            parts.append(f"Subject-defining morphology: {identity_hint}")
-    else:
-        parts.append(f"Main visible subject: {subject}")
-        if required_features:
-            parts.append("Important visible details: " + "; ".join(required_features))
+    style = str(shared_visual_style or "photorealistic documentary photograph").strip()
+    parts: list[str] = [f"A vertical {style} of {subject}"]
 
     if scene_description:
-        parts.append(f"Scene action and visual content: {scene_description}")
+        parts.append(scene_description)
     elif narration:
-        parts.append(f"Visualize this narration literally: {narration}")
+        parts.append(narration)
+
+    # Positive visible traits may help T2I, but reference-backed identity must come
+    # primarily from the reference image rather than a long verbal reconstruction.
+    visible_features = [
+        str(value).strip().rstrip(" .")
+        for value in required_features[:3]
+        if str(value or "").strip()
+    ]
+    if visible_features:
+        parts.append("Visible details include " + ", ".join(visible_features))
+
     if environment:
-        parts.append(f"Environment: {environment}")
+        parts.append(f"The setting is {environment}")
     if composition:
-        parts.append(f"Camera and composition: {composition}")
+        parts.append(f"The composition shows {composition}")
     if lighting:
-        parts.append(f"Lighting: {lighting}")
+        parts.append(f"The lighting is {lighting}")
 
-    # Deterministic framing constraints prevent accidental catalogue crops while still
-    # allowing intentional details/macro shots for any topic.
     if framing_intent == "full_subject":
-        parts.append(
-            "Framing rule: show the complete important subject comfortably inside the vertical frame with safe margins; "
-            "do not crop defining extremities, edges, wheels, limbs, top or base unless physically impossible"
-        )
+        parts.append("The complete subject fits comfortably inside the frame with clear margins")
     elif framing_intent == "medium_subject":
-        parts.append(
-            "Framing rule: a deliberate medium crop is allowed, but keep the complete identifying region and enough context to read the subject clearly"
-        )
-    elif framing_intent == "detail":
-        parts.append(
-            "Framing rule: a deliberate close crop is allowed only around the narrated feature; make the feature unambiguous and physically connected to the subject"
-        )
-    elif framing_intent == "macro":
-        parts.append(
-            "Framing rule: macro/microscopic framing is intentional; preserve plausible scale cues and do not add artificial circular viewports or presentation borders"
-        )
+        parts.append("The medium framing keeps the identifying region and enough surrounding context visible")
+    elif framing_intent in {"detail", "macro"}:
+        parts.append("The close framing keeps the relevant visible feature physically connected to the subject")
     else:
-        parts.append(
-            "Framing rule: prioritize the narration-grounded environment while keeping the main subject clearly readable and intentionally composed"
-        )
+        parts.append("The subject remains clearly readable within its surrounding context")
 
-    parts.append(
-        "Render one complete physically coherent edge-to-edge scene in a single pass. Subject and environment must share continuous lighting, focus, depth of field, atmosphere and photographic response"
-    )
-    if forbidden_features:
-        # Keep this concise; Qwen also receives the same constraints through a real negative prompt.
-        parts.append("Avoid factual substitutions or misleading structures such as: " + "; ".join(forbidden_features[:6]))
-    if shared_visual_style:
-        parts.append(shared_visual_style)
-
-    parts.append(
-        "Vertical 9:16 composition. No captions, watermarks, UI overlays or unrelated readable text. "
-        "Do not invent or garble branding, labels or markings; if an authentic marking cannot be reproduced reliably, leave it unobtrusive rather than fabricating substitute text"
-    )
+    # Qwen's edit/T2I guidance works best when controller policy and negative noun
+    # inventories stay out of the positive description. forbidden_features remain
+    # structured metadata for audits/diagnostics and are intentionally not echoed.
+    parts.append("No legible captions, watermarks, interface elements or invented labels are visible")
     return ". ".join(part for part in parts if part).strip() + "."
 
 
@@ -2189,7 +2184,7 @@ animals, products, science, history, people or any other fixed subject category.
 
 ## Output
 Return ONLY a valid JSON array containing exactly {amount} objects. Every object MUST contain:
-- "subject": concrete English name of the visible subject in this scene
+- "subject": self-contained, unambiguous English name of the visible subject in this scene; never use a pronoun or a context-dependent label such as "the sheet" or "the object"
 - "canonical_subject": stable factual identity shared by scenes that depict the same real subject
 - "route": "standard" or "precision"
 - "scene_description": literal visible content
@@ -2217,7 +2212,9 @@ Return ONLY a valid JSON array containing exactly {amount} objects. Every object
 - "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
 - "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
 - "temporal_progression": boolean, true only for a narrated monotonic progression of the same target. Put each scene's concrete visible state in observable_state, copied from narration. Keep the initial state genuinely initial; do not borrow later clarity/completeness. State belongs outside continuity_description, which describes only stable content/identity.
+- "visual_state": when temporal_progression is true, a concise English observer-style description of exactly that scene's externally visible state. It may translate/paraphrase observable_state but must not add mechanisms, causes, props or later-stage facts. Leave empty otherwise.
 - "context_subject": natural-language name of a separate physical scene object, if present beside/around the continuity target. Its identity reference controls only that external object, never the target's depicted content. Leave empty when absent. Internal keys/IDs must never be copied into visual prose.
+- "edit_operation": concise English image-edit operation for a continuity scene, describing only the visible attribute/state change from the stable continuity anchor. Make the requested change visually unmistakable without changing underlying identity/content. Leave empty when continuity_key is "none". Never mention planner IDs, reference mechanics or hidden causes.
 - "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
 
 ## Routing
@@ -2279,6 +2276,12 @@ remain precision before later performance budgeting.
     without falsely redefining the output as the primary subject.
 24. A specialized detail/internal/context reference is evidence only for what its user description explicitly establishes.
     Do not treat the mere existence of a role=detail/internal/context file as proof of an unrelated specialized view.
+25. subject and scene_description are model-facing visual semantics: keep them self-contained, concrete and observable. Do not
+    use discourse-dependent labels like "the sheet", "it" or "this object" when the object class can be named.
+26. For temporal continuity scenes, visual_state must be a short English observer description of the current narrated state only;
+    do not borrow later-stage completion, props or causal explanations.
+27. For continuity scenes, edit_operation must be one short English operation that changes only the narrated visible state.
+    It must not restate the whole scene, repeat preservation policy, describe references, or introduce unsupported mechanisms.
 
 ## Manual reference inventory available to this task
 Each item may include role=identity/detail/internal/context/other and an optional user description.
@@ -2356,8 +2359,11 @@ Return exactly {amount} objects and nothing else.
                       "target, not incidental props or background mistakes. "
                       "When evidence is unavailable, redesign the scene around an observable consequence, before/after, "
                       "external behavior or context so that the resulting scene is covered; do not merely preserve the "
-                      "unsupported hidden scene and label an alternative. Preserve narration meaning, timing, diversity "
-                      "and sequence; do not add new mechanical, chemical, biological or branded facts."
+                      "unsupported hidden scene and label an alternative. Keep subject labels self-contained and unambiguous. "
+                      "For temporal scenes, keep visual_state to one concrete English observer description of the current visible state. "
+                      "For continuity scenes, keep edit_operation to one concrete English visible change and never hide policy "
+                      "or reference instructions inside it. Preserve narration meaning, timing, diversity and sequence; do not "
+                      "add new mechanical, chemical, biological or branded facts."
                 )
                 try:
                     audited_response = (
@@ -2521,15 +2527,26 @@ Return exactly {amount} objects and nothing else.
                         if existing_continuity.get("canonical_subject"):
                             canonical_subject = existing_continuity["canonical_subject"]
                 scene_description = str(item.get("scene_description") or "").strip()
-                if continuity_key != "none" and continuity_description:
-                    scene_description = (
-                        scene_description.rstrip(" .")
-                        + ". Continuity requirement: this is the exact same physical instance/content across all "
-                        + f"stages: {continuity_description}. "
-                        + "Do not change the underlying depicted subject/content; change only the narrated state. "
-                        + "This contract applies only to the intended target, not the entire frame. Remove incidental "
-                        + "background objects, invented props and spurious text unless explicitly required by this scene."
-                    ).strip()
+                # Continuity policy stays structured metadata. Do not inject controller
+                # language into the renderer-facing visual description.
+                edit_operation = " ".join(
+                    str(item.get("edit_operation") or "").strip().split()
+                )
+                visual_state = " ".join(
+                    str(item.get("visual_state") or "").strip().split()
+                )
+                if len(edit_operation) > 260:
+                    edit_operation = edit_operation[:260].rsplit(" ", 1)[0].rstrip(" ,;:")
+                if len(visual_state) > 220:
+                    visual_state = visual_state[:220].rsplit(" ", 1)[0].rstrip(" ,;:")
+                if visual_state and _scene_hidden_evidence_signals(
+                    {"scene_description": visual_state}
+                ):
+                    visual_state = ""
+                if edit_operation and _scene_hidden_evidence_signals(
+                    {"scene_description": edit_operation}
+                ):
+                    edit_operation = ""
                 environment = str(item.get("environment") or "").strip()
                 composition = str(item.get("composition") or "").strip()
                 lighting = str(item.get("lighting") or "").strip()
@@ -2555,13 +2572,9 @@ Return exactly {amount} objects and nothing else.
                     # An LLM-labelled 'safe' alternative shares the rejected plan's
                     # provenance. It is not evidence and must not bypass this gate.
                     scene_description = (
-                        "Show a quiet external context with no mechanism or process demonstrated. "
-                        "Use a closed exterior view rather than explaining how the subject works. "
+                        "A quiet documentary exterior view of the subject."
                         if reference_target == "primary_subject"
-                        else "Show a quiet observable surrounding context, without demonstrating a process or its inferred cause. "
-                    ) + (
-                        "Do not depict or reconstruct internal mechanisms, hidden layers, cutaways, transparent "
-                        "cross-sections, inferred structures, material transfer or unverified actions as directly visible."
+                        else "A quiet documentary view of an externally observable result or surrounding context."
                     )
                     safe_visual_alternative = scene_description
                     subject = "externally visible result or context"
@@ -2586,13 +2599,39 @@ Return exactly {amount} objects and nothing else.
                         # The visible consequence is a different target from the
                         # mechanism's primary identity; do not replace it again.
                         fallback_identity = None
+                    if _is_context_dependent_subject(observable_subject):
+                        planner_subject = " ".join(
+                            str(item.get("subject") or "").strip().split()
+                        )
+                        if (
+                            planner_subject
+                            and not _is_context_dependent_subject(planner_subject)
+                            and not _scene_hidden_evidence_signals(
+                                {"scene_description": planner_subject}
+                            )
+                        ):
+                            observable_subject = planner_subject
+                        else:
+                            previous_continuity = ""
+                            if result:
+                                previous = result[-1]
+                                if (
+                                    previous.get("coverage_status") == "covered"
+                                    and previous.get("continuity_description")
+                                ):
+                                    previous_continuity = str(
+                                        previous.get("continuity_description") or ""
+                                    ).strip()
+                            if previous_continuity:
+                                # A bare demonstrative/generic noun most safely resolves
+                                # to the immediately preceding visible continuity target,
+                                # not to an arbitrary earlier scene in the video.
+                                observable_subject = previous_continuity
+                                observable_state = ""
                     required_features = []
                     forbidden_features = []
-                    environment = "natural narration-grounded context with no exposed hidden internals"
-                    composition = (
-                        "clear documentary context view of externally observable evidence; "
-                        "no cutaway, disassembly, transparent enclosure, or invented internal view"
-                    )
+                    environment = "neutral documentary setting"
+                    composition = "clear documentary view of externally observable evidence at natural physical scale"
                     lighting = "natural documentary lighting"
                     environment_key_source = "coverage_safe_context"
                     composition_key_source = "coverage_safe_context"
@@ -2609,11 +2648,14 @@ Return exactly {amount} objects and nothing else.
                     identity_hint = ""
                     if observable_subject:
                         subject = canonical_subject = observable_subject
-                        scene_description = f"Show {subject} in an ordinary exterior view, with its visible surface clearly readable."
+                        scene_description = (
+                            f"A documentary view of {subject}, showing only its externally visible appearance"
+                        )
                         if observable_state:
-                            scene_description += f" Visible state: {observable_state}."
-                        environment = "simple natural surroundings with the observable subject prominent"
-                        composition = "clear documentary exterior view at natural physical scale"
+                            scene_description += f", with {observable_state}"
+                        scene_description += "."
+                        environment = observable_context or "neutral documentary setting"
+                        composition = "clear documentary view at natural physical scale"
                         reference_target = _normalize_scene_enum(
                             item.get("reference_target"), _SCENE_REFERENCE_TARGETS, "none"
                         )
@@ -2625,11 +2667,9 @@ Return exactly {amount} objects and nothing else.
                     if fallback_identity is not None:
                         subject = fallback_identity["subject"]
                         canonical_subject = subject
-                        scene_description = (
-                            f"Show only the closed exterior of {subject}, as established by the identity references. "
-                            + (f"Visible state: {observable_state}."
-                               if observable_state and subject.casefold() == observable_subject.casefold() else "")
-                        )
+                        scene_description = f"A closed exterior documentary view of {subject}."
+                        if observable_state and subject.casefold() == observable_subject.casefold():
+                            scene_description += f" Its visible state is {observable_state}."
                         evidence_scope = "externally_visible"
                         reference_need = "identity"
                         reference_target = "primary_subject"
@@ -2663,41 +2703,30 @@ Return exactly {amount} objects and nothing else.
                 if reference_critical and coverage_status != "unsupported":
                     route = "precision"
 
-                # State is scene-local; continuity stores stable identity only.
-                # Replace conflicting action prose when a grounded state exists,
-                # rather than appending an early state after a final-state claim.
+                # State is scene-local; continuity policy is kept out of the image
+                # description. Required feature lists often contain later-stage traits,
+                # so temporal edits rely on the audited scene description + edit_operation.
                 current_state = _narrated_observable_fragment(
                     item.get("observable_state"), narration, state=True
                 )
-                if continuity_key != "none" and coverage_status != "unsupported" and current_state:
-                    scene_description = (
-                        f"Current visible state, the dominant visual instruction: {current_state}. "
-                        f"Stable continuity target/content: {continuity_description}. "
-                        "Render the current state at its narrated degree, preserving underlying identity. "
-                        "State instructions govern appearance; reference images establish identity, not completion level. "
-                    )
-                    if _coerce_scene_bool(item.get("temporal_progression"), False):
-                        scene_description += (
-                            "This stage advances only the narrated visible property in the same direction as the sequence; "
-                            "preserve the underlying content and the current degree of progression. "
-                        )
-                    # These rejected state-bearing directions could contradict
-                    # the narration even if their entity identity was covered.
+                if (
+                    continuity_key != "none"
+                    and coverage_status != "unsupported"
+                    and _coerce_scene_bool(item.get("temporal_progression"), False)
+                ):
                     required_features = []
-                    composition = "make the current visible state clearly readable at natural physical scale"
-                if continuity_key != "none" and coverage_status != "unsupported":
-                    context_subject = str(item.get("context_subject") or "").strip()
-                    distinct_context = bool(context_subject) and not _scene_same_primary_entity(
-                        canonical_subject, context_subject
-                    )
-                    if distinct_context or (includes_primary_subject and reference_target in {"output", "secondary_subject"}):
-                        scene_description += (
-                            f" Separate physical context: {context_subject or 'the visible primary/source entity'}. "
-                            "Place this object outside and beside the continuity target. "
-                            "Its identity reference controls only that separate object. "
-                            "Keep the target's existing depicted content intact within its own boundary; "
-                            "the external object and surrounding scene remain outside that content."
+                    if current_state:
+                        stable_target = continuity_description or canonical_subject or subject
+                        state_for_prompt = visual_state or current_state
+                        scene_description = (
+                            f"{stable_target.rstrip(' .')}. {state_for_prompt.rstrip(' .')}."
                         )
+                        if not edit_operation:
+                            edit_operation = (
+                                "Change only the target's visible state so it clearly shows "
+                                + state_for_prompt
+                            )
+                context_subject = str(item.get("context_subject") or "").strip()
                 internal_values = internal_image_values(item)
                 internal_values.append(continuity_key)
                 final_prompt = _build_structured_scene_image_prompt(
@@ -2745,6 +2774,9 @@ Return exactly {amount} objects and nothing else.
                     "continuity_key": continuity_key,
                     "continuity_description": clean_image_text(continuity_description, internal_values),
                     "continuity_inference": str(item.get("continuity_inference") or ""),
+                    "visual_state": clean_image_text(visual_state, internal_values),
+                    "edit_operation": clean_image_text(edit_operation, internal_values),
+                    "context_subject": clean_image_text(context_subject, internal_values),
                     "precision_importance": precision_importance,
                 })
 

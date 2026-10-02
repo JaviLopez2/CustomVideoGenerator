@@ -53,3 +53,38 @@ def test_rejected_alternative_cannot_supply_result_or_context():
     scene = plan([rejected(observable_result="twin gears", observable_context="spraying lubricant")],
                  ["The sealed motor is on a desk."])[0]
     assert_clean(scene)
+
+
+def test_ambiguous_fallback_subject_reuses_grounded_continuity_identity():
+    root = {
+        "subject": "instant photograph sheet",
+        "canonical_subject": "instant photograph sheet",
+        "scene_description": "an instant photograph sheet resting on a table",
+        "reference_need": "none",
+        "reference_target": "output",
+        "evidence_scope": "externally_visible",
+        "route": "standard",
+        "continuity_key": "photo_sequence",
+        "continuity_description": "instant photograph sheet with white border and fixed landscape content",
+        "edit_operation": "Keep the early visible state",
+    }
+    hidden = rejected(
+        subject="the sheet",
+        canonical_subject="the sheet",
+        observable_subject="the sheet",
+        safe_visual_alternative="show the hidden mechanism in a forest",
+    )
+    result = plan(
+        [root, hidden],
+        [
+            "The instant photograph sheet rests on a table.",
+            "The sheet passes through a hidden internal process.",
+        ],
+    )
+    scene = result[1]
+    assert scene["canonical_subject"] == "instant photograph sheet with white border and fixed landscape content"
+    assert "instant photograph sheet" in scene["prompt"]
+    assert "natural surroundings" not in scene["prompt"]
+    assert "forest" not in scene["prompt"]
+    assert "the sheet" not in scene["prompt"].lower()
+    assert_clean(scene)

@@ -112,37 +112,167 @@ def test_duplicate_retry_failure_preserves_valid_original(pipeline, monkeypatch,
     assert diagnostics[-1]["scenes"][0]["corrective_retry_selection"]["reason"] == "retry_unavailable_or_invalid"
 
 
-def test_standard_root_continuity_and_identity_anchor_keep_scoped_contract(pipeline, monkeypatch):
+def test_standard_root_continuity_and_identity_anchor_use_qwen_edit_roles(pipeline, monkeypatch):
     run, diagnostics = pipeline
     calls = []
+
     def generate(**kw):
         calls.append(kw)
         return [item("stage" + str(len(calls)))]
+
     monkeypatch.setattr(material, "generate_images_openai", generate)
-    monkeypatch.setattr(material, "_near_duplicate_assessment", lambda *a, **kw: {"actionable": False, "best_similarity": .5})
-    monkeypatch.setattr(material, "_upload_reference_to_comfyui", lambda path: "previous-stage.png")
+    monkeypatch.setattr(
+        material, "_near_duplicate_assessment",
+        lambda *a, **kw: {"actionable": False, "best_similarity": .5},
+    )
+    monkeypatch.setattr(material, "_upload_reference_to_comfyui", lambda path: "stable-anchor.png")
     monkeypatch.setattr(material, "_continuity_edit_chain_enabled", lambda: True)
     result = run(
         search_terms=["output only, early state", "same output, final state beside its source device"],
-        scene_durations=[1, 1], scene_routes=["standard", "standard"],
-        scene_subjects=["output", "output and device"], scene_reference_targets=["output", "output"],
-        scene_includes_primary_subject=[False, True], scene_continuity_keys=["same_output"] * 2,
+        scene_durations=[1, 1],
+        scene_routes=["standard", "standard"],
+        scene_subjects=["output", "output and device"],
+        scene_reference_targets=["output", "output"],
+        scene_includes_primary_subject=[False, True],
+        scene_continuity_keys=["same_output"] * 2,
         scene_continuity_descriptions=["the same printed landscape and border"] * 2,
+        scene_edit_operations=[
+            "Keep the output at its early visible state",
+            "Advance only the output to its final visible state",
+        ],
     )
-    assert len(result) == len(calls) == 2  # one normal generation per scene
+    assert len(result) == len(calls) == 2
     assert calls[0]["route"] == "standard"
-    assert "omit incidental background objects" in calls[0]["search_term"]
+    assert "omit incidental background objects" not in calls[0]["search_term"]
+
     second = calls[1]
     assert second["route"] == "precision"
-    assert second["reference_images"] == ["previous-stage.png", "identity.png"]
+    assert second["reference_images"] == ["stable-anchor.png", "identity.png"]
     assert second["reference_info"]["primary_identity_only"] is True
     prompt = material._qwen_precision_prompt_with_references(
-        second["search_term"], second["reference_subject"], len(second["reference_images"]),
+        second["search_term"],
+        second["reference_subject"],
+        len(second["reference_images"]),
         reference_info=second["reference_info"],
     )
-    assert "the same printed landscape and border" in prompt
-    assert "changing only the state/progression" in prompt
-    assert "Remove incidental background objects" in prompt
-    assert "only the intended target's" in prompt
-    assert "visible primary/source entity only" in prompt
+    assert prompt.startswith("Edit <image1>.")
+    assert "Advance only the output to its final visible state" in prompt
+    assert "<image1> is the canvas and stable continuity anchor" in prompt
+    assert "<image2> is the identity source only for the separate visible primary subject" in prompt
+    assert "preserve all untargeted canvas content" in prompt
+    assert "Remove incidental background objects" not in prompt
     assert diagnostics[-1]["plan_scenes"][1]["routing_reason"] == "continuity_edit_chain"
+    assert diagnostics[-1]["plan_scenes"][1]["continuity_strategy"] == "stable_anchor_delta"
+
+
+def test_three_stage_continuity_reuses_root_not_previous_generated_stage(pipeline, monkeypatch):
+    run, diagnostics = pipeline
+    calls = []
+
+    def generate(**kw):
+        calls.append(kw)
+        return [item("stage" + str(len(calls)))]
+
+    monkeypatch.setattr(material, "generate_images_openai", generate)
+    monkeypatch.setattr(
+        material, "_near_duplicate_assessment",
+        lambda *a, **kw: {"actionable": False, "best_similarity": .5},
+    )
+    monkeypatch.setattr(
+        material,
+        "_upload_reference_to_comfyui",
+        lambda path: str(path).replace("\\", "/").rsplit("/", 1)[-1],
+    )
+    monkeypatch.setattr(material, "_continuity_edit_chain_enabled", lambda: True)
+
+    result = run(
+        search_terms=["early print", "mid print", "final print"],
+        scene_durations=[1, 1, 1],
+        scene_routes=["standard"] * 3,
+        scene_subjects=["instant print"] * 3,
+        scene_reference_targets=["output"] * 3,
+        scene_includes_primary_subject=[False] * 3,
+        scene_continuity_keys=["print_progress"] * 3,
+        scene_continuity_descriptions=["same instant print and depicted landscape"] * 3,
+        scene_edit_operations=[
+            "Keep the print at its early low-contrast state",
+            "Increase only visible contrast and color to a middle stage",
+            "Increase only visible contrast and color to the final stage",
+        ],
+    )
+
+    assert len(result) == len(calls) == 3
+    assert calls[0]["route"] == "standard"
+    assert calls[1]["reference_images"] == ["stage1.png"]
+    assert calls[2]["reference_images"] == ["stage1.png"]
+    assert "stage2.png" not in calls[2]["reference_images"]
+
+    final_plan = diagnostics[-1]["plan_scenes"]
+    assert final_plan[0]["continuity_strategy"] == "anchor_root"
+    assert final_plan[1]["continuity_strategy"] == "stable_anchor_delta"
+    assert final_plan[2]["continuity_strategy"] == "stable_anchor_delta"
+    assert final_plan[1]["continuity_source_scene"] == 1
+    assert final_plan[2]["continuity_source_scene"] == 1
+
+
+def test_continuity_duplicate_threshold_only_retries_almost_unchanged(monkeypatch):
+    # Two bits differ => 62/64 = 0.96875. This is a useful state edit, not an
+    # unchanged render, even though it would exceed the ordinary 0.94 threshold.
+    hashes = {"current.png": 0, "previous.png": 3}
+    monkeypatch.setattr(material, "_image_dhash64", lambda path: hashes[path])
+    monkeypatch.setattr(material, "_openai_image_near_duplicate_enabled", lambda: True)
+    monkeypatch.setattr(material, "_openai_image_near_duplicate_threshold", lambda: 0.94)
+    recent = [{
+        "scene": 1,
+        "path": "previous.png",
+        "dhash": 3,
+        "composition_key": "same_frame",
+        "shot_type": "full",
+        "continuity_key": "same_print",
+    }]
+
+    continuity = material._near_duplicate_assessment(
+        "current.png",
+        recent,
+        composition_key="same_frame",
+        shot_type="full",
+        continuity_key="same_print",
+        continuity_edit=True,
+    )
+    assert continuity["best_similarity"] == 0.9688
+    assert continuity["threshold"] == 0.985
+    assert continuity["planned_difference"] is True
+    assert continuity["actionable"] is False
+
+    ordinary = material._near_duplicate_assessment(
+        "current.png",
+        recent,
+        composition_key="different_frame",
+        shot_type="full",
+    )
+    assert ordinary["threshold"] == 0.94
+    assert ordinary["actionable"] is True
+
+
+def test_continuity_duplicate_threshold_retries_exact_repeat(monkeypatch):
+    monkeypatch.setattr(material, "_image_dhash64", lambda path: 0)
+    monkeypatch.setattr(material, "_openai_image_near_duplicate_enabled", lambda: True)
+    monkeypatch.setattr(material, "_openai_image_near_duplicate_threshold", lambda: 0.94)
+    recent = [{
+        "scene": 1,
+        "path": "previous.png",
+        "dhash": 0,
+        "composition_key": "same_frame",
+        "shot_type": "full",
+        "continuity_key": "same_print",
+    }]
+    result = material._near_duplicate_assessment(
+        "current.png",
+        recent,
+        composition_key="same_frame",
+        shot_type="full",
+        continuity_key="same_print",
+        continuity_edit=True,
+    )
+    assert result["best_similarity"] == 1.0
+    assert result["actionable"] is True
