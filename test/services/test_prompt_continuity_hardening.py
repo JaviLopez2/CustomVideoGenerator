@@ -195,3 +195,29 @@ def test_continuity_uses_stable_root_instead_of_recursive_previous_stage(pipelin
     assert "middle-uploaded.png" not in calls[2]["reference_images"]
     assert diagnostics[-1]["plan_scenes"][1]["routing_reason"] == "continuity_edit_from_root"
     assert diagnostics[-1]["plan_scenes"][2]["continuity_source_scene"] == 1
+
+
+def test_structured_prompt_is_descriptive_not_policy_heavy():
+    prompt = llm._build_structured_scene_image_prompt(
+        subject="instant photograph",
+        route="precision",
+        narration="La misma fotografía continúa revelándose.",
+        scene_description="The same instant photograph shows faint emerging shapes and low contrast.",
+        required_features=["white border", "faint image", "flat paper"],
+        forbidden_features=["fully saturated colors", "liquid pooling", "readable labels"],
+        environment="wooden tabletop near a window",
+        composition="slight high angle with the photograph centered",
+        lighting="soft natural side light",
+        identity_hint="rectangular instant print with a white border",
+        shared_visual_style=llm.DEFAULT_OPENAI_IMAGE_VISUAL_STYLE,
+        shot_type="medium",
+        framing_intent="medium_subject",
+    )
+    assert len(prompt) < 1400
+    assert "Scene action and visual content" not in prompt
+    assert "Continuity requirement" not in prompt
+    assert "State instructions govern appearance" not in prompt
+    assert "Framing rule" not in prompt
+    assert "Render one complete" not in prompt
+    assert "The same instant photograph shows faint emerging shapes" in prompt
+    assert "wooden tabletop near a window" in prompt

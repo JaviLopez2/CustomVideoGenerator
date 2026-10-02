@@ -2621,8 +2621,8 @@ Return exactly {amount} objects and nothing else.
                         subject = fallback_identity["subject"]
                         canonical_subject = subject
                         scene_description = (
-                            f"Show only the closed exterior of {subject}, as established by the identity references. "
-                            + (f"Visible state: {observable_state}."
+                            f"A clear documentary view of the closed exterior of {subject}."
+                            + (f" Its visible state is {observable_state}."
                                if observable_state and subject.casefold() == observable_subject.casefold() else "")
                         )
                         evidence_scope = "externally_visible"

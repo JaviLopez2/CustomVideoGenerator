@@ -89,3 +89,18 @@ def test_ambiguous_output_noun_falls_back_to_known_exterior_context():
     assert scene["reference_target"] == "primary_subject"
     assert scene["reference_need"] == "identity"
     assert scene["route"] == "precision"
+
+
+def test_supported_visual_rewrite_keeps_model_facing_fallback_in_english():
+    scene = plan(
+        [rejected(
+            observable_result="la fotografía",
+            observable_result_visual="instant photograph",
+            observable_state="apenas muestra información",
+            visual_state="very faint image with minimal visible detail and low contrast",
+        )],
+        ["Al principio, la fotografía apenas muestra información."],
+    )[0]
+    assert scene["canonical_subject"] == "instant photograph"
+    assert "very faint image with minimal visible detail and low contrast" in scene["prompt"]
+    assert "apenas muestra información" not in scene["prompt"]
