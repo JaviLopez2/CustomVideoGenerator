@@ -2101,7 +2101,7 @@ def _build_structured_scene_image_prompt(
             composition, field_name="composition", narration=narration
         )
 
-    opening = f"A vertical photorealistic documentary image of {subject}"
+    opening = f"A photorealistic documentary image of {subject}"
     if environment:
         opening += f" in {environment}"
     parts = [opening + "."]

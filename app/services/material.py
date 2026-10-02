@@ -7141,7 +7141,7 @@ def _download_videos_openai_image_on_demand(
                         }
                     ],
                     "reference_selection": {
-                        "status": "continuity_edit_chain",
+                        "status": "continuity_edit_from_root",
                         "selected_count": 1,
                         "selected_references": [
                             {
