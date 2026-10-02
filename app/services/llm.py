@@ -2615,8 +2615,9 @@ Return exactly {amount} objects and nothing else.
                         subject = canonical_subject = observable_subject
                         scene_description = f"A clear documentary view of {subject}."
                         visual_state = " ".join(str(item.get("visual_state") or "").strip().split())
-                        if visual_state:
-                            scene_description += f" Its visible state is {visual_state}."
+                        visible_state_text = visual_state or observable_state
+                        if visible_state_text:
+                            scene_description += f" Its visible state is {visible_state_text}."
                         environment = "a simple narration-grounded setting"
                         composition = "the observable subject is clear at natural physical scale"
                         reference_target = _normalize_scene_enum(
