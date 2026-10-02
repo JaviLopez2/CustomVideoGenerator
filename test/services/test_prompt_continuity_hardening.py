@@ -151,6 +151,8 @@ def test_qwen_multi_image_edit_uses_explicit_roles_and_short_preservation_clause
         assert "<image2> is the identity source only for the separate visible primary subject" in prompt
         assert "preserve all untargeted canvas content" in prompt
         assert "remains outside the continuity target's depicted content" in prompt
+        assert "Current scene:" not in prompt
+        assert "photorealistic documentary photograph" not in prompt
         assert "chain_delta_72" not in prompt
         assert "never reinterpret the whole reference frame" not in prompt
         assert "Remove incidental background objects" not in prompt
