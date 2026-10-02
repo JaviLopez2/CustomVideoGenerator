@@ -15,6 +15,7 @@ from openai.types.chat import ChatCompletion
 
 from app.config import config
 from app.models.llm_provider import DEFAULT_LLM_PROVIDER_ID, get_llm_provider
+from app.utils.image_prompt import clean_image_text
 
 _max_retries = 5
 MIN_SCRIPT_PARAGRAPH_NUMBER = 1
@@ -2214,6 +2215,8 @@ Return ONLY a valid JSON array containing exactly {amount} objects. Every object
 - "observable_context": short externally observable surroundings span copied VERBATIM from narration; empty if unavailable. Preserve observable fields during audit independently of safe_visual_alternative.
 - "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
 - "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
+- "temporal_progression": boolean, true only for a narrated monotonic progression of the same target. Put each scene's concrete visible state in observable_state, copied from narration. Keep the initial state genuinely initial; do not borrow later clarity/completeness. State belongs outside continuity_description, which describes only stable content/identity.
+- "context_subject": natural-language name of a separate physical scene object, if present beside/around the continuity target. Its identity reference controls only that external object, never the target's depicted content. Leave empty when absent. Internal keys/IDs must never be copied into visual prose.
 - "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
 
 ## Routing
@@ -2521,7 +2524,7 @@ Return exactly {amount} objects and nothing else.
                     scene_description = (
                         scene_description.rstrip(" .")
                         + ". Continuity requirement: this is the exact same physical instance/content across all "
-                        + f"stages of continuity group '{continuity_key}': {continuity_description}. "
+                        + f"stages: {continuity_description}. "
                         + "Do not change the underlying depicted subject/content; change only the narrated state. "
                         + "This contract applies only to the intended target, not the entire frame. Remove incidental "
                         + "background objects, invented props and spurious text unless explicitly required by this scene."
@@ -2659,6 +2662,43 @@ Return exactly {amount} objects and nothing else.
                 if reference_critical and coverage_status != "unsupported":
                     route = "precision"
 
+                # State is scene-local; continuity stores stable identity only.
+                # Replace conflicting action prose when a grounded state exists,
+                # rather than appending an early state after a final-state claim.
+                current_state = _narrated_observable_fragment(
+                    item.get("observable_state"), narration, state=True
+                )
+                if continuity_key != "none" and coverage_status != "unsupported" and current_state:
+                    scene_description = (
+                        f"Current visible state, the dominant visual instruction: {current_state}. "
+                        f"Stable continuity target/content: {continuity_description}. "
+                        "Render the current state at its narrated degree, preserving underlying identity. "
+                        "State instructions govern appearance; reference images establish identity, not completion level. "
+                    )
+                    if _coerce_scene_bool(item.get("temporal_progression"), False):
+                        scene_description += (
+                            "This stage advances only the narrated visible property in the same direction as the sequence; "
+                            "preserve the underlying content and the current degree of progression. "
+                        )
+                    # These rejected state-bearing directions could contradict
+                    # the narration even if their entity identity was covered.
+                    required_features = []
+                    composition = "make the current visible state clearly readable at natural physical scale"
+                if continuity_key != "none" and coverage_status != "unsupported":
+                    context_subject = str(item.get("context_subject") or "").strip()
+                    if context_subject or includes_primary_subject:
+                        scene_description += (
+                            f" Separate physical context: {context_subject or 'the visible primary/source entity'}. "
+                            "Place this object outside and beside the continuity target. "
+                            "Its identity reference controls only that separate object. "
+                            "Keep the target's existing depicted content intact within its own boundary; "
+                            "the external object and surrounding scene remain outside that content."
+                        )
+                internal_values = [item.get(key) for key in item
+                                   if key.endswith("_id") or (
+                                       key.endswith(("_key", "_family"))
+                                       and re.search(r"[_\d-]", str(item.get(key) or "")))]
+                internal_values.append(continuity_key)
                 final_prompt = _build_structured_scene_image_prompt(
                     subject=subject,
                     route=route,
@@ -2674,6 +2714,7 @@ Return exactly {amount} objects and nothing else.
                     shot_type=shot_type,
                     framing_intent=framing_intent,
                 )
+                final_prompt = clean_image_text(final_prompt, internal_values)
                 result.append({
                     "subject": subject,
                     "canonical_subject": canonical_subject,

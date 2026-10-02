@@ -31,6 +31,7 @@ from app.services import (
     volcengine_seedance,
 )
 from app.utils import utils
+from app.utils.image_prompt import clean_image_text
 
 # Thread-safe counter for API key rotation
 _api_key_counter = 0
@@ -4608,7 +4609,13 @@ def _qwen_precision_prompt_with_references(
         if clean_forbidden
         else ""
     )
-    return (
+    context_contract = (
+        "Spatial separation: the continuity target retains its own bounded content. "
+        "The primary/source entity is a separate physical object outside and beside that target; "
+        "its identity anchor controls only this external object. Keep existing target content intact, "
+        "even when a previous-stage image accidentally depicts surrounding context inside it. "
+    ) if primary_identity_only else ""
+    return clean_image_text(context_contract + (
         f"Reference evidence: {role_text}. "
         f"The target factual subject is {subject}. Treat authoritative identity and continuity references as stronger evidence only for the intended target's identity traits they visibly establish. "
         "A continuity reference is the previous whole scene containing the same target instance at an earlier stage. Preserve the target instance itself, but never reinterpret the whole reference frame as content that belongs inside that target. "
@@ -4624,7 +4631,7 @@ def _qwen_precision_prompt_with_references(
         "Do not invent accessories, modifications, anatomy or structures merely because one reference contains an incidental element. "
         "Create a completely new coherent edge-to-edge scene and follow the scene direction for composition, environment, camera and lighting. Scene direction: "
         f"{prompt}{forbidden_clause}"
-    )
+    ))
 
 
 def generate_images_openai(
@@ -4684,7 +4691,7 @@ def generate_images_openai(
 
     payload = {
         "model": requested_model,
-        "prompt": final_prompt,
+        "prompt": clean_image_text(final_prompt),
         "n": 1,
         "size": image_size,
     }
@@ -4728,9 +4735,9 @@ def generate_images_openai(
         )
         fallback_payload = {
             "model": fallback_model,
-            "prompt": _precision_prompt_with_reference(
+            "prompt": clean_image_text(_precision_prompt_with_reference(
                 base_prompt, reference_subject or search_term
-            ),
+            )),
             "n": 1,
             "size": image_size,
             "reference_image": references[0],
@@ -7158,6 +7165,9 @@ def _download_videos_openai_image_on_demand(
                 scene_model, precision_fallback = _openai_image_model_for_route("precision")
                 routing_reason = "continuity_edit_chain"
                 continuity_reference_ready = True
+                reference_info["primary_identity_only"] = bool(
+                    includes_primary_subject and reference_target != "primary_subject"
+                )
                 logger.info(
                     "continuity edit chain activated: "
                     f"scene={scene_index + 1}, key={continuity_key!r}, "
@@ -7238,6 +7248,8 @@ def _download_videos_openai_image_on_demand(
             scene_model, _ = _openai_image_model_for_route("standard")
 
         if continuity_key not in {"", "none"}:
+            search_term = clean_image_text(search_term, [continuity_key])
+            continuity_description = clean_image_text(continuity_description, [continuity_key])
             # Apply the same scoped contract to the first (possibly Standard)
             # frame, before it becomes evidence for subsequent edit stages.
             search_term += (
