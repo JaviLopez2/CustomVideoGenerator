@@ -24,6 +24,14 @@ def test_generic_query_cannot_establish_specialized_evidence():
         "detail", "front close detail")[0]
 
 
+def test_presentation_wording_and_plural_variation_preserve_concepts():
+    inventory = [{"role": "detail", "description": "visible turbine bearing"}]
+    assert llm._reference_role_has_semantic_evidence(
+        inventory, "detail", "reference illustration clearly depicting turbine bearings")[0]
+    assert not llm._reference_role_has_semantic_evidence(
+        inventory, "detail", "reference illustration clearly depicting turbine bearings and seals")[0]
+
+
 def test_visible_result_survives_primary_identity_fallback():
     exterior = rejected(scene_description="closed exterior of sealed motor", reference_need="identity",
                         evidence_scope="externally_visible", required_features=[],

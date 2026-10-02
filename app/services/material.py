@@ -31,7 +31,7 @@ from app.services import (
     volcengine_seedance,
 )
 from app.utils import utils
-from app.utils.image_prompt import clean_image_text
+from app.utils.image_prompt import clean_image_text, internal_image_values
 
 # Thread-safe counter for API key rotation
 _api_key_counter = 0
@@ -4631,7 +4631,7 @@ def _qwen_precision_prompt_with_references(
         "Do not invent accessories, modifications, anatomy or structures merely because one reference contains an incidental element. "
         "Create a completely new coherent edge-to-edge scene and follow the scene direction for composition, environment, camera and lighting. Scene direction: "
         f"{prompt}{forbidden_clause}"
-    ))
+    ), internal_image_values(reference_info))
 
 
 def generate_images_openai(
@@ -4691,7 +4691,7 @@ def generate_images_openai(
 
     payload = {
         "model": requested_model,
-        "prompt": clean_image_text(final_prompt),
+        "prompt": clean_image_text(final_prompt, internal_image_values(reference_info)),
         "n": 1,
         "size": image_size,
     }
@@ -4737,7 +4737,7 @@ def generate_images_openai(
             "model": fallback_model,
             "prompt": clean_image_text(_precision_prompt_with_reference(
                 base_prompt, reference_subject or search_term
-            )),
+            ), internal_image_values(reference_info)),
             "n": 1,
             "size": image_size,
             "reference_image": references[0],
@@ -7166,7 +7166,7 @@ def _download_videos_openai_image_on_demand(
                 routing_reason = "continuity_edit_chain"
                 continuity_reference_ready = True
                 reference_info["primary_identity_only"] = bool(
-                    includes_primary_subject and reference_target != "primary_subject"
+                    includes_primary_subject and reference_target in {"output", "secondary_subject"}
                 )
                 logger.info(
                     "continuity edit chain activated: "
@@ -7338,7 +7338,7 @@ def _download_videos_openai_image_on_demand(
                         max_refs=1 if primary_visibility_identity_only else 3,
                     )
                     if primary_visibility_identity_only and reference_info is not None:
-                        reference_info["primary_identity_only"] = True
+                        reference_info["primary_identity_only"] = reference_target in {"output", "secondary_subject"}
                         reference_info["reference_selection"]["selection_strategy"] = (
                             "primary identity anchor only; scene target remains non-primary"
                         )
@@ -7413,7 +7413,7 @@ def _download_videos_openai_image_on_demand(
                     reference_info["reference_pack"] = combined_pack
                     reference_info["reference_selection"]["selected_references"] = combined_rows
                     reference_info["reference_selection"]["selected_count"] = len(reference_images)
-                    reference_info["primary_identity_only"] = True
+                    reference_info["primary_identity_only"] = reference_target in {"output", "secondary_subject"}
                     reference_info["reference_selection"]["selection_strategy"] = (
                         "previous continuity stage + reintroduced primary identity anchor"
                     )

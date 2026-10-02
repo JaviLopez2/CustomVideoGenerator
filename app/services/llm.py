@@ -15,7 +15,7 @@ from openai.types.chat import ChatCompletion
 
 from app.config import config
 from app.models.llm_provider import DEFAULT_LLM_PROVIDER_ID, get_llm_provider
-from app.utils.image_prompt import clean_image_text
+from app.utils.image_prompt import clean_image_text, internal_image_values
 
 _max_retries = 5
 MIN_SCRIPT_PARAGRAPH_NUMBER = 1
@@ -1411,6 +1411,7 @@ def _reference_evidence_tokens(value: str) -> set[str]:
         "area", "close", "detail", "details", "front", "rear", "side", "panel",
         "control", "controls", "show", "shows", "placement", "position", "part",
         "parts", "located", "including", "external", "internal", "mechanism",
+        "clearly", "depicting", "depicts", "illustration", "reference",
     }
     result: set[str] = set()
     for raw in re.findall(r"[a-z]+", str(value or "").lower()):
@@ -2686,7 +2687,10 @@ Return exactly {amount} objects and nothing else.
                     composition = "make the current visible state clearly readable at natural physical scale"
                 if continuity_key != "none" and coverage_status != "unsupported":
                     context_subject = str(item.get("context_subject") or "").strip()
-                    if context_subject or includes_primary_subject:
+                    distinct_context = bool(context_subject) and not _scene_same_primary_entity(
+                        canonical_subject, context_subject
+                    )
+                    if distinct_context or (includes_primary_subject and reference_target in {"output", "secondary_subject"}):
                         scene_description += (
                             f" Separate physical context: {context_subject or 'the visible primary/source entity'}. "
                             "Place this object outside and beside the continuity target. "
@@ -2694,10 +2698,7 @@ Return exactly {amount} objects and nothing else.
                             "Keep the target's existing depicted content intact within its own boundary; "
                             "the external object and surrounding scene remain outside that content."
                         )
-                internal_values = [item.get(key) for key in item
-                                   if key.endswith("_id") or (
-                                       key.endswith(("_key", "_family"))
-                                       and re.search(r"[_\d-]", str(item.get(key) or "")))]
+                internal_values = internal_image_values(item)
                 internal_values.append(continuity_key)
                 final_prompt = _build_structured_scene_image_prompt(
                     subject=subject,
@@ -2716,13 +2717,13 @@ Return exactly {amount} objects and nothing else.
                 )
                 final_prompt = clean_image_text(final_prompt, internal_values)
                 result.append({
-                    "subject": subject,
-                    "canonical_subject": canonical_subject,
+                    "subject": clean_image_text(subject, internal_values),
+                    "canonical_subject": clean_image_text(canonical_subject, internal_values),
                     "route": route,
                     "prompt": final_prompt,
-                    "required_features": required_features,
-                    "forbidden_features": forbidden_features,
-                    "environment": environment,
+                    "required_features": [clean_image_text(x, internal_values) for x in required_features],
+                    "forbidden_features": [clean_image_text(x, internal_values) for x in forbidden_features],
+                    "environment": clean_image_text(environment, internal_values),
                     "environment_key": environment_key,
                     "composition_key": composition_key,
                     "shot_type": shot_type,
@@ -2731,18 +2732,18 @@ Return exactly {amount} objects and nothing else.
                     "reference_need": reference_need,
                     "requested_reference_need": requested_reference_need,
                     "reference_target": reference_target,
-                    "reference_query": "" if coverage_status == "unsupported" else str(item.get("reference_query") or "").strip(),
+                    "reference_query": "" if coverage_status == "unsupported" else clean_image_text(item.get("reference_query"), internal_values),
                     "evidence_scope": evidence_scope,
                     "reference_critical": reference_critical,
                     "includes_primary_subject": includes_primary_subject,
-                    "identity_relation_guard": "" if coverage_status == "unsupported" else str(item.get("identity_relation_guard") or ""),
+                    "identity_relation_guard": "" if coverage_status == "unsupported" else clean_image_text(item.get("identity_relation_guard"), internal_values),
                     "coverage_status": coverage_status,
                     "coverage_reason": coverage_reason,
                     "safe_visual_alternative": safe_visual_alternative,
                     "planner_validation": planner_validation,
                     "factual_audit_status": factual_audit_status,
                     "continuity_key": continuity_key,
-                    "continuity_description": continuity_description,
+                    "continuity_description": clean_image_text(continuity_description, internal_values),
                     "continuity_inference": str(item.get("continuity_inference") or ""),
                     "precision_importance": precision_importance,
                 })

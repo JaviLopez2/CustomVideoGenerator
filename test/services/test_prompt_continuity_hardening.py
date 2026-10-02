@@ -9,9 +9,10 @@ from test.services.test_corrective_continuity import pipeline, item  # noqa: F40
 
 
 def test_machine_ids_removed_but_explicit_literal_inscriptions_survive():
-    assert "chain_delta_72" not in clean_image_text("same target chain_delta_72")
+    assert "chain_delta_72" not in clean_image_text("same target chain_delta_72", ["chain_delta_72"])
     assert 'literal text: "hello_world"' in clean_image_text('literal text: "hello_world"')
     assert "job-47" not in clean_image_text("same target job-47", ["job-47"])
+    assert clean_image_text("project_alpha model_v2 hello_world") == "project_alpha model_v2 hello_world"
 
 
 def state_plan():
@@ -92,8 +93,61 @@ def test_final_request_payload_has_no_machine_names(monkeypatch, model, refs):
     monkeypatch.setattr(material, "_openai_image_endpoint", lambda **kw: ("mock://image", model))
     calls = []
     monkeypatch.setattr(material, "_request_openai_image", lambda endpoint, payload: calls.append(payload) or (None, "unconfirmed request error"))
-    material.generate_images_openai("same tile chain_delta_72", 1, reference_images=refs,
-        reference_subject="tile target_alpha", reference_info={"reference_pack": [{"role": "identity", "description": "console internal_group_18"}]})
+    material.generate_images_openai("same tile chain_delta_72 project_alpha model_v2 hello_world", 1, reference_images=refs,
+        reference_subject="tile target_alpha", reference_info={"continuity_key": "chain_delta_72",
+        "planner_id": "target_alpha", "reference_pack": [{"id": "internal_group_18", "role": "identity", "description": "console internal_group_18"}]})
     assert len(calls) == 1
     assert all(token not in calls[0]["prompt"] for token in ("chain_delta_72", "target_alpha", "internal_group_18"))
     assert "same tile" in calls[0]["prompt"]
+    assert all(token in calls[0]["prompt"] for token in ("project_alpha", "model_v2", "hello_world"))
+
+
+def test_fallback_request_preserves_user_text_and_removes_known_ids(monkeypatch):
+    monkeypatch.setattr(material.config, "app", {})
+    monkeypatch.setattr(material, "_openai_image_endpoint", lambda **kw: ("mock://image", "qwen-image-2.1"))
+    monkeypatch.setattr(material, "_precision_fallback_model", lambda: "offline-fallback")
+    calls = []
+    monkeypatch.setattr(material, "_request_openai_image", lambda endpoint, payload: calls.append(payload) or (None, "invalid image"))
+    material.generate_images_openai("hello_world chain_delta_72", 1, route="precision",
+        reference_images=["anchor.png"], reference_info={"continuity_key": "chain_delta_72"})
+    assert len(calls) == 2
+    assert calls[1]["model"] == "offline-fallback"
+    for call in calls:
+        assert "chain_delta_72" not in call["prompt"]
+        assert "hello_world" in call["prompt"]
+
+
+@pytest.mark.parametrize("target,context", [("primary_subject", ""), ("none", ""), ("primary_subject", "vehicle")])
+def test_same_target_is_not_placed_beside_itself(target, context):
+    row = {"subject": "vehicle", "canonical_subject": "vehicle", "context_subject": context,
+           "scene_description": "vehicle model_v2 in changing light", "includes_primary_subject": True,
+           "continuity_key": "vehicle_state_7", "continuity_description": "same vehicle model_v2",
+           "planner_id": "draft-47", "reference_query": "vehicle draft-47", "required_features": ["model_v2 draft-47"],
+           "reference_need": "none", "reference_target": target, "evidence_scope": "externally_visible"}
+    with patch.object(llm, "_generate_response", return_value=json.dumps([row])):
+        scene = llm.generate_scene_image_plan("vehicle", [{"narration": "The vehicle model_v2."}], app_config={})[0]
+    assert "outside and beside" not in scene["prompt"]
+    assert "model_v2" in scene["prompt"]
+    assert "vehicle_state_7" not in scene["prompt"]
+    assert "draft-47" not in scene["reference_query"]
+    assert scene["required_features"] == ["model_v2"]
+
+
+@pytest.mark.parametrize("target", ["primary_subject", "none"])
+def test_same_entity_reference_chain_keeps_anchor_without_context_contract(pipeline, monkeypatch, target):
+    run, diagnostics = pipeline
+    calls = []
+    monkeypatch.setattr(material, "generate_images_openai", lambda **kw: calls.append(kw) or [item(f"stage{len(calls)}")])
+    monkeypatch.setattr(material, "_near_duplicate_assessment", lambda *a, **kw: {"actionable": False, "best_similarity": .5})
+    monkeypatch.setattr(material, "_upload_reference_to_comfyui", lambda path: "previous-stage.png")
+    monkeypatch.setattr(material, "_continuity_edit_chain_enabled", lambda: True)
+    run(search_terms=["vehicle model_v2 in shade", "same vehicle model_v2 in sunlight"],
+        scene_routes=["precision"] * 2, scene_subjects=["vehicle"] * 2,
+        scene_reference_targets=[target] * 2, scene_includes_primary_subject=[True] * 2,
+        scene_continuity_keys=["vehicle_state_7"] * 2, scene_continuity_descriptions=["same vehicle model_v2"] * 2)
+    assert calls[1]["reference_images"] == ["previous-stage.png"]
+    for call in calls:
+        prompt = material._qwen_precision_prompt_with_references(
+            call["search_term"], call["reference_subject"], len(call["reference_images"]), call["reference_info"])
+        assert "outside and beside" not in prompt
+        assert "model_v2" in prompt
