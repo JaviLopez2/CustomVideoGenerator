@@ -2212,6 +2212,7 @@ Return ONLY a valid JSON array containing exactly {amount} objects. Every object
 - "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
 - "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
 - "temporal_progression": boolean, true only for a narrated monotonic progression of the same target. Put each scene's concrete visible state in observable_state, copied from narration. Keep the initial state genuinely initial; do not borrow later clarity/completeness. State belongs outside continuity_description, which describes only stable content/identity.
+- "visual_state": when temporal_progression is true, a concise English observer-style description of exactly that scene's externally visible state. It may translate/paraphrase observable_state but must not add mechanisms, causes, props or later-stage facts. Leave empty otherwise.
 - "context_subject": natural-language name of a separate physical scene object, if present beside/around the continuity target. Its identity reference controls only that external object, never the target's depicted content. Leave empty when absent. Internal keys/IDs must never be copied into visual prose.
 - "edit_operation": concise English image-edit operation for a continuity scene, describing only the visible attribute/state change from the stable continuity anchor. Make the requested change visually unmistakable without changing underlying identity/content. Leave empty when continuity_key is "none". Never mention planner IDs, reference mechanics or hidden causes.
 - "precision_importance": number from 0.0 to 1.0 indicating how damaging a generic/wrong visual substitute would be
@@ -2277,7 +2278,9 @@ remain precision before later performance budgeting.
     Do not treat the mere existence of a role=detail/internal/context file as proof of an unrelated specialized view.
 25. subject and scene_description are model-facing visual semantics: keep them self-contained, concrete and observable. Do not
     use discourse-dependent labels like "the sheet", "it" or "this object" when the object class can be named.
-26. For continuity scenes, edit_operation must be one short English operation that changes only the narrated visible state.
+26. For temporal continuity scenes, visual_state must be a short English observer description of the current narrated state only;
+    do not borrow later-stage completion, props or causal explanations.
+27. For continuity scenes, edit_operation must be one short English operation that changes only the narrated visible state.
     It must not restate the whole scene, repeat preservation policy, describe references, or introduce unsupported mechanisms.
 
 ## Manual reference inventory available to this task
@@ -2528,6 +2531,21 @@ Return exactly {amount} objects and nothing else.
                 edit_operation = " ".join(
                     str(item.get("edit_operation") or "").strip().split()
                 )
+                visual_state = " ".join(
+                    str(item.get("visual_state") or "").strip().split()
+                )
+                if len(edit_operation) > 260:
+                    edit_operation = edit_operation[:260].rsplit(" ", 1)[0].rstrip(" ,;:")
+                if len(visual_state) > 220:
+                    visual_state = visual_state[:220].rsplit(" ", 1)[0].rstrip(" ,;:")
+                if visual_state and _scene_hidden_evidence_signals(
+                    {"scene_description": visual_state}
+                ):
+                    visual_state = ""
+                if edit_operation and _scene_hidden_evidence_signals(
+                    {"scene_description": edit_operation}
+                ):
+                    edit_operation = ""
                 environment = str(item.get("environment") or "").strip()
                 composition = str(item.get("composition") or "").strip()
                 lighting = str(item.get("lighting") or "").strip()
@@ -2698,13 +2716,14 @@ Return exactly {amount} objects and nothing else.
                     required_features = []
                     if current_state:
                         stable_target = continuity_description or canonical_subject or subject
+                        state_for_prompt = visual_state or current_state
                         scene_description = (
-                            f"{stable_target.rstrip(' .')}. Its visible state is {current_state}."
+                            f"{stable_target.rstrip(' .')}. {state_for_prompt.rstrip(' .')}."
                         )
                         if not edit_operation:
                             edit_operation = (
                                 "Change only the target's visible state so it clearly shows "
-                                + current_state
+                                + state_for_prompt
                             )
                 context_subject = str(item.get("context_subject") or "").strip()
                 internal_values = internal_image_values(item)
@@ -2754,6 +2773,7 @@ Return exactly {amount} objects and nothing else.
                     "continuity_key": continuity_key,
                     "continuity_description": clean_image_text(continuity_description, internal_values),
                     "continuity_inference": str(item.get("continuity_inference") or ""),
+                    "visual_state": clean_image_text(visual_state, internal_values),
                     "edit_operation": clean_image_text(edit_operation, internal_values),
                     "context_subject": clean_image_text(context_subject, internal_values),
                     "precision_importance": precision_importance,
