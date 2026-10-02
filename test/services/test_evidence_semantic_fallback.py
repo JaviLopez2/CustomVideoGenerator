@@ -89,7 +89,7 @@ def test_covered_identity_survives_without_rejected_mechanism():
     assert scene["canonical_subject"] == "sealed motor"
     assert scene["route"] == "precision"
     assert scene["reference_need"] == "identity"
-    assert "closed exterior of sealed motor" in scene["prompt"]
+    assert "closed exterior documentary view of sealed motor" in scene["prompt"]
     assert_clean(scene)
 
 
