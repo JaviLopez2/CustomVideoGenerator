@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - factory/qwen-native-prompt-simplification
 
 jobs:
   tests:
