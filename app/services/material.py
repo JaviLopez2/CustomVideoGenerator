@@ -6995,6 +6995,7 @@ def _download_videos_openai_image_on_demand(
     # recursively fed back into the generator.
     continuity_anchor_images: dict[str, str] = {}
     continuity_anchor_scenes: dict[str, int] = {}
+    continuity_anchor_includes_primary: dict[str, bool] = {}
     continuity_latest_images: dict[str, str] = {}
     continuity_latest_scenes: dict[str, int] = {}
     continuity_latest_includes_primary: dict[str, bool] = {}
@@ -7155,6 +7156,7 @@ def _download_videos_openai_image_on_demand(
             )
             continuity_anchor_images.pop(continuity_key, None)
             continuity_anchor_scenes.pop(continuity_key, None)
+            continuity_anchor_includes_primary.pop(continuity_key, None)
             continuity_source_path = ""
             continuity_source_scene = None
         continuity_reference_ready = False
@@ -7406,7 +7408,7 @@ def _download_videos_openai_image_on_demand(
             if (
                 continuity_reference_ready
                 and includes_primary_subject
-                and continuity_previous_includes_primary is False
+                and continuity_anchor_includes_primary.get(continuity_key) is False
                 and manual_entries
                 and manual_mode in {"user_first", "user_only"}
                 and len(reference_images) < 3
@@ -8011,6 +8013,9 @@ def _download_videos_openai_image_on_demand(
                 if continuity_key not in continuity_anchor_images:
                     continuity_anchor_images[continuity_key] = items[0].url
                     continuity_anchor_scenes[continuity_key] = scene_index + 1
+                    continuity_anchor_includes_primary[continuity_key] = bool(
+                        includes_primary_subject
+                    )
                     logger.info(
                         "continuity root registered as stable anchor: "
                         f"scene={scene_index + 1}, key={continuity_key!r}, "
