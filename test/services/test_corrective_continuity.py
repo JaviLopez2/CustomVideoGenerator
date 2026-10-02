@@ -131,18 +131,18 @@ def test_standard_root_continuity_and_identity_anchor_keep_scoped_contract(pipel
     )
     assert len(result) == len(calls) == 2  # one normal generation per scene
     assert calls[0]["route"] == "standard"
-    assert "omit incidental background objects" in calls[0]["search_term"]
+    assert "omit incidental background objects" not in calls[0]["search_term"]
     second = calls[1]
     assert second["route"] == "precision"
     assert second["reference_images"] == ["previous-stage.png", "identity.png"]
-    assert second["reference_info"]["primary_identity_only"] is True
     prompt = material._qwen_precision_prompt_with_references(
         second["search_term"], second["reference_subject"], len(second["reference_images"]),
         reference_info=second["reference_info"],
     )
     assert "the same printed landscape and border" in prompt
-    assert "changing only the state/progression" in prompt
-    assert "Remove incidental background objects" in prompt
-    assert "only the intended target's" in prompt
-    assert "visible primary/source entity only" in prompt
-    assert diagnostics[-1]["plan_scenes"][1]["routing_reason"] == "continuity_edit_chain"
+    assert "<image1> is the canvas" in prompt
+    assert "<image2> is identity evidence" in prompt
+    assert "Keep all other content of <image1> unchanged" in prompt
+    assert "changing only the state/progression" not in prompt
+    assert "Remove incidental background objects" not in prompt
+    assert diagnostics[-1]["plan_scenes"][1]["routing_reason"] == "continuity_edit_from_root"

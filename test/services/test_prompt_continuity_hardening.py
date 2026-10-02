@@ -25,7 +25,7 @@ def state_plan():
         "evidence_scope": "externally_visible", "route": "standard",
         "continuity_key": "chain_delta_72", "planner_id": "draft-47",
         "continuity_description": "the same triangular glyph within the tile boundary",
-        "observable_state": state, "temporal_progression": True,
+        "observable_state": state, "visual_state": state, "temporal_progression": True,
         "context_subject": "control console" if n else "",
         "includes_primary_subject": bool(n),
     } for n, state in enumerate(states)]

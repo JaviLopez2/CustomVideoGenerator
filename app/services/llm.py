@@ -2678,6 +2678,11 @@ Return exactly {amount} objects and nothing else.
                         # than injecting the original-language grounding span.
                         scene_description = str(item.get("scene_description") or scene_description).strip()
                     required_features = []
+                elif continuity_key != "none" and coverage_status != "unsupported" and continuity_description:
+                    scene_description = (
+                        scene_description.rstrip(" .")
+                        + f". The same {continuity_description} remains the visible continuity target."
+                    ).strip()
                 if continuity_key != "none" and coverage_status != "unsupported":
                     context_subject = str(item.get("context_subject") or "").strip()
                     distinct_context = bool(context_subject) and not _scene_same_primary_entity(
