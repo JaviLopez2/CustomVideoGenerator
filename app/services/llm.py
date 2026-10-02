@@ -2698,6 +2698,16 @@ Return exactly {amount} objects and nothing else.
                     and _coerce_scene_bool(item.get("temporal_progression"), False)
                 ):
                     required_features = []
+                    if current_state:
+                        stable_target = continuity_description or canonical_subject or subject
+                        scene_description = (
+                            f"{stable_target.rstrip(' .')}. Its visible state is {current_state}."
+                        )
+                        if not edit_operation:
+                            edit_operation = (
+                                "Change only the target's visible state so it clearly shows "
+                                + current_state
+                            )
                 context_subject = str(item.get("context_subject") or "").strip()
                 internal_values = internal_image_values(item)
                 internal_values.append(continuity_key)
