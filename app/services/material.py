@@ -2791,6 +2791,8 @@ def _near_duplicate_assessment(
     *,
     composition_key: str = "",
     shot_type: str = "",
+    continuity_key: str = "",
+    continuity_edit: bool = False,
 ) -> dict[str, Any]:
     """Cheap structural duplicate check against the previous two accepted scenes.
 
@@ -2799,11 +2801,14 @@ def _near_duplicate_assessment(
     from being penalized just because they intentionally resemble one another.
     """
     threshold = _openai_image_near_duplicate_threshold()
+    # Continuity edits intentionally retain composition. Retry only an almost
+    # unchanged render, rather than treating healthy continuity as duplication.
+    effective_threshold = max(threshold, 0.985) if continuity_edit else threshold
     current_hash = _image_dhash64(image_path)
     result: dict[str, Any] = {
         "enabled": _openai_image_near_duplicate_enabled(),
         "available": current_hash is not None,
-        "threshold": round(threshold, 4),
+        "threshold": round(effective_threshold, 4),
         "current_dhash": f"{current_hash:016x}" if current_hash is not None else "",
         "actionable": False,
         "best_similarity": None,
@@ -2836,7 +2841,13 @@ def _near_duplicate_assessment(
         shot_differs = bool(
             current_shot and previous_shot and current_shot != previous_shot
         )
-        planned_difference = composition_differs or shot_differs
+        same_continuity = bool(
+            continuity_edit
+            and continuity_key not in {"", "none"}
+            and str(previous.get("continuity_key") or "").strip().lower()
+            == str(continuity_key).strip().lower()
+        )
+        planned_difference = same_continuity or composition_differs or shot_differs
         scene_number = int(previous.get("scene") or 0)
         result["comparisons"].append(
             {
@@ -2845,6 +2856,7 @@ def _near_duplicate_assessment(
                 "planned_difference": planned_difference,
                 "composition_differs": composition_differs,
                 "shot_differs": shot_differs,
+                "same_continuity": same_continuity,
             }
         )
         if planned_difference:
@@ -2855,7 +2867,7 @@ def _near_duplicate_assessment(
     if best_actionable is not None:
         result["best_similarity"] = round(best_actionable[0], 4)
         result["matched_scene"] = best_actionable[1]
-        result["actionable"] = best_actionable[0] >= threshold
+        result["actionable"] = best_actionable[0] >= effective_threshold
     return result
 
 
@@ -4513,11 +4525,26 @@ def _qwen_precision_prompt_with_references(
     reference_info: dict[str, Any] | None = None,
     forbidden_features: list[str] | None = None,
 ) -> str:
-    """Give Qwen explicit ordered evidence roles while keeping composition text-driven."""
+    """Build a concise Qwen Image 2.1 edit instruction with explicit image roles.
+
+    Qwen's edit guidance treats continuity as an edit: lead with the operation,
+    name the canvas, state each additional image's role, and preserve untargeted
+    content with one blanket clause. Negative noun inventories stay out of the
+    positive prompt because they can become unwanted visual cues at CFG=1.
+    """
     subject = _normalized_reference_subject(subject) or "the factual subject"
     reference_count = max(1, min(int(reference_count or 1), 10))
     reference_info = reference_info or {}
     primary_identity_only = bool(reference_info.get("primary_identity_only"))
+    continuity_description = " ".join(
+        str(reference_info.get("continuity_description") or "").strip().split()
+    )
+    edit_operation = " ".join(
+        str(reference_info.get("edit_operation") or "").strip().split()
+    )
+    internal_values = internal_image_values(reference_info)
+    scene_direction = clean_image_text(prompt, internal_values)
+
     pack = [
         dict(item)
         for item in (reference_info.get("reference_pack") or [])
@@ -4534,7 +4561,8 @@ def _qwen_precision_prompt_with_references(
         if isinstance(item, dict)
     ]
 
-    role_lines = []
+    roles: list[tuple[int, str, str]] = []
+    continuity_index: int | None = None
     for index in range(1, reference_count + 1):
         item = pack[index - 1] if index - 1 < len(pack) else {}
         selection = (
@@ -4544,94 +4572,89 @@ def _qwen_precision_prompt_with_references(
         )
         role = str(item.get("role") or "identity").strip().lower()
         kind = str(selection.get("kind") or "").strip().lower()
-        description = str(item.get("description") or "").strip()
+        description = " ".join(str(item.get("description") or "").strip().split())
 
         if kind == "continuity_anchor" or role == "continuity":
+            continuity_index = index
             purpose = (
-                "the authoritative previous-stage image of the exact same physical instance/content; "
-                "preserve only the intended target's underlying depicted content, object identity, geometry, border/orientation and defining details, "
-                "changing only the state/progression explicitly requested by this scene"
+                "canvas and stable continuity anchor for "
+                + (continuity_description or description or subject)
             )
-        elif kind == "identity_anchor":
-            if primary_identity_only:
-                purpose = (
-                    "the authoritative identity anchor for the visible primary/source entity only; "
-                    "use it only to preserve that entity's silhouette, proportions and stable geometry, "
-                    "never as the visual content of an output, print, screen, document or nested image"
-                )
-            else:
-                purpose = (
-                    f"the authoritative whole-subject identity anchor for {subject}; "
-                    "use it for overall identity, silhouette, proportions and stable geometry"
-                )
-        elif kind == "scene_specific":
-            purpose = (
-                f"the scene-specific factual evidence for {subject}; "
-                "use only the visible information relevant to this scene"
-            )
-        elif kind == "complementary":
-            purpose = (
-                f"complementary factual evidence for {subject}; "
-                "use it only to resolve information not already established by earlier references"
-            )
-        elif role == "identity":
-            purpose = f"identity/whole-subject evidence for {subject}"
-        elif role == "detail":
-            purpose = f"detail evidence for a visible feature of {subject}"
+        elif kind == "identity_anchor" and primary_identity_only:
+            purpose = "identity source only for the separate visible primary subject"
+        elif kind == "identity_anchor" or role == "identity":
+            purpose = f"identity source for {subject}"
+        elif role == "detail" or kind == "scene_specific":
+            purpose = f"visible-detail evidence for {subject}"
         elif role == "internal":
-            purpose = (
-                f"internal/anatomical/mechanical evidence related to {subject}"
-            )
+            purpose = f"internal evidence for {subject}"
         elif role == "context":
-            purpose = (
-                "context/environment evidence only; do not treat it as subject identity"
-            )
+            purpose = "context evidence only"
         else:
-            purpose = f"supporting factual evidence related to {subject}"
+            purpose = f"supporting evidence for {subject}"
 
-        if description:
-            purpose += f" ({description})"
-        role_lines.append(f"<image{index}> is {purpose}")
+        roles.append((index, purpose, description))
 
-    role_text = "; ".join(role_lines)
-    clean_forbidden = []
-    seen_forbidden = set()
-    for value in forbidden_features or []:
-        value = str(value or "").strip()
-        key = value.lower()
-        if value and key not in seen_forbidden:
-            clean_forbidden.append(value)
-            seen_forbidden.add(key)
-    forbidden_clause = (
-        " Explicitly do not depict or introduce: "
-        + "; ".join(clean_forbidden[:12])
-        + "."
-        if clean_forbidden
-        else ""
+    if continuity_index is not None:
+        if reference_count == 1:
+            lead = "Edit the input image."
+            role_clause = ""
+        else:
+            lead = f"Edit <image{continuity_index}>."
+            role_clause = " ".join(
+                f"<image{index}> is the {purpose}."
+                for index, purpose, _ in roles
+            )
+
+        operation = edit_operation or (
+            "Change only the continuity target so its visible state matches the current scene"
+        )
+        target = continuity_description or subject
+        preserve = (
+            f"Keep the same {target}, including its underlying depicted content, shape, "
+            "border or orientation, and preserve all untargeted canvas content."
+        )
+        separate = (
+            "The separate primary subject takes identity only from its identity reference "
+            "and remains outside the continuity target's depicted content."
+            if primary_identity_only
+            else ""
+        )
+        return clean_image_text(
+            " ".join(
+                part for part in (
+                    lead,
+                    operation.rstrip(" .") + ".",
+                    preserve,
+                    separate,
+                    role_clause,
+                    "Current scene: " + scene_direction,
+                )
+                if part
+            ),
+            internal_values,
+        )
+
+    # No continuity canvas: build a new scene from the reference identities/details.
+    if reference_count == 1:
+        single_role = roles[0][1] if roles else f"identity source for {subject}"
+        role_clause = f"Use the input image only as the {single_role}."
+    else:
+        role_clause = " ".join(
+            f"<image{index}> is the {purpose}."
+            for index, purpose, _ in roles
+        )
+    return clean_image_text(
+        " ".join(
+            (
+                "Create a new scene matching this description:",
+                scene_direction,
+                role_clause,
+                "Use the reference images only for their stated roles; do not copy their backgrounds, framing or unrelated content.",
+            )
+        ),
+        internal_values,
     )
-    context_contract = (
-        "Spatial separation: the continuity target retains its own bounded content. "
-        "The primary/source entity is a separate physical object outside and beside that target; "
-        "its identity anchor controls only this external object. Keep existing target content intact, "
-        "even when a previous-stage image accidentally depicts surrounding context inside it. "
-    ) if primary_identity_only else ""
-    return clean_image_text(context_contract + (
-        f"Reference evidence: {role_text}. "
-        f"The target factual subject is {subject}. Treat authoritative identity and continuity references as stronger evidence only for the intended target's identity traits they visibly establish. "
-        "A continuity reference is the previous whole scene containing the same target instance at an earlier stage. Preserve the target instance itself, but never reinterpret the whole reference frame as content that belongs inside that target. "
-        "Do not create recursive picture-in-picture, a miniature copy of the previous frame, a photo/screen/document containing the reference scene, or a nested duplicate of the source entity unless the scene explicitly requests it. "
-        "Change only the continuity target's narrated state; surrounding objects are context, not content to copy inside the target. "
-        "Continuity does not require preserving every object or pixel of the previous frame. Remove incidental background objects, "
-        "invented props, duplicate subjects and spurious text unless explicitly required by the current scene. "
-        "A stable identity anchor constrains only its intended primary subject; do not retain accidental alternate instances from the continuity frame. "
-        "Use scene-specific and complementary references only for the facts they visibly establish. "
-        "If text and a supplied identity reference describe the same identity trait differently, preserve the visible reference identity unless the scene explicitly requests a real transformation. "
-        "Never force a detail/context reference to redefine the whole subject. Do not inherit any reference background, crop, camera angle, pose, "
-        "lighting, color cast, watermark, stock-site text, captions, labels, borders or presentation layout unless the scene explicitly asks for that property. "
-        "Do not invent accessories, modifications, anatomy or structures merely because one reference contains an incidental element. "
-        "Create a completely new coherent edge-to-edge scene and follow the scene direction for composition, environment, camera and lighting. Scene direction: "
-        f"{prompt}{forbidden_clause}"
-    ), internal_image_values(reference_info))
 
 
 def generate_images_openai(
@@ -6852,6 +6875,7 @@ def _download_videos_openai_image_on_demand(
     scene_includes_primary_subject: list[bool] | None = None,
     scene_continuity_keys: list[str] | None = None,
     scene_continuity_descriptions: list[str] | None = None,
+    scene_edit_operations: list[str] | None = None,
     scene_coverage_statuses: list[str] | None = None,
     scene_coverage_reasons: list[str] | None = None,
     scene_composition_keys: list[str] | None = None,
@@ -6943,6 +6967,7 @@ def _download_videos_openai_image_on_demand(
         ("includes-primary-subject", scene_includes_primary_subject),
         ("continuity-keys", scene_continuity_keys),
         ("continuity-descriptions", scene_continuity_descriptions),
+        ("edit-operations", scene_edit_operations),
         ("coverage-statuses", scene_coverage_statuses),
         ("coverage-reasons", scene_coverage_reasons),
         ("composition-keys", scene_composition_keys),
@@ -6965,6 +6990,11 @@ def _download_videos_openai_image_on_demand(
     manual_reference_pack_cache: tuple[list[str], dict[str, Any]] | None = None
     latest_standard_style_profile: dict[str, tuple[float, float, float]] | None = None
     recent_generated_scene_visuals: list[dict[str, Any]] = []
+    # Continuity generation uses a stable root + per-scene delta. The latest
+    # accepted frame is tracked for diagnostics/transition logic only; it is not
+    # recursively fed back into the generator.
+    continuity_anchor_images: dict[str, str] = {}
+    continuity_anchor_scenes: dict[str, int] = {}
     continuity_latest_images: dict[str, str] = {}
     continuity_latest_scenes: dict[str, int] = {}
     continuity_latest_includes_primary: dict[str, bool] = {}
@@ -7088,6 +7118,12 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_continuity_descriptions)
             else ""
         )
+        edit_operation = (
+            str(scene_edit_operations[scene_index] or "").strip()
+            if scene_edit_operations is not None
+            and scene_index < len(scene_edit_operations)
+            else ""
+        )
         continuity_chain_enabled = _continuity_edit_chain_enabled()
         continuity_previous_includes_primary = (
             continuity_latest_includes_primary.get(continuity_key)
@@ -7095,12 +7131,12 @@ def _download_videos_openai_image_on_demand(
             else None
         )
         continuity_source_path = (
-            continuity_latest_images.get(continuity_key, "")
+            continuity_anchor_images.get(continuity_key, "")
             if continuity_chain_enabled and continuity_key not in {"", "none"}
             else ""
         )
         continuity_source_scene = (
-            continuity_latest_scenes.get(continuity_key)
+            continuity_anchor_scenes.get(continuity_key)
             if continuity_source_path
             else None
         )
@@ -7117,6 +7153,8 @@ def _download_videos_openai_image_on_demand(
                 f"scene={scene_index + 1}, key={continuity_key!r}, "
                 f"previous_scene={continuity_source_scene}"
             )
+            continuity_anchor_images.pop(continuity_key, None)
+            continuity_anchor_scenes.pop(continuity_key, None)
             continuity_source_path = ""
             continuity_source_scene = None
         continuity_reference_ready = False
@@ -7128,10 +7166,13 @@ def _download_videos_openai_image_on_demand(
                 reference_info = {
                     "provider": "generated_continuity",
                     "subject": reference_subject,
-                    "title": "previous continuity stage",
+                    "title": "stable continuity anchor",
                     "license": "generated-in-task",
                     "query": continuity_description or reference_subject,
-                    "manual_reference_mode": "continuity_chain",
+                    "manual_reference_mode": "continuity_anchor_delta",
+                    "continuity_key": continuity_key,
+                    "continuity_description": continuity_description,
+                    "edit_operation": edit_operation,
                     "comfyui_input": comfyui_name,
                     "local_path": continuity_source_path,
                     "original_local_path": continuity_source_path,
@@ -7158,7 +7199,7 @@ def _download_videos_openai_image_on_demand(
                                 "score": 100.0,
                             }
                         ],
-                        "selection_strategy": "previous accepted stage is the authoritative continuity anchor",
+                        "selection_strategy": "stable root image is the authoritative continuity anchor; each later scene applies an independent delta",
                     },
                 }
                 route = "precision"
@@ -7169,9 +7210,9 @@ def _download_videos_openai_image_on_demand(
                     includes_primary_subject and reference_target in {"output", "secondary_subject"}
                 )
                 logger.info(
-                    "continuity edit chain activated: "
+                    "stable continuity anchor activated: "
                     f"scene={scene_index + 1}, key={continuity_key!r}, "
-                    f"source_scene={continuity_source_scene}, source={Path(continuity_source_path).name!r}"
+                    f"anchor_scene={continuity_source_scene}, anchor={Path(continuity_source_path).name!r}"
                 )
             else:
                 logger.warning(
@@ -7250,14 +7291,7 @@ def _download_videos_openai_image_on_demand(
         if continuity_key not in {"", "none"}:
             search_term = clean_image_text(search_term, [continuity_key])
             continuity_description = clean_image_text(continuity_description, [continuity_key])
-            # Apply the same scoped contract to the first (possibly Standard)
-            # frame, before it becomes evidence for subsequent edit stages.
-            search_term += (
-                f". Intended continuity target: {continuity_description or reference_subject}. "
-                "Preserve this target's identity and underlying content while applying the narrated state. "
-                "Continuity is not the entire frame: omit incidental background objects, invented props, "
-                "duplicate subjects and spurious text not explicitly required by this scene."
-            )
+            edit_operation = clean_image_text(edit_operation, [continuity_key])
 
         precision_diagnostics["plan_scenes"].append(
             {
@@ -7274,7 +7308,12 @@ def _download_videos_openai_image_on_demand(
                 "includes_primary_subject": includes_primary_subject,
                 "continuity_key": continuity_key,
                 "continuity_description": continuity_description,
+                "edit_operation": edit_operation,
                 "continuity_source_scene": continuity_source_scene,
+                "continuity_strategy": (
+                    "stable_anchor_delta" if continuity_source_path else
+                    "anchor_root" if continuity_key not in {"", "none"} else "none"
+                ),
                 "coverage_status": coverage_status,
                 "coverage_reason": coverage_reason,
                 "composition_key": composition_key,
@@ -7415,7 +7454,7 @@ def _download_videos_openai_image_on_demand(
                     reference_info["reference_selection"]["selected_count"] = len(reference_images)
                     reference_info["primary_identity_only"] = reference_target in {"output", "secondary_subject"}
                     reference_info["reference_selection"]["selection_strategy"] = (
-                        "previous continuity stage + reintroduced primary identity anchor"
+                        "stable continuity anchor + separate primary identity anchor"
                     )
                     logger.info(
                         "continuity scene also includes the primary subject; appended stable identity anchor: "
@@ -7591,6 +7630,8 @@ def _download_videos_openai_image_on_demand(
                                 recent_generated_scene_visuals,
                                 composition_key=composition_key,
                                 shot_type=shot_type,
+                                continuity_key=continuity_key,
+                                continuity_edit=bool(continuity_reference_ready and edit_operation),
                             )
                             if not isinstance(candidate.source_info, dict):
                                 candidate.source_info = {}
@@ -7624,13 +7665,19 @@ def _download_videos_openai_image_on_demand(
                                     f"scene={scene_index + 1}, matched_scene={duplicate_qa.get('matched_scene')}, "
                                     f"similarity={duplicate_qa.get('best_similarity')}, retrying within the existing corrective budget"
                                 )
-                                search_term = (
-                                    search_term
-                                    + ". CORRECTION: the previous render repeated the framing/composition of a recent scene. "
-                                    "Keep the same factual subject and evidence, but make this scene visibly distinct according to "
-                                    f"the planned composition '{composition_key or 'current scene'}' and shot type '{shot_type or 'current shot'}'. "
-                                    "Change camera position, framing and spatial arrangement as needed; do not repeat the previous composition."
-                                )
+                                if continuity_reference_ready and reference_info is not None:
+                                    stronger = edit_operation or (
+                                        "Apply the visible state change described by the current scene"
+                                    )
+                                    reference_info["edit_operation"] = (
+                                        stronger.rstrip(" .")
+                                        + ". Make that state change clearly visible while preserving the stable canvas"
+                                    )
+                                else:
+                                    search_term = (
+                                        search_term
+                                        + ". CORRECTION: use a clearly different camera position and framing for this scene."
+                                    )
                                 _precision_diagnostics_persist(
                                     task_id, precision_diagnostics
                                 )
@@ -7939,6 +7986,8 @@ def _download_videos_openai_image_on_demand(
                     recent_generated_scene_visuals,
                     composition_key=composition_key,
                     shot_type=shot_type,
+                    continuity_key=continuity_key,
+                    continuity_edit=bool(continuity_reference_ready and edit_operation),
                 )
                 if not isinstance(items[0].source_info, dict):
                     items[0].source_info = {}
@@ -7955,6 +8004,14 @@ def _download_videos_openai_image_on_demand(
             _precision_diagnostics_persist(task_id, precision_diagnostics)
 
             if continuity_key not in {"", "none"}:
+                if continuity_key not in continuity_anchor_images:
+                    continuity_anchor_images[continuity_key] = items[0].url
+                    continuity_anchor_scenes[continuity_key] = scene_index + 1
+                    logger.info(
+                        "continuity root registered as stable anchor: "
+                        f"scene={scene_index + 1}, key={continuity_key!r}, "
+                        f"image={Path(items[0].url).name!r}"
+                    )
                 continuity_latest_images[continuity_key] = items[0].url
                 continuity_latest_scenes[continuity_key] = scene_index + 1
                 continuity_latest_includes_primary[continuity_key] = bool(
@@ -7969,8 +8026,9 @@ def _download_videos_openai_image_on_demand(
                         items[0].url
                     ).name
                 logger.info(
-                    "continuity stage accepted and registered: "
+                    "continuity stage accepted; stable anchor retained: "
                     f"scene={scene_index + 1}, key={continuity_key!r}, "
+                    f"anchor_scene={continuity_anchor_scenes.get(continuity_key)}, "
                     f"image={Path(items[0].url).name!r}"
                 )
 
@@ -7982,6 +8040,7 @@ def _download_videos_openai_image_on_demand(
                     "dhash": accepted_hash,
                     "composition_key": composition_key,
                     "shot_type": shot_type,
+                    "continuity_key": continuity_key,
                 }
             )
             recent_generated_scene_visuals = recent_generated_scene_visuals[-2:]
@@ -8195,6 +8254,7 @@ def download_videos(
     scene_includes_primary_subject: list[bool] | None = None,
     scene_continuity_keys: list[str] | None = None,
     scene_continuity_descriptions: list[str] | None = None,
+    scene_edit_operations: list[str] | None = None,
     scene_coverage_statuses: list[str] | None = None,
     scene_coverage_reasons: list[str] | None = None,
     scene_composition_keys: list[str] | None = None,
@@ -8305,6 +8365,7 @@ def download_videos(
             scene_includes_primary_subject=scene_includes_primary_subject,
             scene_continuity_keys=scene_continuity_keys,
             scene_continuity_descriptions=scene_continuity_descriptions,
+            scene_edit_operations=scene_edit_operations,
             scene_coverage_statuses=scene_coverage_statuses,
             scene_coverage_reasons=scene_coverage_reasons,
             scene_composition_keys=scene_composition_keys,
