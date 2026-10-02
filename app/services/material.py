@@ -4611,7 +4611,7 @@ def _qwen_precision_prompt_with_references(
             )
 
         operation = edit_operation or (
-            "Change only the continuity target so its visible state matches the current scene"
+            "Change only the continuity target so its visible state matches this scene"
         )
         target = continuity_description or subject
         preserve = (
@@ -4624,6 +4624,14 @@ def _qwen_precision_prompt_with_references(
             if primary_identity_only
             else ""
         )
+        # With a proper edit_operation, the T2I scene description is intentionally
+        # omitted: repeating environment/composition/style instructions in an edit
+        # prompt competes with the requested delta and encourages canvas drift.
+        fallback_scene = (
+            "Target appearance: " + scene_direction
+            if not edit_operation and scene_direction
+            else ""
+        )
         return clean_image_text(
             " ".join(
                 part for part in (
@@ -4632,7 +4640,7 @@ def _qwen_precision_prompt_with_references(
                     preserve,
                     separate,
                     role_clause,
-                    "Current scene: " + scene_direction,
+                    fallback_scene,
                 )
                 if part
             ),
@@ -7399,15 +7407,19 @@ def _download_videos_openai_image_on_demand(
                         and reference_need in {"detail", "internal", "context"}
                         and reference_need not in selected_roles
                     ):
-                        search_term = (
-                            search_term
-                            + f". Reference coverage constraint: no dedicated {reference_need} reference is available for this scene. "
-                            "Do not fabricate unsupported fine detail; prefer a truthful, externally supported or contextual interpretation while preserving the requested narration."
-                        )
+                        # Runtime reference selection disagrees with the planner's evidence
+                        # gate. Do not mention the missing concept in the image prompt (that
+                        # can make it more salient). Fall back to a neutral identity view.
                         logger.warning(
-                            "specialized reference coverage unavailable; prompt constrained against fabrication: "
+                            "specialized reference coverage unavailable at generation time; "
+                            "using neutral identity view instead of prompt-level warnings: "
                             f"scene={scene_index + 1}, need={reference_need!r}, roles={sorted(selected_roles)!r}"
                         )
+                        search_term = (
+                            f"A vertical photorealistic documentary photograph of {reference_subject}. "
+                            "The subject is clearly visible at natural scale in a neutral setting with natural lighting."
+                        )
+                        forbidden_features = []
 
             if (
                 continuity_reference_ready
