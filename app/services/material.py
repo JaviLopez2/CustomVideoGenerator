@@ -435,6 +435,7 @@ def _precision_diagnostics_add_candidate(
     for field in (
         "requested_model",
         "requested_size",
+        "model_prompt",
         "seed",
         "steps",
         "generation_seconds",
@@ -4737,9 +4738,9 @@ def generate_images_openai(
     if _is_qwen_image_21_model(requested_model):
         generation_seed = _qwen_request_seed()
         payload["seed"] = generation_seed
-    # The audited Qwen 2.1 workflow runs KSampler at CFG=1. ComfyUI skips
-    # unconditional/negative sampling at CFG=1, so factual exclusions must live
-    # in the positive scene prompt instead of an inert negative_prompt payload.
+    # The audited Qwen 2.1 workflow runs KSampler at CFG=1, so an ordinary
+    # negative_prompt is inert. Factual exclusions are enforced before generation
+    # by evidence routing/fallbacks instead of repeating forbidden nouns here.
     for index, reference in enumerate(references, start=1):
         field = "reference_image" if index == 1 else f"reference_image_{index}"
         payload[field] = reference
@@ -4749,6 +4750,7 @@ def generate_images_openai(
         f"model={requested_model}, route={route}, refs={len(references)}, "
         f"term={search_term!r}, size={image_size}, steps={generation_steps or 'workflow-default'}"
     )
+    effective_prompt = str(payload["prompt"])
     request_started = time.perf_counter()
     image_bytes, failure_detail = _request_openai_image(endpoint, payload)
     primary_generation_seconds = max(0.0, time.perf_counter() - request_started)
@@ -4768,11 +4770,15 @@ def generate_images_openai(
             f"primary={requested_model!r}, fallback={fallback_model!r}, "
             f"detail={failure_detail}"
         )
+        fallback_prompt = clean_image_text(
+            _precision_prompt_with_reference(
+                base_prompt, reference_subject or search_term
+            ),
+            internal_image_values(reference_info),
+        )
         fallback_payload = {
             "model": fallback_model,
-            "prompt": clean_image_text(_precision_prompt_with_reference(
-                base_prompt, reference_subject or search_term
-            ), internal_image_values(reference_info)),
+            "prompt": fallback_prompt,
             "n": 1,
             "size": image_size,
             "reference_image": references[0],
@@ -4789,6 +4795,7 @@ def generate_images_openai(
         if image_bytes is not None:
             fallback_from_model = requested_model
             effective_model = fallback_model
+            effective_prompt = fallback_prompt
             used_reference_count = 1
             failure_detail = ""
         else:
@@ -4819,6 +4826,7 @@ def generate_images_openai(
     item.source_info = {
         "provider": "openai_image",
         "search_term": search_term,
+        "model_prompt": effective_prompt,
         "route": route,
         "model": effective_model,
         "requested_model": requested_model,
