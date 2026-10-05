@@ -85,6 +85,32 @@ def test_spanish_grounding_uses_explicit_english_visual_label():
     assert "el disparador" not in scene["prompt"].lower()
 
 
+def test_primary_fallback_keeps_referenced_identity_over_mentioned_output():
+    row = rejected(
+        subject="Polaroid SX-70 camera",
+        canonical_subject="Polaroid SX-70 camera",
+        reference_target="primary_subject",
+        observable_subject="Polaroid SX-70 camera",
+        observable_subject_visual="Polaroid SX-70 camera",
+        observable_result="developed photograph",
+        observable_result_visual="developed photograph",
+    )
+    scene = make_plan(
+        [row],
+        ["The Polaroid SX-70 camera appears to reveal a developed photograph."],
+        [{"role": "identity", "description": "whole Polaroid SX-70 camera"}],
+    )[0]
+
+    assert scene["planner_validation"] == "coverage_fallback"
+    assert scene["canonical_subject"] == "Polaroid SX-70 camera"
+    assert scene["reference_target"] == "primary_subject"
+    assert scene["reference_need"] == "identity"
+    assert scene["route"] == "precision"
+    assert scene["includes_primary_subject"] is True
+    assert "Polaroid SX-70 camera" in scene["prompt"]
+    assert "developed photograph" not in scene["canonical_subject"].lower()
+
+
 def test_hidden_scene_reuses_recent_visible_output_not_abstract_context():
     visible_output = {
         "subject": "instant photograph",
