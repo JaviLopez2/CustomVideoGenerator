@@ -121,6 +121,57 @@ def test_hidden_scene_reuses_recent_visible_output_not_abstract_context():
     assert "instant photograph" in fallback["prompt"]
 
 
+def test_visual_caption_judge_normalizes_llm_response():
+    response = json.dumps({
+        "candidates": [{
+            "index": 1,
+            "semantic_score": 0.1,
+            "identity_confidence": 0.05,
+            "required_feature_coverage": 0.0,
+            "forbidden_feature_violation": 0.9,
+            "observed_forbidden": ["unrelated person"],
+            "verdict": "reject",
+            "rationale": "The requested photograph is absent.",
+        }]
+    })
+    with patch.object(llm, "_generate_response", return_value=response):
+        result = llm.evaluate_precision_visual_caption(
+            subject="instant photograph",
+            required_features=[],
+            forbidden_features=["unrelated person"],
+            visual_caption="A man stands outside a house.",
+            app_config={},
+        )
+    assert result["available"] is True
+    assert result["verdict"] == "reject"
+    assert result["identity_confidence"] == 0.05
+    assert result["forbidden_feature_violation"] == 0.9
+    assert result["observed_forbidden"] == ["unrelated person"]
+
+
+def test_multiple_root_is_rejected_even_if_text_judge_is_unavailable(monkeypatch):
+    candidate = item("grid")
+    monkeypatch.setattr(
+        material,
+        "_precision_semantic_evaluation",
+        lambda **kw: {
+            "available": False,
+            "caption": "Several instant photographs are arranged in a grid on a table.",
+            "reason": "text judge unavailable",
+        },
+    )
+    result = material._scene_gross_semantic_assessment(
+        candidate,
+        subject="instant photograph",
+        required_features=[],
+        forbidden_features=[],
+        require_single=True,
+    )
+    assert result["gross_failure"] is True
+    assert result["explicit_multiple"] is True
+    assert result["status"] == "gross_failure"
+
+
 def test_gross_semantic_assessment_flags_multiple_instances(monkeypatch):
     candidate = item("grid")
     monkeypatch.setattr(
