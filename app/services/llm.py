@@ -3144,16 +3144,36 @@ Return exactly {amount} objects and nothing else.
                         )
 
                         visual_subject = ""
-                        if observable_result:
+                        visual_subject_kind = ""
+                        # When an unsupported mechanism belongs to the referenced
+                        # primary subject, preserve that externally visible identity.
+                        # Do not let a merely mentioned output/result displace the
+                        # camera/device that the manual identity pack can actually prove.
+                        prefer_primary_observable = (
+                            reference_target == "primary_subject"
+                            and bool(observable_subject)
+                        )
+                        if prefer_primary_observable:
+                            if observable_subject_visual:
+                                visual_subject = observable_subject_visual
+                            elif _source_fragment_can_face_image_model(observable_subject):
+                                visual_subject = observable_subject
+                            if visual_subject:
+                                visual_subject_kind = "primary_subject"
+                        elif observable_result:
                             if observable_result_visual:
                                 visual_subject = observable_result_visual
                             elif _source_fragment_can_face_image_model(observable_result):
                                 visual_subject = observable_result
+                            if visual_subject:
+                                visual_subject_kind = "output"
                         elif observable_subject:
                             if observable_subject_visual:
                                 visual_subject = observable_subject_visual
                             elif _source_fragment_can_face_image_model(observable_subject):
                                 visual_subject = observable_subject
+                            if visual_subject:
+                                visual_subject_kind = "primary_subject"
 
                         required_features = []
                         forbidden_features = []
@@ -3200,12 +3220,24 @@ Return exactly {amount} objects and nothing else.
                                 "the observable subject is clear at natural physical scale"
                             )
                             reference_target = (
-                                "output" if observable_result else _normalize_scene_enum(
+                                "output"
+                                if visual_subject_kind == "output"
+                                else _normalize_scene_enum(
                                     item.get("reference_target"),
                                     _SCENE_REFERENCE_TARGETS,
                                     "none",
                                 )
                             )
+                            if (
+                                visual_subject_kind == "primary_subject"
+                                and reference_target == "primary_subject"
+                            ):
+                                reference_need = "identity"
+                                includes_primary_subject = True
+                                reference_critical = True
+                                route = "precision"
+                                shot_type = "full"
+                                framing_intent = "full_subject"
                             if observable_context:
                                 environment = observable_context
                             evidence_scope = "externally_visible"
