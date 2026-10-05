@@ -5706,18 +5706,58 @@ def _scene_gross_semantic_assessment(
         required_features=qa_required,
         forbidden_features=qa_forbidden,
     )
+    caption = str(semantic.get("caption") or "").strip()
+    caption_lower = caption.casefold()
+    subject_tokens = {
+        token
+        for token in re.findall(r"[a-z]+", str(subject or "").casefold())
+        if len(token) >= 4
+        and token not in {
+            "same", "visible", "developing", "developed", "instant",
+            "documentary", "subject", "scene",
+        }
+    }
+    explicit_multiple = bool(
+        require_single
+        and subject_tokens
+        and any(token in caption_lower for token in subject_tokens)
+        and re.search(
+            r"\b(?:multiple|several|many|grid|collage|collection|array|"
+            r"two|three|four|five|six|seven|eight|nine)\b",
+            caption_lower,
+        )
+    )
+    # Quantity failure is directly evidenced by the caption and does not need the
+    # second text-LLM judgment. This keeps the root gate useful even if that judge
+    # is temporarily unavailable after Florence successfully saw the image.
+    if explicit_multiple:
+        return {
+            "available": True,
+            "status": "gross_failure",
+            "gross_failure": True,
+            "reason": "single-instance continuity root was rendered as multiple/repeated subjects",
+            "caption": caption[:1500],
+            "semantic_score": None,
+            "identity_confidence": None,
+            "required_feature_coverage": None,
+            "verdict": "reject",
+            "single_instance_required": True,
+            "explicit_multiple": True,
+            "judgment_available": bool(semantic.get("available")),
+        }
+
     if not semantic.get("available"):
         return {
             "available": False,
             "status": "unavailable",
             "gross_failure": False,
             "reason": str(semantic.get("reason") or "semantic evidence unavailable"),
+            "caption": caption[:1500],
             "semantic": semantic,
         }
 
     judgment = semantic.get("judgment")
     judgment = judgment if isinstance(judgment, dict) else {}
-    caption = str(semantic.get("caption") or "").strip()
     try:
         semantic_score = float(judgment.get("semantic_score", 0.0) or 0.0)
     except (TypeError, ValueError):
@@ -5734,26 +5774,6 @@ def _scene_gross_semantic_assessment(
         required_coverage = 0.0
     verdict = str(judgment.get("verdict") or "").strip().lower()
 
-    subject_tokens = {
-        token
-        for token in re.findall(r"[a-z]+", str(subject or "").casefold())
-        if len(token) >= 4
-        and token not in {
-            "same", "visible", "developing", "developed", "instant",
-            "documentary", "subject", "scene",
-        }
-    }
-    caption_lower = caption.casefold()
-    explicit_multiple = bool(
-        require_single
-        and subject_tokens
-        and any(token in caption_lower for token in subject_tokens)
-        and re.search(
-            r"\b(?:multiple|several|many|grid|collage|collection|array|"
-            r"two|three|four|five|six|seven|eight|nine)\b",
-            caption_lower,
-        )
-    )
     gross_failure = bool(
         explicit_multiple
         or semantic_score < 0.25
