@@ -54,12 +54,19 @@ def test_observable_subject_and_state_survive_rejected_mechanism():
     assert_clean(scene)
 
 
-def test_output_progression_is_grounded_in_original_language():
-    scene = plan([rejected(reference_target="output", canonical_subject="chemical reaction",
-                           observable_subject="la fotografía", observable_state="aparecen formas y color")],
-                 ["En la fotografía aparecen formas y color."])[0]
-    assert scene["canonical_subject"] == "la fotografía"
-    assert "aparecen formas y color" in scene["prompt"]
+def test_output_progression_uses_grounded_english_visual_rewrite():
+    scene = plan([rejected(
+        reference_target="output",
+        canonical_subject="chemical reaction",
+        observable_subject="la fotografía",
+        observable_subject_visual="instant photograph",
+        observable_state="aparecen formas y color",
+        visual_state="faint shapes and color begin to appear",
+    )], ["En la fotografía aparecen formas y color."])[0]
+    assert scene["canonical_subject"] == "instant photograph"
+    assert "faint shapes and color begin to appear" in scene["prompt"]
+    assert "la fotografía" not in scene["prompt"].lower()
+    assert "aparecen formas y color" not in scene["prompt"].lower()
     assert scene["reference_target"] == "output"
     assert scene["reference_need"] == "none"
     assert_clean(scene)
