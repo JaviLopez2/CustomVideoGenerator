@@ -1799,7 +1799,14 @@ def _stable_continuity_description(
     if not text:
         return " ".join(str(canonical_subject or subject or "").strip().split())
 
-    if _scene_has_temporal_continuity_signal({"scene_description": text}):
+    temporal_language = bool(re.search(
+        r"\b(?:stages?|initial|early|later|final|finished|progress\w*|"
+        r"develop\w*|evolv\w*|chang\w*|emerg\w*|stabili[sz]\w*|"
+        r"transform\w*|matur\w*|grow\w*|cool\w*|dry\w*|harden\w*)\b",
+        text,
+        re.IGNORECASE,
+    ))
+    if temporal_language:
         base = " ".join(str(canonical_subject or subject or "").strip().split())
         # Canonical names occasionally contain a state adjective. Remove only
         # obvious temporal qualifiers; keep the concrete entity name intact.
