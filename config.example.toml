@@ -228,6 +228,14 @@ openai_image_scene_diversity_repair_enabled = true
 openai_image_gross_semantic_qa_enabled = true
 openai_image_gross_semantic_retry_enabled = true
 
+# Temporal semantic QA runs only on planner-marked monotonic continuity stages.
+# Florence captions the accepted candidate and the configured text LLM checks the
+# narrated early/mid/final state plus progression from the previous accepted stage.
+# A proven temporal miss can spend the same single corrective retry budget used by
+# duplicate/gross QA; UNKNOWN/unavailable evidence is diagnostic and non-blocking.
+openai_image_temporal_semantic_qa_enabled = true
+openai_image_temporal_semantic_retry_enabled = true
+
 # Fast/Balanced keep one Qwen candidate and direct-accept after lightweight
 # technical validation. The same single corrective retry budget may also be used
 # when a perceptual hash detects an unintended near-duplicate of a recent scene.
