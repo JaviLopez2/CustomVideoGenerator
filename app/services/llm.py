@@ -2744,6 +2744,10 @@ Return exactly {amount} objects and nothing else.
                         observable_result = _narrated_observable_fragment(
                             item.get("observable_result"), narration
                         )
+                        if observable_result and not observable_state:
+                            observable_state = _narrated_observable_fragment(
+                                item.get("observable_state"), narration, state=True
+                            )
                         observable_result_visual = " ".join(
                             str(item.get("observable_result_visual") or "").strip().split()
                         )
