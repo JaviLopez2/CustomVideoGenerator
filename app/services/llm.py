@@ -1179,6 +1179,91 @@ def evaluate_precision_visual_caption(
     return candidate
 
 
+def evaluate_precision_temporal_caption(
+    *,
+    subject: str,
+    requested_state: str,
+    visual_caption: str,
+    previous_state: str = "",
+    previous_caption: str = "",
+    app_config=None,
+) -> dict:
+    """Judge one continuity stage from caption evidence only."""
+    caption = " ".join(str(visual_caption or "").split())
+    state = " ".join(str(requested_state or "").split())
+    if not caption or not state:
+        return {"available": False, "error": "temporal QA requires a caption and requested state"}
+
+    prompt = f"""
+# Role: Conservative temporal visual QA judge
+
+Judge ONLY what the image caption explicitly supports. Do not infer hidden detail.
+The target is the same physical subject across a narrated visual progression.
+
+Subject: {str(subject or "").strip()}
+Current requested visible state: {state}
+Current image caption: {caption}
+Previous requested visible state: {" ".join(str(previous_state or "").split())}
+Previous accepted image caption: {" ".join(str(previous_caption or "").split())}
+
+Rules:
+1. state_score is 1 only when the current caption clearly supports the requested
+   visible stage; 0 when it clearly describes a conflicting earlier/later state.
+2. progression_score is 1 when the current caption clearly advances from the
+   previous accepted state in the requested direction, 0 when it is effectively
+   unchanged or regresses. If no previous caption exists, score progression from
+   the current-state evidence alone.
+3. Use reject when the caption clearly contradicts the requested stage or clearly
+   fails to progress from the supplied previous stage. Use uncertain only when the
+   caption genuinely lacks enough visible detail to decide.
+4. A different camera angle, crop or background is not temporal progression.
+5. Return only JSON and do not invent visual facts absent from the captions.
+
+Return ONLY JSON:
+{{
+  "state_score": 0.0,
+  "progression_score": 0.0,
+  "verdict": "pass|reject|uncertain",
+  "rationale": "brief evidence-based reason"
+}}
+""".strip()
+
+    try:
+        response = (
+            _generate_response(prompt)
+            if app_config is None
+            else _generate_response(prompt, app_config=app_config)
+        )
+        if response.startswith("Error: "):
+            return {"available": False, "error": response}
+        payload = json.loads(_strip_code_fence(response))
+        if not isinstance(payload, dict):
+            return {"available": False, "error": "temporal caption judge returned invalid JSON"}
+
+        def score(name: str) -> float:
+            try:
+                return max(0.0, min(1.0, float(payload.get(name, 0.0) or 0.0)))
+            except (TypeError, ValueError):
+                return 0.0
+
+        verdict = str(payload.get("verdict") or "uncertain").strip().lower()
+        if verdict not in {"pass", "reject", "uncertain"}:
+            verdict = "uncertain"
+        return {
+            "available": True,
+            "state_score": score("state_score"),
+            "progression_score": score("progression_score"),
+            "verdict": verdict,
+            "rationale": " ".join(str(payload.get("rationale") or "").split())[:1200],
+        }
+    except Exception as exc:
+        logger.warning(
+            "temporal visual caption judge unavailable: "
+            f"error={type(exc).__name__}, detail={exc}"
+        )
+        return {"available": False, "error": f"{type(exc).__name__}: {exc}"}
+
+
 def generate_image_prompts(
     video_subject: str,
     video_script: str,
@@ -1527,6 +1612,36 @@ def _scene_hidden_evidence_signals(item: dict) -> list[str]:
     )
     return [phrase.strip() for phrase in phrases if phrase in text]
 
+
+def _scene_unobservable_process_signals(item: dict) -> list[str]:
+    """Detect model-facing causal/process details that need stronger evidence.
+
+    These phrases are intentionally narrow: they cover hidden-cause visualizations
+    that have leaked into generated exterior scenes during benchmark runs. Marking
+    them as internal sends them through the existing evidence/fallback path.
+    """
+    if not isinstance(item, dict):
+        return []
+    values = [
+        item.get("scene_description"),
+        item.get("visual_state"),
+        " ".join(_normalize_visual_feature_list(item.get("required_features"))),
+    ]
+    text = " ".join(str(value or "") for value in values).casefold()
+    phrases = (
+        "reagent gel",
+        "developer gel",
+        "processing gel",
+        "chemical sheen",
+        "chemical liquid",
+        "developer fluid",
+        "gel oozing",
+        "oozing from the edges",
+        "reagent spreading",
+        "chemical reaction visible",
+        "visible chemical reaction",
+    )
+    return [phrase for phrase in phrases if phrase in text]
 
 
 def _scene_identity_tokens(value: str) -> set[str]:
@@ -2139,10 +2254,21 @@ def _scene_reference_coverage(
     if not required_role:
         return "covered", "scene does not require a dedicated manual evidence role"
 
+    # A safe-looking reference_query must not be able to launder unsupported
+    # factual traits from required_features. Specialized primary-subject views
+    # prove both against the same user-described evidence.
+    coverage_query = str(item.get("reference_query") or "").strip()
+    if target == "primary_subject" and required_role in {"detail", "internal", "context"}:
+        feature_claims = _normalize_visual_feature_list(item.get("required_features"))
+        if feature_claims:
+            coverage_query = "; ".join(
+                value for value in [coverage_query, *feature_claims] if value
+            )
+
     matched, matched_reason = _reference_role_has_semantic_evidence(
         inventory,
         required_role,
-        str(item.get("reference_query") or ""),
+        coverage_query,
     )
     if matched:
         return "covered", matched_reason
@@ -2753,6 +2879,15 @@ Return exactly {amount} objects and nothing else.
                         )
                     evidence_scope = "hidden_internal"
                     requested_reference_need = "internal"
+                unobservable_process_signals = _scene_unobservable_process_signals(item)
+                if unobservable_process_signals and not hidden_signals:
+                    logger.warning(
+                        "scene-plan causal-visibility gate requires evidence for model-facing process claims: "
+                        f"scene={index + 1}, signals={unobservable_process_signals!r}, "
+                        f"scope={evidence_scope!r}, need={requested_reference_need!r}"
+                    )
+                    evidence_scope = "hidden_internal"
+                    requested_reference_need = "internal"
                 reference_target = _normalize_scene_enum(
                     item.get("reference_target"),
                     _SCENE_REFERENCE_TARGETS,
@@ -2844,6 +2979,8 @@ Return exactly {amount} objects and nothing else.
                 reference_need = requested_reference_need
                 reference_query = str(item.get("reference_query") or "").strip()
                 planner_validation = "pass"
+                planned_continuity_key = continuity_key
+                planned_continuity_description = continuity_description
 
                 # Deterministic coverage gate. Prefer pruning an unsupported
                 # specialized request down to what the manual evidence actually proves.
@@ -3072,6 +3209,24 @@ Return exactly {amount} objects and nothing else.
                             if observable_context:
                                 environment = observable_context
                             evidence_scope = "externally_visible"
+                            if (
+                                planned_continuity_key != "none"
+                                and _coerce_scene_bool(item.get("temporal_progression"), False)
+                                and observable_state
+                            ):
+                                continuity_key = planned_continuity_key
+                                continuity_description = _stable_continuity_description(
+                                    planned_continuity_description,
+                                    canonical_subject,
+                                    subject,
+                                ) or canonical_subject or subject
+                                continuity_registry.setdefault(
+                                    continuity_key,
+                                    {
+                                        "description": continuity_description,
+                                        "canonical_subject": canonical_subject,
+                                    },
+                                )
                         else:
                             fallback_visible = previous_visible or context_identity
                             if fallback_visible is not None:
@@ -3189,6 +3344,21 @@ Return exactly {amount} objects and nothing else.
                     framing_intent=framing_intent,
                 )
                 final_prompt = clean_image_text(final_prompt, internal_values)
+                temporal_progression = bool(
+                    continuity_key != "none"
+                    and _coerce_scene_bool(item.get("temporal_progression"), False)
+                    and current_state
+                )
+                temporal_state = ""
+                if temporal_progression:
+                    if (
+                        visual_state
+                        and not _scene_hidden_evidence_signals({"scene_description": visual_state})
+                        and not _scene_unobservable_process_signals({"visual_state": visual_state})
+                    ):
+                        temporal_state = visual_state
+                    elif _source_fragment_can_face_image_model(current_state):
+                        temporal_state = current_state
                 result.append({
                     "subject": clean_image_text(subject, internal_values),
                     "canonical_subject": clean_image_text(canonical_subject, internal_values),
@@ -3221,6 +3391,8 @@ Return exactly {amount} objects and nothing else.
                     "continuity_key": continuity_key,
                     "continuity_description": clean_image_text(continuity_description, internal_values),
                     "continuity_inference": str(item.get("continuity_inference") or ""),
+                    "temporal_progression": temporal_progression,
+                    "temporal_state": clean_image_text(temporal_state, internal_values),
                     "precision_importance": precision_importance,
                 })
 
