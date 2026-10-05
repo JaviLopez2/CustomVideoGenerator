@@ -8196,7 +8196,9 @@ def _download_videos_openai_image_on_demand(
                     "gross_semantic_qa"
                 ] = _precision_diagnostics_json_safe(gross_record)
             _precision_diagnostics_persist(task_id, precision_diagnostics)
-            _release_precision_semantic_model()
+            # Keep the captioner resident across adjacent risky scenes. The batch
+            # cleanup at the end of this material pass releases it once, avoiding
+            # repeated model loads during S3/S4/S5/root-style sequences.
 
         # Full-scene single-pass strategy:
         # - standard scenes continue to define the video's color/style anchor;
