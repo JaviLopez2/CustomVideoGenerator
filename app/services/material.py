@@ -4721,11 +4721,24 @@ def generate_images_openai(
             f"primary={requested_model!r}, fallback={fallback_model!r}, "
             f"detail={failure_detail}"
         )
+        # The fallback receives only the first reference. Preserve that image's
+        # declared canvas role instead of relabelling it as identity evidence.
+        first_pack = (reference_info or {}).get("reference_pack") or []
+        first_selection = ((reference_info or {}).get("reference_selection") or {}).get("selected_references") or []
+        first_is_canvas = bool(
+            (first_pack and first_pack[0].get("role") == "continuity")
+            or (first_selection and first_selection[0].get("kind") == "continuity_anchor")
+        )
+        fallback_prompt = (
+            _qwen_precision_prompt_with_references(
+                base_prompt, reference_subject or search_term, 1, reference_info
+            ) if first_is_canvas else _precision_prompt_with_reference(
+                base_prompt, reference_subject or search_term
+            )
+        )
         fallback_payload = {
             "model": fallback_model,
-            "prompt": clean_image_text(_precision_prompt_with_reference(
-                base_prompt, reference_subject or search_term
-            ), internal_image_values(reference_info)),
+            "prompt": clean_image_text(fallback_prompt, internal_image_values(reference_info)),
             "n": 1,
             "size": image_size,
             "reference_image": references[0],
@@ -7613,8 +7626,8 @@ def _download_videos_openai_image_on_demand(
                                 )
                                 search_term = (
                                     search_term
-                                    + f" Use a clearly different {shot_type or 'shot'} composition matching "
-                                    f"{composition_key or 'the planned composition'}; do not repeat the previous framing."
+                                    + f" Use a clearly different {shot_type or 'shot'} composition "
+                                    "matching the scene description; do not repeat the previous framing."
                                 )
                                 _precision_diagnostics_persist(
                                     task_id, precision_diagnostics

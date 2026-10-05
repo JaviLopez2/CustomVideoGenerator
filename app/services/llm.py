@@ -2607,7 +2607,12 @@ Return exactly {amount} objects and nothing else.
                         subject = canonical_subject = observable_subject
                         scene_description = f"A clear documentary view of {subject}."
                         visual_state = " ".join(str(item.get("visual_state") or "").strip().split())
-                        visible_state_text = visual_state or observable_state
+                        # A translation cannot reinstate a rejected/unavailable
+                        # grounding span or add hidden mechanisms of its own.
+                        safe_visual_state = _narrated_observable_fragment(
+                            visual_state, visual_state, state=True
+                        ) if observable_state else ""
+                        visible_state_text = safe_visual_state or observable_state
                         if visible_state_text:
                             scene_description += f" Its visible state is {visible_state_text}."
                         environment = "a simple narration-grounded setting"
