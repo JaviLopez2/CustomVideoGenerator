@@ -212,12 +212,19 @@ openai_image_scene_factual_audit_enabled = true
 # that claims whole-subject identity is forced through Precision rather than
 # allowing the performance budget to swap in an unrelated generic substitute.
 openai_image_primary_identity_lock_enabled = true
-# Temporal stages of the same physical output/object reuse the previously
-# accepted generated image as the first Qwen reference. This is a sequential
-# edit chain, not a second independent text-to-image generation.
+# Temporal stages of the same physical output/object edit one stable accepted
+# root image instead of recursively using each newly generated stage. This limits
+# accumulated drift and prevents one later mistake from becoming the next canvas.
 openai_image_continuity_edit_chain_enabled = true
 # Legacy alias retained for older local configs; the new key takes precedence.
 openai_image_scene_diversity_repair_enabled = true
+
+# Risk-bounded visual QA. Only Standard evidence fallbacks and the first frame of
+# a continuity chain are captioned/judged for obvious semantic failure. A proven
+# gross mismatch gets one corrective retry; UNKNOWN/unavailable vision evidence
+# is recorded diagnostically but does not block generation.
+openai_image_gross_semantic_qa_enabled = true
+openai_image_gross_semantic_retry_enabled = true
 
 # Fast/Balanced keep one Qwen candidate and direct-accept after lightweight
 # technical validation. The same single corrective retry budget may also be used
