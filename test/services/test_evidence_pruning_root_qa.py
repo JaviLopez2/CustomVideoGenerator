@@ -446,3 +446,187 @@ def test_persistent_gross_failure_fails_closed(pipeline, monkeypatch):
     assert qa["selected_candidate"] == "none"
     assert qa["status"] == "persistent_gross_failure"
     assert diagnostics[-1]["status"] == "failed"
+
+
+
+def test_covered_reference_query_cannot_hide_unsupported_required_features():
+    inventory = [
+        {"role": "identity", "description": "Overall Polaroid SX-70 whole-subject identity."},
+        {
+            "role": "detail",
+            "description": (
+                "Close visible detail of the Polaroid SX-70 front controls, lens area, "
+                "red shutter button and front panel."
+            ),
+        },
+    ]
+    row = {
+        "subject": "Polaroid SX-70 front controls",
+        "canonical_subject": "Polaroid SX-70",
+        "scene_description": "Two rollers press a photo sheet beside the front controls.",
+        "required_features": [
+            "red shutter button",
+            "lens area",
+            "two parallel rollers",
+            "photo sheet passing through rollers",
+        ],
+        "forbidden_features": [],
+        "reference_need": "detail",
+        "reference_target": "primary_subject",
+        "reference_query": "front controls lens area red shutter button front panel",
+        "evidence_scope": "specialized_visible",
+        "reference_critical": True,
+        "includes_primary_subject": False,
+        "route": "precision",
+    }
+    scene = make_plan(
+        [row],
+        ["La cámara expulsa la fotografía hacia el exterior."],
+        inventory,
+    )[0]
+
+    assert scene["planner_validation"] == "coverage_pruned"
+    assert scene["coverage_status"] == "covered"
+    assert "red shutter button" in scene["prompt"]
+    assert "lens area" in scene["prompt"]
+    assert "rollers" not in scene["prompt"].lower()
+    assert "photo sheet passing" not in scene["prompt"].lower()
+
+
+def test_hidden_causal_output_rewrite_preserves_safe_temporal_continuity():
+    row = {
+        "subject": "freshly ejected instant photograph",
+        "canonical_subject": "SX-70 instant photograph",
+        "scene_description": (
+            "A freshly ejected photograph with visible reagent gel oozing from the edges "
+            "and a chemical sheen spreading across the paper surface."
+        ),
+        "required_features": ["reagent gel", "chemical sheen"],
+        "forbidden_features": [],
+        "reference_need": "none",
+        "reference_target": "output",
+        "reference_query": "",
+        "evidence_scope": "externally_visible",
+        "reference_critical": False,
+        "includes_primary_subject": False,
+        "route": "standard",
+        "observable_result": "la misma fotografía recién expulsada",
+        "observable_result_visual": "the same freshly ejected instant photograph",
+        "observable_state": "apenas muestra información",
+        "visual_state": "barely shows any image information",
+        "continuity_key": "photo_chain",
+        "continuity_description": "single SX-70 instant photograph",
+        "temporal_progression": True,
+    }
+    scene = make_plan(
+        [row],
+        ["Al principio, la misma fotografía recién expulsada apenas muestra información."],
+        [{"role": "identity", "description": "whole Polaroid SX-70"}],
+    )[0]
+
+    assert scene["planner_validation"] == "coverage_fallback"
+    assert scene["continuity_key"] == "photo_chain"
+    assert scene["temporal_progression"] is True
+    assert scene["temporal_state"] == "barely shows any image information"
+    assert "reagent" not in scene["prompt"].lower()
+    assert "chemical" not in scene["prompt"].lower()
+    assert "barely shows any image information" in scene["prompt"].lower()
+
+
+def test_temporal_caption_judge_normalizes_response():
+    response = json.dumps({
+        "state_score": 0.15,
+        "progression_score": 0.1,
+        "verdict": "reject",
+        "rationale": "The image already looks fully developed.",
+    })
+    with patch.object(llm, "_generate_response", return_value=response):
+        result = llm.evaluate_precision_temporal_caption(
+            subject="instant photograph",
+            requested_state="barely shows any image information",
+            visual_caption="A detailed colorful landscape is visible inside a Polaroid print.",
+            app_config={},
+        )
+    assert result["available"] is True
+    assert result["verdict"] == "reject"
+    assert result["state_score"] == 0.15
+    assert result["progression_score"] == 0.1
+
+
+def test_temporal_root_failure_gets_one_verified_retry(pipeline, monkeypatch):
+    run, diagnostics = pipeline
+    monkeypatch.setattr(material, "_temporal_semantic_qa_enabled", lambda: True)
+    monkeypatch.setattr(material, "_temporal_semantic_retry_enabled", lambda: True)
+    monkeypatch.setattr(material, "_gross_scene_semantic_qa_enabled", lambda: False)
+    generated = [item("too-developed"), item("early-stage")]
+    calls = []
+
+    def generate(**kwargs):
+        calls.append(kwargs)
+        return [generated[len(calls) - 1]]
+
+    assessments = iter([
+        {"available": True, "status": "temporal_failure", "temporal_failure": True,
+         "caption": "A fully developed colorful photograph.", "verdict": "reject"},
+        {"available": True, "status": "pass", "temporal_failure": False,
+         "caption": "A mostly blank instant photograph with faint shapes.", "verdict": "pass"},
+    ])
+    monkeypatch.setattr(material, "generate_images_openai", generate)
+    monkeypatch.setattr(material, "_near_duplicate_assessment",
+                        lambda *a, **kw: {"actionable": False, "best_similarity": 0.3})
+    monkeypatch.setattr(material, "_scene_temporal_semantic_assessment",
+                        lambda *a, **kw: next(assessments))
+
+    result = run(
+        search_terms=["same instant photograph, early faint state"],
+        scene_durations=[1], scene_routes=["standard"],
+        scene_subjects=["instant photograph"], scene_reference_targets=["output"],
+        scene_includes_primary_subject=[False], scene_continuity_keys=["photo_chain"],
+        scene_continuity_descriptions=["single instant photograph"],
+        scene_temporal_progressions=[True],
+        scene_temporal_states=["barely shows any image information"],
+    )
+
+    assert result == ["early-stage.png.mp4"]
+    assert len(calls) == 2
+    assert "current state: barely shows any image information" in calls[1]["search_term"]
+    qa = diagnostics[-1]["plan_scenes"][0]["temporal_semantic_qa"]
+    assert qa["selected_candidate"] == "retry"
+
+
+def test_temporal_failure_does_not_create_third_candidate_after_duplicate_retry(pipeline, monkeypatch):
+    run, diagnostics = pipeline
+    monkeypatch.setattr(material, "_temporal_semantic_qa_enabled", lambda: True)
+    monkeypatch.setattr(material, "_temporal_semantic_retry_enabled", lambda: True)
+    generated = [item("duplicate-original"), item("duplicate-retry")]
+    calls = []
+
+    def generate(**kwargs):
+        calls.append(kwargs)
+        return [generated[len(calls) - 1]]
+
+    monkeypatch.setattr(material, "generate_images_openai", generate)
+    monkeypatch.setattr(material, "_near_duplicate_assessment", lambda path, *a, **kw: {
+        "actionable": path == "duplicate-original.png",
+        "best_similarity": 0.97 if path == "duplicate-original.png" else 0.80,
+    })
+    monkeypatch.setattr(material, "_scene_temporal_semantic_assessment", lambda *a, **kw: {
+        "available": True, "status": "temporal_failure", "temporal_failure": True,
+        "caption": "The photograph looks unchanged.", "verdict": "reject",
+    })
+
+    result = run(
+        search_terms=["same instant photograph, clearer mid-development state"],
+        scene_durations=[1], scene_routes=["precision"],
+        scene_subjects=["instant photograph"], scene_reference_targets=["output"],
+        scene_includes_primary_subject=[False], scene_continuity_keys=["photo_chain"],
+        scene_continuity_descriptions=["single instant photograph"],
+        scene_temporal_progressions=[True],
+        scene_temporal_states=["clearer shapes and emerging color"],
+    )
+
+    assert result == []
+    assert len(calls) == 2
+    qa = diagnostics[-1]["plan_scenes"][0]["temporal_semantic_qa"]
+    assert qa["selected_candidate"] == "none"
+    assert qa["status"] == "temporal_retry_budget_exhausted"
