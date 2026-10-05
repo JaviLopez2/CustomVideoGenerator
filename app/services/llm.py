@@ -1789,6 +1789,41 @@ def _scene_has_temporal_continuity_signal(item: dict) -> bool:
     return any(term in text for term in terms)
 
 
+def _stable_continuity_description(
+    value: str,
+    canonical_subject: str,
+    subject: str,
+) -> str:
+    """Keep the continuity contract about identity, never about temporal stages."""
+    text = " ".join(str(value or "").strip().split())
+    if not text:
+        return " ".join(str(canonical_subject or subject or "").strip().split())
+
+    if _scene_has_temporal_continuity_signal({"scene_description": text}):
+        base = " ".join(str(canonical_subject or subject or "").strip().split())
+        # Canonical names occasionally contain a state adjective. Remove only
+        # obvious temporal qualifiers; keep the concrete entity name intact.
+        base = re.sub(
+            r"\b(?:initial|early|later|final|finished|developing|developed|"
+            r"progressing|evolving|changing|emerging|stabilized?)\b",
+            "",
+            base,
+            flags=re.IGNORECASE,
+        )
+        base = " ".join(base.split()).strip(" ,.-")
+        if not base:
+            base = "physical continuity target"
+        single = bool(re.search(r"\b(?:single|exactly\s+one)\b", text, re.IGNORECASE))
+        prefix = "the same single " if single else "the same "
+        if base.casefold().startswith(("the same ", "same ")):
+            return base
+        if single and base.casefold().startswith("single "):
+            return "the same " + base
+        return prefix + base
+
+    return text
+
+
 def _normalize_scene_identity_and_continuity(items: list[dict]) -> list[dict]:
     """Deterministically protect the manual primary identity pack and infer obvious temporal chains."""
     rows = [dict(item) if isinstance(item, dict) else item for item in items]
@@ -2771,6 +2806,11 @@ Return exactly {amount} objects and nothing else.
                     str(item.get("continuity_description") or "").strip().split()
                 )
                 if continuity_key != "none" and coverage_status != "unsupported":
+                    continuity_description = _stable_continuity_description(
+                        continuity_description,
+                        canonical_subject,
+                        subject,
+                    )
                     if not continuity_description:
                         continuity_description = canonical_subject or subject
                     existing_continuity = continuity_registry.get(continuity_key)
