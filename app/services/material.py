@@ -5680,7 +5680,7 @@ def _scene_gross_semantic_assessment(
     """Detect only obvious semantic/structural misses, not subtle quality issues.
 
     This is intentionally much stricter than the normal semantic selector: it is
-    used only for risky Standard fallbacks and continuity roots. UNKNOWN never
+    used only for risky evidence fallbacks and continuity roots. UNKNOWN never
     blocks a scene, while a demonstrated gross mismatch gets one corrective retry.
     """
     if not _gross_scene_semantic_qa_enabled():
@@ -8075,12 +8075,11 @@ def _download_videos_openai_image_on_demand(
                 _release_precision_rembg_session()
 
         # Risk-bounded semantic QA for the exact failure modes seen in
-        # real benchmarks: coverage fallbacks that become unrelated scenes, and the
-        # first frame of a continuity chain becoming a bad root. It runs only on
-        # Standard scenes, never on every image, and gets at most one correction.
+        # real benchmarks: evidence fallbacks that become unrelated scenes, and the
+        # first frame of a continuity chain becoming a bad root. It runs on these
+        # risky transitions only (Standard or Precision), never on every image.
         gross_qa_risky = bool(
             items
-            and route == "standard"
             and _gross_scene_semantic_qa_enabled()
             and (
                 planner_validation in {"coverage_fallback", "coverage_pruned"}
@@ -8209,6 +8208,14 @@ def _download_videos_openai_image_on_demand(
                 precision_diagnostics["plan_scenes"][scene_index][
                     "gross_semantic_qa"
                 ] = _precision_diagnostics_json_safe(gross_record)
+            if precision_scene_diagnostic is not None:
+                precision_scene_diagnostic["gross_semantic_qa"] = (
+                    _precision_diagnostics_json_safe(gross_record)
+                )
+                if items:
+                    precision_scene_diagnostic["selected_after_gross_semantic_qa"] = (
+                        Path(items[0].url).name
+                    )
             _precision_diagnostics_persist(task_id, precision_diagnostics)
             # Keep the captioner resident across adjacent risky scenes. The batch
             # cleanup at the end of this material pass releases it once, avoiding
