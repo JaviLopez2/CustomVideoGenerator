@@ -1151,6 +1151,8 @@ def get_video_materials(
     openai_image_scene_includes_primary_subject: list[bool] | None = None,
     openai_image_scene_continuity_keys: list[str] | None = None,
     openai_image_scene_continuity_descriptions: list[str] | None = None,
+    openai_image_scene_temporal_progressions: list[bool] | None = None,
+    openai_image_scene_temporal_states: list[str] | None = None,
     openai_image_scene_coverage_statuses: list[str] | None = None,
     openai_image_scene_coverage_reasons: list[str] | None = None,
     openai_image_scene_composition_keys: list[str] | None = None,
@@ -1273,6 +1275,8 @@ def get_video_materials(
                 scene_includes_primary_subject=openai_image_scene_includes_primary_subject,
                 scene_continuity_keys=openai_image_scene_continuity_keys,
                 scene_continuity_descriptions=openai_image_scene_continuity_descriptions,
+                scene_temporal_progressions=openai_image_scene_temporal_progressions,
+                scene_temporal_states=openai_image_scene_temporal_states,
                 scene_coverage_statuses=openai_image_scene_coverage_statuses,
                 scene_coverage_reasons=openai_image_scene_coverage_reasons,
                 scene_composition_keys=openai_image_scene_composition_keys,
@@ -1986,6 +1990,8 @@ def _run_pipeline(
     openai_image_scene_includes_primary_subject = None
     openai_image_scene_continuity_keys = None
     openai_image_scene_continuity_descriptions = None
+    openai_image_scene_temporal_progressions = None
+    openai_image_scene_temporal_states = None
     openai_image_scene_coverage_statuses = None
     openai_image_scene_coverage_reasons = None
     openai_image_scene_composition_keys = None
@@ -2176,6 +2182,14 @@ def _run_pipeline(
                 str(scene.get("continuity_description") or "").strip()
                 for scene in structured_image_plan
             ]
+            openai_image_scene_temporal_progressions = [
+                bool(scene.get("temporal_progression"))
+                for scene in structured_image_plan
+            ]
+            openai_image_scene_temporal_states = [
+                str(scene.get("temporal_state") or "").strip()
+                for scene in structured_image_plan
+            ]
             openai_image_scene_coverage_statuses = [
                 str(scene.get("coverage_status") or "unknown").strip().lower()
                 for scene in structured_image_plan
@@ -2247,6 +2261,8 @@ def _run_pipeline(
             openai_image_scene_includes_primary_subject = [False] * scene_count
             openai_image_scene_continuity_keys = ["none"] * scene_count
             openai_image_scene_continuity_descriptions = [""] * scene_count
+            openai_image_scene_temporal_progressions = [False] * scene_count
+            openai_image_scene_temporal_states = [""] * scene_count
             openai_image_scene_coverage_statuses = ["unknown"] * scene_count
             openai_image_scene_coverage_reasons = [""] * scene_count
             openai_image_scene_composition_keys = [""] * scene_count
@@ -2350,6 +2366,8 @@ def _run_pipeline(
         openai_image_scene_includes_primary_subject=openai_image_scene_includes_primary_subject,
         openai_image_scene_continuity_keys=openai_image_scene_continuity_keys,
         openai_image_scene_continuity_descriptions=openai_image_scene_continuity_descriptions,
+        openai_image_scene_temporal_progressions=openai_image_scene_temporal_progressions,
+        openai_image_scene_temporal_states=openai_image_scene_temporal_states,
         openai_image_scene_coverage_statuses=openai_image_scene_coverage_statuses,
         openai_image_scene_coverage_reasons=openai_image_scene_coverage_reasons,
         openai_image_scene_composition_keys=openai_image_scene_composition_keys,
