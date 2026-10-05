@@ -219,8 +219,8 @@ openai_image_continuity_edit_chain_enabled = true
 # Legacy alias retained for older local configs; the new key takes precedence.
 openai_image_scene_diversity_repair_enabled = true
 
-# Risk-bounded visual QA. Only Standard evidence fallbacks and the first frame of
-# a continuity chain are captioned/judged for obvious semantic failure. A proven
+# Risk-bounded visual QA. Only evidence fallbacks and the first frame of a
+# continuity chain are captioned/judged for obvious semantic failure. A proven
 # gross mismatch gets one corrective retry; UNKNOWN/unavailable vision evidence
 # is recorded diagnostically but does not block generation. This reuses the
 # existing Florence-2 precision-vision stack on CPU plus the configured text LLM;
