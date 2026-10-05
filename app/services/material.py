@@ -8171,9 +8171,13 @@ def _download_videos_openai_image_on_demand(
                 gross_record["retry"] = _precision_diagnostics_json_safe(
                     retry_assessment
                 )
-                if retry_item is not None and not retry_assessment.get(
-                    "gross_failure", True
-                ):
+                retry_verified = bool(
+                    retry_item is not None
+                    and retry_assessment.get("status") == "pass"
+                    and retry_assessment.get("available")
+                    and not retry_assessment.get("gross_failure", True)
+                )
+                if retry_verified:
                     items = [retry_item]
                     gross_record["selected_candidate"] = "retry"
                     logger.info(
@@ -8181,15 +8185,25 @@ def _download_videos_openai_image_on_demand(
                         f"scene={scene_index + 1}, image={Path(retry_item.url).name!r}"
                     )
                 else:
-                    # A scene that is explicitly known to be unrelated must never
-                    # become a continuity root or silently ship in a publishable video.
+                    # Once a gross failure is proven, an UNKNOWN retry is not enough
+                    # to rehabilitate it. Fail the semantic scene rather than freezing
+                    # or shipping a known-bad visual.
                     logger.error(
-                        "gross semantic image failure persisted after corrective retry; "
-                        f"scene={scene_index + 1}, subject={reference_subject!r}"
+                        "gross semantic image failure was not repaired by a verified retry; "
+                        f"scene={scene_index + 1}, subject={reference_subject!r}, "
+                        f"retry_status={retry_assessment.get('status')!r}"
                     )
                     gross_record["selected_candidate"] = "none"
                     gross_record["status"] = "persistent_gross_failure"
                     items = []
+            elif gross_qa.get("gross_failure"):
+                logger.error(
+                    "gross semantic image failure detected but corrective retry is disabled; "
+                    f"scene={scene_index + 1}, subject={reference_subject!r}"
+                )
+                gross_record["selected_candidate"] = "none"
+                gross_record["status"] = "gross_failure_retry_disabled"
+                items = []
 
             if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
                 precision_diagnostics["plan_scenes"][scene_index][
