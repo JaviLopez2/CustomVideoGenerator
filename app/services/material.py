@@ -5644,6 +5644,172 @@ def _precision_semantic_gate(
     return True, "semantic identity/structure gate passed"
 
 
+def _gross_scene_semantic_qa_enabled() -> bool:
+    value = config.app.get("openai_image_gross_semantic_qa_enabled", True)
+    if isinstance(value, str):
+        return value.strip().lower() not in {"0", "false", "no", "off"}
+    return bool(value)
+
+
+def _gross_scene_semantic_retry_enabled() -> bool:
+    value = config.app.get("openai_image_gross_semantic_retry_enabled", True)
+    if isinstance(value, str):
+        return value.strip().lower() not in {"0", "false", "no", "off"}
+    return bool(value)
+
+
+def _scene_requires_single_instance(
+    continuity_description: str,
+    prompt: str,
+) -> bool:
+    text = f"{continuity_description} {prompt}".casefold()
+    return bool(re.search(
+        r"\b(?:exactly\s+one|single|one\s+(?:same\s+)?(?:physical\s+)?instance)\b",
+        text,
+    ))
+
+
+def _scene_gross_semantic_assessment(
+    candidate: MaterialInfo,
+    *,
+    subject: str,
+    required_features: list[str],
+    forbidden_features: list[str],
+    require_single: bool,
+) -> dict[str, Any]:
+    """Detect only obvious semantic/structural misses, not subtle quality issues.
+
+    This is intentionally much stricter than the normal semantic selector: it is
+    used only for risky Standard fallbacks and continuity roots. UNKNOWN never
+    blocks a scene, while a demonstrated gross mismatch gets one corrective retry.
+    """
+    if not _gross_scene_semantic_qa_enabled():
+        return {
+            "available": False,
+            "status": "disabled",
+            "gross_failure": False,
+            "reason": "gross semantic QA disabled",
+        }
+
+    qa_required = list(required_features)
+    qa_forbidden = list(forbidden_features)
+    if require_single:
+        qa_required.append(f"exactly one visible {subject}")
+        qa_forbidden.append(
+            "multiple copies, repeated instances, grid, collage or collection of the main subject"
+        )
+
+    semantic = _precision_semantic_evaluation(
+        candidate=candidate,
+        candidate_features={},
+        subject=subject,
+        required_features=qa_required,
+        forbidden_features=qa_forbidden,
+    )
+    if not semantic.get("available"):
+        return {
+            "available": False,
+            "status": "unavailable",
+            "gross_failure": False,
+            "reason": str(semantic.get("reason") or "semantic evidence unavailable"),
+            "semantic": semantic,
+        }
+
+    judgment = semantic.get("judgment")
+    judgment = judgment if isinstance(judgment, dict) else {}
+    caption = str(semantic.get("caption") or "").strip()
+    try:
+        semantic_score = float(judgment.get("semantic_score", 0.0) or 0.0)
+    except (TypeError, ValueError):
+        semantic_score = 0.0
+    try:
+        identity = float(judgment.get("identity_confidence", 0.0) or 0.0)
+    except (TypeError, ValueError):
+        identity = 0.0
+    try:
+        required_coverage = float(
+            judgment.get("required_feature_coverage", 0.0) or 0.0
+        )
+    except (TypeError, ValueError):
+        required_coverage = 0.0
+    verdict = str(judgment.get("verdict") or "").strip().lower()
+
+    subject_tokens = {
+        token
+        for token in re.findall(r"[a-z]+", str(subject or "").casefold())
+        if len(token) >= 4
+        and token not in {
+            "same", "visible", "developing", "developed", "instant",
+            "documentary", "subject", "scene",
+        }
+    }
+    caption_lower = caption.casefold()
+    explicit_multiple = bool(
+        require_single
+        and subject_tokens
+        and any(token in caption_lower for token in subject_tokens)
+        and re.search(
+            r"\b(?:multiple|several|many|grid|collage|collection|array|"
+            r"two|three|four|five|six|seven|eight|nine)\b",
+            caption_lower,
+        )
+    )
+    gross_failure = bool(
+        explicit_multiple
+        or semantic_score < 0.25
+        or identity < 0.20
+        or (
+            verdict == "reject"
+            and semantic_score < 0.45
+            and identity < 0.45
+        )
+        or (
+            require_single
+            and verdict == "reject"
+            and required_coverage < 0.35
+        )
+    )
+    reason = (
+        "single-instance continuity root was rendered as multiple/repeated subjects"
+        if explicit_multiple
+        else "semantic score indicates an unrelated scene"
+        if semantic_score < 0.25
+        else "identity confidence indicates the requested subject is absent"
+        if identity < 0.20
+        else "semantic judge rejected the scene with low subject agreement"
+        if gross_failure
+        else "no gross semantic failure detected"
+    )
+    return {
+        "available": True,
+        "status": "gross_failure" if gross_failure else "pass",
+        "gross_failure": gross_failure,
+        "reason": reason,
+        "caption": caption[:1500],
+        "semantic_score": round(semantic_score, 4),
+        "identity_confidence": round(identity, 4),
+        "required_feature_coverage": round(required_coverage, 4),
+        "verdict": verdict,
+        "single_instance_required": bool(require_single),
+        "explicit_multiple": bool(explicit_multiple),
+    }
+
+
+def _gross_scene_retry_prompt(
+    prompt: str,
+    *,
+    subject: str,
+    require_single: bool,
+) -> str:
+    target = str(subject or "requested visible subject").strip()
+    quantity = "exactly one" if require_single else "one clear"
+    return (
+        prompt.rstrip(" .")
+        + f". Show {quantity} {target} as the unmistakable main subject. "
+        "Do not replace the requested subject with an unrelated person, animal, object, collage or decorative scene."
+    )
+
+
 def _dct_basis(size: int) -> np.ndarray:
     """Small orthonormal DCT-II basis used by our dependency-free pHash."""
     x = np.arange(size, dtype=np.float32)
@@ -7887,6 +8053,130 @@ def _download_videos_openai_image_on_demand(
             ):
                 _release_precision_semantic_model()
                 _release_precision_rembg_session()
+
+        # Risk-bounded semantic QA for the exact failure modes seen in
+        # real benchmarks: coverage fallbacks that become unrelated scenes, and the
+        # first frame of a continuity chain becoming a bad root. It runs only on
+        # Standard scenes, never on every image, and gets at most one correction.
+        gross_qa_risky = bool(
+            items
+            and route == "standard"
+            and _gross_scene_semantic_qa_enabled()
+            and (
+                planner_validation in {"coverage_fallback", "coverage_pruned"}
+                or (
+                    continuity_key not in {"", "none"}
+                    and not continuity_source_path
+                )
+            )
+        )
+        if gross_qa_risky:
+            require_single = _scene_requires_single_instance(
+                continuity_description,
+                search_term,
+            )
+            gross_qa = _scene_gross_semantic_assessment(
+                items[0],
+                subject=reference_subject or "requested visible subject",
+                required_features=required_features,
+                forbidden_features=forbidden_features,
+                require_single=require_single,
+            )
+            gross_record: dict[str, Any] = {
+                "trigger": (
+                    "continuity_root"
+                    if continuity_key not in {"", "none"} and not continuity_source_path
+                    else "coverage_fallback"
+                ),
+                "original": _precision_diagnostics_json_safe(gross_qa),
+                "selected_candidate": "original",
+            }
+
+            if (
+                gross_qa.get("gross_failure")
+                and _gross_scene_semantic_retry_enabled()
+            ):
+                logger.warning(
+                    "gross semantic image failure detected; using one corrective retry: "
+                    f"scene={scene_index + 1}, subject={reference_subject!r}, "
+                    f"reason={gross_qa.get('reason')!r}"
+                )
+                retry_prompt = _gross_scene_retry_prompt(
+                    search_term,
+                    subject=reference_subject,
+                    require_single=require_single,
+                )
+                retry_items = generate_images_openai(
+                    search_term=retry_prompt,
+                    minimum_duration=max(1, math.ceil(desired_duration)),
+                    video_aspect=video_aspect,
+                    save_dir=material_directory,
+                    route=route,
+                    model_override=scene_model,
+                    reference_image=reference_image,
+                    reference_images=reference_images,
+                    reference_info=reference_info,
+                    reference_subject=reference_subject,
+                    forbidden_features=forbidden_features,
+                )
+                retry_item = retry_items[0] if retry_items else None
+                retry_assessment = {
+                    "available": False,
+                    "status": "unavailable",
+                    "gross_failure": True,
+                    "reason": "corrective generation returned no valid image",
+                }
+                if retry_item is not None:
+                    image_size = _openai_image_size(
+                        video_aspect, route=route, model=scene_model
+                    )
+                    valid, retry_validation = _validate_generated_image_basic(
+                        retry_item.url, image_size
+                    )
+                    if valid:
+                        retry_assessment = _scene_gross_semantic_assessment(
+                            retry_item,
+                            subject=reference_subject or "requested visible subject",
+                            required_features=required_features,
+                            forbidden_features=forbidden_features,
+                            require_single=require_single,
+                        )
+                    else:
+                        retry_assessment = {
+                            "available": True,
+                            "status": "technical_failure",
+                            "gross_failure": True,
+                            "reason": retry_validation,
+                        }
+                gross_record["retry"] = _precision_diagnostics_json_safe(
+                    retry_assessment
+                )
+                if retry_item is not None and not retry_assessment.get(
+                    "gross_failure", True
+                ):
+                    items = [retry_item]
+                    gross_record["selected_candidate"] = "retry"
+                    logger.info(
+                        "gross semantic corrective retry accepted: "
+                        f"scene={scene_index + 1}, image={Path(retry_item.url).name!r}"
+                    )
+                else:
+                    # A scene that is explicitly known to be unrelated must never
+                    # become a continuity root or silently ship in a publishable video.
+                    logger.error(
+                        "gross semantic image failure persisted after corrective retry; "
+                        f"scene={scene_index + 1}, subject={reference_subject!r}"
+                    )
+                    gross_record["selected_candidate"] = "none"
+                    gross_record["status"] = "persistent_gross_failure"
+                    items = []
+
+            if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
+                precision_diagnostics["plan_scenes"][scene_index][
+                    "gross_semantic_qa"
+                ] = _precision_diagnostics_json_safe(gross_record)
+            _precision_diagnostics_persist(task_id, precision_diagnostics)
+            _release_precision_semantic_model()
 
         # Full-scene single-pass strategy:
         # - standard scenes continue to define the video's color/style anchor;
