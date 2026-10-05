@@ -3077,14 +3077,27 @@ Return exactly {amount} objects and nothing else.
                             if fallback_visible is not None:
                                 subject = fallback_visible["canonical_subject"]
                                 canonical_subject = subject
-                                scene_description = (
-                                    f"A clear documentary view of {subject} in its established visible exterior state."
-                                )
                                 evidence_scope = "externally_visible"
                                 reference_target = fallback_visible.get(
                                     "reference_target", "none"
                                 )
+                                previous_visible_prompt = str(
+                                    fallback_visible.get("prompt") or ""
+                                ).casefold()
                                 if reference_target == "primary_subject":
+                                    # Preserve the earlier, already-covered exterior
+                                    # identity without copying any rejected mechanism.
+                                    # "closed" is carried only when the covered scene
+                                    # itself established a closed/enclosed exterior.
+                                    exterior_state = (
+                                        "closed exterior"
+                                        if "closed" in previous_visible_prompt
+                                        or "enclosed" in previous_visible_prompt
+                                        else "visible exterior"
+                                    )
+                                    scene_description = (
+                                        f"A clear documentary view of the {exterior_state} of {subject}."
+                                    )
                                     reference_need = "identity"
                                     includes_primary_subject = True
                                     reference_critical = True
@@ -3092,6 +3105,9 @@ Return exactly {amount} objects and nothing else.
                                     shot_type = "full"
                                     framing_intent = "full_subject"
                                 else:
+                                    scene_description = (
+                                        f"A clear documentary view of {subject} in its established visible exterior state."
+                                    )
                                     reference_need = "none"
                                     route = "standard"
                                     shot_type = "medium"
