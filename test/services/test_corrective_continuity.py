@@ -16,6 +16,9 @@ def pipeline(monkeypatch, tmp_path):
     monkeypatch.setattr(material, "_qwen_direct_accept_enabled", lambda *a: True)
     monkeypatch.setattr(material, "_precision_retry_on_true_failure_enabled", lambda: True)
     monkeypatch.setattr(material, "_openai_image_color_grading_enabled", lambda: False)
+    # Gross semantic QA is opt-in per focused regression below. Existing offline
+    # pipeline tests must never load Florence or call the configured text LLM.
+    monkeypatch.setattr(material, "_gross_scene_semantic_qa_enabled", lambda: False)
     monkeypatch.setattr(material, "_validate_generated_image_basic", lambda *a: (True, "ok"))
     monkeypatch.setattr(material, "_image_dhash64", lambda *a: 1)
     monkeypatch.setattr(material, "_render_openai_image_video", lambda path, duration: path + ".mp4")
