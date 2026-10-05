@@ -2565,6 +2565,8 @@ Return exactly {amount} objects and nothing else.
                     observable_result_visual = " ".join(
                         str(item.get("observable_result_visual") or "").strip().split()
                     )
+                    if _observable_subject_is_ambiguous(observable_result_visual or observable_result):
+                        observable_result = ""
                     observable_context = _narrated_observable_fragment(
                         item.get("observable_context"), narration, state=True
                     )

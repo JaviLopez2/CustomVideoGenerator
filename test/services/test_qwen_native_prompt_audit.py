@@ -63,12 +63,14 @@ def test_duplicate_retry_never_prompts_with_composition_identifier(pipeline, mon
 
 
 @pytest.mark.parametrize("ambiguous", ["la hoja", "the sheet"])
-def test_generic_sequence_reaches_clean_requests_with_stable_canvas(pipeline, monkeypatch, ambiguous):
+@pytest.mark.parametrize("result_field", [False, True])
+def test_generic_sequence_reaches_clean_requests_with_stable_canvas(pipeline, monkeypatch, ambiguous, result_field):
     exterior = dict(subject="source console", canonical_subject="source console",
         scene_description="A source console on a desk.", reference_need="identity",
         reference_target="primary_subject", evidence_scope="externally_visible", route="precision")
     hidden = rejected(subject=ambiguous, canonical_subject=ambiguous,
-        observable_subject=ambiguous, reference_target="output")
+        observable_subject=ambiguous, reference_target="output",
+        observable_result=ambiguous if result_field else "")
     rows = [exterior, hidden]
     narrations = ["A source console.", f"{ambiguous} rests beside the source console."]
     states = [("a blank surface", "una superficie vacía"),
