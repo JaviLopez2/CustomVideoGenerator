@@ -360,6 +360,56 @@ def test_continuity_root_is_not_frozen_until_gross_qa_passes(pipeline, monkeypat
     assert diagnostics[-1]["plan_scenes"][0]["gross_semantic_qa"]["selected_candidate"] == "retry"
 
 
+def test_known_gross_failure_does_not_accept_unverified_retry(pipeline, monkeypatch):
+    run, diagnostics = pipeline
+    monkeypatch.setattr(material, "_gross_scene_semantic_qa_enabled", lambda: True)
+    monkeypatch.setattr(material, "_gross_scene_semantic_retry_enabled", lambda: True)
+    calls = []
+
+    def generate(**kwargs):
+        calls.append(kwargs)
+        return [item("wrong-original" if len(calls) == 1 else "unknown-retry")]
+
+    assessments = iter([
+        {
+            "available": True,
+            "status": "gross_failure",
+            "gross_failure": True,
+            "reason": "requested subject absent",
+        },
+        {
+            "available": False,
+            "status": "unavailable",
+            "gross_failure": False,
+            "reason": "caption judge unavailable",
+        },
+    ])
+    monkeypatch.setattr(material, "generate_images_openai", generate)
+    monkeypatch.setattr(
+        material,
+        "_near_duplicate_assessment",
+        lambda *a, **kw: {"actionable": False, "best_similarity": 0.3},
+    )
+    monkeypatch.setattr(
+        material, "_scene_gross_semantic_assessment", lambda *a, **kw: next(assessments)
+    )
+
+    result = run(
+        search_terms=["A clear instant photograph on a table."],
+        scene_durations=[1],
+        scene_routes=["standard"],
+        scene_subjects=["instant photograph"],
+        scene_planner_validation=["coverage_fallback"],
+    )
+
+    assert result == []
+    assert len(calls) == 2
+    qa = diagnostics[-1]["plan_scenes"][0]["gross_semantic_qa"]
+    assert qa["selected_candidate"] == "none"
+    assert qa["retry"]["status"] == "unavailable"
+    assert qa["status"] == "persistent_gross_failure"
+
+
 def test_persistent_gross_failure_fails_closed(pipeline, monkeypatch):
     run, diagnostics = pipeline
     monkeypatch.setattr(material, "_gross_scene_semantic_qa_enabled", lambda: True)
