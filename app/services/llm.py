@@ -980,6 +980,205 @@ DEFAULT_SOCIAL_HASHTAGS = [
     "#content",
 ]
 
+def _semantic_score_01(value, default=0.0) -> float:
+    try:
+        score = float(value)
+    except (TypeError, ValueError):
+        score = float(default)
+    if not math.isfinite(score):
+        score = float(default)
+    return max(0.0, min(score, 1.0))
+
+
+def _normalize_visual_caption_judgment(value: object) -> dict:
+    """Normalize a text-LLM judgment into the stable contract material.py expects."""
+    if not isinstance(value, dict):
+        return {"available": False, "error": "visual caption judgment is not an object"}
+
+    verdict = str(value.get("verdict") or "uncertain").strip().lower()
+    if verdict not in {"pass", "reject", "uncertain"}:
+        verdict = "uncertain"
+    observed = value.get("observed_forbidden")
+    observed = (
+        [str(item).strip() for item in observed if str(item or "").strip()][:8]
+        if isinstance(observed, list)
+        else []
+    )
+    return {
+        "available": True,
+        "semantic_score": _semantic_score_01(value.get("semantic_score")),
+        "identity_confidence": _semantic_score_01(value.get("identity_confidence")),
+        "required_feature_coverage": _semantic_score_01(
+            value.get("required_feature_coverage")
+        ),
+        "forbidden_feature_violation": _semantic_score_01(
+            value.get("forbidden_feature_violation")
+        ),
+        "observed_forbidden": observed,
+        "verdict": verdict,
+        "rationale": " ".join(str(value.get("rationale") or "").split())[:1000],
+    }
+
+
+def evaluate_precision_visual_captions_batch(
+    *,
+    subject: str,
+    required_features: list[str],
+    forbidden_features: list[str],
+    candidates: list[dict],
+    app_config=None,
+) -> dict:
+    """Judge Florence captions using the configured text LLM.
+
+    Captions are evidence, not instructions: the judge may only score what the
+    caption explicitly supports. This keeps the vision gate useful for obvious
+    wrong-subject/duplicate-structure failures without asking the text model to
+    imagine details that Florence did not report.
+    """
+    rows = []
+    for candidate in candidates or []:
+        if not isinstance(candidate, dict):
+            continue
+        try:
+            index = int(candidate.get("index"))
+        except (TypeError, ValueError):
+            continue
+        caption = " ".join(str(candidate.get("caption") or "").split())
+        if index < 1 or not caption:
+            continue
+        rows.append({"index": index, "caption": caption[:2500]})
+    if not rows:
+        return {"available": False, "error": "no usable visual captions"}
+
+    prompt = f"""
+# Role: Conservative visual QA judge
+
+You receive captions produced by an image-captioning model. Score whether each
+caption describes the requested visible subject and constraints.
+
+Requested subject:
+{str(subject or "").strip()}
+
+Required visible features:
+{json.dumps([str(x) for x in (required_features or [])], ensure_ascii=False)}
+
+Forbidden / wrong visible features:
+{json.dumps([str(x) for x in (forbidden_features or [])], ensure_ascii=False)}
+
+Candidate captions:
+{json.dumps(rows, ensure_ascii=False, indent=2)}
+
+Rules:
+1. Judge ONLY evidence explicitly present in each caption. Do not infer hidden or
+   unmentioned details and do not reward plausible assumptions.
+2. identity_confidence: 1 means the requested main subject is clearly the same
+   kind/entity requested; 0 means absent or clearly unrelated.
+3. required_feature_coverage: fraction/confidence that the requested visible
+   requirements are actually supported by the caption. If no requirements were
+   provided, use 1 only when the requested subject itself is clearly present.
+4. forbidden_feature_violation: 1 means a forbidden/wrong structure is clearly
+   present; 0 means none is evidenced.
+5. semantic_score is an overall conservative score for subject + visible intent.
+6. verdict must be "pass", "reject", or "uncertain". Use reject for an obvious
+   wrong subject, collage/grid when one object was requested, or clear forbidden
+   structure. Use uncertain when the caption lacks enough detail.
+7. observed_forbidden must contain only violations explicitly evidenced by the
+   caption, never speculative ones.
+
+Return ONLY JSON:
+{{
+  "candidates": [
+    {{
+      "index": 1,
+      "semantic_score": 0.0,
+      "identity_confidence": 0.0,
+      "required_feature_coverage": 0.0,
+      "forbidden_feature_violation": 0.0,
+      "observed_forbidden": [],
+      "verdict": "uncertain",
+      "rationale": "brief evidence-based reason"
+    }}
+  ]
+}}
+Return exactly one result for every supplied candidate index.
+""".strip()
+
+    try:
+        response = (
+            _generate_response(prompt)
+            if app_config is None
+            else _generate_response(prompt, app_config=app_config)
+        )
+        if response.startswith("Error: "):
+            return {"available": False, "error": response}
+        payload = json.loads(_strip_code_fence(response))
+        raw = payload.get("candidates") if isinstance(payload, dict) else None
+        if not isinstance(raw, list):
+            return {
+                "available": False,
+                "error": "visual caption judge returned invalid candidates payload",
+            }
+
+        normalized = {}
+        expected = {row["index"] for row in rows}
+        for entry in raw:
+            if not isinstance(entry, dict):
+                continue
+            try:
+                index = int(entry.get("index"))
+            except (TypeError, ValueError):
+                continue
+            if index not in expected or index in normalized:
+                continue
+            normalized[index] = _normalize_visual_caption_judgment(entry)
+
+        if set(normalized) != expected:
+            return {
+                "available": False,
+                "error": "visual caption judge omitted or duplicated candidate indices",
+            }
+        return {"available": True, "candidates": normalized}
+    except Exception as exc:
+        logger.warning(
+            "visual caption semantic judge unavailable: "
+            f"error={type(exc).__name__}, detail={exc}"
+        )
+        return {
+            "available": False,
+            "error": f"{type(exc).__name__}: {exc}",
+        }
+
+
+def evaluate_precision_visual_caption(
+    *,
+    subject: str,
+    required_features: list[str],
+    forbidden_features: list[str],
+    visual_caption: str,
+    app_config=None,
+) -> dict:
+    """Single-caption wrapper used by bounded gross-scene QA."""
+    result = evaluate_precision_visual_captions_batch(
+        subject=subject,
+        required_features=required_features,
+        forbidden_features=forbidden_features,
+        candidates=[{"index": 1, "caption": visual_caption}],
+        app_config=app_config,
+    )
+    if not result.get("available"):
+        return {
+            "available": False,
+            "error": str(result.get("error") or "visual caption judge unavailable"),
+        }
+    candidate = (result.get("candidates") or {}).get(1)
+    if not isinstance(candidate, dict):
+        return {
+            "available": False,
+            "error": "visual caption judge did not return candidate 1",
+        }
+    return candidate
+
+
 def generate_image_prompts(
     video_subject: str,
     video_script: str,
