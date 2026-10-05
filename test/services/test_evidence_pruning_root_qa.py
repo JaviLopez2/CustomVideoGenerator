@@ -618,8 +618,8 @@ def test_temporal_failure_does_not_create_third_candidate_after_duplicate_retry(
     result = run(
         search_terms=["same instant photograph, clearer mid-development state"],
         scene_durations=[1], scene_routes=["precision"],
-        scene_subjects=["instant photograph"], scene_reference_targets=["output"],
-        scene_includes_primary_subject=[False], scene_continuity_keys=["photo_chain"],
+        scene_subjects=["instant photograph"], scene_reference_targets=["primary_subject"],
+        scene_includes_primary_subject=[True], scene_continuity_keys=["photo_chain"],
         scene_continuity_descriptions=["single instant photograph"],
         scene_temporal_progressions=[True],
         scene_temporal_states=["clearer shapes and emerging color"],
