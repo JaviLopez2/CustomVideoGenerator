@@ -222,7 +222,9 @@ openai_image_scene_diversity_repair_enabled = true
 # Risk-bounded visual QA. Only Standard evidence fallbacks and the first frame of
 # a continuity chain are captioned/judged for obvious semantic failure. A proven
 # gross mismatch gets one corrective retry; UNKNOWN/unavailable vision evidence
-# is recorded diagnostically but does not block generation.
+# is recorded diagnostically but does not block generation. This reuses the
+# existing Florence-2 precision-vision stack on CPU plus the configured text LLM;
+# no second image-generation model or extra GPU pass is introduced.
 openai_image_gross_semantic_qa_enabled = true
 openai_image_gross_semantic_retry_enabled = true
 
