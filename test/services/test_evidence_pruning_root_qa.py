@@ -204,6 +204,8 @@ def test_gross_semantic_assessment_flags_multiple_instances(monkeypatch):
 
 def test_gross_fallback_gets_one_retry_and_uses_recovery(pipeline, monkeypatch):
     run, diagnostics = pipeline
+    monkeypatch.setattr(material, "_gross_scene_semantic_qa_enabled", lambda: True)
+    monkeypatch.setattr(material, "_gross_scene_semantic_retry_enabled", lambda: True)
     generated = [item("wrong-person"), item("recovered-photo")]
     calls = []
 
@@ -252,6 +254,8 @@ def test_gross_fallback_gets_one_retry_and_uses_recovery(pipeline, monkeypatch):
 
 def test_continuity_root_is_not_frozen_until_gross_qa_passes(pipeline, monkeypatch):
     run, diagnostics = pipeline
+    monkeypatch.setattr(material, "_gross_scene_semantic_qa_enabled", lambda: True)
+    monkeypatch.setattr(material, "_gross_scene_semantic_retry_enabled", lambda: True)
     generated = [item("bad-root"), item("good-root"), item("later-stage")]
     calls = []
 
@@ -308,6 +312,8 @@ def test_continuity_root_is_not_frozen_until_gross_qa_passes(pipeline, monkeypat
 
 def test_persistent_gross_failure_fails_closed(pipeline, monkeypatch):
     run, diagnostics = pipeline
+    monkeypatch.setattr(material, "_gross_scene_semantic_qa_enabled", lambda: True)
+    monkeypatch.setattr(material, "_gross_scene_semantic_retry_enabled", lambda: True)
     calls = []
 
     def generate(**kwargs):
