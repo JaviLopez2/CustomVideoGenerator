@@ -1426,38 +1426,61 @@ def _reference_evidence_tokens(value: str) -> set[str]:
     return result
 
 
-def _reference_role_has_semantic_evidence(
+def _reference_role_semantic_coverage(
     inventory: list[dict],
     required_role: str,
     reference_query: str,
-) -> tuple[bool, str]:
+) -> dict:
+    """Return full/partial semantic coverage for one manual reference role."""
     candidates = [
         item
         for item in inventory
         if str(item.get("role") or "identity").strip().lower() == required_role
     ]
     if not candidates:
-        return False, f"manual reference inventory lacks required role {required_role!r}"
+        return {
+            "full": False,
+            "description": "",
+            "matched": set(),
+            "missing": set(),
+            "query_tokens": set(),
+            "reason": f"manual reference inventory lacks required role {required_role!r}",
+        }
 
-    # Whole-subject identity is established by the explicit identity role itself.
     if required_role == "identity":
-        return True, "manual reference inventory contains whole-subject identity evidence"
+        description = str(candidates[0].get("description") or "").strip()
+        return {
+            "full": True,
+            "description": description,
+            "matched": set(),
+            "missing": set(),
+            "query_tokens": set(),
+            "reason": "manual reference inventory contains whole-subject identity evidence",
+        }
 
     described = [
         item for item in candidates if str(item.get("description") or "").strip()
     ]
     if not described:
-        return (
-            False,
-            f"manual reference inventory has role {required_role!r} but no user description proving what that specialized reference shows",
-        )
+        return {
+            "full": False,
+            "description": "",
+            "matched": set(),
+            "missing": set(),
+            "query_tokens": set(),
+            "reason": f"manual reference inventory has role {required_role!r} but no user description proving what that specialized reference shows",
+        }
 
     query_tokens = _reference_evidence_tokens(reference_query)
     if not query_tokens:
-        return (
-            False,
-            f"specialized role {required_role!r} has descriptions but the scene provides no semantic reference_query to verify coverage",
-        )
+        return {
+            "full": False,
+            "description": "",
+            "matched": set(),
+            "missing": set(),
+            "query_tokens": set(),
+            "reason": f"specialized role {required_role!r} has descriptions but the scene provides no semantic reference_query to verify coverage",
+        }
 
     best_overlap: set[str] = set()
     best_description = ""
@@ -1468,17 +1491,52 @@ def _reference_role_has_semantic_evidence(
             best_overlap = overlap
             best_description = description
 
-    # A shared topic or viewpoint is not evidence for the other concepts in the
-    # query. One described reference must support the complete specialized query.
-    if best_overlap == query_tokens:
-        return (
-            True,
-            f"manual {required_role!r} evidence semantically matches the scene query via {sorted(best_overlap)!r}: {best_description!r}",
-        )
-    return (
-        False,
-        f"manual {required_role!r} references: none of their user descriptions cover all query concepts; missing {sorted(query_tokens - best_overlap)!r}; matched {sorted(best_overlap)!r}",
+    missing = query_tokens - best_overlap
+    full = bool(best_overlap == query_tokens)
+    reason = (
+        f"manual {required_role!r} evidence semantically matches the scene query via {sorted(best_overlap)!r}: {best_description!r}"
+        if full
+        else f"manual {required_role!r} references: none of their user descriptions cover all query concepts; missing {sorted(missing)!r}; matched {sorted(best_overlap)!r}"
     )
+    return {
+        "full": full,
+        "description": best_description,
+        "matched": best_overlap,
+        "missing": missing,
+        "query_tokens": query_tokens,
+        "reason": reason,
+    }
+
+
+def _reference_role_has_semantic_evidence(
+    inventory: list[dict],
+    required_role: str,
+    reference_query: str,
+) -> tuple[bool, str]:
+    coverage = _reference_role_semantic_coverage(
+        inventory, required_role, reference_query
+    )
+    return bool(coverage["full"]), str(coverage["reason"])
+
+
+def _feature_supported_by_reference_description(feature: str, description: str) -> bool:
+    tokens = _reference_evidence_tokens(feature)
+    evidence_tokens = _reference_evidence_tokens(description)
+    return bool(tokens) and tokens.issubset(evidence_tokens)
+
+
+def _fallback_subject_is_usable(value: str) -> bool:
+    text = " ".join(str(value or "").strip().split())
+    if not text or _observable_subject_is_ambiguous(text):
+        return False
+    if text.casefold() in {
+        "narration-grounded exterior context",
+        "externally visible result or context",
+        "observable subject",
+        "exterior context",
+    }:
+        return False
+    return not bool(_scene_hidden_evidence_signals({"scene_description": text}))
 
 
 def _scene_continuity_tokens(item: dict) -> set[str]:
@@ -2202,12 +2260,13 @@ Return ONLY a valid JSON array containing exactly {amount} objects. Every object
 - "includes_primary_subject": JSON boolean; true whenever the actual whole primary referenced entity is visibly present, even if the scene focus/reference_target is an output or secondary entity
 - "safe_visual_alternative": concise externally supported or contextual scene description to use if requested specialized evidence is unavailable
 - "observable_subject": shortest UNAMBIGUOUS externally observable entity span copied VERBATIM from this scene's narration, in its original language; empty if unavailable. Exclude internal parts and inferred geometry. Never return a bare ambiguous noun such as "sheet", "leaf", "part", "object", "hoja", "parte" or "objeto" when the narration gives a more specific entity.
+- "observable_subject_visual": concise unambiguous ENGLISH visual name for observable_subject; empty when observable_subject is empty. It is a translation/visual naming field only and must add no unsupported parts, actions or mechanisms.
 - "observable_state": short visible appearance/result/progression span copied VERBATIM from this scene's narration; empty if unavailable. Exclude mechanisms, hidden causes, chemical reactions and unsupported actions.
 - "visual_state": concise ENGLISH visual description of observable_state, containing no extra facts or causes; empty when observable_state is empty.
 - "observable_result": externally observable output/entity span copied VERBATIM from narration, separate from the unsupported explanation of its cause; empty if unavailable.
 - "observable_result_visual": concise unambiguous ENGLISH name for observable_result; empty when observable_result is empty.
 - "observable_context": short externally observable surroundings span copied VERBATIM from narration; empty if unavailable. Preserve observable fields during audit independently of safe_visual_alternative.
-All model-facing descriptive fields (subject, canonical_subject, scene_description, environment, composition, lighting, visual_state and observable_result_visual) MUST be English. Only exact text intended to appear inside the image may remain in another language.
+All model-facing descriptive fields (subject, canonical_subject, scene_description, environment, composition, lighting, observable_subject_visual, visual_state and observable_result_visual) MUST be English. Only exact text intended to appear inside the image may remain in another language.
 - "continuity_key": short stable id shared only by scenes that show the same physical instance/output evolving over time; otherwise "none"
 - "continuity_description": when continuity_key is not "none", one exact stable English description of the underlying object's/content's identity that MUST remain unchanged across those scenes
 - "temporal_progression": boolean, true only for a narrated monotonic progression of the same target. Put each scene's concrete visible state in observable_state, copied from narration. Keep the initial state genuinely initial; do not borrow later clarity/completeness. State belongs outside continuity_description, which describes only stable content/identity.
@@ -2351,7 +2410,7 @@ Return exactly {amount} objects and nothing else.
                       "When evidence is unavailable, redesign the scene around an observable consequence, before/after, "
                       "external behavior or context so that the resulting scene is covered; do not merely preserve the "
                       "unsupported hidden scene and label an alternative. Keep subject, canonical_subject, scene_description, "
-                      "environment, composition, lighting, visual_state and observable_result_visual in English even when the "
+                      "environment, composition, lighting, observable_subject_visual, visual_state and observable_result_visual in English even when the "
                       "narration is not English; observable_* source spans remain verbatim for grounding only. Preserve narration "
                       "meaning, timing, diversity and sequence; do not add new mechanical, chemical, biological or branded facts."
                 )
@@ -2523,132 +2582,251 @@ Return exactly {amount} objects and nothing else.
                 environment_key_source = str(item.get("environment_key") or "context")
                 composition_key_source = str(item.get("composition_key") or shot_type)
                 reference_need = requested_reference_need
+                reference_query = str(item.get("reference_query") or "").strip()
                 planner_validation = "pass"
 
-                # Deterministic coverage gate: if the audited plan is still
-                # unsupported, discard rejected visual directions. Independently
-                # grounded exterior semantics may survive without the mechanism.
+                # Deterministic coverage gate. Prefer pruning an unsupported
+                # specialized request down to what the manual evidence actually proves.
+                # If nothing useful survives, reuse a recently established visible
+                # entity/result instead of sending an abstract placeholder to the image model.
                 if coverage_status == "unsupported":
                     planner_validation = "coverage_fallback"
-                    # Preserve relevance only through independently covered identity,
-                    # never through fields from this rejected scene. The manual pack
-                    # describes the primary subject, not an output or secondary entity.
-                    context_identity = next((previous for previous in reversed(result)
+                    context_identity = next((
+                        previous for previous in reversed(result)
                         if previous["coverage_status"] == "covered"
                         and previous["reference_target"] == "primary_subject"
-                        and previous["reference_need"] == "identity"
                         and previous["evidence_scope"] == "externally_visible"
-                    ), None)
-                    fallback_identity = (
-                        context_identity if reference_target == "primary_subject" else None
-                    )
-                    # An LLM-labelled 'safe' alternative shares the rejected plan's
-                    # provenance. It is not evidence and must not bypass this gate.
-                    scene_description = (
-                        "A quiet documentary exterior view grounded in the narration. "
-                        "The frame has no cutaway, transparent housing or exposed internal mechanism."
-                    )
-                    safe_visual_alternative = scene_description
-                    subject = "narration-grounded exterior context"
-                    canonical_subject = subject
-                    observable_subject = _narrated_observable_fragment(
-                        item.get("observable_subject"), narration
-                    ) or _narrated_observable_fragment(item.get("canonical_subject"), narration)
-                    if _observable_subject_is_ambiguous(observable_subject):
-                        observable_subject = ""
-                    observable_state = _narrated_observable_fragment(
-                        item.get("observable_state"), narration, state=True
-                    ) if observable_subject else ""
-                    observable_result = _narrated_observable_fragment(
-                        item.get("observable_result"), narration
-                    )
-                    observable_result_visual = " ".join(
-                        str(item.get("observable_result_visual") or "").strip().split()
-                    )
-                    if _observable_subject_is_ambiguous(observable_result_visual or observable_result):
-                        observable_result = ""
-                    observable_context = _narrated_observable_fragment(
-                        item.get("observable_context"), narration, state=True
-                    )
-                    if observable_result:
-                        observable_subject = (
-                            observable_result_visual
-                            if observable_result_visual
-                            else observable_result
+                        and previous.get("includes_primary_subject")
+                        and (
+                            previous.get("reference_need") == "identity"
+                            or previous.get("reference_critical")
+                            or previous.get("route") == "precision"
                         )
+                    ), None)
+                    previous_visible = next((
+                        previous for previous in reversed(result[-2:])
+                        if previous.get("evidence_scope") == "externally_visible"
+                        and _fallback_subject_is_usable(previous.get("canonical_subject"))
+                        and previous.get("reference_target") in {
+                            "primary_subject", "output", "secondary_subject"
+                        }
+                    ), None)
+
+                    partial_evidence = None
+                    if (
+                        reference_target == "primary_subject"
+                        and requested_reference_need in {"detail", "internal", "context"}
+                    ):
+                        role = (
+                            "internal" if requested_reference_need == "internal"
+                            else "context" if requested_reference_need == "context"
+                            else "detail"
+                        )
+                        candidate = _reference_role_semantic_coverage(
+                            reference_inventory,
+                            role,
+                            reference_query,
+                        )
+                        query_tokens = candidate.get("query_tokens") or set()
+                        matched_tokens = candidate.get("matched") or set()
+                        overlap_ratio = (
+                            len(matched_tokens) / len(query_tokens)
+                            if query_tokens else 0.0
+                        )
+                        if (
+                            candidate.get("description")
+                            and len(matched_tokens) >= 2
+                            and overlap_ratio >= 0.40
+                        ):
+                            partial_evidence = candidate
+
+                    if partial_evidence is not None:
+                        evidence_description = str(
+                            partial_evidence.get("description") or ""
+                        ).strip()
+                        base_subject = (
+                            context_identity.get("canonical_subject")
+                            if context_identity is not None
+                            else canonical_subject
+                        )
+                        if not _fallback_subject_is_usable(base_subject):
+                            base_subject = subject
+                        if not _fallback_subject_is_usable(base_subject):
+                            base_subject = "the referenced primary subject"
+                        subject = canonical_subject = base_subject
+                        scene_description = (
+                            f"A factual documentary close view of {evidence_description}"
+                        )
+                        required_features = [
+                            feature for feature in required_features
+                            if _feature_supported_by_reference_description(
+                                feature, evidence_description
+                            )
+                        ]
+                        forbidden_features = []
+                        environment = "a simple neutral documentary setting"
+                        composition = (
+                            "close framing on the described visible detail at natural scale"
+                        )
+                        lighting = "soft natural documentary lighting"
+                        environment_key_source = "evidence_pruned"
+                        composition_key_source = "evidence_pruned_detail"
+                        reference_need = requested_reference_need
+                        reference_target = "primary_subject"
+                        reference_query = evidence_description
+                        evidence_scope = (
+                            "hidden_internal"
+                            if requested_reference_need == "internal"
+                            else "specialized_visible"
+                        )
+                        reference_critical = True
+                        includes_primary_subject = False
+                        route = "precision"
+                        shot_type = "detail"
+                        framing_intent = "detail"
+                        continuity_key = "none"
+                        continuity_description = ""
+                        planner_validation = "coverage_pruned"
+                        coverage_status = "covered"
+                        coverage_reason = (
+                            str(partial_evidence.get("reason") or coverage_reason)
+                            + "; unsupported concepts were pruned and only user-described evidence was retained"
+                        )
+                        safe_visual_alternative = scene_description
+                        logger.warning(
+                            "scene-plan coverage gate pruned unsupported concepts to manual evidence: "
+                            f"scene={index + 1}, requested_need={requested_reference_need!r}, "
+                            f"retained={evidence_description!r}"
+                        )
+                    else:
+                        scene_description = (
+                            "A quiet documentary exterior view grounded in the narration. "
+                            "The frame has no cutaway, transparent housing or exposed internal mechanism."
+                        )
+                        safe_visual_alternative = scene_description
+                        subject = "narration-grounded exterior context"
+                        canonical_subject = subject
+                        observable_subject = _narrated_observable_fragment(
+                            item.get("observable_subject"), narration
+                        ) or _narrated_observable_fragment(item.get("canonical_subject"), narration)
+                        if _observable_subject_is_ambiguous(observable_subject):
+                            observable_subject = ""
+                        observable_subject_visual = " ".join(
+                            str(item.get("observable_subject_visual") or "").strip().split()
+                        )
+                        if (
+                            observable_subject_visual
+                            and (
+                                _observable_subject_is_ambiguous(observable_subject_visual)
+                                or _scene_hidden_evidence_signals(
+                                    {"scene_description": observable_subject_visual}
+                                )
+                            )
+                        ):
+                            observable_subject_visual = ""
                         observable_state = _narrated_observable_fragment(
                             item.get("observable_state"), narration, state=True
+                        ) if observable_subject else ""
+                        observable_result = _narrated_observable_fragment(
+                            item.get("observable_result"), narration
                         )
-                        # The visible consequence is a different target from the
-                        # mechanism's primary identity; do not replace it again.
-                        fallback_identity = None
-                    elif not observable_subject and context_identity is not None:
-                        # If the only nominated observable is an ambiguous bare noun,
-                        # prefer a known factual exterior context over inventing a
-                        # semantically unrelated object (e.g. sheet -> tree leaf).
-                        fallback_identity = context_identity
-                    required_features = []
-                    forbidden_features = []
-                    environment = "a simple narration-grounded setting"
-                    composition = "the exterior context is clearly framed at natural physical scale"
-                    lighting = "natural documentary lighting"
-                    environment_key_source = "coverage_safe_context"
-                    composition_key_source = "coverage_safe_context"
-                    shot_type = "context"
-                    framing_intent = "context"
-                    reference_need = "none"
-                    reference_target = "none"
-                    evidence_scope = "contextual"
-                    continuity_key = "none"
-                    continuity_description = ""
-                    includes_primary_subject = False
-                    reference_critical = False
-                    route = "standard"
-                    identity_hint = ""
-                    if observable_subject:
-                        subject = canonical_subject = observable_subject
-                        scene_description = f"A clear documentary view of {subject}."
-                        visual_state = " ".join(str(item.get("visual_state") or "").strip().split())
-                        # A translation cannot reinstate a rejected/unavailable
-                        # grounding span or add hidden mechanisms of its own.
-                        safe_visual_state = _narrated_observable_fragment(
-                            visual_state, visual_state, state=True
-                        ) if observable_state else ""
-                        visible_state_text = safe_visual_state or observable_state
-                        if visible_state_text:
-                            scene_description += f" Its visible state is {visible_state_text}."
+                        observable_result_visual = " ".join(
+                            str(item.get("observable_result_visual") or "").strip().split()
+                        )
+                        if _observable_subject_is_ambiguous(
+                            observable_result_visual or observable_result
+                        ):
+                            observable_result = ""
+                            observable_result_visual = ""
+                        observable_context = _narrated_observable_fragment(
+                            item.get("observable_context"), narration, state=True
+                        )
+
+                        visual_subject = ""
+                        if observable_result and observable_result_visual:
+                            visual_subject = observable_result_visual
+                        elif observable_subject and observable_subject_visual:
+                            visual_subject = observable_subject_visual
+
+                        required_features = []
+                        forbidden_features = []
                         environment = "a simple narration-grounded setting"
-                        composition = "the observable subject is clear at natural physical scale"
-                        reference_target = _normalize_scene_enum(
-                            item.get("reference_target"), _SCENE_REFERENCE_TARGETS, "none"
+                        composition = "the exterior context is clearly framed at natural physical scale"
+                        lighting = "natural documentary lighting"
+                        environment_key_source = "coverage_safe_context"
+                        composition_key_source = "coverage_safe_context"
+                        shot_type = "context"
+                        framing_intent = "context"
+                        reference_need = "none"
+                        reference_target = "none"
+                        evidence_scope = "contextual"
+                        continuity_key = "none"
+                        continuity_description = ""
+                        includes_primary_subject = False
+                        reference_critical = False
+                        route = "standard"
+                        identity_hint = ""
+
+                        if visual_subject:
+                            subject = canonical_subject = visual_subject
+                            scene_description = f"A clear documentary view of {subject}."
+                            visual_state = " ".join(
+                                str(item.get("visual_state") or "").strip().split()
+                            )
+                            safe_visual_state = (
+                                _narrated_observable_fragment(
+                                    visual_state, visual_state, state=True
+                                )
+                                if observable_state else ""
+                            )
+                            if safe_visual_state:
+                                scene_description += (
+                                    f" Its visible state is {safe_visual_state}."
+                                )
+                            composition = (
+                                "the observable subject is clear at natural physical scale"
+                            )
+                            reference_target = (
+                                "output" if observable_result else _normalize_scene_enum(
+                                    item.get("reference_target"),
+                                    _SCENE_REFERENCE_TARGETS,
+                                    "none",
+                                )
+                            )
+                            if observable_context:
+                                environment = observable_context
+                            evidence_scope = "externally_visible"
+                        else:
+                            fallback_visible = previous_visible or context_identity
+                            if fallback_visible is not None:
+                                subject = fallback_visible["canonical_subject"]
+                                canonical_subject = subject
+                                scene_description = (
+                                    f"A clear documentary view of {subject} in its established visible exterior state."
+                                )
+                                evidence_scope = "externally_visible"
+                                reference_target = fallback_visible.get(
+                                    "reference_target", "none"
+                                )
+                                if reference_target == "primary_subject":
+                                    reference_need = "identity"
+                                    includes_primary_subject = True
+                                    reference_critical = True
+                                    route = "precision"
+                                    shot_type = "full"
+                                    framing_intent = "full_subject"
+                                else:
+                                    reference_need = "none"
+                                    route = "standard"
+                                    shot_type = "medium"
+                                    framing_intent = "medium_subject"
+
+                        safe_visual_alternative = scene_description
+                        logger.warning(
+                            "scene-plan coverage gate hard-sanitized unsupported evidence before GPU generation: "
+                            f"scene={index + 1}, requested_need={requested_reference_need!r}, "
+                            f"reason={coverage_reason!r}"
                         )
-                        if observable_result:
-                            reference_target = "output"
-                        if observable_context:
-                            environment = observable_context
-                        evidence_scope = "externally_visible"
-                    if fallback_identity is not None:
-                        subject = fallback_identity["subject"]
-                        canonical_subject = subject
-                        scene_description = (
-                            f"A clear documentary view of the closed exterior of {subject}."
-                            + (f" Its visible state is {observable_state}."
-                               if observable_state and subject.casefold() == observable_subject.casefold() else "")
-                        )
-                        evidence_scope = "externally_visible"
-                        reference_need = "identity"
-                        reference_target = "primary_subject"
-                        includes_primary_subject = True
-                        reference_critical = True
-                        route = "precision"
-                        shot_type = "full"
-                        framing_intent = "full_subject"
-                    safe_visual_alternative = scene_description
-                    logger.warning(
-                        "scene-plan coverage gate hard-sanitized unsupported evidence before GPU generation: "
-                        f"scene={index + 1}, requested_need={requested_reference_need!r}, "
-                        f"reason={coverage_reason!r}"
-                    )
 
                 environment_key = re.sub(
                     r"[^a-z0-9_]+",
@@ -2735,7 +2913,10 @@ Return exactly {amount} objects and nothing else.
                     "reference_need": reference_need,
                     "requested_reference_need": requested_reference_need,
                     "reference_target": reference_target,
-                    "reference_query": "" if coverage_status == "unsupported" else clean_image_text(item.get("reference_query"), internal_values),
+                    "reference_query": (
+                        "" if coverage_status == "unsupported"
+                        else clean_image_text(reference_query, internal_values)
+                    ),
                     "evidence_scope": evidence_scope,
                     "reference_critical": reference_critical,
                     "includes_primary_subject": includes_primary_subject,
