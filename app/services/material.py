@@ -5658,6 +5658,114 @@ def _gross_scene_semantic_retry_enabled() -> bool:
     return bool(value)
 
 
+def _temporal_semantic_qa_enabled() -> bool:
+    value = config.app.get("openai_image_temporal_semantic_qa_enabled", True)
+    if isinstance(value, str):
+        return value.strip().lower() not in {"0", "false", "no", "off"}
+    return bool(value)
+
+
+def _temporal_semantic_retry_enabled() -> bool:
+    value = config.app.get("openai_image_temporal_semantic_retry_enabled", True)
+    if isinstance(value, str):
+        return value.strip().lower() not in {"0", "false", "no", "off"}
+    return bool(value)
+
+
+def _scene_temporal_semantic_assessment(
+    candidate: MaterialInfo,
+    *,
+    subject: str,
+    requested_state: str,
+    previous_state: str = "",
+    previous_caption: str = "",
+) -> dict[str, Any]:
+    """Check visible continuity state/progression with Florence + the text LLM."""
+    if not _temporal_semantic_qa_enabled():
+        return {
+            "available": False,
+            "status": "disabled",
+            "temporal_failure": False,
+            "reason": "temporal semantic QA disabled",
+        }
+
+    caption, florence_info = _precision_florence_caption(candidate.url, bbox=None)
+    if not caption:
+        return {
+            "available": False,
+            "status": "unavailable",
+            "temporal_failure": False,
+            "reason": "Florence-2 could not produce a temporal caption",
+            "florence": florence_info,
+        }
+    try:
+        from app.services import llm as llm_service
+        judgment = llm_service.evaluate_precision_temporal_caption(
+            subject=subject,
+            requested_state=requested_state,
+            visual_caption=caption,
+            previous_state=previous_state,
+            previous_caption=previous_caption,
+        )
+    except BaseException as exc:
+        judgment = {"available": False, "error": f"{type(exc).__name__}: {exc}"}
+
+    if not judgment.get("available"):
+        return {
+            "available": False,
+            "status": "unavailable",
+            "temporal_failure": False,
+            "reason": str(judgment.get("error") or "temporal text judgment unavailable"),
+            "caption": caption[:1500],
+            "florence": florence_info,
+        }
+    try:
+        state_score = max(0.0, min(1.0, float(judgment.get("state_score", 0.0) or 0.0)))
+    except (TypeError, ValueError):
+        state_score = 0.0
+    try:
+        progression_score = max(0.0, min(1.0, float(judgment.get("progression_score", 0.0) or 0.0)))
+    except (TypeError, ValueError):
+        progression_score = 0.0
+    verdict = str(judgment.get("verdict") or "uncertain").strip().lower()
+    temporal_failure = verdict == "reject"
+    status = "temporal_failure" if temporal_failure else ("uncertain" if verdict == "uncertain" else "pass")
+    return {
+        "available": True,
+        "status": status,
+        "temporal_failure": temporal_failure,
+        "reason": str(judgment.get("rationale") or "").strip() or (
+            "temporal state/progression rejected" if temporal_failure else "temporal state not rejected"
+        ),
+        "caption": caption[:1500],
+        "state_score": round(state_score, 4),
+        "progression_score": round(progression_score, 4),
+        "verdict": verdict,
+        "previous_caption_available": bool(previous_caption),
+    }
+
+
+def _temporal_scene_retry_prompt(
+    prompt: str,
+    *,
+    requested_state: str,
+    previous_state: str = "",
+) -> str:
+    state = str(requested_state or "current narrated visible state").strip()
+    previous = str(previous_state or "").strip()
+    comparison = (
+        f" Compared with the previous narrated state ({previous}), visibly advance only as far as the current narration requires."
+        if previous
+        else " Render this as the correct current stage, not as a later or already-final state."
+    )
+    return (
+        prompt.rstrip(" .")
+        + f". CORRECTION: the same continuity target must visibly match this current state: {state}."
+        + comparison
+        + " Change the target's visible progression itself; a different crop, camera angle or background is not sufficient."
+    )
+
+
 def _scene_requires_single_instance(
     continuity_description: str,
     prompt: str,
@@ -7039,6 +7147,8 @@ def _download_videos_openai_image_on_demand(
     scene_includes_primary_subject: list[bool] | None = None,
     scene_continuity_keys: list[str] | None = None,
     scene_continuity_descriptions: list[str] | None = None,
+    scene_temporal_progressions: list[bool] | None = None,
+    scene_temporal_states: list[str] | None = None,
     scene_coverage_statuses: list[str] | None = None,
     scene_coverage_reasons: list[str] | None = None,
     scene_composition_keys: list[str] | None = None,
@@ -7130,6 +7240,8 @@ def _download_videos_openai_image_on_demand(
         ("includes-primary-subject", scene_includes_primary_subject),
         ("continuity-keys", scene_continuity_keys),
         ("continuity-descriptions", scene_continuity_descriptions),
+        ("temporal-progressions", scene_temporal_progressions),
+        ("temporal-states", scene_temporal_states),
         ("coverage-statuses", scene_coverage_statuses),
         ("coverage-reasons", scene_coverage_reasons),
         ("composition-keys", scene_composition_keys),
@@ -7158,6 +7270,8 @@ def _download_videos_openai_image_on_demand(
     continuity_root_images: dict[str, str] = {}
     continuity_root_scenes: dict[str, int] = {}
     continuity_root_includes_primary: dict[str, bool] = {}
+    continuity_last_temporal_captions: dict[str, str] = {}
+    continuity_last_temporal_states: dict[str, str] = {}
     for scene_index, search_term in enumerate(search_terms):
         if semantic_timing:
             try:
@@ -7276,6 +7390,18 @@ def _download_videos_openai_image_on_demand(
             str(scene_continuity_descriptions[scene_index] or "").strip()
             if scene_continuity_descriptions is not None
             and scene_index < len(scene_continuity_descriptions)
+            else ""
+        )
+        temporal_progression = bool(
+            scene_temporal_progressions[scene_index]
+            if scene_temporal_progressions is not None
+            and scene_index < len(scene_temporal_progressions)
+            else False
+        )
+        temporal_state = (
+            str(scene_temporal_states[scene_index] or "").strip()
+            if scene_temporal_states is not None
+            and scene_index < len(scene_temporal_states)
             else ""
         )
         continuity_chain_enabled = _continuity_edit_chain_enabled()
@@ -7461,6 +7587,8 @@ def _download_videos_openai_image_on_demand(
                 "continuity_key": continuity_key,
                 "continuity_description": continuity_description,
                 "continuity_source_scene": continuity_source_scene,
+                "temporal_progression": temporal_progression,
+                "temporal_state": temporal_state,
                 "coverage_status": coverage_status,
                 "coverage_reason": coverage_reason,
                 "composition_key": composition_key,
@@ -8078,6 +8206,7 @@ def _download_videos_openai_image_on_demand(
         # real benchmarks: evidence fallbacks that become unrelated scenes, and the
         # first frame of a continuity chain becoming a bad root. It runs on these
         # risky transitions only (Standard or Precision), never on every image.
+        gross_retry_used = False
         gross_qa_risky = bool(
             items
             and _gross_scene_semantic_qa_enabled()
@@ -8125,6 +8254,7 @@ def _download_videos_openai_image_on_demand(
                     subject=reference_subject,
                     require_single=require_single,
                 )
+                gross_retry_used = True
                 retry_items = generate_images_openai(
                     search_term=retry_prompt,
                     minimum_duration=max(1, math.ceil(desired_duration)),
@@ -8220,6 +8350,156 @@ def _download_videos_openai_image_on_demand(
             # Keep the captioner resident across adjacent risky scenes. The batch
             # cleanup at the end of this material pass releases it once, avoiding
             # repeated model loads during S3/S4/S5/root-style sequences.
+
+        # Semantic state QA for narrated monotonic continuity. Unlike dHash, this
+        # checks whether the target itself is visibly at the requested early/mid/
+        # final stage. It shares the existing one-correction budget: if duplicate
+        # or gross QA already spent that retry, a proven temporal failure fails
+        # closed instead of generating a third candidate.
+        temporal_qa_risky = bool(
+            items
+            and _temporal_semantic_qa_enabled()
+            and temporal_progression
+            and continuity_key not in {"", "none"}
+            and temporal_state
+        )
+        if temporal_qa_risky:
+            previous_temporal_caption = continuity_last_temporal_captions.get(
+                continuity_key, ""
+            )
+            previous_temporal_state = continuity_last_temporal_states.get(
+                continuity_key, ""
+            )
+            temporal_qa = _scene_temporal_semantic_assessment(
+                items[0],
+                subject=reference_subject or "continuity target",
+                requested_state=temporal_state,
+                previous_state=previous_temporal_state,
+                previous_caption=previous_temporal_caption,
+            )
+            temporal_record: dict[str, Any] = {
+                "trigger": "temporal_progression",
+                "requested_state": temporal_state,
+                "previous_state": previous_temporal_state,
+                "original": _precision_diagnostics_json_safe(temporal_qa),
+                "selected_candidate": "original",
+            }
+            selected_temporal_qa = temporal_qa
+            prior_duplicate_retry = bool(
+                isinstance(items[0].source_info, dict)
+                and items[0].source_info.get("corrective_retry_selection")
+            )
+            retry_budget_spent = bool(gross_retry_used or prior_duplicate_retry)
+
+            if temporal_qa.get("temporal_failure"):
+                if _temporal_semantic_retry_enabled() and not retry_budget_spent:
+                    retry_prompt = _temporal_scene_retry_prompt(
+                        search_term,
+                        requested_state=temporal_state,
+                        previous_state=previous_temporal_state,
+                    )
+                    retry_items = generate_images_openai(
+                        search_term=retry_prompt,
+                        minimum_duration=max(1, math.ceil(desired_duration)),
+                        video_aspect=video_aspect,
+                        save_dir=material_directory,
+                        route=route,
+                        model_override=scene_model,
+                        reference_image=reference_image,
+                        reference_images=reference_images,
+                        reference_info=reference_info,
+                        reference_subject=reference_subject,
+                        forbidden_features=forbidden_features,
+                    )
+                    retry_item = retry_items[0] if retry_items else None
+                    retry_assessment = {
+                        "available": False,
+                        "status": "unavailable",
+                        "temporal_failure": True,
+                        "reason": "temporal corrective generation returned no valid image",
+                    }
+                    if retry_item is not None:
+                        image_size = _openai_image_size(
+                            video_aspect, route=route, model=scene_model
+                        )
+                        valid, retry_validation = _validate_generated_image_basic(
+                            retry_item.url, image_size
+                        )
+                        if valid:
+                            retry_assessment = _scene_temporal_semantic_assessment(
+                                retry_item,
+                                subject=reference_subject or "continuity target",
+                                requested_state=temporal_state,
+                                previous_state=previous_temporal_state,
+                                previous_caption=previous_temporal_caption,
+                            )
+                        else:
+                            retry_assessment = {
+                                "available": True,
+                                "status": "technical_failure",
+                                "temporal_failure": True,
+                                "reason": retry_validation,
+                            }
+                    temporal_record["retry"] = _precision_diagnostics_json_safe(
+                        retry_assessment
+                    )
+                    if (
+                        retry_item is not None
+                        and retry_assessment.get("available")
+                        and retry_assessment.get("status") == "pass"
+                        and not retry_assessment.get("temporal_failure", True)
+                    ):
+                        items = [retry_item]
+                        selected_temporal_qa = retry_assessment
+                        temporal_record["selected_candidate"] = "retry"
+                        if not isinstance(retry_item.source_info, dict):
+                            retry_item.source_info = {}
+                        retry_item.source_info["temporal_corrective_retry"] = True
+                        logger.info(
+                            "temporal semantic corrective retry accepted: "
+                            f"scene={scene_index + 1}, image={Path(retry_item.url).name!r}"
+                        )
+                    else:
+                        temporal_record["selected_candidate"] = "none"
+                        temporal_record["status"] = "persistent_temporal_failure"
+                        items = []
+                        logger.error(
+                            "temporal semantic failure was not repaired by a verified retry: "
+                            f"scene={scene_index + 1}, state={temporal_state!r}"
+                        )
+                else:
+                    temporal_record["selected_candidate"] = "none"
+                    temporal_record["status"] = (
+                        "temporal_retry_budget_exhausted"
+                        if retry_budget_spent
+                        else "temporal_retry_disabled"
+                    )
+                    items = []
+                    logger.error(
+                        "temporal semantic failure detected with no corrective retry available: "
+                        f"scene={scene_index + 1}, state={temporal_state!r}, "
+                        f"retry_budget_spent={retry_budget_spent}"
+                    )
+
+            if items and selected_temporal_qa.get("caption"):
+                continuity_last_temporal_captions[continuity_key] = str(
+                    selected_temporal_qa.get("caption") or ""
+                )
+                continuity_last_temporal_states[continuity_key] = temporal_state
+
+            if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
+                precision_diagnostics["plan_scenes"][scene_index][
+                    "temporal_semantic_qa"
+                ] = _precision_diagnostics_json_safe(temporal_record)
+            if precision_scene_diagnostic is not None:
+                precision_scene_diagnostic["temporal_semantic_qa"] = (
+                    _precision_diagnostics_json_safe(temporal_record)
+                )
+                if items:
+                    precision_scene_diagnostic["selected_after_temporal_semantic_qa"] = (
+                        Path(items[0].url).name
+                    )
+            _precision_diagnostics_persist(task_id, precision_diagnostics)
 
         # Full-scene single-pass strategy:
         # - standard scenes continue to define the video's color/style anchor;
@@ -8533,6 +8813,8 @@ def download_videos(
     scene_includes_primary_subject: list[bool] | None = None,
     scene_continuity_keys: list[str] | None = None,
     scene_continuity_descriptions: list[str] | None = None,
+    scene_temporal_progressions: list[bool] | None = None,
+    scene_temporal_states: list[str] | None = None,
     scene_coverage_statuses: list[str] | None = None,
     scene_coverage_reasons: list[str] | None = None,
     scene_composition_keys: list[str] | None = None,
@@ -8643,6 +8925,8 @@ def download_videos(
             scene_includes_primary_subject=scene_includes_primary_subject,
             scene_continuity_keys=scene_continuity_keys,
             scene_continuity_descriptions=scene_continuity_descriptions,
+            scene_temporal_progressions=scene_temporal_progressions,
+            scene_temporal_states=scene_temporal_states,
             scene_coverage_statuses=scene_coverage_statuses,
             scene_coverage_reasons=scene_coverage_reasons,
             scene_composition_keys=scene_composition_keys,
