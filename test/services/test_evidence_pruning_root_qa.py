@@ -176,6 +176,11 @@ def test_gross_fallback_gets_one_retry_and_uses_recovery(pipeline, monkeypatch):
     ])
     monkeypatch.setattr(material, "generate_images_openai", generate)
     monkeypatch.setattr(
+        material,
+        "_near_duplicate_assessment",
+        lambda *a, **kw: {"actionable": False, "best_similarity": 0.3},
+    )
+    monkeypatch.setattr(
         material, "_scene_gross_semantic_assessment", lambda *a, **kw: next(assessments)
     )
 
@@ -218,6 +223,11 @@ def test_continuity_root_is_not_frozen_until_gross_qa_passes(pipeline, monkeypat
         },
     ])
     monkeypatch.setattr(material, "generate_images_openai", generate)
+    monkeypatch.setattr(
+        material,
+        "_near_duplicate_assessment",
+        lambda *a, **kw: {"actionable": False, "best_similarity": 0.3},
+    )
     monkeypatch.setattr(
         material, "_scene_gross_semantic_assessment", lambda *a, **kw: next(assessments)
     )
