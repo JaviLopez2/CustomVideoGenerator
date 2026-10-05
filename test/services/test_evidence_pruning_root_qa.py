@@ -172,6 +172,56 @@ def test_multiple_root_is_rejected_even_if_text_judge_is_unavailable(monkeypatch
     assert result["status"] == "gross_failure"
 
 
+def test_continuity_description_drops_temporal_stage_language():
+    rows = [
+        {
+            "subject": "SX-70 instant photo sheet",
+            "canonical_subject": "SX-70 instant photo sheet",
+            "scene_description": "An early instant photograph with faint visible detail.",
+            "observable_state": "faint visible detail",
+            "visual_state": "faint visible detail",
+            "reference_need": "none",
+            "reference_target": "output",
+            "evidence_scope": "externally_visible",
+            "route": "standard",
+            "continuity_key": "photo_chain",
+            "continuity_description": (
+                "single SX-70 instant photo sheet undergoing development stages"
+            ),
+            "temporal_progression": True,
+        },
+        {
+            "subject": "SX-70 instant photo sheet",
+            "canonical_subject": "SX-70 instant photo sheet",
+            "scene_description": "The same photograph has clearer visible detail.",
+            "observable_state": "clearer visible detail",
+            "visual_state": "clearer visible detail",
+            "reference_need": "none",
+            "reference_target": "output",
+            "evidence_scope": "externally_visible",
+            "route": "standard",
+            "continuity_key": "photo_chain",
+            "continuity_description": (
+                "single SX-70 instant photo sheet undergoing development stages"
+            ),
+            "temporal_progression": True,
+        },
+    ]
+    scenes = make_plan(
+        rows,
+        [
+            "The SX-70 instant photo sheet has faint visible detail.",
+            "The same SX-70 instant photo sheet has clearer visible detail.",
+        ],
+        [{"role": "identity", "description": "whole Polaroid SX-70"}],
+    )
+    expected = "the same single SX-70 instant photo sheet"
+    assert scenes[0]["continuity_description"] == expected
+    assert scenes[1]["continuity_description"] == expected
+    assert "development stages" not in scenes[0]["prompt"].lower()
+    assert "development stages" not in scenes[1]["prompt"].lower()
+
+
 def test_gross_semantic_assessment_flags_multiple_instances(monkeypatch):
     candidate = item("grid")
     monkeypatch.setattr(
