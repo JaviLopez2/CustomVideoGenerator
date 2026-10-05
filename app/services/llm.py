@@ -1539,6 +1539,20 @@ def _fallback_subject_is_usable(value: str) -> bool:
     return not bool(_scene_hidden_evidence_signals({"scene_description": text}))
 
 
+def _source_fragment_can_face_image_model(value: str) -> bool:
+    """Allow verbatim grounding only when it is already simple English text."""
+    text = " ".join(str(value or "").strip().split())
+    if not text or any(ord(char) > 127 for char in text):
+        return False
+    first = re.findall(r"[a-z]+", text.casefold())
+    if first and first[0] in {
+        "el", "la", "los", "las", "un", "una", "unos", "unas",
+        "este", "esta", "estos", "estas",
+    }:
+        return False
+    return _fallback_subject_is_usable(text)
+
+
 def _scene_continuity_tokens(item: dict) -> set[str]:
     text = " ".join(
         str(item.get(key) or "")
@@ -2743,10 +2757,16 @@ Return exactly {amount} objects and nothing else.
                         )
 
                         visual_subject = ""
-                        if observable_result and observable_result_visual:
-                            visual_subject = observable_result_visual
-                        elif observable_subject and observable_subject_visual:
-                            visual_subject = observable_subject_visual
+                        if observable_result:
+                            if observable_result_visual:
+                                visual_subject = observable_result_visual
+                            elif _source_fragment_can_face_image_model(observable_result):
+                                visual_subject = observable_result
+                        elif observable_subject:
+                            if observable_subject_visual:
+                                visual_subject = observable_subject_visual
+                            elif _source_fragment_can_face_image_model(observable_subject):
+                                visual_subject = observable_subject
 
                         required_features = []
                         forbidden_features = []
@@ -2777,8 +2797,14 @@ Return exactly {amount} objects and nothing else.
                                 _narrated_observable_fragment(
                                     visual_state, visual_state, state=True
                                 )
-                                if observable_state else ""
+                                if observable_state and visual_state else ""
                             )
+                            if (
+                                not safe_visual_state
+                                and observable_state
+                                and _source_fragment_can_face_image_model(observable_state)
+                            ):
+                                safe_visual_state = observable_state
                             if safe_visual_state:
                                 scene_description += (
                                     f" Its visible state is {safe_visual_state}."
