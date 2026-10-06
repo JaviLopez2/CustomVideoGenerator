@@ -163,6 +163,61 @@ def test_rejected_detail_fallback_keeps_established_primary_identity():
     assert "red shutter button" in fallback["prompt"]
 
 
+def test_temporal_output_fallback_keeps_concrete_continuity_subject():
+    inventory = [{"role": "identity", "description": "whole Polaroid SX-70 camera"}]
+    rows = [
+        {
+            "subject": "instant photograph",
+            "canonical_subject": "instant photograph",
+            "scene_description": "An instant photograph with a faint early image.",
+            "observable_subject": "instant photograph",
+            "observable_result": "instant photograph",
+            "observable_result_visual": "instant photograph",
+            "observable_state": "faint early image",
+            "visual_state": "faint low-contrast image",
+            "reference_need": "none",
+            "reference_target": "output",
+            "evidence_scope": "externally_visible",
+            "route": "standard",
+            "continuity_key": "developing_print",
+            "continuity_description": "the same instant photograph",
+            "temporal_progression": True,
+        },
+        {
+            "subject": "emerging tonal shapes",
+            "canonical_subject": "emerging tonal shapes",
+            "scene_description": "Emerging tonal shapes become visible.",
+            "observable_subject": "",
+            "observable_result": "emerging tonal shapes",
+            "observable_result_visual": "emerging tonal shapes",
+            "observable_state": "emerging tonal shapes",
+            "visual_state": "emerging tonal shapes",
+            "reference_need": "context",
+            "reference_target": "output",
+            "evidence_scope": "externally_visible",
+            "route": "standard",
+            "continuity_key": "developing_print",
+            "continuity_description": "the same instant photograph",
+            "temporal_progression": True,
+        },
+    ]
+    scenes = make_plan(
+        rows,
+        [
+            "The instant photograph has a faint early image.",
+            "The same instant photograph now shows emerging tonal shapes.",
+        ],
+        inventory,
+    )
+    fallback = scenes[1]
+
+    assert fallback["planner_validation"] == "coverage_fallback"
+    assert fallback["canonical_subject"] == "instant photograph"
+    assert fallback["reference_target"] == "output"
+    assert fallback["temporal_progression"] is True
+    assert "emerging tonal shapes" != fallback["canonical_subject"]
+
+
 def test_hidden_scene_reuses_recent_visible_output_not_abstract_context():
     visible_output = {
         "subject": "instant photograph",
