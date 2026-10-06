@@ -2043,6 +2043,13 @@ def _normalize_scene_identity_and_continuity(items: list[dict]) -> list[dict]:
             primary_subject
             and target == "primary_subject"
             and candidate
+            # Detail/internal requests may legitimately name a component rather
+            # than repeat the whole product identity. Keep them attached to the
+            # primary subject and let the evidence-coverage gate decide whether
+            # that component is actually supported. Otherwise a real component
+            # such as a shutter button is incorrectly reclassified as a distinct
+            # secondary object before coverage/fallback can preserve identity.
+            and need not in {"detail", "internal"}
             and not _scene_same_primary_entity(primary_subject, candidate)
         ):
             item["reference_target"] = "secondary_subject"
