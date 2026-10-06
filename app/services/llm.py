@@ -3391,6 +3391,17 @@ Return exactly {amount} objects and nothing else.
                         temporal_state = visual_state
                     elif _source_fragment_can_face_image_model(current_state):
                         temporal_state = current_state
+                if (
+                    temporal_progression
+                    and temporal_state
+                    and reference_target == "output"
+                ):
+                    final_prompt = (
+                        final_prompt.rstrip(" .")
+                        + f". The output itself visibly shows {temporal_state}."
+                        + " Do not replace the output with packaging, a product label, "
+                          "or a crisp finished depiction of the source device."
+                    )
                 result.append({
                     "subject": clean_image_text(subject, internal_values),
                     "canonical_subject": clean_image_text(canonical_subject, internal_values),
