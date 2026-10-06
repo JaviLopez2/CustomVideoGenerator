@@ -111,6 +111,58 @@ def test_primary_fallback_keeps_referenced_identity_over_mentioned_output():
     assert "developed photograph" not in scene["canonical_subject"].lower()
 
 
+def test_rejected_detail_fallback_keeps_established_primary_identity():
+    inventory = [
+        {"role": "identity", "description": "whole Polaroid SX-70 camera"},
+        {
+            "role": "detail",
+            "description": "Close visible detail of the Polaroid SX-70 front controls, lens area, red shutter button and front panel.",
+        },
+    ]
+    identity = {
+        "subject": "Polaroid SX-70 camera",
+        "canonical_subject": "Polaroid SX-70 camera",
+        "scene_description": "A complete Polaroid SX-70 camera on a table.",
+        "reference_need": "identity",
+        "reference_target": "primary_subject",
+        "evidence_scope": "externally_visible",
+        "reference_critical": True,
+        "includes_primary_subject": True,
+        "route": "precision",
+    }
+    detail = {
+        "subject": "red shutter button",
+        "canonical_subject": "red shutter button",
+        "scene_description": "Close view of red shutter button, focus ring, barrel and surrounding housing.",
+        "observable_subject": "red shutter button",
+        "observable_subject_visual": "red shutter button",
+        "reference_need": "detail",
+        "reference_target": "primary_subject",
+        "reference_query": "red shutter button focus ring barrel surrounding housing",
+        "evidence_scope": "specialized_visible",
+        "reference_critical": True,
+        "includes_primary_subject": True,
+        "route": "precision",
+    }
+    scenes = make_plan(
+        [identity, detail],
+        [
+            "The Polaroid SX-70 camera is ready to use.",
+            "The red shutter button is pressed and light enters through the lens.",
+        ],
+        inventory,
+    )
+    fallback = scenes[1]
+
+    assert fallback["planner_validation"] == "coverage_fallback"
+    assert fallback["canonical_subject"] == "Polaroid SX-70 camera"
+    assert fallback["reference_target"] == "primary_subject"
+    assert fallback["reference_need"] == "identity"
+    assert fallback["route"] == "precision"
+    assert "Polaroid SX-70 camera" in fallback["prompt"]
+    assert "red shutter button" in fallback["prompt"]
+
+
 def test_hidden_scene_reuses_recent_visible_output_not_abstract_context():
     visible_output = {
         "subject": "instant photograph",
