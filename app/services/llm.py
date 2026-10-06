@@ -3195,8 +3195,32 @@ Return exactly {amount} objects and nothing else.
                         identity_hint = ""
 
                         if visual_subject:
-                            subject = canonical_subject = visual_subject
-                            scene_description = f"A clear documentary view of {subject}."
+                            # A supported visible detail is not a new object identity.
+                            # When the detail request itself was rejected but a covered
+                            # primary identity already exists, keep the whole referenced
+                            # subject as the semantic target and treat the detail only as
+                            # framing/context. This prevents QA from judging a real camera
+                            # as "unrelated" merely because Florence names the camera
+                            # instead of the small control.
+                            fallback_primary_identity = (
+                                str(context_identity.get("canonical_subject") or "").strip()
+                                if (
+                                    visual_subject_kind == "primary_subject"
+                                    and reference_target == "primary_subject"
+                                    and requested_reference_need in {"detail", "internal", "context"}
+                                    and context_identity is not None
+                                )
+                                else ""
+                            )
+                            if fallback_primary_identity:
+                                subject = canonical_subject = fallback_primary_identity
+                                scene_description = (
+                                    f"A clear documentary view of {subject}, with the visible "
+                                    f"{visual_subject} area readable at natural scale."
+                                )
+                            else:
+                                subject = canonical_subject = visual_subject
+                                scene_description = f"A clear documentary view of {subject}."
                             visual_state = " ".join(
                                 str(item.get("visual_state") or "").strip().split()
                             )
