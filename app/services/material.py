@@ -5762,6 +5762,8 @@ def _temporal_scene_retry_prompt(
         prompt.rstrip(" .")
         + f". CORRECTION: the same continuity target must visibly match this current state: {state}."
         + comparison
+        + " The continuity target itself must show that state; do not substitute a package, label, "
+          "box, or a crisp picture of another object."
         + " Change the target's visible progression itself; a different crop, camera angle or background is not sufficient."
     )
 
