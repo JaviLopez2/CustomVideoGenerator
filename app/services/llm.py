@@ -3206,7 +3206,6 @@ Return exactly {amount} objects and nothing else.
                                 str(context_identity.get("canonical_subject") or "").strip()
                                 if (
                                     visual_subject_kind == "primary_subject"
-                                    and reference_target == "primary_subject"
                                     and requested_reference_need in {"detail", "internal", "context"}
                                     and context_identity is not None
                                 )
