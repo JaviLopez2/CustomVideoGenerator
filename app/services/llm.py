@@ -3152,6 +3152,30 @@ Return exactly {amount} objects and nothing else.
 
                         visual_subject = ""
                         visual_subject_kind = ""
+                        # In a temporal output chain, state words such as "emerging
+                        # tonal shapes" describe the output; they are not a new
+                        # subject. Preserve the concrete continuity entity so semantic
+                        # QA judges the photograph/print rather than an abstract state.
+                        temporal_output_subject = ""
+                        if (
+                            reference_target == "output"
+                            and planned_continuity_key != "none"
+                            and _coerce_scene_bool(item.get("temporal_progression"), False)
+                            and planned_continuity_description
+                        ):
+                            stable_output = _stable_continuity_description(
+                                planned_continuity_description,
+                                canonical_subject,
+                                subject,
+                            )
+                            stable_output = re.sub(
+                                r"^(?:the\s+same(?:\s+single)?|same(?:\s+single)?)\s+",
+                                "",
+                                stable_output,
+                                flags=re.IGNORECASE,
+                            ).strip()
+                            if _scene_derived_output_terms(stable_output):
+                                temporal_output_subject = stable_output
                         # When an unsupported mechanism belongs to the referenced
                         # primary subject, preserve that externally visible identity.
                         # Do not let a merely mentioned output/result displace the
@@ -3160,7 +3184,10 @@ Return exactly {amount} objects and nothing else.
                             reference_target == "primary_subject"
                             and bool(observable_subject)
                         )
-                        if prefer_primary_observable:
+                        if temporal_output_subject:
+                            visual_subject = temporal_output_subject
+                            visual_subject_kind = "output"
+                        elif prefer_primary_observable:
                             if observable_subject_visual:
                                 visual_subject = observable_subject_visual
                             elif _source_fragment_can_face_image_model(observable_subject):
