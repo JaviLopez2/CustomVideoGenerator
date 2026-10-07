@@ -1889,6 +1889,16 @@ def _visible_state_sentence(
     return f"{nominal_prefix} {text}."
 
 
+def _same_continuity_subject(value: str) -> str:
+    """Return one natural 'same subject' phrase without duplicating same/the same."""
+    text = " ".join(str(value or "").strip().split())
+    if not text:
+        return "The same physical continuity target"
+    if re.match(r"^(?:the\s+)?same\b", text, re.IGNORECASE):
+        return text[:1].upper() + text[1:]
+    return f"The same {text}"
+
+
 def _scene_continuity_tokens(item: dict) -> set[str]:
     text = " ".join(
         str(item.get(key) or "")
@@ -3447,7 +3457,7 @@ Return exactly {amount} objects and nothing else.
                 if continuity_key != "none" and coverage_status != "unsupported" and current_state:
                     if visual_state:
                         scene_description = (
-                            f"The same {continuity_description} is visible with {visual_state}."
+                            f"{_same_continuity_subject(continuity_description)} is visible with {visual_state}."
                         )
                     else:
                         # The planner's English scene description is safer for Qwen
@@ -3459,7 +3469,7 @@ Return exactly {amount} objects and nothing else.
                 elif continuity_key != "none" and coverage_status != "unsupported" and continuity_description:
                     scene_description = (
                         scene_description.rstrip(" .")
-                        + f". The same {continuity_description} remains the visible continuity target."
+                        + f". {_same_continuity_subject(continuity_description)} remains the visible continuity target."
                     ).strip()
                 if continuity_key != "none" and coverage_status != "unsupported":
                     context_subject = str(item.get("context_subject") or "").strip()
