@@ -90,3 +90,9 @@ Siguiente tarea concreta propuesta: diseñar un plan de integración experimenta
 ## Actualización: contrato offline Klein 4B — 2026-10-07
 
 Por el nuevo encargo del usuario se implementaron aliases experimentales T2I/Edit, manifiesto `planned` y tests offline, fuera de producción. Ver [plan y resultados](FLUX_KLEIN_4B_EXPERIMENT.md). No se activaron aliases en el bridge, no se exportaron grafos API y no se descargaron pesos. Los gates de archivos/licencias/hashes siguen cerrados. Una regresión adicional existente falla por capitalización; no se modificó ni se ocultó. El contrato offline no valida una generación real ni un candidato listo para promoción.
+
+## Actualización: grafos API aislados — 2026-10-07
+
+Continuación sobre `d4d32c4`: topología nativa reconstruida de los templates oficiales T2I/Edit Distilled, con selección 4B FP8, hashes versionados y aviso MIT. El adaptador offline materializa 0 o 1–3 referencias, encadena ambos conditionings y aplica seed/tamaño/4 pasos/CFG 1. No incorpora FluxKVCache. Se distingue reconstrucción de una exportación UI; la salida usa dimensiones del encargo en lugar de derivarlas de una referencia. Ver [contratos, diferencias respecto al bridge y límites](FLUX_KLEIN_4B_EXPERIMENT.md).
+
+Publicado: topologías y parámetros de los templates oficiales, consultados de nuevo. Observado local: nodos, campos requeridos y tipos de enlaces compatibles mediante GET object_info, DiT/VAE ausentes en loaders, encoder listado sin hash verificado. Pruebas offline: 126 passed; suite adicional histórica 14 passed y 1 failed por capitalización. No hay mediciones GPU nuevas ni evidencia de calidad/memoria/latencia. Los grafos no están instalados ni los aliases registrados en el servicio. El candidato sigue `planned`, con hashes de pesos y revisiones de ejecución pendientes. La investigación documental no se reabre ni se presenta como certificación empírica de 12 GB.

@@ -1,6 +1,6 @@
 # Klein 4B Distilled FP8: contrato experimental offline
 
-Fecha: 2026-10-07. Base: `37ef653e8d47483e997d6b8fb52ebc1a5ba1732d`. Esta fase implementa únicamente aliases, manifiesto y contratos/tests offline del plan entregado por el usuario. No activa modelos, routing, workflows ni servicios.
+Fecha: 2026-10-07. Base del contrato inicial: `37ef653e8d47483e997d6b8fb52ebc1a5ba1732d`. La continuación sobre `d4d32c4` añade grafos API aislados y su adaptación offline; sus resultados se detallan al final. No activa modelos, routing, workflows ni servicios.
 
 ## Aislamiento y assets
 
@@ -13,11 +13,11 @@ El módulo `local_image_stack/experiments/klein4b.py` es independiente de produc
 
 No se reutiliza `flux-klein-precision` (9B KV). El resolver rechaza otros aliases y checkpoints; la admisión comprueba también el checkpoint del grafo API, para que un manifiesto 4B no oculte un loader 9B.
 
-[Manifiesto versionado](validation/flux-klein-4b-assets.json): DiT `flux-2-klein-4b-fp8.safetensors`, encoder `qwen_3_4b.safetensors`, VAE `flux2-vae.safetensors`. Fuentes exactas y licencias declaradas incluidas. Estado `planned`; hashes de todos los pesos y grafos nulos, revisiones de ejecución nulas. El encoder ya observado localmente no se marca verificado por coincidir su nombre.
+[Manifiesto versionado](validation/flux-klein-4b-assets.json): DiT `flux-2-klein-4b-fp8.safetensors`, encoder `qwen_3_4b.safetensors`, VAE `flux2-vae.safetensors`. Fuentes exactas y licencias declaradas incluidas. Estado `planned`; hashes de pesos y revisiones de ejecución nulos. La continuación registra hashes de grafos locales y de templates upstream; no son hashes de pesos. El encoder ya observado localmente no se marca verificado por coincidir su nombre.
 
 El [checkpoint FP8 oficial](https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8) declara Apache 2.0. El [encoder Qwen3-4B](https://huggingface.co/Qwen/Qwen3-4B) declara Apache 2.0; BFL declara Apache 2.0 para el [autoencoder FLUX.2](https://github.com/black-forest-labs/flux2#flux2-autoencoder). La identidad/licencia de los archivos locales exactos sigue pendiente. Los [templates ComfyUI](https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE) son MIT, no la licencia del modelo.
 
-Los bindings apuntan a templates oficiales de interfaz, no a grafos API instalados. El [template T2I](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/image_flux2_klein_text_to_image.json) expone otras variantes: se debe seleccionar explícitamente Distilled FP8 antes de exportar. El [template Edit Distilled](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/image_flux2_klein_image_edit_4b_distilled.json) también debe exportarse, parametrizar slots y eliminar conexiones a imágenes demo. No se copiaron, convirtieron ni modificaron workflows en esta fase.
+Inicialmente los bindings solo referenciaban templates oficiales de interfaz. El [template T2I](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/image_flux2_klein_text_to_image.json) expone otras variantes; el [template Edit Distilled](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/image_flux2_klein_image_edit_4b_distilled.json) contiene imágenes demo. La continuación reconstruye su topología nativa como grafos API locales, seleccionando Distilled FP8 y sustituyendo demos por placeholders; no los instala en servicios.
 
 ## Contrato implementado
 
@@ -44,6 +44,24 @@ Python MPT portable 3.11.15; `MPT_RUN_INTEGRATION_TESTS=0`, `CUDA_VISIBLE_DEVICE
 
 No promover el candidato ni modificar fallback por estos resultados. La separación futura propuesta entre quality tier (Standard/Precision) y conditioning (none/manual/continuity) queda como arquitectura documental; no se implementa en el routing activo.
 
-Siguiente tarea concreta: exportar y revisar grafos API T2I/Edit en una carpeta experimental, sin pesos nuevos ni ejecución, preservando orden/roles y desconectando demos; reconciliar este contrato con las sustituciones reales del bridge. Resolver por separado la regresión preexistente de capitalización antes de declarar todo el gate offline aprobado.
+La tarea siguiente al contrato inicial era preparar grafos API T2I/Edit aislados y reconciliarlos con el bridge. Esa tarea queda documentada a continuación. La regresión preexistente de capitalización sigue abierta, sin cambiar los tests actuales de Qwen/continuidad.
 
 Con autorización posterior: identificar/hashar assets exactos y revisiones; luego validación GPU gradual (load, T2I, single-ref, temporal, 2–3 refs, escena aislada, smoke de dos escenas, A/B). No se ejecutó ninguna etapa. Medir en la 3060 OOM/estabilidad, repetibilidad, pico VRAM y tiempos; cifras de 5090 o tamaños en disco no garantizan 12 GB. Promoción requiere gates legal/assets, técnico, semántico y rendimiento, más preservación de identidad, avance temporal y fidelidad a referencias. Descargas, generaciones y cambios activos siguen requiriendo un encargo específico.
+
+## Continuación: grafos API y adaptador offline
+
+Base `d4d32c4bedce37b1d0bbc214a63e736d9b11e4f9`, rama experimental limpia; fetch confirmó `0 0` respecto a origin. Grafos en `local_image_stack/experiments/workflows/`, fuera de las carpetas cargadas por el bridge. Se reconstruyeron desde los nodos de los templates oficiales, no mediante exportación desde una interfaz ni desde el workflow 9B KV. Se conserva el aviso MIT upstream. `.gitattributes` local fija LF para conservar sus hashes al hacer checkout en Windows.
+
+T2I: 13 nodos, Euler, 4 pasos, CFG 1, UNET 4B FP8 directo, sin FluxKVCache, encoder Qwen3-4B tipo `flux2`, VAE Flux2. Edit: 18 nodos como plantilla de una referencia, con escala `nearest-exact` a 1 MP y codificación VAE. A diferencia del template UI, las dimensiones de salida proceden del tamaño solicitado, no de la primera referencia. La escala de referencia permanece en 1 MP: no es una optimización medida para 12 GB.
+
+`klein4b_graph.prepare_graph` verifica SHA-256 y binding de la plantilla, reutiliza el contrato de intención y materializa exactamente 1–3 bloques de referencia. Cada bloque encadena el mismo latent a conditioning positivo y negativo, conservando orden. Sin referencias no hay ningún bloque de edición. Se fijan explícitamente seed, dimensiones, batch 1, steps 4 y CFG 1. Los roles se expresan en el prompt ordenado; todos los loaders se titulan `Subject Reference N` para evitar que el bridge redirija el rol de estilo a su campo legacy `style_reference_image`.
+
+Referencias: filenames relativos ya disponibles en el input de Comfy, no URL, base64 ni rutas absolutas. El adaptador rechaza traversal y no sube archivos. Los placeholders no son imágenes demo y no se consideran archivos existentes. Envelopes conservan `dispatch_allowed=false`; el grafo resultante es material de inspección, no una autorización de ejecución. El módulo no contiene clientes HTTP ni imports de producción.
+
+Contraste con `local_image_stack/bridge/comfyui.rs`: sustituye seed en RandomNoise, tamaño en EmptyFlux2LatentImage/Flux2Scheduler, texto en CLIPTextEncode y filenames por título. No adapta steps de Flux2Scheduler ni CFGGuider, ni poda cadenas ReferenceLatent como hace con slots Qwen. El adaptador aislado cubre esos bindings offline; no se conecta al Rust activo y no acredita que el servicio cargue estos aliases. La futura integración debe elegir explícitamente materialización por solicitud o workflows por número de referencias; copiar una plantilla estática al bridge actual no resuelve multi-ref ni slots ausentes.
+
+Validación real: **126 passed** en contratos y las cinco suites enfocadas existentes ([log](validation/flux-klein-4b-api-tests-2026-10-07.txt)); incluye 14 casos nuevos de grafos. El test experimental de alias ahora comprueba checkpoint/ruta: buscar `9b` en todo el JSON daba un falso positivo en un hash SHA-256. No se alteró ningún test de `test/services/` ni producción. Suite adicional de continuidad: **14 passed, 1 failed**, mismo fallo preexistente de capitalización ([log](validation/flux-klein-4b-api-continuity-2026-10-07.txt)). El gate completo permanece abierto.
+
+GET `/object_info` y revisión local: clases registradas, campos requeridos y tipos de enlaces compatibles en ambas plantillas ([evidencia](validation/flux-klein-4b-api-schema-2026-10-07.json)). Admisión de archivos pendiente: DiT 4B y VAE no aparecen en los loaders; encoder aparece sin identidad verificada. El placeholder Edit tampoco es un input real. HEAD de fuente Comfy `73c9bad4d21e7addbe1d13bc92eee0f1431b017d` es observación de disco, no revisión certificada del proceso. No se envió POST ni se cargaron nodos/modelos.
+
+Siguiente tarea acotada: diagnosticar y acordar la corrección del gate preexistente de continuidad sin rebajar su exigencia semántica. Después, con encargo específico, verificar procedencia/hashes del encoder disponible y planificar instalación de DiT/VAE y una prueba GPU mínima. Siguen pendientes admisión de assets, binding del bridge activo, ejecución, memoria, calidad y promoción.

@@ -1,0 +1,59 @@
+..F............                                                          [100%]
+================================== FAILURES ===================================
+______ test_continuity_without_state_keeps_natural_language_not_group_id ______
+
+    def test_continuity_without_state_keeps_natural_language_not_group_id():
+        row = {"subject": "tile", "scene_description": "same tile draft-47", "planner_id": "draft-47",
+               "continuity_key": "arbitrary_group_29", "continuity_description": "same glyph on the tile",
+               "reference_need": "none", "reference_target": "output", "evidence_scope": "externally_visible"}
+        with patch.object(llm, "_generate_response", return_value=json.dumps([row])):
+            scene = llm.generate_scene_image_plan("tile", [{"narration": "A tile."}], app_config={})[0]
+        assert "arbitrary_group_29" not in scene["prompt"]
+        assert "draft-47" not in scene["prompt"]
+>       assert "same glyph on the tile" in scene["prompt"]
+E       AssertionError: assert 'same glyph on the tile' in 'A photorealistic documentary image of tile. same tile . Same glyph on the tile remains the visible continuity target....r, realistic optics and coherent lighting. There are no captions, watermarks, UI overlays or invented readable labels.'
+
+test\services\test_prompt_continuity_hardening.py:64: AssertionError
+---------------------------- Captured stdout call -----------------------------
+[32m2026-10-07 15:56:57[0m | [1mINFO[0m | "./app/services/llm.py:2858":[34m generate_scene_image_plan[0m - [1mscene-plan factual/observability audit applied cleanly[0m
+[32m2026-10-07 15:56:57[0m | [32m[1mSUCCESS[0m | "./app/services/llm.py:3567":[34m generate_scene_image_plan[0m - [32m[1mgenerated 1 structured timed image scenes, routes={'standard': 1}[0m
+[32m2026-10-07 15:56:57[0m | [34m[1mDEBUG[0m | "./app/services/llm.py:3568":[34m generate_scene_image_plan[0m - [34m[1mstructured timed image scene plan:
+[
+  {
+    "subject": "tile",
+    "canonical_subject": "tile",
+    "scene_description": "same tile . Same glyph on the tile remains the visible continuity target.",
+    "route": "standard",
+    "prompt": "A photorealistic documentary image of tile. same tile . Same glyph on the tile remains the visible continuity target. The complete main subject is comfortably inside the frame with natural margins. Photorealistic factual documentary style with natural color, realistic optics and coherent lighting. There are no captions, watermarks, UI overlays or invented readable labels.",
+    "required_features": [],
+    "forbidden_features": [],
+    "environment": "",
+    "environment_key": "context",
+    "composition_key": "full",
+    "shot_type": "full",
+    "framing_intent": "full_subject",
+    "shot_role": "evidence",
+    "reference_need": "none",
+    "requested_reference_need": "none",
+    "reference_target": "output",
+    "reference_query": "",
+    "evidence_scope": "externally_visible",
+    "reference_critical": false,
+    "includes_primary_subject": false,
+    "identity_relation_guard": "",
+    "coverage_status": "unknown",
+    "coverage_reason": "no manual reference inventory is available; downstream automatic reference routing may still provide evidence",
+    "safe_visual_alternative": "",
+    "planner_validation": "pass",
+    "factual_audit_status": "applied",
+    "continuity_key": "arbitrary_group_29",
+    "continuity_description": "same glyph on the tile",
+    "continuity_inference": "",
+    "temporal_progression": false,
+    "temporal_state": "",
+    "precision_importance": 0.2
+  }
+][0m
+=========================== short test summary info ===========================
+FAILED test/services/test_prompt_continuity_hardening.py::test_continuity_without_state_keeps_natural_language_not_group_id
+1 failed, 14 passed in 2.78s

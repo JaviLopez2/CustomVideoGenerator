@@ -34,9 +34,12 @@
       "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/image_flux2_klein_text_to_image.json",
       "license_source": "https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE",
       "license": "MIT",
-      "format": "comfyui_ui_template",
-      "sha256": null,
-      "notes": "Select Distilled FP8 explicitly and export a separate API graph; the source template also exposes Base/BF16 choices."
+      "format": "comfyui_api",
+      "sha256": "dd62a5a210460d87ef57b18b229cb1b9d54b5633d73bc65459cdb899eb3b0b81",
+      "notes": "Offline template only. Adapter binds intent before use. Edit input count is materialized dynamically; no connected demo images. Output dimensions follow request, not reference dimensions.",
+      "path": "local_image_stack/experiments/workflows/flux-klein-4b-t2i-exp.json",
+      "upstream_template_sha256": "8bb879856e54765b6c3ed219181e855981d8d10cfd19acff836603d9b56e838f",
+      "conversion": "Reconstructed native API graph from official template topology; not an exported UI graph."
     },
     "edit": {
       "alias": "flux-klein-4b-edit-exp",
@@ -44,12 +47,15 @@
       "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/image_flux2_klein_image_edit_4b_distilled.json",
       "license_source": "https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE",
       "license": "MIT",
-      "format": "comfyui_ui_template",
-      "sha256": null,
-      "notes": "Export an API graph with exactly the requested ordered references and no connected demo images."
+      "format": "comfyui_api",
+      "sha256": "0f4c65e60ffe35905ea294ddaf5612276c42fb12fd0d0f2783613611ee138ebe",
+      "notes": "Offline template only. Adapter binds intent before use. Edit input count is materialized dynamically; no connected demo images. Output dimensions follow request, not reference dimensions.",
+      "path": "local_image_stack/experiments/workflows/flux-klein-4b-edit-exp.json",
+      "upstream_template_sha256": "2f6ea7cfd3f1d7b0628ac648c4a1090e912ea0f30b7c80a625c9831043bc7b32",
+      "conversion": "Reconstructed native API graph from official template topology; not an exported UI graph."
     }
   },
   "comfyui_commit": null,
   "bridge_commit": null,
-  "notes": "Declared upstream licenses; local byte identity and API graph validation are pending. No installed or running service binding."
+  "notes": "Declared upstream licenses. Local API templates hashed; weights remain unverified and candidate planned. No installed service binding or dispatch."
 }

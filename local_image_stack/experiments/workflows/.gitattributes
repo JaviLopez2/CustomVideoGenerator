@@ -1,0 +1,2 @@
+# Keep the hashed API graphs byte-identical on Windows checkouts.
+*.json text eol=lf

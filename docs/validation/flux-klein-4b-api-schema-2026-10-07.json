@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-07",
+  "method": "GET object_info + local schema/link review; no POST, file upload, model load or generation",
+  "graphs": {
+    "flux-klein-4b-edit-exp.json": {
+      "sha256": "0f4c65e60ffe35905ea294ddaf5612276c42fb12fd0d0f2783613611ee138ebe",
+      "nodes": 18,
+      "schema_issues": [],
+      "pending_input_files": [
+        "__MPT_REFERENCE_REQUIRED__"
+      ]
+    },
+    "flux-klein-4b-t2i-exp.json": {
+      "sha256": "dd62a5a210460d87ef57b18b229cb1b9d54b5633d73bc65459cdb899eb3b0b81",
+      "nodes": 13,
+      "schema_issues": [],
+      "pending_input_files": []
+    }
+  },
+  "missing_assets": [
+    "flux-2-klein-4b-fp8.safetensors",
+    "flux2-vae.safetensors"
+  ],
+  "comfyui_source_head": "73c9bad4d21e7addbe1d13bc92eee0f1431b017d",
+  "limits": "Loader choices are a live snapshot, not local hash verification. Source HEAD does not identify running process revision. Candidate remains planned. LoadImage placeholder is not an existing input file and must be bound to a separately staged, validated filename. Graphs cannot execute as templates."
+}

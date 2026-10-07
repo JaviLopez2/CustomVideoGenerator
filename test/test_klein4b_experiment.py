@@ -21,7 +21,9 @@ def manifest():
 def test_aliases_only_resolve_distilled_4b(manifest, alias):
     binding = resolve_alias(alias, manifest)
     assert binding["checkpoint"] == "flux-2-klein-4b-fp8.safetensors"
-    assert "9b" not in json.dumps(binding).lower()
+    # Hashes can contain the hexadecimal substring "9b"; inspect routing fields.
+    assert "9b" not in binding["checkpoint"].lower()
+    assert "9b" not in binding.get("path", "").lower()
     with pytest.raises(ValueError, match="Unknown experimental alias"):
         resolve_alias("flux-klein-precision", manifest)
     manifest["workflows"][ALIASES[alias]]["checkpoint"] = "flux-2-klein-9b-kv-fp8.safetensors"
