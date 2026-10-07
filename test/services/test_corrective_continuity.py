@@ -150,3 +150,69 @@ def test_standard_root_continuity_and_identity_anchor_keep_scoped_contract(pipel
     assert "changing only the state/progression" not in prompt
     assert "Remove incidental background objects" not in prompt
     assert diagnostics[-1]["plan_scenes"][1]["routing_reason"] == "continuity_edit_from_root"
+
+
+def test_temporal_continuity_qwen_edit_changes_state_not_canvas_identity(pipeline, monkeypatch):
+    run, _ = pipeline
+    calls = []
+
+    def generate(**kw):
+        calls.append(kw)
+        return [item("stage" + str(len(calls)))]
+
+    monkeypatch.setattr(material, "generate_images_openai", generate)
+    monkeypatch.setattr(
+        material,
+        "_near_duplicate_assessment",
+        lambda *a, **kw: {"actionable": False, "best_similarity": .5},
+    )
+    monkeypatch.setattr(
+        material, "_upload_reference_to_comfyui", lambda path: "previous-stage.png"
+    )
+    monkeypatch.setattr(material, "_continuity_edit_chain_enabled", lambda: True)
+    monkeypatch.setattr(material, "_temporal_semantic_qa_enabled", lambda: False)
+
+    result = run(
+        search_terms=[
+            "instant photograph, freshly ejected and almost blank",
+            "same instant photograph with emerging soft shapes, initial contrast and early color",
+        ],
+        scene_durations=[1, 1],
+        scene_routes=["standard", "standard"],
+        scene_subjects=["instant photograph", "instant photograph"],
+        scene_reference_targets=["output", "output"],
+        scene_reference_needs=["none", "none"],
+        scene_includes_primary_subject=[False, False],
+        scene_continuity_keys=["photo_chain", "photo_chain"],
+        scene_continuity_descriptions=[
+            "the same physical instant photograph sheet",
+            "the same physical instant photograph sheet",
+        ],
+        scene_temporal_progressions=[True, True],
+        scene_temporal_states=[
+            "freshly ejected, almost completely blank surface",
+            "emerging soft shapes, initial contrast, and early color blooming",
+        ],
+    )
+
+    assert len(result) == len(calls) == 2
+    second = calls[1]
+    assert second["route"] == "precision"
+    assert second["reference_images"] == ["previous-stage.png"]
+    info = second["reference_info"]
+    assert info["temporal_progression"] is True
+    assert info["temporal_state"] == (
+        "emerging soft shapes, initial contrast, and early color blooming"
+    )
+
+    prompt = material._qwen_precision_prompt_with_references(
+        second["search_term"],
+        second["reference_subject"],
+        len(second["reference_images"]),
+        reference_info=info,
+    )
+    assert "MUST change to match this temporal stage" in prompt
+    assert "emerging soft shapes, initial contrast, and early color blooming" in prompt
+    assert "Do not preserve the previous blank/developing image content" in prompt
+    assert "including its underlying depicted content" not in prompt
+    assert "Keep all other visible content unchanged" not in prompt
