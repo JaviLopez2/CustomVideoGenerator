@@ -80,3 +80,7 @@ Sobre `f38c63e`, Cargo/Rust 1.98.1 y cache local permiten build/test offline loc
 ### Una generación GPU autorizada — 2026-10-07
 
 Sobre `066fcdd`, instancia experimental 8091 `--serve-gpu` creada para una sola solicitud T2I 512×512/4 pasos/seed42. GPU, endpoint y devolución PNG funcionan: HTTP200 e historial success, 10,109 s solicitud, 8,672 s job. Sensores nvidia-smi accesibles; pico global muestreado11433MiB de12288, baseline4424. JSON/artifacts/limitaciones en `FLUX_KLEIN_4B_GPU_SMOKE.md`. Instancia experimental cerrada, puerto libre, servicios originales responden. No reinicios ni modificaciones de estable/configuración/dependencias; no permisos permanentes nuevos ni autorización para más generaciones.
+
+### Una edición single-ref autorizada — 2026-10-07
+
+Sobre `a3d82a2`, input propio copiado a Comfy sin sobrescritura y una solicitud edit512×512/seed42/4 pasos: HTTP200, historial success, cambio rojo→azul visualmente logrado. Total14,219s/job13,926s, pico global muestreado11756/12288MiB. Instancia8091 cerrada, cola vacía, servicios originales vivos y estable intacto. Paths/evidencia en `FLUX_KLEIN_4B_SINGLE_REF_SMOKE.md`; sin cambios globales ni permiso para más generaciones por este paso.

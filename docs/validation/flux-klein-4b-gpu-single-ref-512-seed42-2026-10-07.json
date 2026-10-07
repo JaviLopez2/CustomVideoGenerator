@@ -1,0 +1,247 @@
+{
+  "date": "2026-10-07",
+  "base_head": "a3d82a25e16ed301ed79f20ca0eb7c5bb357a34b",
+  "started_utc": "2026-10-07T18:24:04.892379+00:00",
+  "authorization": "One next single-reference edit: red mug to blue, 512x512, four steps, seed42; no retries",
+  "post_attempted": true,
+  "bridge_binary_sha256": "7f8d125f3de758f6c65e7f06bcb43a427c04dec333ba98d386a51af4451d6a85",
+  "assets": {
+    "diffusion_model": {
+      "sha256": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6",
+      "size_bytes": 4070624520
+    },
+    "text_encoder": {
+      "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+      "size_bytes": 8044982048
+    },
+    "vae": {
+      "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+      "size_bytes": 336213556
+    }
+  },
+  "gpu_samples": [
+    {
+      "utc": "2026-10-07T18:24:18.285982+00:00",
+      "elapsed_seconds": 0.047,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 4264,
+      "utilization_percent": 8
+    },
+    {
+      "utc": "2026-10-07T18:24:19.336542+00:00",
+      "elapsed_seconds": 1.094,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 6211,
+      "utilization_percent": 51
+    },
+    {
+      "utc": "2026-10-07T18:24:20.382127+00:00",
+      "elapsed_seconds": 2.14,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 5284,
+      "utilization_percent": 1
+    },
+    {
+      "utc": "2026-10-07T18:24:21.422636+00:00",
+      "elapsed_seconds": 3.187,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 8877,
+      "utilization_percent": 88
+    },
+    {
+      "utc": "2026-10-07T18:24:22.473611+00:00",
+      "elapsed_seconds": 4.234,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11477,
+      "utilization_percent": 34
+    },
+    {
+      "utc": "2026-10-07T18:24:23.526123+00:00",
+      "elapsed_seconds": 5.281,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11756,
+      "utilization_percent": 38
+    },
+    {
+      "utc": "2026-10-07T18:24:24.566093+00:00",
+      "elapsed_seconds": 6.328,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11692,
+      "utilization_percent": 81
+    },
+    {
+      "utc": "2026-10-07T18:24:25.615289+00:00",
+      "elapsed_seconds": 7.375,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11244,
+      "utilization_percent": 81
+    },
+    {
+      "utc": "2026-10-07T18:24:26.654196+00:00",
+      "elapsed_seconds": 8.422,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11413,
+      "utilization_percent": 100
+    },
+    {
+      "utc": "2026-10-07T18:24:27.701514+00:00",
+      "elapsed_seconds": 9.469,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11244,
+      "utilization_percent": 100
+    },
+    {
+      "utc": "2026-10-07T18:24:28.741164+00:00",
+      "elapsed_seconds": 10.5,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11244,
+      "utilization_percent": 100
+    },
+    {
+      "utc": "2026-10-07T18:24:29.780082+00:00",
+      "elapsed_seconds": 11.547,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11244,
+      "utilization_percent": 100
+    },
+    {
+      "utc": "2026-10-07T18:24:30.831835+00:00",
+      "elapsed_seconds": 12.594,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11029,
+      "utilization_percent": 100
+    },
+    {
+      "utc": "2026-10-07T18:24:31.882881+00:00",
+      "elapsed_seconds": 13.64,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 10060,
+      "utilization_percent": 100
+    }
+  ],
+  "reference": {
+    "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+    "source_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00001_.png",
+    "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "role": "identity_reference",
+    "native_filename": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+    "graph_reference_megapixels": 1.0,
+    "limits": "Official experimental template scales input to 1 MP even though output is 512x512."
+  },
+  "comfyui_runtime": {
+    "comfyui_version": "0.37.0",
+    "python_version": "3.13.12 (main, Feb 12 2026, 00:38:53) [MSC v.1944 64 bit (AMD64)]",
+    "pytorch_version": "2.12.1+cu130",
+    "ram_total": 34116132864,
+    "ram_free": 6178000896,
+    "observed_memory_flags": [
+      "--disable-async-offload",
+      "--disable-pinned-memory"
+    ]
+  },
+  "request": {
+    "model": "flux-klein-4b-edit-exp",
+    "prompt": "Edit the reference photograph: change only the ceramic mug from red to deep blue. Keep the same mug shape, handle geometry, position and scale. Preserve the wooden table, window, background, camera viewpoint and soft natural lighting. Keep one complete mug visible. No text or watermark.\nInput image 1 has role identity_reference.",
+    "seed": 42,
+    "size": "512x512",
+    "steps": 4,
+    "guidance": 1.0,
+    "n": 1,
+    "reference_image": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+    "reference_roles": [
+      "identity_reference"
+    ],
+    "response_format": "b64_json"
+  },
+  "experimental_bridge_pid": 25264,
+  "baseline_gpu": {
+    "utc": "2026-10-07T18:24:18.239980+00:00",
+    "elapsed_seconds": null,
+    "name": "NVIDIA GeForce RTX 3060",
+    "memory_total_mib": 12288,
+    "memory_used_mib": 4264,
+    "utilization_percent": 8
+  },
+  "bridge_http_status": 200,
+  "request_wall_seconds": 14.219,
+  "image": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+    "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+    "bytes": 238645,
+    "width": 512,
+    "height": 512,
+    "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00002_.png"
+  },
+  "comfy_history": {
+    "prompt_id": "75b9e21c-cbef-4dbc-89fb-fc21b30df506",
+    "status_str": "success",
+    "completed": true,
+    "outputs": {
+      "13": {
+        "images": [
+          {
+            "filename": "MPT_EXPERIMENT_KLEIN4B_00002_.png",
+            "subfolder": "",
+            "type": "output"
+          }
+        ]
+      }
+    },
+    "execution_seconds": 13.926,
+    "errors": []
+  },
+  "matching_history_entries": 1,
+  "queue_after": {
+    "queue_running": 0,
+    "queue_pending": 0
+  },
+  "gpu_memory": {
+    "sample_interval_target_seconds": 1,
+    "sample_count": 14,
+    "baseline_used_mib": 4264,
+    "sampled_peak_global_used_mib": 11756,
+    "sampled_margin_at_peak_mib": 532,
+    "limits": "Sampled global usage, including other processes; caches from previous test not reset."
+  },
+  "technical_status": "passed_single_ref_smoke",
+  "experimental_bridge_stopped": true,
+  "finished_utc": "2026-10-07T18:24:32.492021+00:00",
+  "experimental_port_released": true,
+  "visual_review": {
+    "method": "Assistant compared edited PNG with original red-mug reference",
+    "requested_blue_color_observed": true,
+    "single_complete_mug_visible": true,
+    "shape_handle_position_scale_visually_preserved": true,
+    "table_window_background_viewpoint_visually_preserved": true,
+    "visible_text_or_watermark": false,
+    "status": "passed_informal_single_case",
+    "limits": "Visual comparison only, no exact geometric/pixel invariance, blinded scoring or repeatability."
+  },
+  "stable_head_after": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "services_after": {
+    "8080": 200,
+    "8090": 404,
+    "8188": 200
+  },
+  "limits": [
+    "One authorized edit, no retries",
+    "Output512x512; reference internally scaled to1MP by existing graph",
+    "Global sampled VRAM includes other processes; exact model allocation unknown",
+    "Caches not reset; timings not a controlled comparison with T2I",
+    "No temporal/multi-ref/target-resolution/MPT smoke validation"
+  ]
+}

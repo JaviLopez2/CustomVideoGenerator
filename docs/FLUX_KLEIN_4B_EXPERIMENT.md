@@ -95,3 +95,9 @@ Base `f38c63e`: variante Rust compilable en `local_image_stack/experiments/bridg
 Autorización posterior del usuario, base `066fcdd`: una generación 512×512, seed42, 4 pasos, guidance1, cero refs. HTTP200, PNG válido e historial success; 10,109 s de solicitud y 8,672 s de ejecución Comfy. Pico global muestreado 11433/12288 MiB (baseline4424), no medida exacta por modelo. Encoder BF16 conservado. [Resultado, imagen y límites](FLUX_KLEIN_4B_GPU_SMOKE.md). Bridge experimental detenido tras la única solicitud; estable/config/routing intactos.
 
 El PASS solo cubre ese caso, sin reintentos/repetibilidad/A/B, ni edición/resolución objetivo. Estado `planned` conservado. Siguiente propuesta: single-ref edit 512×512 con un cambio visible, sujeto a una autorización de generación nueva; no está incluido en la prueba ya realizada.
+
+## Continuación: single-ref aprobado para un caso
+
+Sobre `a3d82a2`, una edición autorizada de la taza roja→azul, output512×512/seed42/4 pasos; referencia identity escalada a1MP por la plantilla. HTTP200, historial success, 14,219s total/13,926s job. Pico global muestreado11756MiB de12288, margen532MiB. Comparación visual informal: color pedido y forma/fondo conservados. [Resultado y artifact](FLUX_KLEIN_4B_SINGLE_REF_SMOKE.md). Sin cambios de grafo/código/encoder, ni segunda solicitud.
+
+Siguiente propuesta más exigente: identidad/encuadre con cambio de estado visible (atardecer y vapor), después multi-ref y resolución objetivo. Ninguna de esas fases ejecutada; candidato `planned`. Pregunta del usuario sobre complejidad respondida durante la prueba, sin tomarla como autorización para generar otra imagen.

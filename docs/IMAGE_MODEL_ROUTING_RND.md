@@ -126,3 +126,9 @@ Validación: 173 tests Python + 1 Rust pasan, sin nuevas medidas GPU. La identid
 Sobre `066fcdd`, una única solicitud T2I 512×512, 4 pasos, seed 42, sin refs y con encoder BF16: HTTP 200 e imagen válida, historial Comfy success. 10,109 s de solicitud, 8,672 s de ejecución del job. Baseline global GPU 4424 MiB; pico global muestreado 11433 MiB de 12288, margen observado 855 MiB. [Datos, artifact y límites](FLUX_KLEIN_4B_GPU_SMOKE.md).
 
 Esto sustituye la ausencia de mediciones para ese caso concreto; no valida cifras publicadas en otros equipos ni demuestra memoria de edición/resolución objetivo. Una sola imagen visualmente acorde al prompt, sin A/B/repetición ni control de caches. Candidato sigue `planned`; single-ref, continuidad, multi-ref, resolución objetivo, caller MPT y promoción pendientes. No hubo otra generación ni cambios de producción.
+
+## Actualización: single-ref local — 2026-10-07
+
+Una edición autorizada sobre `a3d82a2`: taza roja→azul profundo, output512×512, una referencia identity escalada a1MP, 4 pasos/seed42. HTTP200 e historial success; 14,219s solicitud y13,926s job. Pico global muestreado11756/12288MiB (baseline4264), margen532MiB. Cambio logrado y conservación visual de forma/escena en revisión informal. [Datos y límites](FLUX_KLEIN_4B_SINGLE_REF_SMOKE.md).
+
+Se cierra solo ese caso de edición, sin validar exactitud geométrica, repetibilidad, temporal, multi-ref, resolución objetivo o pipeline MPT. Memoria global/caches no controladas y margen pequeño; no extrapolar a mayores cargas. Candidato `planned`; ninguna otra generación ante la pregunta del usuario sobre complejidad.
