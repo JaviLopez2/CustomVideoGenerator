@@ -58,3 +58,7 @@ Se crearon `docs/IMAGE_MODEL_ROUTING_RND.md` y `docs/IMAGE_MODEL_ROUTING_HANDOFF
 ### Continuación experimental offline — 2026-10-07
 
 Sobre `d4d32c4` se prepararon grafos API Klein 4B y adaptador offline aislados, con permisos específicos de comandos en Windows. Fetch funciona sin divergencia. GET de Comfy `/object_info` funciona; validación de campos y tipos de enlaces registrada en `validation/flux-klein-4b-api-schema-2026-10-07.json`. Tests ejecutados con el Python portable MPT: 126 passed; suite histórica adicional 14 passed y 1 failed, sin alterar sus archivos. No se instalaron assets, no se activó integración, no se ejecutó generación ni se modificó la copia estable. Ver el checkpoint vigente de `IMAGE_MODEL_ROUTING_HANDOFF.md` para alcance y pendientes.
+
+### Cierre del gate histórico — 2026-10-07
+
+Continuación autorizada sobre `de11868`: corrección mínima del prefijo del planner en el worktree experimental, conservando todos los tests históricos. Python portable ejecutó 25 tests enfocados y 151 en la validación ampliada, todos aprobados. Logs `validation/continuity-prefix-*-2026-10-07.txt`; alcance y siguiente tarea en `IMAGE_MODEL_ROUTING_HANDOFF.md`. No se modificó ni desplegó la copia estable, ni se ejecutaron modelos/servicios/GPU. Los permisos siguen siendo los efectivos de la sesión; el uso de escalaciones específicas no concede permisos permanentes.

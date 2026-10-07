@@ -1894,8 +1894,10 @@ def _same_continuity_subject(value: str) -> str:
     text = " ".join(str(value or "").strip().split())
     if not text:
         return "The same physical continuity target"
-    if re.match(r"^(?:the\s+)?same\b", text, re.IGNORECASE):
-        return text[:1].upper() + text[1:]
+    prefix = re.match(r"^(?:the\s+)?same\b", text, re.IGNORECASE)
+    if prefix:
+        # Normalize only the grammatical prefix, keeping identity text intact.
+        return "The same" + text[prefix.end():]
     return f"The same {text}"
 
 
