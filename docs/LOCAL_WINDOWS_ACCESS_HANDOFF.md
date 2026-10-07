@@ -66,3 +66,7 @@ Continuación autorizada sobre `de11868`: corrección mínima del prefijo del pl
 ### Preflight de assets — 2026-10-07
 
 Sobre `57a5747`: lectura completa del encoder Comfy funciona; hash y tamaño coinciden con la distribución oficial fijada. GET de metadatos públicos HF funciona sin autenticación; no se usaron ni guardaron tokens. Espacio y ausencia de destinos DiT/VAE comprobados en lectura. Contratos afectados: 39 passed. Plan y evidencia en `FLUX_KLEIN_4B_INSTALL_PLAN.md` y `validation/flux-klein-4b-asset-preflight-2026-10-07.json`. No se probó escritura en los destinos externos, ni se descargaron pesos; su instalación futura necesita autorización de alcance y escalaciones específicas, no cambios de permisos permanentes.
+
+### Instalación autorizada — 2026-10-07
+
+Sobre `99d6abd`, descarga/escritura específica en las dos carpetas de modelos Comfy funciona mediante escalación aprobada. DiT/VAE instalados tras validación de tamaño/SHA/cabecera; encoder sin cambios. No se guardaron credenciales ni URLs firmadas. GET posterior de Comfy en 8188 rechaza conexión; no se inició el servicio. 39 tests afectados pasan; evidencia `validation/flux-klein-4b-install-2026-10-07.json`. Los accesos de descarga no conceden permisos permanentes ni autorización de reinicio/GPU. Copia estable, Factory y servicios sin modificaciones.

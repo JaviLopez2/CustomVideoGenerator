@@ -106,3 +106,9 @@ Sobre `de11868`, se corrigió el prefijo de identidad del planner exclusivamente
 Observado local: encoder `qwen_3_4b.safetensors`, 8.044.982.048 bytes, SHA-256 igual al publicado por Comfy-Org/z_image_turbo en revisión fijada. Cabecera con 398 tensores BF16, sin carga de tensores. El manifiesto ahora distingue hash local verificado del encoder de hashes esperados upstream para DiT/VAE aún ausentes. Publicado: VAE Comfy coincide en LFS con `vae/diffusion_pytorch_model.safetensors` BFL, no con `ae.safetensors`; la declaración Apache 2.0 del autoencoder se trata por componente, sin heredar la licencia `other` de toda la tarjeta dev. Ver [fuentes, evidencia y plan](FLUX_KLEIN_4B_INSTALL_PLAN.md).
 
 Pendiente descargar 4.406.838.076 bytes con autorización específica. Espacio libre observado suficiente para esos archivos, sin inferir VRAM disponible o viabilidad GPU del conjunto. Contratos afectados: 39 passed en esta fase. No se reabre la selección de candidatos ni se ejecutan generaciones; estado `planned`, integración y mediciones locales pendientes.
+
+## Actualización: assets instalados — 2026-10-07
+
+Con autorización del usuario, sobre `99d6abd` se descargaron/verificaron DiT Klein 4B FP8 y VAE Flux2 (4.406.838.076 bytes). SHA-256 y tamaños locales coinciden con las revisiones oficiales fijadas. Encoder BF16 rehashado y conservado; no hay evidencia empírica para recomendar reemplazarlo. Ver [instalación y límites](FLUX_KLEIN_4B_INSTALL_PLAN.md). Contratos afectados: 39 passed.
+
+Ninguna inferencia ni benchmark: los tipos de tensores y tamaños en disco no certifican memoria residente. GET posterior de Comfy en 8188 rechazado; inventario vivo no validado. Candidato sigue `planned` pese a los tres assets verificados. Integración de bridge, revisión efectiva de procesos, memoria, continuidad/calidad y promoción permanecen pendientes.

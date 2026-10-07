@@ -13,7 +13,7 @@ El módulo `local_image_stack/experiments/klein4b.py` es independiente de produc
 
 No se reutiliza `flux-klein-precision` (9B KV). El resolver rechaza otros aliases y checkpoints; la admisión comprueba también el checkpoint del grafo API, para que un manifiesto 4B no oculte un loader 9B.
 
-[Manifiesto versionado](validation/flux-klein-4b-assets.json): DiT `flux-2-klein-4b-fp8.safetensors`, encoder `qwen_3_4b.safetensors`, VAE `flux2-vae.safetensors`. Fuentes exactas y licencias declaradas incluidas. Estado `planned`; hashes locales de DiT/VAE y revisiones de ejecución nulos. La continuación registra hashes de grafos y verifica el encoder mediante lectura completa y comparación upstream; no se admite por nombre. Ver [preflight y plan de instalación](FLUX_KLEIN_4B_INSTALL_PLAN.md).
+[Manifiesto versionado](validation/flux-klein-4b-assets.json): DiT `flux-2-klein-4b-fp8.safetensors`, encoder `qwen_3_4b.safetensors`, VAE `flux2-vae.safetensors`. Fuentes exactas y licencias declaradas incluidas. Estado `planned`; los tres hashes locales están verificados tras la instalación autorizada, pero las revisiones de ejecución siguen nulas. No se admite ningún componente por nombre. Ver [preflight, plan e instalación](FLUX_KLEIN_4B_INSTALL_PLAN.md).
 
 El [checkpoint FP8 oficial](https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8) declara Apache 2.0. El [encoder Qwen3-4B](https://huggingface.co/Qwen/Qwen3-4B) declara Apache 2.0; BFL declara Apache 2.0 para el [autoencoder FLUX.2](https://github.com/black-forest-labs/flux2#flux2-autoencoder). La identidad/licencia de los archivos locales exactos sigue pendiente. Los [templates ComfyUI](https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE) son MIT, no la licencia del modelo.
 
@@ -75,3 +75,9 @@ Resultados nuevos: **25 passed** en gate histórico + nuevos casos ([log](valida
 ## Continuación: encoder verificado y plan de assets
 
 Base `57a5747`: SHA-256 y tamaño del encoder existente coinciden con Comfy-Org en revisión fijada. Solo su hash local queda verificado; DiT/VAE mantienen hashes locales nulos y ahora tienen hashes esperados/revisiones upstream para una instalación posterior. Descarga pendiente: 4,41 GB. VAE Comfy y VAE Diffusers BFL coinciden en LFS; se documenta licencia del componente separada de la tarjeta del repositorio. [Plan concreto](FLUX_KLEIN_4B_INSTALL_PLAN.md), [evidencia](validation/flux-klein-4b-asset-preflight-2026-10-07.json) y [39 tests aprobados en esta fase](validation/flux-klein-4b-asset-preflight-tests-2026-10-07.txt). Sin descargar pesos, activar aliases ni ejecutar GPU; `planned` permanece.
+
+## Continuación: descarga autorizada completada
+
+Sobre `99d6abd`, instalados DiT y VAE del plan, con tamaño/SHA-256/cabecera verificados antes de renombrar parciales. Encoder BF16 rehashado y conservado; no hay mediciones que justifiquen sustituir la base oficial prevista. [Evidencia](validation/flux-klein-4b-install-2026-10-07.json), [39 tests aprobados](validation/flux-klein-4b-install-tests-2026-10-07.txt). Los tres componentes tienen hash local verificado, sin marcar candidato `ready`.
+
+ComfyUI no responde al GET posterior en 8188 (conexión rechazada), por lo que inventario vivo e integración siguen pendientes. No se iniciaron servicios ni se activaron aliases, modificaron grafos o ejecutó GPU. La instalación no demuestra que el conjunto quepa en 12 GB ni certifica calidad/latencia. Siguiente fase: integración experimental y, con autorización específica de servicio/GPU, inventario vivo y carga mínima.

@@ -1,6 +1,6 @@
 # Klein 4B: verificación de assets y plan de instalación
 
-Fecha: 2026-10-07. Base `57a5747016c1c4b4109860cb0b696edab9eabc75`. Este checkpoint solo lee el encoder existente y metadatos públicos, actualiza documentación/manifiesto y valida contratos offline. No instala archivos ni modifica servicios. Evidencia: [preflight JSON](validation/flux-klein-4b-asset-preflight-2026-10-07.json); fuentes fijadas por revisión y hashes completos en el [manifiesto](validation/flux-klein-4b-assets.json).
+Fecha: 2026-10-07. Base de preparación `57a5747016c1c4b4109860cb0b696edab9eabc75`. La preparación solo leyó el encoder y metadatos públicos. La instalación posterior autorizada sobre `99d6abd` se detalla al final. Evidencia previa: [preflight JSON](validation/flux-klein-4b-asset-preflight-2026-10-07.json); fuentes fijadas por revisión y hashes completos en el [manifiesto](validation/flux-klein-4b-assets.json).
 
 ## Resultado observado
 
@@ -41,3 +41,15 @@ Con autorización específica de GPU: load y T2I mínimo, single-ref, continuida
 Contratos afectados por el manifiesto: **39 passed**, [log](validation/flux-klein-4b-asset-preflight-tests-2026-10-07.txt). El test experimental de aislamiento admite que solo el encoder tenga hash verificado y exige DiT/VAE pendientes y candidato `planned`. No se modificaron tests históricos de Qwen/continuidad ni código de aplicación. Los **151 passed** del checkpoint anterior son evidencia histórica, no una ejecución nueva en esta fase.
 
 Revisión de JSON, hashes de grafos, referencias locales, secretos por patrones y diff antes de publicar. Sin descargas de pesos, cambios de dependencias, servicios, routing, bridge, grafos, generación o GPU.
+
+## Ejecución autorizada: assets instalados
+
+El usuario autorizó descargar/verificar DiT y VAE y permitió considerar otro encoder si resultase mejor. Se conservó Qwen3-4B BF16: es el archivo del contrato y coincide con la distribución oficial verificada. No hay mediciones locales de memoria/calidad que justifiquen reemplazarlo. Mantener esta base permite evaluar primero el candidato definido; una eventual alternativa de encoder requerirá evidencia de necesidad y comparación concreta.
+
+Base `99d6abddf6ea525f040ac1d0d881f88184950bef`. DiT y VAE descargados desde las revisiones fijadas a parciales, verificados por tamaño/SHA-256/cabecera y renombrados a los destinos del plan sin reemplazar archivos existentes. Total **4.406.838.076 bytes**. Encoder rehashado y sin cambios. DiT: 309 tensores (F32/BF16/F8_E4M3); VAE: 251 tensores (F32/I64); offsets contiguos y ajustados al tamaño de cada archivo. Estos checks no cargan tensores ni prueban compatibilidad de ejecución.
+
+Los tres componentes quedan `verified_local_bytes`, con hash local real y evidencia en el manifiesto. Candidato completo sigue `planned`: revisiones de ejecución, integración y gates GPU pendientes. [Registro de instalación](validation/flux-klein-4b-install-2026-10-07.json). No se guardaron pesos dentro de Git, credenciales ni URLs firmadas.
+
+GET `/object_info` posterior no se pudo completar: conexión rechazada en `127.0.0.1:8188`, WinError 10061. No se afirma que los loaders hayan actualizado el inventario; no se inició/reinició ComfyUI. Contratos afectados: **39 passed**, [log](validation/flux-klein-4b-install-tests-2026-10-07.txt). Sin cambios de dependencias, routing, grafos, bridge ni generación/GPU. La copia estable permanece intacta.
+
+Siguiente fase: preparar integración experimental y recuperar el servicio para validar su inventario. Iniciar/reiniciar ComfyUI y ejecutar GPU quedan fuera de la autorización de descarga; necesitan encargo específico. No sustituir `flux-klein-precision` ni promover el candidato por tener los archivos instalados.
