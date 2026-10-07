@@ -56,5 +56,18 @@
     "error_type": "ConnectionRefusedError",
     "errno": 10061,
     "service_start_attempted": false
+  },
+  "service_recheck": {
+    "timestamp_utc": "2026-10-07T14:38:27.922718+00:00",
+    "method": "GET only; no service start/restart or generation by agent",
+    "comfyui_http_status": 200,
+    "bridge_root_http_status": 404,
+    "mpt_health_http_status": 200,
+    "assets_listed": {
+      "flux-2-klein-4b-fp8.safetensors": true,
+      "qwen_3_4b.safetensors": true,
+      "flux2-vae.safetensors": true
+    },
+    "limits": "Liveness and asset listing only, not successful loading/inference or certified running revisions."
   }
 }

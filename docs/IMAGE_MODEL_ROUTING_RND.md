@@ -112,3 +112,5 @@ Pendiente descargar 4.406.838.076 bytes con autorización específica. Espacio l
 Con autorización del usuario, sobre `99d6abd` se descargaron/verificaron DiT Klein 4B FP8 y VAE Flux2 (4.406.838.076 bytes). SHA-256 y tamaños locales coinciden con las revisiones oficiales fijadas. Encoder BF16 rehashado y conservado; no hay evidencia empírica para recomendar reemplazarlo. Ver [instalación y límites](FLUX_KLEIN_4B_INSTALL_PLAN.md). Contratos afectados: 39 passed.
 
 Ninguna inferencia ni benchmark: los tipos de tensores y tamaños en disco no certifican memoria residente. GET posterior de Comfy en 8188 rechazado; inventario vivo no validado. Candidato sigue `planned` pese a los tres assets verificados. Integración de bridge, revisión efectiva de procesos, memoria, continuidad/calidad y promoción permanecen pendientes.
+
+Revalidación tras `b3e1191`: ComfyUI responde por GET y lista los tres assets, bridge raíz responde 404 y MPT health 200. El rechazo anterior se conserva como evento histórico; inventario vivo ahora verificado, sin carga/inferencia ni inicio de servicios por el agente. No cambia la conclusión sobre memoria, calidad o promoción.

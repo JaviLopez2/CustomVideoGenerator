@@ -88,3 +88,9 @@ Instalados 4.406.838.076 bytes en ComfyUI: `models\diffusion_models\flux-2-klein
 GET posterior `/object_info`: conexión rechazada en 8188 (WinError 10061), sin intento de inicio/reinicio. No afirmar que el servicio ha listado/cargado los nuevos modelos. Contratos afectados: **39 passed**, [log](validation/flux-klein-4b-install-tests-2026-10-07.txt). Test experimental de aislamiento actualizado para assets verificados con candidato no listo; tests históricos/código de aplicación/grafos/bridge intactos. Sin generación/GPU, cambios de dependencias, publicación o promoción. Stable HEAD sigue `6d27ba4963ffe469d635db71eaeec506a8ff4b61`.
 
 Siguiente tarea: preparar integración experimental del bridge y recuperar servicio/inventario. Inicio/reinicio de ComfyUI y ejecución GPU no estaban incluidos en esta autorización; deben encargarse específicamente. No modificar fallback ni alias 9B, ni instalar aliases en el servicio activo por iniciativa propia. Identificar el checkpoint de cierre en el historial de este archivo.
+
+### Revalidación de servicios tras el checkpoint de instalación
+
+Instalación publicada en `b3e11915f8099c0888c5c87bff05c2b71c0b8306`. Tras la oferta del usuario de abrir servidores, un nuevo GET confirma ComfyUI 8188 HTTP 200 y los tres assets listados; bridge 8090 raíz HTTP 404 (liveness, no certificación de generación); MPT 8080 health HTTP 200. La conexión rechazada anterior queda como evento histórico, no como bloqueo vigente. Evidencia añadida al registro de instalación. El agente no inició/reinició servicios ni envió POST o generaciones.
+
+Siguiente tarea vigente: integración experimental del bridge; después prueba GPU mínima con autorización específica. Inventario y hashes están verificados, pero revisiones de ejecución/inferencia y gates de memoria/calidad siguen pendientes; candidato `planned`. Esta revalidación solo modifica documentación/metadatos, sin nuevos tests funcionales ni cambios de código.

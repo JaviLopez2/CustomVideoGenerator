@@ -80,5 +80,5 @@
   },
   "comfyui_commit": null,
   "bridge_commit": null,
-  "notes": "All three local components verified against pinned official hashes; API templates hashed. Candidate remains planned: no bridge binding, certified running revisions or GPU execution. Comfy GET unavailable after installation; encoder BF16 retained unchanged."
+  "notes": "All three local components verified against pinned official hashes and listed by Comfy GET recheck; API templates hashed. Candidate remains planned: no bridge binding, certified running revisions or GPU execution. Encoder BF16 retained unchanged."
 }

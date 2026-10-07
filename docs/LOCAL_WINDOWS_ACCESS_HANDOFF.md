@@ -70,3 +70,5 @@ Sobre `57a5747`: lectura completa del encoder Comfy funciona; hash y tamaño coi
 ### Instalación autorizada — 2026-10-07
 
 Sobre `99d6abd`, descarga/escritura específica en las dos carpetas de modelos Comfy funciona mediante escalación aprobada. DiT/VAE instalados tras validación de tamaño/SHA/cabecera; encoder sin cambios. No se guardaron credenciales ni URLs firmadas. GET posterior de Comfy en 8188 rechaza conexión; no se inició el servicio. 39 tests afectados pasan; evidencia `validation/flux-klein-4b-install-2026-10-07.json`. Los accesos de descarga no conceden permisos permanentes ni autorización de reinicio/GPU. Copia estable, Factory y servicios sin modificaciones.
+
+Recheck tras publicación de `b3e1191` y oferta del usuario de abrir servidores: ComfyUI GET 200, tres assets listados; bridge raíz 404 y MPT health 200. La indisponibilidad anterior ya no es el estado vigente. Sin inicio/reinicio ni generación desde el agente; registro JSON actualizado conservando ambos eventos.
