@@ -72,3 +72,7 @@ Sobre `57a5747`: lectura completa del encoder Comfy funciona; hash y tamaño coi
 Sobre `99d6abd`, descarga/escritura específica en las dos carpetas de modelos Comfy funciona mediante escalación aprobada. DiT/VAE instalados tras validación de tamaño/SHA/cabecera; encoder sin cambios. No se guardaron credenciales ni URLs firmadas. GET posterior de Comfy en 8188 rechaza conexión; no se inició el servicio. 39 tests afectados pasan; evidencia `validation/flux-klein-4b-install-2026-10-07.json`. Los accesos de descarga no conceden permisos permanentes ni autorización de reinicio/GPU. Copia estable, Factory y servicios sin modificaciones.
 
 Recheck tras publicación de `b3e1191` y oferta del usuario de abrir servidores: ComfyUI GET 200, tres assets listados; bridge raíz 404 y MPT health 200. La indisponibilidad anterior ya no es el estado vigente. Sin inicio/reinicio ni generación desde el agente; registro JSON actualizado conservando ambos eventos.
+
+### Bridge experimental — 2026-10-07
+
+Sobre `f38c63e`, Cargo/Rust 1.98.1 y cache local permiten build/test offline locked de `local_image_stack/experiments/bridge`. Source externo solo leído, sin cambios; hashes registrados. Preview HTTP efímero en loopback 8091 funciona, aliases listados y dispatch bloqueado 403; test cierra únicamente su proceso y libera el puerto. 173 tests Python + 1 Rust pasan. Sin POST Comfy/GPU ni cambios globales, de MPT estable o servicio 8090. Binario ignorado por Git; instrucciones reproducibles en README experimental, resultados/procedencia en validation.

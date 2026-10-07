@@ -1,0 +1,53 @@
+   Compiling comfyui-openai-api v0.1.0 (D:\Apps\MPT-worktrees\image-model-routing-modernization\local_image_stack\experiments\bridge)
+warning: constant `INITIAL_RECONNECT_DELAY_SECS` is never used
+  --> ..\..\bridge\ws.rs:25:7
+   |
+25 | const INITIAL_RECONNECT_DELAY_SECS: u64 = 2;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: constant `MAX_RECONNECT_DELAY_SECS` is never used
+  --> ..\..\bridge\ws.rs:26:7
+   |
+26 | const MAX_RECONNECT_DELAY_SECS: u64 = 60;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: constant `RECONNECT_BACKOFF_MULTIPLIER` is never used
+  --> ..\..\bridge\ws.rs:27:7
+   |
+27 | const RECONNECT_BACKOFF_MULTIPLIER: f64 = 1.5;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `new` is never used
+  --> ..\..\bridge\ws.rs:45:8
+   |
+43 | impl CompletedJobsBuffer {
+   | ------------------------ associated function in this implementation
+44 |     /// Creates a new empty circular buffer
+45 |     fn new() -> Self {
+   |        ^^^
+
+warning: field `client_id` is never read
+  --> ..\..\bridge\ws.rs:92:5
+   |
+84 | pub struct WebSocketManager {
+   |            ---------------- field in this struct
+...
+92 |     client_id: String,
+   |     ^^^^^^^^^
+
+warning: associated functions `new` and `message_listener` are never used
+   --> ..\..\bridge\ws.rs:113:18
+    |
+ 95 | impl WebSocketManager {
+    | --------------------- associated functions in this implementation
+...
+113 |     pub async fn new(
+    |                  ^^^
+...
+166 |     async fn message_listener(
+    |              ^^^^^^^^^^^^^^^^
+
+warning: `comfyui-openai-api` (bin "klein4b-experimental-bridge") generated 6 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.57s

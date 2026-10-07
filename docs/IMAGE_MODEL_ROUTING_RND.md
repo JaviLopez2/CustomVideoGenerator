@@ -114,3 +114,9 @@ Con autorización del usuario, sobre `99d6abd` se descargaron/verificaron DiT Kl
 Ninguna inferencia ni benchmark: los tipos de tensores y tamaños en disco no certifican memoria residente. GET posterior de Comfy en 8188 rechazado; inventario vivo no validado. Candidato sigue `planned` pese a los tres assets verificados. Integración de bridge, revisión efectiva de procesos, memoria, continuidad/calidad y promoción permanecen pendientes.
 
 Revalidación tras `b3e1191`: ComfyUI responde por GET y lista los tres assets, bridge raíz responde 404 y MPT health 200. El rechazo anterior se conserva como evento histórico; inventario vivo ahora verificado, sin carga/inferencia ni inicio de servicios por el agente. No cambia la conclusión sobre memoria, calidad o promoción.
+
+## Actualización: integración Rust aislada — 2026-10-07
+
+Sobre `f38c63e`, preparado y compilado un bridge experimental separado, con aliases 4B, binding de parámetros y expansión de referencias/roles. Código externo y proceso 8090 intactos. Preview HTTP 8091 comprobado con dispatch bloqueado 403 y proceso terminado; mode GPU implementado para encargo posterior, no ejecutado. [Contrato y límites](../local_image_stack/experiments/bridge/README.md).
+
+Validación: 173 tests Python + 1 Rust pasan, sin nuevas medidas GPU. La identidad del código/binary se registra en evidencia; no acredita revisión del proceso 8090 ni funcionamiento del modelo. Candidato `planned`; pendientes activación GPU mínima, memoria/calidad/latencia y caller MPT experimental con roles. Esta fase no cambia las conclusiones documentales de licencias/viabilidad.

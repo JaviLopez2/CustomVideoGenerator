@@ -1,0 +1,42 @@
+{
+  "base_mpt_head": "f38c63e001796dab514e192a2b06aa30b479f9f8",
+  "bridge_source_head": "9419883c954de0e7c15d9d3ba16deca850d8605f",
+  "bridge_source_has_local_changes": true,
+  "source_hashes": {
+    "Cargo.toml": "a12a851b2b1ba2ef67acb2d67f21c5a8b7b17951894a4487d96b163b624f6486",
+    "Cargo.lock": "d73493a7e0dd44093e052ce91243b562a9f6570b17404e3c7cd2a225388671ad",
+    "src/comfyui.rs": "2d414526aa147843e0f99fbec46efd18489a2d3a99d791121c1a7c08fd2be927",
+    "src/proxy.rs": "80a4998e07afcabf891d82022cdbc69f52db1d6fa524817ffe86bcc169913100",
+    "src/main.rs": "20d1f60734693ad1327941e21549d2fcaa08e8e5399864d409676614f9516dd5",
+    "src/ws.rs": "c5c7fb1d0a76449195bbe2289a711c6b1bc3efedc7173367f9b8c99d66f5defc"
+  },
+  "limits": "Source checkout identity only; running 8090 binary revision not certified. Active source/config/workflows untouched.",
+  "external_source_unchanged": true,
+  "original_snapshot_matches_external_comfyui_source": true,
+  "binary": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\debug\\klein4b-experimental-bridge.exe",
+    "sha256": "7f8d125f3de758f6c65e7f06bcb43a427c04dec333ba98d386a51af4451d6a85",
+    "tracked_in_git": false
+  },
+  "compilation": {
+    "offline": true,
+    "locked": true,
+    "cargo_version": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "rustc_version": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "inherited_dead_code_warnings": 6
+  },
+  "preview_port_released": true,
+  "tests": {
+    "rust_legacy": 1,
+    "pytest_combined": 173,
+    "native_cases_in_combined": 22,
+    "preview_mode_checked": true,
+    "generation_blocked_http_status": 403,
+    "comfy_prompt_post_sent": false
+  },
+  "active_services": {
+    "8080": 200,
+    "8090": 404,
+    "8188": 200
+  }
+}

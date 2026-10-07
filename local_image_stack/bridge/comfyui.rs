@@ -313,7 +313,7 @@ pub async fn generations_response(
 /// # Returns
 /// - Serialized ComfyUI prompt JSON (Bytes), ready to be submitted to backend
 /// - `ProxyError`: If validation fails or transformation errors occur
-async fn create_json_payload(
+pub(crate) async fn create_json_payload(
     body: Bytes,
     workflows: Arc<HashMap<String, Value>>,
     client_id: String,
@@ -354,6 +354,16 @@ async fn create_json_payload(
             return Err(ProxyError::Json(format!(
                 "Failed to get model name from JSON"
             )));
+        }
+
+        // Experimental bridge only; legacy model bindings keep their old path.
+        #[cfg(feature = "klein4b_experiment")]
+        if crate::klein4b::is_alias(openai_request.get("model").and_then(Value::as_str).unwrap_or("")) {
+            workflow_use["prompt"] = crate::klein4b::materialize(openai_request, &workflow_use["prompt"])
+                .map_err(ProxyError::Validation)?;
+            workflow_use["client_id"] = serde_json::json!(client_id);
+            return serde_json::to_vec(&workflow_use).map(Bytes::from)
+                .map_err(|e| ProxyError::Json(format!("Failed to serialize experimental graph: {}", e)));
         }
 
         // Modify parameters in the workflow

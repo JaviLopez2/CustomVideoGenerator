@@ -83,3 +83,9 @@ Sobre `99d6abd`, instalados DiT y VAE del plan, con tamaño/SHA-256/cabecera ver
 ComfyUI no responde al GET posterior en 8188 (conexión rechazada), por lo que inventario vivo e integración siguen pendientes. No se iniciaron servicios ni se activaron aliases, modificaron grafos o ejecutó GPU. La instalación no demuestra que el conjunto quepa en 12 GB ni certifica calidad/latencia. Siguiente fase: integración experimental y, con autorización específica de servicio/GPU, inventario vivo y carga mínima.
 
 Recheck posterior a `b3e1191`: ComfyUI responde y lista los tres componentes, bridge responde en su raíz y MPT health pasa. Inventario vivo ya comprobado; conexión rechazada anterior histórica. Sin inicio/reinicio ni inferencia por el agente. Integración, revisiones efectivas y GPU siguen pendientes.
+
+## Continuación: bridge nativo experimental validado sin GPU
+
+Base `f38c63e`: variante Rust compilable en `local_image_stack/experiments/bridge`, con las dos plantillas 4B, aliases exclusivos, materialización de 0–3 refs y roles/temporal explícitos. Hook con feature solo en snapshot local, fuera del servicio externo; datos de source/código modificado preservados. [README y modos](../local_image_stack/experiments/bridge/README.md). Compilación offline/locked, sin nuevas dependencias globales ni descargas.
+
+173 tests Python (22 nativos) y 1 Rust aprobados. Preview HTTP efímero 8091 lista los aliases y bloquea generación con 403; CLI y HTTP producen grafos equivalentes al adaptador Python. Proceso cerrado; servicios originales intactos. El modo `--serve-gpu` está preparado pero no ejecutado. No hay evidencia nueva de inferencia/memoria/calidad ni promoción. Siguiente fase: T2I GPU mínimo expresamente autorizado, después edición y caller MPT experimental; roles y endpoint deben incorporarse explícitamente al caller antes de escena/smoke.
