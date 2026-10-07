@@ -248,6 +248,8 @@ def test_temporal_output_state_with_predicate_does_not_duplicate_verb():
     assert scene["route"] == "precision"
     assert scene["temporal_state"] == "shows little information"
     assert "shows shows" not in scene["prompt"].lower()
+    assert "same same" not in scene["prompt"].lower()
+    assert "same the same" not in scene["prompt"].lower()
     assert "Its visible state is shows" not in scene["prompt"]
     assert "The output itself shows little information." in scene["prompt"]
 
