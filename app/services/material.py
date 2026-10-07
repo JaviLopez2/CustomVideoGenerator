@@ -4523,6 +4523,10 @@ def _qwen_precision_prompt_with_references(
     subject = _normalized_reference_subject(subject) or "the factual subject"
     reference_count = max(1, min(int(reference_count or 1), 10))
     reference_info = reference_info or {}
+    temporal_progression = bool(reference_info.get("temporal_progression"))
+    temporal_state = " ".join(
+        str(reference_info.get("temporal_state") or "").strip().split()
+    )
     pack = [
         dict(item)
         for item in (reference_info.get("reference_pack") or [])
@@ -4557,11 +4561,22 @@ def _qwen_precision_prompt_with_references(
         role, kind, description = role_at(1)
         if role == "continuity" or kind == "continuity_anchor":
             target = description or str(reference_info.get("continuity_description") or subject)
-            text = (
-                f"Edit the input image as the canvas. Keep the same {target}, including its underlying depicted "
-                f"content, identity, border, orientation and position. Apply this change: {prompt} "
-                "Keep all other visible content unchanged unless the scene description explicitly changes it."
-            )
+            if temporal_progression:
+                requested = temporal_state or "the current narrated visible stage"
+                text = (
+                    f"Edit the input image as the canvas. Keep the same physical {target}: preserve its carrier, "
+                    "outer border, orientation, position, framing and surrounding scene. "
+                    f"The visible state inside that same physical subject MUST change to match this temporal stage: {requested}. "
+                    f"Apply this change: {prompt} "
+                    "Do not preserve the previous blank/developing image content when it conflicts with the requested stage. "
+                    "Preserve only properties that are not part of the narrated progression."
+                )
+            else:
+                text = (
+                    f"Edit the input image as the canvas. Keep the same {target}, including its identity, border, "
+                    f"orientation and position. Apply this change: {prompt} "
+                    "Keep all other visible content unchanged unless the scene description explicitly changes it."
+                )
         else:
             evidence = description or subject
             text = (
@@ -4606,11 +4621,22 @@ def _qwen_precision_prompt_with_references(
     roles = ". ".join(role_sentences) + ". "
     if canvas_index is not None:
         canvas = f"<image{canvas_index}>"
-        text = (
-            roles
-            + f"Edit {canvas}. Apply this change: {prompt} "
-            + f"Keep all other content of {canvas} unchanged. Use every other image only for the role stated above."
-        )
+        if temporal_progression:
+            requested = temporal_state or "the current narrated visible stage"
+            text = (
+                roles
+                + f"Edit {canvas}. Preserve the same physical carrier, border, orientation, position, framing and surrounding scene. "
+                + f"The visible state inside the continuity target MUST change to match this temporal stage: {requested}. "
+                + f"Apply this change: {prompt} "
+                + f"Do not preserve the previous blank/developing image content of {canvas} when it conflicts with the requested stage. "
+                + "Use every other image only for the role stated above."
+            )
+        else:
+            text = (
+                roles
+                + f"Edit {canvas}. Apply this change: {prompt} "
+                + f"Keep all other content of {canvas} unchanged. Use every other image only for the role stated above."
+            )
     else:
         text = (
             roles
@@ -7494,6 +7520,8 @@ def _download_videos_openai_image_on_demand(
                 routing_reason = "continuity_edit_from_root"
                 continuity_reference_ready = True
                 reference_info["continuity_description"] = continuity_description
+                reference_info["temporal_progression"] = bool(temporal_progression)
+                reference_info["temporal_state"] = temporal_state
                 reference_info["primary_identity_only"] = bool(
                     includes_primary_subject and reference_target in {"output", "secondary_subject"}
                 )
