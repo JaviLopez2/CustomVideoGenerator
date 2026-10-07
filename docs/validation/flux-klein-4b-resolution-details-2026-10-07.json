@@ -1,0 +1,620 @@
+{
+  "base_head": "6ba2402da916925e1334ba31e68b4fb6cf486cf8",
+  "authorization": "Up to three staged GPU trials of continuity, resolution and fine detail; no retries or model/workflow changes",
+  "assets": {
+    "diffusion_model": {
+      "sha256": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6",
+      "size_bytes": 4070624520
+    },
+    "text_encoder": {
+      "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+      "size_bytes": 8044982048
+    },
+    "vae": {
+      "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+      "size_bytes": 336213556
+    }
+  },
+  "cases": [
+    {
+      "name": "continuity_512",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "The same red ceramic mug stays in the same position on the same wooden table beside the same window. Preserve mug geometry, handle shape, viewpoint and framing. The mug now contains hot tea. Advance the scene to late afternoon: warm golden sunlight and distinct visible wisps of steam rising from the mug against the darker background. Keep a single complete mug. No text or watermark.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nThe result MUST advance to this requested visible state: late afternoon golden light with clearly visible steam rising from hot tea in the same red mug.",
+        "seed": 42,
+        "size": "512x512",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+        "reference_roles": [
+          "continuity_anchor"
+        ],
+        "response_format": "b64_json",
+        "temporal_progression": true,
+        "temporal_state": "late afternoon golden light with clearly visible steam rising from hot tea in the same red mug"
+      },
+      "started_utc": "2026-10-07T18:41:43.104747+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-07T18:41:43.720631+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 10255,
+          "utilization_percent": 20
+        },
+        {
+          "utc": "2026-10-07T18:41:44.788253+00:00",
+          "elapsed_seconds": 1.11,
+          "total_mib": 12288,
+          "used_mib": 11687,
+          "utilization_percent": 34
+        },
+        {
+          "utc": "2026-10-07T18:41:45.856280+00:00",
+          "elapsed_seconds": 2.172,
+          "total_mib": 12288,
+          "used_mib": 11498,
+          "utilization_percent": 38
+        },
+        {
+          "utc": "2026-10-07T18:41:46.912644+00:00",
+          "elapsed_seconds": 3.235,
+          "total_mib": 12288,
+          "used_mib": 11612,
+          "utilization_percent": 72
+        },
+        {
+          "utc": "2026-10-07T18:41:47.952121+00:00",
+          "elapsed_seconds": 4.282,
+          "total_mib": 12288,
+          "used_mib": 11234,
+          "utilization_percent": 84
+        },
+        {
+          "utc": "2026-10-07T18:41:48.997720+00:00",
+          "elapsed_seconds": 5.328,
+          "total_mib": 12288,
+          "used_mib": 11206,
+          "utilization_percent": 84
+        },
+        {
+          "utc": "2026-10-07T18:41:50.065416+00:00",
+          "elapsed_seconds": 6.391,
+          "total_mib": 12288,
+          "used_mib": 11245,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:41:51.106305+00:00",
+          "elapsed_seconds": 7.422,
+          "total_mib": 12288,
+          "used_mib": 11245,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:41:52.151746+00:00",
+          "elapsed_seconds": 8.469,
+          "total_mib": 12288,
+          "used_mib": 11319,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:41:53.196251+00:00",
+          "elapsed_seconds": 9.516,
+          "total_mib": 12288,
+          "used_mib": 11315,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:41:54.258280+00:00",
+          "elapsed_seconds": 10.578,
+          "total_mib": 12288,
+          "used_mib": 11128,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:41:55.304098+00:00",
+          "elapsed_seconds": 11.625,
+          "total_mib": 12288,
+          "used_mib": 11183,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:41:56.351248+00:00",
+          "elapsed_seconds": 12.672,
+          "total_mib": 12288,
+          "used_mib": 10285,
+          "utilization_percent": 3
+        },
+        {
+          "utc": "2026-10-07T18:41:57.400213+00:00",
+          "elapsed_seconds": 13.719,
+          "total_mib": 12288,
+          "used_mib": 10285,
+          "utilization_percent": 1
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-07T18:41:43.673097+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 10255,
+        "utilization_percent": 20
+      },
+      "bridge_http_status": 200,
+      "wall_seconds": 14.141,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\continuity_512\\result.png",
+        "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+        "bytes": 260164,
+        "width": 512,
+        "height": 512,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00003_.png"
+      },
+      "history": {
+        "prompt_id": "38d32450-e84a-4ca1-9ba2-6c27a69d4e7f",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00003_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 12.23
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 10255,
+        "sampled_peak_global_used_mib": 11687,
+        "margin_at_sampled_peak_mib": 601,
+        "sample_count": 14,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-07T18:41:57.833512+00:00",
+      "visual_review": {
+        "status": "passed_informal",
+        "identity_and_framing_preserved": true,
+        "golden_late_afternoon_light_visible": true,
+        "steam_visible": true,
+        "note": "Steam is strongly emphasized and golden from the lighting; visual review is not a physical-accuracy or temporal-sequence guarantee."
+      },
+      "final_artifact_and_history_recheck": true
+    },
+    {
+      "name": "detail_t2i_768x1376",
+      "request": {
+        "model": "flux-klein-4b-t2i-exp",
+        "prompt": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a white dial, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+        "seed": 42,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_roles": [],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-07T18:43:14.224099+00:00",
+      "post_attempted": true,
+      "reference_megapixels": null,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-07T18:43:14.836417+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 10203,
+          "utilization_percent": 30
+        },
+        {
+          "utc": "2026-10-07T18:43:15.895465+00:00",
+          "elapsed_seconds": 1.109,
+          "total_mib": 12288,
+          "used_mib": 11642,
+          "utilization_percent": 47
+        },
+        {
+          "utc": "2026-10-07T18:43:16.955777+00:00",
+          "elapsed_seconds": 2.172,
+          "total_mib": 12288,
+          "used_mib": 11512,
+          "utilization_percent": 45
+        },
+        {
+          "utc": "2026-10-07T18:43:18.000947+00:00",
+          "elapsed_seconds": 3.218,
+          "total_mib": 12288,
+          "used_mib": 11497,
+          "utilization_percent": 13
+        },
+        {
+          "utc": "2026-10-07T18:43:19.063516+00:00",
+          "elapsed_seconds": 4.281,
+          "total_mib": 12288,
+          "used_mib": 11527,
+          "utilization_percent": 68
+        },
+        {
+          "utc": "2026-10-07T18:43:20.124137+00:00",
+          "elapsed_seconds": 5.343,
+          "total_mib": 12288,
+          "used_mib": 11532,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-07T18:43:21.174220+00:00",
+          "elapsed_seconds": 6.39,
+          "total_mib": 12288,
+          "used_mib": 11641,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:43:22.236622+00:00",
+          "elapsed_seconds": 7.453,
+          "total_mib": 12288,
+          "used_mib": 11125,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:43:23.283595+00:00",
+          "elapsed_seconds": 8.5,
+          "total_mib": 12288,
+          "used_mib": 11108,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:43:24.329923+00:00",
+          "elapsed_seconds": 9.547,
+          "total_mib": 12288,
+          "used_mib": 11107,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:43:25.370923+00:00",
+          "elapsed_seconds": 10.578,
+          "total_mib": 12288,
+          "used_mib": 11963,
+          "utilization_percent": 97
+        },
+        {
+          "utc": "2026-10-07T18:43:26.417513+00:00",
+          "elapsed_seconds": 11.625,
+          "total_mib": 12288,
+          "used_mib": 9273,
+          "utilization_percent": 1
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-07T18:43:14.788301+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 10203,
+        "utilization_percent": 30
+      },
+      "bridge_http_status": 200,
+      "wall_seconds": 12.156,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+        "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+        "bytes": 1763048,
+        "width": 768,
+        "height": 1376,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00004_.png"
+      },
+      "history": {
+        "prompt_id": "6531bbd4-bf98-4809-8524-95cff6efb01d",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00004_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 11.134
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 10203,
+        "sampled_peak_global_used_mib": 11963,
+        "margin_at_sampled_peak_mib": 325,
+        "sample_count": 12,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-07T18:43:26.952650+00:00",
+      "visual_review": {
+        "status": "partial_semantic",
+        "one_watch_and_one_key_visible": true,
+        "fine_fabric_and_metal_texture_visible": true,
+        "both_objects_complete": true,
+        "two_watch_hands_visible": true,
+        "unrequested_pseudotext_on_dial": true,
+        "no_letters_constraint_passed": false,
+        "limits": "Informal visual inspection, not clock-accuracy or objective fine-detail benchmark."
+      },
+      "final_artifact_and_history_recheck": true
+    },
+    {
+      "name": "detail_edit_768x1376",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "Change the linen cloth from dark charcoal to deep burgundy red. Remove the small invented lettering or brand inscription from the watch dial: leave a clean white dial with only the existing hour tick marks and the two watch hands. Preserve the exact same brass pocket watch and silver key, their shapes, positions, scales, hour markers and hand positions, the fine metal scratches, and the same woven textile structure. Preserve camera viewpoint, vertical framing and natural side lighting. Keep both objects complete and sharp. Do not add objects, letters, numerals, logos, captions or watermark.\nInput image 1 has role identity_reference.",
+        "seed": 42,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN4B_DETAIL_WATCH_768X1376.png",
+        "reference_roles": [
+          "identity_reference"
+        ],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-07T18:45:59.887697+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-07T18:46:00.518295+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 9282,
+          "utilization_percent": 0
+        },
+        {
+          "utc": "2026-10-07T18:46:01.581663+00:00",
+          "elapsed_seconds": 1.11,
+          "total_mib": 12288,
+          "used_mib": 9984,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-07T18:46:02.643331+00:00",
+          "elapsed_seconds": 2.172,
+          "total_mib": 12288,
+          "used_mib": 11581,
+          "utilization_percent": 33
+        },
+        {
+          "utc": "2026-10-07T18:46:03.712118+00:00",
+          "elapsed_seconds": 3.235,
+          "total_mib": 12288,
+          "used_mib": 11588,
+          "utilization_percent": 37
+        },
+        {
+          "utc": "2026-10-07T18:46:04.762300+00:00",
+          "elapsed_seconds": 4.281,
+          "total_mib": 12288,
+          "used_mib": 11205,
+          "utilization_percent": 38
+        },
+        {
+          "utc": "2026-10-07T18:46:05.826899+00:00",
+          "elapsed_seconds": 5.36,
+          "total_mib": 12288,
+          "used_mib": 11429,
+          "utilization_percent": 67
+        },
+        {
+          "utc": "2026-10-07T18:46:06.879484+00:00",
+          "elapsed_seconds": 6.406,
+          "total_mib": 12288,
+          "used_mib": 11300,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-07T18:46:07.945482+00:00",
+          "elapsed_seconds": 7.469,
+          "total_mib": 12288,
+          "used_mib": 11361,
+          "utilization_percent": 92
+        },
+        {
+          "utc": "2026-10-07T18:46:08.989395+00:00",
+          "elapsed_seconds": 8.516,
+          "total_mib": 12288,
+          "used_mib": 11289,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:10.060544+00:00",
+          "elapsed_seconds": 9.594,
+          "total_mib": 12288,
+          "used_mib": 11410,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:11.113525+00:00",
+          "elapsed_seconds": 10.641,
+          "total_mib": 12288,
+          "used_mib": 11427,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:12.151434+00:00",
+          "elapsed_seconds": 11.672,
+          "total_mib": 12288,
+          "used_mib": 10836,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:13.189133+00:00",
+          "elapsed_seconds": 12.719,
+          "total_mib": 12288,
+          "used_mib": 10713,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-07T18:46:14.230026+00:00",
+          "elapsed_seconds": 13.75,
+          "total_mib": 12288,
+          "used_mib": 10688,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:15.274224+00:00",
+          "elapsed_seconds": 14.797,
+          "total_mib": 12288,
+          "used_mib": 10645,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:16.321980+00:00",
+          "elapsed_seconds": 15.844,
+          "total_mib": 12288,
+          "used_mib": 10639,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:17.365699+00:00",
+          "elapsed_seconds": 16.891,
+          "total_mib": 12288,
+          "used_mib": 10608,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:18.426401+00:00",
+          "elapsed_seconds": 17.953,
+          "total_mib": 12288,
+          "used_mib": 10609,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:19.486458+00:00",
+          "elapsed_seconds": 19.016,
+          "total_mib": 12288,
+          "used_mib": 9092,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-07T18:46:20.535879+00:00",
+          "elapsed_seconds": 20.063,
+          "total_mib": 12288,
+          "used_mib": 9066,
+          "utilization_percent": 0
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-07T18:46:00.473475+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 9282,
+        "utilization_percent": 0
+      },
+      "bridge_http_status": 200,
+      "wall_seconds": 20.547,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "bytes": 1749087,
+        "width": 768,
+        "height": 1376,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00005_.png"
+      },
+      "history": {
+        "prompt_id": "7715c676-183f-4cb8-95c1-fe376a1a9c3f",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00005_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 18.973
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 9282,
+        "sampled_peak_global_used_mib": 11588,
+        "margin_at_sampled_peak_mib": 700,
+        "sample_count": 20,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-07T18:46:21.035768+00:00",
+      "final_artifact_and_history_recheck": true,
+      "visual_review": {
+        "status": "passed_informal",
+        "cloth_changed_to_burgundy": true,
+        "invented_dial_lettering_removed": true,
+        "watch_key_shapes_positions_and_fine_detail_visually_preserved": true,
+        "camera_and_framing_visually_preserved": true,
+        "limits": "Single informal visual review, no pixel/geometric invariance metric or objective text/clock accuracy evaluation. Brass reflections changed slightly with cloth colour."
+      }
+    }
+  ],
+  "binary": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\debug\\klein4b-experimental-bridge.exe",
+    "sha256": "7f8d125f3de758f6c65e7f06bcb43a427c04dec333ba98d386a51af4451d6a85",
+    "tracked_in_git": false
+  },
+  "plan_adjustment": "Technical resolution gate passed, but T2I text-suppression constraint failed. No repeat of T2I. The already planned third edit also requests removal of that inscription; original failure remains recorded and cannot be treated as accepted by a fallback.",
+  "final_checks": {
+    "utc": "2026-10-07T18:50:38.729689+00:00",
+    "queue_running": 0,
+    "queue_pending": 0,
+    "experimental_port_8091_released": true,
+    "original_services_http_status": {
+      "8080": 200,
+      "8090": 404,
+      "8188": 200
+    },
+    "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "external_bridge_source_hashes_unchanged": true,
+    "binary_hash_unchanged": true,
+    "all_returned_image_hashes_match_comfy_originals": true,
+    "all_output_dimensions_and_success_history_rechecked": true
+  },
+  "local_harness": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\run_case.py",
+    "sha256": "9bce0a605a2f773d78fb8c65a1105281b5ae31268bd0c9653294438788eb214b",
+    "tracked_in_git": false,
+    "note": "Third edit prompt was adjusted after the T2I lettering failure; exact per-case requests preserved above."
+  },
+  "overall_status": "three_technical_passes_with_partial_t2i_semantic_compliance",
+  "limits": [
+    "Three single functional trials, not a repeated performance benchmark or end-to-end MPT test.",
+    "GPU samples are global once per second, not exact peaks or per-model allocation. Cache/process baselines differ; timing and memory differences are not controlled comparisons.",
+    "No OOM in these histories; only 325 MiB margin at the largest sampled peak. No guarantee for larger images or multiple references.",
+    "Candidate remains planned. Multi-reference generation and experimental MPT caller/two-scene smoke are pending."
+  ]
+}

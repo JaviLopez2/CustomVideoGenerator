@@ -101,3 +101,9 @@ El PASS solo cubre ese caso, sin reintentos/repetibilidad/A/B, ni edición/resol
 Sobre `a3d82a2`, una edición autorizada de la taza roja→azul, output512×512/seed42/4 pasos; referencia identity escalada a1MP por la plantilla. HTTP200, historial success, 14,219s total/13,926s job. Pico global muestreado11756MiB de12288, margen532MiB. Comparación visual informal: color pedido y forma/fondo conservados. [Resultado y artifact](FLUX_KLEIN_4B_SINGLE_REF_SMOKE.md). Sin cambios de grafo/código/encoder, ni segunda solicitud.
 
 Siguiente propuesta más exigente: identidad/encuadre con cambio de estado visible (atardecer y vapor), después multi-ref y resolución objetivo. Ninguna de esas fases ejecutada; candidato `planned`. Pregunta del usuario sobre complejidad respondida durante la prueba, sin tomarla como autorización para generar otra imagen.
+
+## Continuación: continuidad y resolución objetivo
+
+Base `6ba2402`: ejecutada la serie autorizada de tres casos, sin reintentos ni cambios de implementación. Continuidad512 con raíz original logra luz de atardecer/vapor; T2I768×1376 muestra detalle fino pero introduce inscripción no pedida; edición768×1376 cambia tejido a burdeos y retira inscripción con objetos visualmente conservados. Los tres casos pasan técnicamente; el T2I conserva cumplimiento semántico parcial. [Resultados, artifacts y límites](FLUX_KLEIN_4B_RESOLUTION_DETAILS.md).
+
+Pico global muestreado máximo11963/12288MiB, margen325MiB: no extrapolar a multi-ref ni mayor carga. Instancias8091 cerradas, servicios originales/estable/source externo preservados. Sin cambios de código/modelos/encoder/grafos/dependencias ni tests de código nuevos. Estado planned; pendientes dos referencias512, multi-ref a resolución objetivo y caller MPT experimental con smoke de dos escenas. Los bloques anteriores describen checkpoints históricos, no bloqueos todavía vigentes.

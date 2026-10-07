@@ -84,3 +84,7 @@ Sobre `066fcdd`, instancia experimental 8091 `--serve-gpu` creada para una sola 
 ### Una edición single-ref autorizada — 2026-10-07
 
 Sobre `a3d82a2`, input propio copiado a Comfy sin sobrescritura y una solicitud edit512×512/seed42/4 pasos: HTTP200, historial success, cambio rojo→azul visualmente logrado. Total14,219s/job13,926s, pico global muestreado11756/12288MiB. Instancia8091 cerrada, cola vacía, servicios originales vivos y estable intacto. Paths/evidencia en `FLUX_KLEIN_4B_SINGLE_REF_SMOKE.md`; sin cambios globales ni permiso para más generaciones por este paso.
+
+### Serie autorizada de continuidad/resolución/detalles — 2026-10-07
+
+Sobre `6ba2402`, tres solicitudes al bridge experimental8091: continuidad512, T2I768×1376 y edit768×1376; HTTP200 e historial success en las tres. Lectura de outputs/historial/sensores y staging sin sobrescritura de input propio funcionan. T2I parcial por inscripción inventada, retirada en edición posterior sin ocultar el fallo. [Informe](FLUX_KLEIN_4B_RESOLUTION_DETAILS.md). Pico global muestreado11963/12288MiB; no garantiza cargas mayores. Bridge propio cerrado y puerto libre, cola vacía, servicios originales vivos, stable HEAD y hashes source externo conservados. Solo documentación/evidencia añadidas; sin cambios globales, dependencias o permisos permanentes. Artifacts ignorados preservables en target/resolution-details-2026-10-07.
