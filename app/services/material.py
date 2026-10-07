@@ -7376,6 +7376,13 @@ def _download_videos_openai_image_on_demand(
             and scene_index < len(scene_reference_critical)
             else False
         )
+        # Precision can mean either "stronger generator" or "reference-conditioned".
+        # Only the latter must acquire factual/reference images. Output-state scenes
+        # with reference_need=none are allowed to use the stronger Qwen route without
+        # contaminating them with the primary-subject identity pack.
+        precision_reference_required = bool(
+            reference_critical or reference_need not in {"", "none"}
+        )
         includes_primary_subject = bool(
             scene_includes_primary_subject[scene_index]
             if scene_includes_primary_subject is not None
@@ -7556,6 +7563,7 @@ def _download_videos_openai_image_on_demand(
 
         if (
             route == "precision"
+            and precision_reference_required
             and reference_target != "primary_subject"
             and not continuity_reference_ready
             and not includes_primary_subject
@@ -7608,7 +7616,8 @@ def _download_videos_openai_image_on_demand(
                 material_directory
             )
             use_manual_pack = bool(
-                manual_entries
+                precision_reference_required
+                and manual_entries
                 and manual_mode in {"user_first", "user_only"}
                 and not continuity_reference_ready
             )
@@ -7738,7 +7747,11 @@ def _download_videos_openai_image_on_demand(
                         f"scene={scene_index + 1}, refs={len(reference_images)}"
                     )
 
-            if not reference_images and manual_mode != "user_only":
+            if (
+                not reference_images
+                and precision_reference_required
+                and manual_mode != "user_only"
+            ):
                 cache_key = _normalized_reference_subject(reference_subject).lower()
                 cached_reference = _precision_reference_cache_lookup(
                     precision_reference_cache,
@@ -7770,7 +7783,7 @@ def _download_videos_openai_image_on_demand(
                                 reference_info,
                             )
 
-            if not reference_images:
+            if not reference_images and precision_reference_required:
                 if manual_mode == "user_only":
                     logger.error(
                         "precision route requires the user identity pack but no usable "
@@ -7797,6 +7810,12 @@ def _download_videos_openai_image_on_demand(
                     )
                     _persist_material_sources(task_id, material_sources)
                     return []
+            elif route == "precision" and not reference_images:
+                logger.info(
+                    "reference-free precision generation selected: "
+                    f"scene={scene_index + 1}, subject={reference_subject!r}, "
+                    f"target={reference_target!r}"
+                )
 
         logger.info(
             f"generating OpenAI image scene {scene_index + 1}/{len(search_terms)}: "
