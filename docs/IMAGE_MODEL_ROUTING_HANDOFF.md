@@ -108,3 +108,15 @@ Build offline/locked y prueba Rust legacy: **1 passed**. Suite ampliada Python: 
 HTTP preview efímero en 8091: aliases listados, transformación correcta y generación bloqueada 403; proceso de prueba cerrado y puerto liberado. No hubo POST a Comfy ni GPU. `--serve-gpu` está implementado para futura activación específica, pero no se ejecutó. Servicios originales siguen respondiendo 8080 health 200, 8090 raíz 404, 8188 system_stats 200. Binario/target ignorados; no depende de un cambio global de librerías.
 
 Siguiente tarea concreta: prueba GPU mínima T2I con autorización específica, usando esta instancia aislada y parámetros pequeños; revalidar assets/inventario, fijar identidad del binario en ejecución y medir OOM/VRAM/tiempo. Después single-ref/temporal/multi-ref y caller MPT experimental con roles/endpoint 8091. No cambiar configuración estable ni asumir que el caller actual manda reference_roles. El candidato sigue `planned`; SHA del checkpoint de cierre en el historial de este archivo.
+
+## Checkpoint posterior: una prueba GPU T2I autorizada
+
+Base `066fcdddfdc86d5dcae5718d3b3baadbab769cdd`, worktree limpio y fetch sin divergencia. El usuario autorizó la única generación propuesta: T2I 512×512, 4 pasos, seed 42. Assets y binario rehashados, cola vacía revalidada; una sola solicitud a la instancia experimental 8091 `--serve-gpu`, sin reintentos.
+
+**PASS de ese caso mínimo**: bridge HTTP 200, una imagen PNG 512×512, historial Comfy `success`, sin errores registrados. Tiempo completo 10,109 s; execution_start→execution_success 8,672 s. VRAM global baseline 4424 MiB; pico muestreado 11433 MiB/12288, 10 muestras a intervalo objetivo 1 s, margen observado 855 MiB. No es memoria por modelo ni pico exacto; caches/otros procesos no controlados. Encoder BF16 conservado. [Resultado y límites](FLUX_KLEIN_4B_GPU_SMOKE.md), [registro JSON](validation/flux-klein-4b-gpu-smoke-512-seed42-2026-10-07.json).
+
+PNG inspeccionado: una taza roja completa sobre mesa junto a ventana, sin texto/watermark apreciable. SHA de imagen devuelta igual al original Comfy. Paths absolutos de ambas copias en el registro; artifacts locales bajo target ignorados por Git, conservar antes de archivar el worktree. No se certifica calidad comparativa/identidad/temporal ni repetibilidad por esta única imagen.
+
+Bridge experimental cerrado, 8091 libre; servicios originales vivos y stable HEAD `6d27ba4963ffe469d635db71eaeec506a8ff4b61` intacto. Sin cambios de routing/QA/fallback/configuración/dependencias, nuevas descargas, reinicios o publicación. Runtime Comfy reportado 0.37.0/Python3.13.12/Torch2.12.1+cu130; source HEAD observado no certifica revisión cargada. No se marca candidato `ready`.
+
+Siguiente tarea concreta propuesta: una edición single-ref 512×512 con esta taza y cambio visible, previa autorización específica de otra generación. Luego temporal/multi-ref/resolución objetivo y caller MPT/smoke de dos escenas. La autorización actual quedó consumida en una solicitud; no seguir generando. Los tests históricos no se repitieron porque solo cambian documentos/evidencia; las verificaciones runtime realizadas están registradas.

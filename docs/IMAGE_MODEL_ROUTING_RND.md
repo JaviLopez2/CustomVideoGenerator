@@ -120,3 +120,9 @@ Revalidación tras `b3e1191`: ComfyUI responde por GET y lista los tres assets, 
 Sobre `f38c63e`, preparado y compilado un bridge experimental separado, con aliases 4B, binding de parámetros y expansión de referencias/roles. Código externo y proceso 8090 intactos. Preview HTTP 8091 comprobado con dispatch bloqueado 403 y proceso terminado; mode GPU implementado para encargo posterior, no ejecutado. [Contrato y límites](../local_image_stack/experiments/bridge/README.md).
 
 Validación: 173 tests Python + 1 Rust pasan, sin nuevas medidas GPU. La identidad del código/binary se registra en evidencia; no acredita revisión del proceso 8090 ni funcionamiento del modelo. Candidato `planned`; pendientes activación GPU mínima, memoria/calidad/latencia y caller MPT experimental con roles. Esta fase no cambia las conclusiones documentales de licencias/viabilidad.
+
+## Actualización: primera medida GPU local autorizada — 2026-10-07
+
+Sobre `066fcdd`, una única solicitud T2I 512×512, 4 pasos, seed 42, sin refs y con encoder BF16: HTTP 200 e imagen válida, historial Comfy success. 10,109 s de solicitud, 8,672 s de ejecución del job. Baseline global GPU 4424 MiB; pico global muestreado 11433 MiB de 12288, margen observado 855 MiB. [Datos, artifact y límites](FLUX_KLEIN_4B_GPU_SMOKE.md).
+
+Esto sustituye la ausencia de mediciones para ese caso concreto; no valida cifras publicadas en otros equipos ni demuestra memoria de edición/resolución objetivo. Una sola imagen visualmente acorde al prompt, sin A/B/repetición ni control de caches. Candidato sigue `planned`; single-ref, continuidad, multi-ref, resolución objetivo, caller MPT y promoción pendientes. No hubo otra generación ni cambios de producción.

@@ -76,3 +76,7 @@ Recheck tras publicación de `b3e1191` y oferta del usuario de abrir servidores:
 ### Bridge experimental — 2026-10-07
 
 Sobre `f38c63e`, Cargo/Rust 1.98.1 y cache local permiten build/test offline locked de `local_image_stack/experiments/bridge`. Source externo solo leído, sin cambios; hashes registrados. Preview HTTP efímero en loopback 8091 funciona, aliases listados y dispatch bloqueado 403; test cierra únicamente su proceso y libera el puerto. 173 tests Python + 1 Rust pasan. Sin POST Comfy/GPU ni cambios globales, de MPT estable o servicio 8090. Binario ignorado por Git; instrucciones reproducibles en README experimental, resultados/procedencia en validation.
+
+### Una generación GPU autorizada — 2026-10-07
+
+Sobre `066fcdd`, instancia experimental 8091 `--serve-gpu` creada para una sola solicitud T2I 512×512/4 pasos/seed42. GPU, endpoint y devolución PNG funcionan: HTTP200 e historial success, 10,109 s solicitud, 8,672 s job. Sensores nvidia-smi accesibles; pico global muestreado11433MiB de12288, baseline4424. JSON/artifacts/limitaciones en `FLUX_KLEIN_4B_GPU_SMOKE.md`. Instancia experimental cerrada, puerto libre, servicios originales responden. No reinicios ni modificaciones de estable/configuración/dependencias; no permisos permanentes nuevos ni autorización para más generaciones.

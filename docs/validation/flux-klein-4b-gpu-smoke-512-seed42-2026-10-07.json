@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-07",
+  "base_head": "066fcdddfdc86d5dcae5718d3b3baadbab769cdd",
+  "started_utc": "2026-10-07T15:13:10.749556+00:00",
+  "authorization": "One T2I 512x512, four steps, seed 42 through experimental bridge; no retries",
+  "post_attempted": true,
+  "bridge_binary_sha256": "7f8d125f3de758f6c65e7f06bcb43a427c04dec333ba98d386a51af4451d6a85",
+  "assets": {
+    "diffusion_model": {
+      "sha256": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6",
+      "size_bytes": 4070624520,
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\diffusion_models\\flux-2-klein-4b-fp8.safetensors"
+    },
+    "text_encoder": {
+      "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+      "size_bytes": 8044982048,
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\text_encoders\\qwen_3_4b.safetensors"
+    },
+    "vae": {
+      "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+      "size_bytes": 336213556,
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\vae\\flux2-vae.safetensors"
+    }
+  },
+  "gpu_samples": [
+    {
+      "utc": "2026-10-07T15:13:23.673734+00:00",
+      "elapsed_seconds": 0.078,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 4424,
+      "utilization_percent": 4
+    },
+    {
+      "utc": "2026-10-07T15:13:24.718534+00:00",
+      "elapsed_seconds": 1.125,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 4438,
+      "utilization_percent": 9
+    },
+    {
+      "utc": "2026-10-07T15:13:25.780436+00:00",
+      "elapsed_seconds": 2.187,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 5628,
+      "utilization_percent": 1
+    },
+    {
+      "utc": "2026-10-07T15:13:26.828106+00:00",
+      "elapsed_seconds": 3.234,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 9521,
+      "utilization_percent": 36
+    },
+    {
+      "utc": "2026-10-07T15:13:27.895579+00:00",
+      "elapsed_seconds": 4.312,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11381,
+      "utilization_percent": 21
+    },
+    {
+      "utc": "2026-10-07T15:13:28.945139+00:00",
+      "elapsed_seconds": 5.359,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11314,
+      "utilization_percent": 11
+    },
+    {
+      "utc": "2026-10-07T15:13:29.995935+00:00",
+      "elapsed_seconds": 6.406,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11380,
+      "utilization_percent": 67
+    },
+    {
+      "utc": "2026-10-07T15:13:31.047406+00:00",
+      "elapsed_seconds": 7.453,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11433,
+      "utilization_percent": 100
+    },
+    {
+      "utc": "2026-10-07T15:13:32.086529+00:00",
+      "elapsed_seconds": 8.5,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 11061,
+      "utilization_percent": 100
+    },
+    {
+      "utc": "2026-10-07T15:13:33.152058+00:00",
+      "elapsed_seconds": 9.562,
+      "name": "NVIDIA GeForce RTX 3060",
+      "memory_total_mib": 12288,
+      "memory_used_mib": 10645,
+      "utilization_percent": 1
+    }
+  ],
+  "comfyui_runtime": {
+    "comfyui_version": "0.37.0",
+    "python_version": "3.13.12 (main, Feb 12 2026, 00:38:53) [MSC v.1944 64 bit (AMD64)]",
+    "pytorch_version": "2.12.1+cu130",
+    "ram_total": 34116132864,
+    "ram_free": 7654776832,
+    "deploy_environment": "local-desktop2-standalone",
+    "observed_memory_flags": [
+      "--disable-async-offload",
+      "--disable-pinned-memory"
+    ]
+  },
+  "comfyui_source_head": "73c9bad4d21e7addbe1d13bc92eee0f1431b017d",
+  "comfyui_runtime_commit_certified": false,
+  "request": {
+    "model": "flux-klein-4b-t2i-exp",
+    "prompt": "A photorealistic documentary photograph of a single red ceramic mug on a pale wooden table beside a window. Soft natural daylight. The complete mug is visible with comfortable margins. No text or watermark.",
+    "seed": 42,
+    "size": "512x512",
+    "steps": 4,
+    "guidance": 1.0,
+    "n": 1,
+    "reference_roles": [],
+    "response_format": "b64_json"
+  },
+  "experimental_bridge_pid": 16644,
+  "baseline_gpu": {
+    "utc": "2026-10-07T15:13:23.595623+00:00",
+    "elapsed_seconds": null,
+    "name": "NVIDIA GeForce RTX 3060",
+    "memory_total_mib": 12288,
+    "memory_used_mib": 4424,
+    "utilization_percent": 4
+  },
+  "queue_before": {
+    "running": 0,
+    "pending": 0
+  },
+  "bridge_http_status": 200,
+  "request_wall_seconds": 10.109,
+  "image": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+    "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "bytes": 222098,
+    "width": 512,
+    "height": 512,
+    "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00001_.png"
+  },
+  "comfy_history": {
+    "prompt_id": "d9d6b7c4-0e0a-4f2b-91ac-21064cb32565",
+    "status_str": "success",
+    "completed": true,
+    "outputs": {
+      "13": {
+        "images": [
+          {
+            "filename": "MPT_EXPERIMENT_KLEIN4B_00001_.png",
+            "subfolder": "",
+            "type": "output"
+          }
+        ]
+      }
+    },
+    "execution_seconds": 8.672,
+    "errors": []
+  },
+  "matching_history_entries": 1,
+  "queue_after": {
+    "queue_running": 0,
+    "queue_pending": 0
+  },
+  "gpu_memory": {
+    "sample_interval_target_seconds": 1,
+    "sample_count": 10,
+    "baseline_used_mib": 4424,
+    "sampled_peak_global_used_mib": 11433,
+    "limits": "Global device usage including other processes; sampled peak, not exact per-model allocation or residency.",
+    "sampled_margin_at_peak_mib": 855
+  },
+  "status": "passed_t2i_smoke",
+  "experimental_bridge_stopped": true,
+  "finished_utc": "2026-10-07T15:13:33.696929+00:00",
+  "experimental_port_released": true,
+  "stable_head_after": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "services_after": {
+    "8080": 200,
+    "8090": 404,
+    "8188": 200
+  },
+  "visual_review": {
+    "method": "Assistant inspected saved 512x512 PNG",
+    "single_red_mug_visible": true,
+    "complete_subject_in_frame": true,
+    "wooden_table_and_window_visible": true,
+    "visible_text_or_watermark": false,
+    "limits": "Informal single-image inspection; no identity/edit/temporal assessment, blinded comparison or repeatability measurement."
+  },
+  "limits": [
+    "Single authorized request only, no repeats",
+    "Existing caches/processes not reset; no controlled cold/warm comparison",
+    "Global sampled VRAM, not exact per-model allocation",
+    "Only T2I 512x512; no evidence for target resolution, editing or 2-scene MPT workflow",
+    "Comfy runtime version reported; disk Git HEAD is not certification of loaded commit"
+  ]
+}

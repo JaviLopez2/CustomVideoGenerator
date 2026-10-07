@@ -89,3 +89,9 @@ Recheck posterior a `b3e1191`: ComfyUI responde y lista los tres componentes, br
 Base `f38c63e`: variante Rust compilable en `local_image_stack/experiments/bridge`, con las dos plantillas 4B, aliases exclusivos, materialización de 0–3 refs y roles/temporal explícitos. Hook con feature solo en snapshot local, fuera del servicio externo; datos de source/código modificado preservados. [README y modos](../local_image_stack/experiments/bridge/README.md). Compilación offline/locked, sin nuevas dependencias globales ni descargas.
 
 173 tests Python (22 nativos) y 1 Rust aprobados. Preview HTTP efímero 8091 lista los aliases y bloquea generación con 403; CLI y HTTP producen grafos equivalentes al adaptador Python. Proceso cerrado; servicios originales intactos. El modo `--serve-gpu` está preparado pero no ejecutado. No hay evidencia nueva de inferencia/memoria/calidad ni promoción. Siguiente fase: T2I GPU mínimo expresamente autorizado, después edición y caller MPT experimental; roles y endpoint deben incorporarse explícitamente al caller antes de escena/smoke.
+
+## Continuación: T2I GPU mínimo aprobado
+
+Autorización posterior del usuario, base `066fcdd`: una generación 512×512, seed42, 4 pasos, guidance1, cero refs. HTTP200, PNG válido e historial success; 10,109 s de solicitud y 8,672 s de ejecución Comfy. Pico global muestreado 11433/12288 MiB (baseline4424), no medida exacta por modelo. Encoder BF16 conservado. [Resultado, imagen y límites](FLUX_KLEIN_4B_GPU_SMOKE.md). Bridge experimental detenido tras la única solicitud; estable/config/routing intactos.
+
+El PASS solo cubre ese caso, sin reintentos/repetibilidad/A/B, ni edición/resolución objetivo. Estado `planned` conservado. Siguiente propuesta: single-ref edit 512×512 con un cambio visible, sujeto a una autorización de generación nueva; no está incluido en la prueba ya realizada.
