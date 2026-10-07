@@ -1,0 +1,55 @@
+{
+  "model_id": "flux-klein-4b-distilled-fp8",
+  "status": "planned",
+  "components": {
+    "diffusion_model": {
+      "filename": "flux-2-klein-4b-fp8.safetensors",
+      "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/main/flux-2-klein-4b-fp8.safetensors",
+      "license": "Apache-2.0",
+      "license_scope": "commercial_allowed",
+      "license_source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8",
+      "sha256": null
+    },
+    "text_encoder": {
+      "filename": "qwen_3_4b.safetensors",
+      "source": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+      "license": "Apache-2.0",
+      "license_scope": "commercial_allowed",
+      "license_source": "https://huggingface.co/Qwen/Qwen3-4B",
+      "sha256": null
+    },
+    "vae": {
+      "filename": "flux2-vae.safetensors",
+      "source": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors",
+      "license": "Apache-2.0",
+      "license_scope": "commercial_allowed",
+      "license_source": "https://github.com/black-forest-labs/flux2#flux2-autoencoder",
+      "sha256": null
+    }
+  },
+  "workflows": {
+    "t2i": {
+      "alias": "flux-klein-4b-t2i-exp",
+      "checkpoint": "flux-2-klein-4b-fp8.safetensors",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/image_flux2_klein_text_to_image.json",
+      "license_source": "https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE",
+      "license": "MIT",
+      "format": "comfyui_ui_template",
+      "sha256": null,
+      "notes": "Select Distilled FP8 explicitly and export a separate API graph; the source template also exposes Base/BF16 choices."
+    },
+    "edit": {
+      "alias": "flux-klein-4b-edit-exp",
+      "checkpoint": "flux-2-klein-4b-fp8.safetensors",
+      "source": "https://github.com/Comfy-Org/workflow_templates/blob/main/templates/image_flux2_klein_image_edit_4b_distilled.json",
+      "license_source": "https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE",
+      "license": "MIT",
+      "format": "comfyui_ui_template",
+      "sha256": null,
+      "notes": "Export an API graph with exactly the requested ordered references and no connected demo images."
+    }
+  },
+  "comfyui_commit": null,
+  "bridge_commit": null,
+  "notes": "Declared upstream licenses; local byte identity and API graph validation are pending. No installed or running service binding."
+}

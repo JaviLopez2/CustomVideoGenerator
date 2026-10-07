@@ -86,3 +86,7 @@ Terminadas en esta fase: reconstrucción documental explícita, auditoría está
 Pendientes, **no completados**: recuperar `ab8e483` si el usuario lo aporta para reconciliar sus conclusiones; validar el workflow realmente cargado por el bridge; inventario/licencias de todos los componentes de un candidato elegido; pruebas locales de memoria, tiempo, identidad, continuidad y estado visible; integración y modificaciones de routing; comparación visual y promoción. Descargas, generación y benchmarks requieren autorización específica y quedan fuera de esta fase.
 
 Siguiente tarea concreta propuesta: diseñar un plan de integración experimental de Klein 4B destilado, con IDs de modelo separados de 9B, manifiesto de assets/licencias, contratos de T2I/edición/referencias y tests offline de payload/fallback. Primero aclarar el fallback local incompleto y el uso previsto comercial/investigación. El plan no autoriza todavía instalar, cambiar routing ni ejecutar GPU.
+
+## Actualización: contrato offline Klein 4B — 2026-10-07
+
+Por el nuevo encargo del usuario se implementaron aliases experimentales T2I/Edit, manifiesto `planned` y tests offline, fuera de producción. Ver [plan y resultados](FLUX_KLEIN_4B_EXPERIMENT.md). No se activaron aliases en el bridge, no se exportaron grafos API y no se descargaron pesos. Los gates de archivos/licencias/hashes siguen cerrados. Una regresión adicional existente falla por capitalización; no se modificó ni se ocultó. El contrato offline no valida una generación real ni un candidato listo para promoción.

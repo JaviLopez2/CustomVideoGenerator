@@ -34,3 +34,13 @@ Sin cambios de producción, modelos, dependencias, workflows o servicios; sin de
 Preparar únicamente el plan de integración aislada de Klein 4B destilado: variantes/aliases, manifiesto de pesos y licencias, diferencias respecto a Klein 9B KV, payloads T2I/edit/continuidad, condiciones de fallback, tests offline y criterios de aceptación. Incorporar el diagnóstico del fallback actual y aclarar el destino comercial o de investigación antes de recomendar un despliegue. Toda instalación, edición de producción/workflows, descarga o prueba GPU necesita un nuevo encargo específico.
 
 Si se aporta `ab8e483`, reconciliar sus conclusiones sin reemplazar automáticamente este historial. Para continuar, confirmar branch/HEAD/status y volver a hacer fetch; conservar cualquier nuevo cambio válido.
+
+## Checkpoint posterior: aliases, manifiesto y tests offline
+
+Base de esta implementación: `37ef653e8d47483e997d6b8fb52ebc1a5ba1732d`, worktree limpio y sincronizado al comenzar. El nuevo texto del usuario concreta el experimento 4B Distilled FP8, con aliases separados y máximo tres referencias. Se implementó un módulo sin imports de producción, clientes HTTP, descarga o dispatch; no se modificaron `app/`, dependencias, configuración local, bridge ni workflows activos.
+
+Archivos principales: `local_image_stack/experiments/klein4b.py`, `test/test_klein4b_experiment.py`, `docs/validation/flux-klein-4b-assets.json` y [plan experimental](FLUX_KLEIN_4B_EXPERIMENT.md). El manifiesto queda `planned` y los payloads `dispatch_allowed=false`. Los templates oficiales UI están referenciados; la conversión API y la adaptación al bridge no están completadas.
+
+Validación: 25 tests nuevos pasan; la suite enfocada conjunta termina con 112 passed. La suite adicional de continuidad da 14 passed y 1 failed: una aserción exige `same glyph on the tile`, pero el prompt comienza con `Same glyph on the tile`. Los archivos del fallo son idénticos a la base según `git diff --exit-code`; no se parchearon tests existentes ni producción. Logs en `docs/validation/flux-klein-4b-*-2026-10-07.txt`. Este fallo impide declarar todo el gate de regresiones aprobado. La preparación de payloads y la admisión con fixtures sintéticas no certifican ejecución GPU.
+
+Siguiente tarea: exportar/revisar grafos API aislados y reconciliar slots, roles y parámetros Flux con el bridge, sin instalar ni generar. Resolver la regresión preexistente mediante una tarea acotada antes de promoción. Los pasos GPU y la activación productiva siguen pendientes de autorización específica. El SHA del checkpoint que contiene este bloque se obtiene del historial de este archivo; no sustituye el SHA base.
