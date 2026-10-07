@@ -214,8 +214,42 @@ def test_temporal_output_fallback_keeps_concrete_continuity_subject():
     assert fallback["planner_validation"] == "coverage_fallback"
     assert fallback["canonical_subject"] == "instant photograph"
     assert fallback["reference_target"] == "output"
+    assert fallback["reference_need"] == "none"
     assert fallback["temporal_progression"] is True
+    assert fallback["route"] == "precision"
     assert "emerging tonal shapes" != fallback["canonical_subject"]
+
+
+def test_temporal_output_state_with_predicate_does_not_duplicate_verb():
+    row = {
+        "subject": "instant photograph",
+        "canonical_subject": "instant photograph",
+        "scene_description": "An instant photograph shows little information.",
+        "observable_subject": "instant photograph",
+        "observable_result": "instant photograph",
+        "observable_result_visual": "instant photograph",
+        "observable_state": "shows little information",
+        "visual_state": "shows little information",
+        "reference_need": "none",
+        "reference_target": "output",
+        "evidence_scope": "externally_visible",
+        "route": "standard",
+        "continuity_key": "developing_output",
+        "continuity_description": "the same instant photograph",
+        "temporal_progression": True,
+    }
+    scene = make_plan(
+        [row],
+        ["The instant photograph shows little information."],
+        [{"role": "identity", "description": "whole source device"}],
+    )[0]
+
+    assert scene["canonical_subject"] == "instant photograph"
+    assert scene["route"] == "precision"
+    assert scene["temporal_state"] == "shows little information"
+    assert "shows shows" not in scene["prompt"].lower()
+    assert "Its visible state is shows" not in scene["prompt"]
+    assert "The output itself shows little information." in scene["prompt"]
 
 
 def test_hidden_scene_reuses_recent_visible_output_not_abstract_context():
@@ -460,6 +494,45 @@ def test_gross_fallback_gets_one_retry_and_uses_recovery(pipeline, monkeypatch):
     assert "unmistakable main subject" in calls[1]["search_term"]
     qa = diagnostics[-1]["plan_scenes"][0]["gross_semantic_qa"]
     assert qa["selected_candidate"] == "retry"
+
+
+def test_reference_free_precision_output_does_not_require_identity_pack(
+    pipeline, monkeypatch
+):
+    run, diagnostics = pipeline
+    calls = []
+
+    def generate(**kwargs):
+        calls.append(kwargs)
+        return [item("strong-output")]
+
+    monkeypatch.setattr(material, "generate_images_openai", generate)
+    monkeypatch.setattr(
+        material,
+        "_near_duplicate_assessment",
+        lambda *a, **kw: {"actionable": False, "best_similarity": 0.2},
+    )
+
+    result = run(
+        search_terms=["single output with a faint visible state"],
+        scene_durations=[1],
+        scene_routes=["precision"],
+        scene_subjects=["instant photograph"],
+        scene_reference_needs=["none"],
+        scene_reference_targets=["output"],
+        scene_reference_critical=[False],
+        scene_includes_primary_subject=[False],
+    )
+
+    assert result == ["strong-output.png.mp4"]
+    assert len(calls) == 1
+    assert calls[0]["route"] == "precision"
+    assert calls[0]["reference_images"] == []
+    assert calls[0]["reference_image"] == ""
+    plan = diagnostics[-1]["plan_scenes"][0]
+    assert plan["route"] == "precision"
+    assert plan["reference_need"] == "none"
+    assert plan["reference_target"] == "output"
 
 
 def test_continuity_root_is_not_frozen_until_gross_qa_passes(pipeline, monkeypatch):
