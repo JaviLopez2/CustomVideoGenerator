@@ -254,6 +254,33 @@ def test_hidden_scene_reuses_recent_visible_output_not_abstract_context():
     assert "instant photograph" in fallback["prompt"]
 
 
+def test_hidden_output_fallback_retains_concrete_visible_description():
+    # Run 0118359c: S5 inherited S3's branded output name, but lost the
+    # blank physical print description. Both attempts were captioned as cameras.
+    for identity, physical_view in [
+        ("Polaroid SX-70 photograph", "A blank instant photograph emerging from the camera exit slot."),
+        ("Atlas fabricator panel", "A flat rectangular panel with a smooth white surface resting on a tray."),
+    ]:
+        visible = dict(subject=identity, canonical_subject=identity,
+            scene_description=physical_view, reference_target="output", reference_need="none",
+            evidence_scope="externally_visible", route="standard", includes_primary_subject=False)
+        hidden = rejected(reference_target="output", observable_subject="", observable_result="",
+                          observable_state="", safe_visual_alternative="cutaway with internal gears")
+        scenes = make_plan([visible, hidden], [physical_view, "The hidden process continues."],
+                           [{"role": "identity", "description": "whole source device"}])
+        fallback = scenes[1]
+        assert physical_view in fallback["prompt"]
+        assert fallback["canonical_subject"] == identity
+        assert fallback["reference_target"] == "output"
+        assert fallback["reference_need"] == "none"
+        assert fallback["route"] == "standard"
+        assert fallback["continuity_key"] == "none"
+        assert not fallback["temporal_progression"]
+        assert "established visible exterior state" not in fallback["prompt"]
+        assert "internal gears" not in fallback["prompt"]
+        assert "twin gears" not in fallback["prompt"]
+
+
 def test_visual_caption_judge_normalizes_llm_response():
     response = json.dumps({
         "candidates": [{

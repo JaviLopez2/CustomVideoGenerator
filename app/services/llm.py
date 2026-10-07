@@ -3349,9 +3349,28 @@ Return exactly {amount} objects and nothing else.
                                     shot_type = "full"
                                     framing_intent = "full_subject"
                                 else:
-                                    scene_description = (
-                                        f"A clear documentary view of {subject} in its established visible exterior state."
-                                    )
+                                    # Reusing an output requires its concrete exterior
+                                    # description, not just a branded canonical name
+                                    # that can also evoke its source device. Only reuse
+                                    # the earlier sanitized scene, never the rejected
+                                    # mechanism or its proposed safe alternative.
+                                    prior_description = str(
+                                        fallback_visible.get("scene_description") or ""
+                                    ).strip()
+                                    if (
+                                        prior_description
+                                        and not _scene_hidden_evidence_signals(
+                                            {"scene_description": prior_description}
+                                        )
+                                        and not _scene_unobservable_process_signals(
+                                            {"scene_description": prior_description}
+                                        )
+                                    ):
+                                        scene_description = prior_description
+                                    else:
+                                        scene_description = (
+                                            f"A clear documentary view of {subject} in its established visible exterior state."
+                                        )
                                     reference_need = "none"
                                     route = "standard"
                                     shot_type = "medium"
@@ -3462,6 +3481,7 @@ Return exactly {amount} objects and nothing else.
                 result.append({
                     "subject": clean_image_text(subject, internal_values),
                     "canonical_subject": clean_image_text(canonical_subject, internal_values),
+                    "scene_description": clean_image_text(scene_description, internal_values),
                     "route": route,
                     "prompt": final_prompt,
                     "required_features": [clean_image_text(x, internal_values) for x in required_features],
