@@ -160,6 +160,13 @@ def test_workflow_cannot_hide_9b_behind_4b_manifest(verified_fixtures):
 
 def test_planned_candidate_and_runtime_are_isolated(manifest):
     assert manifest["status"] == "planned"
-    assert all(c["sha256"] is None for c in manifest["components"].values())
+    # Verified encoder bytes alone cannot admit the whole candidate.
+    components = manifest["components"]
+    encoder = components["text_encoder"]
+    assert encoder["verification_status"] == "verified_local_bytes"
+    assert encoder["sha256"] == encoder["expected_sha256"]
+    for key in ("diffusion_model", "vae"):
+        assert components[key]["sha256"] is None
+        assert components[key]["verification_status"] == "not_downloaded"
     production = Path(__file__).parents[1] / "app/services/material.py"
     assert not any(alias in production.read_text(encoding="utf-8") for alias in ALIASES)

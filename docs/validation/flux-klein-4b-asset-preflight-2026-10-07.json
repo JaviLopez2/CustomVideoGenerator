@@ -1,0 +1,95 @@
+{
+  "timestamp_utc": "2026-10-07T14:22:56.843775+00:00",
+  "base_head": "57a5747016c1c4b4109860cb0b696edab9eabc75",
+  "upstream": {
+    "text_encoder": {
+      "repo": "Comfy-Org/z_image_turbo",
+      "revision": "6fc90a3b1b653e935a0d175e260736de25b84df5",
+      "filename": "split_files/text_encoders/qwen_3_4b.safetensors",
+      "expected_sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+      "expected_size": 8044982048,
+      "model_card_license": "apache-2.0",
+      "metadata_url": "https://huggingface.co/api/models/Comfy-Org/z_image_turbo?blobs=true",
+      "pinned_source": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/6fc90a3b1b653e935a0d175e260736de25b84df5/split_files/text_encoders/qwen_3_4b.safetensors"
+    },
+    "diffusion_model": {
+      "repo": "black-forest-labs/FLUX.2-klein-4b-fp8",
+      "revision": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+      "filename": "flux-2-klein-4b-fp8.safetensors",
+      "expected_sha256": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6",
+      "expected_size": 4070624520,
+      "model_card_license": "apache-2.0",
+      "metadata_url": "https://huggingface.co/api/models/black-forest-labs/FLUX.2-klein-4b-fp8?blobs=true",
+      "pinned_source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/5b4408e59397a4a37ccb46afe426d8ed86379441/flux-2-klein-4b-fp8.safetensors"
+    },
+    "vae": {
+      "repo": "Comfy-Org/flux2-dev",
+      "revision": "ed33133cd56476eac818c0943b6f9419b3e4a3a1",
+      "filename": "split_files/vae/flux2-vae.safetensors",
+      "expected_sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+      "expected_size": 336213556,
+      "model_card_license": "other",
+      "metadata_url": "https://huggingface.co/api/models/Comfy-Org/flux2-dev?blobs=true",
+      "pinned_source": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/ed33133cd56476eac818c0943b6f9419b3e4a3a1/split_files/vae/flux2-vae.safetensors"
+    }
+  },
+  "downloads_performed": false,
+  "gpu_execution": false,
+  "encoder": {
+    "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\text_encoders\\qwen_3_4b.safetensors",
+    "size_bytes": 8044982048,
+    "mtime_utc": "2026-09-07T13:55:13.343878+00:00",
+    "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+    "upstream_match": true,
+    "hash_seconds": 7.078,
+    "safetensors_header_bytes": 45848,
+    "tensor_count": 398,
+    "dtype_counts": {
+      "BF16": 398
+    },
+    "contiguous_offsets_fit_file": true,
+    "download_history": "Not inspected; byte identity does not prove original installation path."
+  },
+  "planned_destinations": {
+    "diffusion_model": {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\diffusion_models\\flux-2-klein-4b-fp8.safetensors",
+      "exists": false
+    },
+    "vae": {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\vae\\flux2-vae.safetensors",
+      "exists": false
+    }
+  },
+  "disk_free_bytes": {
+    "C:": 135394729984,
+    "D:": 136050946048
+  },
+  "vae_original_upstream": {
+    "repo": "black-forest-labs/FLUX.2-dev",
+    "revision": "26afe3a78bb242c0a8bb181dcc8937bb16e5c66c",
+    "files": [
+      {
+        "filename": "ae.safetensors",
+        "lfs": {
+          "sha256": "868fe7b343cc8f3a19dbcfcafbc3d5f888802be3f89bd81b65b3621a066ce8f3",
+          "size": 336211292,
+          "pointerSize": 134
+        }
+      },
+      {
+        "filename": "vae/config.json",
+        "lfs": null
+      },
+      {
+        "filename": "vae/diffusion_pytorch_model.safetensors",
+        "lfs": {
+          "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+          "size": 336213556,
+          "pointerSize": 134
+        }
+      }
+    ],
+    "metadata_url": "https://huggingface.co/api/models/black-forest-labs/FLUX.2-dev?blobs=true",
+    "byte_identity_with_comfy_distribution": true
+  }
+}

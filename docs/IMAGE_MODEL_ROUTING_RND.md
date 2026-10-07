@@ -100,3 +100,9 @@ Publicado: topologías y parámetros de los templates oficiales, consultados de 
 ## Actualización: gate de continuidad resuelto — 2026-10-07
 
 Sobre `de11868`, se corrigió el prefijo de identidad del planner exclusivamente en el worktree experimental: `same`/`the same` pasan a `The same` sin cambiar el resto del nombre ni duplicar el prefijo. Los tests históricos permanecen intactos. Validación ampliada offline: **151 passed**, incluidas las 15 pruebas de la suite que antes fallaba y diez casos nuevos de identidad/estado. Ver [handoff y logs](IMAGE_MODEL_ROUTING_HANDOFF.md). Esto cierra el fallo observado en esas suites, sin probar toda la aplicación ni alterar el estado `planned`, assets o integración del candidato. No hay nuevas mediciones GPU ni cambios en las conclusiones de viabilidad/licencias.
+
+## Actualización: identidad del encoder y preflight — 2026-10-07
+
+Observado local: encoder `qwen_3_4b.safetensors`, 8.044.982.048 bytes, SHA-256 igual al publicado por Comfy-Org/z_image_turbo en revisión fijada. Cabecera con 398 tensores BF16, sin carga de tensores. El manifiesto ahora distingue hash local verificado del encoder de hashes esperados upstream para DiT/VAE aún ausentes. Publicado: VAE Comfy coincide en LFS con `vae/diffusion_pytorch_model.safetensors` BFL, no con `ae.safetensors`; la declaración Apache 2.0 del autoencoder se trata por componente, sin heredar la licencia `other` de toda la tarjeta dev. Ver [fuentes, evidencia y plan](FLUX_KLEIN_4B_INSTALL_PLAN.md).
+
+Pendiente descargar 4.406.838.076 bytes con autorización específica. Espacio libre observado suficiente para esos archivos, sin inferir VRAM disponible o viabilidad GPU del conjunto. Contratos afectados: 39 passed en esta fase. No se reabre la selección de candidatos ni se ejecutan generaciones; estado `planned`, integración y mediciones locales pendientes.

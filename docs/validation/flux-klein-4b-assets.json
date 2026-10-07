@@ -4,27 +4,44 @@
   "components": {
     "diffusion_model": {
       "filename": "flux-2-klein-4b-fp8.safetensors",
-      "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/main/flux-2-klein-4b-fp8.safetensors",
+      "source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/5b4408e59397a4a37ccb46afe426d8ed86379441/flux-2-klein-4b-fp8.safetensors",
       "license": "Apache-2.0",
       "license_scope": "commercial_allowed",
       "license_source": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8",
-      "sha256": null
+      "sha256": null,
+      "upstream_revision": "5b4408e59397a4a37ccb46afe426d8ed86379441",
+      "expected_sha256": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6",
+      "expected_size_bytes": 4070624520,
+      "verification_status": "not_downloaded"
     },
     "text_encoder": {
       "filename": "qwen_3_4b.safetensors",
-      "source": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+      "source": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/6fc90a3b1b653e935a0d175e260736de25b84df5/split_files/text_encoders/qwen_3_4b.safetensors",
       "license": "Apache-2.0",
       "license_scope": "commercial_allowed",
       "license_source": "https://huggingface.co/Qwen/Qwen3-4B",
-      "sha256": null
+      "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+      "upstream_revision": "6fc90a3b1b653e935a0d175e260736de25b84df5",
+      "expected_sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+      "expected_size_bytes": 8044982048,
+      "verification_status": "verified_local_bytes",
+      "local_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\text_encoders\\qwen_3_4b.safetensors",
+      "verified_at_utc": "2026-10-07T14:22:56.843775+00:00",
+      "verification_evidence": "docs/validation/flux-klein-4b-asset-preflight-2026-10-07.json"
     },
     "vae": {
       "filename": "flux2-vae.safetensors",
-      "source": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors",
+      "source": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/ed33133cd56476eac818c0943b6f9419b3e4a3a1/split_files/vae/flux2-vae.safetensors",
       "license": "Apache-2.0",
       "license_scope": "commercial_allowed",
       "license_source": "https://github.com/black-forest-labs/flux2#flux2-autoencoder",
-      "sha256": null
+      "sha256": null,
+      "upstream_revision": "ed33133cd56476eac818c0943b6f9419b3e4a3a1",
+      "expected_sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+      "expected_size_bytes": 336213556,
+      "verification_status": "not_downloaded",
+      "original_source": "https://huggingface.co/black-forest-labs/FLUX.2-dev/resolve/26afe3a78bb242c0a8bb181dcc8937bb16e5c66c/vae/diffusion_pytorch_model.safetensors",
+      "license_notes": "Repository model-card license is other; BFL explicitly declares Apache-2.0 for the autoencoder. Published LFS identity matches the original Diffusers VAE, not ae.safetensors."
     }
   },
   "workflows": {
@@ -57,5 +74,5 @@
   },
   "comfyui_commit": null,
   "bridge_commit": null,
-  "notes": "Declared upstream licenses. Local API templates hashed; weights remain unverified and candidate planned. No installed service binding or dispatch."
+  "notes": "Encoder local bytes verified against pinned official distribution. DiT/VAE expected hashes are upstream metadata only; local hashes remain null. API templates hashed. Candidate remains planned; no runtime binding or dispatch."
 }

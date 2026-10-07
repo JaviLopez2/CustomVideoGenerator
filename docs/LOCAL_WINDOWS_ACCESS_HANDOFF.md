@@ -62,3 +62,7 @@ Sobre `d4d32c4` se prepararon grafos API Klein 4B y adaptador offline aislados, 
 ### Cierre del gate histórico — 2026-10-07
 
 Continuación autorizada sobre `de11868`: corrección mínima del prefijo del planner en el worktree experimental, conservando todos los tests históricos. Python portable ejecutó 25 tests enfocados y 151 en la validación ampliada, todos aprobados. Logs `validation/continuity-prefix-*-2026-10-07.txt`; alcance y siguiente tarea en `IMAGE_MODEL_ROUTING_HANDOFF.md`. No se modificó ni desplegó la copia estable, ni se ejecutaron modelos/servicios/GPU. Los permisos siguen siendo los efectivos de la sesión; el uso de escalaciones específicas no concede permisos permanentes.
+
+### Preflight de assets — 2026-10-07
+
+Sobre `57a5747`: lectura completa del encoder Comfy funciona; hash y tamaño coinciden con la distribución oficial fijada. GET de metadatos públicos HF funciona sin autenticación; no se usaron ni guardaron tokens. Espacio y ausencia de destinos DiT/VAE comprobados en lectura. Contratos afectados: 39 passed. Plan y evidencia en `FLUX_KLEIN_4B_INSTALL_PLAN.md` y `validation/flux-klein-4b-asset-preflight-2026-10-07.json`. No se probó escritura en los destinos externos, ni se descargaron pesos; su instalación futura necesita autorización de alcance y escalaciones específicas, no cambios de permisos permanentes.
