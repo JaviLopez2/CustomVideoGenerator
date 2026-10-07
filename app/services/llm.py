@@ -1867,6 +1867,28 @@ def _source_fragment_can_face_image_model(value: str) -> bool:
     return _fallback_subject_is_usable(text)
 
 
+def _visible_state_sentence(
+    value: object,
+    *,
+    subject: str,
+    nominal_prefix: str,
+) -> str:
+    """Render a visible-state fragment without duplicating an existing predicate."""
+    text = " ".join(str(value or "").strip(" .\n\r").split())
+    if not text:
+        return ""
+    predicate = re.match(
+        r"^(?:(?:barely|clearly|visibly|still|now|already|only|just|"
+        r"gradually|faintly|partly|partially)\s+)*(?:shows?|displays?|"
+        r"reveals?|contains?|has|appears?|looks?|is|are|becomes?)\b",
+        text,
+        re.IGNORECASE,
+    )
+    if predicate:
+        return f"{subject} {text}."
+    return f"{nominal_prefix} {text}."
+
+
 def _scene_continuity_tokens(item: dict) -> set[str]:
     text = " ".join(
         str(item.get(key) or "")
@@ -3270,9 +3292,13 @@ Return exactly {amount} objects and nothing else.
                             ):
                                 safe_visual_state = observable_state
                             if safe_visual_state:
-                                scene_description += (
-                                    f" Its visible state is {safe_visual_state}."
+                                visible_state_sentence = _visible_state_sentence(
+                                    safe_visual_state,
+                                    subject="It",
+                                    nominal_prefix="Its visible state is",
                                 )
+                                if visible_state_sentence:
+                                    scene_description += f" {visible_state_sentence}"
                             composition = (
                                 "the observable subject is clear at natural physical scale"
                             )
@@ -3407,6 +3433,17 @@ Return exactly {amount} objects and nothing else.
                     item.get("observable_state"), narration, state=True
                 )
                 visual_state = " ".join(str(item.get("visual_state") or "").strip().split())
+                temporal_progression = bool(
+                    continuity_key != "none"
+                    and _coerce_scene_bool(item.get("temporal_progression"), False)
+                    and current_state
+                )
+                # Temporal/output stages are semantically demanding even when they do
+                # not need an external factual reference. Keep the concrete output as
+                # identity, but promote generation to the stronger model tier.
+                if reference_target == "output" and temporal_progression:
+                    route = "precision"
+                    precision_importance = max(precision_importance, 0.8)
                 if continuity_key != "none" and coverage_status != "unsupported" and current_state:
                     if visual_state:
                         scene_description = (
@@ -3452,11 +3489,6 @@ Return exactly {amount} objects and nothing else.
                     framing_intent=framing_intent,
                 )
                 final_prompt = clean_image_text(final_prompt, internal_values)
-                temporal_progression = bool(
-                    continuity_key != "none"
-                    and _coerce_scene_bool(item.get("temporal_progression"), False)
-                    and current_state
-                )
                 temporal_state = ""
                 if temporal_progression:
                     if (
@@ -3472,9 +3504,14 @@ Return exactly {amount} objects and nothing else.
                     and temporal_state
                     and reference_target == "output"
                 ):
+                    output_state_sentence = _visible_state_sentence(
+                        temporal_state,
+                        subject="The output itself",
+                        nominal_prefix="The output itself visibly shows",
+                    )
                     final_prompt = (
                         final_prompt.rstrip(" .")
-                        + f". The output itself visibly shows {temporal_state}."
+                        + f". {output_state_sentence}"
                         + " Do not replace the output with packaging, a product label, "
                           "or a crisp finished depiction of the source device."
                     )
