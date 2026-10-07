@@ -32,3 +32,25 @@ Alcance: preparar operación autónoma en este Windows. Modernización detenida;
 ## Continuación
 
 Esperar una nueva tarea. Ejecutar comandos, editar y validar dentro de su alcance, conservar cambios existentes, guardar logs y checkpoints con handoff. No retomar la modernización por iniciativa propia. Las reglas y comandos de tests están en `AGENTS.md`.
+
+## Primera tarea autónoma: publicación e investigación — 2026-10-07
+
+La nueva tarea autoriza fetch, publicación de commits válidos e investigación documental, manteniendo prohibidos cambios de modelos/routing/workflows/dependencias, descargas de pesos, generaciones y benchmarks.
+
+- HEAD inicial: `e759b39072bb32959ad06d86106c21f7da3b117a`; worktree limpio. Se revisaron instrucciones y handoffs locales antes de actuar.
+- `git fetch origin` terminó correctamente. Remoto experimental: `7b2c303196fe16f9844a9ba3f081e8f296bc1dd9`. `git rev-list --left-right --count HEAD...origin/factory/image-model-routing-modernization` = `1 0`: solo el checkpoint local de preparación, sin divergencia.
+- Revisión de `AGENTS.md` y este handoff: cero coincidencias con patrones de claves OpenAI/GitHub/AWS, claves privadas, asignaciones de secretos literales y URLs con credenciales. Es una comprobación por patrones, no una garantía exhaustiva. No se imprimieron secretos.
+- `git push origin HEAD:refs/heads/factory/image-model-routing-modernization` falló: GitHub rechazó las credenciales. No se realizó force-push ni se alteró el historial local.
+- GitHub CLI no está disponible; no hay `GH_TOKEN` ni `GITHUB_TOKEN` en el entorno del proceso. Git Credential Manager 2.6.1 está disponible; falta completar autenticación válida antes de publicar.
+- `docs/IMAGE_MODEL_ROUTING_RND.md` y `docs/IMAGE_MODEL_ROUTING_HANDOFF.md` no existen en este checkout ni aparecen en `git log --all --` para esos paths tras fetch. Tampoco se encontraron por nombre en los worktrees MPT o Factory, incluidos archivos ignorados (excluidos caches, modelos, storage y metadatos Git), ni en la búsqueda inicial de la copia estable.
+- El contexto recuperable de `Implementar MPT Agent Factory` referencia los dos documentos, pero no recuperó su contenido. Se pidió al usuario identificar su rama/carpeta/chat de origen y resolver el login. No se enviaron mensajes a otros chats.
+- Contraste preliminar de código: `app/services/material.py::_openai_image_model_for_route` sigue seleccionando el modelo configurado Standard/Precision, con fallback al modelo por defecto cuando falta Precision. El historial reciente contiene fixes y regresiones de fallback semántico, edición temporal y deduplicación de prompts; no acredita por sí solo una auditoría de candidatos terminada. No se repitieron esos fixes.
+- No se inició investigación de candidatos sin conocer las fases ya realizadas. No se crearon documentos sustitutos ni se atribuyeron resultados o mediciones inexistentes. No se ejecutaron tests de aplicación, generaciones, benchmarks ni descargas.
+
+Bloqueos para cerrar la fase: recuperar el handoff real y autenticar Git para escritura en origin. Siguiente acción concreta: completar esos dos requisitos, volver a hacer fetch/comparar, publicar los checkpoints locales sin force-push y continuar solo los pendientes identificados en los documentos recuperados. El checkpoint de este diagnóstico se identifica en el historial Git; la fase solicitada permanece incompleta.
+
+### Resolución durante la misma tarea
+
+El usuario aclaró que los documentos solo existían en el commit local remoto `ab8e483`, sin publicar, y autorizó reconstruirlos desde este repositorio. También autorizó login con Git Credential Manager mediante navegador; terminó correctamente. Tras otro fetch sin divergencia, se publicó `e759b39072bb32959ad06d86106c21f7da3b117a` y `git ls-remote` confirmó ese SHA. Los bloqueos anteriores describen el estado inicial, no el cierre.
+
+Se crearon `docs/IMAGE_MODEL_ROUTING_RND.md` y `docs/IMAGE_MODEL_ROUTING_HANDOFF.md`, con auditoría estática, revisión oficial de candidatos/licencias/ComfyUI y separación de observaciones, datos publicados y estimaciones. No se recuperó ni se fingió el contenido de `ab8e483`. Ver el nuevo handoff y su registro de comprobaciones. Solo cambian documentos y evidencia JSON; la modernización de producción sigue pendiente de un nuevo encargo.

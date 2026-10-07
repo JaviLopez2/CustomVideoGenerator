@@ -1,0 +1,230 @@
+{
+  "date": "2026-10-07",
+  "scope": "read-only source/workflow/HTTP inventory audit and documentation; no generation, benchmarks or application tests",
+  "audited_head_before_document_commit": "e759b39072bb32959ad06d86106c21f7da3b117a",
+  "source_base": "7b2c303196fe16f9844a9ba3f081e8f296bc1dd9",
+  "comfy_source_head": "73c9bad4d21e7addbe1d13bc92eee0f1431b017d",
+  "selected_nonsecret_config": {
+    "openai_image_model": "z-image-turbo",
+    "openai_image_precision_model": "qwen-image-2.1-precision",
+    "openai_image_precision_fallback_model": "flux-klein-precision",
+    "openai_image_performance_profile": "balanced",
+    "openai_image_balanced_precision_size": "768x1376",
+    "openai_image_balanced_qwen_steps": 20,
+    "openai_image_balanced_precision_candidates": 1
+  },
+  "gpu_query_observed_earlier_this_session": {
+    "name": "NVIDIA GeForce RTX 3060",
+    "total_MiB": 12288,
+    "global_used_MiB": 9447,
+    "not_a_generation_peak": true
+  },
+  "checks": {
+    "document_files_exist": true,
+    "secret_pattern_hits": [],
+    "missing_local_links": [],
+    "commits_exist": {
+      "7b2c303": true,
+      "e759b39": true,
+      "5d96c35": true,
+      "82adca7": true,
+      "48eb383": true,
+      "721cd53": true,
+      "f7f4c71": true,
+      "0785ef1": true
+    },
+    "git_diff_check_exit": 0,
+    "unexpected_changed_paths": [],
+    "qwen_parsed_workflow_equal": true
+  },
+  "passed": true,
+  "workflows": [
+    {
+      "path": "D:\\Comfyui2Openai\\apps\\api\\workflows\\z-image-turbo.json",
+      "sha256": "649fe9d127e05a2b2ef203e806d92af45531cbe56fae1a0c5cd764f3c05a37eb",
+      "classes": [
+        "CLIPLoader",
+        "CLIPTextEncode",
+        "ConditioningZeroOut",
+        "EmptySD3LatentImage",
+        "KSampler",
+        "ModelSamplingAuraFlow",
+        "SaveImage",
+        "UNETLoader",
+        "VAEDecodeTiled",
+        "VAELoader"
+      ],
+      "missing_live_nodes": [],
+      "assets": [
+        {
+          "name": "qwen_3_4b.safetensors",
+          "listed_by_live_loader": true,
+          "conventional_local_files": [
+            {
+              "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\text_encoders\\qwen_3_4b.safetensors",
+              "bytes": 8044982048
+            }
+          ]
+        },
+        {
+          "name": "ae.safetensors",
+          "listed_by_live_loader": true,
+          "conventional_local_files": [
+            {
+              "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\vae\\ae.safetensors",
+              "bytes": 335304388
+            }
+          ]
+        },
+        {
+          "name": "z_image_turbo_bf16.safetensors",
+          "listed_by_live_loader": true,
+          "conventional_local_files": [
+            {
+              "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\diffusion_models\\z_image_turbo_bf16.safetensors",
+              "bytes": 12309866400
+            }
+          ]
+        }
+      ],
+      "samplers": [
+        {
+          "class": "KSampler",
+          "steps": 8,
+          "cfg": 1,
+          "sampler_name": "res_multistep",
+          "scheduler": "simple"
+        }
+      ]
+    },
+    {
+      "path": "D:\\Comfyui2Openai\\apps\\api\\workflows\\qwen-image-2.1-precision.json",
+      "sha256": "93a2bb0a779a219b5666c324bafea873206c01306e7d88652a815d6ae4f9cb38",
+      "classes": [
+        "CLIPLoader",
+        "ComfySwitchNode",
+        "EmptyLatentImage",
+        "KSampler",
+        "LoadImage",
+        "QwenImage21Cache",
+        "ResolutionSelector",
+        "SaveImageAdvanced",
+        "TextEncodeQwenImage21",
+        "UNETLoader",
+        "VAEDecodeTiled",
+        "VAELoader"
+      ],
+      "missing_live_nodes": [],
+      "assets": [
+        {
+          "name": "qwen_image_2.1_int8_convrot.safetensors",
+          "listed_by_live_loader": true,
+          "conventional_local_files": [
+            {
+              "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\diffusion_models\\qwen_image_2.1_int8_convrot.safetensors",
+              "bytes": 7256783064
+            }
+          ]
+        },
+        {
+          "name": "qwen3vl_8b_int8_convrot.safetensors",
+          "listed_by_live_loader": true,
+          "conventional_local_files": [
+            {
+              "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\text_encoders\\qwen3vl_8b_int8_convrot.safetensors",
+              "bytes": 9350798360
+            }
+          ]
+        },
+        {
+          "name": "qwen_image_2.1_vae_bf16.safetensors",
+          "listed_by_live_loader": true,
+          "conventional_local_files": [
+            {
+              "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\vae\\qwen_image_2.1_vae_bf16.safetensors",
+              "bytes": 675509688
+            }
+          ]
+        }
+      ],
+      "samplers": [
+        {
+          "class": "KSampler",
+          "steps": 25,
+          "cfg": 1,
+          "sampler_name": "euler",
+          "scheduler": "simple"
+        }
+      ]
+    },
+    {
+      "path": "D:\\Comfyui2Openai\\apps\\api\\workflows\\flux-klein-precision.json",
+      "sha256": "1601e9cd29375250cfc22500f950c93da7d3ff66401dfbdad061767b59ededa0",
+      "classes": [
+        "CFGGuider",
+        "CLIPLoader",
+        "CLIPTextEncode",
+        "ConditioningZeroOut",
+        "EmptyFlux2LatentImage",
+        "Flux2Scheduler",
+        "FluxKVCache",
+        "GetImageSize",
+        "ImageScaleToTotalPixels",
+        "KSamplerSelect",
+        "LoadImage",
+        "RandomNoise",
+        "ReferenceLatent",
+        "SamplerCustomAdvanced",
+        "SaveImage",
+        "UNETLoader",
+        "VAEDecodeTiled",
+        "VAEEncode",
+        "VAELoader"
+      ],
+      "missing_live_nodes": [],
+      "assets": [
+        {
+          "name": "flux-2-klein-9b-kv-fp8.safetensors",
+          "listed_by_live_loader": true,
+          "conventional_local_files": [
+            {
+              "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\models\\diffusion_models\\flux-2-klein-9b-kv-fp8.safetensors",
+              "bytes": 9818935984
+            }
+          ]
+        },
+        {
+          "name": "flux2-vae.safetensors",
+          "listed_by_live_loader": false,
+          "conventional_local_files": []
+        },
+        {
+          "name": "qwen_3_8b_fp8mixed.safetensors",
+          "listed_by_live_loader": false,
+          "conventional_local_files": []
+        }
+      ],
+      "samplers": [
+        {
+          "class": "KSamplerSelect",
+          "sampler_name": "euler"
+        },
+        {
+          "class": "Flux2Scheduler",
+          "steps": 4
+        },
+        {
+          "class": "CFGGuider",
+          "cfg": 1
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No cryptographic identity check of installed weights against upstream",
+    "Bridge running binary and cached workflows not identified",
+    "Node/asset inventory does not validate inference or visual quality",
+    "Secret scan uses patterns and is not an exhaustive guarantee",
+    "External sources cited in IMAGE_MODEL_ROUTING_RND.md; no weight downloads"
+  ]
+}
