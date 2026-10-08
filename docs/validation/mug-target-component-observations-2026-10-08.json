@@ -1,0 +1,165 @@
+{
+  "execution_head": "631afff5d5db909e6a4e75f0546a08591ae093fa",
+  "harness_sha256": "7fd8e5f5918c872cc3450d390eb540d65d1ebf9e6c13e1eded918b0542ba5c19",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "ceramic mug",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "transport_status": "unavailable",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A red ceramic mug is clearly visible on a wooden surface, with a handle attached to its side.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"The top of the mug is open, but the interior is not visible due to lighting and angle; however, the rim is clearly defined.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"The handle is present, but the space inside the handle loop is not visible due to the angle and lighting.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"The handle is attached to the body of the mug, but the exact contact points are not clearly visible due to the angle and lighting.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"The rim of the mug is visible, but the contour is not clearly defined due to the lighting and angle.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 293,
+        "prompt_tokens": 1390,
+        "total_tokens": 1683,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1390,
+        "prompt_ms": 1715.473,
+        "prompt_per_token_ms": 1.2341532374100719,
+        "prompt_per_second": 810.272152345155,
+        "predicted_n": 293,
+        "predicted_ms": 5588.977,
+        "predicted_per_token_ms": 19.14033219178082,
+        "predicted_per_second": 52.24569720004216
+      },
+      "error_type": "ValueError",
+      "seconds": 7.347662500000297
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "same_pixels_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "geometry_label": "software_self_comparison",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    },
+    {
+      "id": "color_change_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "geometry_label": "prior_agent_review_preserved_shape",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    },
+    {
+      "id": "warm_state_geometry",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    },
+    {
+      "id": "hot_state_geometry",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    },
+    {
+      "id": "cooling_geometry",
+      "reference_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "candidate_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "uncertain",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    },
+    {
+      "id": "target_absence_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "geometry_label": "not_applicable_target_absent",
+      "source_task_label": "pass",
+      "label_scope_note": "Watch/key artifact has no ceramic mug; source task label concerns a different target.",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    }
+  ],
+  "plan_sha256": "3e5173ceb5359e78a021747e94f7e298b2bb207b086061715f808a22f5809712",
+  "inventory_protocol": "target-component-observations-1",
+  "component_profile_sha256": "2eae910d0a87ec2c49cceec3704c48f6bcac031c5e6f0dcf24d39967ba02f8cd",
+  "component_source_sha256": "11d91b3d6caf3cdef185c1a41d027e834dc98da53c01da2e21cc826971951582",
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-target-component-observations-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 79144,
+  "load_seconds": 3.522045400000934,
+  "stopped_reason": "Invalid/unavailable observation; no automatic retry",
+  "owned_server_closed": true
+}

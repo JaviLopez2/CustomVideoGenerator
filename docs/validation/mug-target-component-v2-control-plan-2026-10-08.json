@@ -1,0 +1,42 @@
+{
+  "target": "ceramic mug",
+  "images": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug"
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "source_case_id": "valid_cloth_edit",
+      "control_role": "analyst-verified target absence; not a structural-negative mug"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "same_pixels_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "geometry_label": "software_self_comparison",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth."
+    },
+    {
+      "id": "target_absence_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "geometry_label": "not_applicable_target_absent",
+      "source_task_label": "pass",
+      "label_scope_note": "Watch/key artifact has no ceramic mug; source task label concerns a different target."
+    }
+  ],
+  "source_dataset_sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f",
+  "execution_base": "631afff5d5db909e6a4e75f0546a08591ae093fa",
+  "scope": "presence-discriminated schema control, one present and one absent target; original v1 rejection preserved",
+  "planned_requests": 2,
+  "structural_negative_control": null,
+  "limitation": "No independently adjudicated structural-negative mug artifact available; no accuracy claim or production admission.",
+  "prior_plan_sha256": "f4650614ce154f24fe3c55dcba0b54d23087f8ea2b78c12cae7f3e5b11af33bf",
+  "diagnostic_source_plan_sha256": "3e5173ceb5359e78a021747e94f7e298b2bb207b086061715f808a22f5809712"
+}

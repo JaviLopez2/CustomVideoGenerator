@@ -118,6 +118,7 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument("--log-dir", required=True)
     parser.add_argument("--plan", help="Explicit target, unique image hashes and offline comparison metadata")
+    parser.add_argument("--component-profile", help="Separate target-presence/component protocol; legacy schema remains default")
     args = parser.parse_args()
     output, logs = Path(args.output), Path(args.log_dir)
     if output.exists() or logs.exists():
@@ -130,6 +131,11 @@ def main():
     if used > 5288:
         raise ValueError("Less than 7000MiB free VRAM on the documented RTX3060")
     root = Path(__file__).resolve().parents[1]
+    component_observer = runpy.run_path(str(root / "scripts/visual_component_observations.py")) if args.component_profile else None
+    profile = component_observer["validate_profile"](json.loads(Path(args.component_profile).read_text(encoding="utf-8"))) if component_observer else None
+    make_payload = (lambda path, sha, target: component_observer["payload"](path, sha, target, profile)) if profile else payload
+    parse_inventory = (lambda answer: component_observer["validate"](answer, profile)) if profile else validate
+    compare_inventory = (lambda a, b: component_observer["compare"](a, b, profile)) if profile else compare
     if args.plan:
         plan = validate_plan(json.loads(Path(args.plan).read_text(encoding="utf-8")))
     else:
@@ -148,7 +154,7 @@ def main():
         plan = validate_plan({"target": "silver key", "images": list(images.values()), "comparisons": comparisons})
     images = {image["sha256"]: image for image in plan["images"]}
     for image in images.values():
-        payload(image["path"], image["sha256"], plan["target"])
+        make_payload(image["path"], image["sha256"], plan["target"])
     target_dir = root / "local_image_stack/experiments/bridge/target"
     manifest = json.loads((root / "docs/validation/visual-judge-candidates-assets-2026-10-08.json").read_text(encoding="utf-8"))
     model = next(m for m in manifest["models"] if m["repo"] == "unsloth/Qwen3.5-9B-GGUF")
@@ -162,6 +168,9 @@ def main():
         "harness_sha256": H["digest"](__file__), "model": model, "runtime": manifest["runtime"],
         "generation_requests": 0, "automatic_retries": 0, "target": plan["target"], "rows": [], "comparisons": [],
         "plan_sha256": H["digest"](args.plan) if args.plan else None,
+        "inventory_protocol": profile["version"] if profile else "categorical-geometry-1",
+        "component_profile_sha256": H["digest"](args.component_profile) if profile else None,
+        "component_source_sha256": H["digest"](root / "scripts/visual_component_observations.py") if profile else None,
         "log": str(log_path.resolve()), "policy": {"one_image_per_request": True, "labels_sent": False,
         "reference_role_sent": False, "desired_counts_sent": False, "verdict_requested": False,
         "max_tokens": 512, "timeout_seconds": 60, "context": 8192, "reasoning": "off",
@@ -196,7 +205,7 @@ def main():
                 began = time.perf_counter()
                 try:
                     response = H["request"]("http://127.0.0.1:8092/v1/chat/completions",
-                        payload(image["path"], image["sha256"], report["target"]), timeout=60)
+                        make_payload(image["path"], image["sha256"], report["target"]), timeout=60)
                     choice = response["choices"][0]
                     message = choice["message"]
                     row.update(final_content=message.get("content"), finish_reason=choice["finish_reason"],
@@ -204,7 +213,9 @@ def main():
                                usage=response.get("usage"), server_timings=response.get("timings"))
                     if row["finish_reason"] != "stop" or row["reasoning_characters"]:
                         raise ValueError("Incomplete output or reasoning")
-                    row["inventory"] = validate(json.loads(row["final_content"]))
+                    row["inventory"] = parse_inventory(json.loads(row["final_content"]))
+                    if profile:
+                        row["component_coverage"] = component_observer["coverage"](row["inventory"], profile)
                     row["transport_status"] = "completed"
                 except (OSError, ValueError, KeyError, TypeError) as exc:
                     row["error_type"] = type(exc).__name__
@@ -220,7 +231,7 @@ def main():
             for comparison in plan["comparisons"]:
                 ref_sha, candidate_sha = comparison["reference_sha256"], comparison["candidate_sha256"]
                 if ref_sha in inventories and candidate_sha in inventories:
-                    result = compare(inventories[ref_sha], inventories[candidate_sha])
+                    result = compare_inventory(inventories[ref_sha], inventories[candidate_sha])
                 else:
                     result = {"status": "unavailable", "admission_allowed": False, "hints": []}
                 report["comparisons"].append({**comparison, **result})

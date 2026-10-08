@@ -6,6 +6,8 @@
 
 ## Current visual judge selection — 2026-10-08
 
+Latest on631afff: explicit target/component profile prototyped.4requests: V1 contradictory rejected,V2 identifies present/absent target but marks visiblepartsabsent,plain description recognizes mouth/two contacts.109tests pass; finalcoverage flags zero observed components,neveridentity/admission. [Report](docs/TARGET_COMPONENT_OBSERVATIONS_REPORT.md). Allown8092closed,stable intact,0generation/app/routing changes. Next controlledsame-prompt schema/free-output contrast; component semantics not ready.
+
 Latest onb51e2b3: generic observer --plan tested on5 retained mug images;5requests complete,92 tests pass. No category/count differences from color/vapor, all comparisonsuncertain/no decisions. Coverage omits handle opening/distinct contacts, no reviewed structuralnegative, so not factual-ready. [Mug report](docs/MUG_GEOMETRY_OBSERVATION_REPORT.md). Own8092 closed,stable intact,0generation/app/routing changes. Next: explicit target presence/component coverage using an existing absence control.
 
 Latest on61c1285: offline geometry-review-priorities-1 implemented,87 tests pass. Model structure/count/incomplete signals and human local/structural changes stay distinct; no admission/rejection/identity inference. A/B/C replay preserves both hints and human annotations.0 new inference/GPU/generations,experimental script/tests only, no app/routing changes. [Priority report](docs/GEOMETRY_REVIEW_PRIORITIES_REPORT.md). Next: additional perceptual controls from another family before opt-in diagnostic integration.

@@ -1,0 +1,9 @@
+{
+  "version": "target-component-observations-1",
+  "components": {
+    "mouth_opening": "The visible cavity entrance at the top of the vessel; exclude shadows and vapor.",
+    "handle_opening": "Empty space bounded by the handle loop and vessel body, separately from mouth opening. List only actually visible bounded spaces.",
+    "handle_body_contacts": "Each distinct visible physical attachment LOCATION of the handle to the vessel body. List separate contact sites separately, never aggregate them as one component pair. Do not infer an occluded attachment.",
+    "rim_contour": "Each visible continuous physical rim around the mouth. Report visible contour locations, not color, vapor or a compliance verdict."
+  }
+}

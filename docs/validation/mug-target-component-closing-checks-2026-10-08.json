@@ -1,0 +1,56 @@
+{
+  "execution_base": "631afff5d5db909e6a4e75f0546a08591ae093fa",
+  "new_model_requests": 4,
+  "new_generation_requests": 0,
+  "automatic_retries": 0,
+  "three_protocols_not_merged": true,
+  "records": {
+    "mug-target-component-observations-2026-10-08.json": {
+      "raw_sha256": "7d6a71be6cc1f246bf6117ab9e0628131b66862d521880c617a53a56da081be5",
+      "log_sha256": "92518c38d55d90077dc93fd4d64c05345ac371002a2f3a1405b840aa3117fdcc",
+      "owned_server_closed": true,
+      "request_count": 1,
+      "transport_complete_count": 0,
+      "runtime_component_source_sha256": "11d91b3d6caf3cdef185c1a41d027e834dc98da53c01da2e21cc826971951582"
+    },
+    "mug-target-component-v2-controls-2026-10-08.json": {
+      "raw_sha256": "e97c58a0a92a33146037860267f106d5afd4fcba5e65d4645efab6d4960cee5a",
+      "log_sha256": "422b4b774beed0a59481daf5adbbf58d3f7bf679f41d54884f96a5564fcc20d8",
+      "owned_server_closed": true,
+      "request_count": 2,
+      "transport_complete_count": 2,
+      "runtime_component_source_sha256": "41b1614015808da672525589fb61850dbe14c0ce0fa2bb48ee7e282693528075"
+    },
+    "mug-component-plain-control-2026-10-08.json": {
+      "raw_sha256": "fc82776639c2052f362eec0098cebade001097664ab7a1fba846cae3139eef67",
+      "log_sha256": "a64adeaa1c8d863c9b5dea18d69ef02ec0963bf08a8e51afbca733f363ec121e",
+      "owned_server_closed": true,
+      "request_count": 1,
+      "transport_complete_count": 1,
+      "runtime_component_source_sha256": null
+    }
+  },
+  "final_component_source_sha256": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+  "coverage_reanalysis_uses_final_source_without_rewriting_raw": true,
+  "final_tests": {
+    "passed": 109,
+    "exit_code": 0,
+    "seconds": 2.9
+  },
+  "intermediate_test_failure": {
+    "failed": 1,
+    "passed": 108,
+    "cause": "Incomplete observation received redundant zero-positive-coverage hint; corrected to flag zero observed coverage only for otherwise non-uncertain absent-component inventories. Existing test retained."
+  },
+  "health": {
+    "8080": "closed",
+    "8092": "closed",
+    "8188": 200,
+    "8090": 404
+  },
+  "comfy_queue_running": 0,
+  "comfy_queue_pending": 0,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status": "",
+  "structural_admission_ready": false
+}

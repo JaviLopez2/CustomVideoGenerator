@@ -1,0 +1,80 @@
+{
+  "raw_sha256": "e97c58a0a92a33146037860267f106d5afd4fcba5e65d4645efab6d4960cee5a",
+  "coverage_source_sha256": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+  "coverage_policy_version": "component-location-coverage-2",
+  "new_model_requests": 0,
+  "raw_response_modified": false,
+  "rows": [
+    {
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "mouth_opening": 0,
+          "handle_opening": 0,
+          "handle_body_contacts": 0,
+          "rim_contour": 0
+        },
+        "incomplete_components": [],
+        "observed_components": [],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "no_observed_component",
+        "pixel_truth_verified": false
+      }
+    },
+    {
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "coverage": {
+        "target_presence": "absent",
+        "location_counts": {
+          "mouth_opening": null,
+          "handle_opening": null,
+          "handle_body_contacts": null,
+          "rim_contour": null
+        },
+        "incomplete_components": [
+          "mouth_opening",
+          "handle_opening",
+          "handle_body_contacts",
+          "rim_contour"
+        ],
+        "observed_components": [],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "not_applicable",
+        "pixel_truth_verified": false
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "same_pixels_control",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [
+        {
+          "feature": "component_coverage",
+          "kind": "no_positive_component_observation"
+        }
+      ],
+      "priority": "component_observation_review"
+    },
+    {
+      "id": "target_absence_control",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [
+        {
+          "feature": "target_presence",
+          "kind": "target_not_established",
+          "reference": "present",
+          "candidate": "absent"
+        }
+      ],
+      "priority": "target_not_established"
+    }
+  ]
+}

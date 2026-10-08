@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: target presence works, component semantics unresolved
+
+Base631afff5d5db909e6a4e75f0546a08591ae093fa. Added versioned target/component profile with explicit presence and per-location lists. V1 first request rejected: targetpresent/componentsnot_applicable,5 unattempted. V2 oneOf presence branches: positive targetpresent but allpartsabsent (weak semantic evidence); absence controltargetabsent correctly,nonapplicableparts. One plain-description control sees open mouth/two handle contacts.4 total requests,0generation/retries,allownserversclosed. Prompts/format change confounded; no sole grammar attribution. [Report](TARGET_COMPONENT_OBSERVATIONS_REPORT.md).
+
+Final coveragepolicy flags no_observed_component instead of treating allabsent as complete identity evidence; offline reanalysis preserves raw snapshots/hashes. Positive uncertain, absence comparisonunavailable,target_not_established; no automatic admission/rejection.109 final offline tests pass,17new+92prior,exit0,2.90s. Legacy protocols/defaults preserved;no app/deps/workflows/routing/stable changes. Next: same-prompt/same-budget schema-versus-free output contrast before blaming vision or downloading another candidate. Presence may be diagnostic only; factual component coverage remains not ready. Get SHA viahistory/origin.
+
 ## Current checkpoint: second object family tested
 
 Baseb51e2b317119f5e0e4e818723fd9e511b083837b. Observer now accepts validated generic --plan, preserves legacy key mode. Five retained mug images observed independently with ceramic mug target; no desired color/state/role/labels supplied.5requests5.664–6.484s,allcompleted; inventories categoricalequal and5comparisons have no hints. Replay priorities remainsuncertain/no admission/no rejection, no human annotations invented. [Mug report](MUG_GEOMETRY_OBSERVATION_REPORT.md).

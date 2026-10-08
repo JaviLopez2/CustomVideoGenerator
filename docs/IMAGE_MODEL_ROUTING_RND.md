@@ -196,3 +196,8 @@ Sobre61c1285 se implementó geometry-review-priorities-1 en script experimental:
 ## Segunda familia: tazas — 2026-10-08
 
 Baseb51e2b3. Observador generalizado con --plan;5 inferencias sobre tazas existentes,5.664–6.484s,92 tests aprobados. Inventarios coinciden en los4 atributos pese a color/vapor,0hints; prioridades siempreuncertain/no admisión/rechazo. No asumir identidad: faltan hueco del asa/contactos detallados y negativo estructural adjudicado. Labels de estado no se convierten en verdad geométrica; estado frío sigueincierto.0generaciones/deps/workflows/app/routing,servidor propio cerrado,estable intacto. [Informe](MUG_GEOMETRY_OBSERVATION_REPORT.md). Siguiente: presencia explícita del target y cobertura de partes con control de ausencia usando artifacts existentes.
+
+
+## Presencia y cobertura de componentes — 2026-10-08
+
+Base631afff. Nuevo perfil opcional preserva legacy. V1 rechaza targetpresent/partsnot_applicable y detiene5pendientes; V2 con ramasoneOf identifica taza presente y target ausente en reloj/llave,pero marca partes visiblesabsent. Descripción libre sí identifica boca/dos contactos; prompt/formato difieren,no causa única probada.4requests reales,0generaciones/retries/app/routing/deps/workflows.109tests finales pasan;coveragepolicy offline marca no_observed_component sin reescribirraw. Comparacionesuncertain/unavailable,nuncaadmisión. [Informe](TARGET_COMPONENT_OBSERVATIONS_REPORT.md). Siguiente: contraste same-prompt/same-budget con/sin schema antes de atribuir limitación visual o cambiar candidato.

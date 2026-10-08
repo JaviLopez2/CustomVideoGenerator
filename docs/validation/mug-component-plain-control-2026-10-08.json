@@ -1,0 +1,76 @@
+{
+  "execution_head": "631afff5d5db909e6a4e75f0546a08591ae093fa",
+  "protocol": "brief plain image description, separate from typed observations",
+  "prompt": "Describe only the actual visible ceramic mug in this image. Briefly describe its open top, the space inside its handle, and each visible location where the handle attaches to the mug body. Do not infer hidden parts or evaluate compliance. Use at most six short sentences; no JSON and no chain of thought.",
+  "artifact_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "response_format": null,
+  "max_tokens": 256,
+  "timeout_seconds": 60,
+  "image_min_tokens": 1024,
+  "image_max_tokens": 1536,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "admission_allowed": false,
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-component-plain-control-2026-10-08.log",
+  "owned_pid": 81948,
+  "load_seconds": 3.533904200001416,
+  "request_seconds": 3.466757199999847,
+  "final_content": "The mug has a wide, circular open top with smooth, rounded edges. The interior space is empty and unobstructed, visible from the rim downward. The handle attaches to the mug body at two points: one near the top rim and one near the base, both on the right side as viewed. These attachment areas are seamlessly integrated into the curved surface of the mug. No internal structure or hidden components are visible within the handle or body. The entire visible form is solid red ceramic with a glossy finish.",
+  "finish_reason": "stop",
+  "reasoning_characters": 0,
+  "usage": {
+    "completion_tokens": 104,
+    "prompt_tokens": 1099,
+    "total_tokens": 1203,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "server_timings": {
+    "cache_n": 0,
+    "prompt_n": 1099,
+    "prompt_ms": 1499.228,
+    "prompt_per_token_ms": 1.3641747042766152,
+    "prompt_per_second": 733.0439399477598,
+    "predicted_n": 104,
+    "predicted_ms": 1936.967,
+    "predicted_per_token_ms": 18.805504854368934,
+    "predicted_per_second": 53.175918846320045
+  },
+  "owned_server_closed": true
+}
