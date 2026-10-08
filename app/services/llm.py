@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 from time import perf_counter
 from typing import List
+from urllib.parse import urlsplit
 
 from loguru import logger
 from openai import AzureOpenAI, OpenAI
@@ -1020,6 +1021,37 @@ def _normalize_visual_caption_judgment(value: object) -> dict:
     }
 
 
+def _generate_qa_response(prompt: str, app_config=None) -> str:
+    """Opt-in policy for structured judges, independent of narration/planning."""
+    settings = config.app if app_config is None else app_config
+    if settings.get("openai_image_qa_fast_local_judge") is not True:
+        return _generate_response(prompt) if app_config is None else _generate_response(prompt, app_config=app_config)
+    base = str(settings.get("openai_base_url") or "")
+    try:
+        parsed = urlsplit(base)
+    except ValueError:
+        return "Error: invalid local QA endpoint"
+    if (settings.get("llm_provider", "openai") != "openai"
+            or parsed.hostname not in {"127.0.0.1", "localhost", "::1"}
+            or parsed.username or parsed.password):
+        return "Error: fast QA judge requires an explicit local OpenAI-compatible endpoint"
+    try:
+        client = OpenAI(api_key=settings.get("openai_api_key") or "local",
+                        base_url=base, timeout=30, max_retries=0)
+        response = client.chat.completions.create(
+            model=settings.get("openai_model_name"),
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0, max_tokens=512,
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}},
+        )
+        if not response.choices or response.choices[0].finish_reason != "stop":
+            return "Error: QA judge response incomplete"
+        # Content is final output. reasoning_content is never substituted for it.
+        return _extract_chat_completion_text(response, "local QA")
+    except Exception as exc:
+        return f"Error: QA judge unavailable ({type(exc).__name__})"
+
+
 def evaluate_precision_visual_captions_batch(
     *,
     subject: str,
@@ -1105,9 +1137,9 @@ Return exactly one result for every supplied candidate index.
 
     try:
         response = (
-            _generate_response(prompt)
+            _generate_qa_response(prompt)
             if app_config is None
-            else _generate_response(prompt, app_config=app_config)
+            else _generate_qa_response(prompt, app_config=app_config)
         )
         if response.startswith("Error: "):
             return {"available": False, "error": response}
@@ -1230,9 +1262,9 @@ Return ONLY JSON:
 
     try:
         response = (
-            _generate_response(prompt)
+            _generate_qa_response(prompt)
             if app_config is None
-            else _generate_response(prompt, app_config=app_config)
+            else _generate_qa_response(prompt, app_config=app_config)
         )
         if response.startswith("Error: "):
             return {"available": False, "error": response}

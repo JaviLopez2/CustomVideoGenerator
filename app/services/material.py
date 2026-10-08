@@ -28,6 +28,7 @@ from app.services import (
     metaso_minimax,
     ofox,
     task_artifacts,
+    visual_qa,
     video,
     volcengine_seedance,
 )
@@ -5390,7 +5391,7 @@ def _precision_semantic_weight() -> float:
     return max(0.0, min(value, 1.0))
 
 
-def _get_precision_semantic_model():
+def _get_precision_semantic_model(*, local_files_only=False):
     """Load Florence-2 lazily and return (model, processor, torch, device, dtype).
 
     CPU is the default even when CUDA is available. FLUX is already using the GPU
@@ -5463,10 +5464,12 @@ def _get_precision_semantic_model():
             # florence-community checkpoints are converted to the native
             # Transformers Florence implementation, avoiding Microsoft's older
             # trust_remote_code loader that triggered _supports_sdpa failures.
-            processor = AutoProcessor.from_pretrained(model_name)
+            local_options = {"local_files_only": True} if local_files_only else {}
+            processor = AutoProcessor.from_pretrained(model_name, **local_options)
             model = florence_model_class.from_pretrained(
                 model_name,
                 torch_dtype=dtype,
+                **local_options,
             )
             model = model.to(device)
             model.eval()
@@ -5513,6 +5516,18 @@ def _release_precision_semantic_model() -> None:
     except BaseException:
         pass
     gc.collect()
+
+
+def _new_visual_qa_engine():
+    from huggingface_hub import try_to_load_from_cache
+    model_name = _precision_semantic_model_name()
+    cached = try_to_load_from_cache(model_name, "config.json")
+    revision = Path(cached).parent.name if isinstance(cached, str) else "unverified"
+    evidence = visual_qa.FlorenceEvidence(
+        lambda: _get_precision_semantic_model(local_files_only=True),
+        f"{model_name}@{revision}:{_precision_semantic_device_requested()}:beam1:tokens256",
+    )
+    return visual_qa.VisualQA(evidence)
 
 
 def _precision_florence_caption(
@@ -7254,6 +7269,7 @@ def _download_videos_openai_image_on_demand(
     scene_factual_audit_statuses: list[str] | None = None,
     scene_shot_types: list[str] | None = None,
     scene_framing_intents: list[str] | None = None,
+    scene_qa_contracts: list[dict] | None = None,
 ) -> List[str]:
     """Generate OpenAI-compatible images in narration order.
 
@@ -7347,6 +7363,7 @@ def _download_videos_openai_image_on_demand(
         ("factual-audit-statuses", scene_factual_audit_statuses),
         ("shot-types", scene_shot_types),
         ("framing-intents", scene_framing_intents),
+        ("qa-contracts", scene_qa_contracts),
     ):
         if values is not None and len(values) != len(search_terms):
             logger.error(
@@ -7358,6 +7375,7 @@ def _download_videos_openai_image_on_demand(
 
     precision_fallback_logged = False
     precision_reference_cache: dict[str, tuple[str, dict[str, Any]]] = {}
+    scoped_qa_engine = None
     manual_reference_pack_cache: tuple[list[str], dict[str, Any]] | None = None
     latest_standard_style_profile: dict[str, tuple[float, float, float]] | None = None
     recent_generated_scene_visuals: list[dict[str, Any]] = []
@@ -8325,6 +8343,35 @@ def _download_videos_openai_image_on_demand(
         # first frame of a continuity chain becoming a bad root. It runs on these
         # risky transitions only for legacy routes. Experimental Klein requires
         # verified QA on every scene until its admission policy is validated.
+        scoped_qa = None
+        if (items and scene_qa_contracts is not None
+                and config.app.get("openai_image_visual_qa_experimental_enabled") is True):
+            contract = dict(scene_qa_contracts[scene_index])
+            if precision_reference_required or continuity_key not in {"", "none"}:
+                # Exact cardinality/outer silhouette do not certify factual or
+                # continuity identity. No incomplete contract may bypass it.
+                contract["identity_critical"] = True
+            if temporal_progression and not contract.get("temporal"):
+                # A count-only contract cannot bypass a required temporal gate.
+                contract["temporal"] = {"expected_state": temporal_state,
+                                        "previous_state": continuity_last_temporal_states.get(continuity_key, "")}
+            if scoped_qa_engine is None:
+                scoped_qa_engine = _new_visual_qa_engine()
+            scoped_qa = scoped_qa_engine.assess(items[0].url, contract)
+            items[0].source_info["visual_qa"] = scoped_qa
+            precision_diagnostics["plan_scenes"][scene_index]["visual_qa"] = _precision_diagnostics_json_safe(scoped_qa)
+            if scoped_qa.get("status") == "not_required":
+                # Keep the existing experimental gross gate when no scoped QA
+                # was performed; an empty contract is not verified evidence.
+                scoped_qa = None
+            if scoped_qa is not None and scoped_qa["verdict"] != "pass":
+                # No retry or cross-model fallback rehabilitates missing evidence.
+                items = []
+            elif scoped_qa is not None and temporal_progression:
+                continuity_last_temporal_captions[continuity_key] = scoped_qa.get("caption", "")
+                continuity_last_temporal_states[continuity_key] = temporal_state
+            _precision_diagnostics_persist(task_id, precision_diagnostics)
+
         gross_retry_used = False
         experimental_gross_qa = None
         experimental_temporal_qa = None
@@ -8332,6 +8379,7 @@ def _download_videos_openai_image_on_demand(
                                       and items[0].source_info.get("model") in klein4b_experimental.ALIASES)
         gross_qa_risky = bool(
             items
+            and scoped_qa is None
             and _gross_scene_semantic_qa_enabled()
             and (
                 experimental_candidate
@@ -8488,6 +8536,7 @@ def _download_videos_openai_image_on_demand(
         # closed instead of generating a third candidate.
         temporal_qa_risky = bool(
             items
+            and scoped_qa is None
             and _temporal_semantic_qa_enabled()
             and temporal_progression
             and continuity_key not in {"", "none"}
@@ -8638,9 +8687,11 @@ def _download_videos_openai_image_on_demand(
             _precision_diagnostics_persist(task_id, precision_diagnostics)
 
         if items and experimental_candidate:
-            verified = klein4b_experimental.qa_verified(experimental_gross_qa)
-            if temporal_progression:
-                verified = verified and klein4b_experimental.qa_verified(experimental_temporal_qa)
+            verified = scoped_qa is not None and scoped_qa["verdict"] == "pass"
+            if scoped_qa is None:
+                verified = klein4b_experimental.qa_verified(experimental_gross_qa)
+                if temporal_progression:
+                    verified = verified and klein4b_experimental.qa_verified(experimental_temporal_qa)
             items[0].source_info["qa_status"] = "passed" if verified else "unverified"
             if not verified:
                 if scene_index < len(precision_diagnostics.get("plan_scenes", [])):

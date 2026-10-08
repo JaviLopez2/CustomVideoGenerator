@@ -11,3 +11,13 @@ Worktree `D:\Apps\MPT-worktrees\image-model-routing-modernization`, branch `fact
 Florence CPU provides OCR, detection, grounding and segmented outer shape. It misses exact small-part counts and fused-object identity. The current 8080 server reports vision disabled; no nearby multimodal projector was found. Do not download/reconfigure a heavy model to continue without a separate decision.
 
 At this audit checkpoint implementation/tests remain separate working changes. Zero image-generation requests, GPU benchmarks, retries, dependency changes, service restarts or routing promotion. Next checkpoint records the opt-in implementation and its actual test results.
+
+## Implementation checkpoint
+
+Dataset/audit commit `1ec050a9b5dc2268dbf5a501b4b4fb663c659019`. Implemented `app/services/visual_qa.py`, scoped private MPT integration, bounded local judge transport, offline retained-artifact evaluator and 39 new test cases. No persisted flags enabled. Experimental private caller needs both boolean `openai_image_visual_qa_experimental_enabled=True` and explicit `scene_qa_contracts`; normal callers retain their existing QA.
+
+Critical factual references/continuity automatically require identity evidence that this caption/mask engine cannot establish, so remain uncertain and rejected. Empty contracts retain the existing Klein gate. Temporal requirements cannot be bypassed by count-only contracts. No retries or cross-model rehabilitation. A direct dataset pass is not full pipeline/continuity certification.
+
+Final test run: **387 passed, 17 subtests passed, 1 integration test skipped**, exit 0, 15.12s. [Log](validation/visual-qa-final-tests-2026-10-08.txt). Includes all previous 241 cases unchanged, 39 new visual QA cases and 107 additional LLM cases. One existing Starlette/httpx deprecation warning; no dependency installation.
+
+Final dataset: **3/16 decided**, TP1/TN2/FP0/FN0, uncertain13, unavailable0. Mean4.5073s, median4.2692s, max9.7788s; no p95 claimed. The absence of false verdicts on only three decisions does not establish classifier reliability. Use [final results](validation/visual-qa-final-results-2026-10-08.json), not pre-parser intermediate runs.
