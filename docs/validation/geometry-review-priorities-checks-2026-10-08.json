@@ -1,0 +1,21 @@
+{
+  "execution_base": "61c1285a86c52c047803849fa966d99cab748283",
+  "replay_pairs": 3,
+  "all_results_uncertain": true,
+  "automatic_admissions": 0,
+  "automatic_rejections": 0,
+  "raw_observations_annotations_labels_unchanged": true,
+  "normalization_source_hash_verified": true,
+  "policy_source_hash_verified": true,
+  "new_model_requests": 0,
+  "new_generations": 0,
+  "tests": {
+    "passed": 87,
+    "exit_code": 0,
+    "seconds": 2.88
+  },
+  "secret_pattern_files_flagged": 0,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status": "",
+  "replay_sha256": "8dd3ee89f34a09b799d530b20fac9da87386c43fcbb8952ca92341e7f923d056"
+}

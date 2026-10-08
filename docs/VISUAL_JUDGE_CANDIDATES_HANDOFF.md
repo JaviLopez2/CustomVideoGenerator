@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: offline review-priority policy implemented
+
+Base61c1285a86c52c047803849fa966d99cab748283. New experimental `scripts/triage_geometry_observations.py`, versiongeometry-review-priorities-1; no app integration. Model presence disagreements prompt structural review, count disagreements remain unconfirmed measurements, insufficient observations remain explicit. Human shape/localized variation statements stay separate; matching inventory never establishes identity. All prioritiesuncertain/no admission/no automatic rejection; malformed/absent/incomplete transport inventoriesunavailable. No case-specific policy rules or free-text sentiment rescue. [Report](GEOMETRY_REVIEW_PRIORITIES_REPORT.md).
+
+Replay with preserved annotations: A model no signal/human localized variation; B model structural hint/human shape changed; C model count hint/human disagreement. Raw hints never erased. Localized change in A is supplied by human, not a model capability.87 offline tests pass (18 new+69 prior),exit0,2.88s.0 new model/generation/GPU/service requests; no dependencies/workflows/routing/defaults/stable changes. Original raw evidence/labels/annotations unchanged. Next: additional perceptual controls from another object family on existing artifacts before connecting this as opt-in MPT diagnostic. No automatic physical identity pass or rejection. Get closing SHA via history/origin.
+
 ## Current closure: human geometry review recorded
 
 Base3d60ade5dad77fa135d5d2cffbc7e3700539eaa2. User directly reviewed A/B/C: A overall key shape preserved with slightly enlarged rings; B completely altered shape; C preserved/no visible change. [Separate verbatim human annotation](validation/visual-geometry-human-review-2026-10-08.json). Historical labels/raw observations/provenance unchanged. Pending-review sections below are historical and superseded; do not ask again for the same annotation.

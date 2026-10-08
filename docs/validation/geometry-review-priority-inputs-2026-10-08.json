@@ -1,0 +1,41 @@
+{
+  "source_human_annotations": "docs\\validation\\visual-geometry-human-review-2026-10-08.json",
+  "source_human_annotations_sha256": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3",
+  "observation_evidence_sha256": "b7037a61cdd4a08547f1a5c938692a57389161ff903b7a7914281234fd0b75a2",
+  "normalization_note": "Derived explicitly from user review: A preserved with localized ring-size change, B major structural change, C preserved without visible changes. No policy tolerance or automatic decision implied. Pair IDs are metadata only, not consulted by the policy.",
+  "cases": [
+    {
+      "source_case_id": "qwen_continuity_factual_768",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "review": {
+        "shape": "preserved",
+        "localized_change": true,
+        "source": "human",
+        "note": "Conserva la forma de la llave y cambia ligeramente los anillos de la llave haciendolos un poco mas grandes."
+      }
+    },
+    {
+      "source_case_id": "continuity_factual_768",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "review": {
+        "shape": "changed",
+        "localized_change": false,
+        "source": "human",
+        "note": "Cambia totalmente la forma de la llave. No respeta nada de la llave. La peor sin duda."
+      }
+    },
+    {
+      "source_case_id": "valid_cloth_edit",
+      "reference_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "review": {
+        "shape": "preserved",
+        "localized_change": false,
+        "source": "human",
+        "note": "Mantiene perfectamente la llave , no se ve ningun cambio en la llave."
+      }
+    }
+  ]
+}

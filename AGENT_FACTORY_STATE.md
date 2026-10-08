@@ -6,6 +6,8 @@
 
 ## Current visual judge selection — 2026-10-08
 
+Latest on61c1285: offline geometry-review-priorities-1 implemented,87 tests pass. Model structure/count/incomplete signals and human local/structural changes stay distinct; no admission/rejection/identity inference. A/B/C replay preserves both hints and human annotations.0 new inference/GPU/generations,experimental script/tests only, no app/routing changes. [Priority report](docs/GEOMETRY_REVIEW_PRIORITIES_REPORT.md). Next: additional perceptual controls from another family before opt-in diagnostic integration.
+
 Human review received on3d60ade: A shape preserved/minor ring enlargement; B completely altered; C no visible change. Separate annotation retained without rewriting historical labels. Model hints miss A size nuance, align with B gross change and falsely flag C counts; comparator staysuncertain/no admission. [Current observation report](docs/VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md). No pending question for these pairs, no new GPU/tests/app changes. Next: conservative hint policy with explicit severity/uncertainty and additional controls; no production tolerance or approval inferred.
 
 Latest onab4b032:4 independent single-image geometry inventories complete,69 offline tests pass. Experimental comparator emits review hints and alwaysuncertain/no admission; observes key opening difference but false count differences remain. User closed8080 to free RAM;own8092 closed,stable intact. [Observation report](docs/VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md). Human A/B/C review requested and pending; do not infer answers or integrate routing. No new generation/dependency/workflow/app changes.

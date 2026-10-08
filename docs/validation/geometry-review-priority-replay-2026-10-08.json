@@ -1,0 +1,186 @@
+{
+  "execution_head": "61c1285a86c52c047803849fa966d99cab748283",
+  "policy_version": "geometry-review-priorities-1",
+  "source_sha256": "feeaa3b66412766ba38e62bb975c4f53b2cab455f2b486e425b952da955cbab4",
+  "observations_sha256": "b7037a61cdd4a08547f1a5c938692a57389161ff903b7a7914281234fd0b75a2",
+  "reviews_sha256": "927e303ceb5814eefa4006c2c10550077b38dc0fd599a1e341f068666be9f87b",
+  "new_model_requests": 0,
+  "new_generation_requests": 0,
+  "automatic_decisions": 0,
+  "rows": [
+    {
+      "id": "valid_cloth_edit",
+      "reference_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "model_only": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [
+          {
+            "feature": "edge_cutouts",
+            "kind": "count_disagreement"
+          },
+          {
+            "feature": "rings_or_collars",
+            "kind": "count_disagreement"
+          }
+        ],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "model_count_review",
+        "model_observation_incomplete": false
+      },
+      "with_human_review": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": {
+          "shape": "preserved",
+          "localized_change": false,
+          "source": "human",
+          "note": "Mantiene perfectamente la llave , no se ve ningun cambio en la llave."
+        },
+        "hints": [
+          {
+            "feature": "edge_cutouts",
+            "kind": "count_disagreement"
+          },
+          {
+            "feature": "rings_or_collars",
+            "kind": "count_disagreement"
+          }
+        ],
+        "model_evidence_status": "available",
+        "human_review_pending": false,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "model_human_disagreement",
+        "model_observation_incomplete": false
+      }
+    },
+    {
+      "id": "continuity_factual_768",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "model_only": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [
+          {
+            "feature": "openings",
+            "kind": "presence_disagreement"
+          },
+          {
+            "feature": "rings_or_collars",
+            "kind": "presence_disagreement"
+          }
+        ],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "model_structure_review",
+        "model_observation_incomplete": false
+      },
+      "with_human_review": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": {
+          "shape": "changed",
+          "localized_change": false,
+          "source": "human",
+          "note": "Cambia totalmente la forma de la llave. No respeta nada de la llave. La peor sin duda."
+        },
+        "hints": [
+          {
+            "feature": "openings",
+            "kind": "presence_disagreement"
+          },
+          {
+            "feature": "rings_or_collars",
+            "kind": "presence_disagreement"
+          }
+        ],
+        "model_evidence_status": "available",
+        "human_review_pending": false,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "human_reported_structural_change",
+        "model_observation_incomplete": false
+      }
+    },
+    {
+      "id": "qwen_continuity_factual_768",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "model_only": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      },
+      "with_human_review": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": {
+          "shape": "preserved",
+          "localized_change": true,
+          "source": "human",
+          "note": "Conserva la forma de la llave y cambia ligeramente los anillos de la llave haciendolos un poco mas grandes."
+        },
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": false,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "human_reported_local_variation",
+        "model_observation_incomplete": false
+      }
+    }
+  ]
+}

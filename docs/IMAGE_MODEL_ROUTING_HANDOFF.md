@@ -195,3 +195,8 @@ Baseab4b032.4 inventarios sobre imágenes individuales, sin labels/roles/desired
 ## Revisión humana A/B/C recibida — 2026-10-08
 
 Sobre3d60ade, el usuario confirma: A conserva forma con anillos ligeramente mayores; B cambia totalmente la forma; C conserva sin cambio visible. [Anotación separada](validation/visual-geometry-human-review-2026-10-08.json), labels/resultados antiguos intactos. Inventario A sin hints pierde matiz de tamaño; B tiene hints compatibles con alteración grave; C tiene falsas alarmas de conteo. La salida sigueuncertain/no admisión. No convertir A en igualdad exacta ni derivar un umbral productivo de3 pares.0 nuevas inferencias/generaciones/tests/cambios app. [Informe actualizado](VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md). Siguiente: política experimental de avisos por severidad/observación insuficiente y controles adicionales antes de integrar, manteniendo OCR/fail-closed.
+
+
+## Prioridades de avisos offline — 2026-10-08
+
+Sobre61c1285 se implementó geometry-review-priorities-1 en script experimental: presencia distinta exige revisión estructural, conteos distintos revisión de medición, evidencia incompleta permanece explícita, anotaciones humanas separadas. Replay A/B/C sin nuevas inferencias; variación leve A procede del usuario, no del modelo. Nunca pass/identity ni rechazo automático; unavailable ante inventarios inválidos/transport incompleto.87 tests pasan,18 nuevos+69 previos;0GPU/generaciones/app/routing/dependencies/workflows. [Informe](GEOMETRY_REVIEW_PRIORITIES_REPORT.md). Siguiente: controles perceptuales con otra familia de objetos antes de integración opt-in de diagnóstico.
