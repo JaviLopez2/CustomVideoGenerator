@@ -1,5 +1,21 @@
 # Observaciones geométricas independientes — 2026-10-08
 
+## Revisión humana recibida
+
+El usuario revisó A/B/C y respondió directamente en el chat. [Anotación humana separada y literal](validation/visual-geometry-human-review-2026-10-08.json), con hashes de los pares. Los párrafos de revisión pendiente más abajo describen el estado previo, ya superado. No se reescribieron labels históricos ni respuestas del modelo, ni se cambió código o routing.
+
+| Par | Observación humana | Contraste con inventarios del modelo |
+|---|---|---|
+| A | Conserva la forma; anillos ligeramente más grandes | No hay hints: pierde la diferencia leve de tamaño, fuera de los cuatro atributos categóricos actuales |
+| B | Cambia totalmente la forma | Hints de presencia distintos aportan una señal compatible con alteración grave; no validan cada descripción del modelo |
+| C | Mantiene la llave, sin cambios visibles | Hints de conteos distintos son falsas alarmas respecto a esta revisión; no hubo rechazo automático porque el comparador conserva uncertain |
+
+La revisión confirma la separación entre conservación general y alteración grave en estos tres pares. **A no se convierte en identidad geométrica exacta:** se conserva la diferencia de anillos y queda sin decidir una tolerancia productiva. No exigir al usuario que esa diferencia desaparezca de su anotación para encajar con pass. Tampoco se usan estas tres observaciones para declarar validado todo el dataset16, OCR, continuidad o un umbral.
+
+El inventario independiente resulta más útil para avisos auditables que el verdict directo, pero pierde cambios de tamaño y alucina conteos. La comparación de descripciones/categorías no calibra severidad por sí sola. Siguiente tarea concreta: diseñar una política experimental de avisos que distinga alteraciones estructurales de variaciones leves/observación insuficiente, y comprobarla con controles adicionales antes de cualquier integración. Conservar incertidumbre, OCR y gates deterministas; un acuerdo de atributos no levanta fail-closed factual. No se implementa esa política en este cierre documental.
+
+Registro sobre3d60ade:0 nuevas inferencias/generaciones/tests, solo anotación/docs y validaciones de JSON/hashes/diff/secret patterns. Los69 tests y4 inferencias del texto de abajo siguen siendo resultados históricos de la implementación del observador, no pruebas nuevas de la revisión humana.
+
 Se separó la observación de cada imagen del veredicto. Cuatro inventarios Qwen3.5 completaron, sin timeouts; el comparador experimental conserva `uncertain` y `admission_allowed=false` incluso cuando coinciden. No se integró con MPT ni se activó routing. La revisión humana de tres pares sigue pendiente.
 
 Base ejecutada `ab4b032825223d9411c254c1206895a83e15798e`, worktree experimental limpio al inicio. El usuario abrió los servicios:8080 health200,8090 root404,8188 system_stats200,cola0/0. Había4084MiB globales/5% GPU pero solo6.69GiB RAM libres; se solicitó cierre temporal de8080 y el usuario lo confirmó. Antes de inferencia:783MiB globales/14% GPU/30°C y20.74GiB RAM libre. No se cerró ningún servicio compartido desde el agente.

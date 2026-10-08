@@ -181,3 +181,8 @@ Base0624618.19 nuevas inferencias sobre imágenes existentes,0 generaciones/camb
 ## Observación geométrica independiente — 2026-10-08
 
 Baseab4b032.4 inventarios sobre imágenes individuales, sin labels/roles/desired counts/verdict;4.727–6.556s. Comparador offline siempreuncertain/admission_allowed=false, aunque coincidan atributos. Agujero del negativo detectado como hint; conteos de componentes aún inconsistentes en un positivo.69 tests pasan,0 generaciones/descargas/dependencias/workflows/app/routing changes. Servidor propio cerrado y estable intacto. [Informe](VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md), [revisión humana A/B/C](VISUAL_GEOMETRY_BLIND_REVIEW.md) solicitada y pendiente. Siguiente: registrar anotación humana separada y validar evidencias antes de cualquier integración factual. No convertir agreement en pass ni hints en veto automático.
+
+
+## Revisión humana A/B/C recibida — 2026-10-08
+
+Sobre3d60ade, el usuario confirma: A conserva forma con anillos ligeramente mayores; B cambia totalmente la forma; C conserva sin cambio visible. [Anotación separada](validation/visual-geometry-human-review-2026-10-08.json), labels/resultados antiguos intactos. Inventario A sin hints pierde matiz de tamaño; B tiene hints compatibles con alteración grave; C tiene falsas alarmas de conteo. La salida sigueuncertain/no admisión. No convertir A en igualdad exacta ni derivar un umbral productivo de3 pares.0 nuevas inferencias/generaciones/tests/cambios app. [Informe actualizado](VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md). Siguiente: política experimental de avisos por severidad/observación insuficiente y controles adicionales antes de integrar, manteniendo OCR/fail-closed.

@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current closure: human geometry review recorded
+
+Base3d60ade5dad77fa135d5d2cffbc7e3700539eaa2. User directly reviewed A/B/C: A overall key shape preserved with slightly enlarged rings; B completely altered shape; C preserved/no visible change. [Separate verbatim human annotation](validation/visual-geometry-human-review-2026-10-08.json). Historical labels/raw observations/provenance unchanged. Pending-review sections below are historical and superseded; do not ask again for the same annotation.
+
+Model hints: A none (misses small size variation); B presence disagreements (compatible with major change but not independent confirmation of every feature); C count disagreements (false alarms against user review, no automatic rejection). A is not exact unchanged geometry and no production tolerance rule was approved. Three pairs of one object family do not validate the entire16-case set or admission. No new inference/generation/tests/app/routing/dependency/workflow changes;69 tests/4 observations remain historical. Next: design a conservative experimental hint policy separating structural alteration from minor changes/uncertainty, validate additional controls, retain OCR/deterministic gates/fail-closed. Record implementation only when specifically commissioned. Get closing SHA from Git history/origin.
+
 ## Current checkpoint: independent image inventories, human review pending
 
 Execution baseab4b032825223d9411c254c1206895a83e15798e. User reopened services then closed8080 on request (only6.69GiB RAM free while loaded). New `scripts/observe_visual_geometry.py` makes4 single-image inventories without labels/roles/desired counts/verdict, deduplicates bySHA, compares features offline and NEVER grants admission. All requests completed4.727–6.556s,mean5.681s; own8092 closed. Observes negative key opening difference; Qwen positive has matching inventory; cloth positive has count disagreements. All comparisonsuncertain, no perceptual accuracy claim. [Report](VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md), [raw observations](validation/visual-geometry-observations-2026-10-08.json).

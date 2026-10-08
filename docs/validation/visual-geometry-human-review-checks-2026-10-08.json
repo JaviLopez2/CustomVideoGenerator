@@ -1,0 +1,15 @@
+{
+  "recording_base": "3d60ade5dad77fa135d5d2cffbc7e3700539eaa2",
+  "human_pairs_received": 3,
+  "board_hash_verified": true,
+  "raw_observations_unchanged": true,
+  "historical_dataset_labels_unchanged": true,
+  "historical_review_provenance_unchanged": true,
+  "annotation_sha256": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3",
+  "secret_pattern_files_flagged": 0,
+  "new_model_requests": 0,
+  "new_generation_requests": 0,
+  "pytest_this_recording": false,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status": ""
+}

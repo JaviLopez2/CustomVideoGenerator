@@ -6,6 +6,8 @@
 
 ## Current visual judge selection — 2026-10-08
 
+Human review received on3d60ade: A shape preserved/minor ring enlargement; B completely altered; C no visible change. Separate annotation retained without rewriting historical labels. Model hints miss A size nuance, align with B gross change and falsely flag C counts; comparator staysuncertain/no admission. [Current observation report](docs/VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md). No pending question for these pairs, no new GPU/tests/app changes. Next: conservative hint policy with explicit severity/uncertainty and additional controls; no production tolerance or approval inferred.
+
 Latest onab4b032:4 independent single-image geometry inventories complete,69 offline tests pass. Experimental comparator emits review hints and alwaysuncertain/no admission; observes key opening difference but false count differences remain. User closed8080 to free RAM;own8092 closed,stable intact. [Observation report](docs/VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md). Human A/B/C review requested and pending; do not infer answers or integrate routing. No new generation/dependency/workflow/app changes.
 
 Latest QA audit on0624618: full blind16-case contract TP5/TN9/FP0/FN1,0timeouts,mean9.125s; MPT3-hands now detected but deformed key missed.3 separate component probes detect key while rejecting2 positives (one geometry error,one inconsistent text verdict).19 new VLM requests,0 generations/source/routing changes,own8092 closed,stable intact. [Full QA report](docs/VISUAL_JUDGE_FULL_QA_REPORT.md). Not ready for automatic factual admission; next independent geometry review and structured evidence design. All previous protocol metrics remain separate.

@@ -1,0 +1,98 @@
+{
+  "record_type": "independent human review supplied directly by project user in current chat",
+  "reviewed_on": "2026-10-08",
+  "timezone": "Europe/Madrid",
+  "checkpoint_before_recording": "3d60ade5dad77fa135d5d2cffbc7e3700539eaa2",
+  "board_sha256": "01d02bcd2899ab616613427efa44ef676acaebf6ecfe05c155fd05372c5c14a8",
+  "observation_evidence_sha256": "b7037a61cdd4a08547f1a5c938692a57389161ff903b7a7914281234fd0b75a2",
+  "previous_results_rewritten": false,
+  "original_dataset_labels_changed": false,
+  "production_admission_enabled": false,
+  "rows": [
+    {
+      "pair": "A",
+      "source_case_id": "qwen_continuity_factual_768",
+      "original_agent_label": "pass",
+      "image_hashes": {
+        "reference": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "candidate": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9"
+      },
+      "human_review": {
+        "response_verbatim": "Conserva la forma de la llave y cambia ligeramente los anillos de la llave haciendolos un poco mas grandes.",
+        "assessment": "conserva",
+        "qualification": "minor visible change in ring size; not exact geometric identity",
+        "reported_difference": "rings slightly larger",
+        "structural_preservation": "overall shape preserved",
+        "strict_identity_tolerance_approved": false
+      },
+      "model_comparison_status": "uncertain",
+      "model_admission_allowed": false,
+      "model_hints": []
+    },
+    {
+      "pair": "B",
+      "source_case_id": "continuity_factual_768",
+      "original_agent_label": "fail",
+      "image_hashes": {
+        "reference": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "candidate": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb"
+      },
+      "human_review": {
+        "response_verbatim": "Cambia totalmente la forma de la llave. No respeta nada de la llave. La peor sin duda.",
+        "assessment": "cambia",
+        "qualification": "major shape alteration",
+        "reported_difference": "whole key shape changed",
+        "structural_preservation": "not preserved",
+        "strict_identity_tolerance_approved": false
+      },
+      "model_comparison_status": "uncertain",
+      "model_admission_allowed": false,
+      "model_hints": [
+        {
+          "feature": "openings",
+          "kind": "presence_disagreement"
+        },
+        {
+          "feature": "rings_or_collars",
+          "kind": "presence_disagreement"
+        }
+      ]
+    },
+    {
+      "pair": "C",
+      "source_case_id": "valid_cloth_edit",
+      "original_agent_label": "pass",
+      "image_hashes": {
+        "reference": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+        "candidate": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+      },
+      "human_review": {
+        "response_verbatim": "Mantiene perfectamente la llave , no se ve ningun cambio en la llave.",
+        "assessment": "conserva",
+        "qualification": "no visible change reported",
+        "reported_difference": "none visible",
+        "structural_preservation": "preserved",
+        "strict_identity_tolerance_approved": false
+      },
+      "model_comparison_status": "uncertain",
+      "model_admission_allowed": false,
+      "model_hints": [
+        {
+          "feature": "edge_cutouts",
+          "kind": "count_disagreement"
+        },
+        {
+          "feature": "rings_or_collars",
+          "kind": "count_disagreement"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Reviewer is independent of the model but knows prior project context; not perfectly blinded.",
+    "Three image pairs of one object family; not a broad accuracy validation.",
+    "A preserves overall shape with an explicit minor ring-size deviation: do not relabel as exact unchanged identity.",
+    "The user gave overall judgments, not independent per-feature counts or measurements.",
+    "No production tolerance rule or threshold is authorized by recording these annotations."
+  ]
+}
