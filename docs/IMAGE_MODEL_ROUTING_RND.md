@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización experimental — 2026-10-08
+
+Base `7c1871c`: 11 nuevas inferencias VLM sobre imágenes retenidas, 0 generaciones. Contraste del mismo prompt/presupuesto variando solo response_format y posterior formato explícito: JSON mejora, pero contactos/bandas se agregan y aparece contradicción entre estado observado y descripción de ausencia. Los cuatro inventories de llave no priorizan B pese a la revisión humana de deformación total. No se habilita factual admission ni se presenta una tasa de precisión. [Informe con evidencia, fuente oficial y límites](COMPONENT_DECODING_DIAGNOSTICS_REPORT.md).
+
+Se conectó únicamente replay offline de report SHA-pinned al caller privado experimental, por argumento explícito default None. Píxeles actuales/hash/raw provenance, sin modelo/red, etiquetas/verdicts ni autoridad QA/retry. 495 tests +17 subtests pasan, 1 integración omitida, exit 0. Stable intacto, servidores propios cerrados; modelos/deps/workflows/defaults/routing sin cambios. Siguiente tarea: coordenadas y revisión visual de ubicaciones sobre controles existentes. La fecha y alcance de auditoría original siguientes son históricos.
+
 Fecha de consulta: 2026-10-07. Alcance: auditoría y documentación; ningún cambio de producción, modelo, dependencia o workflow, ninguna descarga de pesos, generación o benchmark.
 
 ## Recuperación y procedencia

@@ -1,0 +1,9 @@
+{
+  "version": "target-component-observations-2",
+  "components": {
+    "bow_opening": "Each directly visible hole or bounded opening through the key head; exclude surface shadows, reflections and decorative outlines.",
+    "shaft_bands": "Each visible physical band or collar encircling the key shaft, described by position and visible shape. Do not infer conventional key anatomy or hidden bands.",
+    "blade_edge_cutouts": "Each distinct directly visible notch or cutout in the edge of the key blade. Distinguish actual edge geometry from shadows and reflections.",
+    "blade_shaft_contacts": "Each distinct visible physical contact site where key blade and shaft meet. Separate contact sites by visible location; do not infer occluded connections."
+  }
+}

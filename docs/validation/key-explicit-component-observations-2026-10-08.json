@@ -1,0 +1,451 @@
+{
+  "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9",
+  "harness_sha256": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "silver key",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+      "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "transport_status": "completed",
+      "request_sha256": "df538706a0a6825c39a01f2b45e3e6905e5eaebb50146ca15e0947b2a456df46",
+      "unconstrained_request_sha256": "de8ee889595b8d53e249f0aeebc4a26895a3a5fd80c08b4971920dd9ed533d58",
+      "prompt_sha256": "05068f71c35748a19072e3c39cb89b41d57c318b2a83fba32ae4ab1d7457110d",
+      "response_format_sha256": "71093f596016bc9a84796f1ad742f984ce0b39602c260b7d1192b000206d57b9",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A silver key is clearly visible on the right side of the image, lying on dark fabric next to a pocket watch.\"\n  },\n  \"components\": {\n    \"bow_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"top of the key head, circular hole visible\"\n      ],\n      \"evidence\": \"A distinct circular opening is visible at the top of the key head.\"\n    },\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"middle of the key shaft, two raised bands encircling the shaft\"\n      ],\n      \"evidence\": \"Two visible bands encircle the shaft near the middle, creating a segmented appearance.\"\n    },\n    \"blade_edge_cutouts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"right edge of the key blade, two notches visible\"\n      ],\n      \"evidence\": \"Two distinct cutouts are visible along the right edge of the key blade.\"\n    },\n    \"blade_shaft_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"junction between blade and shaft, visible transition point\"\n      ],\n      \"evidence\": \"The contact site where the blade meets the shaft is clearly visible as a change in width and shape.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 332,
+        "prompt_tokens": 1848,
+        "total_tokens": 2180,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1848,
+        "prompt_ms": 1920.526,
+        "prompt_per_token_ms": 1.039245670995671,
+        "prompt_per_second": 962.2363873230563,
+        "predicted_n": 332,
+        "predicted_ms": 6271.648,
+        "predicted_per_token_ms": 18.947577039274925,
+        "predicted_per_second": 52.77719667940547
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "A silver key is clearly visible on the right side of the image, lying on dark fabric next to a pocket watch."
+        },
+        "components": {
+          "bow_opening": {
+            "state": "observed",
+            "locations": [
+              "top of the key head, circular hole visible"
+            ],
+            "evidence": "A distinct circular opening is visible at the top of the key head."
+          },
+          "shaft_bands": {
+            "state": "observed",
+            "locations": [
+              "middle of the key shaft, two raised bands encircling the shaft"
+            ],
+            "evidence": "Two visible bands encircle the shaft near the middle, creating a segmented appearance."
+          },
+          "blade_edge_cutouts": {
+            "state": "observed",
+            "locations": [
+              "right edge of the key blade, two notches visible"
+            ],
+            "evidence": "Two distinct cutouts are visible along the right edge of the key blade."
+          },
+          "blade_shaft_contacts": {
+            "state": "observed",
+            "locations": [
+              "junction between blade and shaft, visible transition point"
+            ],
+            "evidence": "The contact site where the blade meets the shaft is clearly visible as a change in width and shape."
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "bow_opening": 1,
+          "shaft_bands": 1,
+          "blade_edge_cutouts": 1,
+          "blade_shaft_contacts": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "bow_opening",
+          "shaft_bands",
+          "blade_edge_cutouts",
+          "blade_shaft_contacts"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false
+      },
+      "seconds": 8.28531120000116
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "transport_status": "completed",
+      "request_sha256": "a946b6d23699af6416d961867645bb0f3feab7486f0c310011f75aa08ad4e5fb",
+      "unconstrained_request_sha256": "38d2c3e1cac1af8293e649ba3a2b149e0cd682cf52c797b4dae696950c38a430",
+      "prompt_sha256": "05068f71c35748a19072e3c39cb89b41d57c318b2a83fba32ae4ab1d7457110d",
+      "response_format_sha256": "71093f596016bc9a84796f1ad742f984ce0b39602c260b7d1192b000206d57b9",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A silver key is clearly visible on the right side of the image, lying on a maroon fabric surface.\"\n  },\n  \"components\": {\n    \"bow_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"top of the key head, circular opening visible\"\n      ],\n      \"evidence\": \"The key head has a distinct circular opening at its top, visible as a dark void surrounded by the metallic rim.\"\n    },\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"middle section of the key shaft, two raised bands encircling the shaft\"\n      ],\n      \"evidence\": \"Two distinct raised bands are visible around the middle of the key shaft, creating a segmented appearance.\"\n    },\n    \"blade_edge_cutouts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"bottom edge of the key blade, two notches visible\"\n      ],\n      \"evidence\": \"The bottom edge of the key blade features two distinct notches, clearly visible as cutouts in the metal.\"\n    },\n    \"blade_shaft_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"junction between the blade and shaft, where the blade meets the shaft\"\n      ],\n      \"evidence\": \"The point where the blade connects to the shaft is visible, showing a clear transition from the flat blade to the cylindrical shaft.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 359,
+        "prompt_tokens": 1848,
+        "total_tokens": 2207,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1848,
+        "prompt_ms": 1853.903,
+        "prompt_per_token_ms": 1.0031942640692642,
+        "prompt_per_second": 996.8159067653485,
+        "predicted_n": 359,
+        "predicted_ms": 6780.024,
+        "predicted_per_token_ms": 18.938614525139666,
+        "predicted_per_second": 52.8021729716591
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "A silver key is clearly visible on the right side of the image, lying on a maroon fabric surface."
+        },
+        "components": {
+          "bow_opening": {
+            "state": "observed",
+            "locations": [
+              "top of the key head, circular opening visible"
+            ],
+            "evidence": "The key head has a distinct circular opening at its top, visible as a dark void surrounded by the metallic rim."
+          },
+          "shaft_bands": {
+            "state": "observed",
+            "locations": [
+              "middle section of the key shaft, two raised bands encircling the shaft"
+            ],
+            "evidence": "Two distinct raised bands are visible around the middle of the key shaft, creating a segmented appearance."
+          },
+          "blade_edge_cutouts": {
+            "state": "observed",
+            "locations": [
+              "bottom edge of the key blade, two notches visible"
+            ],
+            "evidence": "The bottom edge of the key blade features two distinct notches, clearly visible as cutouts in the metal."
+          },
+          "blade_shaft_contacts": {
+            "state": "observed",
+            "locations": [
+              "junction between the blade and shaft, where the blade meets the shaft"
+            ],
+            "evidence": "The point where the blade connects to the shaft is visible, showing a clear transition from the flat blade to the cylindrical shaft."
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "bow_opening": 1,
+          "shaft_bands": 1,
+          "blade_edge_cutouts": 1,
+          "blade_shaft_contacts": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "bow_opening",
+          "shaft_bands",
+          "blade_edge_cutouts",
+          "blade_shaft_contacts"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false
+      },
+      "seconds": 8.750341899998602
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+      "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "transport_status": "completed",
+      "request_sha256": "38ecdfd2bc1f05c7b0f75c487ba1aebb140e2335b319b8d67c502b4d2bddaf5e",
+      "unconstrained_request_sha256": "51130eae2cb3552a4877f87224ae18f730feb5728fa0797292d852f366c67a20",
+      "prompt_sha256": "05068f71c35748a19072e3c39cb89b41d57c318b2a83fba32ae4ab1d7457110d",
+      "response_format_sha256": "71093f596016bc9a84796f1ad742f984ce0b39602c260b7d1192b000206d57b9",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A silver key is clearly visible on the wooden surface in the lower right of the image, with distinct metallic sheen and form.\"\n  },\n  \"components\": {\n    \"bow_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"A circular hole is visible in the upper right portion of the key head (bow), near the top edge of the bow.\"\n      ],\n      \"evidence\": \"The hole is directly visible as a dark circular void in the key's head, consistent with a bow opening.\"\n    },\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"A visible band or collar encircles the key shaft near the transition to the blade, located on the left side of the key shaft.\"\n      ],\n      \"evidence\": \"A distinct physical band is visible around the shaft, separating it from the blade section.\"\n    },\n    \"blade_edge_cutouts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"A distinct notch or cutout is visible on the right edge of the key blade, near the tip.\"\n      ],\n      \"evidence\": \"The cutout is clearly defined as a physical indentation in the blade's edge, not a shadow or reflection.\"\n    },\n    \"blade_shaft_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"A visible contact site where the blade meets the shaft is located at the junction on the left side of the key.\"\n      ],\n      \"evidence\": \"The physical connection between the blade and shaft is visible as a continuous metallic surface at their junction.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 398,
+        "prompt_tokens": 1848,
+        "total_tokens": 2246,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1848,
+        "prompt_ms": 1872.012,
+        "prompt_per_token_ms": 1.0129935064935065,
+        "prompt_per_second": 987.1731591464156,
+        "predicted_n": 398,
+        "predicted_ms": 7506.546,
+        "predicted_per_token_ms": 18.908176322418136,
+        "predicted_per_second": 52.887173408382495
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "A silver key is clearly visible on the wooden surface in the lower right of the image, with distinct metallic sheen and form."
+        },
+        "components": {
+          "bow_opening": {
+            "state": "observed",
+            "locations": [
+              "A circular hole is visible in the upper right portion of the key head (bow), near the top edge of the bow."
+            ],
+            "evidence": "The hole is directly visible as a dark circular void in the key's head, consistent with a bow opening."
+          },
+          "shaft_bands": {
+            "state": "observed",
+            "locations": [
+              "A visible band or collar encircles the key shaft near the transition to the blade, located on the left side of the key shaft."
+            ],
+            "evidence": "A distinct physical band is visible around the shaft, separating it from the blade section."
+          },
+          "blade_edge_cutouts": {
+            "state": "observed",
+            "locations": [
+              "A distinct notch or cutout is visible on the right edge of the key blade, near the tip."
+            ],
+            "evidence": "The cutout is clearly defined as a physical indentation in the blade's edge, not a shadow or reflection."
+          },
+          "blade_shaft_contacts": {
+            "state": "observed",
+            "locations": [
+              "A visible contact site where the blade meets the shaft is located at the junction on the left side of the key."
+            ],
+            "evidence": "The physical connection between the blade and shaft is visible as a continuous metallic surface at their junction."
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "bow_opening": 1,
+          "shaft_bands": 1,
+          "blade_edge_cutouts": 1,
+          "blade_shaft_contacts": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "bow_opening",
+          "shaft_bands",
+          "blade_edge_cutouts",
+          "blade_shaft_contacts"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false
+      },
+      "seconds": 9.479453200001444
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+      "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "transport_status": "completed",
+      "request_sha256": "356e3c14d9aa8265607a71b08961ced7ad725c3733b09f502bf1c846adc93201",
+      "unconstrained_request_sha256": "f16dfea78d27335e3103d0f59fec8e2cc00884662b3833e9a5681987bf252bf1",
+      "prompt_sha256": "05068f71c35748a19072e3c39cb89b41d57c318b2a83fba32ae4ab1d7457110d",
+      "response_format_sha256": "71093f596016bc9a84796f1ad742f984ce0b39602c260b7d1192b000206d57b9",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A silver key is clearly visible on the wooden surface to the right of the red mug, with distinct metallic sheen and form.\"\n  },\n  \"components\": {\n    \"bow_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"The key head (bow) is flat and rectangular with no visible hole or opening through it; the entire surface is solid metal.\"\n      ],\n      \"evidence\": \"The key head shows a continuous metallic surface with no aperture or hole visible.\"\n    },\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"A single raised band encircles the shaft near the transition to the blade, visible as a textured ridge.\"\n      ],\n      \"evidence\": \"One distinct band is visible on the shaft, appearing as a raised collar near the blade junction.\"\n    },\n    \"blade_edge_cutouts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"A single rectangular cutout is visible on the right edge of the blade, forming part of the key’s profile.\"\n      ],\n      \"evidence\": \"One clear notch or cutout is visible along the blade’s edge, defining its shape.\"\n    },\n    \"blade_shaft_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"The junction where the blade meets the shaft is visible as a continuous metallic transition with no gap.\"\n      ],\n      \"evidence\": \"The blade and shaft meet at a single visible contact site with no separation or occlusion.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 381,
+        "prompt_tokens": 1848,
+        "total_tokens": 2229,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1848,
+        "prompt_ms": 1879.693,
+        "prompt_per_token_ms": 1.0171498917748918,
+        "prompt_per_second": 983.1392679549266,
+        "predicted_n": 381,
+        "predicted_ms": 7206.91,
+        "predicted_per_token_ms": 18.965552631578948,
+        "predicted_per_second": 52.72717433685172
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "A silver key is clearly visible on the wooden surface to the right of the red mug, with distinct metallic sheen and form."
+        },
+        "components": {
+          "bow_opening": {
+            "state": "observed",
+            "locations": [
+              "The key head (bow) is flat and rectangular with no visible hole or opening through it; the entire surface is solid metal."
+            ],
+            "evidence": "The key head shows a continuous metallic surface with no aperture or hole visible."
+          },
+          "shaft_bands": {
+            "state": "observed",
+            "locations": [
+              "A single raised band encircles the shaft near the transition to the blade, visible as a textured ridge."
+            ],
+            "evidence": "One distinct band is visible on the shaft, appearing as a raised collar near the blade junction."
+          },
+          "blade_edge_cutouts": {
+            "state": "observed",
+            "locations": [
+              "A single rectangular cutout is visible on the right edge of the blade, forming part of the key’s profile."
+            ],
+            "evidence": "One clear notch or cutout is visible along the blade’s edge, defining its shape."
+          },
+          "blade_shaft_contacts": {
+            "state": "observed",
+            "locations": [
+              "The junction where the blade meets the shaft is visible as a continuous metallic transition with no gap."
+            ],
+            "evidence": "The blade and shaft meet at a single visible contact site with no separation or occlusion."
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "bow_opening": 1,
+          "shaft_bands": 1,
+          "blade_edge_cutouts": 1,
+          "blade_shaft_contacts": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "bow_opening",
+          "shaft_bands",
+          "blade_edge_cutouts",
+          "blade_shaft_contacts"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false
+      },
+      "seconds": 9.186135900003137
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "valid_cloth_edit",
+      "reference_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "continuity_factual_768",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "qwen_continuity_factual_768",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    }
+  ],
+  "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+  "inventory_protocol": "target-component-observations-2",
+  "prompt_protocol": "target-component-prompt-2",
+  "component_profile_sha256": "194648445d7eff129430330c87b4d13acd35e40b5cb1898aec69d1fa71b49633",
+  "component_source_sha256": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\key-explicit-component-observations-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "structured_output": true,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 81748,
+  "load_seconds": 3.5183599000010872,
+  "owned_server_closed": true
+}

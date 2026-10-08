@@ -107,3 +107,27 @@ def test_general_plan_metadata_never_reaches_pixel_request(tmp_path):
     serialized = json.dumps(request)
     assert "LABEL_PRIVATE" not in serialized and "REVIEW_PRIVATE" not in serialized
     assert p["target"] in serialized and "silver key" not in serialized
+
+
+@pytest.mark.parametrize("component_mode", [False, True])
+def test_decoding_contrast_changes_only_response_format(tmp_path, component_mode):
+    image = tmp_path / "sample.png"
+    Image.new("RGB", (16, 16), "red").save(image)
+    sha = M["H"]["digest"](image)
+    if component_mode:
+        c = runpy.run_path(str(Path(__file__).parents[1] / "scripts/visual_component_observations.py"))
+        request = c["payload"](image, sha, "target", {"version": c["CONDITIONAL_VERSION"],
+                                 "components": {"contacts": "Distinct visible contact sites"}})
+    else:
+        request = M["payload"](image, sha, "target")
+    original = copy.deepcopy(request)
+    free = M["decoding_payload"](request, structured_output=False)
+    assert request == original and "response_format" in request
+    assert free == {k: v for k, v in original.items() if k != "response_format"}
+    assert free["max_tokens"] == 512 and free["temperature"] == 0
+    constrained = M["request_fingerprint"](request)
+    unconstrained = M["request_fingerprint"](free)
+    assert constrained["unconstrained_request_sha256"] == unconstrained["request_sha256"]
+    assert constrained["prompt_sha256"] == unconstrained["prompt_sha256"]
+    assert unconstrained["response_format_sha256"] is None
+    assert M["decoding_payload"](request) == original

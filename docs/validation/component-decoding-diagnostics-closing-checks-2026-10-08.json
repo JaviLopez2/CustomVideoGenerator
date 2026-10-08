@@ -1,0 +1,126 @@
+{
+  "execution_base": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9",
+  "branch": "factory/image-model-routing-modernization",
+  "uncommitted_execution_code": true,
+  "model_requests": 11,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "all_owned_servers_closed": true,
+  "raw_reports": [
+    {
+      "report": "docs\\validation\\component-decoding-constrained-2026-10-08.json",
+      "report_sha256": "af9d8533bfaa067c6386d1d5dfeebb6aba48fc060a8040d0ea78bf63d441bbd3",
+      "harness_sha256_at_execution": "6ee15508aeaf4c18acdd75e1ad67d4e0075bf2485a24d9127247d90cd4aac461",
+      "component_source_sha256_at_execution": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+      "requests": 2,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\component-decoding-constrained-2026-10-08\\inventories.log",
+      "log_sha256": "5768ad88d1e0d09a522a7d79be7caecb3a89f5bbe0cd48551b0682ee2f48d95d"
+    },
+    {
+      "report": "docs\\validation\\component-decoding-unconstrained-2026-10-08.json",
+      "report_sha256": "9be61dd1ac3f53dadae8f897ed4f5410b4cbce2bcdb951234bf0aef227484681",
+      "harness_sha256_at_execution": "6ee15508aeaf4c18acdd75e1ad67d4e0075bf2485a24d9127247d90cd4aac461",
+      "component_source_sha256_at_execution": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+      "requests": 1,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\component-decoding-unconstrained-2026-10-08\\inventories.log",
+      "log_sha256": "57f882e199955dbcc6be3fc5a1bbd2b5546f9aa02f917e534916e167e759ee39"
+    },
+    {
+      "report": "docs\\validation\\component-explicit-constrained-2026-10-08.json",
+      "report_sha256": "f40db0051b3a07367d2b6cf963f896d2b421e2d4e89d619961db941157e16c92",
+      "harness_sha256_at_execution": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+      "component_source_sha256_at_execution": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+      "requests": 2,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\component-explicit-constrained-2026-10-08\\inventories.log",
+      "log_sha256": "7e3af885628535afed157ef7c09b5de061a8c62887fa3403820f4cf2188c79e6"
+    },
+    {
+      "report": "docs\\validation\\component-explicit-unconstrained-2026-10-08.json",
+      "report_sha256": "069a4b066dfb580e3b2d7f7bf583bb1ea9d72d90ce269d6f6ca6609041c246d2",
+      "harness_sha256_at_execution": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+      "component_source_sha256_at_execution": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+      "requests": 2,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\component-explicit-unconstrained-2026-10-08\\inventories.log",
+      "log_sha256": "19b57303d8e33d1f5948b6a2c4cb5f18f5d9b25eaa22428eb2259ebfb515a5c2"
+    },
+    {
+      "report": "docs\\validation\\key-explicit-component-observations-2026-10-08.json",
+      "report_sha256": "a28d7ad40eafcede19916ca29c0d03ae3c7fe88986be2d105efff7ba259ca0b4",
+      "harness_sha256_at_execution": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+      "component_source_sha256_at_execution": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+      "requests": 4,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\key-explicit-component-observations-2026-10-08\\inventories.log",
+      "log_sha256": "d7ba69c59d06fe17a9d60481041ddd78fa8ef669b59e653f087edca2406660b2"
+    }
+  ],
+  "paired_requests": [
+    {
+      "pair": "decoding",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "same_request_without_response_format": true,
+      "same_final_content": false
+    },
+    {
+      "pair": "explicit",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "same_request_without_response_format": true,
+      "same_final_content": true
+    },
+    {
+      "pair": "explicit",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "same_request_without_response_format": true,
+      "same_final_content": true
+    }
+  ],
+  "source_sha256": {
+    "app/services/material.py": "0f8de76251120330f50eaf4cc9a9d2a13c29c50efce99a123d357d830e25325c",
+    "app/services/visual_observation_diagnostics.py": "68bd499bca3be6b54341aac99f87cd3aa50a4926d0a11486e4a7558e12549732",
+    "scripts/observe_visual_geometry.py": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+    "scripts/replay_visual_observation_diagnostics.py": "23fa988a83e6790ef1f3960a34f2713a0b7d2a99e8e19840c72e8518a6a0a044",
+    "scripts/visual_component_observations.py": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+    "test/services/test_visual_observation_diagnostics.py": "adfa15d05868708d65b5695a6974d0a5477b59032a02264c2cedf96b11926e05",
+    "test/test_visual_component_observations.py": "2a344cd22d7b46251b8f0f40e759d8e6a6b536873ad45254e73de9c4dc3dcd6e",
+    "test/test_visual_geometry_observations.py": "a64ca12f6c5a797205bbdf0fd1b564896f11e001b9b7c1385ea4141a346e6883"
+  },
+  "changed_json_validated": 9,
+  "python_ast_validated": 8,
+  "secret_pattern_scan": {
+    "files": 26,
+    "unreviewed_matches": 0,
+    "verified_preexisting_static_docstring_placeholder_matches": 1
+  },
+  "final_tests": {
+    "passed": 495,
+    "subtests_passed": 17,
+    "skipped": 1,
+    "exit_code": 0,
+    "seconds": 18.7,
+    "log": "docs/validation/retained-visual-diagnostic-final-tests-2026-10-08.txt",
+    "log_sha256": "6b3c927eb510c076fb41900d4e00d1285bbc8deeaf807699c8364c8bd38e68eb"
+  },
+  "ports": {
+    "8080": "closed",
+    "8092": "closed"
+  },
+  "health": {
+    "8090": 404,
+    "8188": 200
+  },
+  "comfy_queue": {
+    "queue_running": 0,
+    "queue_pending": 0
+  },
+  "gpu": "NVIDIA GeForce RTX 3060, 796, 12288, 7, 30",
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_status": "",
+    "untracked_backups_not_deleted": true
+  }
+}

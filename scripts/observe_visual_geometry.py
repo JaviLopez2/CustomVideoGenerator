@@ -1,6 +1,7 @@
 """Experimental single-image inventories; mismatches are hints, never admission."""
 import argparse
 import base64
+import hashlib
 import json
 import runpy
 import socket
@@ -113,13 +114,38 @@ def validate_plan(plan):
     return plan
 
 
+def decoding_payload(request, *, structured_output=True):
+    """Change only output constraints; preserve pixels, prompt and token budget."""
+    result = dict(request)
+    if not structured_output:
+        result.pop("response_format", None)
+    return result
+
+
+def request_fingerprint(request):
+    """Record comparable requests without storing image data twice."""
+    def sha(value):
+        return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False,
+                                         separators=(",", ":")).encode()).hexdigest()
+    return {"request_sha256": sha(request),
+            "unconstrained_request_sha256": sha(decoding_payload(request, structured_output=False)),
+            "prompt_sha256": sha(request["messages"][0]["content"][0]["text"]),
+            "response_format_sha256": sha(request["response_format"]) if "response_format" in request else None}
+
+
 def main():
     parser = argparse.ArgumentParser(__doc__)
     parser.add_argument("--output", required=True)
     parser.add_argument("--log-dir", required=True)
     parser.add_argument("--plan", help="Explicit target, unique image hashes and offline comparison metadata")
     parser.add_argument("--component-profile", help="Separate target-presence/component protocol; legacy schema remains default")
+    parser.add_argument("--unconstrained-output", action="store_true",
+                        help="Remove only response_format; identical prompt, pixels and budget, strict parser unchanged")
+    parser.add_argument("--explicit-component-format", action="store_true",
+                        help="Supply component JSON format rules in the prompt; requires --component-profile")
     args = parser.parse_args()
+    if args.explicit_component_format and not args.component_profile:
+        parser.error("--explicit-component-format requires --component-profile")
     output, logs = Path(args.output), Path(args.log_dir)
     if output.exists() or logs.exists():
         raise ValueError("Preserve existing output/logs")
@@ -133,7 +159,8 @@ def main():
     root = Path(__file__).resolve().parents[1]
     component_observer = runpy.run_path(str(root / "scripts/visual_component_observations.py")) if args.component_profile else None
     profile = component_observer["validate_profile"](json.loads(Path(args.component_profile).read_text(encoding="utf-8"))) if component_observer else None
-    make_payload = (lambda path, sha, target: component_observer["payload"](path, sha, target, profile)) if profile else payload
+    make_payload = (lambda path, sha, target: component_observer["payload"](
+        path, sha, target, profile, explicit_format=args.explicit_component_format)) if profile else payload
     parse_inventory = (lambda answer: component_observer["validate"](answer, profile)) if profile else validate
     compare_inventory = (lambda a, b: component_observer["compare"](a, b, profile)) if profile else compare
     if args.plan:
@@ -169,10 +196,12 @@ def main():
         "generation_requests": 0, "automatic_retries": 0, "target": plan["target"], "rows": [], "comparisons": [],
         "plan_sha256": H["digest"](args.plan) if args.plan else None,
         "inventory_protocol": profile["version"] if profile else "categorical-geometry-1",
+        "prompt_protocol": "target-component-prompt-2" if args.explicit_component_format else "original-prompt-1",
         "component_profile_sha256": H["digest"](args.component_profile) if profile else None,
         "component_source_sha256": H["digest"](root / "scripts/visual_component_observations.py") if profile else None,
         "log": str(log_path.resolve()), "policy": {"one_image_per_request": True, "labels_sent": False,
         "reference_role_sent": False, "desired_counts_sent": False, "verdict_requested": False,
+        "structured_output": not args.unconstrained_output,
         "max_tokens": 512, "timeout_seconds": 60, "context": 8192, "reasoning": "off",
         "flash_attention": "on", "image_min_tokens": 1024, "image_max_tokens": 1536}}
     def save():
@@ -202,10 +231,13 @@ def main():
             report["load_seconds"] = time.perf_counter() - started
             for image in images.values():
                 row = {**image, "transport_status": "unavailable"}
+                request = decoding_payload(make_payload(image["path"], image["sha256"], report["target"]),
+                                           structured_output=not args.unconstrained_output)
+                row.update(request_fingerprint(request))
                 began = time.perf_counter()
                 try:
                     response = H["request"]("http://127.0.0.1:8092/v1/chat/completions",
-                        make_payload(image["path"], image["sha256"], report["target"]), timeout=60)
+                        request, timeout=60)
                     choice = response["choices"][0]
                     message = choice["message"]
                     row.update(final_content=message.get("content"), finish_reason=choice["finish_reason"],

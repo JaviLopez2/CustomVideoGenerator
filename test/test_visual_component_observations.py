@@ -118,3 +118,20 @@ def test_zero_observed_components_cannot_appear_as_complete_identity_evidence():
     assert result["priority"] == "component_observation_review"
     assert result["hints"] == [{"feature": "component_coverage", "kind": "no_positive_component_observation"}]
     assert not result["physical_identity_established"] and not result["automatic_rejection"]
+
+
+def test_explicit_format_supplies_schema_without_a_pixel_answer_or_count(tmp_path):
+    image = tmp_path / "sample.png"
+    Image.new("RGB", (16, 16), "red").save(image)
+    profile = {**PROFILE, "version": M["CONDITIONAL_VERSION"], "review_note": "PRIVATE_LABEL"}
+    sha = M["H"]["digest"](image)
+    original = M["payload"](image, sha, "target", profile)
+    explicit = M["payload"](image, sha, "target", profile, explicit_format=True)
+    text = explicit["messages"][0]["content"][0]["text"]
+    assert text.startswith(original["messages"][0]["content"][0]["text"])
+    prompt_schema = json.loads(text.split("Output JSON Schema: ", 1)[1])
+    assert prompt_schema == M["schema"]({**PROFILE, "version": M["VERSION"]})
+    assert "PRIVATE_LABEL" not in text and "expected_count" not in text
+    assert explicit["response_format"] == original["response_format"]
+    assert explicit["messages"][0]["content"][1] == original["messages"][0]["content"][1]
+    assert explicit["max_tokens"] == original["max_tokens"] == 512

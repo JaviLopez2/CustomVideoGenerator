@@ -1,0 +1,126 @@
+{
+  "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9",
+  "harness_sha256": "6ee15508aeaf4c18acdd75e1ad67d4e0075bf2485a24d9127247d90cd4aac461",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "ceramic mug",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "transport_status": "unavailable",
+      "request_sha256": "fc2fac3d8f6931e697f201788a46d06f96db5591d2e61d7df27656275085d95a",
+      "unconstrained_request_sha256": "fc2fac3d8f6931e697f201788a46d06f96db5591d2e61d7df27656275085d95a",
+      "prompt_sha256": "f6d7dfa7a3442a491de8851317b9c8e41f7286ae3c19234c12eb65f9501e0062",
+      "response_format_sha256": null,
+      "final_content": "target_presence {status: present, evidence: red ceramic mug with handle visible on wooden surface near window}\n\ncomponents:\n{\"mouth_opening\": {\"state\": present, \"locations\": [{\"description\": \"circular cavity at top of mug, visible interior edge\", \"evidence\": \"dark red inner rim and opening clearly defined against light background\"}]}, \"handle_opening\": {\"state\": present, \"locations\": [{\"description\": \"bounded space within handle loop, visible through opening\", \"evidence\": \"dark interior of handle loop visible from front-right angle\"}]}, \"handle_body_contacts\": {\"state\": present, \"locations\": [{\"description\": \"attachment point where handle meets upper body of mug\", \"evidence\": \"visible junction line between handle and mug body\"}, {\"description\": \"attachment point where handle meets lower body of mug\", \"evidence\": \"visible junction line near base of handle\"}]}, \"rim_contour\": {\"state\": present, \"locations\": [{\"description\": \"continuous circular rim around mouth opening\", \"evidence\": \"smooth red edge forming complete circle at top of mug\"}]}}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 228,
+        "prompt_tokens": 1390,
+        "total_tokens": 1618,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1390,
+        "prompt_ms": 1629.295,
+        "prompt_per_token_ms": 1.172154676258993,
+        "prompt_per_second": 853.1297278884424,
+        "predicted_n": 228,
+        "predicted_ms": 4284.832,
+        "predicted_per_token_ms": 18.87591189427313,
+        "predicted_per_second": 52.97757298302477
+      },
+      "error_type": "JSONDecodeError",
+      "seconds": 5.94334080000408
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "same_pixels_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "geometry_label": "software_self_comparison",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    },
+    {
+      "id": "target_absence_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "geometry_label": "not_applicable_target_absent",
+      "source_task_label": "pass",
+      "label_scope_note": "Watch/key artifact has no ceramic mug; source task label concerns a different target.",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    }
+  ],
+  "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+  "inventory_protocol": "target-component-observations-2",
+  "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+  "component_source_sha256": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\component-decoding-unconstrained-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "structured_output": false,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 78960,
+  "load_seconds": 3.5164580999989994,
+  "stopped_reason": "Invalid/unavailable observation; no automatic retry",
+  "owned_server_closed": true
+}

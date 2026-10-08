@@ -1,5 +1,13 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: format contrast and offline diagnostic integration
+
+Base `7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9`. 11 new retained-image requests: original same-prompt schema/free contrast (2 completed +1 malformed preserved; fourth planned control unattempted), explicit-format pair (4 completed, same final content within pairs), four independent key inventories completed. Format improves but contact/band aggregation and observed/absent prose contradictions remain. Human A/B/C unchanged; B receives no new hint despite major deformation. Not factual-ready, no accuracy/admission claim. [Full report](COMPONENT_DECODING_DIAGNOSTICS_REPORT.md).
+
+New `app/services/visual_observation_diagnostics.py` and replay script: hash-pinned report snapshot bound to current pixels, bounded input, raw errors preserved, no model/network/service calls. Explicit private caller argument `visual_observation_store=None`; no config/UI/planner wiring or persisted flag. Records candidate_before_semantic_qa diagnostic separately from visual_qa; no selection/retry/admission influence. Available describes saved output only, not perceptual validity. All gate regressions preserved. 495 fresh tests +17 subtests pass, 1 skipped, exit 0, 18.70s; [final log](validation/retained-visual-diagnostic-final-tests-2026-10-08.txt). Five owned 8092 servers closed, stable HEAD/tracked tree unchanged, 0 generations/downloads/deps/workflows/default routing changes.
+
+Files: observer/component prompt flags, request fingerprints, app diagnostic adapter/private hook, replay CLI/tests, two key JSON inputs, five raw reports, two offline replays, logs and closing checks linked in report. Model/runtime/assets unchanged; preserve ignored local files on archive. Git checkpoint SHA from history/origin, not execution base. Next: location coordinates and offline visual review to validate separation of sites against existing positives and B; no new candidate download or automatic video run. Earlier pending sections are historical and superseded.
+
 ## Current checkpoint: target presence works, component semantics unresolved
 
 Base631afff5d5db909e6a4e75f0546a08591ae093fa. Added versioned target/component profile with explicit presence and per-location lists. V1 first request rejected: targetpresent/componentsnot_applicable,5 unattempted. V2 oneOf presence branches: positive targetpresent but allpartsabsent (weak semantic evidence); absence controltargetabsent correctly,nonapplicableparts. One plain-description control sees open mouth/two handle contacts.4 total requests,0generation/retries,allownserversclosed. Prompts/format change confounded; no sole grammar attribution. [Report](TARGET_COMPONENT_OBSERVATIONS_REPORT.md).

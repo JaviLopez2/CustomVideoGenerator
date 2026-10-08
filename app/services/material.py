@@ -29,6 +29,7 @@ from app.services import (
     ofox,
     task_artifacts,
     visual_qa,
+    visual_observation_diagnostics,
     video,
     volcengine_seedance,
 )
@@ -7270,6 +7271,7 @@ def _download_videos_openai_image_on_demand(
     scene_shot_types: list[str] | None = None,
     scene_framing_intents: list[str] | None = None,
     scene_qa_contracts: list[dict] | None = None,
+    visual_observation_store: visual_observation_diagnostics.RetainedVisualObservations | None = None,
 ) -> List[str]:
     """Generate OpenAI-compatible images in narration order.
 
@@ -8337,6 +8339,19 @@ def _download_videos_openai_image_on_demand(
             ):
                 _release_precision_semantic_model()
                 _release_precision_rembg_session()
+
+        # Explicit offline replay only: record the candidate before semantic QA.
+        # This data is never consulted by selection, retries, QA or admission.
+        if items and visual_observation_store is not None:
+            diagnostic = visual_observation_diagnostics.diagnose(items[0].url, visual_observation_store)
+            diagnostic["candidate_stage"] = "before_semantic_qa"
+            if not isinstance(items[0].source_info, dict):
+                items[0].source_info = {}
+            items[0].source_info["visual_observation_diagnostic"] = diagnostic
+            precision_diagnostics["plan_scenes"][scene_index]["visual_observation_diagnostic"] = (
+                _precision_diagnostics_json_safe(diagnostic)
+            )
+            _precision_diagnostics_persist(task_id, precision_diagnostics)
 
         # Risk-bounded semantic QA for the exact failure modes seen in
         # real benchmarks: evidence fallbacks that become unrelated scenes, and the

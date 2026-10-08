@@ -1,0 +1,220 @@
+{
+  "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9",
+  "diagnostic_version": "retained-visual-diagnostic-1",
+  "adapter_sha256": "68bd499bca3be6b54341aac99f87cd3aa50a4926d0a11486e4a7558e12549732",
+  "script_sha256": "23fa988a83e6790ef1f3960a34f2713a0b7d2a99e8e19840c72e8518a6a0a044",
+  "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+  "model_requests": 0,
+  "generation_requests": 0,
+  "reports": [
+    {
+      "source_report_sha256": "af9d8533bfaa067c6386d1d5dfeebb6aba48fc060a8040d0ea78bf63d441bbd3",
+      "rows": [
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A red ceramic mug is clearly visible on a wooden surface, with a handle attached to its side.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"absent\",\n      \"locations\": [],\n      \"evidence\": \"The interior of the mug is not visible; the opening is obscured by the angle and lighting.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"absent\",\n      \"locations\": [],\n      \"evidence\": \"The space inside the handle loop is not visible due to the angle and lighting.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"absent\",\n      \"locations\": [],\n      \"evidence\": \"The exact points where the handle attaches to the mug body are not clearly visible due to the angle and lighting.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"absent\",\n      \"locations\": [],\n      \"evidence\": \"The rim of the mug is not clearly visible due to the angle and lighting.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "source_report_sha256": "af9d8533bfaa067c6386d1d5dfeebb6aba48fc060a8040d0ea78bf63d441bbd3",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-component-observations-2",
+          "harness_sha256": "6ee15508aeaf4c18acdd75e1ad67d4e0075bf2485a24d9127247d90cd4aac461",
+          "component_source_sha256": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+          "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+          "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+          "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"absent\",\n    \"evidence\": \"The image contains a pocket watch and a key on a maroon fabric surface. There is no ceramic mug visible anywhere in the frame.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"Target is absent.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"Target is absent.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"Target is absent.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"Target is absent.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "source_report_sha256": "af9d8533bfaa067c6386d1d5dfeebb6aba48fc060a8040d0ea78bf63d441bbd3",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-component-observations-2",
+          "harness_sha256": "6ee15508aeaf4c18acdd75e1ad67d4e0075bf2485a24d9127247d90cd4aac461",
+          "component_source_sha256": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+          "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+          "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+          "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9"
+        }
+      ]
+    },
+    {
+      "source_report_sha256": "9be61dd1ac3f53dadae8f897ed4f5410b4cbce2bcdb951234bf0aef227484681",
+      "rows": [
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "unavailable",
+          "available": false,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "reason": "recorded_output_unavailable",
+          "raw_observation": {
+            "final_content": "target_presence {status: present, evidence: red ceramic mug with handle visible on wooden surface near window}\n\ncomponents:\n{\"mouth_opening\": {\"state\": present, \"locations\": [{\"description\": \"circular cavity at top of mug, visible interior edge\", \"evidence\": \"dark red inner rim and opening clearly defined against light background\"}]}, \"handle_opening\": {\"state\": present, \"locations\": [{\"description\": \"bounded space within handle loop, visible through opening\", \"evidence\": \"dark interior of handle loop visible from front-right angle\"}]}, \"handle_body_contacts\": {\"state\": present, \"locations\": [{\"description\": \"attachment point where handle meets upper body of mug\", \"evidence\": \"visible junction line between handle and mug body\"}, {\"description\": \"attachment point where handle meets lower body of mug\", \"evidence\": \"visible junction line near base of handle\"}]}, \"rim_contour\": {\"state\": present, \"locations\": [{\"description\": \"continuous circular rim around mouth opening\", \"evidence\": \"smooth red edge forming complete circle at top of mug\"}]}}",
+            "recorded_transport_status": "unavailable",
+            "format_consistent_with_record": false
+          },
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "source_report_sha256": "9be61dd1ac3f53dadae8f897ed4f5410b4cbce2bcdb951234bf0aef227484681",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-component-observations-2",
+          "harness_sha256": "6ee15508aeaf4c18acdd75e1ad67d4e0075bf2485a24d9127247d90cd4aac461",
+          "component_source_sha256": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+          "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+          "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+          "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "unavailable",
+          "available": false,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "reason": "no_observation_for_current_pixels",
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "source_report_sha256": "9be61dd1ac3f53dadae8f897ed4f5410b4cbce2bcdb951234bf0aef227484681",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-component-observations-2",
+          "harness_sha256": "6ee15508aeaf4c18acdd75e1ad67d4e0075bf2485a24d9127247d90cd4aac461",
+          "component_source_sha256": "8d4ed3d1fe9b1b771b6a63b9684a66fdfa06d44bcb5856de4c4e94f31d74f9de",
+          "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+          "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+          "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9"
+        }
+      ]
+    },
+    {
+      "source_report_sha256": "f40db0051b3a07367d2b6cf963f896d2b421e2d4e89d619961db941157e16c92",
+      "rows": [
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A red ceramic mug is clearly visible on a wooden surface near a window.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"top interior cavity of the mug\"\n      ],\n      \"evidence\": \"The open top of the mug is visible, showing the dark interior.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"space between the handle loop and the mug body\"\n      ],\n      \"evidence\": \"The empty space bounded by the handle and the mug body is visible.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"left side of the handle where it attaches to the mug body\"\n      ],\n      \"evidence\": \"The point where the handle connects to the mug body is visible on the left side.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"top edge of the mug\"\n      ],\n      \"evidence\": \"The continuous physical rim around the mouth of the mug is visible.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "source_report_sha256": "f40db0051b3a07367d2b6cf963f896d2b421e2d4e89d619961db941157e16c92",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-component-observations-2",
+          "harness_sha256": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+          "component_source_sha256": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+          "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+          "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+          "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"absent\",\n    \"evidence\": \"The image contains a pocket watch and a key on a maroon fabric; no ceramic mug is visible anywhere in the frame.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug is present, so the mouth opening cannot be observed.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug is present, so the handle opening cannot be observed.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug is present, so handle-body contact sites cannot be observed.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug is present, so the rim contour cannot be observed.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "source_report_sha256": "f40db0051b3a07367d2b6cf963f896d2b421e2d4e89d619961db941157e16c92",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-component-observations-2",
+          "harness_sha256": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+          "component_source_sha256": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+          "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+          "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+          "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9"
+        }
+      ]
+    },
+    {
+      "source_report_sha256": "069a4b066dfb580e3b2d7f7bf583bb1ea9d72d90ce269d6f6ca6609041c246d2",
+      "rows": [
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A red ceramic mug is clearly visible on a wooden surface near a window.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"top interior cavity of the mug\"\n      ],\n      \"evidence\": \"The open top of the mug is visible, showing the dark interior.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"space between the handle loop and the mug body\"\n      ],\n      \"evidence\": \"The empty space bounded by the handle and the mug body is visible.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"left side of the handle where it attaches to the mug body\"\n      ],\n      \"evidence\": \"The point where the handle connects to the mug body is visible on the left side.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        \"top edge of the mug\"\n      ],\n      \"evidence\": \"The continuous physical rim around the mouth of the mug is visible.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "source_report_sha256": "069a4b066dfb580e3b2d7f7bf583bb1ea9d72d90ce269d6f6ca6609041c246d2",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-component-observations-2",
+          "harness_sha256": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+          "component_source_sha256": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+          "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+          "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+          "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"absent\",\n    \"evidence\": \"The image contains a pocket watch and a key on a maroon fabric; no ceramic mug is visible anywhere in the frame.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug is present, so the mouth opening cannot be observed.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug is present, so the handle opening cannot be observed.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug is present, so handle-body contact sites cannot be observed.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug is present, so the rim contour cannot be observed.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "source_report_sha256": "069a4b066dfb580e3b2d7f7bf583bb1ea9d72d90ce269d6f6ca6609041c246d2",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-component-observations-2",
+          "harness_sha256": "270049a4744c78ff18c485771b911bcb59d41ba4c5e4532f70d124378a83bb18",
+          "component_source_sha256": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af",
+          "component_profile_sha256": "bf1b9cdb98bce19cd497f49c97ff83bf32004d4a6755cd7db6332add18fca2e6",
+          "plan_sha256": "9409c0078c952103364b97c00934853ad3c0639d98fa69691394837e99fb6044",
+          "execution_head": "7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9"
+        }
+      ]
+    }
+  ]
+}

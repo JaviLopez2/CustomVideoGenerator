@@ -1,5 +1,11 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — diagnóstico visual experimental, 2026-10-08
+
+Continuación desde `7c1871c` en el mismo worktree/rama experimental. Contraste controlado del formato y cuatro llaves: 11 inferencias sobre artifacts existentes, 0 generaciones. Prompt explícito mejora JSON, pero el modelo agrega ubicaciones y no señala el defecto B revisado por el usuario; no certifica geometría/identidad. Added offline diagnostic adapter and explicit private caller injection, default None; sin wiring automático, flags, decisiones QA, routing, modelos, deps o workflows. [Informe y comandos](COMPONENT_DECODING_DIAGNOSTICS_REPORT.md).
+
+495 tests +17 subtests pasan, 1 integración omitida, exit 0, 18,70s. Raw failures/hashes/human annotations preservados; cinco servidores 8092 propios cerrados. Stable protegido `6d27ba4963ffe469d635db71eaeec506a8ff4b61`, tracked intacto. Checkpoint de cierre mediante historial/origin; la base de ejecución no es el SHA final. Pendiente concreto: evidencia de ubicaciones con coordenadas y revisión offline antes de admisión o vídeo completo. No afirmar que investigación/código histórico ya validan esa capacidad. Las secciones históricas siguientes conservan su procedencia.
+
 ## Procedencia y alcance
 
 Documentos reconstruidos en Windows por autorización explícita del usuario. El agente remoto, según informa el usuario, los había creado en `ab8e483` local y no los publicó. No se recuperó ese objeto ni se presentó su investigación como completada. La auditoría de esta sesión parte del código e historial realmente disponibles.

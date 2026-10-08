@@ -53,7 +53,7 @@ def schema(profile):
     return {"oneOf": branches}
 
 
-def payload(path, sha256, target, profile):
+def payload(path, sha256, target, profile, *, explicit_format=False):
     if H["digest"](path) != sha256:
         raise ValueError("Image changed")
     instruction = (
@@ -71,6 +71,15 @@ def payload(path, sha256, target, profile):
         "Return only target_presence {status,evidence} and components keyed by definition, each {state,locations,evidence}. "
         "No verdict, confidence score, reference role, prior label or desired count. No chain of thought. "
         "Definitions: " + json.dumps(validate_profile(profile)["components"]))
+    if explicit_format:
+        # The decoder's schema is not automatically visible to the model.
+        # Give format rules, without an example that implies a desired count.
+        instruction += (
+            "\nReturn one syntactically valid JSON object, no Markdown or surrounding prose. "
+            "Quote every property name and string value. A visible feature uses state observed, NEVER state present. "
+            "locations is an array of short strings, NEVER objects. Evidence is a separate string on each component. "
+            "These are format rules only, not evidence that any component exists. "
+            "Output JSON Schema: " + json.dumps(schema({**profile, "version": VERSION}), separators=(",", ":")))
     return {"model": "visual-judge", "messages": [{"role": "user", "content": [
         {"type": "text", "text": instruction}, {"type": "image_url", "image_url": {
          "url": "data:image/png;base64," + base64.b64encode(Path(path).read_bytes()).decode()}}]}],
