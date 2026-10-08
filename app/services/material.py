@@ -23,6 +23,7 @@ from PIL import Image, ImageDraw, ImageStat, UnidentifiedImageError
 from app.config import config
 from app.models.schema import MaterialInfo, VideoAspect, VideoConcatMode
 from app.services import (
+    klein4b_experimental,
     material_cache,
     metaso_minimax,
     ofox,
@@ -1738,7 +1739,7 @@ def _parse_openai_image_response(
     return None, "image response has neither url nor b64_json"
 
 
-def _request_openai_image(endpoint: str, payload: dict) -> tuple[bytes | None, str]:
+def _request_openai_image(endpoint: str, payload: dict, *, max_attempts: int = OPENAI_IMAGE_MAX_ATTEMPTS) -> tuple[bytes | None, str]:
     """
     调用 OpenAI 兼容 /images/generations 接口，带退避重试与 key 轮换。
 
@@ -1763,7 +1764,7 @@ def _request_openai_image(endpoint: str, payload: dict) -> tuple[bytes | None, s
         configured_keys = []
 
     failure_detail = "no request attempt was made"
-    for attempt in range(1, OPENAI_IMAGE_MAX_ATTEMPTS + 1):
+    for attempt in range(1, max_attempts + 1):
         api_key = get_api_key("openai_image_api_keys") if configured_keys else ""
         headers = {}
         if api_key:
@@ -1811,13 +1812,13 @@ def _request_openai_image(endpoint: str, payload: dict) -> tuple[bytes | None, s
                     return image_bytes, ""
                 failure_detail = parse_error
 
-        if retryable and attempt < OPENAI_IMAGE_MAX_ATTEMPTS:
+        if retryable and attempt < max_attempts:
             backoff_seconds = OPENAI_IMAGE_RETRY_BACKOFF_SECONDS[
                 min(attempt - 1, len(OPENAI_IMAGE_RETRY_BACKOFF_SECONDS) - 1)
             ]
             logger.warning(
                 "openai image request failed, retrying: "
-                f"attempt={attempt}/{OPENAI_IMAGE_MAX_ATTEMPTS}, "
+                f"attempt={attempt}/{max_attempts}, "
                 f"next_retry_in={backoff_seconds}s, detail={failure_detail}"
             )
             time.sleep(backoff_seconds)
@@ -4648,6 +4649,44 @@ def _qwen_precision_prompt_with_references(
 
 
 
+def _generate_klein4b_experimental(
+    search_term: str, minimum_duration: int, video_aspect: VideoAspect,
+    save_dir: str, route: str, model: str, references: list[str],
+    reference_info: dict[str, Any] | None,
+    forbidden_features: list[str] | None = None,
+) -> List[MaterialInfo]:
+    size = _openai_image_size(video_aspect, route=route, model=model)
+    prepared = klein4b_experimental.prepare_scene(
+        config.app, model=model,
+        prompt=clean_image_text(_openai_image_prompt(search_term, route=route),
+                                internal_image_values(reference_info)),
+        size=size, quality_tier=route, references=references, reference_info=reference_info,
+        forbidden_features=forbidden_features,
+    )
+    started = time.perf_counter()
+    image_bytes, detail = _request_openai_image(prepared["endpoint"], prepared["payload"], max_attempts=1)
+    elapsed = time.perf_counter() - started
+    if image_bytes is None:
+        raise RuntimeError(f"Experimental Klein generation failed (no automatic retry): {detail}")
+    image_path, width, height = _save_openai_image_file(image_bytes, save_dir)
+    if f"{width}x{height}" != size:
+        raise ValueError("Experimental Klein output dimensions differ from requested size")
+    item = MaterialInfo()
+    item.provider = "openai_image"
+    item.url = image_path
+    item.duration = max(int(minimum_duration), 1)
+    item.source_info = {
+        "provider": "openai_image", "search_term": search_term, "route": route,
+        "model": model, "requested_model": model, "reference_count": len(references),
+        "reference": reference_info, "requested_size": size,
+        "steps": 4, "guidance": 1.0, "seed": prepared["payload"]["seed"],
+        "generation_seconds": round(elapsed, 3),
+        "rendition": {"id": None, "width": width, "height": height},
+        **prepared["metadata"],
+    }
+    return [item]
+
+
 def generate_images_openai(
     search_term: str,
     minimum_duration: int,
@@ -4671,6 +4710,18 @@ def generate_images_openai(
     aspect = VideoAspect(video_aspect)
     clip_duration = max(int(minimum_duration), 1)
     route = _normalize_openai_image_route(route)
+    explicit_model = str(model_override or config.app.get("openai_image_model", "") or "").strip()
+    if explicit_model in klein4b_experimental.ALIASES:
+        ordered = list(reference_images or [])
+        if reference_image:
+            if ordered and ordered[0] != reference_image:
+                raise ValueError("Klein primary reference must match the first ordered reference")
+            if not ordered:
+                ordered = [reference_image]
+        return _generate_klein4b_experimental(
+            search_term, minimum_duration, aspect, save_dir, route, explicit_model,
+            ordered, reference_info, forbidden_features,
+        )
     endpoint, requested_model = _openai_image_endpoint(model_override=model_override)
     image_size = _openai_image_size(aspect, route=route, model=requested_model)
     base_prompt = _openai_image_prompt(search_term, route=route)
@@ -4734,6 +4785,24 @@ def generate_images_openai(
     fallback_generation_seconds = 0.0
 
     fallback_model = _precision_fallback_model() if route == "precision" else ""
+    if fallback_model in klein4b_experimental.ALIASES and image_bytes is None:
+        if not klein4b_experimental.confirmed_technical_failure(failure_detail):
+            logger.error("Klein fallback withheld: primary failure is not confirmed model/workflow absence")
+            return []
+        # Preserve all references/roles; do not use the legacy single-reference fallback.
+        items = _generate_klein4b_experimental(
+            search_term, minimum_duration, aspect, save_dir, route, fallback_model,
+            references, reference_info, forbidden_features,
+        )
+        for item in items:
+            item.source_info.update(
+                requested_model=requested_model, fallback_from_model=requested_model,
+                fallback_reason="confirmed_model_or_workflow_absence",
+                primary_generation_seconds=round(primary_generation_seconds, 3),
+                fallback_generation_seconds=item.source_info["generation_seconds"],
+                generation_seconds=round(primary_generation_seconds + item.source_info["generation_seconds"], 3),
+            )
+        return items
     can_fallback = bool(
         image_bytes is None
         and references
@@ -8254,13 +8323,19 @@ def _download_videos_openai_image_on_demand(
         # Risk-bounded semantic QA for the exact failure modes seen in
         # real benchmarks: evidence fallbacks that become unrelated scenes, and the
         # first frame of a continuity chain becoming a bad root. It runs on these
-        # risky transitions only (Standard or Precision), never on every image.
+        # risky transitions only for legacy routes. Experimental Klein requires
+        # verified QA on every scene until its admission policy is validated.
         gross_retry_used = False
+        experimental_gross_qa = None
+        experimental_temporal_qa = None
+        experimental_candidate = bool(items and isinstance(items[0].source_info, dict)
+                                      and items[0].source_info.get("model") in klein4b_experimental.ALIASES)
         gross_qa_risky = bool(
             items
             and _gross_scene_semantic_qa_enabled()
             and (
-                planner_validation in {"coverage_fallback", "coverage_pruned"}
+                experimental_candidate
+                or planner_validation in {"coverage_fallback", "coverage_pruned"}
                 or (
                     continuity_key not in {"", "none"}
                     and not continuity_source_path
@@ -8279,9 +8354,11 @@ def _download_videos_openai_image_on_demand(
                 forbidden_features=forbidden_features,
                 require_single=require_single,
             )
+            experimental_gross_qa = gross_qa
             gross_record: dict[str, Any] = {
                 "trigger": (
-                    "continuity_root"
+                    "experimental_klein4b" if experimental_candidate
+                    else "continuity_root"
                     if continuity_key not in {"", "none"} and not continuity_source_path
                     else "coverage_fallback"
                 ),
@@ -8292,6 +8369,7 @@ def _download_videos_openai_image_on_demand(
             if (
                 gross_qa.get("gross_failure")
                 and _gross_scene_semantic_retry_enabled()
+                and not experimental_candidate
             ):
                 logger.warning(
                     "gross semantic image failure detected; using one corrective retry: "
@@ -8356,6 +8434,7 @@ def _download_videos_openai_image_on_demand(
                     and not retry_assessment.get("gross_failure", True)
                 )
                 if retry_verified:
+                    experimental_gross_qa = retry_assessment
                     items = [retry_item]
                     gross_record["selected_candidate"] = "retry"
                     logger.info(
@@ -8380,7 +8459,9 @@ def _download_videos_openai_image_on_demand(
                     f"scene={scene_index + 1}, subject={reference_subject!r}"
                 )
                 gross_record["selected_candidate"] = "none"
-                gross_record["status"] = "gross_failure_retry_disabled"
+                gross_record["status"] = (
+                    "experimental_gross_failure" if experimental_candidate else "gross_failure_retry_disabled"
+                )
                 items = []
 
             if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
@@ -8441,7 +8522,8 @@ def _download_videos_openai_image_on_demand(
             retry_budget_spent = bool(gross_retry_used or prior_duplicate_retry)
 
             if temporal_qa.get("temporal_failure"):
-                if _temporal_semantic_retry_enabled() and not retry_budget_spent:
+                if (_temporal_semantic_retry_enabled() and not retry_budget_spent
+                        and not experimental_candidate):
                     retry_prompt = _temporal_scene_retry_prompt(
                         search_term,
                         requested_state=temporal_state,
@@ -8519,7 +8601,8 @@ def _download_videos_openai_image_on_demand(
                 else:
                     temporal_record["selected_candidate"] = "none"
                     temporal_record["status"] = (
-                        "temporal_retry_budget_exhausted"
+                        "experimental_temporal_failure" if experimental_candidate
+                        else "temporal_retry_budget_exhausted"
                         if retry_budget_spent
                         else "temporal_retry_disabled"
                     )
@@ -8530,7 +8613,11 @@ def _download_videos_openai_image_on_demand(
                         f"retry_budget_spent={retry_budget_spent}"
                     )
 
-            if items and selected_temporal_qa.get("caption"):
+            experimental_temporal_qa = selected_temporal_qa
+            if (items and selected_temporal_qa.get("caption")
+                    and (not experimental_candidate
+                         or (klein4b_experimental.qa_verified(experimental_gross_qa)
+                             and klein4b_experimental.qa_verified(selected_temporal_qa)))):
                 continuity_last_temporal_captions[continuity_key] = str(
                     selected_temporal_qa.get("caption") or ""
                 )
@@ -8549,6 +8636,18 @@ def _download_videos_openai_image_on_demand(
                         Path(items[0].url).name
                     )
             _precision_diagnostics_persist(task_id, precision_diagnostics)
+
+        if items and experimental_candidate:
+            verified = klein4b_experimental.qa_verified(experimental_gross_qa)
+            if temporal_progression:
+                verified = verified and klein4b_experimental.qa_verified(experimental_temporal_qa)
+            items[0].source_info["qa_status"] = "passed" if verified else "unverified"
+            if not verified:
+                if scene_index < len(precision_diagnostics.get("plan_scenes", [])):
+                    precision_diagnostics["plan_scenes"][scene_index]["experimental_qa_status"] = "unverified_rejected"
+                _precision_diagnostics_persist(task_id, precision_diagnostics)
+                logger.error("Experimental Klein scene rejected: required QA did not explicitly pass")
+                items = []
 
         # Full-scene single-pass strategy:
         # - standard scenes continue to define the video's color/style anchor;
