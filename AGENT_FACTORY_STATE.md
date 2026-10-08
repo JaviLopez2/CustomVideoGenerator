@@ -6,6 +6,8 @@
 
 ## Current visual judge selection — 2026-10-08
 
+Latest QA audit on0624618: full blind16-case contract TP5/TN9/FP0/FN1,0timeouts,mean9.125s; MPT3-hands now detected but deformed key missed.3 separate component probes detect key while rejecting2 positives (one geometry error,one inconsistent text verdict).19 new VLM requests,0 generations/source/routing changes,own8092 closed,stable intact. [Full QA report](docs/VISUAL_JUDGE_FULL_QA_REPORT.md). Not ready for automatic factual admission; next independent geometry review and structured evidence design. All previous protocol metrics remain separate.
+
 Prefill continuation complete on9f42964: after user closed8080 and game,6 fresh-server controls succeed. Focused blind counts detect3 hands in negative full/crop; positive full/full+crop correctly2, crop alone falsely3. Earlier text timeout under gameplay preserved as resource-confounded;7 new requests/0 generations, owned8092 closed. No automatic QA admission or source changes. [Diagnosis](docs/VISUAL_JUDGE_PREFILL_DIAGNOSIS.md). Next: blind counts in full QA and deformed-key/reference controls; keep OCR/fail-closed. Preparation and historical comparisons below remain separate.
 
 Next diagnosis prepared from9bfec74: six fresh-server controls (text/full/crop/full+crop; blind watch-hand counts), no new GPU requests.58 offline tests pass.8080 reopened by user; globalVRAM6731/12288MiB and freeRAM7.22GiB. Pending temporary user closure of8080 before owned8092 tests; no shared service stopped. See newest section of [candidate handoff](docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Historical comparison below remains unchanged.

@@ -1,5 +1,13 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current closure: full blind QA and factual geometry audited
+
+Execution base06246184eaba9d676706b341b9e3423466e8a709. User kept8080 closed.19 new requests,0 generations: F1 full blind contract on16 original cases givesTP5/TN9/FP0/FN1,0unavailable, mean9.125s/median9.309s,peakglobal7505MiB. Three-hand MPT defect now detected; deformed factual key still accepted. Cold uncertain label remains excluded from binary metrics; OCR brand hallucination persists. G1 separate component-level contract on3 cases flags key but rejects both positives; geometry alone has1 false positive, the other total rejection is a contradictory text status/reason. No label changes or automatic rescue. [Full report](VISUAL_JUDGE_FULL_QA_REPORT.md), [metrics](validation/visual-judge-full-qa-metrics-2026-10-08.json).
+
+No source/weights/dependency/workflow/routing changes; hashes/JSON/diff/secrets checked. Existing58 offline tests are preparation results, not a new pytest. Both own8092 servers closed; stable HEAD/tracked tree unchanged,Comfy queue0/0. Can reopen8080; reserve resources for future inference. F1/G1/previous V2 or ROI timings cannot be merged or compared as causal speedups. F1 uses complete originals/references, blind counts, no ROI, unbounded reason schema; G1 adds generic component comparison requirements only, separate dataset/provenance.
+
+Next: independently review geometry labels and design structured reference/candidate observations separated from verdict. Preserve contradictory/hallucinated evidence as uncertainty; no automatic factual approval. Only then consider explicitly commissioned opt-in evidence/veto integration retaining OCR/deterministic gates/fail-closed. Do not download another model or repeat generations to hide judge errors. Retrieve closing SHA from Git history.
+
 ## Current continuation closure: idle controls complete
 
 Execution base9f4296485698bf98539eb284cdec509721a865ee. User closed8080, then game after confirming continuous GPU use. First text control timeout60s under game load is preserved as confounded evidence. New idle run (baseline1000MiB/3% GPU) completes all6 fresh-server controls: text1.199s; positive full2 hands, crop3 incorrectly, full+crop2; negative full/crop3 correctly. Visual HTTP3.725–4.954s for focused counts-only policy, not full QA. Total7 new model requests,5 visual,0 generations, all owned8092 closed. [Report](VISUAL_JUDGE_PREFILL_DIAGNOSIS.md), [idle evidence](validation/visual-judge-prefill-idle-controls-2026-10-08.json).

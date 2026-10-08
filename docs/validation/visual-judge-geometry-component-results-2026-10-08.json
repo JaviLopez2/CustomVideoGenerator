@@ -1,0 +1,270 @@
+{
+  "base_head": "b97ec8c101319b42013e6e0f57add791fdf7f064",
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "inference_retries": 0,
+  "policy": {
+    "max_tokens": 768,
+    "timeout_seconds": 60,
+    "temperature": 0,
+    "context": 8192,
+    "gpu_layers": 99,
+    "image_max_tokens": 1536,
+    "thinking": false,
+    "response_format": "json_schema",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "evaluation_version": 4,
+    "blind_counts": true,
+    "supplementary_regions": false,
+    "schema_reason_max_length": null
+  },
+  "models": [
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+      "rows": [
+        {
+          "id": "valid_cloth_edit",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "REFERENCE slot 1 role identity_reference",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 450,
+            "prompt_tokens": 3616,
+            "total_tokens": 4066,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 3616,
+            "prompt_ms": 4989.152,
+            "prompt_per_token_ms": 1.3797433628318585,
+            "prompt_per_second": 724.7724663429777,
+            "predicted_n": 450,
+            "predicted_ms": 9547.062,
+            "predicted_per_token_ms": 21.262944320712695,
+            "predicted_per_second": 47.03017535656519
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One brass pocket watch with white dial and Roman numerals is clearly visible.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One silver key with notched blade and cylindrical bow is clearly visible next to the watch.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are visible on the dial, pointing to approximately 10:08.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"Pocket watch silhouette matches reference: round case, crown, loop, dial layout. Key geometry matches: shaft, bow, bitting. Part arrangement identical — watch left, key right, both on fabric. No added/removed/fused parts.\"\n  },\n  \"text\": {\n    \"status\": \"fail\",\n    \"reason\": \"Candidate image shows no text on watch face; reference image shows 'JAEGER-LECOULTRE' at 12 o’clock. Text removal is allowed, but since forbid_text=true and candidate lacks expected text, this violates constraint if text presence was required — however, per contract, forbid_text=true means forbidden text must not appear. Since no forbidden text appears, this should be pass. Correction: forbid_text=true means no unauthorized text allowed. Candidate has no text → compliant. But reference has brand text — if that’s considered ‘forbidden’, then candidate passing by omission is acceptable. Re-evaluate: forbid_text=true implies any text not explicitly permitted is forbidden. Brand text in reference may be part of original design; candidate omits it — which is allowed under ‘lettering removal’. So text check passes.\"\n  }\n}",
+          "verdict": "fail",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "pocket watch",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One brass pocket watch with white dial and Roman numerals is clearly visible."
+            },
+            {
+              "kind": "quantity",
+              "subject": "silver key",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One silver key with notched blade and cylindrical bow is clearly visible next to the watch."
+            },
+            {
+              "kind": "quantity",
+              "subject": "watch hands",
+              "observed_count": 2,
+              "status": "pass",
+              "reason": "Two watch hands (hour and minute) are visible on the dial, pointing to approximately 10:08."
+            },
+            {
+              "kind": "geometry",
+              "status": "pass",
+              "reason": "Pocket watch silhouette matches reference: round case, crown, loop, dial layout. Key geometry matches: shaft, bow, bitting. Part arrangement identical — watch left, key right, both on fabric. No added/removed/fused parts."
+            },
+            {
+              "kind": "text",
+              "status": "fail",
+              "reason": "Candidate image shows no text on watch face; reference image shows 'JAEGER-LECOULTRE' at 12 o’clock. Text removal is allowed, but since forbid_text=true and candidate lacks expected text, this violates constraint if text presence was required — however, per contract, forbid_text=true means forbidden text must not appear. Since no forbidden text appears, this should be pass. Correction: forbid_text=true means no unauthorized text allowed. Candidate has no text → compliant. But reference has brand text — if that’s considered ‘forbidden’, then candidate passing by omission is acceptable. Re-evaluate: forbid_text=true implies any text not explicitly permitted is forbidden. Brand text in reference may be part of original design; candidate omits it — which is allowed under ‘lettering removal’. So text check passes."
+            }
+          ],
+          "seconds": 14.765425900000992,
+          "baseline_global_vram_mib": 7248,
+          "peak_global_vram_mib": 7453,
+          "vram_samples": 14
+        },
+        {
+          "id": "continuity_factual_768",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb"
+            },
+            {
+              "role": "REFERENCE slot 1 role continuity_anchor",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            },
+            {
+              "role": "REFERENCE slot 2 role factual_reference",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 150,
+            "prompt_tokens": 4604,
+            "total_tokens": 4754,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 4604,
+            "prompt_ms": 6413.782,
+            "prompt_per_token_ms": 1.3930890529973936,
+            "prompt_per_second": 717.829199682808,
+            "predicted_n": 150,
+            "predicted_ms": 3236.392,
+            "predicted_per_token_ms": 21.72075167785235,
+            "predicted_per_second": 46.03892235551194
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One silver key is clearly visible on the wooden surface in the candidate image.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"fail\",\n    \"reason\": \"The candidate key has a different head shape (flat with a hole) compared to the reference key (notched head). The blade profile also differs. The reference key has a distinct notched head and a specific blade cut, while the candidate key has a simple flat head and a different blade profile.\"\n  }\n}",
+          "verdict": "fail",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "silver key",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One silver key is clearly visible on the wooden surface in the candidate image."
+            },
+            {
+              "kind": "geometry",
+              "status": "fail",
+              "reason": "The candidate key has a different head shape (flat with a hole) compared to the reference key (notched head). The blade profile also differs. The reference key has a distinct notched head and a specific blade cut, while the candidate key has a simple flat head and a different blade profile."
+            }
+          ],
+          "seconds": 9.933010599999761,
+          "baseline_global_vram_mib": 7453,
+          "peak_global_vram_mib": 7453,
+          "vram_samples": 10
+        },
+        {
+          "id": "qwen_continuity_factual_768",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9"
+            },
+            {
+              "role": "REFERENCE slot 1 role None",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            },
+            {
+              "role": "REFERENCE slot 2 role None",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 159,
+            "prompt_tokens": 4602,
+            "total_tokens": 4761,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 4602,
+            "prompt_ms": 6389.56,
+            "prompt_per_token_ms": 1.3884311169056933,
+            "prompt_per_second": 720.2373872379318,
+            "predicted_n": 159,
+            "predicted_ms": 3477.82,
+            "predicted_per_token_ms": 22.011518987341773,
+            "predicted_per_second": 45.430758348620685
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One silver key is clearly visible on the table next to the red mug.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"fail\",\n    \"reason\": \"The candidate key has a different part arrangement than the reference. The reference key has a distinct, stepped bitting profile on the blade. The candidate key has a simpler, single-cut bitting profile. The reference key has a decorative, segmented shaft with a distinct collar near the bow. The candidate key has a smooth, unsegmented shaft.\"\n  }\n}",
+          "verdict": "fail",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "silver key",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One silver key is clearly visible on the table next to the red mug."
+            },
+            {
+              "kind": "geometry",
+              "status": "fail",
+              "reason": "The candidate key has a different part arrangement than the reference. The reference key has a distinct, stepped bitting profile on the blade. The candidate key has a simpler, single-cut bitting profile. The reference key has a decorative, segmented shaft with a distinct collar near the bow. The candidate key has a smooth, unsegmented shaft."
+            }
+          ],
+          "seconds": 10.178979199999958,
+          "baseline_global_vram_mib": 7450,
+          "peak_global_vram_mib": 7460,
+          "vram_samples": 10
+        }
+      ],
+      "baseline_global_vram_mib": 981,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-geometry-component-2026-10-08\\Qwen3.5-9B-GGUF.log",
+      "owned_pid": 14480,
+      "load_seconds": 3.51434110000082,
+      "modalities": {
+        "vision": true,
+        "video": true,
+        "audio": false
+      },
+      "owned_server_closed": true,
+      "mean_seconds": 11.62580523333357,
+      "median_seconds": 10.178979199999958
+    }
+  ],
+  "case_ids": [
+    "valid_cloth_edit",
+    "continuity_factual_768",
+    "qwen_continuity_factual_768"
+  ],
+  "execution_head": "06246184eaba9d676706b341b9e3423466e8a709",
+  "harness_sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+}

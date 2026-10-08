@@ -1,0 +1,175 @@
+{
+  "source_dataset": "docs\\validation\\visual-qa-dataset-2026-10-08.json",
+  "source_sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f",
+  "execution_base": "06246184eaba9d676706b341b9e3423466e8a709",
+  "protocol": "component-level geometry diagnostic, full pixels/references, blind counts, no ROI, original labels unchanged; not baseline accuracy",
+  "planned_requests": 3,
+  "modified_fields": [
+    "contract.geometry_constraints"
+  ],
+  "cases": [
+    {
+      "id": "valid_cloth_edit",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "Change the linen cloth from dark charcoal to deep burgundy red. Remove the small invented lettering or brand inscription from the watch dial: leave a clean white dial with only the existing hour tick marks and the two watch hands. Preserve the exact same brass pocket watch and silver key, their shapes, positions, scales, hour markers and hand positions, the fine metal scratches, and the same woven textile structure. Preserve camera viewpoint, vertical framing and natural side lighting. Keep both objects complete and sharp. Do not add objects, letters, numerals, logos, captions or watermark.\nInput image 1 has role identity_reference.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_DETAIL_WATCH_768X1376.png",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "slot": 1,
+          "role": "identity_reference"
+        }
+      ],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement",
+          "Compare the actual visible components of each target against its geometry reference, not a conventional or ideal anatomy inferred from the object name.",
+          "Compare openings, contours, protrusions or notches, component connections, and their positions relative to each other. Rotation or perspective can change appearance but cannot add or remove physical parts.",
+          "Describe a specific reference feature and the corresponding candidate feature separately in geometry.reason. Do not claim a part match merely because the object remains recognizable.",
+          "If small parts or occlusion prevent establishing the required match, use uncertain. A visible component added, removed, fused or reshaped outside allowed_changes requires fail."
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+        "allowed_changes": [
+          "cloth color",
+          "lettering removal",
+          "lighting reflections"
+        ],
+        "forbid_text": true
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Cloth recolor and lettering removal with objects preserved visually",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-resolution-details-2026-10-07.json"
+    },
+    {
+      "id": "continuity_factual_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+      "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "Use image 1 as the scene and identity of the same red ceramic mug on its wooden table by the window. Advance to late afternoon golden side light; the same mug now contains hot tea with clearly visible steam rising. Preserve its handle, red ceramic shape and viewpoint. Add exactly the small silver key from image 2 beside the mug on the table, retaining its toothed shape and metal material. Image 2 supplies only the key; do not include its watch or cloth. One mug and one key, both complete in an edge-to-edge vertical photograph. No lettering, logos or physical picture frame.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nInput image 2 has role factual_reference.\nThe result MUST advance to this requested visible state: Hot tea with clearly visible steam in the same red mug at late afternoon.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "slot": 1,
+          "role": "continuity_anchor"
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 2,
+          "role": "factual_reference"
+        }
+      ],
+      "expected_subject": "silver key",
+      "contract": {
+        "subject": "silver key",
+        "counts": [
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement",
+          "Compare the actual visible components of each target against its geometry reference, not a conventional or ideal anatomy inferred from the object name.",
+          "Compare openings, contours, protrusions or notches, component connections, and their positions relative to each other. Rotation or perspective can change appearance but cannot add or remove physical parts.",
+          "Describe a specific reference feature and the corresponding candidate feature separately in geometry.reason. Do not claim a part match merely because the object remains recognizable.",
+          "If small parts or occlusion prevent establishing the required match, use uncertain. A visible component added, removed, fused or reshaped outside allowed_changes requires fail."
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "rotation",
+          "lighting",
+          "background"
+        ]
+      },
+      "expected_verdict": "fail",
+      "review_reason": "Head hole and tooth geometry differ from reference",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "qwen_continuity_factual_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+      "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "model": "qwen-image-2.1-precision",
+      "seed": 42,
+      "prompt": "<image1> is the canvas and stable continuity anchor for the same red ceramic mug. <image2> is detail evidence for the small silver key only; not the watch or cloth; use only the visible detail it establishes. Edit <image1>. Preserve the same physical carrier, border, orientation, position, framing and surrounding scene. The visible state inside the continuity target MUST change to match this temporal stage: Hot tea with clearly visible steam in the same red mug at late afternoon. Apply this change: Use image 1 as the scene and identity of the same red ceramic mug on its wooden table by the window. Advance to late afternoon golden side light; the same mug now contains hot tea with clearly visible steam rising. Preserve its handle, red ceramic shape and viewpoint. Add exactly the small silver key from image 2 beside the mug on the table, retaining its toothed shape and metal material. Image 2 supplies only the key; do not include its watch or cloth. One mug and one key, both complete in an edge-to-edge vertical photograph. No lettering, logos or physical picture frame. Do not preserve the previous blank/developing image content of <image1> when it conflicts with the requested stage. Use every other image only for the role stated above.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "slot": 1,
+          "role": null
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 2,
+          "role": null
+        }
+      ],
+      "expected_subject": "silver key",
+      "contract": {
+        "subject": "silver key",
+        "counts": [
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement",
+          "Compare the actual visible components of each target against its geometry reference, not a conventional or ideal anatomy inferred from the object name.",
+          "Compare openings, contours, protrusions or notches, component connections, and their positions relative to each other. Rotation or perspective can change appearance but cannot add or remove physical parts.",
+          "Describe a specific reference feature and the corresponding candidate feature separately in geometry.reason. Do not claim a part match merely because the object remains recognizable.",
+          "If small parts or occlusion prevent establishing the required match, use uncertain. A visible component added, removed, fused or reshaped outside allowed_changes requires fail."
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "rotation",
+          "lighting",
+          "background"
+        ]
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Key more faithful to reference in documented review",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-comparison-2026-10-08.json"
+    }
+  ]
+}

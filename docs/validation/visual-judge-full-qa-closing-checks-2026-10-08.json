@@ -1,0 +1,22 @@
+{
+  "execution_head": "06246184eaba9d676706b341b9e3423466e8a709",
+  "harness_source_unchanged": true,
+  "requests": 19,
+  "generations": 0,
+  "health": {
+    "8080": "closed",
+    "8092": "closed",
+    "8188": 200,
+    "8090": 404
+  },
+  "comfy_queue_running": 0,
+  "comfy_queue_pending": 0,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status": "",
+  "gpu_after_close": "980 MiB, 48 %, 36",
+  "pytest_this_execution": false,
+  "logs_sha256": {
+    "visual-judge-full-blind-contract-2026-10-08.json": "092fca76f0ae66a13d284c7d00b93d0c7b7ef840f92444112e73a5e5aef98dc3",
+    "visual-judge-geometry-component-results-2026-10-08.json": "091951cec5bbb2524a3ab762ea453cef7ae1af6303cc35a09b0f7d6a9dec4e09"
+  }
+}

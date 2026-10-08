@@ -1,0 +1,173 @@
+{
+  "visual-judge-full-blind-contract-2026-10-08.json": {
+    "evidence_sha256": "637481e340d0abe4687fdfc863903819b382c7765d5df096e5d90ff0aa450c23",
+    "requests": 16,
+    "metrics_defect_positive": {
+      "TP": 5,
+      "TN": 9,
+      "FP": 0,
+      "FN": 1,
+      "uncertain": 0,
+      "unavailable": 0,
+      "unknown_labels": 1
+    },
+    "mean_seconds": 9.124584425000194,
+    "median_seconds": 9.308518800000456,
+    "min_seconds": 3.3798206000010396,
+    "max_seconds": 12.211002800000642,
+    "peak_global_vram_mib": 7505,
+    "load_seconds": 3.513640999999552,
+    "owned_server_closed": true,
+    "matrix": [
+      {
+        "id": "temporal_warm_512",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 8.91595530000086
+      },
+      {
+        "id": "unrequested_text",
+        "expected": "fail",
+        "verdict": "fail",
+        "seconds": 6.271479600000021
+      },
+      {
+        "id": "valid_cloth_edit",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 10.949276600000303
+      },
+      {
+        "id": "identity_style_unframed_512",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 11.502283600000737
+      },
+      {
+        "id": "identity_style_768",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 11.452659099999437
+      },
+      {
+        "id": "style_identity_reversed_768",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 12.211002800000642
+      },
+      {
+        "id": "continuity_factual_768",
+        "expected": "fail",
+        "verdict": "pass",
+        "seconds": 9.011592400000154
+      },
+      {
+        "id": "mpt_t2i_text_contract_768",
+        "expected": "fail",
+        "verdict": "fail",
+        "seconds": 5.787317999998777
+      },
+      {
+        "id": "mpt_temporal_hot_768",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 9.212947300000451
+      },
+      {
+        "id": "mpt_temporal_cooled_768",
+        "expected": "uncertain",
+        "verdict": "fail",
+        "seconds": 11.715229499999623
+      },
+      {
+        "id": "mpt_fallback_identity_style_seed43",
+        "expected": "fail",
+        "verdict": "fail",
+        "seconds": 11.460775000001377
+      },
+      {
+        "id": "mpt_explicit_quantity_seed43",
+        "expected": "fail",
+        "verdict": "fail",
+        "seconds": 11.531361199999083
+      },
+      {
+        "id": "z_image_t2i_768",
+        "expected": "fail",
+        "verdict": "fail",
+        "seconds": 5.819911000000502
+      },
+      {
+        "id": "qwen_continuity_factual_768",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 9.404090300000462
+      },
+      {
+        "id": "root_mug",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 3.3798206000010396
+      },
+      {
+        "id": "valid_mug_recolor",
+        "expected": "pass",
+        "verdict": "pass",
+        "seconds": 7.367648499999632
+      }
+    ]
+  },
+  "visual-judge-geometry-component-results-2026-10-08.json": {
+    "evidence_sha256": "65f061aed3c5884696b0745dfea8a79126e815a50e6a86c52a93e1f8fe385b88",
+    "requests": 3,
+    "metrics_defect_positive": {
+      "TP": 1,
+      "TN": 0,
+      "FP": 2,
+      "FN": 0,
+      "uncertain": 0,
+      "unavailable": 0,
+      "unknown_labels": 0
+    },
+    "mean_seconds": 11.62580523333357,
+    "median_seconds": 10.178979199999958,
+    "min_seconds": 9.933010599999761,
+    "max_seconds": 14.765425900000992,
+    "peak_global_vram_mib": 7460,
+    "load_seconds": 3.51434110000082,
+    "owned_server_closed": true,
+    "matrix": [
+      {
+        "id": "valid_cloth_edit",
+        "expected": "pass",
+        "verdict": "fail",
+        "seconds": 14.765425900000992
+      },
+      {
+        "id": "continuity_factual_768",
+        "expected": "fail",
+        "verdict": "fail",
+        "seconds": 9.933010599999761
+      },
+      {
+        "id": "qwen_continuity_factual_768",
+        "expected": "pass",
+        "verdict": "fail",
+        "seconds": 10.178979199999958
+      }
+    ],
+    "geometry_check_only_against_original_case_labels": {
+      "TP": 1,
+      "TN": 1,
+      "FP": 1,
+      "FN": 0
+    },
+    "geometry_check_only_limit": "Derived diagnostic component analysis, not an independent rerun or validated admission rule. All three selected case labels concern geometry/text preservation; labels remain prior agent review."
+  },
+  "protocols_must_not_be_combined": true,
+  "generation_requests": 0,
+  "total_new_requests": 19,
+  "execution_base": "06246184eaba9d676706b341b9e3423466e8a709",
+  "labels": "Curated prior agent review, not independent human ground truth; retained unchanged.",
+  "interpretation": "Full blind contract improves three-hand detection but still misses reference geometry. Component diagnostic flags the miss while rejecting two positives, including a contradictory text status/reason. Not ready for automatic admission."
+}
