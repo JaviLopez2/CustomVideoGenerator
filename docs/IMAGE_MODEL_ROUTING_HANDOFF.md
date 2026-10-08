@@ -163,3 +163,8 @@ Base limpia87c7ba568b19ed48d041b625f269f5112f0ef4fd. Dataset16 casos, auditoría
 Zero nuevas generaciones/benchmarks GPU/descargas/dependencias/workflows/jobs/restarts. No flags persistidos, ni routing/promotion. Contratos vacíos no verifican Klein; requisitos factuales/continuidad quedan fail-closed sin identidad fuerte. Stable HEAD6d27ba4963ffe469d635db71eaeec506a8ff4b61 intacto, backups untracked conservados; cola0/0,8091 no iniciado.
 
 [Informe QA](VISUAL_QA_REPORT.md), [handoff QA](VISUAL_QA_HANDOFF.md), [dataset](validation/visual-qa-dataset-2026-10-08.json), [matriz final](validation/visual-qa-final-results-2026-10-08.json), [tests](validation/visual-qa-final-tests-2026-10-08.txt). Siguiente: evaluar visión fuerte sobre el mismo dataset y adjudicar labels independientemente. El servidor8080 declara vision=false; cualquier descarga o modelo/dependencia pesada requiere una decisión separada. No seguir generando para suplir esa falta de evidencia.
+
+
+## Candidate judge preparation — 2026-10-08
+
+User authorized download/evaluation of Qwen3.5-9B and Qwen3-VL-8B. Downloads/projectors/runtime SHA verified,51 offline tests pass. Comparative GPU evaluation remains pending clearance of shared8080 VRAM/RAM; no candidate verdicts or selection yet. [Current operational handoff](VISUAL_JUDGE_CANDIDATES_HANDOFF.md). No production/routing/dependency changes or new images.

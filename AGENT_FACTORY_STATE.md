@@ -4,6 +4,10 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Visual judge candidates — 2026-10-08, preparation pending GPU clearance
+
+User authorized Qwen3.5-9B/Qwen3-VL-8B downloads and a bounded retained-image comparison. Four pinned GGUFs (12.79GB) and portable official CUDA12.4 llama.cpp b11497 verified;51 offline tests pass. Zero comparative GPU inference so far: shared8080 server remains resident, GPU~7.7GB used after Comfy cached weights unloaded, RAM~6.1GiB free. Await user closing8080 or explicitly choosing partial offload; never infer consent to stop shared services. Read [candidate handoff](docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Production/defaults/stable unchanged; no candidate selected.
+
 ## Current experimental QA — 2026-10-08
 
 Base87c7ba5, audit1ec050a, implementationd8de6a5. Scoped offline visual QA and local no-thinking judge policy remain opt-in, without persisted flags or automatic routing. 387 tests and17 subtests pass,1 integration skipped. Retained16-image dataset: only3 decisions,13 uncertain; mean4.5073s/median4.2692s. Speed improved, perceptual reliability remains incomplete; factual/continuity identity is fail-closed. Zero new generations, models, dependencies, workflows, jobs or restarts. Stable HEAD remains6d27ba4963ffe469d635db71eaeec506a8ff4b61.

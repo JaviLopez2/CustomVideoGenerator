@@ -40,3 +40,7 @@ Tests: from this worktree, `MPT_RUN_INTEGRATION_TESTS=0`, Python `-B -m pytest -
 Closing health:8080 200,8090 404,8188 200; Comfy queue0/0;8091 not started. Factory/runs and19 log files readable; only1024 bytes read to verify access, no log contents printed. Stable tracked files unchanged, HEAD protected; untracked backups remain. [Access record](validation/visual-qa-final-access-checks-2026-10-08.json).
 
 Next justified work: stronger visual extractor/judge for internal structure/count and temporal state on this dataset, independent label review, and diagnosis of bounded judge latency. Existing text-only endpoint cannot supply missing visual evidence. A heavyweight model/download/dependency or server change needs a separate decision; no automatic promotion, three-reference test or new image generation follows this checkpoint.
+
+## Subsequent authorized candidate preparation
+
+The user authorized download and bounded GPU evaluation of Qwen3.5-9B and Qwen3-VL-8B-Instruct. Four model/projector GGUFs and a portable official CUDA runtime are downloaded/hash verified;51 offline QA/harness tests pass. Evaluation remains pending GPU/RAM clearance:8080 LLM remains resident, GPU~7663MiB used after Comfy cached weights were unloaded, RAM~6.12GiB free. Read [current candidate handoff](VISUAL_JUDGE_CANDIDATES_HANDOFF.md) before proceeding. No comparative inference has been run and no candidate is selected.
