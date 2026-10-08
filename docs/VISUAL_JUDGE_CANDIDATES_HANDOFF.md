@@ -1,5 +1,21 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Next phase: prefill controls prepared, GPU execution pending
+
+Continuation base `9bfec74557ba2fa8f1ab19ad2dff462e710e6f63`, clean experimental worktree. User reopened8080 and authorized continuing diagnosis. Readonly checks:8080 health200,8090 root404,8188 system_stats200,Comfy queue0/0,8092 closed. Global VRAM6731/12288MiB, free system RAM7.22GiB: insufficient for the previous full-GPU configuration alongside8080. Asked user to close8080 temporarily via its launcher. Do not kill the shared server or silently switch to partial CPU offload.
+
+Historical V4 log contains `non-consecutive token position` warnings after cancellation and delayed processing. This is a diagnostic observation, not an established cause. New `scripts/diagnose_visual_judge_prefill.py` starts a fresh owned8092 server for EACH request, finally closes only that process, refuses occupied ports/existing evidence and checks model/input hashes. No third model/backend download. Same b11497 runtime and image bounds; counts-only schema, max192 tokens, no target number in the model prompt, no references. These controls intentionally differ from V2/V3/V4 and cannot be merged into their accuracy or latency metrics.
+
+Six predeclared controls: text transport/schema; positive full image; positive crop; positive full+crop; negative full image; negative crop. Positive=valid_cloth_edit, negative=mpt_t2i_text_contract_768. Only preexisting watch regions are used; full/crop views represent the SAME object. These diagnostic crop-only results cannot establish full-scene admission or factual identity. No labels changed. [Offline plan with input hashes](validation/visual-judge-prefill-plan-2026-10-08.json), executed=false. Final58 offline tests passed, exit0,3.40s ([log](validation/visual-judge-prefill-preparation-tests-2026-10-08.txt)); three new tests verify isolation, label/target blinding and input provenance. **Zero new VLM requests so far in this continuation.** Historical42 remain unchanged. No production/default/routing/dependency/workflow changes.
+
+Resume after user closes8080: confirm Git/status/resources/queue, then run:
+
+```powershell
+& 'D:\Apps\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\python.exe' -I -B scripts/diagnose_visual_judge_prefill.py --execute --output docs/validation/visual-judge-prefill-controls-2026-10-08.json --log-dir local_image_stack/experiments/bridge/target/visual-judge-prefill-controls-2026-10-08
+```
+
+The offline plan filename is different from measured output. Readiness90s/request60s, max6 requests; failed text control aborts visual requests. Each visual failure is retained, not retried. Enforces8080 closed and at least7000MiB free global VRAM before loading. Logs are ignored. Compare observed counts and prefill logs without claiming shape/runtime causality prematurely. If single-image controls fail, stop scope expansion and investigate backend support; a contrasted backend remains pending. Resolve the two baseline false negatives before opt-in admission; retain independent OCR and fail-closed. Closing commit SHA is obtained from Git history, not embedded as a self-reference.
+
 ## Current closure — comparative evaluation complete
 
 The user closed8080 and resource clearance was confirmed. Execution base `8ebbb17480f07dd6235ff9b66a65d7dc2a3edbe7`. **Select Qwen3.5-9B Q4_K_M/F16 for the next experimental phase, not automatic admission.** [Full report/matrix](VISUAL_JUDGE_COMPARISON_REPORT.md), [base metrics](validation/visual-judge-baseline-metrics-2026-10-08.json).

@@ -1,0 +1,147 @@
+{
+  "execution_head": "9bfec74557ba2fa8f1ab19ad2dff462e710e6f63",
+  "harness_sha256": "6fcafe37d79d8878bbb43e62ba2b3a70d9873bab8dd493cce3e11bd90d1ea1e2",
+  "executed": false,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "plan": [
+    {
+      "id": "text_control",
+      "case_id": null,
+      "images": []
+    },
+    {
+      "id": "positive_full",
+      "case_id": "valid_cloth_edit",
+      "images": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "full candidate"
+        }
+      ]
+    },
+    {
+      "id": "positive_crop",
+      "case_id": "valid_cloth_edit",
+      "images": [
+        {
+          "query": "pocket watch",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\valid_cloth_edit-main-object.png",
+          "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732",
+          "bounds": [
+            73,
+            431,
+            455,
+            887
+          ],
+          "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "detail of the same candidate"
+        }
+      ]
+    },
+    {
+      "id": "positive_full_crop",
+      "case_id": "valid_cloth_edit",
+      "images": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "full candidate"
+        },
+        {
+          "query": "pocket watch",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\valid_cloth_edit-main-object.png",
+          "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732",
+          "bounds": [
+            73,
+            431,
+            455,
+            887
+          ],
+          "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "detail of the same candidate"
+        }
+      ]
+    },
+    {
+      "id": "negative_full",
+      "case_id": "mpt_t2i_text_contract_768",
+      "images": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+          "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+          "role": "full candidate"
+        }
+      ]
+    },
+    {
+      "id": "negative_crop",
+      "case_id": "mpt_t2i_text_contract_768",
+      "images": [
+        {
+          "query": "watch hands",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\mpt_t2i_text_contract_768-watch_hands-0.png",
+          "sha256": "fcc8ce30493bac22faf206d066f66b89436cbaeb79572408d0209d5ddbaadf06",
+          "bounds": [
+            72,
+            427,
+            459,
+            892
+          ],
+          "source_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+          "role": "detail of the same candidate"
+        }
+      ]
+    }
+  ],
+  "rows": [],
+  "policy": {
+    "fresh_server_per_request": true,
+    "timeout_seconds": 60,
+    "max_tokens": 192,
+    "context": 8192,
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536,
+    "flash_attention": "on",
+    "reasoning": "off",
+    "blind_counts": true,
+    "references": false,
+    "production_admission": false
+  }
+}

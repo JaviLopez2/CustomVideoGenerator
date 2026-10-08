@@ -6,6 +6,8 @@
 
 ## Current visual judge selection — 2026-10-08
 
+Next diagnosis prepared from9bfec74: six fresh-server controls (text/full/crop/full+crop; blind watch-hand counts), no new GPU requests.58 offline tests pass.8080 reopened by user; globalVRAM6731/12288MiB and freeRAM7.22GiB. Pending temporary user closure of8080 before owned8092 tests; no shared service stopped. See newest section of [candidate handoff](docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Historical comparison below remains unchanged.
+
 Comparison completed after user closed8080. Experimental next candidate:Qwen3.5-9B Q4_K_M/F16. Base16-case matrix:4/6 defects detected,9/9 positives accepted,2FN, no unavailable; mean27.786s, peakglobal10448MiB. Qwen3-VL8B detects0/6 and has3timeouts. No automatic admission/routing:deformed factual key/three-hand MPT watch remain missed. ROI/blind-count diagnostics timed out; isolate prefill before integration.55 focused tests pass.42 VLM requests,0 generated images, no production/default/dependency/workflow changes. Own8092 closed; user can reopen8080.
 
 Read [comparison report](docs/VISUAL_JUDGE_COMPARISON_REPORT.md) and [current candidate handoff](docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Stable protected HEAD remains6d27ba4963ffe469d635db71eaeec506a8ff4b61. Preparation block below is historical.
