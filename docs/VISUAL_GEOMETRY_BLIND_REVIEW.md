@@ -27,4 +27,3 @@ Cambios permitidos: cloth color, lettering removal, lighting reflections. Fondo/
 | Referencia | Candidata |
 |---|---|
 | ![Referencia C](D:/Apps/MPT-worktrees/image-model-routing-modernization/local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-c-reference.png) | ![Candidata C](D:/Apps/MPT-worktrees/image-model-routing-modernization/local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-c-candidate.png) |
-
