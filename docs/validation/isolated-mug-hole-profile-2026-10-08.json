@@ -1,0 +1,6 @@
+{
+  "version": "target-location-observations-1",
+  "components": {
+    "handle_opening": "Empty space bounded by the handle loop and vessel body, separately from mouth opening. List only actually visible bounded spaces."
+  }
+}

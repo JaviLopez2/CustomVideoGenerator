@@ -1,0 +1,310 @@
+{
+  "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+  "model": {
+    "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "size": 5027784800,
+        "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+      },
+      {
+        "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+        "size": 1159029824,
+        "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "ceramic mug",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "transport_status": "completed",
+      "request_sha256": "3262873714764e6a55a767fa13f0b0c52f40aee9a540cb0247a5773e3c6974e2",
+      "unconstrained_request_sha256": "6f085fc693c4c829e1fd3c680e79d86a3b4807adeb5b618328f004332489f32f",
+      "prompt_sha256": "f2fd4273cd3cec4b867c12888641fea60f7248cf79a5c1f1470746aae1fab0bd",
+      "response_format_sha256": "06ac6a7b54ec12e24437209bce6d940a77e68a5b4c4615db3e2eabfe35c57792",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"red ceramic mug visible on wooden surface\"\n  },\n  \"components\": {\n    \"handle_body_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [620, 400, 680, 710],\n          \"evidence\": \"handle visibly attached to mug body at single contact point\"\n        }\n      ],\n      \"evidence\": \"single attachment site visible\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 119,
+        "prompt_tokens": 1530,
+        "total_tokens": 1649,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1530,
+        "prompt_ms": 1687.173,
+        "prompt_per_token_ms": 1.1027274509803922,
+        "prompt_per_second": 906.8423925702936,
+        "predicted_n": 119,
+        "predicted_ms": 2106.779,
+        "predicted_per_token_ms": 17.854059322033898,
+        "predicted_per_second": 56.00967163618016
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "red ceramic mug visible on wooden surface"
+        },
+        "components": {
+          "handle_body_contacts": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  620,
+                  400,
+                  680,
+                  710
+                ],
+                "evidence": "handle visibly attached to mug body at single contact point"
+              }
+            ],
+            "evidence": "single attachment site visible"
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "handle_body_contacts": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "handle_body_contacts"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 3.8271836999992956
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor",
+      "transport_status": "completed",
+      "request_sha256": "6f86f2c9c76223db0466fbb01fcac668213eb7fca5709e802e6ddb6c5d80b2a6",
+      "unconstrained_request_sha256": "bec019b93e72b305139db253dddd052cb2edc867c5fab06539dbfb36d8ba1c1e",
+      "prompt_sha256": "f2fd4273cd3cec4b867c12888641fea60f7248cf79a5c1f1470746aae1fab0bd",
+      "response_format_sha256": "06ac6a7b54ec12e24437209bce6d940a77e68a5b4c4615db3e2eabfe35c57792",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"blue ceramic mug visible on wooden surface\"\n  },\n  \"components\": {\n    \"handle_body_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [620, 400, 680, 710],\n          \"evidence\": \"handle visibly attached to mug body at two distinct contact points\"\n        }\n      ],\n      \"evidence\": \"handle physically connected to mug body\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 122,
+        "prompt_tokens": 1530,
+        "total_tokens": 1652,
+        "prompt_tokens_details": {
+          "cached_tokens": 500
+        }
+      },
+      "server_timings": {
+        "cache_n": 500,
+        "prompt_n": 1030,
+        "prompt_ms": 1385.97,
+        "prompt_per_token_ms": 1.3456019417475729,
+        "prompt_per_second": 743.1618288996153,
+        "predicted_n": 122,
+        "predicted_ms": 2159.154,
+        "predicted_per_token_ms": 17.844247933884297,
+        "predicted_per_second": 56.04046770170169
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "blue ceramic mug visible on wooden surface"
+        },
+        "components": {
+          "handle_body_contacts": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  620,
+                  400,
+                  680,
+                  710
+                ],
+                "evidence": "handle visibly attached to mug body at two distinct contact points"
+              }
+            ],
+            "evidence": "handle physically connected to mug body"
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "handle_body_contacts": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "handle_body_contacts"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 3.6761379999952624
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "source_case_id": "valid_cloth_edit",
+      "transport_status": "completed",
+      "request_sha256": "7298742354a2cab61e4b0d584f7a6cc49c4a666f5ae322bb303c344eee79d45a",
+      "unconstrained_request_sha256": "2ff3e7551e7690b219d1f8743de00dba7f0fd3a5e8474461abb3f06508ce4024",
+      "prompt_sha256": "f2fd4273cd3cec4b867c12888641fea60f7248cf79a5c1f1470746aae1fab0bd",
+      "response_format_sha256": "06ac6a7b54ec12e24437209bce6d940a77e68a5b4c4615db3e2eabfe35c57792",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"absent\",\n    \"evidence\": \"no ceramic mug visible in the image\"\n  },\n  \"components\": {\n    \"handle_body_contacts\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"no ceramic mug present to have handle-body contacts\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 1538,
+        "total_tokens": 1617,
+        "prompt_tokens_details": {
+          "cached_tokens": 500
+        }
+      },
+      "server_timings": {
+        "cache_n": 500,
+        "prompt_n": 1038,
+        "prompt_ms": 1444.467,
+        "prompt_per_token_ms": 1.3915867052023123,
+        "prompt_per_second": 718.6041633349879,
+        "predicted_n": 79,
+        "predicted_ms": 1391.536,
+        "predicted_per_token_ms": 17.840205128205127,
+        "predicted_per_second": 56.05316714766991
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "absent",
+          "evidence": "no ceramic mug visible in the image"
+        },
+        "components": {
+          "handle_body_contacts": {
+            "state": "not_applicable",
+            "locations": [],
+            "evidence": "no ceramic mug present to have handle-body contacts"
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "absent",
+        "location_counts": {
+          "handle_body_contacts": null
+        },
+        "incomplete_components": [
+          "handle_body_contacts"
+        ],
+        "observed_components": [],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "not_applicable",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 2.983762600000773
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "self",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "recolor_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "absence_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "target_not_established"
+    }
+  ],
+  "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+  "inventory_protocol": "target-location-observations-1",
+  "prompt_protocol": "target-location-prompt-1",
+  "component_profile_sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12",
+  "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+  "observation_source": "scripts\\visual_location_observations.py",
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen3vl-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "structured_output": true,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 84032,
+  "load_seconds": 3.545004200001131,
+  "owned_server_closed": true
+}

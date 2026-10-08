@@ -1,0 +1,310 @@
+{
+  "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "ceramic mug",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "transport_status": "completed",
+      "request_sha256": "cc71d71a4664a17643aed6a7ab034beffcc5b0cc19079e311154a65c329de3b6",
+      "unconstrained_request_sha256": "7c724016ec5f963ce99fc62cc0755920719dbf74d6f2e5790791701c8ff492b0",
+      "prompt_sha256": "47a542dc07c8d932a86ac17cc6922b46cc482a91cee6d867814f8e4092a43eab",
+      "response_format_sha256": "69dad32ec8a8341a5b8d15a7d536598e7d84a7eb8c756560d65026b69f664e2b",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A red ceramic mug is clearly visible on a wooden surface, with a handle extending to the right.\"\n  },\n  \"components\": {\n    \"handle_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [\n            650,\n            400,\n            800,\n            650\n          ],\n          \"evidence\": \"The handle forms a clear loop with an empty space bounded by the handle and the mug body.\"\n        }\n      ],\n      \"evidence\": \"The handle opening is visible as the empty space within the handle loop.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 176,
+        "prompt_tokens": 1521,
+        "total_tokens": 1697,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1521,
+        "prompt_ms": 1707.264,
+        "prompt_per_token_ms": 1.1224615384615384,
+        "prompt_per_second": 890.8991228070175,
+        "predicted_n": 176,
+        "predicted_ms": 3308.365,
+        "predicted_per_token_ms": 18.904942857142856,
+        "predicted_per_second": 52.89621912938869
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "A red ceramic mug is clearly visible on a wooden surface, with a handle extending to the right."
+        },
+        "components": {
+          "handle_opening": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  650,
+                  400,
+                  800,
+                  650
+                ],
+                "evidence": "The handle forms a clear loop with an empty space bounded by the handle and the mug body."
+              }
+            ],
+            "evidence": "The handle opening is visible as the empty space within the handle loop."
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "handle_opening": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "handle_opening"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 5.046522399999958
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor",
+      "transport_status": "completed",
+      "request_sha256": "6c410040f24daeaf4eac1539dbcf9031e54e60d22291eabbf6cf922c691a90c8",
+      "unconstrained_request_sha256": "9bf68efaf399e56a0d71b32ed960fb44e2ae9811406da639eedd311e0d0c4537",
+      "prompt_sha256": "47a542dc07c8d932a86ac17cc6922b46cc482a91cee6d867814f8e4092a43eab",
+      "response_format_sha256": "69dad32ec8a8341a5b8d15a7d536598e7d84a7eb8c756560d65026b69f664e2b",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A blue ceramic mug is clearly visible on a wooden surface, with a distinct handle loop forming a bounded opening.\"\n  },\n  \"components\": {\n    \"handle_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [\n            650,\n            420,\n            800,\n            680\n          ],\n          \"evidence\": \"Visible empty space within the handle loop, bounded by the handle's inner curve and the mug body.\"\n        }\n      ],\n      \"evidence\": \"The handle opening is clearly defined by the loop structure of the handle.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 179,
+        "prompt_tokens": 1521,
+        "total_tokens": 1700,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1521,
+        "prompt_ms": 1651.966,
+        "prompt_per_token_ms": 1.0861051939513477,
+        "prompt_per_second": 920.7211286430836,
+        "predicted_n": 179,
+        "predicted_ms": 3362.021,
+        "predicted_per_token_ms": 18.887758426966293,
+        "predicted_per_second": 52.94434508291292
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "A blue ceramic mug is clearly visible on a wooden surface, with a distinct handle loop forming a bounded opening."
+        },
+        "components": {
+          "handle_opening": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  650,
+                  420,
+                  800,
+                  680
+                ],
+                "evidence": "Visible empty space within the handle loop, bounded by the handle's inner curve and the mug body."
+              }
+            ],
+            "evidence": "The handle opening is clearly defined by the loop structure of the handle."
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "handle_opening": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "handle_opening"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 5.081957400005194
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "source_case_id": "valid_cloth_edit",
+      "transport_status": "completed",
+      "request_sha256": "e187e5c4daccacad77184bc90642b4ec33594a3abaa15ed404e595b0fc33f529",
+      "unconstrained_request_sha256": "958d1262085e24bbe3e552dd78a74423401b30f9fb1fd9160c0ed92f534e5d1e",
+      "prompt_sha256": "47a542dc07c8d932a86ac17cc6922b46cc482a91cee6d867814f8e4092a43eab",
+      "response_format_sha256": "69dad32ec8a8341a5b8d15a7d536598e7d84a7eb8c756560d65026b69f664e2b",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"absent\",\n    \"evidence\": \"No ceramic mug is visible; image contains a pocket watch and a key on fabric.\"\n  },\n  \"components\": {\n    \"handle_opening\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"No ceramic mug present to define handle opening.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 99,
+        "prompt_tokens": 1529,
+        "total_tokens": 1628,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1529,
+        "prompt_ms": 1691.886,
+        "prompt_per_token_ms": 1.106531066056246,
+        "prompt_per_second": 903.7251918864511,
+        "predicted_n": 99,
+        "predicted_ms": 1867.157,
+        "predicted_per_token_ms": 19.05262244897959,
+        "predicted_per_second": 52.48621299655038
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "absent",
+          "evidence": "No ceramic mug is visible; image contains a pocket watch and a key on fabric."
+        },
+        "components": {
+          "handle_opening": {
+            "state": "not_applicable",
+            "locations": [],
+            "evidence": "No ceramic mug present to define handle opening."
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "absent",
+        "location_counts": {
+          "handle_opening": null
+        },
+        "incomplete_components": [
+          "handle_opening"
+        ],
+        "observed_components": [],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "not_applicable",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 3.6755313999965438
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "self",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "recolor_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "absence_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "target_not_established"
+    }
+  ],
+  "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+  "inventory_protocol": "target-location-observations-1",
+  "prompt_protocol": "target-location-prompt-1",
+  "component_profile_sha256": "9cfbbfe26db9044d44ad262caffc3445fabcc9e0e727080127882ca2f95ae779",
+  "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+  "observation_source": "scripts\\visual_location_observations.py",
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen35-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "structured_output": true,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 30728,
+  "load_seconds": 3.5356895999939297,
+  "owned_server_closed": true
+}

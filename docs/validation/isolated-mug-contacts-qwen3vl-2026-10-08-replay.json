@@ -1,0 +1,88 @@
+{
+  "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "diagnostic_version": "retained-visual-diagnostic-1",
+  "adapter_sha256": "e0e9afed845bc6f3a0402e8bc70ac76dd358e67554fcd4cfb691fb690b3d1c58",
+  "script_sha256": "23fa988a83e6790ef1f3960a34f2713a0b7d2a99e8e19840c72e8518a6a0a044",
+  "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+  "model_requests": 0,
+  "generation_requests": 0,
+  "reports": [
+    {
+      "source_report_sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+      "rows": [
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"red ceramic mug visible on wooden surface\"\n  },\n  \"components\": {\n    \"handle_body_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [620, 400, 680, 710],\n          \"evidence\": \"handle visibly attached to mug body at single contact point\"\n        }\n      ],\n      \"evidence\": \"single attachment site visible\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "source_report_sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12",
+          "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"blue ceramic mug visible on wooden surface\"\n  },\n  \"components\": {\n    \"handle_body_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [620, 400, 680, 710],\n          \"evidence\": \"handle visibly attached to mug body at two distinct contact points\"\n        }\n      ],\n      \"evidence\": \"handle physically connected to mug body\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "source_report_sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12",
+          "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"absent\",\n    \"evidence\": \"no ceramic mug visible in the image\"\n  },\n  \"components\": {\n    \"handle_body_contacts\": {\n      \"state\": \"not_applicable\",\n      \"locations\": [],\n      \"evidence\": \"no ceramic mug present to have handle-body contacts\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "source_report_sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+          "reported_target": "ceramic mug",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12",
+          "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        }
+      ]
+    }
+  ]
+}

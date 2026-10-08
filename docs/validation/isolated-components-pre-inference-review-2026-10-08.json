@@ -1,0 +1,64 @@
+{
+  "source": "assistant_pre_inference_review",
+  "independent_human_gold": false,
+  "scope": "Qualitative spatial guides from direct original-pixel inspection; no admission criteria, precise IoU truth or physical identity certificate.",
+  "execution_base": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "model_payload_includes_these_notes": false,
+  "guides": [
+    {
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "handle_opening": "Visible bounded gap within handle, on right side of mug; background seen through it.",
+      "handle_contacts": "Distinct upper and lower attachments visible at the right edge of body.",
+      "rough_normalized_review_regions": {
+        "handle_opening": [
+          650,
+          430,
+          820,
+          690
+        ],
+        "upper_contact": [
+          640,
+          395,
+          720,
+          490
+        ],
+        "lower_contact": [
+          630,
+          650,
+          715,
+          740
+        ]
+      }
+    },
+    {
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "handle_opening": "Visible bounded gap, same spatial area as retained red image.",
+      "handle_contacts": "Upper and lower attachments visible; do not infer exact geometric identity from recolor task label.",
+      "rough_normalized_review_regions": {
+        "handle_opening": [
+          650,
+          430,
+          820,
+          690
+        ],
+        "upper_contact": [
+          640,
+          395,
+          720,
+          490
+        ],
+        "lower_contact": [
+          630,
+          650,
+          715,
+          740
+        ]
+      }
+    },
+    {
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "mug_target": "No mug; watch/key only. This same artifact has a silver key for the key-target cohort."
+    }
+  ],
+  "key_review_scope": "Visible shaft bands vary by image; exact site counts/boxes not independently human-adjudicated. Preserve existing A/B/C annotation: A shape preserved/minor ring size variation; B shape completely changed; C no visible change. Do not rewrite labels or infer that shaft-band counts certify overall shape."
+}

@@ -1,0 +1,53 @@
+{
+  "execution_base": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+  "observer_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+  "models": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "experiments": [
+    {
+      "name": "mug-hole",
+      "feature": "handle_opening",
+      "profile": "docs\\validation\\isolated-mug-hole-profile-2026-10-08.json",
+      "profile_sha256": "9cfbbfe26db9044d44ad262caffc3445fabcc9e0e727080127882ca2f95ae779",
+      "source_profile_sha256": "e4e0335b16545dc778289a67193d878df532f75b539b33e8447d5d7b98d4b07e",
+      "plan": "docs\\validation\\mug-visual-location-plan-2026-10-08.json",
+      "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+      "requests_per_model": 3
+    },
+    {
+      "name": "mug-contacts",
+      "feature": "handle_body_contacts",
+      "profile": "docs\\validation\\isolated-mug-contacts-profile-2026-10-08.json",
+      "profile_sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12",
+      "source_profile_sha256": "e4e0335b16545dc778289a67193d878df532f75b539b33e8447d5d7b98d4b07e",
+      "plan": "docs\\validation\\mug-visual-location-plan-2026-10-08.json",
+      "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+      "requests_per_model": 3
+    },
+    {
+      "name": "key-bands",
+      "feature": "shaft_bands",
+      "profile": "docs\\validation\\isolated-key-bands-profile-2026-10-08.json",
+      "profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+      "source_profile_sha256": "194648445d7eff129430330c87b4d13acd35e40b5cb1898aec69d1fa71b49633",
+      "plan": "docs\\validation\\key-explicit-component-plan-2026-10-08.json",
+      "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+      "requests_per_model": 4
+    }
+  ],
+  "maximum_model_requests": 20,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "policy": {
+    "one_component_per_request": true,
+    "same_definition_as_previous_profile": true,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "stop_each_cohort_on_invalid_output": true,
+    "labels_or_review_regions_sent": false,
+    "independent_cohorts_not_retries": true
+  }
+}

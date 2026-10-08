@@ -1,0 +1,6 @@
+{
+  "version": "target-location-observations-1",
+  "components": {
+    "shaft_bands": "Each visible physical band or collar encircling the key shaft, described by position and visible shape. Do not infer conventional key anatomy or hidden bands."
+  }
+}

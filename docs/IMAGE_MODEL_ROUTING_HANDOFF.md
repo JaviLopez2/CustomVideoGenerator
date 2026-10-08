@@ -1,5 +1,11 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — componentes aislados, 2026-10-08
+
+Desde `3e2b873`, 20 controles retenidos sobre un componente por request, ambos modelos disponibles. Formato completo sin timeouts/truncaciones; hueco del asa mejora, contactos y bandas siguen agrupados/inconsistentes y B no se prioriza. 0generaciones/retries/descargas, código/app/routing/gates/flags/deps/workflows sin cambios. Nuevos perfiles, raw, análisis/replays,20SVG locales y revisión del asistente separada de A/B/C. [Informe](ISOLATED_COMPONENTS_REPORT.md).
+
+96 tests enfocados actuales pasan, exit0,3,66s; suite520+17 previa es histórica sobre el mismo código, no ejecución nueva. Stable/tracked intactos, seis servidores propios cerrados. Pendiente concreto: auditar verificación espacial independiente de forma/localización sobre retenciones antes de admisión o vídeo completo. No ampliar budget ni reinterpretar prosa como pass. Handoff/checkpoint finales por historial/origin; fases siguientes históricas.
+
 ## Estado vigente — ubicaciones y candidatos, 2026-10-08
 
 Desde checkpoint publicado `fe63c61`, protocolo experimental de boxes normalizadas y overlays/replay offline. 5 nuevas inferencias sobre artifacts existentes (16 en esta continuación), 0 generaciones. Qwen3.5 separa contactos pero desplaza regiones y trunca azul; Qwen3-VL completa3 controles pero niega hueco del asa y agrega contactos. Ninguno habilitado para identidad/admisión. Solo harness/diagnóstico opt-in; no nuevo wiring, config, modelo, deps, workflows o routing. [Informe y pendiente](VISUAL_LOCATION_DIAGNOSTICS_REPORT.md).

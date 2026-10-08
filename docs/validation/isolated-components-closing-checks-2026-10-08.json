@@ -1,0 +1,272 @@
+{
+  "execution_base": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "branch": "factory/image-model-routing-modernization",
+  "code_unchanged_from_HEAD": true,
+  "model_requests": 20,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "cohorts": [
+    {
+      "path": "docs\\validation\\isolated-mug-hole-qwen35-2026-10-08.json",
+      "sha256": "b842d1ddf01125281bc9197596929aee1d7d824ec0c92ad9a8084566770e1bea",
+      "requests": 3,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen35-2026-10-08\\inventories.log",
+      "log_sha256": "f2cf1a12ca4cb3160e86f71d09ec92afd0cb882c2064ba0bd7f2a3ffa23f3650",
+      "replay_sha256": "429ee79f9b1662b7b85da3d905b2c78df5985e11fa797325c9c874096b6e0d96"
+    },
+    {
+      "path": "docs\\validation\\isolated-mug-hole-qwen3vl-2026-10-08.json",
+      "sha256": "e71231661d788c55eed0a94677e5e14fae8bb6bb9e5c481a2e53bfd01b059495",
+      "requests": 3,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen3vl-2026-10-08\\inventories.log",
+      "log_sha256": "72838d4eeae55a68f56ff4b24203510a134f9febccea23db0fd2e0cc7956dcbc",
+      "replay_sha256": "d26a56e176d4e2b39dbba2555c358d70ea3533e6f2268e9a28849d90b6ef7e13"
+    },
+    {
+      "path": "docs\\validation\\isolated-mug-contacts-qwen35-2026-10-08.json",
+      "sha256": "e1b20d0306c0f3f832c0b3fc7b4b6d40b85bbfdacfe46a3668c80b753f3911fb",
+      "requests": 3,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen35-2026-10-08\\inventories.log",
+      "log_sha256": "60ef690ebd59a2048e9c67bc7358b201a9d652ffe95bb975847f7df678d6c177",
+      "replay_sha256": "6de5d0158761b8c4ca5d78df93b0fe542cd9301d43d9f6f529a864574e772f3b"
+    },
+    {
+      "path": "docs\\validation\\isolated-mug-contacts-qwen3vl-2026-10-08.json",
+      "sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+      "requests": 3,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen3vl-2026-10-08\\inventories.log",
+      "log_sha256": "af9ab9cc44f7c16124db252d02d96d120f63e228ede6c56e13f120219a152726",
+      "replay_sha256": "d8bfb480fde7efe2c3231cecb454266a1c639d235845bcd2a481719ffd2cb1ea"
+    },
+    {
+      "path": "docs\\validation\\isolated-key-bands-qwen35-2026-10-08.json",
+      "sha256": "b8723274507dbf171a37a47a093b4f4e75e63921fcfa75023eb6028444cfc171",
+      "requests": 4,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen35-2026-10-08\\inventories.log",
+      "log_sha256": "6a182bd77013c0898751db47e096f10ea00fc40029ebb1dd7112e0e8435b068a",
+      "replay_sha256": "4247587ff8be230858db8b2de5ce6404ca5160e6f899f1cbf3405e7bc3be8b32"
+    },
+    {
+      "path": "docs\\validation\\isolated-key-bands-qwen3vl-2026-10-08.json",
+      "sha256": "9d80d4cad9c362e87a92980e1be31c5aa2e6dbcf9780ea4bd2e31df66a141624",
+      "requests": 4,
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen3vl-2026-10-08\\inventories.log",
+      "log_sha256": "fba0719b6d6874d88590c8bc2155815d5c410678a02b96288cf6a3c98a2e5e8e",
+      "replay_sha256": "133e4d7884873cbfe98287966f1493ce0870eb5343a3abba46994250d698df7c"
+    }
+  ],
+  "paired_equal_requests": 10,
+  "completed_transport_requests": 20,
+  "timed_out_or_truncated_requests": 0,
+  "source_sha256": {
+    "scripts/observe_visual_geometry.py": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+    "scripts/visual_location_observations.py": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+    "app/services/visual_observation_diagnostics.py": "e0e9afed845bc6f3a0402e8bc70ac76dd358e67554fcd4cfb691fb690b3d1c58"
+  },
+  "plan_sha256": "d1ff1a9f7fa31a7ff07fb5a72bcf01b6e8bc4223810308b0e5e5da51c8afd613",
+  "analysis_sha256": "f7387350b782b44b18dc77d1234f9e89b04c7f2d21d0161108edfcacbbe05ee8",
+  "pre_inference_review_sha256": "103c0c2085aa761b1f22b43d3f07f6a87dcfc686d09222da2f08dfaf3f1641e2",
+  "figures": [
+    {
+      "cohort": "isolated-mug-hole-qwen35-2026-10-08",
+      "index_sha256": "3d8c8e95034f1042aed6b65cfb5f87000bd40af4c3e46e47c0c82c30bf80b042",
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen35-2026-10-08-overlays\\index.json",
+      "figures": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen35-2026-10-08-overlays\\16c94d6f649e6934.svg",
+          "svg_sha256": "566916132a207f9178a5d308bca0118762a2c0f081a6d484147064c4ec5caf14",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen35-2026-10-08-overlays\\a245930e585f44b0.svg",
+          "svg_sha256": "970c782b8e126f6771ceee9a51efd501ebf8998568b2366ac53c58440e83ff12",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen35-2026-10-08-overlays\\029f4b8d36a062f9.svg",
+          "svg_sha256": "7eb4798b8dc4719d2ce21a65db1a84aa9f86fa231bbf84d1b606c533a338d095",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    },
+    {
+      "cohort": "isolated-mug-hole-qwen3vl-2026-10-08",
+      "index_sha256": "49aaa52eb59023ba7b9e752023a76d00e7df45c19a4ebacb097d15e8859f4404",
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen3vl-2026-10-08-overlays\\index.json",
+      "figures": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen3vl-2026-10-08-overlays\\16c94d6f649e6934.svg",
+          "svg_sha256": "e3d61b1c5b1fc9c67bfd2d91d0b1edff4eaabb82365118778c3b14012eeff9d9",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen3vl-2026-10-08-overlays\\a245930e585f44b0.svg",
+          "svg_sha256": "43ff26c79e7927fbfc1d5758a015da9852ccba272f1df5fc1f08d18c1b360af2",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-hole-qwen3vl-2026-10-08-overlays\\029f4b8d36a062f9.svg",
+          "svg_sha256": "7eb4798b8dc4719d2ce21a65db1a84aa9f86fa231bbf84d1b606c533a338d095",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    },
+    {
+      "cohort": "isolated-mug-contacts-qwen35-2026-10-08",
+      "index_sha256": "bdf9946afa119543e67f4c75784b65d54078649202634e77145b1c1bbf516c48",
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen35-2026-10-08-overlays\\index.json",
+      "figures": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen35-2026-10-08-overlays\\16c94d6f649e6934.svg",
+          "svg_sha256": "74bca0136d5fe414e1c320cfd5d4be42d8893d744ba6e36138715386195bde20",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen35-2026-10-08-overlays\\a245930e585f44b0.svg",
+          "svg_sha256": "6bd8f38403f1282921f1b616da18fb66eff7e6ba7af455085cd4597f9252f971",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen35-2026-10-08-overlays\\029f4b8d36a062f9.svg",
+          "svg_sha256": "6a3ea48fc43e12a8d9963a0383b87d1f96d7b73046173df9ea219516e76f2a46",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    },
+    {
+      "cohort": "isolated-mug-contacts-qwen3vl-2026-10-08",
+      "index_sha256": "35db83e6e01067e244319ca1469cae204eabfbb2e16204782d4d234bd15d8295",
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen3vl-2026-10-08-overlays\\index.json",
+      "figures": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen3vl-2026-10-08-overlays\\16c94d6f649e6934.svg",
+          "svg_sha256": "e871b19ca18a848b5c226543594a56895767fc8058cbd9336ed9884ab25f7055",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen3vl-2026-10-08-overlays\\a245930e585f44b0.svg",
+          "svg_sha256": "d22158ca3a600dc0d4a26e7e3fae393dd7bb36ea431ad323e13d23509045a501",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-mug-contacts-qwen3vl-2026-10-08-overlays\\029f4b8d36a062f9.svg",
+          "svg_sha256": "6a3ea48fc43e12a8d9963a0383b87d1f96d7b73046173df9ea219516e76f2a46",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    },
+    {
+      "cohort": "isolated-key-bands-qwen35-2026-10-08",
+      "index_sha256": "cbdb7b017d9fdb7ffbf2b5129feabf3f42ea0742b922fb88a4c1c5c9f8fe990a",
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen35-2026-10-08-overlays\\index.json",
+      "figures": [
+        {
+          "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen35-2026-10-08-overlays\\7edf4f48c3632d3b.svg",
+          "svg_sha256": "448f1963e925630c7e41e5168c5f2a0c60379761cff26be3662493df6f51b433",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen35-2026-10-08-overlays\\029f4b8d36a062f9.svg",
+          "svg_sha256": "7c0295f18acb7247524f751dc05896e9f18b4012c7f762c269e3d1eb6e898e9e",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen35-2026-10-08-overlays\\224e68edcf33aaad.svg",
+          "svg_sha256": "8c0e19df01a1f3ff05729451a5fd68d07b16bb766368e4bfd7eae8daeeb8f4dc",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen35-2026-10-08-overlays\\6e7292aad545fe0d.svg",
+          "svg_sha256": "7b499c762406486ff63563780c91b88778bf66471e91489c9efd07d860b6766e",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    },
+    {
+      "cohort": "isolated-key-bands-qwen3vl-2026-10-08",
+      "index_sha256": "d870130564f2d72e0874eb8680f30d92b5592babbca2e6bc7c9a21a99d893ce9",
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen3vl-2026-10-08-overlays\\index.json",
+      "figures": [
+        {
+          "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen3vl-2026-10-08-overlays\\7edf4f48c3632d3b.svg",
+          "svg_sha256": "0d6ffa95c3059843b7693eb75aa8a466bf1ccb3b5a7751fe400c1eb07ac49d8c",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen3vl-2026-10-08-overlays\\029f4b8d36a062f9.svg",
+          "svg_sha256": "654d7df9ae34015481428102aeb9f07d9c5cf23caf1be597d0c46586a566e99e",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen3vl-2026-10-08-overlays\\224e68edcf33aaad.svg",
+          "svg_sha256": "372cd22054471cd5ed8bfd8d1ab6feef3b7802958f8369f73c47dadabb913fbe",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen3vl-2026-10-08-overlays\\6e7292aad545fe0d.svg",
+          "svg_sha256": "26a474762c3f9e95afa0387fa6f2d0aade2476decab1a8a0da841d1e2775c803",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    }
+  ],
+  "replay_rows": 20,
+  "secret_scan": {
+    "files": 24,
+    "matches": 0
+  },
+  "changed_json_validated": 18,
+  "tests": {
+    "passed": 96,
+    "exit_code": 0,
+    "seconds": 3.66,
+    "log": "docs/validation/isolated-components-tests-2026-10-08.txt",
+    "log_sha256": "881d16e66ff5eda7f39677c019e2ca24ce4bc91f18bffeceedd647886c63f8c8",
+    "prior_520_suite_not_rerun": true
+  },
+  "ports": {
+    "8080": "closed",
+    "8092": "closed"
+  },
+  "health": {
+    "8090": 404,
+    "8188": 200
+  },
+  "comfy_queue": {
+    "queue_running": 0,
+    "queue_pending": 0
+  },
+  "gpu_at_close": "NVIDIA GeForce RTX 3060, 825, 12288, 5, 30",
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_status": "",
+    "untracked_not_deleted": true
+  }
+}

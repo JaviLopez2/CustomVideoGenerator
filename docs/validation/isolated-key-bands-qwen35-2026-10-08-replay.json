@@ -1,0 +1,112 @@
+{
+  "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "diagnostic_version": "retained-visual-diagnostic-1",
+  "adapter_sha256": "e0e9afed845bc6f3a0402e8bc70ac76dd358e67554fcd4cfb691fb690b3d1c58",
+  "script_sha256": "23fa988a83e6790ef1f3960a34f2713a0b7d2a99e8e19840c72e8518a6a0a044",
+  "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+  "model_requests": 0,
+  "generation_requests": 0,
+  "reports": [
+    {
+      "source_report_sha256": "b8723274507dbf171a37a47a093b4f4e75e63921fcfa75023eb6028444cfc171",
+      "rows": [
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A silver key is clearly visible on the right side of the image, lying on dark fabric.\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [\n            660,\n            455,\n            735,\n            520\n          ],\n          \"evidence\": \"A distinct band or collar encircles the upper shaft of the silver key, visible as a protruding ring.\"\n        }\n      ],\n      \"evidence\": \"One visible band encircling the key shaft.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "source_report_sha256": "b8723274507dbf171a37a47a093b4f4e75e63921fcfa75023eb6028444cfc171",
+          "reported_target": "silver key",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+          "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A silver key is clearly visible on the right side of the image, lying on a maroon fabric surface.\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [\n            660,\n            450,\n            730,\n            520\n          ],\n          \"evidence\": \"A distinct band or collar encircles the upper shaft of the silver key, visible as a protruding ring.\"\n        }\n      ],\n      \"evidence\": \"One visible band encircling the key shaft.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "source_report_sha256": "b8723274507dbf171a37a47a093b4f4e75e63921fcfa75023eb6028444cfc171",
+          "reported_target": "silver key",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+          "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A silver key is clearly visible on the wooden surface in the lower right portion of the image, with distinct metallic sheen and physical form.\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [\n            520,\n            720,\n            780,\n            820\n          ],\n          \"evidence\": \"Visible physical band or collar encircling the key shaft, located near the transition from shaft to head, with defined metallic structure.\"\n        }\n      ],\n      \"evidence\": \"One distinct band-like feature observed on the key shaft.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "source_report_sha256": "b8723274507dbf171a37a47a093b4f4e75e63921fcfa75023eb6028444cfc171",
+          "reported_target": "silver key",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+          "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A silver key is clearly visible on the wooden surface to the right of the red mug, with a metallic shaft and bitting.\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [\n            680,\n            710,\n            720,\n            740\n          ],\n          \"evidence\": \"A visible band or collar encircling the shaft of the silver key, located near the top of the shaft.\"\n        }\n      ],\n      \"evidence\": \"One distinct band is visible on the key shaft.\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "source_report_sha256": "b8723274507dbf171a37a47a093b4f4e75e63921fcfa75023eb6028444cfc171",
+          "reported_target": "silver key",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+          "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        }
+      ]
+    }
+  ]
+}

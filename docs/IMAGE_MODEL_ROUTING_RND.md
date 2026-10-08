@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — controles aislados, 2026-10-08
+
+Base `3e2b873`: 20 nuevas requests retenidas, 0generaciones. Un componente por prompt/schema preserva definición, presupuesto, modelos y píxeles; ambos detectan hueco del asa/ausencia, pero contactos y bandas no se separan consistentemente. B continúa sin señal de conteo pese a revisión humana de cambio total. No se publica accuracy ni gold de regiones del asistente. [Evidencia y siguiente auditoría espacial independiente](ISOLATED_COMPONENTS_REPORT.md).
+
+96 tests enfocados actuales pasan, exit0; código de app/harness/tests intacto. Replays/SVG preservan raw y píxeles; no adopción, default/config/gate/routing/deps/workflow/estable modificados. Los resultados multi-componente y suite520+17 anteriores se conservan históricos, sin atribución como nueva prueba. No ampliar presupuesto o buscar pass con nuevos prompts.
+
 ## Actualización — inspección espacial, 2026-10-08
 
 Continuación desde `fe63c61`: boxes de sitios normalizadas con validación y hints IoU, diagramas SVG de revisión y replay offline. 5 requests nuevas sobre retenciones, 0 generaciones: Qwen3.5 tiene desplazamiento de regiones y truncación; Qwen3-VL completa controles pero omite hueco visible del asa/agrega contactos. No nuevo ranking universal ni métricas de accuracy/peak VRAM; inspección del asistente distinta de anotación gold. [Evidencia y límites](VISUAL_LOCATION_DIAGNOSTICS_REPORT.md).

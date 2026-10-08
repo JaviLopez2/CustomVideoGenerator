@@ -1,0 +1,112 @@
+{
+  "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "diagnostic_version": "retained-visual-diagnostic-1",
+  "adapter_sha256": "e0e9afed845bc6f3a0402e8bc70ac76dd358e67554fcd4cfb691fb690b3d1c58",
+  "script_sha256": "23fa988a83e6790ef1f3960a34f2713a0b7d2a99e8e19840c72e8518a6a0a044",
+  "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+  "model_requests": 0,
+  "generation_requests": 0,
+  "reports": [
+    {
+      "source_report_sha256": "9d80d4cad9c362e87a92980e1be31c5aa2e6dbcf9780ea4bd2e31df66a141624",
+      "rows": [
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"silver key visible with distinct blade and shaft\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [675, 454, 745, 530],\n          \"evidence\": \"visible band encircling shaft near top\"\n        }\n      ],\n      \"evidence\": \"band visible as distinct collar\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "source_report_sha256": "9d80d4cad9c362e87a92980e1be31c5aa2e6dbcf9780ea4bd2e31df66a141624",
+          "reported_target": "silver key",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+          "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"silver key visible on maroon fabric, distinct metallic sheen and classic key shape\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [668, 454, 744, 530],\n          \"evidence\": \"visible collar band encircling the key shaft near the top\"\n        }\n      ],\n      \"evidence\": \"single visible band encircling key shaft\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "source_report_sha256": "9d80d4cad9c362e87a92980e1be31c5aa2e6dbcf9780ea4bd2e31df66a141624",
+          "reported_target": "silver key",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+          "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"silver key visible on wooden surface near red mug\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [508, 767, 678, 820],\n          \"evidence\": \"metallic band encircling key shaft\"\n        }\n      ],\n      \"evidence\": \"visible shaft band on key\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "source_report_sha256": "9d80d4cad9c362e87a92980e1be31c5aa2e6dbcf9780ea4bd2e31df66a141624",
+          "reported_target": "silver key",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+          "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        },
+        {
+          "version": "retained-visual-diagnostic-1",
+          "status": "uncertain",
+          "available": true,
+          "availability_scope": "recorded_output_only",
+          "pixel_truth_verified": false,
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "raw_observation": {
+            "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"silver key visible on wooden surface near red mug\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [625, 702, 812, 750],\n          \"evidence\": \"metallic band encircling key shaft\"\n        }\n      ],\n      \"evidence\": \"visible band on key shaft\"\n    }\n  }\n}",
+            "recorded_transport_status": "completed",
+            "format_consistent_with_record": true
+          },
+          "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "source_report_sha256": "9d80d4cad9c362e87a92980e1be31c5aa2e6dbcf9780ea4bd2e31df66a141624",
+          "reported_target": "silver key",
+          "inventory_protocol": "target-location-observations-1",
+          "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+          "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+          "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+          "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+          "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf"
+        }
+      ]
+    }
+  ]
+}

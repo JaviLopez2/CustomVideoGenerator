@@ -1,0 +1,47 @@
+# Controles de un componente por solicitud — 2026-10-08
+
+Evaluar una sola parte mejora la detección del hueco del asa y evita truncaciones en estos controles. **Los contactos y las bandas de la llave siguen siendo inconsistentes o agrupados.** Los dos modelos conservan únicamente autoridad de diagnóstico; no se habilita aprobación automática ni se cambia MPT.
+
+Base local de ejecución `3e2b873217006c11196101a841334aefd4e49ccf`, worktree `D:\Apps\MPT-worktrees\image-model-routing-modernization`, rama `factory/image-model-routing-modernization`. Status y diff staged/unstaged inicialmente vacíos; diez worktrees comprobados. Código de app/harness/tests sin cambios en esta fase: solo perfiles, reports, replays, log y documentos nuevos. Las entradas del experimento estaban sin commit al ejecutarse, con hashes fijados antes de inferencia. SHA final del checkpoint mediante historial/origin.
+
+## Plan declarado y revisión separada
+
+[Plan previo](validation/isolated-components-plan-2026-10-08.json): seis cohortes, máximo 20 requests. Un componente por request, dos candidatos ya descargados/pinned: Qwen3.5-9B Q4_K_M/F16 y Qwen3-VL-8B Q4_K_M/F16. Definiciones copiadas sin cambiar del perfil anterior; solo se reduce el conjunto de componentes del prompt/schema. Cada cohorte independiente tiene servidor 8092 propio nuevo, corta ante salida inválida y no reintenta. No es un rescate de las respuestas históricas. Se mantienen max512, timeout60, temperatura0, contexto8192, slot1, b11497/Flash Attention on, visual tokens1024–1536 y thinking off.
+
+Perfiles: [hueco del asa](validation/isolated-mug-hole-profile-2026-10-08.json), [contactos](validation/isolated-mug-contacts-profile-2026-10-08.json), [bandas del shaft](validation/isolated-key-bands-profile-2026-10-08.json). Mismos plans/píxeles retenidos del checkpoint anterior: roja, azul, reloj/llave como ausencia de taza; cuatro imágenes de llave para bandas. Ninguna generación, descarga, dependencia nueva, cambio de modelo productivo, workflow, routing, flags o servicios compartidos.
+
+[Revisión antes de inferir](validation/isolated-components-pre-inference-review-2026-10-08.json): inspección directa del asistente sobre píxeles originales, con guías espaciales aproximadas para las tazas y límites de interpretación de las llaves. No es anotación gold humana, verdad precisa de boxes/IoU ni certificado de identidad. Nunca se envían esas guías, cantidades, roles o labels al modelo. A/B/C del usuario permanece intacto y separado; sus juicios de forma no adjudican conteos exactos de bandas. No se vuelve a solicitar esa revisión.
+
+Recursos antes de inferir: 8080/8092 cerrados, RAM libre20,98 GiB; GPU824/12288 MiB,6%,30°C. Comfy8188 HTTP200, cola0/0; bridge8090 HTTP404, solo liveness. Se verificaron SHA de pesos y píxeles al iniciar cada cohorte; ningún servidor compartido detenido.
+
+## Resultado local, sin reparar prosa
+
+**20 requests completadas, stop/0reasoning, 0timeouts/truncaciones/retries, 0generaciones.** Las diez parejas entre candidatos tienen el mismo SHA de request completa. [Análisis y hashes](validation/isolated-components-analysis-2026-10-08.json) mantiene los protocolos anteriores separados; no extrae partes de la respuesta azul truncada del checkpoint anterior para contarla como válida.
+
+| Componente | Qwen3.5-9B | Qwen3-VL-8B | Interpretación limitada |
+|---|---|---|---|
+| Hueco del asa: roja/azul/ausencia | observed1 / observed1 / not_applicable | observed1 / observed1 / not_applicable | Mejora frente al perfil conjunto de Qwen3-VL, que negaba el hueco visible. Boxes cubren aproximadamente la zona del asa; no son segmentaciones exactas. |
+| Contactos: roja/azul/ausencia | observed2 / observed1 / not_applicable | observed1 / observed1 / not_applicable | Qwen3.5 omite una unión de azul según inspección del asistente; Qwen3-VL usa una región amplia y llega a describir dos puntos dentro de ella. Sigue sin separar consistentemente los sitios. |
+| Bandas: referencia inicial / cloth / B / A | una región en cada imagen | una región en cada imagen | Boxes amplias o desplazadas; no adjudican cada resalto/anillo. Comparaciones sin hints, incluso B, cuya forma totalmente cambiada ya está revisada por el usuario. |
+
+Los contactos de Qwen3.5 producen `region_entry_count_disagreement` entre roja y azul; es un aviso de medición no verificada, sin rechazo, y no prueba una deformación real. Qwen3-VL no produce ese aviso porque sus entradas son iguales, lo cual tampoco acredita igualdad física. Ausencia de taza comparada sigue unavailable/target_not_established; su output individual se completó y declaró targetabsent correctamente. Todos los comparators de target presente permanecen uncertain y sin admisión.
+
+En bandas, A sigue sin medición fiable del cambio de tamaño de anillos; B no se prioriza mediante conteos; C no genera hint, compatible con revisión de forma conservada pero sin certificar exactitud. No se reinterpretan palabras como “two” para añadir ubicaciones, ni se comparan coordenadas globales de perspectivas distintas como si midieran identidad. La inspección visual del asistente observa boxes de bandas que abarcan parte amplia del shaft o tabla; no constituye una métrica contra gold ni una nueva etiqueta humana.
+
+El perfil reducido cambia a la vez contexto de instrucciones y gramática de campos. La mejora observada se atribuye al protocolo reducido en estas muestras, no exclusivamente a una causa interna del modelo. No hay negativo de taza estructuralmente deformada ni revisión humana independiente de sus boxes. Ninguna tasa de precisión, sensibilidad, tolerancia de producción o ranking universal se deriva de estos controles.
+
+Latencias locales de 10 requests por candidato: Qwen3.5 media4,972s, rango3,676–6,277,99–241 tokens de salida; Qwen3-VL media3,660s,rango2,984–3,962,79–136 tokens. Longitudes distintas y selección pequeña; no throughput de vídeo, pico nuevo de VRAM o benchmark de generación.
+
+Raw por cohorte: [hueco Qwen3.5](validation/isolated-mug-hole-qwen35-2026-10-08.json), [hueco Qwen3-VL](validation/isolated-mug-hole-qwen3vl-2026-10-08.json), [contactos Qwen3.5](validation/isolated-mug-contacts-qwen35-2026-10-08.json), [contactos Qwen3-VL](validation/isolated-mug-contacts-qwen3vl-2026-10-08.json), [bandas Qwen3.5](validation/isolated-key-bands-qwen35-2026-10-08.json), [bandas Qwen3-VL](validation/isolated-key-bands-qwen3vl-2026-10-08.json). Cada report conserva runtime/model/protocol/plan/code hashes y log local; snapshots previos no se sobrescriben.
+
+## Replay, figuras y validación
+
+Se crearon seis replays, 20 vinculaciones offline con hashes y sin inferencias adicionales: paths/hashes en análisis. Su `uncertain` describe output registrado, aunque target sea absent; no es veredicto de escena. `pixel_truth_verified=false`, `admission_allowed=false`, `automatic_rejection=false`, `physical_identity_established=false` siempre. Ningún resultado se inyectó en una tarea real de MPT ni habilitó flags.
+
+Se guardaron 20 SVG de revisión con bytes originales intactos en carpetas `target/isolated-*-2026-10-08-overlays`, todos ignorados por Git. Ejemplos locales: [hueco azul Qwen3-VL](../local_image_stack/experiments/bridge/target/isolated-mug-hole-qwen3vl-2026-10-08-overlays/a245930e585f44b0.svg), [contactos azul Qwen3.5](../local_image_stack/experiments/bridge/target/isolated-mug-contacts-qwen35-2026-10-08-overlays/a245930e585f44b0.svg), [bandas A Qwen3.5](../local_image_stack/experiments/bridge/target/isolated-key-bands-qwen35-2026-10-08-overlays/6e7292aad545fe0d.svg). La apertura del diagrama de contactos en Codex quedó queued; no se afirma que el usuario lo haya visto. Conservar figuras/index/logs/pesos al archivar el worktree.
+
+**96 tests enfocados pasan, exit0,3,66s** ([log actual](validation/isolated-components-tests-2026-10-08.txt)), Python portable, MPT_RUN_INTEGRATION_TESTS=0: test/test_visual_location_observations.py, test/test_visual_geometry_observations.py, test/test_visual_component_observations.py y test/services/test_visual_observation_diagnostics.py. Son tests de estructura, coordenadas, aislamiento y gates; no accuracy perceptual. Los 520+17subtests/1skip del checkpoint previo son validación histórica del mismo código sin cambios; no se presentan como una nueva ejecución completa. No se añadieron tests que reflejen estos outputs ni se cambiaron tests para hacerlos pasar.
+
+[Cierre](validation/isolated-components-closing-checks-2026-10-08.json): JSON/hashes, código limpio respecto a base, 10 pairs iguales, XML/píxeles embebidos intactos, 20 replays y seis servidores propios cerrados, secretos por patrones sin imprimir coincidencias, status/diff y stable/tracked intactos en6d27ba4963ffe469d635db71eaeec506a8ff4b61. Commit/push normal del experimento tras fetch/revisión de divergencia; no force-push/merge/publicación de vídeo. Los permisos siguen siendo los efectivos de cada operación, no permanentes.
+
+**Siguiente tarea concreta:** auditar una verificación espacial independiente para geometría sobre las retenciones y A/B/C, con método/anotación explícitos y controles positivos/negativos. El prompt de un solo componente puede aportar diagnóstico de presencia, pero no sustituye localización/forma verificadas. Mantener Qwen3.5 como candidato general experimental, sin promoción, mientras se resuelve ese requisito. No aumentar presupuesto ni seguir cambiando prompts buscando un pass; adoptar pesos/deps nuevos o cambiar gates de admisión requiere alcance específico.

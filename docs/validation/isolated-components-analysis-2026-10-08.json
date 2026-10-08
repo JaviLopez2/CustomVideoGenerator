@@ -1,0 +1,847 @@
+{
+  "execution_base": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "plan_sha256": "d1ff1a9f7fa31a7ff07fb5a72bcf01b6e8bc4223810308b0e5e5da51c8afd613",
+  "pre_inference_review_sha256": "103c0c2085aa761b1f22b43d3f07f6a87dcfc686d09222da2f08dfaf3f1641e2",
+  "interpretation": {
+    "available_means_saved_output_only": true,
+    "pixel_truth_verified": false,
+    "admission_allowed": false,
+    "automatic_rejection": false,
+    "human_annotations_modified": false,
+    "no_perceptual_accuracy_metric": true
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "cohorts": [
+    {
+      "experiment": "mug-hole",
+      "model": "unsloth/Qwen3.5-9B-GGUF",
+      "report": "docs\\validation\\isolated-mug-hole-qwen35-2026-10-08.json",
+      "report_sha256": "b842d1ddf01125281bc9197596929aee1d7d824ec0c92ad9a8084566770e1bea",
+      "profile_sha256": "9cfbbfe26db9044d44ad262caffc3445fabcc9e0e727080127882ca2f95ae779",
+      "rows": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              650,
+              400,
+              800,
+              650
+            ]
+          ],
+          "seconds": 5.046522399999958,
+          "completion_tokens": 176,
+          "request_sha256": "cc71d71a4664a17643aed6a7ab034beffcc5b0cc19079e311154a65c329de3b6"
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              650,
+              420,
+              800,
+              680
+            ]
+          ],
+          "seconds": 5.081957400005194,
+          "completion_tokens": 179,
+          "request_sha256": "6c410040f24daeaf4eac1539dbcf9031e54e60d22291eabbf6cf922c691a90c8"
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "target_presence": "absent",
+          "state": "not_applicable",
+          "region_entries": null,
+          "boxes": [],
+          "seconds": 3.6755313999965438,
+          "completion_tokens": 99,
+          "request_sha256": "e187e5c4daccacad77184bc90642b4ec33594a3abaa15ed404e595b0fc33f529"
+        }
+      ],
+      "comparisons": [
+        {
+          "id": "self",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "recolor_control",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "absence_control",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "status": "unavailable",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "target_not_established"
+        }
+      ],
+      "owned_server_closed": true,
+      "replay": "docs\\validation\\isolated-mug-hole-qwen35-2026-10-08-replay.json",
+      "replay_sha256": "429ee79f9b1662b7b85da3d905b2c78df5985e11fa797325c9c874096b6e0d96",
+      "figure_index": "local_image_stack/experiments/bridge/target/isolated-mug-hole-qwen35-2026-10-08-overlays/index.json"
+    },
+    {
+      "experiment": "mug-hole",
+      "model": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "report": "docs\\validation\\isolated-mug-hole-qwen3vl-2026-10-08.json",
+      "report_sha256": "e71231661d788c55eed0a94677e5e14fae8bb6bb9e5c481a2e53bfd01b059495",
+      "profile_sha256": "9cfbbfe26db9044d44ad262caffc3445fabcc9e0e727080127882ca2f95ae779",
+      "rows": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              620,
+              400,
+              838,
+              720
+            ]
+          ],
+          "seconds": 3.9144232999969972,
+          "completion_tokens": 125,
+          "request_sha256": "cc71d71a4664a17643aed6a7ab034beffcc5b0cc19079e311154a65c329de3b6"
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              620,
+              398,
+              838,
+              725
+            ]
+          ],
+          "seconds": 3.902309699995385,
+          "completion_tokens": 136,
+          "request_sha256": "6c410040f24daeaf4eac1539dbcf9031e54e60d22291eabbf6cf922c691a90c8"
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "target_presence": "absent",
+          "state": "not_applicable",
+          "region_entries": null,
+          "boxes": [],
+          "seconds": 3.004596099999617,
+          "completion_tokens": 80,
+          "request_sha256": "e187e5c4daccacad77184bc90642b4ec33594a3abaa15ed404e595b0fc33f529"
+        }
+      ],
+      "comparisons": [
+        {
+          "id": "self",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "recolor_control",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "absence_control",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "status": "unavailable",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "target_not_established"
+        }
+      ],
+      "owned_server_closed": true,
+      "replay": "docs\\validation\\isolated-mug-hole-qwen3vl-2026-10-08-replay.json",
+      "replay_sha256": "d26a56e176d4e2b39dbba2555c358d70ea3533e6f2268e9a28849d90b6ef7e13",
+      "figure_index": "local_image_stack/experiments/bridge/target/isolated-mug-hole-qwen3vl-2026-10-08-overlays/index.json"
+    },
+    {
+      "experiment": "mug-contacts",
+      "model": "unsloth/Qwen3.5-9B-GGUF",
+      "report": "docs\\validation\\isolated-mug-contacts-qwen35-2026-10-08.json",
+      "report_sha256": "e1b20d0306c0f3f832c0b3fc7b4b6d40b85bbfdacfe46a3668c80b753f3911fb",
+      "profile_sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12",
+      "rows": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 2,
+          "boxes": [
+            [
+              650,
+              400,
+              700,
+              450
+            ],
+            [
+              650,
+              650,
+              700,
+              700
+            ]
+          ],
+          "seconds": 6.276950500003295,
+          "completion_tokens": 241,
+          "request_sha256": "3262873714764e6a55a767fa13f0b0c52f40aee9a540cb0247a5773e3c6974e2"
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              620,
+              380,
+              680,
+              460
+            ]
+          ],
+          "seconds": 5.045054800000798,
+          "completion_tokens": 175,
+          "request_sha256": "6f86f2c9c76223db0466fbb01fcac668213eb7fca5709e802e6ddb6c5d80b2a6"
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "target_presence": "absent",
+          "state": "not_applicable",
+          "region_entries": null,
+          "boxes": [],
+          "seconds": 3.7340560000011465,
+          "completion_tokens": 100,
+          "request_sha256": "7298742354a2cab61e4b0d584f7a6cc49c4a666f5ae322bb303c344eee79d45a"
+        }
+      ],
+      "comparisons": [
+        {
+          "id": "self",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "recolor_control",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [
+            {
+              "feature": "handle_body_contacts",
+              "kind": "region_entry_count_disagreement"
+            }
+          ],
+          "priority": "location_observation_review"
+        },
+        {
+          "id": "absence_control",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "status": "unavailable",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "target_not_established"
+        }
+      ],
+      "owned_server_closed": true,
+      "replay": "docs\\validation\\isolated-mug-contacts-qwen35-2026-10-08-replay.json",
+      "replay_sha256": "6de5d0158761b8c4ca5d78df93b0fe542cd9301d43d9f6f529a864574e772f3b",
+      "figure_index": "local_image_stack/experiments/bridge/target/isolated-mug-contacts-qwen35-2026-10-08-overlays/index.json"
+    },
+    {
+      "experiment": "mug-contacts",
+      "model": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "report": "docs\\validation\\isolated-mug-contacts-qwen3vl-2026-10-08.json",
+      "report_sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+      "profile_sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12",
+      "rows": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              620,
+              400,
+              680,
+              710
+            ]
+          ],
+          "seconds": 3.8271836999992956,
+          "completion_tokens": 119,
+          "request_sha256": "3262873714764e6a55a767fa13f0b0c52f40aee9a540cb0247a5773e3c6974e2"
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              620,
+              400,
+              680,
+              710
+            ]
+          ],
+          "seconds": 3.6761379999952624,
+          "completion_tokens": 122,
+          "request_sha256": "6f86f2c9c76223db0466fbb01fcac668213eb7fca5709e802e6ddb6c5d80b2a6"
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "target_presence": "absent",
+          "state": "not_applicable",
+          "region_entries": null,
+          "boxes": [],
+          "seconds": 2.983762600000773,
+          "completion_tokens": 79,
+          "request_sha256": "7298742354a2cab61e4b0d584f7a6cc49c4a666f5ae322bb303c344eee79d45a"
+        }
+      ],
+      "comparisons": [
+        {
+          "id": "self",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "recolor_control",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "absence_control",
+          "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "status": "unavailable",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "target_not_established"
+        }
+      ],
+      "owned_server_closed": true,
+      "replay": "docs\\validation\\isolated-mug-contacts-qwen3vl-2026-10-08-replay.json",
+      "replay_sha256": "d8bfb480fde7efe2c3231cecb454266a1c639d235845bcd2a481719ffd2cb1ea",
+      "figure_index": "local_image_stack/experiments/bridge/target/isolated-mug-contacts-qwen3vl-2026-10-08-overlays/index.json"
+    },
+    {
+      "experiment": "key-bands",
+      "model": "unsloth/Qwen3.5-9B-GGUF",
+      "report": "docs\\validation\\isolated-key-bands-qwen35-2026-10-08.json",
+      "report_sha256": "b8723274507dbf171a37a47a093b4f4e75e63921fcfa75023eb6028444cfc171",
+      "profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+      "rows": [
+        {
+          "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              660,
+              455,
+              735,
+              520
+            ]
+          ],
+          "seconds": 5.098341099997924,
+          "completion_tokens": 174,
+          "request_sha256": "9df4921fe7ccf58b7fcf2830f34f012e2dccc33a6b4e65aee500924faad59ff8"
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              660,
+              450,
+              730,
+              520
+            ]
+          ],
+          "seconds": 5.110971000001882,
+          "completion_tokens": 177,
+          "request_sha256": "35e0bac7aa3a3f36d91f6d21de0e299762ba5c446774bf342f981fba5fd4c0b5"
+        },
+        {
+          "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              520,
+              720,
+              780,
+              820
+            ]
+          ],
+          "seconds": 5.327552899994771,
+          "completion_tokens": 188,
+          "request_sha256": "9745ce14ae1ec48ed132353e6e359643aca964c7e0b1d75a3681cfdf9618973b"
+        },
+        {
+          "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              680,
+              710,
+              720,
+              740
+            ]
+          ],
+          "seconds": 5.3222994999960065,
+          "completion_tokens": 182,
+          "request_sha256": "72aa4e5176ef00f9e7fdf1100900aeb02b64359f357347ce7bcb0ca21519c126"
+        }
+      ],
+      "comparisons": [
+        {
+          "id": "valid_cloth_edit",
+          "reference_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "continuity_factual_768",
+          "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "qwen_continuity_factual_768",
+          "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        }
+      ],
+      "owned_server_closed": true,
+      "replay": "docs\\validation\\isolated-key-bands-qwen35-2026-10-08-replay.json",
+      "replay_sha256": "4247587ff8be230858db8b2de5ce6404ca5160e6f899f1cbf3405e7bc3be8b32",
+      "figure_index": "local_image_stack/experiments/bridge/target/isolated-key-bands-qwen35-2026-10-08-overlays/index.json"
+    },
+    {
+      "experiment": "key-bands",
+      "model": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "report": "docs\\validation\\isolated-key-bands-qwen3vl-2026-10-08.json",
+      "report_sha256": "9d80d4cad9c362e87a92980e1be31c5aa2e6dbcf9780ea4bd2e31df66a141624",
+      "profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+      "rows": [
+        {
+          "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              675,
+              454,
+              745,
+              530
+            ]
+          ],
+          "seconds": 3.9343246999997064,
+          "completion_tokens": 119,
+          "request_sha256": "9df4921fe7ccf58b7fcf2830f34f012e2dccc33a6b4e65aee500924faad59ff8"
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              668,
+              454,
+              744,
+              530
+            ]
+          ],
+          "seconds": 3.961913999999524,
+          "completion_tokens": 134,
+          "request_sha256": "35e0bac7aa3a3f36d91f6d21de0e299762ba5c446774bf342f981fba5fd4c0b5"
+        },
+        {
+          "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              508,
+              767,
+              678,
+              820
+            ]
+          ],
+          "seconds": 3.6802470999973593,
+          "completion_tokens": 120,
+          "request_sha256": "9745ce14ae1ec48ed132353e6e359643aca964c7e0b1d75a3681cfdf9618973b"
+        },
+        {
+          "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "target_presence": "present",
+          "state": "observed",
+          "region_entries": 1,
+          "boxes": [
+            [
+              625,
+              702,
+              812,
+              750
+            ]
+          ],
+          "seconds": 3.7195215999963693,
+          "completion_tokens": 120,
+          "request_sha256": "72aa4e5176ef00f9e7fdf1100900aeb02b64359f357347ce7bcb0ca21519c126"
+        }
+      ],
+      "comparisons": [
+        {
+          "id": "valid_cloth_edit",
+          "reference_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "continuity_factual_768",
+          "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        },
+        {
+          "id": "qwen_continuity_factual_768",
+          "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "hints": [],
+          "priority": "no_detected_signal"
+        }
+      ],
+      "owned_server_closed": true,
+      "replay": "docs\\validation\\isolated-key-bands-qwen3vl-2026-10-08-replay.json",
+      "replay_sha256": "133e4d7884873cbfe98287966f1493ce0870eb5343a3abba46994250d698df7c",
+      "figure_index": "local_image_stack/experiments/bridge/target/isolated-key-bands-qwen3vl-2026-10-08-overlays/index.json"
+    }
+  ],
+  "paired_request_checks": [
+    {
+      "experiment": "mug-hole",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "same_full_request_sha256": "cc71d71a4664a17643aed6a7ab034beffcc5b0cc19079e311154a65c329de3b6"
+    },
+    {
+      "experiment": "mug-hole",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "same_full_request_sha256": "6c410040f24daeaf4eac1539dbcf9031e54e60d22291eabbf6cf922c691a90c8"
+    },
+    {
+      "experiment": "mug-hole",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "same_full_request_sha256": "e187e5c4daccacad77184bc90642b4ec33594a3abaa15ed404e595b0fc33f529"
+    },
+    {
+      "experiment": "mug-contacts",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "same_full_request_sha256": "3262873714764e6a55a767fa13f0b0c52f40aee9a540cb0247a5773e3c6974e2"
+    },
+    {
+      "experiment": "mug-contacts",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "same_full_request_sha256": "6f86f2c9c76223db0466fbb01fcac668213eb7fca5709e802e6ddb6c5d80b2a6"
+    },
+    {
+      "experiment": "mug-contacts",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "same_full_request_sha256": "7298742354a2cab61e4b0d584f7a6cc49c4a666f5ae322bb303c344eee79d45a"
+    },
+    {
+      "experiment": "key-bands",
+      "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "same_full_request_sha256": "9df4921fe7ccf58b7fcf2830f34f012e2dccc33a6b4e65aee500924faad59ff8"
+    },
+    {
+      "experiment": "key-bands",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "same_full_request_sha256": "35e0bac7aa3a3f36d91f6d21de0e299762ba5c446774bf342f981fba5fd4c0b5"
+    },
+    {
+      "experiment": "key-bands",
+      "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "same_full_request_sha256": "9745ce14ae1ec48ed132353e6e359643aca964c7e0b1d75a3681cfdf9618973b"
+    },
+    {
+      "experiment": "key-bands",
+      "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "same_full_request_sha256": "72aa4e5176ef00f9e7fdf1100900aeb02b64359f357347ce7bcb0ca21519c126"
+    }
+  ],
+  "previous_mug_protocol_changes": [
+    {
+      "model": "qwen35",
+      "feature": "handle_opening",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "previous_report_sha256": "b1c802a9842d84c9aa894803426f7a637cdf4cca73bedeaf0f0a178875f4b2b6",
+      "previous_transport": "completed",
+      "previous_state": "observed",
+      "previous_region_entries": 1,
+      "isolated_state": "observed",
+      "isolated_region_entries": 1,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen35",
+      "feature": "handle_opening",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "previous_report_sha256": "b1c802a9842d84c9aa894803426f7a637cdf4cca73bedeaf0f0a178875f4b2b6",
+      "previous_transport": "unavailable",
+      "previous_state": null,
+      "previous_region_entries": null,
+      "isolated_state": "observed",
+      "isolated_region_entries": 1,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen35",
+      "feature": "handle_opening",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "previous_report_sha256": "b1c802a9842d84c9aa894803426f7a637cdf4cca73bedeaf0f0a178875f4b2b6",
+      "previous_transport": "unattempted",
+      "previous_state": null,
+      "previous_region_entries": null,
+      "isolated_state": "not_applicable",
+      "isolated_region_entries": null,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen3vl",
+      "feature": "handle_opening",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "previous_report_sha256": "88cd7130d92b8f71d20cdb0984f0adc0edc32f679b561beffc921578ea9e9011",
+      "previous_transport": "completed",
+      "previous_state": "absent",
+      "previous_region_entries": null,
+      "isolated_state": "observed",
+      "isolated_region_entries": 1,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen3vl",
+      "feature": "handle_opening",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "previous_report_sha256": "88cd7130d92b8f71d20cdb0984f0adc0edc32f679b561beffc921578ea9e9011",
+      "previous_transport": "completed",
+      "previous_state": "absent",
+      "previous_region_entries": null,
+      "isolated_state": "observed",
+      "isolated_region_entries": 1,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen3vl",
+      "feature": "handle_opening",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "previous_report_sha256": "88cd7130d92b8f71d20cdb0984f0adc0edc32f679b561beffc921578ea9e9011",
+      "previous_transport": "completed",
+      "previous_state": "not_applicable",
+      "previous_region_entries": null,
+      "isolated_state": "not_applicable",
+      "isolated_region_entries": null,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen35",
+      "feature": "handle_body_contacts",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "previous_report_sha256": "b1c802a9842d84c9aa894803426f7a637cdf4cca73bedeaf0f0a178875f4b2b6",
+      "previous_transport": "completed",
+      "previous_state": "observed",
+      "previous_region_entries": 2,
+      "isolated_state": "observed",
+      "isolated_region_entries": 2,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen35",
+      "feature": "handle_body_contacts",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "previous_report_sha256": "b1c802a9842d84c9aa894803426f7a637cdf4cca73bedeaf0f0a178875f4b2b6",
+      "previous_transport": "unavailable",
+      "previous_state": null,
+      "previous_region_entries": null,
+      "isolated_state": "observed",
+      "isolated_region_entries": 1,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen35",
+      "feature": "handle_body_contacts",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "previous_report_sha256": "b1c802a9842d84c9aa894803426f7a637cdf4cca73bedeaf0f0a178875f4b2b6",
+      "previous_transport": "unattempted",
+      "previous_state": null,
+      "previous_region_entries": null,
+      "isolated_state": "not_applicable",
+      "isolated_region_entries": null,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen3vl",
+      "feature": "handle_body_contacts",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "previous_report_sha256": "88cd7130d92b8f71d20cdb0984f0adc0edc32f679b561beffc921578ea9e9011",
+      "previous_transport": "completed",
+      "previous_state": "observed",
+      "previous_region_entries": 1,
+      "isolated_state": "observed",
+      "isolated_region_entries": 1,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen3vl",
+      "feature": "handle_body_contacts",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "previous_report_sha256": "88cd7130d92b8f71d20cdb0984f0adc0edc32f679b561beffc921578ea9e9011",
+      "previous_transport": "completed",
+      "previous_state": "observed",
+      "previous_region_entries": 1,
+      "isolated_state": "observed",
+      "isolated_region_entries": 1,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    },
+    {
+      "model": "qwen3vl",
+      "feature": "handle_body_contacts",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "previous_report_sha256": "88cd7130d92b8f71d20cdb0984f0adc0edc32f679b561beffc921578ea9e9011",
+      "previous_transport": "completed",
+      "previous_state": "not_applicable",
+      "previous_region_entries": null,
+      "isolated_state": "not_applicable",
+      "isolated_region_entries": null,
+      "protocol_changes": "Definitions preserved, prompt/schema component set narrowed; do not attribute solely to one internal cause."
+    }
+  ],
+  "local_latency": {
+    "qwen35": {
+      "requests": 10,
+      "mean_seconds": 4.971923699999752,
+      "min_seconds": 3.6755313999965438,
+      "max_seconds": 6.276950500003295,
+      "min_completion_tokens": 99,
+      "max_completion_tokens": 241,
+      "limitation": "Different output lengths and small selected dataset; not a throughput/quality benchmark or measured VRAM peak."
+    },
+    "qwen3vl": {
+      "requests": 10,
+      "mean_seconds": 3.660442079998029,
+      "min_seconds": 2.983762600000773,
+      "max_seconds": 3.961913999999524,
+      "min_completion_tokens": 79,
+      "max_completion_tokens": 136,
+      "limitation": "Different output lengths and small selected dataset; not a throughput/quality benchmark or measured VRAM peak."
+    }
+  },
+  "model_requests": 20
+}

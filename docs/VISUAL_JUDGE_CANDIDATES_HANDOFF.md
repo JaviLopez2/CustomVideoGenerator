@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: isolated components complete, geometry still unresolved
+
+Execution base `3e2b873217006c11196101a841334aefd4e49ccf`, code clean/unchanged; new uncommitted input profiles were hash-pinned before inference. Six independent cohorts: handle opening and contacts on3retentions each, shaft bands on4keys, both existing models; maximum20/actual20, allstop/0reasoning, no timeouts/truncation/retry/generation. Ten candidate request pairs identical; only prompt/schema component scope narrowed versus historical profile. [Report](ISOLATED_COMPONENTS_REPORT.md), [analysis](validation/isolated-components-analysis-2026-10-08.json).
+
+Handle openings now observed correctly by both, absence correctly nonapplicable. Contacts: Qwen3.5 red2/blue1; Qwen3-VL one region both, still aggregation/omission. Bands one region all4images for each model; B has no new hint, A size unmeasured, C nohint not identity proof. All comparisons uncertain/unavailable/no admission/rejection. Assistant pre-inference spatial guides and qualitative review distinct from unchanged human A/B/C and original labels; no gold/accuracy metric invented. 96 fresh focused tests pass exit0,3.66s; previous520+17/1skip historical on same source, not rerun. 20 SVGs and20offline replay rows hash-bound, six own8092closed, stable intact. Next independent geometry/localization verification audit; no new weights/deps or relaxed gates authorized. Closing SHA via history/origin; preserve ignored figures/assets/logs.
+
 ## Current checkpoint: spatial observations inspected, neither judge admission-ready
 
 Base `fe63c61dcf09bd1e6ec50dd3e43ac415d1f99ada`, already published. Added location-profile protocol with normalized boxes, strict bounds/duplicate/applicability checks and overlap hints only; raw replay adapter recognizes the version, no new caller/default wiring. Existing pinned model selector in harness preserves Qwen3.5 default; no new model resolution/download/routing. SVG overlay script embeds unchanged pixels; preserve ignored figures/index/logs/assets. [Full report](VISUAL_LOCATION_DIAGNOSTICS_REPORT.md).

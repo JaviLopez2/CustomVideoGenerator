@@ -1,0 +1,388 @@
+{
+  "execution_head": "3e2b873217006c11196101a841334aefd4e49ccf",
+  "harness_sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+  "model": {
+    "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "size": 5027784800,
+        "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+      },
+      {
+        "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+        "size": 1159029824,
+        "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "silver key",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+      "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "transport_status": "completed",
+      "request_sha256": "9df4921fe7ccf58b7fcf2830f34f012e2dccc33a6b4e65aee500924faad59ff8",
+      "unconstrained_request_sha256": "c44bae18f903e913cca72a0495fbc856cdf1b8d7500c9de012b731673a2211c5",
+      "prompt_sha256": "4a3d4c3f749fbd0a465d0b752fb0ebff4cdde5eea2731007958f46f071d2a5e6",
+      "response_format_sha256": "0485af9a3ecae6ec3639e180c17e7e2087f980faec782c97a5a8f3d23e07c06f",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"silver key visible with distinct blade and shaft\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [675, 454, 745, 530],\n          \"evidence\": \"visible band encircling shaft near top\"\n        }\n      ],\n      \"evidence\": \"band visible as distinct collar\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 119,
+        "prompt_tokens": 1532,
+        "total_tokens": 1651,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1532,
+        "prompt_ms": 1727.819,
+        "prompt_per_token_ms": 1.1278191906005222,
+        "prompt_per_second": 886.6669483319722,
+        "predicted_n": 119,
+        "predicted_ms": 2103.474,
+        "predicted_per_token_ms": 17.82605084745763,
+        "predicted_per_second": 56.097674608766255
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "silver key visible with distinct blade and shaft"
+        },
+        "components": {
+          "shaft_bands": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  675,
+                  454,
+                  745,
+                  530
+                ],
+                "evidence": "visible band encircling shaft near top"
+              }
+            ],
+            "evidence": "band visible as distinct collar"
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "shaft_bands": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "shaft_bands"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 3.9343246999997064
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "transport_status": "completed",
+      "request_sha256": "35e0bac7aa3a3f36d91f6d21de0e299762ba5c446774bf342f981fba5fd4c0b5",
+      "unconstrained_request_sha256": "6002ccd6ae5b2bfffacb30786f7f2a0ea5679ad827f1db1a1a20399cc15ec858",
+      "prompt_sha256": "4a3d4c3f749fbd0a465d0b752fb0ebff4cdde5eea2731007958f46f071d2a5e6",
+      "response_format_sha256": "0485af9a3ecae6ec3639e180c17e7e2087f980faec782c97a5a8f3d23e07c06f",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"silver key visible on maroon fabric, distinct metallic sheen and classic key shape\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [668, 454, 744, 530],\n          \"evidence\": \"visible collar band encircling the key shaft near the top\"\n        }\n      ],\n      \"evidence\": \"single visible band encircling key shaft\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 134,
+        "prompt_tokens": 1532,
+        "total_tokens": 1666,
+        "prompt_tokens_details": {
+          "cached_tokens": 494
+        }
+      },
+      "server_timings": {
+        "cache_n": 494,
+        "prompt_n": 1038,
+        "prompt_ms": 1428.349,
+        "prompt_per_token_ms": 1.376058766859345,
+        "prompt_per_second": 726.7131492373363,
+        "predicted_n": 134,
+        "predicted_ms": 2369.858,
+        "predicted_per_token_ms": 17.81848120300752,
+        "predicted_per_second": 56.12150601428439
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "silver key visible on maroon fabric, distinct metallic sheen and classic key shape"
+        },
+        "components": {
+          "shaft_bands": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  668,
+                  454,
+                  744,
+                  530
+                ],
+                "evidence": "visible collar band encircling the key shaft near the top"
+              }
+            ],
+            "evidence": "single visible band encircling key shaft"
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "shaft_bands": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "shaft_bands"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 3.961913999999524
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+      "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "transport_status": "completed",
+      "request_sha256": "9745ce14ae1ec48ed132353e6e359643aca964c7e0b1d75a3681cfdf9618973b",
+      "unconstrained_request_sha256": "ca4d7dc56730d03b164fb59acee544955748f41195e6f16c75e7cf8de01106e0",
+      "prompt_sha256": "4a3d4c3f749fbd0a465d0b752fb0ebff4cdde5eea2731007958f46f071d2a5e6",
+      "response_format_sha256": "0485af9a3ecae6ec3639e180c17e7e2087f980faec782c97a5a8f3d23e07c06f",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"silver key visible on wooden surface near red mug\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [508, 767, 678, 820],\n          \"evidence\": \"metallic band encircling key shaft\"\n        }\n      ],\n      \"evidence\": \"visible shaft band on key\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 1532,
+        "total_tokens": 1652,
+        "prompt_tokens_details": {
+          "cached_tokens": 494
+        }
+      },
+      "server_timings": {
+        "cache_n": 494,
+        "prompt_n": 1038,
+        "prompt_ms": 1427.513,
+        "prompt_per_token_ms": 1.3752533718689788,
+        "prompt_per_second": 727.1387370903102,
+        "predicted_n": 120,
+        "predicted_ms": 2118.152,
+        "predicted_per_token_ms": 17.799596638655462,
+        "predicted_per_second": 56.18104838557384
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "silver key visible on wooden surface near red mug"
+        },
+        "components": {
+          "shaft_bands": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  508,
+                  767,
+                  678,
+                  820
+                ],
+                "evidence": "metallic band encircling key shaft"
+              }
+            ],
+            "evidence": "visible shaft band on key"
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "shaft_bands": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "shaft_bands"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 3.6802470999973593
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+      "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "transport_status": "completed",
+      "request_sha256": "72aa4e5176ef00f9e7fdf1100900aeb02b64359f357347ce7bcb0ca21519c126",
+      "unconstrained_request_sha256": "b2520fcbd222b55826e1a18cf45f79dfe70cdbb3c5160159db9be94d1dcc6b96",
+      "prompt_sha256": "4a3d4c3f749fbd0a465d0b752fb0ebff4cdde5eea2731007958f46f071d2a5e6",
+      "response_format_sha256": "0485af9a3ecae6ec3639e180c17e7e2087f980faec782c97a5a8f3d23e07c06f",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"silver key visible on wooden surface near red mug\"\n  },\n  \"components\": {\n    \"shaft_bands\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [625, 702, 812, 750],\n          \"evidence\": \"metallic band encircling key shaft\"\n        }\n      ],\n      \"evidence\": \"visible band on key shaft\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 1532,
+        "total_tokens": 1652,
+        "prompt_tokens_details": {
+          "cached_tokens": 494
+        }
+      },
+      "server_timings": {
+        "cache_n": 494,
+        "prompt_n": 1038,
+        "prompt_ms": 1441.639,
+        "prompt_per_token_ms": 1.3888622350674373,
+        "prompt_per_second": 720.0138176062108,
+        "predicted_n": 120,
+        "predicted_ms": 2121.64,
+        "predicted_per_token_ms": 17.828907563025208,
+        "predicted_per_second": 56.08868611074452
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "silver key visible on wooden surface near red mug"
+        },
+        "components": {
+          "shaft_bands": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  625,
+                  702,
+                  812,
+                  750
+                ],
+                "evidence": "metallic band encircling key shaft"
+              }
+            ],
+            "evidence": "visible band on key shaft"
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "shaft_bands": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "shaft_bands"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 3.7195215999963693
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "valid_cloth_edit",
+      "reference_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "continuity_factual_768",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "qwen_continuity_factual_768",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    }
+  ],
+  "plan_sha256": "92f410d2738a5642749bdd6116dad76f554d51537d475b354aab5b4a85c515f8",
+  "inventory_protocol": "target-location-observations-1",
+  "prompt_protocol": "target-location-prompt-1",
+  "component_profile_sha256": "91b4bc61ad228dc404042cbd4fa6d054d8e86bf36f38dd31cb719ce06f5d88e6",
+  "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+  "observation_source": "scripts\\visual_location_observations.py",
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\isolated-key-bands-qwen3vl-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "structured_output": true,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 49272,
+  "load_seconds": 3.536822399997618,
+  "owned_server_closed": true
+}
