@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current experimental QA — 2026-10-08
+
+Base87c7ba5, audit1ec050a, implementationd8de6a5. Scoped offline visual QA and local no-thinking judge policy remain opt-in, without persisted flags or automatic routing. 387 tests and17 subtests pass,1 integration skipped. Retained16-image dataset: only3 decisions,13 uncertain; mean4.5073s/median4.2692s. Speed improved, perceptual reliability remains incomplete; factual/continuity identity is fail-closed. Zero new generations, models, dependencies, workflows, jobs or restarts. Stable HEAD remains6d27ba4963ffe469d635db71eaeec506a8ff4b61.
+
+Read [visual QA report](docs/VISUAL_QA_REPORT.md) and [current handoff](docs/VISUAL_QA_HANDOFF.md). Next requires stronger visual evidence and independent labels on existing artifacts; do not enable routing or assume the text-only8080 judge can see images.
+
 ## Current experimental candidate — 2026-10-08: Klein 4B integration
 
 Branch `factory/image-model-routing-modernization`, base `1c7de1a`. Explicit opt-in MPT caller, separate T2I/Edit aliases and quality/conditioning metadata; conservative technical fallback, no semantic fallback. Experimental scene admission requires available, explicit QA pass. Stable remains `6d27ba4963ffe469d635db71eaeec506a8ff4b61`.

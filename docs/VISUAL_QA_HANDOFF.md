@@ -21,3 +21,22 @@ Critical factual references/continuity automatically require identity evidence t
 Final test run: **387 passed, 17 subtests passed, 1 integration test skipped**, exit 0, 15.12s. [Log](validation/visual-qa-final-tests-2026-10-08.txt). Includes all previous 241 cases unchanged, 39 new visual QA cases and 107 additional LLM cases. One existing Starlette/httpx deprecation warning; no dependency installation.
 
 Final dataset: **3/16 decided**, TP1/TN2/FP0/FN0, uncertain13, unavailable0. Mean4.5073s, median4.2692s, max9.7788s; no p95 claimed. The absence of false verdicts on only three decisions does not establish classifier reliability. Use [final results](validation/visual-qa-final-results-2026-10-08.json), not pre-parser intermediate runs.
+
+## Closure and recovery
+
+Implementation commit `d8de6a5195eecb6db6e242736fc4d5e89509d0ab`. Read [full report and regression matrix](VISUAL_QA_REPORT.md). Obtain final local/remote SHA using Git rather than an impossible self-referential document hash. Final documentation checkpoint contains matrix, intermediate evidence, final access checks, reports and all updated handoffs. Publish by normal push on the experimental branch only, check 0/0 divergence and clean worktree.
+
+Run evaluator without generation:
+
+```powershell
+$env:PYTHONPATH = (Get-Location).Path
+& 'D:\Apps\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\python.exe' -B scripts/evaluate_visual_qa.py --dataset docs/validation/visual-qa-dataset-2026-10-08.json --output local_image_stack/experiments/bridge/target/qa-next-results.json
+```
+
+It refuses to overwrite evidence. `--legacy-fast` invokes the local text judge and may time out; do not run repeated calls without a concrete latency hypothesis. Main result is direct engine QA, not end-to-end rendering. Preserve target/autonomous-2026-10-08, target/resolution-details-2026-10-07, root/single-ref artifacts and Comfy input references before moving/archiving.
+
+Tests: from this worktree, `MPT_RUN_INTEGRATION_TESTS=0`, Python `-B -m pytest -q` on the paths in `docs/validation/visual-qa-final-tests-2026-10-08.txt` / this checkpoint's report. The exact reproducible suite command is in the report. Set `MPT_KLEIN_BRIDGE_BIN` to `local_image_stack\experiments\bridge\target\debug\klein4b-experimental-bridge.exe` for existing Rust bridge tests. No GPU/downloads needed; do not install global dependencies.
+
+Closing health:8080 200,8090 404,8188 200; Comfy queue0/0;8091 not started. Factory/runs and19 log files readable; only1024 bytes read to verify access, no log contents printed. Stable tracked files unchanged, HEAD protected; untracked backups remain. [Access record](validation/visual-qa-final-access-checks-2026-10-08.json).
+
+Next justified work: stronger visual extractor/judge for internal structure/count and temporal state on this dataset, independent label review, and diagnosis of bounded judge latency. Existing text-only endpoint cannot supply missing visual evidence. A heavyweight model/download/dependency or server change needs a separate decision; no automatic promotion, three-reference test or new image generation follows this checkpoint.

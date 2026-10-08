@@ -92,3 +92,14 @@ Sobre `6ba2402`, tres solicitudes al bridge experimental8091: continuidad512, T2
 ### Cierre autónomo — 2026-10-08
 
 Comandos, pytest, lectura/escritura de inputs propios, generación secuencial, sensores, caller MPT aislado y QA local funcionan con escalaciones específicas. No permisos permanentes nuevos.10solicitudes Klein+2comparaciones;241tests+2subtests aprobados. Cola vacía/8091libre, servicios originales responden y stable/source externo conservados. Fallo puntual de revisión automática por límite de uso resuelto tras nuevo encargo de continuar; no se eludió la revisión ni duplicó el comando. Contrato y evidencias en [informe](FLUX_KLEIN_4B_AUTONOMOUS_REPORT.md). El principal bloqueo actual es calidad/admisión QA, no acceso.
+
+
+## Checkpoint 2026-10-08: QA sobre artifacts guardados
+
+Base limpia87c7ba568b19ed48d041b625f269f5112f0ef4fd. Dataset16 casos, auditoría real del coste Florence/LLM y motor QA opt-in de cantidad/silueta/estado con caché, cortes tempranos y judge local acotado sin thinking. Commits1ec050a9b5dc2268dbf5a501b4b4fb663c659019 (dataset/auditoría) y d8de6a5195eecb6db6e242736fc4d5e89509d0ab (código/tests); identificar checkpoint de cierre mediante el historial del informe.
+
+387tests+17subtests pasan,1 integración omitida, exit0. Matriz final:TP1/TN2/FP0/FN0,13uncertain/0unavailable; solo3/16decisiones (18,75%). Media4,5073s/mediana4,2692s, frente a69,169s del QA anterior instrumentado y91,875–101,422s históricos. No equivalencia de precisión: no se ha demostrado conteo fiable de agujas/llaves fusionadas ni identidad/progresión. Un judge sin thinking tomó7,8554s HTTP en un probe, pero luego hubo timeouts; no se demuestra incompatibilidad JSON grammar.
+
+Zero nuevas generaciones/benchmarks GPU/descargas/dependencias/workflows/jobs/restarts. No flags persistidos, ni routing/promotion. Contratos vacíos no verifican Klein; requisitos factuales/continuidad quedan fail-closed sin identidad fuerte. Stable HEAD6d27ba4963ffe469d635db71eaeec506a8ff4b61 intacto, backups untracked conservados; cola0/0,8091 no iniciado.
+
+[Informe QA](VISUAL_QA_REPORT.md), [handoff QA](VISUAL_QA_HANDOFF.md), [dataset](validation/visual-qa-dataset-2026-10-08.json), [matriz final](validation/visual-qa-final-results-2026-10-08.json), [tests](validation/visual-qa-final-tests-2026-10-08.txt). Siguiente: evaluar visión fuerte sobre el mismo dataset y adjudicar labels independientemente. El servidor8080 declara vision=false; cualquier descarga o modelo/dependencia pesada requiere una decisión separada. No seguir generando para suplir esa falta de evidencia.

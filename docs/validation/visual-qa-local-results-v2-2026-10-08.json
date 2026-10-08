@@ -1,0 +1,2513 @@
+{
+  "dataset": "docs/validation/visual-qa-dataset-2026-10-08.json",
+  "schema_version": 1,
+  "rows": [
+    {
+      "id": "temporal_warm_512",
+      "expected": "pass",
+      "review_reason": "Identity and framing preserved with clear steam",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "mug",
+            "observed_count": 1,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "steam"
+            ],
+            "violations": [],
+            "unknown_absence": []
+          }
+        ],
+        "caption": "A red coffee mug is on a wooden table. There is a window behind the mug. There are white smoke coming out of the coffee mug.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A red coffee mug is on a wooden table. There is a window behind the mug. There are white smoke coming out of the coffee mug.",
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 5.4656371999999465,
+            "infer_seconds": 1.4655125999997836,
+            "seconds": 6.943566299999475,
+            "cache_hit": false,
+            "image_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  162,
+                  174,
+                  429,
+                  413
+                ]
+              ],
+              "labels": [
+                "coffee cup"
+              ]
+            },
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 5.000001692678779e-07,
+            "infer_seconds": 1.2456898000000365,
+            "seconds": 1.2519474000000628,
+            "cache_hit": false,
+            "image_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": "A red coffee mug is sitting on a light colored wooden table. There is a window behind the table with white curtains on it.",
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 7.999997251317836e-07,
+            "infer_seconds": 1.4308117000000493,
+            "seconds": 1.4365124999994805,
+            "cache_hit": false,
+            "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          }
+        ],
+        "seconds": 9.635467000000062,
+        "cache_hit": false,
+        "image_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "unrequested_text",
+      "expected": "fail",
+      "review_reason": "Invented dial lettering violates no-text requirement",
+      "new": {
+        "verdict": "fail",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "text",
+            "status": "fail",
+            "detected_text": [
+              "LONGINER"
+            ],
+            "reason": "visible alphabetic text"
+          }
+        ],
+        "caption": "A pocket watch is laying on a dark blue fabric. The watch face is white with black numbers. The hands on the watch are black. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A pocket watch is laying on a dark blue fabric. The watch face is white with black numbers. The hands on the watch are black. There is a key next to the watch.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 7.999997251317836e-07,
+            "infer_seconds": 1.5408772000000681,
+            "seconds": 1.5672339000002466,
+            "cache_hit": false,
+            "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  82,
+                  439,
+                  447,
+                  878
+                ]
+              ],
+              "labels": [
+                "clock"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 6.000000212225132e-07,
+            "infer_seconds": 1.1635669999996026,
+            "seconds": 1.1946090000001277,
+            "cache_hit": false,
+            "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": "LONGINER",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 7.999997251317836e-07,
+            "infer_seconds": 1.1322676999998293,
+            "seconds": 1.160769099999925,
+            "cache_hit": false,
+            "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+            "task": "<OCR>",
+            "query": ""
+          }
+        ],
+        "seconds": 3.928514599999289,
+        "cache_hit": false,
+        "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "valid_cloth_edit",
+      "expected": "pass",
+      "review_reason": "Cloth recolor and lettering removal with objects preserved visually",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "text",
+            "status": "pass",
+            "detected_text": [],
+            "reason": "no alphabetic text detected; OCR recall limited"
+          },
+          {
+            "kind": "geometry",
+            "status": "uncertain",
+            "silhouette_score": 0.99871,
+            "reason": "outer shape matches; requested internal structure not established"
+          }
+        ],
+        "caption": "A pocket watch is laying on a maroon cloth. The watch face is white with black numbers. The hands of the watch are black. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A pocket watch is laying on a maroon cloth. The watch face is white with black numbers. The hands of the watch are black. There is a key next to the watch.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 1.100000190490391e-06,
+            "infer_seconds": 1.692189800000051,
+            "seconds": 1.7245781999999963,
+            "cache_hit": false,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  81,
+                  439,
+                  447,
+                  879
+                ]
+              ],
+              "labels": [
+                "clock"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 8.999995770864189e-07,
+            "infer_seconds": 1.2484708000001774,
+            "seconds": 1.2805484000000433,
+            "cache_hit": false,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": "1",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.2113650000001144,
+            "seconds": 1.2394108999997115,
+            "cache_hit": false,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<OCR>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    270,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    540
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.561576099999911,
+            "seconds": 1.590487000000394,
+            "cache_hit": false,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    246,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    273,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    533
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 5.000001692678779e-07,
+            "infer_seconds": 1.520849399999861,
+            "seconds": 1.5526786999998876,
+            "cache_hit": false,
+            "image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          }
+        ],
+        "seconds": 7.399261499999739,
+        "cache_hit": false,
+        "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "identity_style_unframed_512",
+      "expected": "pass",
+      "review_reason": "Watch and key identities retained with allowed lighting change",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "geometry",
+            "status": "uncertain",
+            "silhouette_score": 0.616,
+            "reason": "normalized segmented outer shape; internal structure not certified"
+          }
+        ],
+        "caption": "A pocket watch is sitting on a red cloth. The watch face is white with black numbers. The hands of the watch are black. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A pocket watch is sitting on a red cloth. The watch face is white with black numbers. The hands of the watch are black. There is a key next to the watch.",
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 5.000001692678779e-07,
+            "infer_seconds": 1.5566380999998728,
+            "seconds": 1.5643156000005547,
+            "cache_hit": false,
+            "image_sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  76,
+                  130,
+                  303,
+                  384
+                ]
+              ],
+              "labels": [
+                "clock"
+              ]
+            },
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 2.999995558639057e-07,
+            "infer_seconds": 1.255181800000173,
+            "seconds": 1.262359600000309,
+            "cache_hit": false,
+            "image_sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    0,
+                    0,
+                    511,
+                    511,
+                    0,
+                    511
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.2690684999997757,
+            "seconds": 1.2773372000001473,
+            "cache_hit": false,
+            "image_sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    270,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    540
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.0017818000005718204,
+            "cache_hit": true,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          }
+        ],
+        "seconds": 4.112342200000057,
+        "cache_hit": false,
+        "image_sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "identity_style_768",
+      "expected": "pass",
+      "review_reason": "Watch and key identities retained with allowed lighting change",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "geometry",
+            "status": "uncertain",
+            "silhouette_score": 0.99994,
+            "reason": "outer shape matches; requested internal structure not established"
+          }
+        ],
+        "caption": "A pocket watch is laying on a red cloth. The watch face is white with black numbers. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A pocket watch is laying on a red cloth. The watch face is white with black numbers. There is a key next to the watch.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 6.000000212225132e-07,
+            "infer_seconds": 1.5179103999998915,
+            "seconds": 1.5471461999995881,
+            "cache_hit": false,
+            "image_sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  81,
+                  439,
+                  447,
+                  879
+                ]
+              ],
+              "labels": [
+                "clock"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 5.000001692678779e-07,
+            "infer_seconds": 1.2861692999995284,
+            "seconds": 1.3129501000003074,
+            "cache_hit": false,
+            "image_sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    243,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    270,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    540
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 3.0000046535860747e-07,
+            "infer_seconds": 1.6340002999995704,
+            "seconds": 1.659657299999708,
+            "cache_hit": false,
+            "image_sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    270,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    540
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.0015364000000772648,
+            "cache_hit": true,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          }
+        ],
+        "seconds": 4.529490699999769,
+        "cache_hit": false,
+        "image_sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "style_identity_reversed_768",
+      "expected": "pass",
+      "review_reason": "Watch and key identities retained with allowed lighting change",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "geometry",
+            "status": "uncertain",
+            "silhouette_score": 1.0,
+            "reason": "outer shape matches; requested internal structure not established"
+          }
+        ],
+        "caption": "A pocket watch is laying on a red cloth. The watch face is white with black numbers. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A pocket watch is laying on a red cloth. The watch face is white with black numbers. There is a key next to the watch.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 5.000001692678779e-07,
+            "infer_seconds": 1.5189546999999948,
+            "seconds": 1.5450761000001876,
+            "cache_hit": false,
+            "image_sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  81,
+                  439,
+                  447,
+                  879
+                ]
+              ],
+              "labels": [
+                "clock"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.3064723999996204,
+            "seconds": 1.3322840999999244,
+            "cache_hit": false,
+            "image_sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    270,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    540
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 3.0000046535860747e-07,
+            "infer_seconds": 1.6126682000003711,
+            "seconds": 1.6413793000001533,
+            "cache_hit": false,
+            "image_sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    270,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    540
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.0014934999999240972,
+            "cache_hit": true,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          }
+        ],
+        "seconds": 4.529319000000214,
+        "cache_hit": false,
+        "image_sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "continuity_factual_768",
+      "expected": "fail",
+      "review_reason": "Head hole and tooth geometry differ from reference",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "geometry",
+            "status": "uncertain",
+            "silhouette_score": 0.56442,
+            "reason": "normalized segmented outer shape; internal structure not certified"
+          }
+        ],
+        "caption": "A red mug is on a wooden table. There is a window behind the mug. There are white smoke coming out of the cup.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A red mug is on a wooden table. There is a window behind the mug. There are white smoke coming out of the cup.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 3.0000046535860747e-07,
+            "infer_seconds": 1.5047262000007322,
+            "seconds": 1.5266014999997424,
+            "cache_hit": false,
+            "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  173,
+                  511,
+                  687,
+                  1003
+                ]
+              ],
+              "labels": [
+                "coffee cup"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 7.000007826718502e-07,
+            "infer_seconds": 1.3128047000000151,
+            "seconds": 1.3331277999996018,
+            "cache_hit": false,
+            "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    181,
+                    764,
+                    767,
+                    1375,
+                    0,
+                    1375,
+                    0,
+                    853
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.2546159000003172,
+            "seconds": 1.274521100000129,
+            "cache_hit": false,
+            "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "silver key"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    533,
+                    626,
+                    571,
+                    626,
+                    571,
+                    720,
+                    551,
+                    849,
+                    616,
+                    859,
+                    616,
+                    933,
+                    545,
+                    933,
+                    545,
+                    943,
+                    504,
+                    943
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 3.0000046535860747e-07,
+            "infer_seconds": 1.3585846000005404,
+            "seconds": 1.3854591999997865,
+            "cache_hit": false,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "silver key"
+          }
+        ],
+        "seconds": 5.554625499999929,
+        "cache_hit": false,
+        "image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "mpt_t2i_text_contract_768",
+      "expected": "fail",
+      "review_reason": "Three hands visible where two requested",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          }
+        ],
+        "caption": "A pocket watch is laying on a dark blue fabric. The watch face is white with black numbers. The hands of the watch are black. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A pocket watch is laying on a dark blue fabric. The watch face is white with black numbers. The hands of the watch are black. There is a key next to the watch.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.5938217000002624,
+            "seconds": 1.623803799999223,
+            "cache_hit": false,
+            "image_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  82,
+                  441,
+                  448,
+                  879
+                ]
+              ],
+              "labels": [
+                "clock"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 6.999998731771484e-07,
+            "infer_seconds": 1.1756866000005175,
+            "seconds": 1.2029646000000866,
+            "cache_hit": false,
+            "image_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+            "task": "<OD>",
+            "query": ""
+          }
+        ],
+        "seconds": 2.830106999999771,
+        "cache_hit": false,
+        "image_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "mpt_temporal_hot_768",
+      "expected": "pass",
+      "review_reason": "Same mug with visible steam",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "mug",
+            "observed_count": 1,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "steam"
+            ],
+            "violations": [],
+            "unknown_absence": []
+          }
+        ],
+        "caption": "A red mug is sitting on a wooden table. There is a window behind the mug. There are white smoke coming out of the top of the mug on the table.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A red mug is sitting on a wooden table. There is a window behind the mug. There are white smoke coming out of the top of the mug on the table.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 1.9999970390927047e-07,
+            "infer_seconds": 1.6128596999997171,
+            "seconds": 1.633410599999479,
+            "cache_hit": false,
+            "image_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  169,
+                  570,
+                  729,
+                  1089
+                ]
+              ],
+              "labels": [
+                "coffee cup"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 5.000001692678779e-07,
+            "infer_seconds": 1.2668187999997826,
+            "seconds": 1.2910890000002837,
+            "cache_hit": false,
+            "image_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": "A red coffee mug is sitting on a light colored wooden table. There is a window behind the table with white curtains on it.",
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.0005394999998316052,
+            "cache_hit": true,
+            "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          }
+        ],
+        "seconds": 2.927969100000155,
+        "cache_hit": false,
+        "image_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "mpt_temporal_cooled_768",
+      "expected": "uncertain",
+      "review_reason": "Cool illumination changed; complete absence of vapor/temperature not certified",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "mug",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "still liquid"
+            ],
+            "violations": [],
+            "unknown_absence": [
+              "steam"
+            ]
+          }
+        ],
+        "caption": "A red coffee mug is sitting on a wooden table. There is a window behind the mug. There are blue curtains on the window.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A red coffee mug is sitting on a wooden table. There is a window behind the mug. There are blue curtains on the window.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 2.999995558639057e-07,
+            "infer_seconds": 1.4947646000000532,
+            "seconds": 1.5125006000007488,
+            "cache_hit": false,
+            "image_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  156,
+                  505,
+                  747,
+                  1080
+                ]
+              ],
+              "labels": [
+                "mug"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.27407249999942,
+            "seconds": 1.2926472999997713,
+            "cache_hit": false,
+            "image_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": "A red mug is sitting on a wooden table. There is a window behind the mug. There are white smoke coming out of the top of the mug on the table.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.0011684999999488355,
+            "cache_hit": true,
+            "image_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          }
+        ],
+        "seconds": 2.8101071999999476,
+        "cache_hit": false,
+        "image_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "mpt_fallback_identity_style_seed43",
+      "expected": "fail",
+      "review_reason": "Duplicated or fused keys; fallback technical success does not imply semantic acceptance",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "geometry",
+            "status": "uncertain",
+            "silhouette_score": 0.98466,
+            "reason": "outer shape matches; requested internal structure not established"
+          }
+        ],
+        "caption": "A pocket watch is laying on a red cloth. The watch face is white with gold trim. The hands on the watch are black. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A pocket watch is laying on a red cloth. The watch face is white with gold trim. The hands on the watch are black. There is a key next to the watch.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 3.9999940781854093e-07,
+            "infer_seconds": 1.599866500000644,
+            "seconds": 1.6262704000000667,
+            "cache_hit": false,
+            "image_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  81,
+                  439,
+                  448,
+                  882
+                ]
+              ],
+              "labels": [
+                "clock"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 3.9999940781854093e-07,
+            "infer_seconds": 1.2399231000008513,
+            "seconds": 1.2682266000001619,
+            "cache_hit": false,
+            "image_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    148,
+                    465,
+                    190,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    778,
+                    383,
+                    862,
+                    276,
+                    884,
+                    173,
+                    864,
+                    113,
+                    816,
+                    81,
+                    701,
+                    91,
+                    633,
+                    143,
+                    559
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.5634884000000966,
+            "seconds": 1.5985898999997517,
+            "cache_hit": false,
+            "image_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    270,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    540
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.001552800000354182,
+            "cache_hit": true,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          }
+        ],
+        "seconds": 4.502473999999893,
+        "cache_hit": false,
+        "image_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "mpt_explicit_quantity_seed43",
+      "expected": "fail",
+      "review_reason": "Duplicated or fused keys; fallback technical success does not imply semantic acceptance",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "geometry",
+            "status": "uncertain",
+            "silhouette_score": 0.98195,
+            "reason": "outer shape matches; requested internal structure not established"
+          }
+        ],
+        "caption": "A pocket watch is laying on a red cloth. The watch face is white with gold trim. The hands on the watch are black. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A pocket watch is laying on a red cloth. The watch face is white with gold trim. The hands on the watch are black. There is a key next to the watch.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 1.9999970390927047e-07,
+            "infer_seconds": 1.6436094999999113,
+            "seconds": 1.670430999999553,
+            "cache_hit": false,
+            "image_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  81,
+                  439,
+                  448,
+                  885
+                ]
+              ],
+              "labels": [
+                "clock"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 6.000000212225132e-07,
+            "infer_seconds": 1.2620120999999926,
+            "seconds": 1.2910133999994287,
+            "cache_hit": false,
+            "image_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    520,
+                    384,
+                    559,
+                    448,
+                    662,
+                    448,
+                    756,
+                    396,
+                    852,
+                    276,
+                    888,
+                    167,
+                    862,
+                    106,
+                    807,
+                    79,
+                    691,
+                    106,
+                    614,
+                    177,
+                    533
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 3.0000046535860747e-07,
+            "infer_seconds": 1.5195259000001897,
+            "seconds": 1.5467396000003646,
+            "cache_hit": false,
+            "image_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    149,
+                    465,
+                    192,
+                    439,
+                    245,
+                    439,
+                    276,
+                    465,
+                    276,
+                    513,
+                    276,
+                    513,
+                    387,
+                    559,
+                    448,
+                    662,
+                    448,
+                    662,
+                    442,
+                    775,
+                    379,
+                    852,
+                    270,
+                    881,
+                    167,
+                    862,
+                    102,
+                    797,
+                    81,
+                    691,
+                    102,
+                    614,
+                    167,
+                    540
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.0014578000000255997,
+            "cache_hit": true,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "pocket watch and silver key"
+          }
+        ],
+        "seconds": 4.517648000000008,
+        "cache_hit": false,
+        "image_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "z_image_t2i_768",
+      "expected": "fail",
+      "review_reason": "Three watch hands",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "pocket watch",
+            "reason": "conflicting local count evidence"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "watch hands",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          }
+        ],
+        "caption": "A gold pocket watch is laying on a dark colored cloth. The watch face is white with black numbers. There is a key next to the watch.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A gold pocket watch is laying on a dark colored cloth. The watch face is white with black numbers. There is a key next to the watch.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.5477756999998746,
+            "seconds": 1.5725735000005443,
+            "cache_hit": false,
+            "image_sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  40,
+                  611,
+                  605,
+                  1173
+                ],
+                [
+                  36,
+                  469,
+                  739,
+                  1296
+                ]
+              ],
+              "labels": [
+                "clock",
+                "watch"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 5.000001692678779e-07,
+            "infer_seconds": 1.3003509000000122,
+            "seconds": 1.3261234000001423,
+            "cache_hit": false,
+            "image_sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+            "task": "<OD>",
+            "query": ""
+          }
+        ],
+        "seconds": 2.90139309999995,
+        "cache_hit": false,
+        "image_sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "qwen_continuity_factual_768",
+      "expected": "pass",
+      "review_reason": "Key more faithful to reference in documented review",
+      "new": {
+        "verdict": "uncertain",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "silver key",
+            "observed_count": null,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "geometry",
+            "status": "uncertain",
+            "silhouette_score": 0.75284,
+            "reason": "normalized segmented outer shape; internal structure not certified"
+          }
+        ],
+        "caption": "A red coffee mug is sitting on a wooden table. There is a window behind the mug with white curtains on it. There are white smoke coming out of the window. There's a key next to the mug on the table.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A red coffee mug is sitting on a wooden table. There is a window behind the mug with white curtains on it. There are white smoke coming out of the window. There's a key next to the mug on the table.",
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 2.999995558639057e-07,
+            "infer_seconds": 1.7009674999999334,
+            "seconds": 1.7162914999998975,
+            "cache_hit": false,
+            "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  221,
+                  577,
+                  667,
+                  1047
+                ]
+              ],
+              "labels": [
+                "coffee cup"
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 4.000003173132427e-07,
+            "infer_seconds": 1.282014899999922,
+            "seconds": 1.2973746999996365,
+            "cache_hit": false,
+            "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    0,
+                    957,
+                    0,
+                    957,
+                    767,
+                    1375,
+                    0,
+                    1375
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 2.999995558639057e-07,
+            "infer_seconds": 1.2016912999997658,
+            "seconds": 1.2182671000000482,
+            "cache_hit": false,
+            "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "silver key"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    533,
+                    626,
+                    571,
+                    626,
+                    571,
+                    720,
+                    551,
+                    849,
+                    616,
+                    859,
+                    616,
+                    933,
+                    545,
+                    933,
+                    545,
+                    943,
+                    504,
+                    943
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              768,
+              1376
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.0016705000007277704,
+            "cache_hit": true,
+            "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "silver key"
+          }
+        ],
+        "seconds": 4.249053900000035,
+        "cache_hit": false,
+        "image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "root_mug",
+      "expected": "pass",
+      "review_reason": "Single complete red mug",
+      "new": {
+        "verdict": "pass",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "mug",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          }
+        ],
+        "caption": "A red coffee mug is sitting on a light colored wooden table. There is a window behind the table with white curtains on it.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A red coffee mug is sitting on a light colored wooden table. There is a window behind the table with white curtains on it.",
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 0,
+            "infer_seconds": 0,
+            "seconds": 0.0004167000006418675,
+            "cache_hit": true,
+            "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  161,
+                  168,
+                  429,
+                  411
+                ]
+              ],
+              "labels": [
+                "mug"
+              ]
+            },
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 5.000001692678779e-07,
+            "infer_seconds": 1.220596399999522,
+            "seconds": 1.2265695999994932,
+            "cache_hit": false,
+            "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+            "task": "<OD>",
+            "query": ""
+          }
+        ],
+        "seconds": 1.227979199999936,
+        "cache_hit": false,
+        "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+        "qa_version": "visual-qa-2"
+      }
+    },
+    {
+      "id": "valid_mug_recolor",
+      "expected": "pass",
+      "review_reason": "Blue recolor preserves mug shape and framing",
+      "new": {
+        "verdict": "pass",
+        "available": true,
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "mug",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "geometry",
+            "status": "pass",
+            "silhouette_score": 0.99259,
+            "reason": "normalized segmented outer shape; internal structure not certified"
+          }
+        ],
+        "caption": "A blue coffee mug is sitting on a light colored wooden table. There is a window behind the table with white curtains on it.",
+        "observations": [
+          {
+            "available": true,
+            "value": "A blue coffee mug is sitting on a light colored wooden table. There is a window behind the table with white curtains on it.",
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 3.9999940781854093e-07,
+            "infer_seconds": 1.4873085999997784,
+            "seconds": 1.4922864999998637,
+            "cache_hit": false,
+            "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+            "task": "<MORE_DETAILED_CAPTION>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "bboxes": [
+                [
+                  160,
+                  168,
+                  429,
+                  411
+                ]
+              ],
+              "labels": [
+                "mug"
+              ]
+            },
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 3.9999940781854093e-07,
+            "infer_seconds": 1.2859460999998191,
+            "seconds": 1.290994199999659,
+            "cache_hit": false,
+            "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+            "task": "<OD>",
+            "query": ""
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    162,
+                    180,
+                    174,
+                    174,
+                    211,
+                    169,
+                    279,
+                    168,
+                    338,
+                    175,
+                    347,
+                    183,
+                    347,
+                    208,
+                    355,
+                    208,
+                    375,
+                    205,
+                    400,
+                    211,
+                    419,
+                    226,
+                    429,
+                    253,
+                    429,
+                    275,
+                    423,
+                    295,
+                    409,
+                    313,
+                    391,
+                    334,
+                    371,
+                    349,
+                    351,
+                    366,
+                    332,
+                    372,
+                    328,
+                    391,
+                    320,
+                    402,
+                    296,
+                    409,
+                    264,
+                    412,
+                    228,
+                    409,
+                    199,
+                    402,
+                    182,
+                    391,
+                    166,
+                    313,
+                    161,
+                    246
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 3.0000046535860747e-07,
+            "infer_seconds": 1.7769414999993387,
+            "seconds": 1.7826162000001204,
+            "cache_hit": false,
+            "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "ceramic mug"
+          },
+          {
+            "available": true,
+            "value": {
+              "polygons": [
+                [
+                  [
+                    163,
+                    179,
+                    171,
+                    175,
+                    203,
+                    170,
+                    253,
+                    168,
+                    290,
+                    169,
+                    325,
+                    172,
+                    345,
+                    178,
+                    348,
+                    207,
+                    354,
+                    207,
+                    372,
+                    205,
+                    396,
+                    208,
+                    414,
+                    219,
+                    426,
+                    238,
+                    430,
+                    264,
+                    426,
+                    289,
+                    416,
+                    309,
+                    398,
+                    329,
+                    379,
+                    345,
+                    354,
+                    362,
+                    331,
+                    371,
+                    327,
+                    390,
+                    320,
+                    401,
+                    297,
+                    408,
+                    268,
+                    412,
+                    239,
+                    412,
+                    213,
+                    407,
+                    187,
+                    397,
+                    180,
+                    390,
+                    166,
+                    314,
+                    162,
+                    249,
+                    162,
+                    205
+                  ]
+                ]
+              ],
+              "labels": [
+                ""
+              ]
+            },
+            "size": [
+              512,
+              512
+            ],
+            "load_seconds": 3.0000046535860747e-07,
+            "infer_seconds": 1.8200984999994034,
+            "seconds": 1.8248958000003768,
+            "cache_hit": false,
+            "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+            "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+            "query": "ceramic mug"
+          }
+        ],
+        "seconds": 6.395419400000719,
+        "cache_hit": false,
+        "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+        "qa_version": "visual-qa-2"
+      }
+    }
+  ],
+  "baseline_label": "Legacy decision logic + fast local transport, NOT historical unbounded-thinking latency",
+  "generation_requests": 0,
+  "automatic_qa_retries": 0,
+  "metrics": {
+    "new": {
+      "true_positives": 1,
+      "true_negatives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "uncertain": 13,
+      "unavailable": 0,
+      "mean_seconds": 4.503198212499967,
+      "median_seconds": 4.375763949999964,
+      "max_seconds": 9.635467000000062,
+      "decided_cases": 3,
+      "cases_with_uncertain_expected": 1
+    }
+  },
+  "repeat_identical": {
+    "verdict": "uncertain",
+    "available": true,
+    "checks": [
+      {
+        "kind": "quantity",
+        "status": "uncertain",
+        "subject": "mug",
+        "observed_count": 1,
+        "reason": "caption/recognition does not establish exact cardinality"
+      },
+      {
+        "kind": "temporal",
+        "status": "uncertain",
+        "state_score": null,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "missing/ambiguous state evidence",
+        "missing_evidence": [
+          "steam"
+        ],
+        "violations": [],
+        "unknown_absence": []
+      }
+    ],
+    "caption": "A red coffee mug is on a wooden table. There is a window behind the mug. There are white smoke coming out of the coffee mug.",
+    "observations": [
+      {
+        "available": true,
+        "value": "A red coffee mug is on a wooden table. There is a window behind the mug. There are white smoke coming out of the coffee mug.",
+        "size": [
+          512,
+          512
+        ],
+        "load_seconds": 5.4656371999999465,
+        "infer_seconds": 1.4655125999997836,
+        "seconds": 6.943566299999475,
+        "cache_hit": false,
+        "image_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+        "task": "<MORE_DETAILED_CAPTION>",
+        "query": ""
+      },
+      {
+        "available": true,
+        "value": {
+          "bboxes": [
+            [
+              162,
+              174,
+              429,
+              413
+            ]
+          ],
+          "labels": [
+            "coffee cup"
+          ]
+        },
+        "size": [
+          512,
+          512
+        ],
+        "load_seconds": 5.000001692678779e-07,
+        "infer_seconds": 1.2456898000000365,
+        "seconds": 1.2519474000000628,
+        "cache_hit": false,
+        "image_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+        "task": "<OD>",
+        "query": ""
+      },
+      {
+        "available": true,
+        "value": "A red coffee mug is sitting on a light colored wooden table. There is a window behind the table with white curtains on it.",
+        "size": [
+          512,
+          512
+        ],
+        "load_seconds": 7.999997251317836e-07,
+        "infer_seconds": 1.4308117000000493,
+        "seconds": 1.4365124999994805,
+        "cache_hit": false,
+        "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+        "task": "<MORE_DETAILED_CAPTION>",
+        "query": ""
+      }
+    ],
+    "seconds": 0.0010126000006493996,
+    "cache_hit": true,
+    "image_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+    "qa_version": "visual-qa-2"
+  },
+  "limits": [
+    "16 curated cases, no independent human adjudication; metrics preliminary.",
+    "Unknown expected case excluded from binary confusion counts; abstentions reported separately.",
+    "No p95 reported for this small dataset.",
+    "New geometry masks do not certify internal structure."
+  ]
+}
