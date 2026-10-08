@@ -1,0 +1,54 @@
+{
+  "base_head": "87c7ba568b19ed48d041b625f269f5112f0ef4fd",
+  "stages": {
+    "florence_load_or_reuse": [
+      7.6192
+    ],
+    "caption_including_load": [
+      9.7834
+    ],
+    "llm_response_including_prompt_transport_extract": [
+      59.3853
+    ],
+    "judge_including_prompt_parse": [
+      59.3854
+    ]
+  },
+  "llm_http_seconds": 58.964,
+  "llm": {
+    "reasoning_characters": 5642,
+    "final_content_characters": 543,
+    "finish_reason": "stop",
+    "usage": {
+      "completion_tokens": 1635,
+      "prompt_tokens": 533,
+      "total_tokens": 2168,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cached_tokens": 0
+      }
+    },
+    "response_timings": {
+      "cache_n": 0,
+      "prompt_n": 533,
+      "prompt_ms": 1808.128,
+      "prompt_per_token_ms": 3.392360225140713,
+      "prompt_per_second": 294.7800155741187,
+      "predicted_n": 1635,
+      "predicted_ms": 56994.461,
+      "predicted_per_token_ms": 34.88033108935129,
+      "predicted_per_second": 28.66945263330063
+    }
+  },
+  "wall_seconds": 69.169,
+  "qa": {
+    "available": true,
+    "status": "pass",
+    "verdict": "uncertain",
+    "caption": "A pocket watch is laying on a dark blue cloth. The face of the watch is white and has black numbers on it. There is a key next to the watch.",
+    "semantic_score": 0.5,
+    "required_feature_coverage": 0.5
+  },
+  "limits": "Reasoning inferred only from response metadata and length; no reasoning text saved. Server compute split only when timings are exposed."
+}

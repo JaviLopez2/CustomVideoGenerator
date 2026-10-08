@@ -1,0 +1,234 @@
+{
+  "load_seconds": 7.4844,
+  "num_beams": 1,
+  "max_new_tokens": 256,
+  "device": "cpu",
+  "revision": "0b03b6f15a4a211370fb204aee4e7dd48887ea37",
+  "rows": [
+    {
+      "case": "mpt_fallback_identity_style_seed43",
+      "task": "<MORE_DETAILED_CAPTION>",
+      "query": "",
+      "seconds": 4.8278,
+      "result": {
+        "<MORE_DETAILED_CAPTION>": "A pocket watch is laying on a red cloth. The watch face is white with gold trim. The hands on the watch are black. There is a key next to the watch."
+      }
+    },
+    {
+      "case": "mpt_fallback_identity_style_seed43",
+      "task": "<OD>",
+      "query": "",
+      "seconds": 3.9219,
+      "result": {
+        "<OD>": {
+          "bboxes": [
+            [
+              81,
+              439,
+              448,
+              882
+            ]
+          ],
+          "labels": [
+            "clock"
+          ]
+        }
+      }
+    },
+    {
+      "case": "mpt_fallback_identity_style_seed43",
+      "task": "<CAPTION_TO_PHRASE_GROUNDING>",
+      "query": "silver key",
+      "seconds": 4.0389,
+      "result": {
+        "<CAPTION_TO_PHRASE_GROUNDING>": {
+          "bboxes": [
+            [
+              504,
+              622,
+              703,
+              950
+            ]
+          ],
+          "labels": [
+            "silver key"
+          ]
+        }
+      }
+    },
+    {
+      "case": "mpt_fallback_identity_style_seed43",
+      "task": "<CAPTION_TO_PHRASE_GROUNDING>",
+      "query": "watch hands",
+      "seconds": 4.0377,
+      "result": {
+        "<CAPTION_TO_PHRASE_GROUNDING>": {
+          "bboxes": [
+            [
+              77,
+              434,
+              449,
+              885
+            ]
+          ],
+          "labels": [
+            "watch hands"
+          ]
+        }
+      }
+    },
+    {
+      "case": "mpt_t2i_text_contract_768",
+      "task": "<MORE_DETAILED_CAPTION>",
+      "query": "",
+      "seconds": 4.6991,
+      "result": {
+        "<MORE_DETAILED_CAPTION>": "A pocket watch is laying on a dark blue fabric. The watch face is white with black numbers. The hands of the watch are black. There is a key next to the watch."
+      }
+    },
+    {
+      "case": "mpt_t2i_text_contract_768",
+      "task": "<OD>",
+      "query": "",
+      "seconds": 3.9975,
+      "result": {
+        "<OD>": {
+          "bboxes": [
+            [
+              82,
+              441,
+              448,
+              879
+            ]
+          ],
+          "labels": [
+            "clock"
+          ]
+        }
+      }
+    },
+    {
+      "case": "mpt_t2i_text_contract_768",
+      "task": "<CAPTION_TO_PHRASE_GROUNDING>",
+      "query": "silver key",
+      "seconds": 2.9368,
+      "result": {
+        "<CAPTION_TO_PHRASE_GROUNDING>": {
+          "bboxes": [
+            [
+              504,
+              618,
+              620,
+              943
+            ]
+          ],
+          "labels": [
+            "silver key"
+          ]
+        }
+      }
+    },
+    {
+      "case": "mpt_t2i_text_contract_768",
+      "task": "<CAPTION_TO_PHRASE_GROUNDING>",
+      "query": "watch hands",
+      "seconds": 1.1088,
+      "result": {
+        "<CAPTION_TO_PHRASE_GROUNDING>": {
+          "bboxes": [
+            [
+              80,
+              435,
+              451,
+              884
+            ]
+          ],
+          "labels": [
+            "watch hands"
+          ]
+        }
+      }
+    },
+    {
+      "case": "unrequested_text",
+      "task": "<MORE_DETAILED_CAPTION>",
+      "query": "",
+      "seconds": 1.4813,
+      "result": {
+        "<MORE_DETAILED_CAPTION>": "A pocket watch is laying on a dark blue fabric. The watch face is white with black numbers. The hands on the watch are black. There is a key next to the watch."
+      }
+    },
+    {
+      "case": "unrequested_text",
+      "task": "<OD>",
+      "query": "",
+      "seconds": 1.1155,
+      "result": {
+        "<OD>": {
+          "bboxes": [
+            [
+              82,
+              439,
+              447,
+              878
+            ]
+          ],
+          "labels": [
+            "clock"
+          ]
+        }
+      }
+    },
+    {
+      "case": "unrequested_text",
+      "task": "<CAPTION_TO_PHRASE_GROUNDING>",
+      "query": "silver key",
+      "seconds": 1.1325,
+      "result": {
+        "<CAPTION_TO_PHRASE_GROUNDING>": {
+          "bboxes": [
+            [
+              500,
+              619,
+              617,
+              947
+            ]
+          ],
+          "labels": [
+            "silver key"
+          ]
+        }
+      }
+    },
+    {
+      "case": "unrequested_text",
+      "task": "<CAPTION_TO_PHRASE_GROUNDING>",
+      "query": "watch hands",
+      "seconds": 1.107,
+      "result": {
+        "<CAPTION_TO_PHRASE_GROUNDING>": {
+          "bboxes": [
+            [
+              79,
+              434,
+              448,
+              879
+            ]
+          ],
+          "labels": [
+            "watch hands"
+          ]
+        }
+      }
+    },
+    {
+      "case": "unrequested_text",
+      "task": "<OCR>",
+      "query": "",
+      "seconds": 1.0986,
+      "result": {
+        "<OCR>": "LONGINER"
+      }
+    }
+  ]
+}

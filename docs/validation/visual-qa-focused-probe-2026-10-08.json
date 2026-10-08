@@ -1,0 +1,148 @@
+{
+  "rows": [
+    {
+      "case": "mpt_fallback_identity_style_seed43",
+      "task": "<MORE_DETAILED_CAPTION>",
+      "crop": [
+        504,
+        622,
+        703,
+        950
+      ],
+      "seconds": 1.4339,
+      "result": {
+        "<MORE_DETAILED_CAPTION>": "A metal object is laying on a red cloth. There are two pieces of the metal object next to it. There is a small piece of paper next to the metal item."
+      }
+    },
+    {
+      "case": "mpt_fallback_identity_style_seed43",
+      "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+      "crop": [
+        504,
+        622,
+        703,
+        950
+      ],
+      "seconds": 2.5369,
+      "result": {
+        "<REFERRING_EXPRESSION_SEGMENTATION>": {
+          "polygons": [
+            [
+              [
+                34,
+                11,
+                51,
+                5,
+                68,
+                9,
+                68,
+                64,
+                71,
+                79,
+                68,
+                88,
+                198,
+                239,
+                166,
+                266,
+                130,
+                223,
+                139,
+                214,
+                59,
+                112,
+                41,
+                305,
+                39,
+                320,
+                32,
+                325,
+                4,
+                318,
+                26,
+                106,
+                20,
+                101,
+                26,
+                83,
+                24,
+                70
+              ]
+            ]
+          ],
+          "labels": [
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "case": "mpt_t2i_text_contract_768",
+      "task": "<MORE_DETAILED_CAPTION>",
+      "crop": [
+        504,
+        618,
+        620,
+        943
+      ],
+      "seconds": 4.5309,
+      "result": {
+        "<MORE_DETAILED_CAPTION>": "A metal tool is laying on a black surface. The tool is silver in color. There is a piece of metal next to the tool."
+      }
+    },
+    {
+      "case": "mpt_t2i_text_contract_768",
+      "task": "<REFERRING_EXPRESSION_SEGMENTATION>",
+      "crop": [
+        504,
+        618,
+        620,
+        943
+      ],
+      "seconds": 4.5358,
+      "result": {
+        "<REFERRING_EXPRESSION_SEGMENTATION>": {
+          "polygons": [
+            [
+              [
+                24,
+                12,
+                38,
+                5,
+                60,
+                9,
+                60,
+                67,
+                63,
+                101,
+                54,
+                112,
+                47,
+                232,
+                40,
+                318,
+                38,
+                320,
+                3,
+                318,
+                19,
+                108,
+                13,
+                97,
+                22,
+                87,
+                16,
+                73,
+                23,
+                63
+              ]
+            ]
+          ],
+          "labels": [
+            ""
+          ]
+        }
+      }
+    }
+  ]
+}

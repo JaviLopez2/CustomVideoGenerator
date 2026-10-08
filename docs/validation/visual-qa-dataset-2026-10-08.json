@@ -1,0 +1,789 @@
+{
+  "schema_version": 1,
+  "base_head": "87c7ba568b19ed48d041b625f269f5112f0ef4fd",
+  "limits": "Local artifacts not versioned. Labels are curated visual reviews, not independent ground truth. Cold-state case is deliberately uncertain, not falsely labeled defective. Count contract follows original two-hand prompt, not the one-hand example in the latest instructions.",
+  "cases": [
+    {
+      "id": "temporal_warm_512",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\continuity_512\\result.png",
+      "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "The same red ceramic mug stays in the same position on the same wooden table beside the same window. Preserve mug geometry, handle shape, viewpoint and framing. The mug now contains hot tea. Advance the scene to late afternoon: warm golden sunlight and distinct visible wisps of steam rising from the mug against the darker background. Keep a single complete mug. No text or watermark.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nThe result MUST advance to this requested visible state: late afternoon golden light with clearly visible steam rising from hot tea in the same red mug.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "slot": 1,
+          "role": "continuity_anchor"
+        }
+      ],
+      "expected_subject": "red ceramic mug",
+      "contract": {
+        "subject": "red ceramic mug",
+        "counts": [
+          {
+            "subject": "mug",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "mug",
+              "cup"
+            ]
+          }
+        ],
+        "temporal": {
+          "expected_state": "visible steam rising from hot tea",
+          "required_evidence": [
+            "steam"
+          ],
+          "previous_state": "no visible steam",
+          "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png"
+        }
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Identity and framing preserved with clear steam",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-resolution-details-2026-10-07.json"
+    },
+    {
+      "id": "unrequested_text",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+      "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "model": "flux-klein-4b-t2i-exp",
+      "seed": 42,
+      "prompt": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a white dial, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+      "references": [],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ],
+        "forbid_text": true
+      },
+      "expected_verdict": "fail",
+      "review_reason": "Invented dial lettering violates no-text requirement",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-resolution-details-2026-10-07.json"
+    },
+    {
+      "id": "valid_cloth_edit",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "Change the linen cloth from dark charcoal to deep burgundy red. Remove the small invented lettering or brand inscription from the watch dial: leave a clean white dial with only the existing hour tick marks and the two watch hands. Preserve the exact same brass pocket watch and silver key, their shapes, positions, scales, hour markers and hand positions, the fine metal scratches, and the same woven textile structure. Preserve camera viewpoint, vertical framing and natural side lighting. Keep both objects complete and sharp. Do not add objects, letters, numerals, logos, captions or watermark.\nInput image 1 has role identity_reference.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_DETAIL_WATCH_768X1376.png",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "slot": 1,
+          "role": "identity_reference"
+        }
+      ],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+        "allowed_changes": [
+          "cloth color",
+          "lettering removal",
+          "lighting reflections"
+        ],
+        "forbid_text": true
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Cloth recolor and lettering removal with objects preserved visually",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-resolution-details-2026-10-07.json"
+    },
+    {
+      "id": "identity_style_unframed_512",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\identity_style_unframed_512\\result.png",
+      "sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge square photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 1,
+          "role": "identity_reference"
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+          "slot": 2,
+          "role": "style_reference"
+        }
+      ],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "lighting",
+          "color mood",
+          "framing"
+        ]
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Watch and key identities retained with allowed lighting change",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "identity_style_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\identity_style_768\\result.png",
+      "sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 1,
+          "role": "identity_reference"
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+          "slot": 2,
+          "role": "style_reference"
+        }
+      ],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "lighting",
+          "color mood",
+          "framing"
+        ]
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Watch and key identities retained with allowed lighting change",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "style_identity_reversed_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\style_identity_reversed_768\\result.png",
+      "sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "Show exactly the brass pocket watch and silver key from image 2, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 1 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 1. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role style_reference.\nInput image 2 has role identity_reference.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+          "slot": 1,
+          "role": "style_reference"
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 2,
+          "role": "identity_reference"
+        }
+      ],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "lighting",
+          "color mood",
+          "framing"
+        ]
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Watch and key identities retained with allowed lighting change",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "continuity_factual_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+      "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "Use image 1 as the scene and identity of the same red ceramic mug on its wooden table by the window. Advance to late afternoon golden side light; the same mug now contains hot tea with clearly visible steam rising. Preserve its handle, red ceramic shape and viewpoint. Add exactly the small silver key from image 2 beside the mug on the table, retaining its toothed shape and metal material. Image 2 supplies only the key; do not include its watch or cloth. One mug and one key, both complete in an edge-to-edge vertical photograph. No lettering, logos or physical picture frame.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nInput image 2 has role factual_reference.\nThe result MUST advance to this requested visible state: Hot tea with clearly visible steam in the same red mug at late afternoon.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "slot": 1,
+          "role": "continuity_anchor"
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 2,
+          "role": "factual_reference"
+        }
+      ],
+      "expected_subject": "silver key",
+      "contract": {
+        "subject": "silver key",
+        "counts": [
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "rotation",
+          "lighting",
+          "background"
+        ]
+      },
+      "expected_verdict": "fail",
+      "review_reason": "Head hole and tooth geometry differ from reference",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "mpt_t2i_text_contract_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+      "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+      "model": "flux-klein-4b-t2i-exp",
+      "seed": 42,
+      "prompt": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+      "references": [],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ]
+      },
+      "expected_verdict": "fail",
+      "review_reason": "Three hands visible where two requested",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "mpt_temporal_hot_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png",
+      "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "The same red ceramic mug on the same wooden table by the window now contains hot tea with clearly visible wisps of steam. Late afternoon golden sunlight. Keep its physical shape, red ceramic, handle and viewpoint. Show one complete mug in an edge-to-edge vertical photograph. No other objects, writing or logo.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nThe result MUST advance to this requested visible state: Hot tea with clearly visible steam in the same red mug at late afternoon.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "slot": 1,
+          "role": "continuity_anchor"
+        }
+      ],
+      "expected_subject": "red ceramic mug",
+      "contract": {
+        "subject": "red ceramic mug",
+        "counts": [
+          {
+            "subject": "mug",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "mug",
+              "cup"
+            ]
+          }
+        ],
+        "temporal": {
+          "expected_state": "visible steam rising",
+          "required_evidence": [
+            "steam"
+          ],
+          "previous_state": "no visible steam",
+          "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png"
+        },
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png"
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Same mug with visible steam",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "mpt_temporal_cooled_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_cooled_768\\result.png",
+      "sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "The same red ceramic mug on the same wooden table by the same window now contains completely cooled tea. The liquid is still, with no steam or vapor anywhere. Cool blue evening light replaces the golden afternoon light. Preserve the same physical red ceramic mug, handle and viewpoint. Show one complete mug in an edge-to-edge vertical photograph. No other objects, writing or logo.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nThe result MUST advance to this requested visible state: The tea has cooled completely, the liquid is still and there is no steam, in cool blue evening light.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "slot": 1,
+          "role": "continuity_anchor"
+        }
+      ],
+      "expected_subject": "red ceramic mug",
+      "contract": {
+        "subject": "red ceramic mug",
+        "counts": [
+          {
+            "subject": "mug",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "mug",
+              "cup"
+            ]
+          }
+        ],
+        "temporal": {
+          "expected_state": "still liquid without vapor",
+          "required_evidence": [
+            "still liquid"
+          ],
+          "forbidden_evidence": [
+            "steam"
+          ],
+          "previous_state": "visible steam rising",
+          "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png"
+        },
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png"
+      },
+      "expected_verdict": "uncertain",
+      "review_reason": "Cool illumination changed; complete absence of vapor/temperature not certified",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "mpt_fallback_identity_style_seed43",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_fallback_identity_style_seed43\\result.png",
+      "sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 43,
+      "prompt": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 1,
+          "role": "identity_reference"
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+          "slot": 2,
+          "role": "style_reference"
+        }
+      ],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "lighting",
+          "color mood"
+        ]
+      },
+      "expected_verdict": "fail",
+      "review_reason": "Duplicated or fused keys; fallback technical success does not imply semantic acceptance",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "mpt_explicit_quantity_seed43",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+      "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 43,
+      "prompt": "Show exactly one brass pocket watch and exactly one silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 1,
+          "role": "identity_reference"
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+          "slot": 2,
+          "role": "style_reference"
+        }
+      ],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "lighting",
+          "color mood"
+        ]
+      },
+      "expected_verdict": "fail",
+      "review_reason": "Duplicated or fused keys; fallback technical success does not imply semantic acceptance",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-autonomous-2026-10-08.json"
+    },
+    {
+      "id": "z_image_t2i_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\z_image_t2i_768\\openai-image-644f7e2133d4.png",
+      "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+      "model": "z-image-turbo",
+      "seed": 42,
+      "prompt": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+      "references": [],
+      "expected_subject": "pocket watch and silver key",
+      "contract": {
+        "subject": "pocket watch and silver key",
+        "counts": [
+          {
+            "subject": "pocket watch",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "pocket watch",
+              "watch",
+              "clock"
+            ]
+          },
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          },
+          {
+            "subject": "watch hands",
+            "expected_count": 2,
+            "tolerance": 0
+          }
+        ]
+      },
+      "expected_verdict": "fail",
+      "review_reason": "Three watch hands",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-comparison-2026-10-08.json"
+    },
+    {
+      "id": "qwen_continuity_factual_768",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+      "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "model": "qwen-image-2.1-precision",
+      "seed": 42,
+      "prompt": "<image1> is the canvas and stable continuity anchor for the same red ceramic mug. <image2> is detail evidence for the small silver key only; not the watch or cloth; use only the visible detail it establishes. Edit <image1>. Preserve the same physical carrier, border, orientation, position, framing and surrounding scene. The visible state inside the continuity target MUST change to match this temporal stage: Hot tea with clearly visible steam in the same red mug at late afternoon. Apply this change: Use image 1 as the scene and identity of the same red ceramic mug on its wooden table by the window. Advance to late afternoon golden side light; the same mug now contains hot tea with clearly visible steam rising. Preserve its handle, red ceramic shape and viewpoint. Add exactly the small silver key from image 2 beside the mug on the table, retaining its toothed shape and metal material. Image 2 supplies only the key; do not include its watch or cloth. One mug and one key, both complete in an edge-to-edge vertical photograph. No lettering, logos or physical picture frame. Do not preserve the previous blank/developing image content of <image1> when it conflicts with the requested stage. Use every other image only for the role stated above.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "slot": 1,
+          "role": null
+        },
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "slot": 2,
+          "role": null
+        }
+      ],
+      "expected_subject": "silver key",
+      "contract": {
+        "subject": "silver key",
+        "counts": [
+          {
+            "subject": "silver key",
+            "expected_count": 1,
+            "tolerance": 0
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette",
+          "part_arrangement"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "allowed_changes": [
+          "rotation",
+          "lighting",
+          "background"
+        ]
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Key more faithful to reference in documented review",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-comparison-2026-10-08.json"
+    },
+    {
+      "id": "root_mug",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "model": "flux-klein-4b-t2i-exp",
+      "seed": 42,
+      "prompt": "A photorealistic documentary photograph of a single red ceramic mug on a pale wooden table beside a window. Soft natural daylight. The complete mug is visible with comfortable margins. No text or watermark.",
+      "references": [],
+      "expected_subject": "red ceramic mug",
+      "contract": {
+        "subject": "red ceramic mug",
+        "counts": [
+          {
+            "subject": "mug",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "mug",
+              "cup"
+            ]
+          }
+        ]
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Single complete red mug",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-gpu-smoke-512-seed42-2026-10-07.json"
+    },
+    {
+      "id": "valid_mug_recolor",
+      "artifact": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "model": "flux-klein-4b-edit-exp",
+      "seed": 42,
+      "prompt": "Edit the reference photograph: change only the ceramic mug from red to deep blue. Keep the same mug shape, handle geometry, position and scale. Preserve the wooden table, window, background, camera viewpoint and soft natural lighting. Keep one complete mug visible. No text or watermark.\nInput image 1 has role identity_reference.",
+      "references": [
+        {
+          "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\input\\MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "slot": 1,
+          "role": "identity_reference"
+        }
+      ],
+      "expected_subject": "ceramic mug",
+      "contract": {
+        "subject": "ceramic mug",
+        "counts": [
+          {
+            "subject": "mug",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "mug",
+              "cup"
+            ]
+          }
+        ],
+        "geometry_constraints": [
+          "silhouette"
+        ],
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+        "allowed_changes": [
+          "color",
+          "lighting"
+        ]
+      },
+      "expected_verdict": "pass",
+      "review_reason": "Blue recolor preserves mug shape and framing",
+      "review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "source_evidence": "flux-klein-4b-gpu-single-ref-512-seed42-2026-10-07.json"
+    }
+  ]
+}
