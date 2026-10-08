@@ -38,6 +38,14 @@ def test_identity_does_not_substitute_for_temporal_state():
     assert normalize(answer, {"temporal": {"expected_state": "frosted"}})["verdict"] == "uncertain"
 
 
+def test_schema_requires_exact_top_level_visual_fields():
+    schema = HARNESS["response_schema"]({"counts": [{"subject": "parts", "expected_count": 2}],
+        "geometry_constraints": ["silhouette"], "forbid_text": True, "temporal": {"expected_state": "frosted"}})
+    assert set(schema["required"]) == {"counts", "geometry", "text", "identity", "state", "progression"}
+    assert schema["additionalProperties"] is False
+    assert schema["properties"]["counts"]["minItems"] == schema["properties"]["counts"]["maxItems"] == 1
+
+
 def test_expected_verdict_and_review_reason_are_not_sent(tmp_path):
     path = tmp_path / "sample.png"
     Image.new("RGB", (8, 8), "red").save(path)
@@ -47,3 +55,30 @@ def test_expected_verdict_and_review_reason_are_not_sent(tmp_path):
     payload = json.dumps(parts)
     assert "LABEL_SECRET" not in payload and "REVIEW_SECRET" not in payload
     assert len(inputs) == 1 and len([p for p in parts if p["type"] == "image_url"]) == 1
+
+
+def test_blind_count_probe_withholds_target_number(tmp_path):
+    path = tmp_path / "sample.png"
+    Image.new("RGB", (8, 8), "red").save(path)
+    case = {"artifact": str(path), "sha256": HARNESS["digest"](path),
+            "contract": {"counts": [{"subject": "components", "expected_count": 117, "tolerance": 4}]}}
+    parts, _ = HARNESS["content"](case, blind_counts=True)
+    payload = json.dumps(parts)
+    assert "expected_count" not in payload and "117" not in payload and "tolerance" not in payload
+
+
+def test_supplementary_region_cannot_come_from_another_candidate(tmp_path):
+    path = tmp_path / "sample.png"
+    Image.new("RGB", (8, 8), "red").save(path)
+    case = {"artifact": str(path), "sha256": HARNESS["digest"](path), "contract": {}}
+    with pytest.raises(ValueError):
+        HARNESS["content"](case, regions=[{"source_sha256": "wrong-image"}])
+
+
+def test_schema_string_bound_control_leaves_required_checks():
+    contract = {"counts": [{"subject": "parts", "expected_count": 2}]}
+    bounded = HARNESS["response_schema"](contract, concise=True)
+    ordinary = HARNESS["response_schema"](contract)
+    assert bounded["properties"]["counts"]["items"]["properties"]["reason"]["maxLength"] == 120
+    assert "maxLength" not in ordinary["properties"]["counts"]["items"]["properties"]["reason"]
+    assert bounded["required"] == ordinary["required"] == ["counts"]

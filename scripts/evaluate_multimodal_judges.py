@@ -16,6 +16,29 @@ from pathlib import Path
 STATUSES = {"pass", "fail", "uncertain", "unavailable"}
 
 
+def response_schema(contract, concise=False):
+    status = {"type": "string", "enum": sorted(STATUSES)}
+    reason = {"type": "string"}
+    if concise:
+        reason["maxLength"] = 120
+    check = {"type": "object", "properties": {"status": status, "reason": reason},
+             "required": ["status", "reason"], "additionalProperties": False}
+    count = {"type": "object", "properties": {"subject": {"type": "string"},
+        "observed_count": {"type": ["integer", "null"]}, "uncertain": {"type": "boolean"}, "reason": reason},
+        "required": ["subject", "observed_count", "uncertain", "reason"], "additionalProperties": False}
+    properties = {"counts": {"type": "array", "items": count,
+                             "minItems": len(contract.get("counts", [])), "maxItems": len(contract.get("counts", []))}}
+    if contract.get("geometry_constraints"):
+        properties["geometry"] = check
+    if contract.get("forbid_text"):
+        properties["text"] = check
+    if contract.get("temporal"):
+        temporal = {"type": "object", "properties": {"status": status, "reason": reason,
+            "score": {"type": ["number", "null"]}}, "required": ["status", "score", "reason"], "additionalProperties": False}
+        properties.update({name: temporal for name in ["identity", "state", "progression"]})
+    return {"type": "object", "properties": properties, "required": list(properties), "additionalProperties": False}
+
+
 def digest(path):
     with Path(path).open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
@@ -65,14 +88,19 @@ def normalize(answer, contract):
     return {"verdict": verdict, "checks": checks}
 
 
-def content(case):
+def content(case, blind_counts=False, regions=None):
     contract = case["contract"]
     public = {k: v for k, v in contract.items() if k not in {"reference_image", "temporal"}}
+    if blind_counts:
+        public["counts"] = [{k: v for k, v in count.items() if k not in {"expected_count", "tolerance"}}
+                            for count in contract.get("counts", [])]
     if contract.get("temporal"):
         public["temporal"] = {k: v for k, v in contract["temporal"].items() if k != "previous_image"}
     instructions = (
         "Inspect the actual candidate pixels and supplied reference pixels. Judge ONLY the structured requirements. "
-        "Count small parts as well as whole objects when requested. Report observed counts independently of expected counts; "
+        "Count small parts as well as whole objects when requested. "
+        + ("Include every visible instance of each named component; do not omit a component because it has a different conventional role. " if blind_counts else "")
+        + "Report observed counts independently of expected counts; "
         "if obscured or ambiguous use null and uncertain=true. Do not infer visual compliance from the wording of the request. "
         "Allow changes named in allowed_changes; distinguish physical identity from visible temporal state. "
         "Lighting alone is not physical state progression. A deformed or fused major component can violate structure even "
@@ -82,6 +110,7 @@ def content(case):
         "For each requested geometry or text check include {status,reason}; text pass means no forbidden visible text. "
         "For temporal include separate identity,state,progression objects each {status,score,reason}; score is 0..1 or null. "
         "Statuses are pass/fail/uncertain/unavailable. Give short concrete visual evidence. Do not output chain of thought. "
+        "All check objects are TOP-LEVEL fields, not nested in temporal or forbid_text. "
         "Contract: " + json.dumps(public, ensure_ascii=False)
     )
     parts = [{"type": "text", "text": instructions}]
@@ -97,6 +126,10 @@ def content(case):
         if path and str(Path(path).resolve()) not in seen:
             inputs.append((path, role, digest(path)))
             seen.add(str(Path(path).resolve()))
+    for region in (regions or []):
+        if region.get("source_sha256") != case["sha256"]:
+            raise ValueError("Supplementary region belongs to another candidate")
+        inputs.append((region["path"], "CANDIDATE DETAIL: " + region["query"], region["sha256"]))
     for path, role, expected in inputs:
         if digest(path) != expected:
             raise ValueError("Artifact changed")
@@ -128,6 +161,11 @@ def main():
     parser.add_argument("--log-dir", required=True)
     parser.add_argument("--gpu-layers", type=int, default=99)
     parser.add_argument("--port", type=int, default=8092)
+    parser.add_argument("--model-repo", help="Evaluate only this pinned repository")
+    parser.add_argument("--case-ids", help="Comma-separated previously unattempted cases")
+    parser.add_argument("--blind-counts", action="store_true", help="Diagnostic: withhold expected cardinality from model")
+    parser.add_argument("--regions", help="Diagnostic: previously measured candidate regions, supplementary to full images")
+    parser.add_argument("--unbounded-schema-strings", action="store_true", help="Diagnostic: omit JSON grammar string-length bounds")
     args = parser.parse_args()
     output = Path(args.output)
     if output.exists():
@@ -137,12 +175,34 @@ def main():
             raise ValueError("Experimental port already occupied")
     dataset = json.loads(Path(args.dataset).read_text(encoding="utf-8"))
     manifest = json.loads(Path(args.manifest).read_text(encoding="utf-8"))
+    regions = json.loads(Path(args.regions).read_text(encoding="utf-8")) if args.regions else {}
+    if args.model_repo:
+        manifest["models"] = [m for m in manifest["models"] if m["repo"] == args.model_repo]
+        if not manifest["models"]:
+            raise ValueError("Model not in pinned manifest")
+    if args.case_ids:
+        selected = args.case_ids.split(",")
+        known = {case["id"] for case in dataset["cases"]}
+        if len(selected) != len(set(selected)) or set(selected) - known:
+            raise ValueError("Unknown/duplicate case selection")
+        dataset["cases"] = [case for case in dataset["cases"] if case["id"] in selected]
     logs = Path(args.log_dir)
     logs.mkdir(parents=True, exist_ok=True)
     report = {"base_head": manifest["base_head"], "runtime": manifest["runtime"], "generation_requests": 0,
               "inference_retries": 0, "policy": {"max_tokens": 768, "timeout_seconds": 60,
               "temperature": 0, "context": 8192, "gpu_layers": args.gpu_layers, "image_max_tokens": 1536,
-              "thinking": False, "response_format": "json_object"}, "models": []}
+              "thinking": False, "response_format": "json_schema", "flash_attention": "on",
+              "image_min_tokens": 1024, "evaluation_version": 2}, "models": []}
+    report["case_ids"] = [case["id"] for case in dataset["cases"]]
+    report["execution_head"] = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    report["harness_sha256"] = digest(__file__)
+    report["policy"]["blind_counts"] = args.blind_counts
+    report["policy"]["supplementary_regions"] = bool(args.regions)
+    if args.blind_counts or args.regions:
+        report["policy"]["evaluation_version"] = 3
+    report["policy"]["schema_reason_max_length"] = 120 if args.blind_counts and not args.unbounded_schema_strings else None
+    if args.unbounded_schema_strings:
+        report["policy"]["evaluation_version"] = 4
     def save():
         output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     save()
@@ -159,6 +219,7 @@ def main():
         command = [str(Path(args.server).resolve()), "-m", str(files[0].resolve()), "--mmproj", str(files[1].resolve()),
                    "--host", "127.0.0.1", "--port", str(args.port), "-ngl", str(args.gpu_layers), "-c", "8192", "-np", "1",
                    "-b", "2048", "-ub", "512", "--jinja", "--no-warmup", "--image-max-tokens", "1536",
+                   "--image-min-tokens", "1024", "--flash-attn", "on",
                    "--reasoning", "off", "--chat-template-kwargs", '{"enable_thinking":false}']
         server = None
         try:
@@ -183,7 +244,7 @@ def main():
                 if not props.get("modalities", {}).get("vision"):
                     raise ValueError("Vision not available")
                 for case in dataset["cases"]:
-                    parts, inputs = content(case)
+                    parts, inputs = content(case, args.blind_counts, regions.get(case["id"]))
                     baseline = gpu_memory()
                     samples, stop = [baseline], threading.Event()
                     def monitor():
@@ -198,7 +259,9 @@ def main():
                     row = {"id": case["id"], "expected": case["expected_verdict"], "inputs": inputs}
                     try:
                         response = request(base + "/v1/chat/completions", {"model": "visual-judge", "messages": [{"role": "user", "content": parts}],
-                            "max_tokens": 768, "temperature": 0, "response_format": {"type": "json_object"},
+                            "max_tokens": 768, "temperature": 0, "response_format": {"type": "json_schema",
+                            "json_schema": {"name": "visual_qa", "strict": True,
+                            "schema": response_schema(case["contract"], args.blind_counts and not args.unbounded_schema_strings)}},
                             "chat_template_kwargs": {"enable_thinking": False}}, timeout=60)
                         choice = response["choices"][0]
                         message = choice["message"]
