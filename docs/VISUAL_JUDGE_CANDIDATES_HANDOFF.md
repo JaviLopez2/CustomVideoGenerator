@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: second object family tested
+
+Baseb51e2b317119f5e0e4e818723fd9e511b083837b. Observer now accepts validated generic --plan, preserves legacy key mode. Five retained mug images observed independently with ceramic mug target; no desired color/state/role/labels supplied.5requests5.664–6.484s,allcompleted; inventories categoricalequal and5comparisons have no hints. Replay priorities remainsuncertain/no admission/no rejection, no human annotations invented. [Mug report](MUG_GEOMETRY_OBSERVATION_REPORT.md).
+
+92 offline tests pass (5 new+87 prior),exit0,2.83s. No generation/download/dependency/workflow/app/routing changes. Own8092 closed,stable intact,Comfyqueue0/0. No independently reviewed mug structuralnegative: no accuracy/sensitivity claim; original selfcomparison is software-only. Inventory omits handle opening and distinguishes only generic attachment, so equality does NOT establish geometry. Previous cold stateuncertain staysuncertain; do not infer thermal compliance from this geometry protocol. Next: explicit target presence/component coverage with absence control from existing artifact before diagnostic integration. Preserve raw answers/labels and fail-closed; obtain closing SHA via history/origin.
+
 ## Current checkpoint: offline review-priority policy implemented
 
 Base61c1285a86c52c047803849fa966d99cab748283. New experimental `scripts/triage_geometry_observations.py`, versiongeometry-review-priorities-1; no app integration. Model presence disagreements prompt structural review, count disagreements remain unconfirmed measurements, insufficient observations remain explicit. Human shape/localized variation statements stay separate; matching inventory never establishes identity. All prioritiesuncertain/no admission/no automatic rejection; malformed/absent/incomplete transport inventoriesunavailable. No case-specific policy rules or free-text sentiment rescue. [Report](GEOMETRY_REVIEW_PRIORITIES_REPORT.md).

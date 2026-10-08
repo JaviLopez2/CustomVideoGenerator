@@ -1,0 +1,217 @@
+{
+  "execution_head": "b51e2b317119f5e0e4e818723fd9e511b083837b",
+  "policy_version": "geometry-review-priorities-1",
+  "source_sha256": "feeaa3b66412766ba38e62bb975c4f53b2cab455f2b486e425b952da955cbab4",
+  "observations_sha256": "92c9641da77c9a25b2b252be6a13e0ef5c98bf537c2ad0372f96a8c1d69361fd",
+  "reviews_sha256": "a64a26c2f8c58a989fe660c136f1231300843f090f0cda2a8bde443743b8e209",
+  "new_model_requests": 0,
+  "new_generation_requests": 0,
+  "automatic_decisions": 0,
+  "rows": [
+    {
+      "id": "same_pixels_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "model_only": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      },
+      "with_human_review": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      }
+    },
+    {
+      "id": "color_change_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "model_only": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      },
+      "with_human_review": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      }
+    },
+    {
+      "id": "warm_state_geometry",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "model_only": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      },
+      "with_human_review": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      }
+    },
+    {
+      "id": "hot_state_geometry",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "model_only": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      },
+      "with_human_review": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      }
+    },
+    {
+      "id": "cooling_geometry",
+      "reference_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "candidate_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "model_only": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      },
+      "with_human_review": {
+        "policy_version": "geometry-review-priorities-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "human_review": null,
+        "hints": [],
+        "model_evidence_status": "available",
+        "human_review_pending": true,
+        "tolerance_decision": "not_defined",
+        "physical_identity_established": false,
+        "limitations": [
+          "Categorical observations do not measure shape or size.",
+          "Model hints are unverified; even agreement cannot prove identity."
+        ],
+        "priority": "no_detected_signal",
+        "model_observation_incomplete": false
+      }
+    }
+  ]
+}

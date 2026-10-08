@@ -83,33 +83,72 @@ def compare(reference, candidate):
             "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."}
 
 
+def validate_plan(plan):
+    """Only target/pixels reach the model; comparison metadata stays offline."""
+    if not isinstance(plan, dict) or not isinstance(plan.get("target"), str) or not plan["target"].strip():
+        raise ValueError("Missing target")
+    if not isinstance(plan.get("images"), list) or not plan["images"]:
+        raise ValueError("Missing images")
+    hashes = []
+    for image in plan["images"]:
+        if not isinstance(image, dict) or not isinstance(image.get("path"), str) or not image["path"]:
+            raise ValueError("Invalid image")
+        sha = image.get("sha256")
+        if not isinstance(sha, str) or len(sha) != 64 or any(c not in "0123456789abcdef" for c in sha):
+            raise ValueError("Invalid image hash")
+        hashes.append(sha)
+    if len(hashes) != len(set(hashes)):
+        raise ValueError("Deduplicate images by SHA")
+    if not isinstance(plan.get("comparisons"), list) or not plan["comparisons"]:
+        raise ValueError("Missing comparisons")
+    ids = []
+    for comparison in plan["comparisons"]:
+        if not isinstance(comparison, dict) or not isinstance(comparison.get("id"), str) or not comparison["id"]:
+            raise ValueError("Invalid comparison")
+        if comparison.get("reference_sha256") not in hashes or comparison.get("candidate_sha256") not in hashes:
+            raise ValueError("Comparison references an unknown image")
+        ids.append(comparison["id"])
+    if len(ids) != len(set(ids)):
+        raise ValueError("Duplicate comparison")
+    return plan
+
+
 def main():
     parser = argparse.ArgumentParser(__doc__)
     parser.add_argument("--output", required=True)
     parser.add_argument("--log-dir", required=True)
+    parser.add_argument("--plan", help="Explicit target, unique image hashes and offline comparison metadata")
     args = parser.parse_args()
     output, logs = Path(args.output), Path(args.log_dir)
     if output.exists() or logs.exists():
         raise ValueError("Preserve existing output/logs")
-    with socket.socket() as sock:
-        if sock.connect_ex(("127.0.0.1", 8080)) == 0:
-            raise ValueError("Wait for shared 8080 resource clearance")
-        if sock.connect_ex(("127.0.0.1", 8092)) == 0:
-            raise ValueError("8092 occupied")
+    for port in [8080, 8092]:
+        with socket.socket() as sock:
+            if sock.connect_ex(("127.0.0.1", port)) == 0:
+                raise ValueError("Wait for 8080 resource clearance" if port == 8080 else "8092 occupied")
     used = H["gpu_memory"]()
     if used > 5288:
         raise ValueError("Less than 7000MiB free VRAM on the documented RTX3060")
     root = Path(__file__).resolve().parents[1]
-    dataset = json.loads((root / "docs/validation/visual-qa-dataset-2026-10-08.json").read_text(encoding="utf-8"))
-    cases = [c for c in dataset["cases"] if c["id"] in {
-        "valid_cloth_edit", "continuity_factual_768", "qwen_continuity_factual_768"}]
-    images = {}
-    for c in cases:
-        ref = c["contract"]["reference_image"]
-        for path, sha in [(ref, H["digest"](ref)), (c["artifact"], c["sha256"])]:
-            images.setdefault(sha, {"path": path, "sha256": sha})
+    if args.plan:
+        plan = validate_plan(json.loads(Path(args.plan).read_text(encoding="utf-8")))
+    else:
+        dataset = json.loads((root / "docs/validation/visual-qa-dataset-2026-10-08.json").read_text(encoding="utf-8"))
+        cases = [c for c in dataset["cases"] if c["id"] in {
+            "valid_cloth_edit", "continuity_factual_768", "qwen_continuity_factual_768"}]
+        images = {}
+        comparisons = []
+        for c in cases:
+            ref = c["contract"]["reference_image"]
+            ref_sha = H["digest"](ref)
+            for path, sha in [(ref, ref_sha), (c["artifact"], c["sha256"])]:
+                images.setdefault(sha, {"path": path, "sha256": sha})
+            comparisons.append({"id": c["id"], "original_label": c["expected_verdict"],
+                                "reference_sha256": ref_sha, "candidate_sha256": c["sha256"]})
+        plan = validate_plan({"target": "silver key", "images": list(images.values()), "comparisons": comparisons})
+    images = {image["sha256"]: image for image in plan["images"]}
     for image in images.values():
-        payload(image["path"], image["sha256"], "silver key")
+        payload(image["path"], image["sha256"], plan["target"])
     target_dir = root / "local_image_stack/experiments/bridge/target"
     manifest = json.loads((root / "docs/validation/visual-judge-candidates-assets-2026-10-08.json").read_text(encoding="utf-8"))
     model = next(m for m in manifest["models"] if m["repo"] == "unsloth/Qwen3.5-9B-GGUF")
@@ -121,7 +160,8 @@ def main():
     log_path = logs / "inventories.log"
     report = {"execution_head": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         "harness_sha256": H["digest"](__file__), "model": model, "runtime": manifest["runtime"],
-        "generation_requests": 0, "automatic_retries": 0, "target": "silver key", "rows": [], "comparisons": [],
+        "generation_requests": 0, "automatic_retries": 0, "target": plan["target"], "rows": [], "comparisons": [],
+        "plan_sha256": H["digest"](args.plan) if args.plan else None,
         "log": str(log_path.resolve()), "policy": {"one_image_per_request": True, "labels_sent": False,
         "reference_role_sent": False, "desired_counts_sent": False, "verdict_requested": False,
         "max_tokens": 512, "timeout_seconds": 60, "context": 8192, "reasoning": "off",
@@ -177,14 +217,13 @@ def main():
                     report["stopped_reason"] = "Invalid/unavailable observation; no automatic retry"
                     break
             inventories = {r["sha256"]: r["inventory"] for r in report["rows"] if "inventory" in r}
-            for case in cases:
-                ref_sha = H["digest"](case["contract"]["reference_image"])
-                if ref_sha in inventories and case["sha256"] in inventories:
-                    result = compare(inventories[ref_sha], inventories[case["sha256"]])
+            for comparison in plan["comparisons"]:
+                ref_sha, candidate_sha = comparison["reference_sha256"], comparison["candidate_sha256"]
+                if ref_sha in inventories and candidate_sha in inventories:
+                    result = compare(inventories[ref_sha], inventories[candidate_sha])
                 else:
                     result = {"status": "unavailable", "admission_allowed": False, "hints": []}
-                report["comparisons"].append({"id": case["id"], "original_label": case["expected_verdict"],
-                    "reference_sha256": ref_sha, "candidate_sha256": case["sha256"], **result})
+                report["comparisons"].append({**comparison, **result})
     except (OSError, ValueError, RuntimeError) as exc:
         report["runtime_error_type"] = type(exc).__name__
     finally:

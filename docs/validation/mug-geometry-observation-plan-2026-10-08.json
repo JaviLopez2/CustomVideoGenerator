@@ -1,0 +1,78 @@
+{
+  "target": "ceramic mug",
+  "images": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug"
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor"
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\continuity_512\\result.png",
+      "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "source_case_id": "temporal_warm_512"
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png",
+      "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "source_case_id": "mpt_temporal_hot_768"
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_cooled_768\\result.png",
+      "sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "source_case_id": "mpt_temporal_cooled_768"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "same_pixels_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "geometry_label": "software_self_comparison",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth."
+    },
+    {
+      "id": "color_change_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "geometry_label": "prior_agent_review_preserved_shape",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth."
+    },
+    {
+      "id": "warm_state_geometry",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth."
+    },
+    {
+      "id": "hot_state_geometry",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth."
+    },
+    {
+      "id": "cooling_geometry",
+      "reference_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "candidate_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "uncertain",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth."
+    }
+  ],
+  "source_dataset_sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f",
+  "execution_base": "b51e2b317119f5e0e4e818723fd9e511b083837b",
+  "scope": "geometry inventories only; no color/temperature/progression verdict and no prior task labels sent to model",
+  "planned_requests": 5,
+  "structural_negative_control": null,
+  "limitation": "No independently adjudicated structural-negative mug artifact available; no accuracy claim or production admission."
+}

@@ -72,3 +72,38 @@ def test_image_only_request_has_no_role_label_or_desired_count(tmp_path):
     path.write_bytes(b"changed")
     with pytest.raises(ValueError):
         M["payload"](path, "wrong-hash", "target object")
+
+
+def plan():
+    return {"target": "ceramic mug", "images": [{"path": "source.png", "sha256": "a" * 64}],
+            "comparisons": [{"id": "self", "reference_sha256": "a" * 64, "candidate_sha256": "a" * 64}]}
+
+
+@pytest.mark.parametrize("mutation", ["missing_target", "duplicate_image", "unknown_hash", "duplicate_pair"])
+def test_general_plan_rejects_invalid_target_provenance_or_duplicates(mutation):
+    p = plan()
+    if mutation == "missing_target":
+        p["target"] = ""
+    elif mutation == "duplicate_image":
+        p["images"].append(copy.deepcopy(p["images"][0]))
+    elif mutation == "unknown_hash":
+        p["comparisons"][0]["candidate_sha256"] = "b" * 64
+    else:
+        p["comparisons"].append(copy.deepcopy(p["comparisons"][0]))
+    with pytest.raises(ValueError):
+        M["validate_plan"](p)
+
+
+def test_general_plan_metadata_never_reaches_pixel_request(tmp_path):
+    image = tmp_path / "sample.png"
+    Image.new("RGB", (16, 16), "red").save(image)
+    p = plan()
+    sha = M["H"]["digest"](image)
+    p["images"][0] = {"path": str(image), "sha256": sha}
+    p["comparisons"][0].update(reference_sha256=sha, candidate_sha256=sha,
+                               original_label="LABEL_PRIVATE", reviewer_note="REVIEW_PRIVATE")
+    p = M["validate_plan"](p)
+    request = M["payload"](p["images"][0]["path"], sha, p["target"])
+    serialized = json.dumps(request)
+    assert "LABEL_PRIVATE" not in serialized and "REVIEW_PRIVATE" not in serialized
+    assert p["target"] in serialized and "silver key" not in serialized

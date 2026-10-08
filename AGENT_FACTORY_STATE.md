@@ -6,6 +6,8 @@
 
 ## Current visual judge selection — 2026-10-08
 
+Latest onb51e2b3: generic observer --plan tested on5 retained mug images;5requests complete,92 tests pass. No category/count differences from color/vapor, all comparisonsuncertain/no decisions. Coverage omits handle opening/distinct contacts, no reviewed structuralnegative, so not factual-ready. [Mug report](docs/MUG_GEOMETRY_OBSERVATION_REPORT.md). Own8092 closed,stable intact,0generation/app/routing changes. Next: explicit target presence/component coverage using an existing absence control.
+
 Latest on61c1285: offline geometry-review-priorities-1 implemented,87 tests pass. Model structure/count/incomplete signals and human local/structural changes stay distinct; no admission/rejection/identity inference. A/B/C replay preserves both hints and human annotations.0 new inference/GPU/generations,experimental script/tests only, no app/routing changes. [Priority report](docs/GEOMETRY_REVIEW_PRIORITIES_REPORT.md). Next: additional perceptual controls from another family before opt-in diagnostic integration.
 
 Human review received on3d60ade: A shape preserved/minor ring enlargement; B completely altered; C no visible change. Separate annotation retained without rewriting historical labels. Model hints miss A size nuance, align with B gross change and falsely flag C counts; comparator staysuncertain/no admission. [Current observation report](docs/VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md). No pending question for these pairs, no new GPU/tests/app changes. Next: conservative hint policy with explicit severity/uncertainty and additional controls; no production tolerance or approval inferred.

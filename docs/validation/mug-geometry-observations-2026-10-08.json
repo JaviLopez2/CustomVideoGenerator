@@ -1,0 +1,380 @@
+{
+  "execution_head": "b51e2b317119f5e0e4e818723fd9e511b083837b",
+  "harness_sha256": "b2c7824f4c91a91f43488732059d3f9a4e1fcdadc6662f45ae2f780805e55cde",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "ceramic mug",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "transport_status": "completed",
+      "final_content": "{\n  \"openings\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"Circular opening at the top of the mug, visible as a dark interior rim against the red exterior.\"\n  },\n  \"edge_cutouts\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No notches or cutouts observed on any edge of the mug or handle.\"\n  },\n  \"rings_or_collars\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No bands or collars encircling any component of the mug.\"\n  },\n  \"part_junctions\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"Visible connection between the cylindrical body and the C-shaped handle, where the handle attaches to the side wall.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 219,
+        "prompt_tokens": 1223,
+        "total_tokens": 1442,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1223,
+        "prompt_ms": 1549.755,
+        "prompt_per_token_ms": 1.2671749795584628,
+        "prompt_per_second": 789.1569957832044,
+        "predicted_n": 219,
+        "predicted_ms": 4901.358,
+        "predicted_per_token_ms": 22.48329357798165,
+        "predicted_per_second": 44.477469305445545
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "Circular opening at the top of the mug, visible as a dark interior rim against the red exterior."
+        },
+        "edge_cutouts": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No notches or cutouts observed on any edge of the mug or handle."
+        },
+        "rings_or_collars": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No bands or collars encircling any component of the mug."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "Visible connection between the cylindrical body and the C-shaped handle, where the handle attaches to the side wall."
+        }
+      },
+      "seconds": 6.484127600000647
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor",
+      "transport_status": "completed",
+      "final_content": "{\n  \"openings\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A single circular opening at the top of the mug, visible as a dark interior rim against the blue exterior.\"\n  },\n  \"edge_cutouts\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No notches or cutouts observed on any edge of the mug or handle.\"\n  },\n  \"rings_or_collars\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No bands or collars encircling any component of the mug.\"\n  },\n  \"part_junctions\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A visible junction where the handle connects to the body of the mug, showing a smooth transition without seams or fasteners.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 224,
+        "prompt_tokens": 1223,
+        "total_tokens": 1447,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1223,
+        "prompt_ms": 1492.641,
+        "prompt_per_token_ms": 1.2204750613246116,
+        "prompt_per_second": 819.3530795415643,
+        "predicted_n": 224,
+        "predicted_ms": 4162.085,
+        "predicted_per_token_ms": 18.664058295964125,
+        "predicted_per_second": 53.578915375346725
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A single circular opening at the top of the mug, visible as a dark interior rim against the blue exterior."
+        },
+        "edge_cutouts": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No notches or cutouts observed on any edge of the mug or handle."
+        },
+        "rings_or_collars": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No bands or collars encircling any component of the mug."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A visible junction where the handle connects to the body of the mug, showing a smooth transition without seams or fasteners."
+        }
+      },
+      "seconds": 5.747892600000341
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\continuity_512\\result.png",
+      "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "source_case_id": "temporal_warm_512",
+      "transport_status": "completed",
+      "final_content": "{\n  \"openings\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A single circular opening at the top of the mug, revealing dark liquid inside; rim is smooth and unbroken.\"\n  },\n  \"edge_cutouts\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No notches or cutouts observed on any visible edge of the mug or handle.\"\n  },\n  \"rings_or_collars\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No bands or collars encircling any component of the mug are visible.\"\n  },\n  \"part_junctions\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A single junction where the handle attaches to the mug body; connection appears seamless with no visible seams or fasteners.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 227,
+        "prompt_tokens": 1223,
+        "total_tokens": 1450,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1223,
+        "prompt_ms": 1511.051,
+        "prompt_per_token_ms": 1.2355282093213409,
+        "prompt_per_second": 809.3704315737855,
+        "predicted_n": 227,
+        "predicted_ms": 4591.294,
+        "predicted_per_token_ms": 20.31546017699115,
+        "predicted_per_second": 49.22359578802839
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A single circular opening at the top of the mug, revealing dark liquid inside; rim is smooth and unbroken."
+        },
+        "edge_cutouts": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No notches or cutouts observed on any visible edge of the mug or handle."
+        },
+        "rings_or_collars": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No bands or collars encircling any component of the mug are visible."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A single junction where the handle attaches to the mug body; connection appears seamless with no visible seams or fasteners."
+        }
+      },
+      "seconds": 6.202356699999655
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png",
+      "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "source_case_id": "mpt_temporal_hot_768",
+      "transport_status": "completed",
+      "final_content": "{\n  \"openings\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"Circular opening at the top of the mug, visible as a dark interior rim with steam rising from it.\"\n  },\n  \"edge_cutouts\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No notches or cutouts observed on any edge of the mug or handle.\"\n  },\n  \"rings_or_collars\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No bands or collars encircling any component of the mug.\"\n  },\n  \"part_junctions\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"Visible connection between the cylindrical body and the C-shaped handle, where the handle attaches to the side of the mug.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 222,
+        "prompt_tokens": 1231,
+        "total_tokens": 1453,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1231,
+        "prompt_ms": 1595.098,
+        "prompt_per_token_ms": 1.295774167343623,
+        "prompt_per_second": 771.7394166377238,
+        "predicted_n": 222,
+        "predicted_ms": 4181.933,
+        "predicted_per_token_ms": 18.92277375565611,
+        "predicted_per_second": 52.8463751093095
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "Circular opening at the top of the mug, visible as a dark interior rim with steam rising from it."
+        },
+        "edge_cutouts": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No notches or cutouts observed on any edge of the mug or handle."
+        },
+        "rings_or_collars": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No bands or collars encircling any component of the mug."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "Visible connection between the cylindrical body and the C-shaped handle, where the handle attaches to the side of the mug."
+        }
+      },
+      "seconds": 5.939734899999166
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_cooled_768\\result.png",
+      "sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "source_case_id": "mpt_temporal_cooled_768",
+      "transport_status": "completed",
+      "final_content": "{\n  \"openings\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A single circular opening at the top of the mug, revealing a dark interior.\"\n  },\n  \"edge_cutouts\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No notches or cutouts are visible on any edge of the mug.\"\n  },\n  \"rings_or_collars\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No bands or collars encircle any component of the mug.\"\n  },\n  \"part_junctions\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A visible junction where the handle connects to the body of the mug, showing a smooth transition without distinct seams.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 214,
+        "prompt_tokens": 1231,
+        "total_tokens": 1445,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1231,
+        "prompt_ms": 1546.998,
+        "prompt_per_token_ms": 1.2567002437043056,
+        "prompt_per_second": 795.7347068322001,
+        "predicted_n": 214,
+        "predicted_ms": 4014.84,
+        "predicted_per_token_ms": 18.849014084507044,
+        "predicted_per_second": 53.05317272917476
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A single circular opening at the top of the mug, revealing a dark interior."
+        },
+        "edge_cutouts": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No notches or cutouts are visible on any edge of the mug."
+        },
+        "rings_or_collars": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No bands or collars encircle any component of the mug."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A visible junction where the handle connects to the body of the mug, showing a smooth transition without distinct seams."
+        }
+      },
+      "seconds": 5.663574399997742
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "same_pixels_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "geometry_label": "software_self_comparison",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "hints": [],
+      "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."
+    },
+    {
+      "id": "color_change_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "geometry_label": "prior_agent_review_preserved_shape",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "hints": [],
+      "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."
+    },
+    {
+      "id": "warm_state_geometry",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "hints": [],
+      "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."
+    },
+    {
+      "id": "hot_state_geometry",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "pass",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "hints": [],
+      "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."
+    },
+    {
+      "id": "cooling_geometry",
+      "reference_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "candidate_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "geometry_label": "unadjudicated",
+      "source_task_label": "uncertain",
+      "label_scope_note": "Historical task verdict may concern color or temporal state; not independent geometry truth.",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "hints": [],
+      "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."
+    }
+  ],
+  "plan_sha256": "f4650614ce154f24fe3c55dcba0b54d23087f8ea2b78c12cae7f3e5b11af33bf",
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-geometry-observations-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 83392,
+  "load_seconds": 3.53121999999712,
+  "owned_server_closed": true
+}

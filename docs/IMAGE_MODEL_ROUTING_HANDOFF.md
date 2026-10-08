@@ -200,3 +200,8 @@ Sobre3d60ade, el usuario confirma: A conserva forma con anillos ligeramente mayo
 ## Prioridades de avisos offline — 2026-10-08
 
 Sobre61c1285 se implementó geometry-review-priorities-1 en script experimental: presencia distinta exige revisión estructural, conteos distintos revisión de medición, evidencia incompleta permanece explícita, anotaciones humanas separadas. Replay A/B/C sin nuevas inferencias; variación leve A procede del usuario, no del modelo. Nunca pass/identity ni rechazo automático; unavailable ante inventarios inválidos/transport incompleto.87 tests pasan,18 nuevos+69 previos;0GPU/generaciones/app/routing/dependencies/workflows. [Informe](GEOMETRY_REVIEW_PRIORITIES_REPORT.md). Siguiente: controles perceptuales con otra familia de objetos antes de integración opt-in de diagnóstico.
+
+
+## Segunda familia: tazas — 2026-10-08
+
+Baseb51e2b3. Observador generalizado con --plan;5 inferencias sobre tazas existentes,5.664–6.484s,92 tests aprobados. Inventarios coinciden en los4 atributos pese a color/vapor,0hints; prioridades siempreuncertain/no admisión/rechazo. No asumir identidad: faltan hueco del asa/contactos detallados y negativo estructural adjudicado. Labels de estado no se convierten en verdad geométrica; estado frío sigueincierto.0generaciones/deps/workflows/app/routing,servidor propio cerrado,estable intacto. [Informe](MUG_GEOMETRY_OBSERVATION_REPORT.md). Siguiente: presencia explícita del target y cobertura de partes con control de ausencia usando artifacts existentes.
