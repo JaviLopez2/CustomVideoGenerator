@@ -1,0 +1,32 @@
+{
+  "execution_head": "ab4b032825223d9411c254c1206895a83e15798e",
+  "requests": 4,
+  "generations": 0,
+  "automatic_admissions": 0,
+  "owned_server_closed": true,
+  "inputs_verified": true,
+  "script_hash_verified": true,
+  "mean_request_seconds": 5.680768349999198,
+  "min_request_seconds": 4.726821899999777,
+  "max_request_seconds": 6.556453599998349,
+  "health": {
+    "8080": "closed",
+    "8092": "closed",
+    "8090": 404,
+    "8188": 200
+  },
+  "comfy_queue_running": 0,
+  "comfy_queue_pending": 0,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status": "",
+  "gpu_after_close": "764 MiB, 6 %, 31",
+  "raw_evidence_sha256": "b7037a61cdd4a08547f1a5c938692a57389161ff903b7a7914281234fd0b75a2",
+  "log_sha256": "8fd171e4773e350addda3d66f506a46f87e0088ea9f213498f3a17e5f6d44745",
+  "tests": {
+    "passed": 69,
+    "exit_code": 0,
+    "seconds": 2.98,
+    "log": "docs/validation/visual-geometry-observations-tests-2026-10-08.txt"
+  },
+  "independent_human_review": "pending"
+}

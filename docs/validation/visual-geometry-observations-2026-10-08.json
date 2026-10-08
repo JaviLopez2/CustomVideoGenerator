@@ -1,0 +1,312 @@
+{
+  "execution_head": "ab4b032825223d9411c254c1206895a83e15798e",
+  "harness_sha256": "c00b67d450c97ec73d4258144887f2561c2bd7b486b3c81fd1f0b66ed31caf67",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "silver key",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+      "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "transport_status": "completed",
+      "final_content": "{\n  \"openings\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No visible physical holes or openings on the silver key.\"\n  },\n  \"edge_cutouts\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 3,\n    \"description\": \"Three distinct notches on the bottom edge of the key's bit: one large rectangular cutout and two smaller triangular cutouts adjacent to it.\"\n  },\n  \"rings_or_collars\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 2,\n    \"description\": \"Two raised, ring-like collars encircling the shaft of the key: one near the top (close to the bow) and one near the bottom (close to the bit).\"\n  },\n  \"part_junctions\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A single visible junction where the key's bit connects to the shaft, marked by a slight change in width and surface texture.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 249,
+        "prompt_tokens": 1231,
+        "total_tokens": 1480,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1231,
+        "prompt_ms": 1792.67,
+        "prompt_per_token_ms": 1.4562713241267262,
+        "prompt_per_second": 686.6852237165792,
+        "predicted_n": 249,
+        "predicted_ms": 4669.846,
+        "predicted_per_token_ms": 18.830024193548386,
+        "predicted_per_second": 53.106676322945134
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No visible physical holes or openings on the silver key."
+        },
+        "edge_cutouts": {
+          "visibility": "present",
+          "observed_count": 3,
+          "description": "Three distinct notches on the bottom edge of the key's bit: one large rectangular cutout and two smaller triangular cutouts adjacent to it."
+        },
+        "rings_or_collars": {
+          "visibility": "present",
+          "observed_count": 2,
+          "description": "Two raised, ring-like collars encircling the shaft of the key: one near the top (close to the bow) and one near the bottom (close to the bit)."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A single visible junction where the key's bit connects to the shaft, marked by a slight change in width and surface texture."
+        }
+      },
+      "seconds": 6.556453599998349
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "transport_status": "completed",
+      "final_content": "{\n  \"openings\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No visible physical holes or openings on the silver key.\"\n  },\n  \"edge_cutouts\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 2,\n    \"description\": \"Two distinct notches on the bottom edge of the key blade, forming a stepped profile.\"\n  },\n  \"rings_or_collars\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A single raised collar band encircling the upper shaft of the key, just below the bow.\"\n  },\n  \"part_junctions\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"Visible transition point where the cylindrical shaft meets the flat, notched blade at the bottom.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 214,
+        "prompt_tokens": 1231,
+        "total_tokens": 1445,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1231,
+        "prompt_ms": 1534.19,
+        "prompt_per_token_ms": 1.2462956945572705,
+        "prompt_per_second": 802.3778019671619,
+        "predicted_n": 214,
+        "predicted_ms": 4015.677,
+        "predicted_per_token_ms": 18.852943661971832,
+        "predicted_per_second": 53.042114691993405
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No visible physical holes or openings on the silver key."
+        },
+        "edge_cutouts": {
+          "visibility": "present",
+          "observed_count": 2,
+          "description": "Two distinct notches on the bottom edge of the key blade, forming a stepped profile."
+        },
+        "rings_or_collars": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A single raised collar band encircling the upper shaft of the key, just below the bow."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "Visible transition point where the cylindrical shaft meets the flat, notched blade at the bottom."
+        }
+      },
+      "seconds": 5.664092099999834
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+      "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "transport_status": "completed",
+      "final_content": "{\n  \"openings\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A single circular hole located in the upper right portion of the key's head.\"\n  },\n  \"edge_cutouts\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 2,\n    \"description\": \"Two distinct notches on the bottom edge of the key's head, forming a T-shape profile.\"\n  },\n  \"rings_or_collars\": {\n    \"visibility\": \"absent\",\n    \"observed_count\": 0,\n    \"description\": \"No bands or collars encircling any component of the key.\"\n  },\n  \"part_junctions\": {\n    \"visibility\": \"present\",\n    \"observed_count\": 1,\n    \"description\": \"A visible connection point where the key's head meets the shaft, appearing as a slight widening or transition zone.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 220,
+        "prompt_tokens": 1231,
+        "total_tokens": 1451,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1231,
+        "prompt_ms": 1545.209,
+        "prompt_per_token_ms": 1.255246953696182,
+        "prompt_per_second": 796.6559863423005,
+        "predicted_n": 220,
+        "predicted_ms": 4125.572,
+        "predicted_per_token_ms": 18.838228310502284,
+        "predicted_per_second": 53.08354817222921
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A single circular hole located in the upper right portion of the key's head."
+        },
+        "edge_cutouts": {
+          "visibility": "present",
+          "observed_count": 2,
+          "description": "Two distinct notches on the bottom edge of the key's head, forming a T-shape profile."
+        },
+        "rings_or_collars": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No bands or collars encircling any component of the key."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A visible connection point where the key's head meets the shaft, appearing as a slight widening or transition zone."
+        }
+      },
+      "seconds": 5.775705799998832
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+      "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "transport_status": "completed",
+      "final_content": "{\"openings\": {\"visibility\": \"absent\", \"observed_count\": 0, \"description\": \"No visible physical holes or openings on the key.\"}, \"edge_cutouts\": {\"visibility\": \"present\", \"observed_count\": 2, \"description\": \"Two distinct notches on the bottom edge of the key blade, forming a stepped profile.\"}, \"rings_or_collars\": {\"visibility\": \"present\", \"observed_count\": 1, \"description\": \"A single raised band encircling the upper shaft of the key, near the rounded head.\"}, \"part_junctions\": {\"visibility\": \"present\", \"observed_count\": 1, \"description\": \"Visible connection between the cylindrical shaft and the flat, notched blade at the lower end.\"}}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 165,
+        "prompt_tokens": 1231,
+        "total_tokens": 1396,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1231,
+        "prompt_ms": 1535.686,
+        "prompt_per_token_ms": 1.247510966693745,
+        "prompt_per_second": 801.5961596315914,
+        "predicted_n": 165,
+        "predicted_ms": 3095.08,
+        "predicted_per_token_ms": 18.872439024390243,
+        "predicted_per_second": 52.987321813975726
+      },
+      "inventory": {
+        "openings": {
+          "visibility": "absent",
+          "observed_count": 0,
+          "description": "No visible physical holes or openings on the key."
+        },
+        "edge_cutouts": {
+          "visibility": "present",
+          "observed_count": 2,
+          "description": "Two distinct notches on the bottom edge of the key blade, forming a stepped profile."
+        },
+        "rings_or_collars": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "A single raised band encircling the upper shaft of the key, near the rounded head."
+        },
+        "part_junctions": {
+          "visibility": "present",
+          "observed_count": 1,
+          "description": "Visible connection between the cylindrical shaft and the flat, notched blade at the lower end."
+        }
+      },
+      "seconds": 4.726821899999777
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "valid_cloth_edit",
+      "original_label": "pass",
+      "reference_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "hints": [
+        {
+          "feature": "edge_cutouts",
+          "kind": "count_disagreement"
+        },
+        {
+          "feature": "rings_or_collars",
+          "kind": "count_disagreement"
+        }
+      ],
+      "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."
+    },
+    {
+      "id": "continuity_factual_768",
+      "original_label": "fail",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "hints": [
+        {
+          "feature": "openings",
+          "kind": "presence_disagreement"
+        },
+        {
+          "feature": "rings_or_collars",
+          "kind": "presence_disagreement"
+        }
+      ],
+      "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."
+    },
+    {
+      "id": "qwen_continuity_factual_768",
+      "original_label": "pass",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "hints": [],
+      "reason": "Inventories are unverified model observations; agreement cannot establish physical identity."
+    }
+  ],
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-geometry-observations-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 81760,
+  "load_seconds": 6.060641099997156,
+  "owned_server_closed": true
+}

@@ -185,3 +185,8 @@ Sobre9f42964: usuario cerró8080 y el juego. Se conservó un timeout de texto ba
 ## Contrato QA ciego y geometría factual — 2026-10-08
 
 Base0624618.19 nuevas inferencias sobre imágenes existentes,0 generaciones/cambios productivos. Contrato completo16 casos:TP5/TN9/FP0/FN1,0timeouts,media9.125s,pico global7505MiB; tres agujas MPT detectadas, llave deformada aún aceptada. Control separado3 casos por componentes detecta llave pero rechaza2 positivos,uno por geometría y otro por texto con status/reason contradictorios. No cambiar labels ni rescatar verdict por reinterpretar reason. No ready/admisión/routing. Servidores propios cerrados y estable intacto. [Informe completo](VISUAL_JUDGE_FULL_QA_REPORT.md), [handoff vigente](VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Siguiente: revisión independiente de geometría y evidencia estructurada por referencia/candidato antes de una integración opt-in de veto que preserve OCR/fail-closed.
+
+
+## Observación geométrica independiente — 2026-10-08
+
+Baseab4b032.4 inventarios sobre imágenes individuales, sin labels/roles/desired counts/verdict;4.727–6.556s. Comparador offline siempreuncertain/admission_allowed=false, aunque coincidan atributos. Agujero del negativo detectado como hint; conteos de componentes aún inconsistentes en un positivo.69 tests pasan,0 generaciones/descargas/dependencias/workflows/app/routing changes. Servidor propio cerrado y estable intacto. [Informe](VISUAL_GEOMETRY_OBSERVATIONS_REPORT.md), [revisión humana A/B/C](VISUAL_GEOMETRY_BLIND_REVIEW.md) solicitada y pendiente. Siguiente: registrar anotación humana separada y validar evidencias antes de cualquier integración factual. No convertir agreement en pass ni hints en veto automático.
