@@ -88,3 +88,7 @@ Sobre `a3d82a2`, input propio copiado a Comfy sin sobrescritura y una solicitud 
 ### Serie autorizada de continuidad/resolución/detalles — 2026-10-07
 
 Sobre `6ba2402`, tres solicitudes al bridge experimental8091: continuidad512, T2I768×1376 y edit768×1376; HTTP200 e historial success en las tres. Lectura de outputs/historial/sensores y staging sin sobrescritura de input propio funcionan. T2I parcial por inscripción inventada, retirada en edición posterior sin ocultar el fallo. [Informe](FLUX_KLEIN_4B_RESOLUTION_DETAILS.md). Pico global muestreado11963/12288MiB; no garantiza cargas mayores. Bridge propio cerrado y puerto libre, cola vacía, servicios originales vivos, stable HEAD y hashes source externo conservados. Solo documentación/evidencia añadidas; sin cambios globales, dependencias o permisos permanentes. Artifacts ignorados preservables en target/resolution-details-2026-10-07.
+
+### Cierre autónomo — 2026-10-08
+
+Comandos, pytest, lectura/escritura de inputs propios, generación secuencial, sensores, caller MPT aislado y QA local funcionan con escalaciones específicas. No permisos permanentes nuevos.10solicitudes Klein+2comparaciones;241tests+2subtests aprobados. Cola vacía/8091libre, servicios originales responden y stable/source externo conservados. Fallo puntual de revisión automática por límite de uso resuelto tras nuevo encargo de continuar; no se eludió la revisión ni duplicó el comando. Contrato y evidencias en [informe](FLUX_KLEIN_4B_AUTONOMOUS_REPORT.md). El principal bloqueo actual es calidad/admisión QA, no acceso.

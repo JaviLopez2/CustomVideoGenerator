@@ -1,0 +1,1233 @@
+{
+  "scope": "Two functional comparisons, no controlled latency ranking, no promotion",
+  "cases": [
+    {
+      "name": "z_image_t2i_768",
+      "model": "z-image-turbo",
+      "steps_requested": 8,
+      "reference_roles": [],
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "elapsed_seconds": 0.094,
+          "total_mib": 12288,
+          "used_mib": 9260,
+          "utilization_percent": 5
+        },
+        {
+          "elapsed_seconds": 1.141,
+          "total_mib": 12288,
+          "used_mib": 5509,
+          "utilization_percent": 63
+        },
+        {
+          "elapsed_seconds": 2.204,
+          "total_mib": 12288,
+          "used_mib": 8708,
+          "utilization_percent": 32
+        },
+        {
+          "elapsed_seconds": 3.282,
+          "total_mib": 12288,
+          "used_mib": 11426,
+          "utilization_percent": 36
+        },
+        {
+          "elapsed_seconds": 4.329,
+          "total_mib": 12288,
+          "used_mib": 11295,
+          "utilization_percent": 2
+        },
+        {
+          "elapsed_seconds": 5.375,
+          "total_mib": 12288,
+          "used_mib": 11272,
+          "utilization_percent": 9
+        },
+        {
+          "elapsed_seconds": 6.422,
+          "total_mib": 12288,
+          "used_mib": 11273,
+          "utilization_percent": 6
+        },
+        {
+          "elapsed_seconds": 7.469,
+          "total_mib": 12288,
+          "used_mib": 5239,
+          "utilization_percent": 51
+        },
+        {
+          "elapsed_seconds": 8.547,
+          "total_mib": 12288,
+          "used_mib": 8239,
+          "utilization_percent": 48
+        },
+        {
+          "elapsed_seconds": 9.594,
+          "total_mib": 12288,
+          "used_mib": 10671,
+          "utilization_percent": 62
+        },
+        {
+          "elapsed_seconds": 10.657,
+          "total_mib": 12288,
+          "used_mib": 11457,
+          "utilization_percent": 51
+        },
+        {
+          "elapsed_seconds": 11.719,
+          "total_mib": 12288,
+          "used_mib": 11420,
+          "utilization_percent": 50
+        },
+        {
+          "elapsed_seconds": 12.782,
+          "total_mib": 12288,
+          "used_mib": 11421,
+          "utilization_percent": 82
+        },
+        {
+          "elapsed_seconds": 13.844,
+          "total_mib": 12288,
+          "used_mib": 11408,
+          "utilization_percent": 99
+        },
+        {
+          "elapsed_seconds": 14.907,
+          "total_mib": 12288,
+          "used_mib": 11357,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 15.938,
+          "total_mib": 12288,
+          "used_mib": 11451,
+          "utilization_percent": 87
+        },
+        {
+          "elapsed_seconds": 17.016,
+          "total_mib": 12288,
+          "used_mib": 11435,
+          "utilization_percent": 97
+        },
+        {
+          "elapsed_seconds": 18.11,
+          "total_mib": 12288,
+          "used_mib": 11348,
+          "utilization_percent": 94
+        },
+        {
+          "elapsed_seconds": 19.172,
+          "total_mib": 12288,
+          "used_mib": 11280,
+          "utilization_percent": 78
+        },
+        {
+          "elapsed_seconds": 20.219,
+          "total_mib": 12288,
+          "used_mib": 11261,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 21.282,
+          "total_mib": 12288,
+          "used_mib": 11290,
+          "utilization_percent": 99
+        },
+        {
+          "elapsed_seconds": 22.344,
+          "total_mib": 12288,
+          "used_mib": 11284,
+          "utilization_percent": 97
+        },
+        {
+          "elapsed_seconds": 23.375,
+          "total_mib": 12288,
+          "used_mib": 11271,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 24.454,
+          "total_mib": 12288,
+          "used_mib": 11271,
+          "utilization_percent": 83
+        },
+        {
+          "elapsed_seconds": 25.5,
+          "total_mib": 12288,
+          "used_mib": 11273,
+          "utilization_percent": 98
+        },
+        {
+          "elapsed_seconds": 26.625,
+          "total_mib": 12288,
+          "used_mib": 11272,
+          "utilization_percent": 94
+        },
+        {
+          "elapsed_seconds": 27.688,
+          "total_mib": 12288,
+          "used_mib": 11272,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 28.735,
+          "total_mib": 12288,
+          "used_mib": 11269,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 29.797,
+          "total_mib": 12288,
+          "used_mib": 11270,
+          "utilization_percent": 94
+        },
+        {
+          "elapsed_seconds": 30.86,
+          "total_mib": 12288,
+          "used_mib": 11270,
+          "utilization_percent": 99
+        },
+        {
+          "elapsed_seconds": 31.907,
+          "total_mib": 12288,
+          "used_mib": 11269,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 32.954,
+          "total_mib": 12288,
+          "used_mib": 11187,
+          "utilization_percent": 27
+        },
+        {
+          "elapsed_seconds": 34.0,
+          "total_mib": 12288,
+          "used_mib": 11186,
+          "utilization_percent": 89
+        },
+        {
+          "elapsed_seconds": 35.047,
+          "total_mib": 12288,
+          "used_mib": 11051,
+          "utilization_percent": 92
+        }
+      ],
+      "baseline_gpu": {
+        "elapsed_seconds": 0.047,
+        "total_mib": 12288,
+        "used_mib": 9257,
+        "utilization_percent": 5
+      },
+      "request": {
+        "model": "z-image-turbo",
+        "prompt": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+        "n": 1,
+        "size": "768x1376",
+        "seed": 42,
+        "steps": 8
+      },
+      "wall_seconds": 35.891,
+      "source_info": {
+        "provider": "openai_image",
+        "search_term": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+        "route": "standard",
+        "model": "z-image-turbo",
+        "requested_model": "z-image-turbo",
+        "reference_count": 0,
+        "requested_size": "768x1376",
+        "generation_seconds": 35.714,
+        "rendition": {
+          "id": null,
+          "width": 768,
+          "height": 1376
+        }
+      },
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\z_image_t2i_768\\openai-image-644f7e2133d4.png",
+        "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "width": 768,
+        "height": 1376,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\z-image-turbo_00020_.png",
+        "pixels_match_comfy_original": true
+      },
+      "history": {
+        "prompt_id": "1e9dd6a2-02bf-45f5-99ef-3027cc85cb8d",
+        "status": "success",
+        "checkpoint": [
+          "z_image_turbo_bf16.safetensors"
+        ],
+        "samplers": [
+          {
+            "seed": 42,
+            "steps": 8,
+            "cfg": 1.0
+          }
+        ],
+        "prompts": [
+          "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark."
+        ],
+        "execution_seconds": 35.279,
+        "graph_sha256": "586f9c637dcb3155faecc92d2d2e657929c88dbce5348a2c73901ab7125c16fc",
+        "text_inputs": [
+          {
+            "node": "57:27",
+            "class_type": "CLIPTextEncode",
+            "field": "text",
+            "value": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark."
+          }
+        ]
+      },
+      "gpu_memory": {
+        "sampled_peak_global_used_mib": 11457,
+        "margin_at_sampled_peak_mib": 831
+      },
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "visual_review": {
+        "status": "partial_semantic",
+        "no_visible_lettering": true,
+        "unrequested_third_watch_hand": true,
+        "note": "Same scene prompt as Klein no-text test; different model/native steps. No global winner."
+      },
+      "final_artifact_history_verified": true,
+      "spec_sha256": "c1c826d48063f35f5c7e9610e52278f4f29e6a5add9771d1709a8f40d87564aa",
+      "ordered_references": []
+    },
+    {
+      "name": "qwen_continuity_factual_768",
+      "model": "qwen-image-2.1-precision",
+      "steps_requested": 20,
+      "reference_roles": [
+        "continuity",
+        "detail"
+      ],
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "elapsed_seconds": 0.094,
+          "total_mib": 12288,
+          "used_mib": 10564,
+          "utilization_percent": 0
+        },
+        {
+          "elapsed_seconds": 1.141,
+          "total_mib": 12288,
+          "used_mib": 4539,
+          "utilization_percent": 3
+        },
+        {
+          "elapsed_seconds": 2.187,
+          "total_mib": 12288,
+          "used_mib": 5849,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 3.234,
+          "total_mib": 12288,
+          "used_mib": 7146,
+          "utilization_percent": 13
+        },
+        {
+          "elapsed_seconds": 4.297,
+          "total_mib": 12288,
+          "used_mib": 7461,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 5.344,
+          "total_mib": 12288,
+          "used_mib": 7463,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 6.391,
+          "total_mib": 12288,
+          "used_mib": 8199,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 7.437,
+          "total_mib": 12288,
+          "used_mib": 9478,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 8.469,
+          "total_mib": 12288,
+          "used_mib": 10562,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 9.516,
+          "total_mib": 12288,
+          "used_mib": 11141,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 10.562,
+          "total_mib": 12288,
+          "used_mib": 11450,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 11.609,
+          "total_mib": 12288,
+          "used_mib": 11220,
+          "utilization_percent": 98
+        },
+        {
+          "elapsed_seconds": 12.656,
+          "total_mib": 12288,
+          "used_mib": 10989,
+          "utilization_percent": 15
+        },
+        {
+          "elapsed_seconds": 13.703,
+          "total_mib": 12288,
+          "used_mib": 10987,
+          "utilization_percent": 99
+        },
+        {
+          "elapsed_seconds": 14.766,
+          "total_mib": 12288,
+          "used_mib": 11007,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 15.797,
+          "total_mib": 12288,
+          "used_mib": 11487,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 16.844,
+          "total_mib": 12288,
+          "used_mib": 11357,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 17.891,
+          "total_mib": 12288,
+          "used_mib": 11482,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 18.953,
+          "total_mib": 12288,
+          "used_mib": 11478,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 20.0,
+          "total_mib": 12288,
+          "used_mib": 11470,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 21.047,
+          "total_mib": 12288,
+          "used_mib": 10122,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 22.109,
+          "total_mib": 12288,
+          "used_mib": 11292,
+          "utilization_percent": 67
+        },
+        {
+          "elapsed_seconds": 23.156,
+          "total_mib": 12288,
+          "used_mib": 11516,
+          "utilization_percent": 98
+        },
+        {
+          "elapsed_seconds": 24.203,
+          "total_mib": 12288,
+          "used_mib": 11507,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 25.25,
+          "total_mib": 12288,
+          "used_mib": 11699,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 26.297,
+          "total_mib": 12288,
+          "used_mib": 11636,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 27.344,
+          "total_mib": 12288,
+          "used_mib": 10772,
+          "utilization_percent": 83
+        },
+        {
+          "elapsed_seconds": 28.391,
+          "total_mib": 12288,
+          "used_mib": 10788,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 29.437,
+          "total_mib": 12288,
+          "used_mib": 11080,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 30.484,
+          "total_mib": 12288,
+          "used_mib": 11084,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 31.531,
+          "total_mib": 12288,
+          "used_mib": 11052,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 32.578,
+          "total_mib": 12288,
+          "used_mib": 11027,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 33.625,
+          "total_mib": 12288,
+          "used_mib": 11027,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 34.687,
+          "total_mib": 12288,
+          "used_mib": 11029,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 35.734,
+          "total_mib": 12288,
+          "used_mib": 10694,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 36.781,
+          "total_mib": 12288,
+          "used_mib": 10695,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 37.828,
+          "total_mib": 12288,
+          "used_mib": 10694,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 38.875,
+          "total_mib": 12288,
+          "used_mib": 10666,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 39.922,
+          "total_mib": 12288,
+          "used_mib": 10734,
+          "utilization_percent": 99
+        },
+        {
+          "elapsed_seconds": 40.969,
+          "total_mib": 12288,
+          "used_mib": 10724,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 42.016,
+          "total_mib": 12288,
+          "used_mib": 10735,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 43.062,
+          "total_mib": 12288,
+          "used_mib": 10754,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 44.109,
+          "total_mib": 12288,
+          "used_mib": 10743,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 45.141,
+          "total_mib": 12288,
+          "used_mib": 10743,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 46.187,
+          "total_mib": 12288,
+          "used_mib": 10734,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 47.234,
+          "total_mib": 12288,
+          "used_mib": 10730,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 48.281,
+          "total_mib": 12288,
+          "used_mib": 10761,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 49.328,
+          "total_mib": 12288,
+          "used_mib": 10761,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 50.375,
+          "total_mib": 12288,
+          "used_mib": 10734,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 51.422,
+          "total_mib": 12288,
+          "used_mib": 10612,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 52.469,
+          "total_mib": 12288,
+          "used_mib": 10630,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 53.516,
+          "total_mib": 12288,
+          "used_mib": 10701,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 54.562,
+          "total_mib": 12288,
+          "used_mib": 10701,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 55.594,
+          "total_mib": 12288,
+          "used_mib": 10635,
+          "utilization_percent": 87
+        },
+        {
+          "elapsed_seconds": 56.641,
+          "total_mib": 12288,
+          "used_mib": 10650,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 57.687,
+          "total_mib": 12288,
+          "used_mib": 10650,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 58.734,
+          "total_mib": 12288,
+          "used_mib": 10639,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 59.781,
+          "total_mib": 12288,
+          "used_mib": 10649,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 60.828,
+          "total_mib": 12288,
+          "used_mib": 10649,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 61.875,
+          "total_mib": 12288,
+          "used_mib": 10628,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 62.922,
+          "total_mib": 12288,
+          "used_mib": 10627,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 63.969,
+          "total_mib": 12288,
+          "used_mib": 10628,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 65.016,
+          "total_mib": 12288,
+          "used_mib": 10599,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 66.062,
+          "total_mib": 12288,
+          "used_mib": 10604,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 67.109,
+          "total_mib": 12288,
+          "used_mib": 10690,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 68.156,
+          "total_mib": 12288,
+          "used_mib": 10681,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 69.203,
+          "total_mib": 12288,
+          "used_mib": 10628,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 70.25,
+          "total_mib": 12288,
+          "used_mib": 10642,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 71.297,
+          "total_mib": 12288,
+          "used_mib": 10641,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 72.344,
+          "total_mib": 12288,
+          "used_mib": 10635,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 73.391,
+          "total_mib": 12288,
+          "used_mib": 10635,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 74.437,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 75.484,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 76.531,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 77.578,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 78.625,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 79.672,
+          "total_mib": 12288,
+          "used_mib": 10667,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 80.719,
+          "total_mib": 12288,
+          "used_mib": 10667,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 81.766,
+          "total_mib": 12288,
+          "used_mib": 10667,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 82.797,
+          "total_mib": 12288,
+          "used_mib": 10667,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 83.859,
+          "total_mib": 12288,
+          "used_mib": 10667,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 84.906,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 85.953,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 86.984,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 88.031,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 89.062,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 90.125,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 91.172,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 92.234,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 93.281,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 94.328,
+          "total_mib": 12288,
+          "used_mib": 10603,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 95.375,
+          "total_mib": 12288,
+          "used_mib": 10572,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 96.437,
+          "total_mib": 12288,
+          "used_mib": 10544,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 97.484,
+          "total_mib": 12288,
+          "used_mib": 10553,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 98.531,
+          "total_mib": 12288,
+          "used_mib": 10612,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 99.594,
+          "total_mib": 12288,
+          "used_mib": 10621,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 100.641,
+          "total_mib": 12288,
+          "used_mib": 10615,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 101.687,
+          "total_mib": 12288,
+          "used_mib": 10638,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 102.734,
+          "total_mib": 12288,
+          "used_mib": 10627,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 103.781,
+          "total_mib": 12288,
+          "used_mib": 10628,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 104.828,
+          "total_mib": 12288,
+          "used_mib": 10617,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 105.875,
+          "total_mib": 12288,
+          "used_mib": 10608,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 106.922,
+          "total_mib": 12288,
+          "used_mib": 10555,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 107.969,
+          "total_mib": 12288,
+          "used_mib": 10569,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 109.016,
+          "total_mib": 12288,
+          "used_mib": 10570,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 110.062,
+          "total_mib": 12288,
+          "used_mib": 10570,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 111.109,
+          "total_mib": 12288,
+          "used_mib": 10560,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 112.156,
+          "total_mib": 12288,
+          "used_mib": 10569,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 113.203,
+          "total_mib": 12288,
+          "used_mib": 10569,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 114.25,
+          "total_mib": 12288,
+          "used_mib": 10569,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 115.297,
+          "total_mib": 12288,
+          "used_mib": 10569,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 116.344,
+          "total_mib": 12288,
+          "used_mib": 10569,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 117.375,
+          "total_mib": 12288,
+          "used_mib": 10558,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 118.422,
+          "total_mib": 12288,
+          "used_mib": 10558,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 119.453,
+          "total_mib": 12288,
+          "used_mib": 10557,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 120.5,
+          "total_mib": 12288,
+          "used_mib": 10557,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 121.547,
+          "total_mib": 12288,
+          "used_mib": 10557,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 122.594,
+          "total_mib": 12288,
+          "used_mib": 10557,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 123.641,
+          "total_mib": 12288,
+          "used_mib": 10557,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 124.687,
+          "total_mib": 12288,
+          "used_mib": 10557,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 125.734,
+          "total_mib": 12288,
+          "used_mib": 10557,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 126.781,
+          "total_mib": 12288,
+          "used_mib": 10556,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 127.828,
+          "total_mib": 12288,
+          "used_mib": 10556,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 128.875,
+          "total_mib": 12288,
+          "used_mib": 10551,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 129.922,
+          "total_mib": 12288,
+          "used_mib": 10571,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 130.969,
+          "total_mib": 12288,
+          "used_mib": 10544,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 132.016,
+          "total_mib": 12288,
+          "used_mib": 10533,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 133.062,
+          "total_mib": 12288,
+          "used_mib": 10533,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 134.109,
+          "total_mib": 12288,
+          "used_mib": 9540,
+          "utilization_percent": 30
+        },
+        {
+          "elapsed_seconds": 135.172,
+          "total_mib": 12288,
+          "used_mib": 9531,
+          "utilization_percent": 88
+        },
+        {
+          "elapsed_seconds": 136.219,
+          "total_mib": 12288,
+          "used_mib": 9526,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 137.266,
+          "total_mib": 12288,
+          "used_mib": 9579,
+          "utilization_percent": 100
+        },
+        {
+          "elapsed_seconds": 138.312,
+          "total_mib": 12288,
+          "used_mib": 9579,
+          "utilization_percent": 96
+        },
+        {
+          "elapsed_seconds": 139.359,
+          "total_mib": 12288,
+          "used_mib": 9065,
+          "utilization_percent": 6
+        }
+      ],
+      "baseline_gpu": {
+        "elapsed_seconds": 0.047,
+        "total_mib": 12288,
+        "used_mib": 10564,
+        "utilization_percent": 0
+      },
+      "request": {
+        "model": "qwen-image-2.1-precision",
+        "prompt": "<image1> is the canvas and stable continuity anchor for the same red ceramic mug. <image2> is detail evidence for the small silver key only; not the watch or cloth; use only the visible detail it establishes. Edit <image1>. Preserve the same physical carrier, border, orientation, position, framing and surrounding scene. The visible state inside the continuity target MUST change to match this temporal stage: Hot tea with clearly visible steam in the same red mug at late afternoon. Apply this change: Use image 1 as the scene and identity of the same red ceramic mug on its wooden table by the window. Advance to late afternoon golden side light; the same mug now contains hot tea with clearly visible steam rising. Preserve its handle, red ceramic shape and viewpoint. Add exactly the small silver key from image 2 beside the mug on the table, retaining its toothed shape and metal material. Image 2 supplies only the key; do not include its watch or cloth. One mug and one key, both complete in an edge-to-edge vertical photograph. No lettering, logos or physical picture frame. Do not preserve the previous blank/developing image content of <image1> when it conflicts with the requested stage. Use every other image only for the role stated above.",
+        "n": 1,
+        "size": "768x1376",
+        "steps": 20,
+        "seed": 42,
+        "reference_image": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+        "reference_image_2": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png"
+      },
+      "wall_seconds": 140.062,
+      "source_info": {
+        "provider": "openai_image",
+        "search_term": "Use image 1 as the scene and identity of the same red ceramic mug on its wooden table by the window. Advance to late afternoon golden side light; the same mug now contains hot tea with clearly visible steam rising. Preserve its handle, red ceramic shape and viewpoint. Add exactly the small silver key from image 2 beside the mug on the table, retaining its toothed shape and metal material. Image 2 supplies only the key; do not include its watch or cloth. One mug and one key, both complete in an edge-to-edge vertical photograph. No lettering, logos or physical picture frame.",
+        "route": "precision",
+        "model": "qwen-image-2.1-precision",
+        "requested_model": "qwen-image-2.1-precision",
+        "reference_count": 2,
+        "reference": {
+          "reference_pack": [
+            {
+              "role": "continuity",
+              "description": "the same red ceramic mug",
+              "comfyui_input": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png"
+            },
+            {
+              "role": "detail",
+              "description": "the small silver key only; not the watch or cloth",
+              "comfyui_input": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png"
+            }
+          ],
+          "temporal_progression": true,
+          "temporal_state": "Hot tea with clearly visible steam in the same red mug at late afternoon"
+        },
+        "requested_size": "768x1376",
+        "generation_seconds": 139.796,
+        "rendition": {
+          "id": null,
+          "width": 768,
+          "height": 1376
+        },
+        "steps": 20,
+        "seed": 42
+      },
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+        "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+        "width": 768,
+        "height": 1376,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\Qwen_image_2.1_00039.png",
+        "pixels_match_comfy_original": true
+      },
+      "history": {
+        "prompt_id": "30c0fc37-d71e-404a-bbc8-eb0b666fc302",
+        "status": "success",
+        "checkpoint": [
+          "qwen_image_2.1_int8_convrot.safetensors"
+        ],
+        "samplers": [
+          {
+            "seed": 42,
+            "steps": 20,
+            "cfg": 1.0
+          }
+        ],
+        "prompts": [],
+        "execution_seconds": 139.48,
+        "graph_sha256": "f896e26d88fdb5dda39a584eb2d6213773cfeff7af8aca6d777c9c6c5cf2a2ee",
+        "text_inputs": [
+          {
+            "node": "459:474",
+            "class_type": "TextEncodeQwenImage21",
+            "field": "prompt",
+            "value": "<image1> is the canvas and stable continuity anchor for the same red ceramic mug. <image2> is detail evidence for the small silver key only; not the watch or cloth; use only the visible detail it establishes. Edit <image1>. Preserve the same physical carrier, border, orientation, position, framing and surrounding scene. The visible state inside the continuity target MUST change to match this temporal stage: Hot tea with clearly visible steam in the same red mug at late afternoon. Apply this change: Use image 1 as the scene and identity of the same red ceramic mug on its wooden table by the window. Advance to late afternoon golden side light; the same mug now contains hot tea with clearly visible steam rising. Preserve its handle, red ceramic shape and viewpoint. Add exactly the small silver key from image 2 beside the mug on the table, retaining its toothed shape and metal material. Image 2 supplies only the key; do not include its watch or cloth. One mug and one key, both complete in an edge-to-edge vertical photograph. No lettering, logos or physical picture frame. Do not preserve the previous blank/developing image content of <image1> when it conflicts with the requested stage. Use every other image only for the role stated above."
+          }
+        ],
+        "effective_reference_inputs": [
+          "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png"
+        ],
+        "unused_placeholder_not_connected": "images.jpg"
+      },
+      "gpu_memory": {
+        "sampled_peak_global_used_mib": 11699,
+        "margin_at_sampled_peak_mib": 589
+      },
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "visual_review": {
+        "status": "passed_informal",
+        "red_mug_and_steam": true,
+        "key_shape_closer_to_reference_than_klein": true,
+        "no_watch_or_cloth_leakage": true,
+        "limit": "One case, subjective inspection; no exact geometric measurement"
+      },
+      "final_artifact_history_verified": true,
+      "spec_sha256": "4978ce7093c0b5c6f470c381d8063d078a45361b1eeaaa372a08a346b17d3fef",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "role": "continuity",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+        },
+        {
+          "filename": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "role": "detail",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        }
+      ]
+    }
+  ]
+}

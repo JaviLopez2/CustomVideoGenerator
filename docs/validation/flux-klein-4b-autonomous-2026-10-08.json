@@ -1,0 +1,2904 @@
+{
+  "base_head": "1c7de1a707f0d51a631e027631f0da939567284b",
+  "authorization": "Autonomous iterative experimental integration, sequential functional GPU tests; no promotion or stable changes",
+  "assets": {
+    "diffusion_model": {
+      "sha256": "97ed34fe0567e436200f2faee3939b88f2b5d99f8af2a4dc16532c4245c0ccb6",
+      "bytes": 4070624520
+    },
+    "text_encoder": {
+      "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a",
+      "bytes": 8044982048
+    },
+    "vae": {
+      "sha256": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5",
+      "bytes": 336213556
+    }
+  },
+  "binary": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\debug\\klein4b-experimental-bridge.exe",
+    "sha256": "7f8d125f3de758f6c65e7f06bcb43a427c04dec333ba98d386a51af4451d6a85",
+    "tracked_in_git": false
+  },
+  "cases": [
+    {
+      "name": "identity_style_512",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete inside a square frame. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+        "seed": 42,
+        "size": "512x512",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+        "reference_image_2": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+        "reference_roles": [
+          "identity_reference",
+          "style_reference"
+        ],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-08T09:21:24.067991+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:21:24.685809+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 4346,
+          "utilization_percent": 8
+        },
+        {
+          "utc": "2026-10-08T09:21:25.738169+00:00",
+          "elapsed_seconds": 1.093,
+          "total_mib": 12288,
+          "used_mib": 6270,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:26.788253+00:00",
+          "elapsed_seconds": 2.156,
+          "total_mib": 12288,
+          "used_mib": 4571,
+          "utilization_percent": 67
+        },
+        {
+          "utc": "2026-10-08T09:21:27.840832+00:00",
+          "elapsed_seconds": 3.203,
+          "total_mib": 12288,
+          "used_mib": 7176,
+          "utilization_percent": 15
+        },
+        {
+          "utc": "2026-10-08T09:21:28.891324+00:00",
+          "elapsed_seconds": 4.25,
+          "total_mib": 12288,
+          "used_mib": 10177,
+          "utilization_percent": 35
+        },
+        {
+          "utc": "2026-10-08T09:21:29.941715+00:00",
+          "elapsed_seconds": 5.297,
+          "total_mib": 12288,
+          "used_mib": 11297,
+          "utilization_percent": 32
+        },
+        {
+          "utc": "2026-10-08T09:21:30.979949+00:00",
+          "elapsed_seconds": 6.343,
+          "total_mib": 12288,
+          "used_mib": 11804,
+          "utilization_percent": 94
+        },
+        {
+          "utc": "2026-10-08T09:21:32.026967+00:00",
+          "elapsed_seconds": 7.39,
+          "total_mib": 12288,
+          "used_mib": 11553,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:33.075925+00:00",
+          "elapsed_seconds": 8.437,
+          "total_mib": 12288,
+          "used_mib": 11297,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:34.122119+00:00",
+          "elapsed_seconds": 9.484,
+          "total_mib": 12288,
+          "used_mib": 11352,
+          "utilization_percent": 98
+        },
+        {
+          "utc": "2026-10-08T09:21:35.174610+00:00",
+          "elapsed_seconds": 10.531,
+          "total_mib": 12288,
+          "used_mib": 11259,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-08T09:21:36.212321+00:00",
+          "elapsed_seconds": 11.578,
+          "total_mib": 12288,
+          "used_mib": 10938,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:37.250758+00:00",
+          "elapsed_seconds": 12.609,
+          "total_mib": 12288,
+          "used_mib": 10937,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:38.292861+00:00",
+          "elapsed_seconds": 13.656,
+          "total_mib": 12288,
+          "used_mib": 10934,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:39.332910+00:00",
+          "elapsed_seconds": 14.703,
+          "total_mib": 12288,
+          "used_mib": 10874,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:40.373147+00:00",
+          "elapsed_seconds": 15.734,
+          "total_mib": 12288,
+          "used_mib": 10745,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:41.422809+00:00",
+          "elapsed_seconds": 16.781,
+          "total_mib": 12288,
+          "used_mib": 10745,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:42.471985+00:00",
+          "elapsed_seconds": 17.828,
+          "total_mib": 12288,
+          "used_mib": 10745,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:43.519647+00:00",
+          "elapsed_seconds": 18.875,
+          "total_mib": 12288,
+          "used_mib": 10618,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:44.569909+00:00",
+          "elapsed_seconds": 19.937,
+          "total_mib": 12288,
+          "used_mib": 10618,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:45.616303+00:00",
+          "elapsed_seconds": 20.984,
+          "total_mib": 12288,
+          "used_mib": 10618,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:21:46.667631+00:00",
+          "elapsed_seconds": 22.031,
+          "total_mib": 12288,
+          "used_mib": 9398,
+          "utilization_percent": 36
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:21:24.640729+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 4346,
+        "utilization_percent": 8
+      },
+      "bridge_http_status": 200,
+      "wall_seconds": 22.187,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\identity_style_512\\result.png",
+        "sha256": "0a664d3df439a388da82cb54f891a7f716236b8f3a5bbebf3862f08e32931c82",
+        "bytes": 353548,
+        "width": 512,
+        "height": 512,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00006_.png"
+      },
+      "history": {
+        "prompt_id": "b7f07594-8fa7-4bdf-af12-045e00b695f5",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00006_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 21.874
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 4346,
+        "sampled_peak_global_used_mib": 11804,
+        "margin_at_sampled_peak_mib": 484,
+        "sample_count": 22,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:21:46.826194+00:00",
+      "visual_review": {
+        "status": "rejected_semantic",
+        "identity_watch_key": "preserved_informally",
+        "style_warm_light": "adopted",
+        "unrequested_physical_frame": true,
+        "hypothesis": "Prompt ambiguity inside a square frame; not yet attributed to model or style leakage"
+      },
+      "final_artifact_history_verified": true,
+      "spec_sha256": "ebfc8fa094874303d568b550c436c7c0e765b30cc17625f836e62cef4f5f8d81",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "role": "identity_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "filename": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "role": "style_reference",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+        }
+      ]
+    },
+    {
+      "name": "identity_style_unframed_512",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge square photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+        "seed": 42,
+        "size": "512x512",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+        "reference_image_2": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+        "reference_roles": [
+          "identity_reference",
+          "style_reference"
+        ],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-08T09:22:24.263405+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:22:24.881208+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 9401,
+          "utilization_percent": 3
+        },
+        {
+          "utc": "2026-10-08T09:22:25.926280+00:00",
+          "elapsed_seconds": 1.078,
+          "total_mib": 12288,
+          "used_mib": 11609,
+          "utilization_percent": 40
+        },
+        {
+          "utc": "2026-10-08T09:22:26.976371+00:00",
+          "elapsed_seconds": 2.14,
+          "total_mib": 12288,
+          "used_mib": 11545,
+          "utilization_percent": 33
+        },
+        {
+          "utc": "2026-10-08T09:22:28.030128+00:00",
+          "elapsed_seconds": 3.187,
+          "total_mib": 12288,
+          "used_mib": 11353,
+          "utilization_percent": 35
+        },
+        {
+          "utc": "2026-10-08T09:22:29.077007+00:00",
+          "elapsed_seconds": 4.234,
+          "total_mib": 12288,
+          "used_mib": 11609,
+          "utilization_percent": 82
+        },
+        {
+          "utc": "2026-10-08T09:22:30.127566+00:00",
+          "elapsed_seconds": 5.281,
+          "total_mib": 12288,
+          "used_mib": 11737,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:31.176891+00:00",
+          "elapsed_seconds": 6.344,
+          "total_mib": 12288,
+          "used_mib": 11385,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:32.221601+00:00",
+          "elapsed_seconds": 7.375,
+          "total_mib": 12288,
+          "used_mib": 11385,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-08T09:22:33.268331+00:00",
+          "elapsed_seconds": 8.422,
+          "total_mib": 12288,
+          "used_mib": 11286,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:34.316785+00:00",
+          "elapsed_seconds": 9.469,
+          "total_mib": 12288,
+          "used_mib": 11065,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-08T09:22:35.368219+00:00",
+          "elapsed_seconds": 10.531,
+          "total_mib": 12288,
+          "used_mib": 11065,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:36.420207+00:00",
+          "elapsed_seconds": 11.578,
+          "total_mib": 12288,
+          "used_mib": 11065,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:37.467551+00:00",
+          "elapsed_seconds": 12.625,
+          "total_mib": 12288,
+          "used_mib": 10613,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:38.510471+00:00",
+          "elapsed_seconds": 13.672,
+          "total_mib": 12288,
+          "used_mib": 10617,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:39.557429+00:00",
+          "elapsed_seconds": 14.719,
+          "total_mib": 12288,
+          "used_mib": 10617,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:40.608182+00:00",
+          "elapsed_seconds": 15.765,
+          "total_mib": 12288,
+          "used_mib": 10649,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:41.646317+00:00",
+          "elapsed_seconds": 16.812,
+          "total_mib": 12288,
+          "used_mib": 10645,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:42.684666+00:00",
+          "elapsed_seconds": 17.844,
+          "total_mib": 12288,
+          "used_mib": 10649,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:43.724216+00:00",
+          "elapsed_seconds": 18.89,
+          "total_mib": 12288,
+          "used_mib": 10649,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:22:44.762957+00:00",
+          "elapsed_seconds": 19.922,
+          "total_mib": 12288,
+          "used_mib": 9369,
+          "utilization_percent": 93
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:22:24.835024+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 9401,
+        "utilization_percent": 5
+      },
+      "bridge_http_status": 200,
+      "wall_seconds": 20.172,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\identity_style_unframed_512\\result.png",
+        "sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+        "bytes": 403287,
+        "width": 512,
+        "height": 512,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00007_.png"
+      },
+      "history": {
+        "prompt_id": "6a586f20-1c81-48f6-831e-ca61b34d32ad",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00007_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 19.539
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 9401,
+        "sampled_peak_global_used_mib": 11737,
+        "margin_at_sampled_peak_mib": 551,
+        "sample_count": 20,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:22:45.024926+00:00",
+      "visual_review": {
+        "status": "passed_informal",
+        "identity_preserved": true,
+        "warm_style_adopted": true,
+        "no_mug_or_physical_frame": true,
+        "no_visible_lettering": true,
+        "diagnosis": "Changing only ambiguous framing prose removed the unwanted frame; supports a prompt ambiguity cause in this controlled pair, not a universal guarantee."
+      },
+      "final_artifact_history_verified": true,
+      "spec_sha256": "9d9ccefc8f6fa0fc80f4d954af31f589e3d38e9a714ec9b8cfec1753abd7b293",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "role": "identity_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "filename": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "role": "style_reference",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+        }
+      ]
+    },
+    {
+      "name": "identity_style_768",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+        "seed": 42,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+        "reference_image_2": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+        "reference_roles": [
+          "identity_reference",
+          "style_reference"
+        ],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-08T09:23:27.001305+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:23:27.619451+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 9366,
+          "utilization_percent": 5
+        },
+        {
+          "utc": "2026-10-08T09:23:28.657126+00:00",
+          "elapsed_seconds": 1.078,
+          "total_mib": 12288,
+          "used_mib": 11764,
+          "utilization_percent": 40
+        },
+        {
+          "utc": "2026-10-08T09:23:29.699097+00:00",
+          "elapsed_seconds": 2.125,
+          "total_mib": 12288,
+          "used_mib": 11479,
+          "utilization_percent": 36
+        },
+        {
+          "utc": "2026-10-08T09:23:30.750862+00:00",
+          "elapsed_seconds": 3.172,
+          "total_mib": 12288,
+          "used_mib": 11287,
+          "utilization_percent": 35
+        },
+        {
+          "utc": "2026-10-08T09:23:31.802129+00:00",
+          "elapsed_seconds": 4.235,
+          "total_mib": 12288,
+          "used_mib": 11510,
+          "utilization_percent": 97
+        },
+        {
+          "utc": "2026-10-08T09:23:32.849334+00:00",
+          "elapsed_seconds": 5.281,
+          "total_mib": 12288,
+          "used_mib": 10996,
+          "utilization_percent": 64
+        },
+        {
+          "utc": "2026-10-08T09:23:33.891552+00:00",
+          "elapsed_seconds": 6.313,
+          "total_mib": 12288,
+          "used_mib": 11735,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:34.939324+00:00",
+          "elapsed_seconds": 7.36,
+          "total_mib": 12288,
+          "used_mib": 11831,
+          "utilization_percent": 91
+        },
+        {
+          "utc": "2026-10-08T09:23:35.990865+00:00",
+          "elapsed_seconds": 8.422,
+          "total_mib": 12288,
+          "used_mib": 11222,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:37.039750+00:00",
+          "elapsed_seconds": 9.469,
+          "total_mib": 12288,
+          "used_mib": 11159,
+          "utilization_percent": 92
+        },
+        {
+          "utc": "2026-10-08T09:23:38.079455+00:00",
+          "elapsed_seconds": 10.5,
+          "total_mib": 12288,
+          "used_mib": 11159,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:39.127210+00:00",
+          "elapsed_seconds": 11.547,
+          "total_mib": 12288,
+          "used_mib": 10679,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:40.167667+00:00",
+          "elapsed_seconds": 12.594,
+          "total_mib": 12288,
+          "used_mib": 10678,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:41.207444+00:00",
+          "elapsed_seconds": 13.625,
+          "total_mib": 12288,
+          "used_mib": 10679,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:42.256571+00:00",
+          "elapsed_seconds": 14.688,
+          "total_mib": 12288,
+          "used_mib": 10679,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:43.305476+00:00",
+          "elapsed_seconds": 15.735,
+          "total_mib": 12288,
+          "used_mib": 10871,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:44.353900+00:00",
+          "elapsed_seconds": 16.781,
+          "total_mib": 12288,
+          "used_mib": 10675,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:45.404624+00:00",
+          "elapsed_seconds": 17.828,
+          "total_mib": 12288,
+          "used_mib": 10678,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:46.447648+00:00",
+          "elapsed_seconds": 18.875,
+          "total_mib": 12288,
+          "used_mib": 10679,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:47.486576+00:00",
+          "elapsed_seconds": 19.906,
+          "total_mib": 12288,
+          "used_mib": 10678,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:48.538394+00:00",
+          "elapsed_seconds": 20.969,
+          "total_mib": 12288,
+          "used_mib": 10484,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:49.586172+00:00",
+          "elapsed_seconds": 22.016,
+          "total_mib": 12288,
+          "used_mib": 10294,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:50.631996+00:00",
+          "elapsed_seconds": 23.063,
+          "total_mib": 12288,
+          "used_mib": 10294,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:51.670630+00:00",
+          "elapsed_seconds": 24.094,
+          "total_mib": 12288,
+          "used_mib": 10294,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:52.719176+00:00",
+          "elapsed_seconds": 25.141,
+          "total_mib": 12288,
+          "used_mib": 10291,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:53.769880+00:00",
+          "elapsed_seconds": 26.188,
+          "total_mib": 12288,
+          "used_mib": 10838,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:23:54.814532+00:00",
+          "elapsed_seconds": 27.235,
+          "total_mib": 12288,
+          "used_mib": 8054,
+          "utilization_percent": 1
+        },
+        {
+          "utc": "2026-10-08T09:23:55.858816+00:00",
+          "elapsed_seconds": 28.281,
+          "total_mib": 12288,
+          "used_mib": 8054,
+          "utilization_percent": 1
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:23:27.571898+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 9366,
+        "utilization_percent": 5
+      },
+      "bridge_http_status": 200,
+      "wall_seconds": 28.266,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\identity_style_768\\result.png",
+        "sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+        "bytes": 1724391,
+        "width": 768,
+        "height": 1376,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00008_.png"
+      },
+      "history": {
+        "prompt_id": "1e67ae6b-0895-4965-84eb-8d9d26f64fd9",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00008_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 26.343
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 9366,
+        "sampled_peak_global_used_mib": 11831,
+        "margin_at_sampled_peak_mib": 457,
+        "sample_count": 28,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:23:55.868818+00:00",
+      "visual_review": {
+        "status": "passed_informal",
+        "identity_watch_key_preserved": true,
+        "style": "Warm metallic reflections, subtler lighting transfer than square case",
+        "no_mug_frame_or_visible_lettering": true,
+        "limit": "No quantitative invariance or precise colour-transfer metric"
+      },
+      "final_artifact_history_verified": true,
+      "spec_sha256": "eb6818ec2e0a34a5703b775fd510e0977b3233a27049f77a4730a0b0c49b8ebd",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "role": "identity_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "filename": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "role": "style_reference",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+        }
+      ]
+    },
+    {
+      "name": "style_identity_reversed_768",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "Show exactly the brass pocket watch and silver key from image 2, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 1 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 1. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role style_reference.\nInput image 2 has role identity_reference.",
+        "seed": 42,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+        "reference_image_2": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+        "reference_roles": [
+          "style_reference",
+          "identity_reference"
+        ],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-08T09:24:37.465242+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:24:38.062138+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 8053,
+          "utilization_percent": 3
+        },
+        {
+          "utc": "2026-10-08T09:24:39.112840+00:00",
+          "elapsed_seconds": 1.093,
+          "total_mib": 12288,
+          "used_mib": 11212,
+          "utilization_percent": 38
+        },
+        {
+          "utc": "2026-10-08T09:24:40.159211+00:00",
+          "elapsed_seconds": 2.14,
+          "total_mib": 12288,
+          "used_mib": 11540,
+          "utilization_percent": 35
+        },
+        {
+          "utc": "2026-10-08T09:24:41.199228+00:00",
+          "elapsed_seconds": 3.187,
+          "total_mib": 12288,
+          "used_mib": 11477,
+          "utilization_percent": 35
+        },
+        {
+          "utc": "2026-10-08T09:24:42.237345+00:00",
+          "elapsed_seconds": 4.218,
+          "total_mib": 12288,
+          "used_mib": 11492,
+          "utilization_percent": 93
+        },
+        {
+          "utc": "2026-10-08T09:24:43.289659+00:00",
+          "elapsed_seconds": 5.281,
+          "total_mib": 12288,
+          "used_mib": 10910,
+          "utilization_percent": 90
+        },
+        {
+          "utc": "2026-10-08T09:24:44.351838+00:00",
+          "elapsed_seconds": 6.343,
+          "total_mib": 12288,
+          "used_mib": 10817,
+          "utilization_percent": 90
+        },
+        {
+          "utc": "2026-10-08T09:24:45.401665+00:00",
+          "elapsed_seconds": 7.39,
+          "total_mib": 12288,
+          "used_mib": 10785,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:46.452270+00:00",
+          "elapsed_seconds": 8.437,
+          "total_mib": 12288,
+          "used_mib": 11361,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:47.499632+00:00",
+          "elapsed_seconds": 9.484,
+          "total_mib": 12288,
+          "used_mib": 11321,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:48.545306+00:00",
+          "elapsed_seconds": 10.531,
+          "total_mib": 12288,
+          "used_mib": 11329,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:49.596741+00:00",
+          "elapsed_seconds": 11.578,
+          "total_mib": 12288,
+          "used_mib": 10689,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:50.636780+00:00",
+          "elapsed_seconds": 12.625,
+          "total_mib": 12288,
+          "used_mib": 10689,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:51.682362+00:00",
+          "elapsed_seconds": 13.672,
+          "total_mib": 12288,
+          "used_mib": 10686,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:52.730073+00:00",
+          "elapsed_seconds": 14.718,
+          "total_mib": 12288,
+          "used_mib": 10689,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:53.775389+00:00",
+          "elapsed_seconds": 15.765,
+          "total_mib": 12288,
+          "used_mib": 10465,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:54.826090+00:00",
+          "elapsed_seconds": 16.812,
+          "total_mib": 12288,
+          "used_mib": 10304,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:55.872674+00:00",
+          "elapsed_seconds": 17.859,
+          "total_mib": 12288,
+          "used_mib": 10305,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:56.916170+00:00",
+          "elapsed_seconds": 18.906,
+          "total_mib": 12288,
+          "used_mib": 10305,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:57.965382+00:00",
+          "elapsed_seconds": 19.953,
+          "total_mib": 12288,
+          "used_mib": 10305,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:24:59.017073+00:00",
+          "elapsed_seconds": 21.0,
+          "total_mib": 12288,
+          "used_mib": 10302,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:25:00.067327+00:00",
+          "elapsed_seconds": 22.062,
+          "total_mib": 12288,
+          "used_mib": 10305,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:25:01.117544+00:00",
+          "elapsed_seconds": 23.109,
+          "total_mib": 12288,
+          "used_mib": 10305,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:25:02.171139+00:00",
+          "elapsed_seconds": 24.156,
+          "total_mib": 12288,
+          "used_mib": 10303,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:25:03.220635+00:00",
+          "elapsed_seconds": 25.203,
+          "total_mib": 12288,
+          "used_mib": 10301,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:25:04.274571+00:00",
+          "elapsed_seconds": 26.265,
+          "total_mib": 12288,
+          "used_mib": 11521,
+          "utilization_percent": 57
+        },
+        {
+          "utc": "2026-10-08T09:25:05.323737+00:00",
+          "elapsed_seconds": 27.312,
+          "total_mib": 12288,
+          "used_mib": 8737,
+          "utilization_percent": 1
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:24:38.014587+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 8053,
+        "utilization_percent": 3
+      },
+      "bridge_http_status": 200,
+      "wall_seconds": 28.281,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\style_identity_reversed_768\\result.png",
+        "sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+        "bytes": 1716250,
+        "width": 768,
+        "height": 1376,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00009_.png"
+      },
+      "history": {
+        "prompt_id": "e26458fb-6935-43d4-9738-04cd9e070117",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00009_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 26.599
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 8053,
+        "sampled_peak_global_used_mib": 11540,
+        "margin_at_sampled_peak_mib": 748,
+        "sample_count": 27,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:25:06.322286+00:00",
+      "visual_review": {
+        "status": "passed_informal",
+        "no_observed_role_swap": true,
+        "identity_and_composition_similar_to_forward_order": true,
+        "limit": "One matched pair; no universal order invariance claim"
+      },
+      "final_artifact_history_verified": true,
+      "spec_sha256": "27315acf85e9627e8e5ba092e22655c06534fe869563594960673b486cc1f7b1",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "role": "style_reference",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+        },
+        {
+          "filename": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "role": "identity_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        }
+      ]
+    },
+    {
+      "name": "continuity_factual_768",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "Use image 1 as the scene and identity of the same red ceramic mug on its wooden table by the window. Advance to late afternoon golden side light; the same mug now contains hot tea with clearly visible steam rising. Preserve its handle, red ceramic shape and viewpoint. Add exactly the small silver key from image 2 beside the mug on the table, retaining its toothed shape and metal material. Image 2 supplies only the key; do not include its watch or cloth. One mug and one key, both complete in an edge-to-edge vertical photograph. No lettering, logos or physical picture frame.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nInput image 2 has role factual_reference.\nThe result MUST advance to this requested visible state: Hot tea with clearly visible steam in the same red mug at late afternoon.",
+        "seed": 42,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+        "reference_image_2": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+        "reference_roles": [
+          "continuity_anchor",
+          "factual_reference"
+        ],
+        "response_format": "b64_json",
+        "temporal_progression": true,
+        "temporal_state": "Hot tea with clearly visible steam in the same red mug at late afternoon"
+      },
+      "started_utc": "2026-10-08T09:25:57.531310+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:25:58.152525+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 8736,
+          "utilization_percent": 4
+        },
+        {
+          "utc": "2026-10-08T09:25:59.200016+00:00",
+          "elapsed_seconds": 1.094,
+          "total_mib": 12288,
+          "used_mib": 9206,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-08T09:26:00.252067+00:00",
+          "elapsed_seconds": 2.141,
+          "total_mib": 12288,
+          "used_mib": 11542,
+          "utilization_percent": 41
+        },
+        {
+          "utc": "2026-10-08T09:26:01.304535+00:00",
+          "elapsed_seconds": 3.204,
+          "total_mib": 12288,
+          "used_mib": 11552,
+          "utilization_percent": 37
+        },
+        {
+          "utc": "2026-10-08T09:26:02.351621+00:00",
+          "elapsed_seconds": 4.25,
+          "total_mib": 12288,
+          "used_mib": 11584,
+          "utilization_percent": 34
+        },
+        {
+          "utc": "2026-10-08T09:26:03.388698+00:00",
+          "elapsed_seconds": 5.282,
+          "total_mib": 12288,
+          "used_mib": 11901,
+          "utilization_percent": 89
+        },
+        {
+          "utc": "2026-10-08T09:26:04.437700+00:00",
+          "elapsed_seconds": 6.329,
+          "total_mib": 12288,
+          "used_mib": 11256,
+          "utilization_percent": 87
+        },
+        {
+          "utc": "2026-10-08T09:26:05.503770+00:00",
+          "elapsed_seconds": 7.391,
+          "total_mib": 12288,
+          "used_mib": 11234,
+          "utilization_percent": 95
+        },
+        {
+          "utc": "2026-10-08T09:26:06.553759+00:00",
+          "elapsed_seconds": 8.454,
+          "total_mib": 12288,
+          "used_mib": 10850,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:07.601479+00:00",
+          "elapsed_seconds": 9.5,
+          "total_mib": 12288,
+          "used_mib": 10777,
+          "utilization_percent": 91
+        },
+        {
+          "utc": "2026-10-08T09:26:08.653243+00:00",
+          "elapsed_seconds": 10.547,
+          "total_mib": 12288,
+          "used_mib": 11225,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:09.701021+00:00",
+          "elapsed_seconds": 11.594,
+          "total_mib": 12288,
+          "used_mib": 11234,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:10.754027+00:00",
+          "elapsed_seconds": 12.641,
+          "total_mib": 12288,
+          "used_mib": 11234,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:11.793867+00:00",
+          "elapsed_seconds": 13.688,
+          "total_mib": 12288,
+          "used_mib": 11229,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:12.843521+00:00",
+          "elapsed_seconds": 14.735,
+          "total_mib": 12288,
+          "used_mib": 11234,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:13.884702+00:00",
+          "elapsed_seconds": 15.782,
+          "total_mib": 12288,
+          "used_mib": 11234,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:14.937042+00:00",
+          "elapsed_seconds": 16.829,
+          "total_mib": 12288,
+          "used_mib": 10456,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:15.987266+00:00",
+          "elapsed_seconds": 17.875,
+          "total_mib": 12288,
+          "used_mib": 10296,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:17.029566+00:00",
+          "elapsed_seconds": 18.922,
+          "total_mib": 12288,
+          "used_mib": 10299,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:18.079673+00:00",
+          "elapsed_seconds": 19.969,
+          "total_mib": 12288,
+          "used_mib": 10299,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:19.131061+00:00",
+          "elapsed_seconds": 21.032,
+          "total_mib": 12288,
+          "used_mib": 10296,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:20.169278+00:00",
+          "elapsed_seconds": 22.063,
+          "total_mib": 12288,
+          "used_mib": 10482,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:21.209039+00:00",
+          "elapsed_seconds": 23.11,
+          "total_mib": 12288,
+          "used_mib": 10491,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:22.260992+00:00",
+          "elapsed_seconds": 24.157,
+          "total_mib": 12288,
+          "used_mib": 10491,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:23.300468+00:00",
+          "elapsed_seconds": 25.188,
+          "total_mib": 12288,
+          "used_mib": 10488,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:24.341739+00:00",
+          "elapsed_seconds": 26.235,
+          "total_mib": 12288,
+          "used_mib": 10488,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:26:25.380176+00:00",
+          "elapsed_seconds": 27.282,
+          "total_mib": 12288,
+          "used_mib": 11259,
+          "utilization_percent": 52
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:25:58.104049+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 8736,
+        "utilization_percent": 4
+      },
+      "bridge_http_status": 200,
+      "wall_seconds": 28.25,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+        "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+        "bytes": 1256319,
+        "width": 768,
+        "height": 1376,
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00010_.png"
+      },
+      "history": {
+        "prompt_id": "813d7dc4-6a4f-41c4-992c-ac10e87d6ebb",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00010_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 27.464
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 8736,
+        "sampled_peak_global_used_mib": 11901,
+        "margin_at_sampled_peak_mib": 387,
+        "sample_count": 27,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:26:26.362532+00:00",
+      "visual_review": {
+        "status": "partial_semantic",
+        "mug_identity_and_temporal_steam_preserved": true,
+        "separate_key_present": true,
+        "factual_key_geometry_drift": true,
+        "detail": "The generated key adds a hole and changes tooth/head geometry compared with the reference. Watch and cloth are not copied. This is not an exact factual identity pass."
+      },
+      "final_artifact_history_verified": true,
+      "spec_sha256": "0d6d79cb2549d2dd553acbdc3bb77049267adf4162cd100f8a7d28aaea83fc81",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "role": "continuity_anchor",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+        },
+        {
+          "filename": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "role": "factual_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        }
+      ]
+    },
+    {
+      "name": "mpt_t2i_text_contract_768",
+      "request": {
+        "model": "flux-klein-4b-t2i-exp",
+        "prompt": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+        "seed": 42,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_roles": [],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-08T09:33:02.252497+00:00",
+      "post_attempted": true,
+      "reference_megapixels": null,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:33:02.860426+00:00",
+          "elapsed_seconds": 0.046,
+          "total_mib": 12288,
+          "used_mib": 8867,
+          "utilization_percent": 7
+        },
+        {
+          "utc": "2026-10-08T09:33:03.911591+00:00",
+          "elapsed_seconds": 1.109,
+          "total_mib": 12288,
+          "used_mib": 10314,
+          "utilization_percent": 12
+        },
+        {
+          "utc": "2026-10-08T09:33:04.956883+00:00",
+          "elapsed_seconds": 2.14,
+          "total_mib": 12288,
+          "used_mib": 11692,
+          "utilization_percent": 35
+        },
+        {
+          "utc": "2026-10-08T09:33:06.022817+00:00",
+          "elapsed_seconds": 3.218,
+          "total_mib": 12288,
+          "used_mib": 11526,
+          "utilization_percent": 35
+        },
+        {
+          "utc": "2026-10-08T09:33:07.073804+00:00",
+          "elapsed_seconds": 4.265,
+          "total_mib": 12288,
+          "used_mib": 11372,
+          "utilization_percent": 2
+        },
+        {
+          "utc": "2026-10-08T09:33:08.119403+00:00",
+          "elapsed_seconds": 5.312,
+          "total_mib": 12288,
+          "used_mib": 11558,
+          "utilization_percent": 58
+        },
+        {
+          "utc": "2026-10-08T09:33:09.164595+00:00",
+          "elapsed_seconds": 6.359,
+          "total_mib": 12288,
+          "used_mib": 11499,
+          "utilization_percent": 97
+        },
+        {
+          "utc": "2026-10-08T09:33:10.216154+00:00",
+          "elapsed_seconds": 7.406,
+          "total_mib": 12288,
+          "used_mib": 11649,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:33:11.267667+00:00",
+          "elapsed_seconds": 8.453,
+          "total_mib": 12288,
+          "used_mib": 11641,
+          "utilization_percent": 98
+        },
+        {
+          "utc": "2026-10-08T09:33:12.304940+00:00",
+          "elapsed_seconds": 9.5,
+          "total_mib": 12288,
+          "used_mib": 11645,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:33:13.347382+00:00",
+          "elapsed_seconds": 10.531,
+          "total_mib": 12288,
+          "used_mib": 11101,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:33:14.390814+00:00",
+          "elapsed_seconds": 11.578,
+          "total_mib": 12288,
+          "used_mib": 10749,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:33:15.437315+00:00",
+          "elapsed_seconds": 12.625,
+          "total_mib": 12288,
+          "used_mib": 9402,
+          "utilization_percent": 1
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:33:02.814424+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 8867,
+        "utilization_percent": 7
+      },
+      "mpt_source_info": {
+        "provider": "openai_image",
+        "search_term": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+        "route": "precision",
+        "model": "flux-klein-4b-t2i-exp",
+        "requested_model": "flux-klein-4b-t2i-exp",
+        "reference_count": 0,
+        "reference": {
+          "reference_pack": []
+        },
+        "requested_size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "seed": 42,
+        "generation_seconds": 12.137,
+        "rendition": {
+          "id": null,
+          "width": 768,
+          "height": 1376
+        },
+        "experimental": true,
+        "quality_tier": "precision",
+        "conditioning_mode": "none",
+        "reference_roles": [],
+        "workflow": "local_image_stack/experiments/workflows/flux-klein-4b-t2i-exp.json",
+        "workflow_sha256": "dd62a5a210460d87ef57b18b229cb1b9d54b5633d73bc65459cdb899eb3b0b81",
+        "final_prompt": "A photorealistic documentary close-up still life, vertical composition. Exactly one brass mechanical pocket watch and exactly one small silver key resting on folded dark charcoal linen. Both objects are complete inside the frame with natural margins. The watch has a clean unbranded white dial with no writing, separate dark hour tick marks and two distinct thin hands. Fine engraving and tiny scratches on the brass case, a clearly defined toothed edge on the key, visible woven fibers in the linen. Soft natural side light, realistic reflections and shallow but sufficient depth of field to see both objects sharply. No letters, numerals, logos, captions or watermark.",
+        "temporal_progression": false,
+        "temporal_state": "",
+        "qa_status": "pending"
+      },
+      "caller": "app.services.material.generate_images_openai",
+      "bridge_http_status": 200,
+      "wall_seconds": 12.796,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+        "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "bytes": 1773626,
+        "width": 768,
+        "height": 1376,
+        "pixels_match_comfy_original": true,
+        "comfy_original_sha256": "3c583b1e8f3c25642b9c528d1ab29fcf5a50b9d5579636524505f2b5b90342ab",
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00011_.png"
+      },
+      "history": {
+        "prompt_id": "15650f31-cca4-4431-bd1b-9641637fd981",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00011_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 11.48
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 8867,
+        "sampled_peak_global_used_mib": 11692,
+        "margin_at_sampled_peak_mib": 596,
+        "sample_count": 13,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:33:15.670119+00:00",
+      "visual_review": {
+        "status": "partial_semantic",
+        "no_visible_lettering": true,
+        "unrequested_third_watch_hand": true,
+        "note": "Short unbranded/no-writing clause removed the pseudotext in this seed pair, but three hands appear despite requesting two. No global prompt guarantee."
+      },
+      "mpt_gross_qa": {
+        "available": true,
+        "status": "pass",
+        "gross_failure": false,
+        "caption": "A pocket watch is laying on a dark blue cloth. The face of the watch is white and has black numbers on it. There is a key next to the watch.",
+        "semantic_score": 0.6,
+        "identity_confidence": 1.0,
+        "required_feature_coverage": 0.5,
+        "verdict": "uncertain",
+        "elapsed_seconds": 91.875
+      },
+      "final_artifact_history_verified": true,
+      "acceptance": "not_promoted; caller result pending QA; visual/QA reviews authoritative above",
+      "spec_sha256": "230e258e66002a2cca01b845343ccee79b72158da92238e352b0a11097f0b2e2",
+      "ordered_references": []
+    },
+    {
+      "name": "mpt_temporal_hot_768",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "The same red ceramic mug on the same wooden table by the window now contains hot tea with clearly visible wisps of steam. Late afternoon golden sunlight. Keep its physical shape, red ceramic, handle and viewpoint. Show one complete mug in an edge-to-edge vertical photograph. No other objects, writing or logo.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nThe result MUST advance to this requested visible state: Hot tea with clearly visible steam in the same red mug at late afternoon.",
+        "seed": 42,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+        "reference_roles": [
+          "continuity_anchor"
+        ],
+        "response_format": "b64_json",
+        "temporal_progression": true,
+        "temporal_state": "Hot tea with clearly visible steam in the same red mug at late afternoon"
+      },
+      "started_utc": "2026-10-08T09:36:54.681372+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:36:55.497312+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 9647,
+          "utilization_percent": 3
+        },
+        {
+          "utc": "2026-10-08T09:36:56.537982+00:00",
+          "elapsed_seconds": 1.094,
+          "total_mib": 12288,
+          "used_mib": 10958,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:36:57.580552+00:00",
+          "elapsed_seconds": 2.125,
+          "total_mib": 12288,
+          "used_mib": 11733,
+          "utilization_percent": 40
+        },
+        {
+          "utc": "2026-10-08T09:36:58.646640+00:00",
+          "elapsed_seconds": 3.203,
+          "total_mib": 12288,
+          "used_mib": 11599,
+          "utilization_percent": 43
+        },
+        {
+          "utc": "2026-10-08T09:36:59.706383+00:00",
+          "elapsed_seconds": 4.25,
+          "total_mib": 12288,
+          "used_mib": 11497,
+          "utilization_percent": 37
+        },
+        {
+          "utc": "2026-10-08T09:37:00.752115+00:00",
+          "elapsed_seconds": 5.297,
+          "total_mib": 12288,
+          "used_mib": 11854,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:01.793122+00:00",
+          "elapsed_seconds": 6.344,
+          "total_mib": 12288,
+          "used_mib": 11580,
+          "utilization_percent": 89
+        },
+        {
+          "utc": "2026-10-08T09:37:02.845341+00:00",
+          "elapsed_seconds": 7.391,
+          "total_mib": 12288,
+          "used_mib": 11215,
+          "utilization_percent": 89
+        },
+        {
+          "utc": "2026-10-08T09:37:03.914288+00:00",
+          "elapsed_seconds": 8.469,
+          "total_mib": 12288,
+          "used_mib": 11330,
+          "utilization_percent": 91
+        },
+        {
+          "utc": "2026-10-08T09:37:04.955182+00:00",
+          "elapsed_seconds": 9.5,
+          "total_mib": 12288,
+          "used_mib": 11269,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:06.002979+00:00",
+          "elapsed_seconds": 10.547,
+          "total_mib": 12288,
+          "used_mib": 11173,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:07.043486+00:00",
+          "elapsed_seconds": 11.594,
+          "total_mib": 12288,
+          "used_mib": 11159,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:08.093538+00:00",
+          "elapsed_seconds": 12.641,
+          "total_mib": 12288,
+          "used_mib": 10819,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:09.138856+00:00",
+          "elapsed_seconds": 13.688,
+          "total_mib": 12288,
+          "used_mib": 11039,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:10.191086+00:00",
+          "elapsed_seconds": 14.735,
+          "total_mib": 12288,
+          "used_mib": 11055,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:11.228942+00:00",
+          "elapsed_seconds": 15.781,
+          "total_mib": 12288,
+          "used_mib": 10836,
+          "utilization_percent": 98
+        },
+        {
+          "utc": "2026-10-08T09:37:12.281785+00:00",
+          "elapsed_seconds": 16.828,
+          "total_mib": 12288,
+          "used_mib": 10703,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:13.319655+00:00",
+          "elapsed_seconds": 17.875,
+          "total_mib": 12288,
+          "used_mib": 10682,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:14.375840+00:00",
+          "elapsed_seconds": 18.922,
+          "total_mib": 12288,
+          "used_mib": 9374,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:15.424537+00:00",
+          "elapsed_seconds": 19.969,
+          "total_mib": 12288,
+          "used_mib": 9031,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:37:16.469901+00:00",
+          "elapsed_seconds": 21.016,
+          "total_mib": 12288,
+          "used_mib": 8999,
+          "utilization_percent": 2
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:36:55.451310+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 9647,
+        "utilization_percent": 3
+      },
+      "mpt_source_info": {
+        "provider": "openai_image",
+        "search_term": "The same red ceramic mug on the same wooden table by the window now contains hot tea with clearly visible wisps of steam. Late afternoon golden sunlight. Keep its physical shape, red ceramic, handle and viewpoint. Show one complete mug in an edge-to-edge vertical photograph. No other objects, writing or logo.",
+        "route": "precision",
+        "model": "flux-klein-4b-edit-exp",
+        "requested_model": "flux-klein-4b-edit-exp",
+        "reference_count": 1,
+        "reference": {
+          "reference_pack": [
+            {
+              "role": "continuity_anchor",
+              "comfyui_input": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png"
+            }
+          ],
+          "temporal_progression": true,
+          "temporal_state": "Hot tea with clearly visible steam in the same red mug at late afternoon"
+        },
+        "requested_size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "seed": 42,
+        "generation_seconds": 20.185,
+        "rendition": {
+          "id": null,
+          "width": 768,
+          "height": 1376
+        },
+        "experimental": true,
+        "quality_tier": "precision",
+        "conditioning_mode": "continuity_reference",
+        "reference_roles": [
+          "continuity_anchor"
+        ],
+        "workflow": "local_image_stack/experiments/workflows/flux-klein-4b-edit-exp.json",
+        "workflow_sha256": "0f4c65e60ffe35905ea294ddaf5612276c42fb12fd0d0f2783613611ee138ebe",
+        "final_prompt": "The same red ceramic mug on the same wooden table by the window now contains hot tea with clearly visible wisps of steam. Late afternoon golden sunlight. Keep its physical shape, red ceramic, handle and viewpoint. Show one complete mug in an edge-to-edge vertical photograph. No other objects, writing or logo.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nThe result MUST advance to this requested visible state: Hot tea with clearly visible steam in the same red mug at late afternoon.",
+        "temporal_progression": true,
+        "temporal_state": "Hot tea with clearly visible steam in the same red mug at late afternoon",
+        "qa_status": "pending"
+      },
+      "caller": "app.services.material.generate_images_openai",
+      "bridge_http_status": 200,
+      "wall_seconds": 21.235,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png",
+        "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+        "bytes": 1177310,
+        "width": 768,
+        "height": 1376,
+        "pixels_match_comfy_original": true,
+        "comfy_original_sha256": "f930b250d9d86236e0a617fd9116ab24f82daac2a7dfc7a8e15915fbba199b18",
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00012_.png"
+      },
+      "history": {
+        "prompt_id": "67217918-21db-4c12-a749-e05f2a00bef8",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00012_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 18.996
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 9647,
+        "sampled_peak_global_used_mib": 11854,
+        "margin_at_sampled_peak_mib": 434,
+        "sample_count": 21,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:37:16.773256+00:00",
+      "visual_review": {
+        "status": "passed_informal",
+        "same_red_mug": true,
+        "golden_light_and_steam": true
+      },
+      "temporal_caption": {
+        "caption": "A red mug is sitting on a wooden table. There is a window behind the mug. The mug has steam coming out of it.",
+        "available": true
+      },
+      "final_artifact_history_verified": true,
+      "acceptance": "not_promoted; caller result pending QA; visual/QA reviews authoritative above",
+      "spec_sha256": "cc11a12e7b4eacdaa23e47e9c9d19c92021043c2fb278dfdb266e55a40a71b26",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "role": "continuity_anchor",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+        }
+      ]
+    },
+    {
+      "name": "mpt_temporal_cooled_768",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "The same red ceramic mug on the same wooden table by the same window now contains completely cooled tea. The liquid is still, with no steam or vapor anywhere. Cool blue evening light replaces the golden afternoon light. Preserve the same physical red ceramic mug, handle and viewpoint. Show one complete mug in an edge-to-edge vertical photograph. No other objects, writing or logo.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nThe result MUST advance to this requested visible state: The tea has cooled completely, the liquid is still and there is no steam, in cool blue evening light.",
+        "seed": 42,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+        "reference_roles": [
+          "continuity_anchor"
+        ],
+        "response_format": "b64_json",
+        "temporal_progression": true,
+        "temporal_state": "The tea has cooled completely, the liquid is still and there is no steam, in cool blue evening light"
+      },
+      "started_utc": "2026-10-08T09:38:03.914584+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:38:04.518197+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 8914,
+          "utilization_percent": 25
+        },
+        {
+          "utc": "2026-10-08T09:38:05.562140+00:00",
+          "elapsed_seconds": 1.094,
+          "total_mib": 12288,
+          "used_mib": 9427,
+          "utilization_percent": 93
+        },
+        {
+          "utc": "2026-10-08T09:38:06.610765+00:00",
+          "elapsed_seconds": 2.14,
+          "total_mib": 12288,
+          "used_mib": 11597,
+          "utilization_percent": 38
+        },
+        {
+          "utc": "2026-10-08T09:38:07.661012+00:00",
+          "elapsed_seconds": 3.203,
+          "total_mib": 12288,
+          "used_mib": 11590,
+          "utilization_percent": 32
+        },
+        {
+          "utc": "2026-10-08T09:38:08.709337+00:00",
+          "elapsed_seconds": 4.25,
+          "total_mib": 12288,
+          "used_mib": 11462,
+          "utilization_percent": 1
+        },
+        {
+          "utc": "2026-10-08T09:38:09.761024+00:00",
+          "elapsed_seconds": 5.297,
+          "total_mib": 12288,
+          "used_mib": 11094,
+          "utilization_percent": 74
+        },
+        {
+          "utc": "2026-10-08T09:38:10.811795+00:00",
+          "elapsed_seconds": 6.344,
+          "total_mib": 12288,
+          "used_mib": 11157,
+          "utilization_percent": 89
+        },
+        {
+          "utc": "2026-10-08T09:38:11.851459+00:00",
+          "elapsed_seconds": 7.39,
+          "total_mib": 12288,
+          "used_mib": 10901,
+          "utilization_percent": 98
+        },
+        {
+          "utc": "2026-10-08T09:38:12.902894+00:00",
+          "elapsed_seconds": 8.437,
+          "total_mib": 12288,
+          "used_mib": 11284,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:13.942646+00:00",
+          "elapsed_seconds": 9.484,
+          "total_mib": 12288,
+          "used_mib": 11210,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:14.991655+00:00",
+          "elapsed_seconds": 10.531,
+          "total_mib": 12288,
+          "used_mib": 11213,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:16.042742+00:00",
+          "elapsed_seconds": 11.578,
+          "total_mib": 12288,
+          "used_mib": 10829,
+          "utilization_percent": 97
+        },
+        {
+          "utc": "2026-10-08T09:38:17.089023+00:00",
+          "elapsed_seconds": 12.625,
+          "total_mib": 12288,
+          "used_mib": 10715,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:18.135580+00:00",
+          "elapsed_seconds": 13.672,
+          "total_mib": 12288,
+          "used_mib": 10718,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:19.186130+00:00",
+          "elapsed_seconds": 14.719,
+          "total_mib": 12288,
+          "used_mib": 10718,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:20.229959+00:00",
+          "elapsed_seconds": 15.765,
+          "total_mib": 12288,
+          "used_mib": 10682,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:21.279928+00:00",
+          "elapsed_seconds": 16.812,
+          "total_mib": 12288,
+          "used_mib": 10682,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:22.330681+00:00",
+          "elapsed_seconds": 17.859,
+          "total_mib": 12288,
+          "used_mib": 10677,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:38:23.382072+00:00",
+          "elapsed_seconds": 18.922,
+          "total_mib": 12288,
+          "used_mib": 9053,
+          "utilization_percent": 100
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:38:04.467146+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 8914,
+        "utilization_percent": 25
+      },
+      "mpt_source_info": {
+        "provider": "openai_image",
+        "search_term": "The same red ceramic mug on the same wooden table by the same window now contains completely cooled tea. The liquid is still, with no steam or vapor anywhere. Cool blue evening light replaces the golden afternoon light. Preserve the same physical red ceramic mug, handle and viewpoint. Show one complete mug in an edge-to-edge vertical photograph. No other objects, writing or logo.",
+        "route": "precision",
+        "model": "flux-klein-4b-edit-exp",
+        "requested_model": "flux-klein-4b-edit-exp",
+        "reference_count": 1,
+        "reference": {
+          "reference_pack": [
+            {
+              "role": "continuity_anchor",
+              "comfyui_input": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png"
+            }
+          ],
+          "temporal_progression": true,
+          "temporal_state": "The tea has cooled completely, the liquid is still and there is no steam, in cool blue evening light"
+        },
+        "requested_size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "seed": 42,
+        "generation_seconds": 18.404,
+        "rendition": {
+          "id": null,
+          "width": 768,
+          "height": 1376
+        },
+        "experimental": true,
+        "quality_tier": "precision",
+        "conditioning_mode": "continuity_reference",
+        "reference_roles": [
+          "continuity_anchor"
+        ],
+        "workflow": "local_image_stack/experiments/workflows/flux-klein-4b-edit-exp.json",
+        "workflow_sha256": "0f4c65e60ffe35905ea294ddaf5612276c42fb12fd0d0f2783613611ee138ebe",
+        "final_prompt": "The same red ceramic mug on the same wooden table by the same window now contains completely cooled tea. The liquid is still, with no steam or vapor anywhere. Cool blue evening light replaces the golden afternoon light. Preserve the same physical red ceramic mug, handle and viewpoint. Show one complete mug in an edge-to-edge vertical photograph. No other objects, writing or logo.\nInput image 1 has role continuity_anchor.\nUse image 1 as the stable root of the same physical subject. Preserve its identity and appropriate geometry/composition; physical identity does not require preserving the previous visual state.\nThe result MUST advance to this requested visible state: The tea has cooled completely, the liquid is still and there is no steam, in cool blue evening light.",
+        "temporal_progression": true,
+        "temporal_state": "The tea has cooled completely, the liquid is still and there is no steam, in cool blue evening light",
+        "qa_status": "pending"
+      },
+      "caller": "app.services.material.generate_images_openai",
+      "bridge_http_status": 200,
+      "wall_seconds": 19.453,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_cooled_768\\result.png",
+        "sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+        "bytes": 1356053,
+        "width": 768,
+        "height": 1376,
+        "pixels_match_comfy_original": true,
+        "comfy_original_sha256": "9f92ff32af3c78af3297b9a93cb5e1aad3dc13405c976b41405673539d1450cb",
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00013_.png"
+      },
+      "history": {
+        "prompt_id": "e42ea515-7399-485e-92ae-a636915d0f9b",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00013_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 18.029
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 8914,
+        "sampled_peak_global_used_mib": 11597,
+        "margin_at_sampled_peak_mib": 691,
+        "sample_count": 19,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:38:23.997541+00:00",
+      "visual_review": {
+        "status": "partial_semantic",
+        "same_red_mug_and_cool_light": true,
+        "large_steam_plume_removed": true,
+        "absence_of_all_vapor_not_certified": true,
+        "note": "Faint forms near the liquid cannot establish complete absence of vapor; temporal caption QA remained uncertain."
+      },
+      "mpt_temporal_qa": {
+        "available": true,
+        "status": "uncertain",
+        "temporal_failure": false,
+        "caption": "A red coffee mug is sitting on a wooden table. There is a window behind the mug. There are blue curtains on the window.",
+        "state_score": 0.0,
+        "progression_score": 1.0,
+        "verdict": "uncertain",
+        "previous_caption_available": true,
+        "elapsed_seconds_including_previous_caption": 101.422
+      },
+      "final_artifact_history_verified": true,
+      "acceptance": "not_promoted; caller result pending QA; visual/QA reviews authoritative above",
+      "spec_sha256": "38fab8d4e8bfa84e9ea209d44f92328bcee36d5129a38264e955e8c1549cb7da",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN4B_SMOKE_RED_512_SEED42.png",
+          "role": "continuity_anchor",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+        }
+      ]
+    },
+    {
+      "name": "mpt_fallback_identity_style_seed43",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+        "seed": 43,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+        "reference_image_2": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+        "reference_roles": [
+          "identity_reference",
+          "style_reference"
+        ],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-08T09:51:32.427643+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:51:33.042962+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 9222,
+          "utilization_percent": 6
+        },
+        {
+          "utc": "2026-10-08T09:51:34.104738+00:00",
+          "elapsed_seconds": 1.109,
+          "total_mib": 12288,
+          "used_mib": 4459,
+          "utilization_percent": 13
+        },
+        {
+          "utc": "2026-10-08T09:51:35.154983+00:00",
+          "elapsed_seconds": 2.156,
+          "total_mib": 12288,
+          "used_mib": 5879,
+          "utilization_percent": 96
+        },
+        {
+          "utc": "2026-10-08T09:51:36.219066+00:00",
+          "elapsed_seconds": 3.219,
+          "total_mib": 12288,
+          "used_mib": 5399,
+          "utilization_percent": 6
+        },
+        {
+          "utc": "2026-10-08T09:51:37.276447+00:00",
+          "elapsed_seconds": 4.281,
+          "total_mib": 12288,
+          "used_mib": 8394,
+          "utilization_percent": 41
+        },
+        {
+          "utc": "2026-10-08T09:51:38.351882+00:00",
+          "elapsed_seconds": 5.359,
+          "total_mib": 12288,
+          "used_mib": 10921,
+          "utilization_percent": 42
+        },
+        {
+          "utc": "2026-10-08T09:51:39.412925+00:00",
+          "elapsed_seconds": 6.422,
+          "total_mib": 12288,
+          "used_mib": 11304,
+          "utilization_percent": 38
+        },
+        {
+          "utc": "2026-10-08T09:51:40.474098+00:00",
+          "elapsed_seconds": 7.484,
+          "total_mib": 12288,
+          "used_mib": 11510,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:41.520987+00:00",
+          "elapsed_seconds": 8.531,
+          "total_mib": 12288,
+          "used_mib": 11574,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:42.564400+00:00",
+          "elapsed_seconds": 9.563,
+          "total_mib": 12288,
+          "used_mib": 11277,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:43.606623+00:00",
+          "elapsed_seconds": 10.609,
+          "total_mib": 12288,
+          "used_mib": 11235,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:44.651254+00:00",
+          "elapsed_seconds": 11.656,
+          "total_mib": 12288,
+          "used_mib": 11235,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:45.699703+00:00",
+          "elapsed_seconds": 12.703,
+          "total_mib": 12288,
+          "used_mib": 11231,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:46.746477+00:00",
+          "elapsed_seconds": 13.75,
+          "total_mib": 12288,
+          "used_mib": 11167,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:47.785074+00:00",
+          "elapsed_seconds": 14.781,
+          "total_mib": 12288,
+          "used_mib": 11071,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:48.827329+00:00",
+          "elapsed_seconds": 15.828,
+          "total_mib": 12288,
+          "used_mib": 11134,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:49.869525+00:00",
+          "elapsed_seconds": 16.875,
+          "total_mib": 12288,
+          "used_mib": 11157,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:50.935416+00:00",
+          "elapsed_seconds": 17.938,
+          "total_mib": 12288,
+          "used_mib": 11149,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:51.985623+00:00",
+          "elapsed_seconds": 18.984,
+          "total_mib": 12288,
+          "used_mib": 11038,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:53.034107+00:00",
+          "elapsed_seconds": 20.031,
+          "total_mib": 12288,
+          "used_mib": 10589,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:54.082754+00:00",
+          "elapsed_seconds": 21.094,
+          "total_mib": 12288,
+          "used_mib": 10416,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:55.127735+00:00",
+          "elapsed_seconds": 22.125,
+          "total_mib": 12288,
+          "used_mib": 10403,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:56.178866+00:00",
+          "elapsed_seconds": 23.188,
+          "total_mib": 12288,
+          "used_mib": 10395,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:57.243555+00:00",
+          "elapsed_seconds": 24.25,
+          "total_mib": 12288,
+          "used_mib": 10549,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:51:58.289209+00:00",
+          "elapsed_seconds": 25.297,
+          "total_mib": 12288,
+          "used_mib": 10474,
+          "utilization_percent": 99
+        },
+        {
+          "utc": "2026-10-08T09:51:59.350756+00:00",
+          "elapsed_seconds": 26.359,
+          "total_mib": 12288,
+          "used_mib": 10284,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:52:00.403694+00:00",
+          "elapsed_seconds": 27.406,
+          "total_mib": 12288,
+          "used_mib": 10259,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:52:01.454311+00:00",
+          "elapsed_seconds": 28.453,
+          "total_mib": 12288,
+          "used_mib": 10250,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:52:02.501177+00:00",
+          "elapsed_seconds": 29.5,
+          "total_mib": 12288,
+          "used_mib": 10244,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:52:03.541242+00:00",
+          "elapsed_seconds": 30.547,
+          "total_mib": 12288,
+          "used_mib": 11229,
+          "utilization_percent": 89
+        },
+        {
+          "utc": "2026-10-08T09:52:04.599016+00:00",
+          "elapsed_seconds": 31.609,
+          "total_mib": 12288,
+          "used_mib": 8406,
+          "utilization_percent": 4
+        },
+        {
+          "utc": "2026-10-08T09:52:05.638040+00:00",
+          "elapsed_seconds": 32.641,
+          "total_mib": 12288,
+          "used_mib": 8402,
+          "utilization_percent": 4
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:51:32.996962+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 9222,
+        "utilization_percent": 6
+      },
+      "injected_primary_failure": "HTTP 404: workflow not found",
+      "mpt_source_info": {
+        "provider": "openai_image",
+        "search_term": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.",
+        "route": "precision",
+        "model": "flux-klein-4b-edit-exp",
+        "requested_model": "qwen-image-2.1-precision",
+        "reference_count": 2,
+        "reference": {
+          "reference_pack": [
+            {
+              "role": "identity_reference",
+              "comfyui_input": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png"
+            },
+            {
+              "role": "style_reference",
+              "comfyui_input": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png"
+            }
+          ]
+        },
+        "requested_size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "seed": 43,
+        "generation_seconds": 32.26,
+        "rendition": {
+          "id": null,
+          "width": 768,
+          "height": 1376
+        },
+        "experimental": true,
+        "quality_tier": "precision",
+        "conditioning_mode": "manual_reference",
+        "reference_roles": [
+          "identity_reference",
+          "style_reference"
+        ],
+        "workflow": "local_image_stack/experiments/workflows/flux-klein-4b-edit-exp.json",
+        "workflow_sha256": "0f4c65e60ffe35905ea294ddaf5612276c42fb12fd0d0f2783613611ee138ebe",
+        "final_prompt": "Show exactly the brass pocket watch and silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+        "temporal_progression": false,
+        "temporal_state": "",
+        "qa_status": "pending",
+        "fallback_from_model": "qwen-image-2.1-precision",
+        "fallback_reason": "confirmed_model_or_workflow_absence",
+        "primary_generation_seconds": 0.0,
+        "fallback_generation_seconds": 32.26
+      },
+      "caller": "app.services.material.generate_images_openai",
+      "bridge_http_status": 200,
+      "wall_seconds": 33.203,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_fallback_identity_style_seed43\\result.png",
+        "sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+        "bytes": 1611555,
+        "width": 768,
+        "height": 1376,
+        "pixels_match_comfy_original": true,
+        "comfy_original_sha256": "28a11ed58ca4ac345cbac1036fd31fea14c0ab6c6e5c56a0fe598b3f8ecb5e40",
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00014_.png"
+      },
+      "history": {
+        "prompt_id": "d68cfe3e-f13b-4345-b675-e422aaee01a0",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00014_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 30.302
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 9222,
+        "sampled_peak_global_used_mib": 11574,
+        "margin_at_sampled_peak_mib": 714,
+        "sample_count": 32,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:52:06.267183+00:00",
+      "visual_review": {
+        "status": "rejected_semantic",
+        "unrequested_second_key": true,
+        "watch_and_warm_lighting_preserved": true,
+        "fallback_technical_only": "Injected primary workflow absence, real secondary image; no acceptance implied"
+      },
+      "final_artifact_history_verified": true,
+      "acceptance": "not_promoted; caller result pending QA; visual/QA reviews authoritative above",
+      "spec_sha256": "9b3e6aa276c9a0240e0695eb713465de56419976ff1d4e14d9706c6bd4132016",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "role": "identity_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "filename": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "role": "style_reference",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+        }
+      ]
+    },
+    {
+      "name": "mpt_explicit_quantity_seed43",
+      "request": {
+        "model": "flux-klein-4b-edit-exp",
+        "prompt": "Show exactly one brass pocket watch and exactly one silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+        "seed": 43,
+        "size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "n": 1,
+        "reference_image": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+        "reference_image_2": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+        "reference_roles": [
+          "identity_reference",
+          "style_reference"
+        ],
+        "response_format": "b64_json"
+      },
+      "started_utc": "2026-10-08T09:55:32.574824+00:00",
+      "post_attempted": true,
+      "reference_megapixels": 1.0,
+      "technical_status": "passed",
+      "gpu_samples": [
+        {
+          "utc": "2026-10-08T09:55:33.193102+00:00",
+          "elapsed_seconds": 0.047,
+          "total_mib": 12288,
+          "used_mib": 8334,
+          "utilization_percent": 50
+        },
+        {
+          "utc": "2026-10-08T09:55:34.264457+00:00",
+          "elapsed_seconds": 1.11,
+          "total_mib": 12288,
+          "used_mib": 9170,
+          "utilization_percent": 41
+        },
+        {
+          "utc": "2026-10-08T09:55:35.324368+00:00",
+          "elapsed_seconds": 2.172,
+          "total_mib": 12288,
+          "used_mib": 11625,
+          "utilization_percent": 47
+        },
+        {
+          "utc": "2026-10-08T09:55:36.384611+00:00",
+          "elapsed_seconds": 3.235,
+          "total_mib": 12288,
+          "used_mib": 11590,
+          "utilization_percent": 42
+        },
+        {
+          "utc": "2026-10-08T09:55:37.444908+00:00",
+          "elapsed_seconds": 4.297,
+          "total_mib": 12288,
+          "used_mib": 11466,
+          "utilization_percent": 42
+        },
+        {
+          "utc": "2026-10-08T09:55:38.488544+00:00",
+          "elapsed_seconds": 5.328,
+          "total_mib": 12288,
+          "used_mib": 11147,
+          "utilization_percent": 90
+        },
+        {
+          "utc": "2026-10-08T09:55:39.532465+00:00",
+          "elapsed_seconds": 6.375,
+          "total_mib": 12288,
+          "used_mib": 10975,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:40.575920+00:00",
+          "elapsed_seconds": 7.422,
+          "total_mib": 12288,
+          "used_mib": 11483,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:41.617496+00:00",
+          "elapsed_seconds": 8.469,
+          "total_mib": 12288,
+          "used_mib": 11550,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:42.660925+00:00",
+          "elapsed_seconds": 9.516,
+          "total_mib": 12288,
+          "used_mib": 11230,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:43.707424+00:00",
+          "elapsed_seconds": 10.547,
+          "total_mib": 12288,
+          "used_mib": 11230,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:44.752772+00:00",
+          "elapsed_seconds": 11.594,
+          "total_mib": 12288,
+          "used_mib": 11164,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:45.795674+00:00",
+          "elapsed_seconds": 12.641,
+          "total_mib": 12288,
+          "used_mib": 10686,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:46.841715+00:00",
+          "elapsed_seconds": 13.688,
+          "total_mib": 12288,
+          "used_mib": 10686,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:47.885907+00:00",
+          "elapsed_seconds": 14.735,
+          "total_mib": 12288,
+          "used_mib": 10686,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:48.931947+00:00",
+          "elapsed_seconds": 15.782,
+          "total_mib": 12288,
+          "used_mib": 10683,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:49.977113+00:00",
+          "elapsed_seconds": 16.828,
+          "total_mib": 12288,
+          "used_mib": 10686,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:51.021650+00:00",
+          "elapsed_seconds": 17.875,
+          "total_mib": 12288,
+          "used_mib": 10494,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:52.082728+00:00",
+          "elapsed_seconds": 18.938,
+          "total_mib": 12288,
+          "used_mib": 10590,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:53.125864+00:00",
+          "elapsed_seconds": 19.969,
+          "total_mib": 12288,
+          "used_mib": 10587,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:54.172891+00:00",
+          "elapsed_seconds": 21.016,
+          "total_mib": 12288,
+          "used_mib": 10590,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:55.217355+00:00",
+          "elapsed_seconds": 22.063,
+          "total_mib": 12288,
+          "used_mib": 10590,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:56.258951+00:00",
+          "elapsed_seconds": 23.11,
+          "total_mib": 12288,
+          "used_mib": 10492,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:57.302938+00:00",
+          "elapsed_seconds": 24.157,
+          "total_mib": 12288,
+          "used_mib": 10427,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:58.345146+00:00",
+          "elapsed_seconds": 25.188,
+          "total_mib": 12288,
+          "used_mib": 10334,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:55:59.395909+00:00",
+          "elapsed_seconds": 26.25,
+          "total_mib": 12288,
+          "used_mib": 10334,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:56:00.439938+00:00",
+          "elapsed_seconds": 27.282,
+          "total_mib": 12288,
+          "used_mib": 10332,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:56:01.481091+00:00",
+          "elapsed_seconds": 28.328,
+          "total_mib": 12288,
+          "used_mib": 10334,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:56:02.528925+00:00",
+          "elapsed_seconds": 29.375,
+          "total_mib": 12288,
+          "used_mib": 11230,
+          "utilization_percent": 100
+        },
+        {
+          "utc": "2026-10-08T09:56:03.571207+00:00",
+          "elapsed_seconds": 30.422,
+          "total_mib": 12288,
+          "used_mib": 8515,
+          "utilization_percent": 6
+        }
+      ],
+      "baseline_gpu": {
+        "utc": "2026-10-08T09:55:33.147303+00:00",
+        "elapsed_seconds": null,
+        "total_mib": 12288,
+        "used_mib": 8334,
+        "utilization_percent": 50
+      },
+      "mpt_source_info": {
+        "provider": "openai_image",
+        "search_term": "Show exactly one brass pocket watch and exactly one silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.",
+        "route": "precision",
+        "model": "flux-klein-4b-edit-exp",
+        "requested_model": "flux-klein-4b-edit-exp",
+        "reference_count": 2,
+        "reference": {
+          "reference_pack": [
+            {
+              "role": "identity_reference",
+              "comfyui_input": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png"
+            },
+            {
+              "role": "style_reference",
+              "comfyui_input": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png"
+            }
+          ]
+        },
+        "requested_size": "768x1376",
+        "steps": 4,
+        "guidance": 1.0,
+        "seed": 43,
+        "generation_seconds": 30.246,
+        "rendition": {
+          "id": null,
+          "width": 768,
+          "height": 1376
+        },
+        "experimental": true,
+        "quality_tier": "precision",
+        "conditioning_mode": "manual_reference",
+        "reference_roles": [
+          "identity_reference",
+          "style_reference"
+        ],
+        "workflow": "local_image_stack/experiments/workflows/flux-klein-4b-edit-exp.json",
+        "workflow_sha256": "0f4c65e60ffe35905ea294ddaf5612276c42fb12fd0d0f2783613611ee138ebe",
+        "final_prompt": "Show exactly one brass pocket watch and exactly one silver key from image 1, with their same shapes, white dial, hour markers and hand positions, resting on the same burgundy woven cloth. Use image 2 only for its warm golden late-afternoon side lighting and photographic color mood. Keep the watch and key complete in an edge-to-edge vertical photograph, with no physical picture frame or border. Preserve their identity and fine metal and textile textures. Do not include the mug, steam, window or table from image 2. The watch dial is unbranded and clean, with hour tick marks and two hands only; no lettering, logos or watermark.\nInput image 1 has role identity_reference.\nInput image 2 has role style_reference.",
+        "temporal_progression": false,
+        "temporal_state": "",
+        "qa_status": "pending"
+      },
+      "caller": "app.services.material.generate_images_openai",
+      "bridge_http_status": 200,
+      "wall_seconds": 31.172,
+      "image": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+        "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "bytes": 1619011,
+        "width": 768,
+        "height": 1376,
+        "pixels_match_comfy_original": true,
+        "comfy_original_sha256": "607fe6b1c157ccc3e4c1a8535660a6d7331e62ad18eb93ef342f336fc63baf4d",
+        "comfy_original_path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\output\\MPT_EXPERIMENT_KLEIN4B_00015_.png"
+      },
+      "history": {
+        "prompt_id": "3980b429-db8e-4e9e-93dc-3772b5fd2e63",
+        "status_str": "success",
+        "completed": true,
+        "outputs": {
+          "13": {
+            "images": [
+              {
+                "filename": "MPT_EXPERIMENT_KLEIN4B_00015_.png",
+                "subfolder": "",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "errors": [],
+        "execution_seconds": 28.886
+      },
+      "matching_history_entries": 1,
+      "queue_after": {
+        "queue_running": 0,
+        "queue_pending": 0
+      },
+      "gpu_memory": {
+        "baseline_used_mib": 8334,
+        "sampled_peak_global_used_mib": 11625,
+        "margin_at_sampled_peak_mib": 663,
+        "sample_count": 30,
+        "target_interval_seconds": 1
+      },
+      "bridge_stopped": true,
+      "finished_utc": "2026-10-08T09:56:04.393993+00:00",
+      "visual_review": {
+        "status": "rejected_semantic",
+        "duplicated_or_fused_key": true,
+        "factual_geometry_changed": true,
+        "diagnosis": "Explicit one-watch/one-key count did not repair seed43. Do not add more prompt retries or promote multi-reference factual identity."
+      },
+      "final_artifact_history_verified": true,
+      "acceptance": "not_promoted; caller result pending QA; visual/QA reviews authoritative above",
+      "spec_sha256": "0ca69300c4616b0a56daf57fa2312baf7e8481ba913f3f5f1a5c5cb27de341ba",
+      "ordered_references": [
+        {
+          "filename": "MPT_KLEIN_WATCH_CLEAN_BURGUNDY.png",
+          "role": "identity_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "filename": "MPT_KLEIN_GOLDEN_LIGHT_STYLE.png",
+          "role": "style_reference",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+        }
+      ]
+    }
+  ],
+  "final_checks": {
+    "checked_utc": "2026-10-08T09:59:27.385353+00:00",
+    "queue_empty": true,
+    "experimental_8091_released": true,
+    "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "external_bridge_source_hashes_unchanged": true,
+    "services": {
+      "8080": 200,
+      "8090": 404,
+      "8188": 200
+    },
+    "binary_sha256": "7f8d125f3de758f6c65e7f06bcb43a427c04dec333ba98d386a51af4451d6a85"
+  },
+  "local_harnesses": {
+    "run_case.py": "349d8f4b0bf7007a2441bf4776e861f9349171c24f61f700066679b804dfdcd6",
+    "compare_case.py": "94f171aded74dc2b097a4051024bb0426f562d3c89365f574c2f0351aaaf6267",
+    "qa_scene.py": "a58f4308d1bc9dab2c36d08d85606784d7a394ecc05b997fc0aff2bc9a3b2906",
+    "qa_temporal.py": "70f6b159c1489f951cfdb90c02ab933ed7004b52286e6eadd1d467585be14ef0"
+  },
+  "overall_status": "technical_passes_with_semantic_rejections; candidate_remains_planned",
+  "execution_counts": {
+    "klein_gpu_requests": 10,
+    "comparison_gpu_requests": 2,
+    "automatic_generation_retries": 0,
+    "explicit_diagnostic_followups": 2,
+    "qa_llm_evaluations": 2
+  },
+  "limits": [
+    "Sampled GPU usage is global, not allocator reserved/allocated or an exact peak. Models and caches differ across trials.",
+    "Only two references were run; three deferred due factual/cardinality instability and limited memory margin.",
+    "No full video or planner-to-render live run. MPT caller generations and live QA exercised separately; full scene-loop gates tested offline.",
+    "Fallback primary workflow absence was injected; only secondary generation was real. No natural outage measured.",
+    "Visual reviews informal; no global model ranking or promotion.",
+    "One framing ablation and one cardinality ablation were explicit diagnostic followups, never hidden retries."
+  ],
+  "implementation_checkpoint_at_close": "599a680ec17ca37b5e8cddc78d6d475d88e1858f",
+  "implementation_timing_note": "Live QA findings motivated the final scene-loop admission gate. Live caller generations and QA were exercised separately; final full-loop policy has offline regression coverage."
+}

@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current experimental candidate — 2026-10-08: Klein 4B integration
+
+Branch `factory/image-model-routing-modernization`, base `1c7de1a`. Explicit opt-in MPT caller, separate T2I/Edit aliases and quality/conditioning metadata; conservative technical fallback, no semantic fallback. Experimental scene admission requires available, explicit QA pass. Stable remains `6d27ba4963ffe469d635db71eaeec506a8ff4b61`.
+
+Windows validation: 241 tests and 2 subtests pass, 42 new caller/pipeline cases. Ten Klein GPU requests and two small comparisons succeeded technically; factual geometry/cardinality and caption-QA uncertainty prevent promotion. Two-reference target resolution exercised; three references and full video deferred. See [current report](docs/FLUX_KLEIN_4B_AUTONOMOUS_REPORT.md) and [handoff](docs/IMAGE_MODEL_ROUTING_HANDOFF.md). No Factory, stable, dependencies, workflows or persisted config changes. Next: validate visual evidence/QA efficiency on retained artifacts before more generation or automatic routing.
+
 ## Current candidate — 2026-10-01: evidence, continuity and corrective retry
 
 Isolated branch: `factory/evidence-continuity-fix`, based on published narration
