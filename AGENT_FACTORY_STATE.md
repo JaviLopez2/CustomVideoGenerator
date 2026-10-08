@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current visual judge selection — 2026-10-08
+
+Comparison completed after user closed8080. Experimental next candidate:Qwen3.5-9B Q4_K_M/F16. Base16-case matrix:4/6 defects detected,9/9 positives accepted,2FN, no unavailable; mean27.786s, peakglobal10448MiB. Qwen3-VL8B detects0/6 and has3timeouts. No automatic admission/routing:deformed factual key/three-hand MPT watch remain missed. ROI/blind-count diagnostics timed out; isolate prefill before integration.55 focused tests pass.42 VLM requests,0 generated images, no production/default/dependency/workflow changes. Own8092 closed; user can reopen8080.
+
+Read [comparison report](docs/VISUAL_JUDGE_COMPARISON_REPORT.md) and [current candidate handoff](docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Stable protected HEAD remains6d27ba4963ffe469d635db71eaeec506a8ff4b61. Preparation block below is historical.
+
 ## Visual judge candidates — 2026-10-08, preparation pending GPU clearance
 
 User authorized Qwen3.5-9B/Qwen3-VL-8B downloads and a bounded retained-image comparison. Four pinned GGUFs (12.79GB) and portable official CUDA12.4 llama.cpp b11497 verified;51 offline tests pass. Zero comparative GPU inference so far: shared8080 server remains resident, GPU~7.7GB used after Comfy cached weights unloaded, RAM~6.1GiB free. Await user closing8080 or explicitly choosing partial offload; never infer consent to stop shared services. Read [candidate handoff](docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Production/defaults/stable unchanged; no candidate selected.

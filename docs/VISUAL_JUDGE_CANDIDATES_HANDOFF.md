@@ -1,5 +1,21 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current closure — comparative evaluation complete
+
+The user closed8080 and resource clearance was confirmed. Execution base `8ebbb17480f07dd6235ff9b66a65d7dc2a3edbe7`. **Select Qwen3.5-9B Q4_K_M/F16 for the next experimental phase, not automatic admission.** [Full report/matrix](VISUAL_JUDGE_COMPARISON_REPORT.md), [base metrics](validation/visual-judge-baseline-metrics-2026-10-08.json).
+
+V2:16 unique attempts each.9B TP4/TN9/FP0/FN2,0unavailable, mean27.786s/median29.099s, peakglobal10448MiB.8B TP0/TN7/FP0/FN6,3unavailable, mean31.592s/median31.164s, peakglobal11299MiB. Cold expected uncertain excluded from binary confusion;9B called it fail without independent adjudication. Labels remain curated agent reviews.9B still accepts a deformed factual key and MPT three-hand watch; its OCR transcription can hallucinate a brand. No candidate is ready.
+
+V1 exposed underspecified response fields; retained and reinterpreted offline without new requests. V2 uses strict top-level JSON schema, Flash Attention on, min1024/max1536 image tokens.8B temporal cutoff was followed only by its six previously unattempted cases, not retries. V3 blinded counts+ROI+string bounds produced two consecutive60s timeouts for each model; V4 removing maxLength also produced two9B timeouts. Root cause of ROI/prefill failure is unresolved; do not blame grammar alone. Separate protocols and preserve every failure. Total42 attempted VLM requests,0 image generation,0 automatic inference retries.
+
+Final focused tests:55 passed (16 harness +39 QA), exit0,3.33s. [Log](validation/visual-judge-harness-final-tests-2026-10-08.txt). Source changes affect only evaluator/tests/docs, not app/runtime defaults. No global installs, encoder/workflow changes or routing activation. [Closing checks](validation/visual-judge-final-access-2026-10-08.json): own8092 closed,8080 remains closed by user,8090HTTP404,8188HTTP200,Comfy queue0/0, globalVRAM~3970MiB, stable protected HEAD/tracked tree unchanged. The user may reopen their original8080 launcher now.
+
+Next concrete task: diagnose ROI prefill with single-image/text controls and a contrasted backend version, obtain a blind observed count without timeout, then prepare9B as opt-in additional QA evidence with independent OCR/cheap checks. Resolve twoFN before admission; do not activate routing, replace fail-closed, change labels, download a third model or generate new artifacts by inference. Preserve downloaded models/logs/analytical crops under ignored target. For a fresh run choose a new output/log path; existing destinations refuse overwrite. Determine closing SHA via Git history for this handoff; publish normal push only.
+
+The preparation/blocker paragraphs below are historical and superseded by this closure.
+
+Closing evaluator/tests checkpoint: `0452649be06b8a17cb269f4f0d62fbf94bc2be71`. Final evidence/report checkpoint follows; retrieve exact local/remote SHA using Git. No further GPU runs are implicit in this closure.
+
 User explicitly authorized downloading Qwen3.5-9B and Qwen3-VL-8B-Instruct plus their projectors, and a bounded GPU evaluation on the 16 retained images. No image generation, production integration, automatic routing, global dependencies or stable-tree changes are authorized by this evaluation.
 
 Initial local/remote HEAD `b97ec8c101319b42013e6e0f57add791fdf7f064`, clean experimental branch `factory/image-model-routing-modernization`. Fetch:0/0. Stable protected HEAD remains `6d27ba4963ffe469d635db71eaeec506a8ff4b61`.

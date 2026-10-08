@@ -159,3 +159,10 @@ Base limpia87c7ba568b19ed48d041b625f269f5112f0ef4fd. Dataset16 casos, auditoría
 Zero nuevas generaciones/benchmarks GPU/descargas/dependencias/workflows/jobs/restarts. No flags persistidos, ni routing/promotion. Contratos vacíos no verifican Klein; requisitos factuales/continuidad quedan fail-closed sin identidad fuerte. Stable HEAD6d27ba4963ffe469d635db71eaeec506a8ff4b61 intacto, backups untracked conservados; cola0/0,8091 no iniciado.
 
 [Informe QA](VISUAL_QA_REPORT.md), [handoff QA](VISUAL_QA_HANDOFF.md), [dataset](validation/visual-qa-dataset-2026-10-08.json), [matriz final](validation/visual-qa-final-results-2026-10-08.json), [tests](validation/visual-qa-final-tests-2026-10-08.txt). Siguiente: evaluar visión fuerte sobre el mismo dataset y adjudicar labels independientemente. El servidor8080 declara vision=false; cualquier descarga o modelo/dependencia pesada requiere una decisión separada. No seguir generando para suplir esa falta de evidencia.
+
+
+## Visual judge comparison completed — 2026-10-08
+
+Execution base8ebbb17480f07dd6235ff9b66a65d7dc2a3edbe7. User closed8080, then42 VLM requests on retained artifacts (0 generated images). Base V2:16 unique cases each;9B TP4/TN9/FP0/FN2, no unavailable, mean27.786s/median29.099s, peakglobal10448MiB;8B TP0/TN7/FP0/FN6,3unavailable, mean31.592s/median31.164s, peakglobal11299MiB. Unknown cold label excluded from binary confusion. Select Qwen3.5-9B Q4_K_M/F16 for next experimental phase only, not ready/admission/routing.
+
+55 focused offline tests pass, exit0. No production/default/dependency/workflow changes. Own8092 closed,Comfy queue0/0, stable HEAD/tracked tree intact; user can reopen original8080 launcher. ROI/blind-count diagnostic and maxLength control timed out; exact cause unresolved, no sole grammar attribution. Next: isolate ROI prefill and verify blind counts/structural evidence before opt-in integration. [Full report](VISUAL_JUDGE_COMPARISON_REPORT.md), [handoff](VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Preserve model weights/projectors/runtime/logs/crops under ignored target.

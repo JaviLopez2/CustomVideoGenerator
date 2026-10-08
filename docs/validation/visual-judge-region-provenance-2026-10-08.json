@@ -1,0 +1,104 @@
+{
+  "derived_crops": [
+    {
+      "case": "mpt_fallback_identity_style_seed43",
+      "query": "silver key",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\mpt_fallback_identity_style_seed43-silver_key-0.png",
+      "sha256": "450113063a99dbc1e9790389d78f09341110da45b7ec4d7964d67a00e1b8660a",
+      "bounds": [
+        496,
+        614,
+        711,
+        958
+      ],
+      "source_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+      "source": "previously recorded Florence grounding, padded8px; original full image is also supplied"
+    },
+    {
+      "case": "mpt_fallback_identity_style_seed43",
+      "query": "watch hands",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\mpt_fallback_identity_style_seed43-watch_hands-0.png",
+      "sha256": "1261c7d2190698734bcb184bc724234a91612eb8e47bc19e876e1f6765ebfe3d",
+      "bounds": [
+        69,
+        426,
+        457,
+        893
+      ],
+      "source_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+      "source": "previously recorded Florence grounding, padded8px; original full image is also supplied"
+    },
+    {
+      "case": "mpt_t2i_text_contract_768",
+      "query": "silver key",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\mpt_t2i_text_contract_768-silver_key-0.png",
+      "sha256": "879cc4f283f4dc45a9f16f4d1802f1a2208b303c341fe4bd96cafb6bbccdc0ce",
+      "bounds": [
+        496,
+        610,
+        628,
+        951
+      ],
+      "source_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+      "source": "previously recorded Florence grounding, padded8px; original full image is also supplied"
+    },
+    {
+      "case": "mpt_t2i_text_contract_768",
+      "query": "watch hands",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\mpt_t2i_text_contract_768-watch_hands-0.png",
+      "sha256": "fcc8ce30493bac22faf206d066f66b89436cbaeb79572408d0209d5ddbaadf06",
+      "bounds": [
+        72,
+        427,
+        459,
+        892
+      ],
+      "source_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+      "source": "previously recorded Florence grounding, padded8px; original full image is also supplied"
+    },
+    {
+      "case": "unrequested_text",
+      "query": "silver key",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\unrequested_text-silver_key-0.png",
+      "sha256": "fc2a23f00328e3bdd0000b70834966a99f8b1437edc43ae10f62dcf7bd4e55a0",
+      "bounds": [
+        492,
+        611,
+        625,
+        955
+      ],
+      "source_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "source": "previously recorded Florence grounding, padded8px; original full image is also supplied"
+    },
+    {
+      "case": "unrequested_text",
+      "query": "watch hands",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\unrequested_text-watch_hands-0.png",
+      "sha256": "f100823201e2666f5c39b2ece749be30e2519262e06fbed281172aa56dbfe4f0",
+      "bounds": [
+        71,
+        426,
+        456,
+        887
+      ],
+      "source_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "source": "previously recorded Florence grounding, padded8px; original full image is also supplied"
+    },
+    {
+      "case": "valid_cloth_edit",
+      "query": "pocket watch",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\valid_cloth_edit-main-object.png",
+      "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732",
+      "bounds": [
+        73,
+        431,
+        455,
+        887
+      ],
+      "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "source": "Existing Florence OD box matched via caller-provided alias, padded8px; original full image also supplied"
+    }
+  ],
+  "image_generation_requests": 0,
+  "limits": "Supplementary crops are analytical preprocessing, not generated images; no expected count/label used for bounds."
+}

@@ -1,0 +1,450 @@
+{
+  "base_head": "b97ec8c101319b42013e6e0f57add791fdf7f064",
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "inference_retries": 0,
+  "policy": {
+    "max_tokens": 768,
+    "timeout_seconds": 60,
+    "temperature": 0,
+    "context": 8192,
+    "gpu_layers": 99,
+    "image_max_tokens": 1536,
+    "thinking": false,
+    "response_format": "json_schema",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "evaluation_version": 2,
+    "blind_counts": false,
+    "supplementary_regions": false
+  },
+  "models": [
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+      "rows": [
+        {
+          "id": "mpt_fallback_identity_style_seed43",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f"
+            },
+            {
+              "role": "REFERENCE slot 1 role identity_reference",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "REFERENCE slot 2 role style_reference",
+              "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 181,
+            "prompt_tokens": 4527,
+            "total_tokens": 4708,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 4527,
+            "prompt_ms": 21315.703,
+            "prompt_per_token_ms": 4.708571460128121,
+            "prompt_per_second": 212.3786393533443,
+            "predicted_n": 181,
+            "predicted_ms": 11571.022,
+            "predicted_per_token_ms": 64.28345555555556,
+            "predicted_per_second": 15.556102131687242
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One pocket watch is clearly visible.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One silver key is clearly visible.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two distinct watch hands (hour and minute) are visible on the watch face.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"The pocket watch and silver key maintain their expected silhouette and part arrangement relative to each other and the background fabric.\"\n  }\n}",
+          "verdict": "pass",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "pocket watch",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One pocket watch is clearly visible."
+            },
+            {
+              "kind": "quantity",
+              "subject": "silver key",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One silver key is clearly visible."
+            },
+            {
+              "kind": "quantity",
+              "subject": "watch hands",
+              "observed_count": 2,
+              "status": "pass",
+              "reason": "Two distinct watch hands (hour and minute) are visible on the watch face."
+            },
+            {
+              "kind": "geometry",
+              "status": "pass",
+              "reason": "The pocket watch and silver key maintain their expected silhouette and part arrangement relative to each other and the background fabric."
+            }
+          ],
+          "seconds": 33.162977500000125,
+          "baseline_global_vram_mib": 11032,
+          "peak_global_vram_mib": 11273,
+          "vram_samples": 32
+        },
+        {
+          "id": "mpt_explicit_quantity_seed43",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+            },
+            {
+              "role": "REFERENCE slot 1 role identity_reference",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "REFERENCE slot 2 role style_reference",
+              "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 181,
+            "prompt_tokens": 4527,
+            "total_tokens": 4708,
+            "prompt_tokens_details": {
+              "cached_tokens": 377
+            }
+          },
+          "server_timings": {
+            "cache_n": 377,
+            "prompt_n": 4150,
+            "prompt_ms": 20570.782,
+            "prompt_per_token_ms": 4.9568149397590355,
+            "prompt_per_second": 201.74245198845625,
+            "predicted_n": 181,
+            "predicted_ms": 11626.408,
+            "predicted_per_token_ms": 64.59115555555556,
+            "predicted_per_second": 15.48199581504451
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One pocket watch is clearly visible.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One silver key is clearly visible.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two distinct watch hands (hour and minute) are visible on the watch face.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"The pocket watch and silver key maintain their expected silhouette and part arrangement relative to each other and the background fabric.\"\n  }\n}",
+          "verdict": "pass",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "pocket watch",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One pocket watch is clearly visible."
+            },
+            {
+              "kind": "quantity",
+              "subject": "silver key",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One silver key is clearly visible."
+            },
+            {
+              "kind": "quantity",
+              "subject": "watch hands",
+              "observed_count": 2,
+              "status": "pass",
+              "reason": "Two distinct watch hands (hour and minute) are visible on the watch face."
+            },
+            {
+              "kind": "geometry",
+              "status": "pass",
+              "reason": "The pocket watch and silver key maintain their expected silhouette and part arrangement relative to each other and the background fabric."
+            }
+          ],
+          "seconds": 32.683783700000276,
+          "baseline_global_vram_mib": 11270,
+          "peak_global_vram_mib": 11274,
+          "vram_samples": 31
+        },
+        {
+          "id": "z_image_t2i_768",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 161,
+            "prompt_tokens": 1391,
+            "total_tokens": 1552,
+            "prompt_tokens_details": {
+              "cached_tokens": 346
+            }
+          },
+          "server_timings": {
+            "cache_n": 346,
+            "prompt_n": 1045,
+            "prompt_ms": 5238.123,
+            "prompt_per_token_ms": 5.012557894736842,
+            "prompt_per_second": 199.49894265560394,
+            "predicted_n": 161,
+            "predicted_ms": 9621.052,
+            "predicted_per_token_ms": 60.131575,
+            "predicted_per_second": 16.63019802824057
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single pocket watch is clearly visible, open, with a brass casing and white dial.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single silver key with a bow and bit is visible next to the pocket watch.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible on the watch face.\"\n    }\n  ]\n}",
+          "verdict": "pass",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "pocket watch",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "A single pocket watch is clearly visible, open, with a brass casing and white dial."
+            },
+            {
+              "kind": "quantity",
+              "subject": "silver key",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "A single silver key with a bow and bit is visible next to the pocket watch."
+            },
+            {
+              "kind": "quantity",
+              "subject": "watch hands",
+              "observed_count": 2,
+              "status": "pass",
+              "reason": "Two watch hands (hour and minute) are clearly visible on the watch face."
+            }
+          ],
+          "seconds": 15.137349299999187,
+          "baseline_global_vram_mib": 11271,
+          "peak_global_vram_mib": 11276,
+          "vram_samples": 15
+        },
+        {
+          "id": "qwen_continuity_factual_768",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9"
+            },
+            {
+              "role": "REFERENCE slot 1 role None",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            },
+            {
+              "role": "REFERENCE slot 2 role None",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 124,
+            "prompt_tokens": 4463,
+            "total_tokens": 4587,
+            "prompt_tokens_details": {
+              "cached_tokens": 255
+            }
+          },
+          "server_timings": {
+            "cache_n": 255,
+            "prompt_n": 4208,
+            "prompt_ms": 20756.83,
+            "prompt_per_token_ms": 4.93270674904943,
+            "prompt_per_second": 202.72845130976162,
+            "predicted_n": 124,
+            "predicted_ms": 7855.14,
+            "predicted_per_token_ms": 63.8629268292683,
+            "predicted_per_second": 15.658536957966374
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single silver key is clearly visible in the candidate image, lying on a wooden surface next to a red mug. Its silhouette and part arrangement are intact and recognizable as a key.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"The silver key's silhouette is clearly defined and its part arrangement (shaft, bow, bit) is correctly positioned and unambiguous.\"\n  }\n}",
+          "verdict": "pass",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "silver key",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "A single silver key is clearly visible in the candidate image, lying on a wooden surface next to a red mug. Its silhouette and part arrangement are intact and recognizable as a key."
+            },
+            {
+              "kind": "geometry",
+              "status": "pass",
+              "reason": "The silver key's silhouette is clearly defined and its part arrangement (shaft, bow, bit) is correctly positioned and unambiguous."
+            }
+          ],
+          "seconds": 28.928779399999257,
+          "baseline_global_vram_mib": 11275,
+          "peak_global_vram_mib": 11277,
+          "vram_samples": 28
+        },
+        {
+          "id": "root_mug",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 56,
+            "prompt_tokens": 1330,
+            "total_tokens": 1386,
+            "prompt_tokens_details": {
+              "cached_tokens": 255
+            }
+          },
+          "server_timings": {
+            "cache_n": 255,
+            "prompt_n": 1075,
+            "prompt_ms": 4959.492,
+            "prompt_per_token_ms": 4.613480930232559,
+            "prompt_per_second": 216.75607098468956,
+            "predicted_n": 56,
+            "predicted_ms": 3316.273,
+            "predicted_per_token_ms": 60.29587272727273,
+            "predicted_per_second": 16.584883090143663
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"mug\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single red ceramic mug is clearly visible on a wooden surface.\"\n    }\n  ]\n}",
+          "verdict": "pass",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "mug",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "A single red ceramic mug is clearly visible on a wooden surface."
+            }
+          ],
+          "seconds": 8.492326399999001,
+          "baseline_global_vram_mib": 11272,
+          "peak_global_vram_mib": 11276,
+          "vram_samples": 9
+        },
+        {
+          "id": "valid_mug_recolor",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61"
+            },
+            {
+              "role": "REFERENCE slot 1 role identity_reference",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 85,
+            "prompt_tokens": 3412,
+            "total_tokens": 3497,
+            "prompt_tokens_details": {
+              "cached_tokens": 255
+            }
+          },
+          "server_timings": {
+            "cache_n": 255,
+            "prompt_n": 3157,
+            "prompt_ms": 14824.141,
+            "prompt_per_token_ms": 4.695641748495407,
+            "prompt_per_second": 212.96343579030986,
+            "predicted_n": 85,
+            "predicted_ms": 5276.912,
+            "predicted_per_token_ms": 62.82038095238096,
+            "predicted_per_second": 15.918400761657574
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"mug\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One ceramic mug is clearly visible in the candidate image.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"The mug's silhouette is intact and matches the reference geometry.\"\n  }\n}",
+          "verdict": "pass",
+          "checks": [
+            {
+              "kind": "quantity",
+              "subject": "mug",
+              "observed_count": 1,
+              "status": "pass",
+              "reason": "One ceramic mug is clearly visible in the candidate image."
+            },
+            {
+              "kind": "geometry",
+              "status": "pass",
+              "reason": "The mug's silhouette is intact and matches the reference geometry."
+            }
+          ],
+          "seconds": 20.25429880000047,
+          "baseline_global_vram_mib": 11275,
+          "peak_global_vram_mib": 11276,
+          "vram_samples": 20
+        }
+      ],
+      "baseline_global_vram_mib": 3962,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-evaluation-v2-remaining-2026-10-08\\Qwen3-VL-8B-Instruct-GGUF.log",
+      "owned_pid": 12104,
+      "load_seconds": 4.514317799999844,
+      "modalities": {
+        "vision": true,
+        "video": true,
+        "audio": false
+      },
+      "owned_server_closed": true,
+      "mean_seconds": 23.10991918333305,
+      "median_seconds": 24.591539099999864
+    }
+  ],
+  "case_ids": [
+    "mpt_fallback_identity_style_seed43",
+    "mpt_explicit_quantity_seed43",
+    "z_image_t2i_768",
+    "qwen_continuity_factual_768",
+    "root_mug",
+    "valid_mug_recolor"
+  ],
+  "execution_head": "8ebbb17480f07dd6235ff9b66a65d7dc2a3edbe7",
+  "harness_sha256": "6edea1a6497131303557863e6a0a3114db302d697665531fd298037011f343e4"
+}

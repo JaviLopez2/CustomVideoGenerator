@@ -1,0 +1,118 @@
+{
+  "base_head": "b97ec8c101319b42013e6e0f57add791fdf7f064",
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "inference_retries": 0,
+  "policy": {
+    "max_tokens": 768,
+    "timeout_seconds": 60,
+    "temperature": 0,
+    "context": 8192,
+    "gpu_layers": 99,
+    "image_max_tokens": 1536,
+    "thinking": false,
+    "response_format": "json_schema",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "evaluation_version": 4,
+    "blind_counts": true,
+    "supplementary_regions": true,
+    "schema_reason_max_length": null
+  },
+  "models": [
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+      "rows": [
+        {
+          "id": "valid_cloth_edit",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "REFERENCE slot 1 role identity_reference",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "CANDIDATE DETAIL: pocket watch",
+              "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732"
+            }
+          ],
+          "verdict": "unavailable",
+          "error_type": "TimeoutError",
+          "seconds": 60.03057239999907,
+          "baseline_global_vram_mib": 10235,
+          "peak_global_vram_mib": 10433,
+          "vram_samples": 57
+        },
+        {
+          "id": "mpt_t2i_text_contract_768",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02"
+            },
+            {
+              "role": "CANDIDATE DETAIL: silver key",
+              "sha256": "879cc4f283f4dc45a9f16f4d1802f1a2208b303c341fe4bd96cafb6bbccdc0ce"
+            },
+            {
+              "role": "CANDIDATE DETAIL: watch hands",
+              "sha256": "fcc8ce30493bac22faf206d066f66b89436cbaeb79572408d0209d5ddbaadf06"
+            }
+          ],
+          "verdict": "unavailable",
+          "error_type": "TimeoutError",
+          "seconds": 60.01661960000092,
+          "baseline_global_vram_mib": 10425,
+          "peak_global_vram_mib": 10426,
+          "vram_samples": 57
+        }
+      ],
+      "baseline_global_vram_mib": 3957,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-schema-control-2026-10-08\\Qwen3.5-9B-GGUF.log",
+      "owned_pid": 33776,
+      "load_seconds": 22.545629199999894,
+      "modalities": {
+        "vision": true,
+        "video": true,
+        "audio": false
+      },
+      "stopped_reason": "Two consecutive unavailable results; no automatic retry",
+      "owned_server_closed": true,
+      "mean_seconds": 60.023596,
+      "median_seconds": 60.023596
+    }
+  ],
+  "case_ids": [
+    "valid_cloth_edit",
+    "mpt_t2i_text_contract_768"
+  ],
+  "execution_head": "8ebbb17480f07dd6235ff9b66a65d7dc2a3edbe7",
+  "harness_sha256": "b062b05d1137d29f0431524f45277a06051ae55be4308706784132746aa88bb1"
+}

@@ -1,0 +1,81 @@
+{
+  "source": "docs\\validation\\visual-judge-comparison-2026-10-08.json",
+  "inference_requests": 0,
+  "rows": [
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "id": "temporal_warm_512",
+      "original_verdict": "unavailable",
+      "schema_adapter_result": {
+        "verdict": "pass",
+        "checks": [
+          {
+            "kind": "quantity",
+            "subject": "mug",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "single red ceramic mug clearly visible on table"
+          },
+          {
+            "kind": "identity",
+            "status": "pass",
+            "score": 1.0,
+            "reason": "same red ceramic mug in same position on wooden table"
+          },
+          {
+            "kind": "state",
+            "status": "pass",
+            "score": 1.0,
+            "reason": "visible steam rising from mug indicates hot tea"
+          },
+          {
+            "kind": "progression",
+            "status": "pass",
+            "score": 1.0,
+            "reason": "previous state showed no steam; current state shows steam — temporal progression confirmed"
+          }
+        ]
+      },
+      "seconds": 17.20682569999917,
+      "limits": "Offline reinterpretation of existing response, not a new request or comparable v2 protocol measurement."
+    },
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "id": "unrequested_text",
+      "original_verdict": "unavailable",
+      "schema_adapter_result": {
+        "verdict": "fail",
+        "checks": [
+          {
+            "kind": "quantity",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "Single brass-cased pocket watch clearly visible on dark fabric."
+          },
+          {
+            "kind": "quantity",
+            "subject": "silver key",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "One silver key with notched blade and cylindrical bow lies beside the watch."
+          },
+          {
+            "kind": "quantity",
+            "subject": "watch hands",
+            "observed_count": 2,
+            "status": "pass",
+            "reason": "Two distinct hands (hour and minute) visible on watch face; no seconds hand present."
+          },
+          {
+            "kind": "text",
+            "status": "fail",
+            "reason": "Visible text 'JAEGER-LECOULTRE' appears on watch dial, violating forbid_text=true."
+          }
+        ]
+      },
+      "seconds": 29.85351879999871,
+      "limits": "Offline reinterpretation of existing response, not a new request or comparable v2 protocol measurement."
+    }
+  ]
+}

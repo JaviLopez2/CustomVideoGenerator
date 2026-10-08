@@ -168,3 +168,10 @@ Zero nuevas generaciones/benchmarks GPU/descargas/dependencias/workflows/jobs/re
 ## Candidate judge preparation — 2026-10-08
 
 User authorized download/evaluation of Qwen3.5-9B and Qwen3-VL-8B. Downloads/projectors/runtime SHA verified,51 offline tests pass. Comparative GPU evaluation remains pending clearance of shared8080 VRAM/RAM; no candidate verdicts or selection yet. [Current operational handoff](VISUAL_JUDGE_CANDIDATES_HANDOFF.md). No production/routing/dependency changes or new images.
+
+
+## Visual judge comparison completed — 2026-10-08
+
+Execution base8ebbb17480f07dd6235ff9b66a65d7dc2a3edbe7. User closed8080, then42 VLM requests on retained artifacts (0 generated images). Base V2:16 unique cases each;9B TP4/TN9/FP0/FN2, no unavailable, mean27.786s/median29.099s, peakglobal10448MiB;8B TP0/TN7/FP0/FN6,3unavailable, mean31.592s/median31.164s, peakglobal11299MiB. Unknown cold label excluded from binary confusion. Select Qwen3.5-9B Q4_K_M/F16 for next experimental phase only, not ready/admission/routing.
+
+55 focused offline tests pass, exit0. No production/default/dependency/workflow changes. Own8092 closed,Comfy queue0/0, stable HEAD/tracked tree intact; user can reopen original8080 launcher. ROI/blind-count diagnostic and maxLength control timed out; exact cause unresolved, no sole grammar attribution. Next: isolate ROI prefill and verify blind counts/structural evidence before opt-in integration. [Full report](VISUAL_JUDGE_COMPARISON_REPORT.md), [handoff](VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Preserve model weights/projectors/runtime/logs/crops under ignored target.

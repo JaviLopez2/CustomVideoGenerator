@@ -44,3 +44,7 @@ Next justified work: stronger visual extractor/judge for internal structure/coun
 ## Subsequent authorized candidate preparation
 
 The user authorized download and bounded GPU evaluation of Qwen3.5-9B and Qwen3-VL-8B-Instruct. Four model/projector GGUFs and a portable official CUDA runtime are downloaded/hash verified;51 offline QA/harness tests pass. Evaluation remains pending GPU/RAM clearance:8080 LLM remains resident, GPU~7663MiB used after Comfy cached weights were unloaded, RAM~6.12GiB free. Read [current candidate handoff](VISUAL_JUDGE_CANDIDATES_HANDOFF.md) before proceeding. No comparative inference has been run and no candidate is selected.
+
+## Subsequent comparison closure
+
+User closed8080; the resource blocker above is resolved.42 bounded VLM attempts, zero generation. V2 matrix16 cases/model:9B detects4/6 negatives, accepts9/9 positives, mean27.786s and peakglobal10448MiB;8B detects0/6 negatives, accepts7/9 positives with3timeouts, mean31.592s and peak11299MiB. Select9B for next experimental work only; two dangerousFN and ROI/prefill timeouts remain.55 focused tests pass, exit0; no productive/default/routing changes. Own8092 closed, user can reopen8080. [Report](VISUAL_JUDGE_COMPARISON_REPORT.md) and [current recovery handoff](VISUAL_JUDGE_CANDIDATES_HANDOFF.md) supersede preparation status.

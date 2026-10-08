@@ -1,0 +1,191 @@
+{
+  "base_head": "b97ec8c101319b42013e6e0f57add791fdf7f064",
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "inference_retries": 0,
+  "policy": {
+    "max_tokens": 768,
+    "timeout_seconds": 60,
+    "temperature": 0,
+    "context": 8192,
+    "gpu_layers": 99,
+    "image_max_tokens": 1536,
+    "thinking": false,
+    "response_format": "json_schema",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "evaluation_version": 3,
+    "blind_counts": true,
+    "supplementary_regions": true
+  },
+  "models": [
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+      "rows": [
+        {
+          "id": "unrequested_text",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "CANDIDATE DETAIL: silver key",
+              "sha256": "fc2a23f00328e3bdd0000b70834966a99f8b1437edc43ae10f62dcf7bd4e55a0"
+            },
+            {
+              "role": "CANDIDATE DETAIL: watch hands",
+              "sha256": "f100823201e2666f5c39b2ece749be30e2519262e06fbed281172aa56dbfe4f0"
+            }
+          ],
+          "verdict": "unavailable",
+          "error_type": "TimeoutError",
+          "seconds": 60.0069655999996,
+          "baseline_global_vram_mib": 11017,
+          "peak_global_vram_mib": 11283,
+          "vram_samples": 57
+        },
+        {
+          "id": "valid_cloth_edit",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "REFERENCE slot 1 role identity_reference",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "CANDIDATE DETAIL: pocket watch",
+              "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732"
+            }
+          ],
+          "verdict": "unavailable",
+          "error_type": "TimeoutError",
+          "seconds": 60.017554299998665,
+          "baseline_global_vram_mib": 11277,
+          "peak_global_vram_mib": 11281,
+          "vram_samples": 57
+        }
+      ],
+      "baseline_global_vram_mib": 3972,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-count-roi-probe-2026-10-08\\Qwen3-VL-8B-Instruct-GGUF.log",
+      "owned_pid": 34212,
+      "load_seconds": 20.542473299999983,
+      "modalities": {
+        "vision": true,
+        "video": true,
+        "audio": false
+      },
+      "stopped_reason": "Two consecutive unavailable results; no automatic retry",
+      "owned_server_closed": true,
+      "mean_seconds": 60.012259949999134,
+      "median_seconds": 60.012259949999134
+    },
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+      "rows": [
+        {
+          "id": "unrequested_text",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "CANDIDATE DETAIL: silver key",
+              "sha256": "fc2a23f00328e3bdd0000b70834966a99f8b1437edc43ae10f62dcf7bd4e55a0"
+            },
+            {
+              "role": "CANDIDATE DETAIL: watch hands",
+              "sha256": "f100823201e2666f5c39b2ece749be30e2519262e06fbed281172aa56dbfe4f0"
+            }
+          ],
+          "verdict": "unavailable",
+          "error_type": "TimeoutError",
+          "seconds": 60.01232419999906,
+          "baseline_global_vram_mib": 10239,
+          "peak_global_vram_mib": 10429,
+          "vram_samples": 57
+        },
+        {
+          "id": "valid_cloth_edit",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+            },
+            {
+              "role": "REFERENCE slot 1 role identity_reference",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "GEOMETRY REFERENCE",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            },
+            {
+              "role": "CANDIDATE DETAIL: pocket watch",
+              "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732"
+            }
+          ],
+          "verdict": "unavailable",
+          "error_type": "TimeoutError",
+          "seconds": 60.02716479999981,
+          "baseline_global_vram_mib": 10428,
+          "peak_global_vram_mib": 10433,
+          "vram_samples": 57
+        }
+      ],
+      "baseline_global_vram_mib": 3963,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-count-roi-probe-2026-10-08\\Qwen3.5-9B-GGUF.log",
+      "owned_pid": 28180,
+      "load_seconds": 22.54710630000045,
+      "modalities": {
+        "vision": true,
+        "video": true,
+        "audio": false
+      },
+      "stopped_reason": "Two consecutive unavailable results; no automatic retry",
+      "owned_server_closed": true,
+      "mean_seconds": 60.01974449999943,
+      "median_seconds": 60.01974449999943
+    }
+  ],
+  "case_ids": [
+    "unrequested_text",
+    "valid_cloth_edit",
+    "mpt_t2i_text_contract_768",
+    "mpt_fallback_identity_style_seed43",
+    "qwen_continuity_factual_768"
+  ],
+  "execution_head": "8ebbb17480f07dd6235ff9b66a65d7dc2a3edbe7",
+  "harness_sha256": "6edea1a6497131303557863e6a0a3114db302d697665531fd298037011f343e4"
+}

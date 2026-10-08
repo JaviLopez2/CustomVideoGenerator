@@ -1,0 +1,32 @@
+{
+  "services": {
+    "8080": {
+      "path": "/health",
+      "status": "not responding"
+    },
+    "8090": {
+      "path": "/",
+      "status": 404
+    },
+    "8188": {
+      "path": "/system_stats",
+      "status": 200
+    },
+    "8092": {
+      "path": "/health",
+      "status": "not responding"
+    }
+  },
+  "image_generation_requests": 0,
+  "vlm_requests_attempted": 42,
+  "global_dependency_changes": 0,
+  "routing_activated": false,
+  "comfy_queue": {
+    "queue_running": 0,
+    "queue_pending": 0
+  },
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_diff": "",
+  "closing_global_vram_mib": 3970,
+  "owned_servers_closed": true
+}

@@ -1,0 +1,52 @@
+{
+  "protocol": "v2 only; v1 schema diagnosis and v3 ROI/blind diagnostic excluded",
+  "execution_base": "8ebbb17480f07dd6235ff9b66a65d7dc2a3edbe7",
+  "source_files": [
+    "docs/validation/visual-judge-comparison-v2-2026-10-08.json",
+    "docs/validation/visual-judge-comparison-v2-remaining-2026-10-08.json"
+  ],
+  "models": {
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF": {
+      "true_positives": 0,
+      "true_negatives": 7,
+      "false_positives": 0,
+      "false_negatives": 6,
+      "uncertain": 0,
+      "unavailable": 3,
+      "cases": 16,
+      "known_expected_cases": 15,
+      "decided_known_cases": 13,
+      "mean_seconds": 31.591801243749956,
+      "median_seconds": 31.163864199999807,
+      "max_seconds": 60.01746670000102,
+      "peak_global_vram_mib": 11299,
+      "unadjudicated": [
+        {
+          "id": "mpt_temporal_cooled_768",
+          "actual": "unavailable"
+        }
+      ]
+    },
+    "unsloth/Qwen3.5-9B-GGUF": {
+      "true_positives": 4,
+      "true_negatives": 9,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "uncertain": 0,
+      "unavailable": 0,
+      "cases": 16,
+      "known_expected_cases": 15,
+      "decided_known_cases": 15,
+      "mean_seconds": 27.786418662499955,
+      "median_seconds": 29.099273849999918,
+      "max_seconds": 35.67711450000024,
+      "peak_global_vram_mib": 10448,
+      "unadjudicated": [
+        {
+          "id": "mpt_temporal_cooled_768",
+          "actual": "fail"
+        }
+      ]
+    }
+  }
+}

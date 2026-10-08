@@ -1,0 +1,197 @@
+{
+  "base_head": "b97ec8c101319b42013e6e0f57add791fdf7f064",
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "inference_retries": 0,
+  "policy": {
+    "max_tokens": 768,
+    "timeout_seconds": 60,
+    "temperature": 0,
+    "context": 8192,
+    "gpu_layers": 99,
+    "image_max_tokens": 1536,
+    "thinking": false,
+    "response_format": "json_object"
+  },
+  "models": [
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+      "rows": [
+        {
+          "id": "temporal_warm_512",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+            },
+            {
+              "role": "REFERENCE slot 1 role continuity_anchor",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            },
+            {
+              "role": "PREVIOUS TEMPORAL STATE",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            }
+          ],
+          "verdict": "unavailable",
+          "error_type": "TimeoutError",
+          "seconds": 60.011807699998826,
+          "baseline_global_vram_mib": 11179,
+          "peak_global_vram_mib": 11311,
+          "vram_samples": 57
+        },
+        {
+          "id": "unrequested_text",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            }
+          ],
+          "verdict": "unavailable",
+          "error_type": "TimeoutError",
+          "seconds": 60.01554899999974,
+          "baseline_global_vram_mib": 11308,
+          "peak_global_vram_mib": 11308,
+          "vram_samples": 57
+        }
+      ],
+      "baseline_global_vram_mib": 4427,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-evaluation-2026-10-08\\Qwen3-VL-8B-Instruct-GGUF.log",
+      "owned_pid": 26336,
+      "load_seconds": 6.04930129999957,
+      "modalities": {
+        "vision": true,
+        "video": true,
+        "audio": false
+      },
+      "stopped_reason": "Two consecutive unavailable results; no automatic retry",
+      "owned_server_closed": true,
+      "mean_seconds": 60.01367834999928,
+      "median_seconds": 60.01367834999928
+    },
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+      "rows": [
+        {
+          "id": "temporal_warm_512",
+          "expected": "pass",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+            },
+            {
+              "role": "REFERENCE slot 1 role continuity_anchor",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            },
+            {
+              "role": "PREVIOUS TEMPORAL STATE",
+              "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 218,
+            "prompt_tokens": 1112,
+            "total_tokens": 1330,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 1112,
+            "prompt_ms": 3628.851,
+            "prompt_per_token_ms": 3.2633552158273385,
+            "prompt_per_second": 306.43308308883445,
+            "predicted_n": 218,
+            "predicted_ms": 13536.38,
+            "predicted_per_token_ms": 62.379631336405524,
+            "predicted_per_second": 16.030873837761646
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"mug\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"single red ceramic mug clearly visible on table\"\n    }\n  ],\n  \"geometry\": [],\n  \"text\": [],\n  \"temporal\": {\n    \"identity\": {\n      \"status\": \"pass\",\n      \"score\": 1.0,\n      \"reason\": \"same red ceramic mug in same position on wooden table\"\n    },\n    \"state\": {\n      \"status\": \"pass\",\n      \"score\": 1.0,\n      \"reason\": \"visible steam rising from mug indicates hot tea\"\n    },\n    \"progression\": {\n      \"status\": \"pass\",\n      \"score\": 1.0,\n      \"reason\": \"previous state showed no steam; current state shows steam — temporal progression confirmed\"\n    }\n  }\n}",
+          "verdict": "unavailable",
+          "error_type": "ValueError",
+          "seconds": 17.20682569999917,
+          "baseline_global_vram_mib": 10488,
+          "peak_global_vram_mib": 10565,
+          "vram_samples": 17
+        },
+        {
+          "id": "unrequested_text",
+          "expected": "fail",
+          "inputs": [
+            {
+              "role": "CANDIDATE",
+              "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+            }
+          ],
+          "finish_reason": "stop",
+          "usage": {
+            "completion_tokens": 382,
+            "prompt_tokens": 1385,
+            "total_tokens": 1767,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 1385,
+            "prompt_ms": 5769.547,
+            "prompt_per_token_ms": 4.165737906137184,
+            "prompt_per_second": 240.0535085336856,
+            "predicted_n": 382,
+            "predicted_ms": 23970.257,
+            "predicted_per_token_ms": 62.91406036745407,
+            "predicted_per_second": 15.894698166982524
+          },
+          "reasoning_characters": 0,
+          "final_content": "{\n  \"subject\": \"pocket watch and silver key\",\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"Single brass-cased pocket watch clearly visible on dark fabric.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One silver key with notched blade and cylindrical bow lies beside the watch.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two distinct hands (hour and minute) visible on watch face; no seconds hand present.\"\n    }\n  ],\n  \"forbid_text\": {\n    \"status\": \"fail\",\n    \"reason\": \"Visible text 'JAEGER-LECOULTRE' appears on watch dial, violating forbid_text=true.\"\n  },\n  \"temporal\": {\n    \"identity\": {\n      \"status\": \"pass\",\n      \"score\": 1.0,\n      \"reason\": \"Objects retain physical identity; no deformation or fusion observed.\"\n    },\n    \"state\": {\n      \"status\": \"pass\",\n      \"score\": 1.0,\n      \"reason\": \"Watch face intact, key undamaged; lighting does not indicate state change.\"\n    },\n    \"progression\": {\n      \"status\": \"uncertain\",\n      \"score\": null,\n      \"reason\": \"No prior image supplied for temporal comparison; cannot assess progression.\"\n    }\n  }\n}",
+          "verdict": "unavailable",
+          "error_type": "ValueError",
+          "seconds": 29.85351879999871,
+          "baseline_global_vram_mib": 10561,
+          "peak_global_vram_mib": 10690,
+          "vram_samples": 29
+        }
+      ],
+      "baseline_global_vram_mib": 4220,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-evaluation-2026-10-08\\Qwen3.5-9B-GGUF.log",
+      "owned_pid": 3352,
+      "load_seconds": 4.5176390999986324,
+      "modalities": {
+        "vision": true,
+        "video": true,
+        "audio": false
+      },
+      "stopped_reason": "Two consecutive unavailable results; no automatic retry",
+      "owned_server_closed": true,
+      "mean_seconds": 23.53017224999894,
+      "median_seconds": 23.53017224999894
+    }
+  ]
+}
