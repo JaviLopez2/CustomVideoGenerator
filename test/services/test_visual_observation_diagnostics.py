@@ -176,3 +176,17 @@ def test_valid_diagnostic_alone_cannot_verify_experimental_scene(pipeline, monke
     assert generation.call_count == 1
     assert diagnostics[-1]["plan_scenes"][0]["visual_observation_diagnostic"]["status"] == "uncertain"
     assert diagnostics[-1]["plan_scenes"][0]["experimental_qa_status"] == "unverified_rejected"
+
+
+def test_coordinate_protocol_remains_raw_uncertain_diagnostic(tmp_path):
+    image = tmp_path / "image"
+    image.write_bytes(b"pixels")
+    report = report_for(image)
+    report["inventory_protocol"] = "target-location-observations-1"
+    report["rows"][0]["inventory"]["components"]["contact"]["locations"] = [
+        {"box": [100, 100, 200, 200], "evidence": "Visible site"}]
+    report["rows"][0]["final_content"] = json.dumps(report["rows"][0]["inventory"])
+    store, _ = write_store(tmp_path, report)
+    result = v.diagnose(image, store)
+    assert result["status"] == "uncertain" and result["available"]
+    assert not result["pixel_truth_verified"] and not result["admission_allowed"]

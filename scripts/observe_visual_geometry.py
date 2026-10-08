@@ -11,6 +11,17 @@ from pathlib import Path
 
 H = runpy.run_path(str(Path(__file__).with_name("evaluate_multimodal_judges.py")))
 FEATURES = ("openings", "edge_cutouts", "rings_or_collars", "part_junctions")
+MODEL_REPOS = ("unsloth/Qwen3.5-9B-GGUF", "Qwen/Qwen3-VL-8B-Instruct-GGUF")
+
+
+def select_model(manifest, repo=MODEL_REPOS[0]):
+    """Only previously pinned/downloaded candidates, never resolve new models."""
+    if repo not in MODEL_REPOS:
+        raise ValueError("Unapproved candidate")
+    matches = [m for m in manifest["models"] if m["repo"] == repo]
+    if len(matches) != 1:
+        raise ValueError("Missing or duplicate pinned candidate")
+    return matches[0]
 
 
 def schema():
@@ -139,12 +150,17 @@ def main():
     parser.add_argument("--log-dir", required=True)
     parser.add_argument("--plan", help="Explicit target, unique image hashes and offline comparison metadata")
     parser.add_argument("--component-profile", help="Separate target-presence/component protocol; legacy schema remains default")
+    parser.add_argument("--location-profile", help="Separate normalized-site-box protocol, for offline visual review only")
+    parser.add_argument("--model-repo", choices=MODEL_REPOS, default=MODEL_REPOS[0],
+                        help="Select a previously pinned local candidate; no downloads or MPT routing changes")
     parser.add_argument("--unconstrained-output", action="store_true",
                         help="Remove only response_format; identical prompt, pixels and budget, strict parser unchanged")
     parser.add_argument("--explicit-component-format", action="store_true",
                         help="Supply component JSON format rules in the prompt; requires --component-profile")
     args = parser.parse_args()
-    if args.explicit_component_format and not args.component_profile:
+    if args.location_profile and args.component_profile:
+        parser.error("Use only one observation profile")
+    if args.explicit_component_format and not (args.component_profile or args.location_profile):
         parser.error("--explicit-component-format requires --component-profile")
     output, logs = Path(args.output), Path(args.log_dir)
     if output.exists() or logs.exists():
@@ -157,8 +173,10 @@ def main():
     if used > 5288:
         raise ValueError("Less than 7000MiB free VRAM on the documented RTX3060")
     root = Path(__file__).resolve().parents[1]
-    component_observer = runpy.run_path(str(root / "scripts/visual_component_observations.py")) if args.component_profile else None
-    profile = component_observer["validate_profile"](json.loads(Path(args.component_profile).read_text(encoding="utf-8"))) if component_observer else None
+    profile_path = args.location_profile or args.component_profile
+    observer_path = root / "scripts" / ("visual_location_observations.py" if args.location_profile else "visual_component_observations.py")
+    component_observer = runpy.run_path(str(observer_path)) if profile_path else None
+    profile = component_observer["validate_profile"](json.loads(Path(profile_path).read_text(encoding="utf-8"))) if component_observer else None
     make_payload = (lambda path, sha, target: component_observer["payload"](
         path, sha, target, profile, explicit_format=args.explicit_component_format)) if profile else payload
     parse_inventory = (lambda answer: component_observer["validate"](answer, profile)) if profile else validate
@@ -184,8 +202,8 @@ def main():
         make_payload(image["path"], image["sha256"], plan["target"])
     target_dir = root / "local_image_stack/experiments/bridge/target"
     manifest = json.loads((root / "docs/validation/visual-judge-candidates-assets-2026-10-08.json").read_text(encoding="utf-8"))
-    model = next(m for m in manifest["models"] if m["repo"] == "unsloth/Qwen3.5-9B-GGUF")
-    weights = [target_dir / "visual-judge-models/Qwen3.5-9B-GGUF" / f["file"] for f in model["files"]]
+    model = select_model(manifest, args.model_repo)
+    weights = [target_dir / "visual-judge-models" / model["repo"].split("/")[-1] / f["file"] for f in model["files"]]
     for path, artifact in zip(weights, model["files"]):
         if H["digest"](path) != artifact["sha256"]:
             raise ValueError("Model changed")
@@ -196,9 +214,10 @@ def main():
         "generation_requests": 0, "automatic_retries": 0, "target": plan["target"], "rows": [], "comparisons": [],
         "plan_sha256": H["digest"](args.plan) if args.plan else None,
         "inventory_protocol": profile["version"] if profile else "categorical-geometry-1",
-        "prompt_protocol": "target-component-prompt-2" if args.explicit_component_format else "original-prompt-1",
-        "component_profile_sha256": H["digest"](args.component_profile) if profile else None,
-        "component_source_sha256": H["digest"](root / "scripts/visual_component_observations.py") if profile else None,
+        "prompt_protocol": "target-location-prompt-1" if args.location_profile else "target-component-prompt-2" if args.explicit_component_format else "original-prompt-1",
+        "component_profile_sha256": H["digest"](profile_path) if profile else None,
+        "component_source_sha256": H["digest"](observer_path) if profile else None,
+        "observation_source": str(observer_path.relative_to(root)) if profile else None,
         "log": str(log_path.resolve()), "policy": {"one_image_per_request": True, "labels_sent": False,
         "reference_role_sent": False, "desired_counts_sent": False, "verdict_requested": False,
         "structured_output": not args.unconstrained_output,

@@ -1,0 +1,265 @@
+{
+  "execution_head": "fe63c61dcf09bd1e6ec50dd3e43ac415d1f99ada",
+  "harness_sha256": "923e57f35fbe970f05bda511d504ea35c7e4cafd2de2888554c6ab27bb480057",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "target": "ceramic mug",
+  "rows": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "transport_status": "completed",
+      "request_sha256": "4f046f323a61cf859097c02475de464824fd30fc8b3e59f5c9bbc5f13ac69fa3",
+      "unconstrained_request_sha256": "09e6f5104a5c9867dfc727416deaff2815f31e4572b56b62d9459cb6d2fd6980",
+      "prompt_sha256": "b6ca75a91970a2608221a042f5e6f129092b20a0c8163c4f1dd873610a94ad38",
+      "response_format_sha256": "eda47f9d68e653aafb77106e7b908b2328b2726c04bceb5588ce1be71d35e538",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A red ceramic mug is clearly visible on a wooden surface near a window.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [340, 280, 620, 330],\n          \"evidence\": \"Visible dark interior cavity at the top of the mug.\"\n        }\n      ],\n      \"evidence\": \"The open top of the mug is clearly visible.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [620, 360, 780, 580],\n          \"evidence\": \"Visible empty space within the handle loop.\"\n        }\n      ],\n      \"evidence\": \"The interior of the handle is visible as a bounded void.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [620, 360, 650, 400],\n          \"evidence\": \"Visible attachment point where the handle meets the mug body.\"\n        },\n        {\n          \"box\": [620, 580, 650, 620],\n          \"evidence\": \"Visible attachment point at the bottom of the handle to the mug body.\"\n        }\n      ],\n      \"evidence\": \"Two distinct physical contact sites between handle and body are visible.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [340, 280, 620, 330],\n          \"evidence\": \"Visible continuous edge forming the top boundary of the mug.\"\n        }\n      ],\n      \"evidence\": \"The rim is clearly defined around the mouth opening.\"\n    }\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 486,
+        "prompt_tokens": 1986,
+        "total_tokens": 2472,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1986,
+        "prompt_ms": 1968.946,
+        "prompt_per_token_ms": 0.9914128902316213,
+        "prompt_per_second": 1008.6614869072083,
+        "predicted_n": 486,
+        "predicted_ms": 9172.585,
+        "predicted_per_token_ms": 18.912546391752574,
+        "predicted_per_second": 52.8749529167623
+      },
+      "inventory": {
+        "target_presence": {
+          "status": "present",
+          "evidence": "A red ceramic mug is clearly visible on a wooden surface near a window."
+        },
+        "components": {
+          "mouth_opening": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  340,
+                  280,
+                  620,
+                  330
+                ],
+                "evidence": "Visible dark interior cavity at the top of the mug."
+              }
+            ],
+            "evidence": "The open top of the mug is clearly visible."
+          },
+          "handle_opening": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  620,
+                  360,
+                  780,
+                  580
+                ],
+                "evidence": "Visible empty space within the handle loop."
+              }
+            ],
+            "evidence": "The interior of the handle is visible as a bounded void."
+          },
+          "handle_body_contacts": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  620,
+                  360,
+                  650,
+                  400
+                ],
+                "evidence": "Visible attachment point where the handle meets the mug body."
+              },
+              {
+                "box": [
+                  620,
+                  580,
+                  650,
+                  620
+                ],
+                "evidence": "Visible attachment point at the bottom of the handle to the mug body."
+              }
+            ],
+            "evidence": "Two distinct physical contact sites between handle and body are visible."
+          },
+          "rim_contour": {
+            "state": "observed",
+            "locations": [
+              {
+                "box": [
+                  340,
+                  280,
+                  620,
+                  330
+                ],
+                "evidence": "Visible continuous edge forming the top boundary of the mug."
+              }
+            ],
+            "evidence": "The rim is clearly defined around the mouth opening."
+          }
+        }
+      },
+      "component_coverage": {
+        "target_presence": "present",
+        "location_counts": {
+          "mouth_opening": 1,
+          "handle_opening": 1,
+          "handle_body_contacts": 2,
+          "rim_contour": 1
+        },
+        "incomplete_components": [],
+        "observed_components": [
+          "mouth_opening",
+          "handle_opening",
+          "handle_body_contacts",
+          "rim_contour"
+        ],
+        "coverage_policy_version": "component-location-coverage-2",
+        "coverage": "reported_complete",
+        "pixel_truth_verified": false,
+        "coordinate_system": "full-image-normalized-0-1000",
+        "location_protocol": "target-location-observations-1",
+        "overlapping_regions": []
+      },
+      "seconds": 11.173829600003955
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor",
+      "transport_status": "unavailable",
+      "request_sha256": "a99438cf49811a0450f818ede835682213484bed144dd5c9c854f6b8187e6bd0",
+      "unconstrained_request_sha256": "cc8b1f9c11923a02e222acfd933bcfd7bebf1a652774f576308648800424a644",
+      "prompt_sha256": "b6ca75a91970a2608221a042f5e6f129092b20a0c8163c4f1dd873610a94ad38",
+      "response_format_sha256": "eda47f9d68e653aafb77106e7b908b2328b2726c04bceb5588ce1be71d35e538",
+      "final_content": "{\n  \"target_presence\": {\n    \"status\": \"present\",\n    \"evidence\": \"A blue ceramic mug is clearly visible on a wooden surface, with distinct mouth opening, handle, and rim contour.\"\n  },\n  \"components\": {\n    \"mouth_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [320, 300, 620, 350],\n          \"evidence\": \"Visible dark cavity at the top of the mug, bounded by the rim.\"\n        }\n      ],\n      \"evidence\": \"The interior opening of the mug is clearly visible.\"\n    },\n    \"handle_opening\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [620, 400, 780, 650],\n          \"evidence\": \"Empty space enclosed by the handle loop and the mug body is visible.\"\n        }\n      ],\n      \"evidence\": \"The bounded space within the handle is clearly defined.\"\n    },\n    \"handle_body_contacts\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [620, 400, 650, 450],\n          \"evidence\": \"Visible attachment point where the handle connects to the upper side of the mug body.\"\n        },\n        {\n          \"box\": [620, 650, 650, 700],\n          \"evidence\": \"Visible attachment point where the handle connects to the lower side of the mug body.\"\n        }\n      ],\n      \"evidence\": \"Two distinct physical contact sites between the handle and the mug body are visible.\"\n    },\n    \"rim_contour\": {\n      \"state\": \"observed\",\n      \"locations\": [\n        {\n          \"box\": [320, 300, 620, 350],\n          \"evidence\": \"Continuous physical rim around the mouth of the mug is visible.\"\n        }\n      ],\n      \"evidence\": \"The edge of the mug's opening is clearly defined.\"\n    }\n  }\n",
+      "finish_reason": "length",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 512,
+        "prompt_tokens": 1986,
+        "total_tokens": 2498,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1986,
+        "prompt_ms": 1870.775,
+        "prompt_per_token_ms": 0.9419813695871098,
+        "prompt_per_second": 1061.592120912456,
+        "predicted_n": 512,
+        "predicted_ms": 9678.726,
+        "predicted_per_token_ms": 18.9407553816047,
+        "predicted_per_second": 52.79620478976261
+      },
+      "error_type": "ValueError",
+      "seconds": 11.647926300000108
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "self",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "status": "uncertain",
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "hints": [],
+      "priority": "no_detected_signal"
+    },
+    {
+      "id": "recolor_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    },
+    {
+      "id": "absence_control",
+      "reference_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "status": "unavailable",
+      "admission_allowed": false,
+      "hints": []
+    }
+  ],
+  "plan_sha256": "ced6646ea5529ebda2f02906ea0b07d7e39ab3022390664c82b3310916cabeeb",
+  "inventory_protocol": "target-location-observations-1",
+  "prompt_protocol": "target-location-prompt-1",
+  "component_profile_sha256": "e4e0335b16545dc778289a67193d878df532f75b539b33e8447d5d7b98d4b07e",
+  "component_source_sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+  "observation_source": "scripts\\visual_location_observations.py",
+  "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-visual-location-observations-2026-10-08\\inventories.log",
+  "policy": {
+    "one_image_per_request": true,
+    "labels_sent": false,
+    "reference_role_sent": false,
+    "desired_counts_sent": false,
+    "verdict_requested": false,
+    "structured_output": true,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "context": 8192,
+    "reasoning": "off",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536
+  },
+  "owned_pid": 74272,
+  "load_seconds": 3.5324397000003955,
+  "stopped_reason": "Invalid/unavailable observation; no automatic retry",
+  "owned_server_closed": true
+}

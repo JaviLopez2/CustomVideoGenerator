@@ -8,7 +8,8 @@ from pathlib import Path
 
 
 VERSION = "retained-visual-diagnostic-1"
-PROTOCOLS = {"categorical-geometry-1", "target-component-observations-1", "target-component-observations-2"}
+PROTOCOLS = {"categorical-geometry-1", "target-component-observations-1", "target-component-observations-2",
+             "target-location-observations-1"}
 MAX_REPORT_BYTES = 4 * 1024 * 1024
 MAX_CONTENT_CHARACTERS = 65536
 
@@ -83,7 +84,7 @@ class RetainedVisualObservations:
                 parsed = json.loads(content) if content is not None else None
                 # Preserve exactly what was recorded, without prose extraction,
                 # count repair or trusting a declared verdict/coverage summary.
-                fields = {"target_presence", "components"} if report["inventory_protocol"].startswith("target-component") else {
+                fields = {"target_presence", "components"} if report["inventory_protocol"].startswith(("target-component", "target-location")) else {
                     "openings", "edge_cutouts", "rings_or_collars", "part_junctions"}
                 completed = completed and isinstance(parsed, dict) and set(parsed) == fields and parsed == row.get("inventory")
             except ValueError:

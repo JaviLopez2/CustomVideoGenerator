@@ -1,0 +1,172 @@
+{
+  "execution_base": "fe63c61dcf09bd1e6ec50dd3e43ac415d1f99ada",
+  "branch": "factory/image-model-routing-modernization",
+  "uncommitted_execution_code": true,
+  "model_requests": 5,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "prior_checkpoint_model_requests": 11,
+  "continuation_total_model_requests": 16,
+  "raw_reports": [
+    {
+      "path": "docs\\validation\\mug-visual-location-observations-2026-10-08.json",
+      "sha256": "b1c802a9842d84c9aa894803426f7a637cdf4cca73bedeaf0f0a178875f4b2b6",
+      "requests": 2,
+      "model": {
+        "repo": "unsloth/Qwen3.5-9B-GGUF",
+        "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+        "license": "apache-2.0",
+        "files": [
+          {
+            "file": "Qwen3.5-9B-Q4_K_M.gguf",
+            "size": 5680522464,
+            "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+          },
+          {
+            "file": "mmproj-F16.gguf",
+            "size": 918166080,
+            "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+          }
+        ]
+      },
+      "harness_sha256_at_execution": "923e57f35fbe970f05bda511d504ea35c7e4cafd2de2888554c6ab27bb480057",
+      "component_source_sha256_at_execution": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-visual-location-observations-2026-10-08\\inventories.log",
+      "log_sha256": "405bcc0882f41229dabb6ddb95c0098af1ac7931dc42bb35d02eb1f3a57a8011"
+    },
+    {
+      "path": "docs\\validation\\mug-visual-location-qwen3vl8b-2026-10-08.json",
+      "sha256": "88cd7130d92b8f71d20cdb0984f0adc0edc32f679b561beffc921578ea9e9011",
+      "requests": 3,
+      "model": {
+        "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+        "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+        "license": "apache-2.0",
+        "files": [
+          {
+            "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+            "size": 5027784800,
+            "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+          },
+          {
+            "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+            "size": 1159029824,
+            "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+          }
+        ]
+      },
+      "harness_sha256_at_execution": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+      "component_source_sha256_at_execution": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+      "owned_server_closed": true,
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-visual-location-qwen3vl8b-2026-10-08\\inventories.log",
+      "log_sha256": "f10edd348e88ddaf4c69c422d7643f232e0dcefe0585e5a08010186ea23a9d88"
+    }
+  ],
+  "same_request_pairs": [
+    {
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "identical_full_request_sha256": "4f046f323a61cf859097c02475de464824fd30fc8b3e59f5c9bbc5f13ac69fa3"
+    },
+    {
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "identical_full_request_sha256": "a99438cf49811a0450f818ede835682213484bed144dd5c9c854f6b8187e6bd0"
+    }
+  ],
+  "figures": [
+    {
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\mug-visual-location-overlays-2026-10-08\\index.json",
+      "index_sha256": "c923180bce93a3ff1d4b8ac6febf890dbd9a280208b1e39a993d4dd8f41f4aba",
+      "script_sha256_at_render": "dd3799e6d40b0c61a113e28eb241b21fd5fd5ed1b6a3137d8b0da332ff6673a3",
+      "figures": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-visual-location-overlays-2026-10-08\\16c94d6f649e6934.svg",
+          "svg_sha256": "5858f2cb316c062de32c03bb2abef39e7110a676bccd41084c6e3e6296868212",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    },
+    {
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\mug-visual-location-overlays-final-2026-10-08\\index.json",
+      "index_sha256": "085ced3dd57aa95b4e6c693eca513e2f6a2eb723547a843a6b84d00fcc3e8b23",
+      "script_sha256_at_render": "dc2945c13ddfdc547e8987f2e08c60ad3e3554333d881060bc668f8b6bf0f548",
+      "figures": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-visual-location-overlays-final-2026-10-08\\16c94d6f649e6934.svg",
+          "svg_sha256": "5858f2cb316c062de32c03bb2abef39e7110a676bccd41084c6e3e6296868212",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    },
+    {
+      "index_path": "local_image_stack\\experiments\\bridge\\target\\mug-visual-location-qwen3vl8b-overlays-2026-10-08\\index.json",
+      "index_sha256": "c154ac35338ebe0b6f376a4e59169667f6386a8f95eb23833ca3ef5edb99df67",
+      "script_sha256_at_render": "dc2945c13ddfdc547e8987f2e08c60ad3e3554333d881060bc668f8b6bf0f548",
+      "figures": [
+        {
+          "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-visual-location-qwen3vl8b-overlays-2026-10-08\\16c94d6f649e6934.svg",
+          "svg_sha256": "fdfbc3a9bd521e39aa6f4485e14580d11de70aac0f162b83d63908383766c0c3",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-visual-location-qwen3vl8b-overlays-2026-10-08\\a245930e585f44b0.svg",
+          "svg_sha256": "2870d94aa2b305cbde49efb50ac5de656f61f6e6ca3757ee6f8db201258a1749",
+          "embedded_original_sha256_verified": true
+        },
+        {
+          "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-visual-location-qwen3vl8b-overlays-2026-10-08\\029f4b8d36a062f9.svg",
+          "svg_sha256": "e176b0f278dbf8bd11b47d7a6a58d5ca56f97d71abf048c754d3a4a69344a022",
+          "embedded_original_sha256_verified": true
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "app/services/visual_observation_diagnostics.py": "e0e9afed845bc6f3a0402e8bc70ac76dd358e67554fcd4cfb691fb690b3d1c58",
+    "scripts/observe_visual_geometry.py": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b",
+    "scripts/render_visual_location_overlays.py": "dc2945c13ddfdc547e8987f2e08c60ad3e3554333d881060bc668f8b6bf0f548",
+    "scripts/visual_location_observations.py": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338",
+    "test/services/test_visual_observation_diagnostics.py": "b850116c85f50c31de59167d776695b21bd7cec0d5de574944a0b1f021a18d12",
+    "test/test_visual_geometry_observations.py": "da2018037b247d0d4bf7879663f66442f3d20f5fab5e821685d4379e0ecf2940",
+    "test/test_visual_location_observations.py": "df59ed6cbcb98a76367dff037d5a51a0f79d3a11f243ebc54b0f9749ba1567d6"
+  },
+  "changed_json_validated": 6,
+  "ast_validated": 7,
+  "secret_pattern_scan": {
+    "files": 22,
+    "matches": 0
+  },
+  "final_tests": {
+    "passed": 520,
+    "subtests_passed": 17,
+    "skipped": 1,
+    "exit_code": 0,
+    "seconds": 17.04,
+    "log": "docs/validation/visual-location-candidates-final-tests-2026-10-08.txt",
+    "log_sha256": "a60bedadadc8765f893b425b6e318bb114869276930f9e7370ac3e7f4090851f"
+  },
+  "ports": {
+    "8080": "closed",
+    "8092": "closed"
+  },
+  "health": {
+    "8090": 404,
+    "8188": 200
+  },
+  "comfy_queue": {
+    "queue_running": 0,
+    "queue_pending": 0
+  },
+  "gpu_at_close": "NVIDIA GeForce RTX 3060, 818, 12288, 13, 30",
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_status": "",
+    "existing_untracked_not_deleted": true
+  }
+}

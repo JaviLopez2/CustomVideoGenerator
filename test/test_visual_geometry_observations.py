@@ -131,3 +131,17 @@ def test_decoding_contrast_changes_only_response_format(tmp_path, component_mode
     assert constrained["prompt_sha256"] == unconstrained["prompt_sha256"]
     assert unconstrained["response_format_sha256"] is None
     assert M["decoding_payload"](request) == original
+
+
+def test_candidate_selection_preserves_default_and_rejects_unpinned_models():
+    models = [{"repo": repo, "revision": str(i)} for i, repo in enumerate(M["MODEL_REPOS"])]
+    manifest = {"models": models}
+    assert M["select_model"](manifest) == models[0]
+    assert M["select_model"](manifest, M["MODEL_REPOS"][1]) == models[1]
+    for candidate in ["external/new-model", "../../other"]:
+        with pytest.raises(ValueError):
+            M["select_model"](manifest, candidate)
+    with pytest.raises(ValueError):
+        M["select_model"]({"models": models[:1]}, M["MODEL_REPOS"][1])
+    with pytest.raises(ValueError):
+        M["select_model"]({"models": [models[0], models[0]]})

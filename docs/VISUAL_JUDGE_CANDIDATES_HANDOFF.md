@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: spatial observations inspected, neither judge admission-ready
+
+Base `fe63c61dcf09bd1e6ec50dd3e43ac415d1f99ada`, already published. Added location-profile protocol with normalized boxes, strict bounds/duplicate/applicability checks and overlap hints only; raw replay adapter recognizes the version, no new caller/default wiring. Existing pinned model selector in harness preserves Qwen3.5 default; no new model resolution/download/routing. SVG overlay script embeds unchanged pixels; preserve ignored figures/index/logs/assets. [Full report](VISUAL_LOCATION_DIAGNOSTICS_REPORT.md).
+
+5 new requests, 0 generations/retries: Qwen3.5 red complete but boxes displaced in assistant inspection; blue truncated at512 and absence unattempted. Qwen3-VL8B three complete, better rim region in this positive but handle opening wrongly absent and distinct contacts merged. No gold region annotation, structural-negative mug or accuracy claim; keep all earlier protocol results and A/B/C separate. All comparisons uncertain/unavailable, no identity/admission/rejection. 520 fresh tests +17 subtests pass, 1 skipped, exit0, 17.04s; final log linked in report. Both own8092 closed, shared/stable unchanged. Next component-by-component brief requests plus independent region review, not larger budget/retry rescue/video generation. Get final SHA via history/origin; execution base differs from final code hashes.
+
 ## Current checkpoint: format contrast and offline diagnostic integration
 
 Base `7c1871cdd15fd33050e31fa37a8cdc2cdc5d25d9`. 11 new retained-image requests: original same-prompt schema/free contrast (2 completed +1 malformed preserved; fourth planned control unattempted), explicit-format pair (4 completed, same final content within pairs), four independent key inventories completed. Format improves but contact/band aggregation and observed/absent prose contradictions remain. Human A/B/C unchanged; B receives no new hint despite major deformation. Not factual-ready, no accuracy/admission claim. [Full report](COMPONENT_DECODING_DIAGNOSTICS_REPORT.md).

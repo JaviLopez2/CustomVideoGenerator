@@ -1,5 +1,11 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — ubicaciones y candidatos, 2026-10-08
+
+Desde checkpoint publicado `fe63c61`, protocolo experimental de boxes normalizadas y overlays/replay offline. 5 nuevas inferencias sobre artifacts existentes (16 en esta continuación), 0 generaciones. Qwen3.5 separa contactos pero desplaza regiones y trunca azul; Qwen3-VL completa3 controles pero niega hueco del asa y agrega contactos. Ninguno habilitado para identidad/admisión. Solo harness/diagnóstico opt-in; no nuevo wiring, config, modelo, deps, workflows o routing. [Informe y pendiente](VISUAL_LOCATION_DIAGNOSTICS_REPORT.md).
+
+520 tests +17 subtests pasan, 1 integración omitida, exit0, 17,04s. Raw/hash/human labels preservados, servidores propios cerrados y stable/tracked intactos. Próximo control: componentes por request y revisión independiente de regiones; no forzar QA pass, descargar otro candidato o ejecutar vídeo sin alcance específico. SHA final por Git/origin, no base de ejecución. Las fases siguientes son históricas.
+
 ## Estado vigente — diagnóstico visual experimental, 2026-10-08
 
 Continuación desde `7c1871c` en el mismo worktree/rama experimental. Contraste controlado del formato y cuatro llaves: 11 inferencias sobre artifacts existentes, 0 generaciones. Prompt explícito mejora JSON, pero el modelo agrega ubicaciones y no señala el defecto B revisado por el usuario; no certifica geometría/identidad. Added offline diagnostic adapter and explicit private caller injection, default None; sin wiring automático, flags, decisiones QA, routing, modelos, deps o workflows. [Informe y comandos](COMPONENT_DECODING_DIAGNOSTICS_REPORT.md).

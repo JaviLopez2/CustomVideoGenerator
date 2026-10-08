@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — inspección espacial, 2026-10-08
+
+Continuación desde `fe63c61`: boxes de sitios normalizadas con validación y hints IoU, diagramas SVG de revisión y replay offline. 5 requests nuevas sobre retenciones, 0 generaciones: Qwen3.5 tiene desplazamiento de regiones y truncación; Qwen3-VL completa controles pero omite hueco visible del asa/agrega contactos. No nuevo ranking universal ni métricas de accuracy/peak VRAM; inspección del asistente distinta de anotación gold. [Evidencia y límites](VISUAL_LOCATION_DIAGNOSTICS_REPORT.md).
+
+520 tests +17 subtests pasan, 1 omitido, exit0. Defaults/caller gates/flags/routing/modelos/deps/workflows/estable intactos. Pendiente concreto: evaluación por componente con regiones revisadas independientemente, antes de adopción o vídeo completo. Se conservan resultados e investigaciones de fases históricas abajo.
+
 ## Actualización experimental — 2026-10-08
 
 Base `7c1871c`: 11 nuevas inferencias VLM sobre imágenes retenidas, 0 generaciones. Contraste del mismo prompt/presupuesto variando solo response_format y posterior formato explícito: JSON mejora, pero contactos/bandas se agregan y aparece contradicción entre estado observado y descripción de ausencia. Los cuatro inventories de llave no priorizan B pese a la revisión humana de deformación total. No se habilita factual admission ni se presenta una tasa de precisión. [Informe con evidencia, fuente oficial y límites](COMPONENT_DECODING_DIAGNOSTICS_REPORT.md).
