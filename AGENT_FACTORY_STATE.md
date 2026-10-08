@@ -6,6 +6,8 @@
 
 ## Current visual judge selection — 2026-10-08
 
+Prefill continuation complete on9f42964: after user closed8080 and game,6 fresh-server controls succeed. Focused blind counts detect3 hands in negative full/crop; positive full/full+crop correctly2, crop alone falsely3. Earlier text timeout under gameplay preserved as resource-confounded;7 new requests/0 generations, owned8092 closed. No automatic QA admission or source changes. [Diagnosis](docs/VISUAL_JUDGE_PREFILL_DIAGNOSIS.md). Next: blind counts in full QA and deformed-key/reference controls; keep OCR/fail-closed. Preparation and historical comparisons below remain separate.
+
 Next diagnosis prepared from9bfec74: six fresh-server controls (text/full/crop/full+crop; blind watch-hand counts), no new GPU requests.58 offline tests pass.8080 reopened by user; globalVRAM6731/12288MiB and freeRAM7.22GiB. Pending temporary user closure of8080 before owned8092 tests; no shared service stopped. See newest section of [candidate handoff](docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md). Historical comparison below remains unchanged.
 
 Comparison completed after user closed8080. Experimental next candidate:Qwen3.5-9B Q4_K_M/F16. Base16-case matrix:4/6 defects detected,9/9 positives accepted,2FN, no unavailable; mean27.786s, peakglobal10448MiB. Qwen3-VL8B detects0/6 and has3timeouts. No automatic admission/routing:deformed factual key/three-hand MPT watch remain missed. ROI/blind-count diagnostics timed out; isolate prefill before integration.55 focused tests pass.42 VLM requests,0 generated images, no production/default/dependency/workflow changes. Own8092 closed; user can reopen8080.

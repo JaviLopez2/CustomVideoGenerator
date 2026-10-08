@@ -1,0 +1,484 @@
+{
+  "execution_head": "9f4296485698bf98539eb284cdec509721a865ee",
+  "harness_sha256": "6fcafe37d79d8878bbb43e62ba2b3a70d9873bab8dd493cce3e11bd90d1ea1e2",
+  "executed": true,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "tag": "b11497",
+    "published_at": "2026-10-08T11:32:06Z",
+    "assets": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "size": 264909407,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "size": 391443627,
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11497/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "digest": "sha256:8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ]
+  },
+  "plan": [
+    {
+      "id": "text_control",
+      "case_id": null,
+      "images": []
+    },
+    {
+      "id": "positive_full",
+      "case_id": "valid_cloth_edit",
+      "images": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "full candidate"
+        }
+      ]
+    },
+    {
+      "id": "positive_crop",
+      "case_id": "valid_cloth_edit",
+      "images": [
+        {
+          "query": "pocket watch",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\valid_cloth_edit-main-object.png",
+          "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732",
+          "bounds": [
+            73,
+            431,
+            455,
+            887
+          ],
+          "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "detail of the same candidate"
+        }
+      ]
+    },
+    {
+      "id": "positive_full_crop",
+      "case_id": "valid_cloth_edit",
+      "images": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "full candidate"
+        },
+        {
+          "query": "pocket watch",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\valid_cloth_edit-main-object.png",
+          "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732",
+          "bounds": [
+            73,
+            431,
+            455,
+            887
+          ],
+          "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "detail of the same candidate"
+        }
+      ]
+    },
+    {
+      "id": "negative_full",
+      "case_id": "mpt_t2i_text_contract_768",
+      "images": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+          "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+          "role": "full candidate"
+        }
+      ]
+    },
+    {
+      "id": "negative_crop",
+      "case_id": "mpt_t2i_text_contract_768",
+      "images": [
+        {
+          "query": "watch hands",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\mpt_t2i_text_contract_768-watch_hands-0.png",
+          "sha256": "fcc8ce30493bac22faf206d066f66b89436cbaeb79572408d0209d5ddbaadf06",
+          "bounds": [
+            72,
+            427,
+            459,
+            892
+          ],
+          "source_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+          "role": "detail of the same candidate"
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "id": "text_control",
+      "transport_status": "completed",
+      "baseline_global_vram": {
+        "used_mib": 977,
+        "total_mib": 12288
+      },
+      "inputs": [],
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-prefill-idle-controls-2026-10-08\\text_control.log",
+      "owned_pid": 13704,
+      "load_seconds": 3.520269600001484,
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": null,\n      \"uncertain\": true,\n      \"reason\": \"no image supplied\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 46,
+        "total_tokens": 102,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 46,
+        "prompt_ms": 87.044,
+        "prompt_per_token_ms": 1.8922608695652172,
+        "prompt_per_second": 528.4683608290061,
+        "predicted_n": 56,
+        "predicted_ms": 1105.416,
+        "predicted_per_token_ms": 20.098472727272725,
+        "predicted_per_second": 49.75502435282283
+      },
+      "observed": {
+        "subject": "watch hands",
+        "observed_count": null,
+        "uncertain": true,
+        "reason": "no image supplied"
+      },
+      "request_seconds": 1.1985797999986971,
+      "post_request_global_vram": {
+        "used_mib": 7184,
+        "total_mib": 12288
+      },
+      "owned_server_closed": true
+    },
+    {
+      "id": "positive_full",
+      "transport_status": "completed",
+      "baseline_global_vram": {
+        "used_mib": 1000,
+        "total_mib": 12288
+      },
+      "inputs": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "full candidate"
+        }
+      ],
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-prefill-idle-controls-2026-10-08\\positive_full.log",
+      "owned_pid": 29968,
+      "load_seconds": 3.519833500000459,
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two distinct hands are clearly visible radiating from the center: a shorter hour hand pointing near 10 and a longer minute hand pointing near 2. No seconds hand is present. Pixel evidence: hands originate at central pivot, extend outward with clear separation from dial markings.\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 1129,
+        "total_tokens": 1237,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1129,
+        "prompt_ms": 1677.667,
+        "prompt_per_token_ms": 1.4859760850310009,
+        "prompt_per_second": 672.9583403619432,
+        "predicted_n": 108,
+        "predicted_ms": 2096.996,
+        "predicted_per_token_ms": 19.598093457943925,
+        "predicted_per_second": 51.02537153146692
+      },
+      "observed": {
+        "subject": "watch hands",
+        "observed_count": 2,
+        "uncertain": false,
+        "reason": "Two distinct hands are clearly visible radiating from the center: a shorter hour hand pointing near 10 and a longer minute hand pointing near 2. No seconds hand is present. Pixel evidence: hands originate at central pivot, extend outward with clear separation from dial markings."
+      },
+      "request_seconds": 3.8642435999990994,
+      "post_request_global_vram": {
+        "used_mib": 7546,
+        "total_mib": 12288
+      },
+      "owned_server_closed": true
+    },
+    {
+      "id": "positive_crop",
+      "transport_status": "completed",
+      "baseline_global_vram": {
+        "used_mib": 1062,
+        "total_mib": 12288
+      },
+      "inputs": [
+        {
+          "query": "pocket watch",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\valid_cloth_edit-main-object.png",
+          "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732",
+          "bounds": [
+            73,
+            431,
+            455,
+            887
+          ],
+          "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "detail of the same candidate"
+        }
+      ],
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-prefill-idle-controls-2026-10-08\\positive_crop.log",
+      "owned_pid": 6360,
+      "load_seconds": 3.516573099999732,
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 3,\n      \"uncertain\": false,\n      \"reason\": \"Three distinct hands are clearly visible radiating from the center: hour hand (pointing near 10), minute hand (pointing near 2), and seconds hand (pointing near 1:30). All are unobscured and fully visible.\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 107,
+        "prompt_tokens": 1150,
+        "total_tokens": 1257,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1150,
+        "prompt_ms": 1620.297,
+        "prompt_per_token_ms": 1.4089539130434783,
+        "prompt_per_second": 709.7464230323206,
+        "predicted_n": 107,
+        "predicted_ms": 2071.197,
+        "predicted_per_token_ms": 19.539594339622642,
+        "predicted_per_second": 51.178135155661195
+      },
+      "observed": {
+        "subject": "watch hands",
+        "observed_count": 3,
+        "uncertain": false,
+        "reason": "Three distinct hands are clearly visible radiating from the center: hour hand (pointing near 10), minute hand (pointing near 2), and seconds hand (pointing near 1:30). All are unobscured and fully visible."
+      },
+      "request_seconds": 3.7332074000005377,
+      "post_request_global_vram": {
+        "used_mib": 7350,
+        "total_mib": 12288
+      },
+      "owned_server_closed": true
+    },
+    {
+      "id": "positive_full_crop",
+      "transport_status": "completed",
+      "baseline_global_vram": {
+        "used_mib": 886,
+        "total_mib": 12288
+      },
+      "inputs": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "full candidate"
+        },
+        {
+          "query": "pocket watch",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\valid_cloth_edit-main-object.png",
+          "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732",
+          "bounds": [
+            73,
+            431,
+            455,
+            887
+          ],
+          "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "role": "detail of the same candidate"
+        }
+      ],
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-prefill-idle-controls-2026-10-08\\positive_full_crop.log",
+      "owned_pid": 28784,
+      "load_seconds": 3.5210112999993726,
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two distinct hands (hour and minute) are clearly visible radiating from the center; no seconds hand is present. Pixel evidence: both hands originate at central pivot and extend outward without obstruction.\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 91,
+        "prompt_tokens": 2186,
+        "total_tokens": 2277,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2186,
+        "prompt_ms": 3030.987,
+        "prompt_per_token_ms": 1.3865448307410797,
+        "prompt_per_second": 721.217214062614,
+        "predicted_n": 91,
+        "predicted_ms": 1794.243,
+        "predicted_per_token_ms": 19.936033333333334,
+        "predicted_per_second": 50.16042977456231
+      },
+      "observed": {
+        "subject": "watch hands",
+        "observed_count": 2,
+        "uncertain": false,
+        "reason": "Two distinct hands (hour and minute) are clearly visible radiating from the center; no seconds hand is present. Pixel evidence: both hands originate at central pivot and extend outward without obstruction."
+      },
+      "request_seconds": 4.95397629999934,
+      "post_request_global_vram": {
+        "used_mib": 7364,
+        "total_mib": 12288
+      },
+      "owned_server_closed": true
+    },
+    {
+      "id": "negative_full",
+      "transport_status": "completed",
+      "baseline_global_vram": {
+        "used_mib": 950,
+        "total_mib": 12288
+      },
+      "inputs": [
+        {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+          "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+          "role": "full candidate"
+        }
+      ],
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-prefill-idle-controls-2026-10-08\\negative_full.log",
+      "owned_pid": 34712,
+      "load_seconds": 3.5160224000010203,
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 3,\n      \"uncertain\": false,\n      \"reason\": \"Three distinct hands are clearly visible radiating from the center: hour hand (short, pointing near 10), minute hand (longer, pointing near 2), and seconds hand (thin, pointing near 4). All are unobscured and fully visible.\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 108,
+        "prompt_tokens": 1129,
+        "total_tokens": 1237,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1129,
+        "prompt_ms": 1597.778,
+        "prompt_per_token_ms": 1.415215234720992,
+        "prompt_per_second": 706.6062994984285,
+        "predicted_n": 108,
+        "predicted_ms": 2104.981,
+        "predicted_per_token_ms": 19.672719626168227,
+        "predicted_per_second": 50.83181273370163
+      },
+      "observed": {
+        "subject": "watch hands",
+        "observed_count": 3,
+        "uncertain": false,
+        "reason": "Three distinct hands are clearly visible radiating from the center: hour hand (short, pointing near 10), minute hand (longer, pointing near 2), and seconds hand (thin, pointing near 4). All are unobscured and fully visible."
+      },
+      "request_seconds": 3.790259999999762,
+      "post_request_global_vram": {
+        "used_mib": 7401,
+        "total_mib": 12288
+      },
+      "owned_server_closed": true
+    },
+    {
+      "id": "negative_crop",
+      "transport_status": "completed",
+      "baseline_global_vram": {
+        "used_mib": 915,
+        "total_mib": 12288
+      },
+      "inputs": [
+        {
+          "query": "watch hands",
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\mpt_t2i_text_contract_768-watch_hands-0.png",
+          "sha256": "fcc8ce30493bac22faf206d066f66b89436cbaeb79572408d0209d5ddbaadf06",
+          "bounds": [
+            72,
+            427,
+            459,
+            892
+          ],
+          "source_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+          "role": "detail of the same candidate"
+        }
+      ],
+      "log": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-prefill-idle-controls-2026-10-08\\negative_crop.log",
+      "owned_pid": 21640,
+      "load_seconds": 3.521126400000867,
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 3,\n      \"uncertain\": false,\n      \"reason\": \"Three distinct hands are clearly visible radiating from the center: hour hand (pointing near 10), minute hand (pointing near 2), and seconds hand (pointing near 4). All are unobscured and fully visible.\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 1180,
+        "total_tokens": 1284,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 1180,
+        "prompt_ms": 1639.012,
+        "prompt_per_token_ms": 1.388993220338983,
+        "prompt_per_second": 719.9459186387897,
+        "predicted_n": 104,
+        "predicted_ms": 2050.827,
+        "predicted_per_token_ms": 19.910941747572817,
+        "predicted_per_second": 50.223641487068384
+      },
+      "observed": {
+        "subject": "watch hands",
+        "observed_count": 3,
+        "uncertain": false,
+        "reason": "Three distinct hands are clearly visible radiating from the center: hour hand (pointing near 10), minute hand (pointing near 2), and seconds hand (pointing near 4). All are unobscured and fully visible."
+      },
+      "request_seconds": 3.724619200000234,
+      "post_request_global_vram": {
+        "used_mib": 7374,
+        "total_mib": 12288
+      },
+      "owned_server_closed": true
+    }
+  ],
+  "policy": {
+    "fresh_server_per_request": true,
+    "timeout_seconds": 60,
+    "max_tokens": 192,
+    "context": 8192,
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536,
+    "flash_attention": "on",
+    "reasoning": "off",
+    "blind_counts": true,
+    "references": false,
+    "production_admission": false
+  },
+  "runtime_version": "version: 0.6.0-dev (build 11497, commit ff30363a0)\nbuilt with Clang 20.1.8 for Windows x86_64"
+}

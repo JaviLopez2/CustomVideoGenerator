@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current continuation closure: idle controls complete
+
+Execution base9f4296485698bf98539eb284cdec509721a865ee. User closed8080, then game after confirming continuous GPU use. First text control timeout60s under game load is preserved as confounded evidence. New idle run (baseline1000MiB/3% GPU) completes all6 fresh-server controls: text1.199s; positive full2 hands, crop3 incorrectly, full+crop2; negative full/crop3 correctly. Visual HTTP3.725–4.954s for focused counts-only policy, not full QA. Total7 new model requests,5 visual,0 generations, all owned8092 closed. [Report](VISUAL_JUDGE_PREFILL_DIAGNOSIS.md), [idle evidence](validation/visual-judge-prefill-idle-controls-2026-10-08.json).
+
+No source/model/dependency/workflow/routing changes. Existing58 offline tests belong to preparation9f42964; no new pytest claim. The original timeout does not prove a model failure; idle controls do not establish the cause of older ROI timeouts. Do not use crop-only admission: positive crop hallucinates a seconds hand. Next: blind counts within full QA and defective-key/reference control, preserve OCR/fail-closed and existing labels. Backend contrast remains conditional on reproducing failure under idle resources, not a required download now. User may reopen8080/game after this closure; reserve GPU again before further inference. Obtain closing SHA from Git history and confirm origin/status.
+
 ## Next phase: prefill controls prepared, GPU execution pending
 
 Continuation base `9bfec74557ba2fa8f1ab19ad2dff462e710e6f63`, clean experimental worktree. User reopened8080 and authorized continuing diagnosis. Readonly checks:8080 health200,8090 root404,8188 system_stats200,Comfy queue0/0,8092 closed. Global VRAM6731/12288MiB, free system RAM7.22GiB: insufficient for the previous full-GPU configuration alongside8080. Asked user to close8080 temporarily via its launcher. Do not kill the shared server or silently switch to partial CPU offload.

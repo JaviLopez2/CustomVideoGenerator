@@ -1,0 +1,20 @@
+{
+  "execution_head": "9f4296485698bf98539eb284cdec509721a865ee",
+  "completed_controls": 6,
+  "source_harness_unchanged": true,
+  "all_owned_servers_closed": true,
+  "original_inputs_verified": true,
+  "health": {
+    "8080": "closed",
+    "8092": "closed",
+    "8188": 200,
+    "8090": 404
+  },
+  "comfy_queue_running": 0,
+  "comfy_queue_pending": 0,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status": "",
+  "idle_evidence_sha256": "fea73ce0a72961b03ee36c651fb83370e5a2ec989264321c3b2a7ebb703b7bf8",
+  "gpu_after_close": "947 MiB, 0 %, 32",
+  "pytest_this_execution": false
+}

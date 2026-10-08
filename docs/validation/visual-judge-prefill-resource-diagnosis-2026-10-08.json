@@ -1,0 +1,33 @@
+{
+  "execution_head": "9f4296485698bf98539eb284cdec509721a865ee",
+  "requests_attempted": 1,
+  "visual_requests_attempted": 0,
+  "unattempted_controls": 5,
+  "generations": 0,
+  "classification": "resource-confounded diagnostic; not model accuracy or baseline latency",
+  "user_report": "User reports an open game continuously using the GPU during this attempt.",
+  "observations": {
+    "baseline_global_vram_mib": 3108,
+    "load_seconds": 18.529736599999524,
+    "text_request_seconds": 60.00992279999991,
+    "error_type": "TimeoutError",
+    "owned_server_closed": true,
+    "post_close_gpu_utilization_percent_observed": [
+      86,
+      100
+    ],
+    "post_close_temperature_c_observed": [
+      87,
+      89
+    ]
+  },
+  "limitations": [
+    "GPU activity was present before model load and persisted after owned server closure.",
+    "Game load prevents attribution of this timeout solely to Qwen3.5, JSON schema, projector, CUDA or runtime.",
+    "Windows counter initial display mixed Running Time and Utilization Percentage and is not a valid utilization measurement; corrected query selects only Utilization Percentage."
+  ],
+  "raw_evidence": "docs\\validation\\visual-judge-prefill-controls-2026-10-08.json",
+  "raw_sha256": "2d5aa46b2cd08387a04a4a4ca85fc6f4afa2ea331412a9bb2559e83fcb3e417a",
+  "log_sha256": "d76f3c9fa4dc48c3a8c4af01af5b3c821c13f803cd67297c400ed9efc0f6c77f",
+  "next": "Wait for user to close game with 8080 remaining closed; use new evidence/log names and verify low stable GPU activity before any new control."
+}
