@@ -1,6 +1,10 @@
 # Continuación autónoma de MPT — 2026-10-09
 
-El usuario autoriza avanzar de forma continuada según el plan experimental, ejecutar las pruebas y mejoras necesarias y resolver decisiones rutinarias sin pedir otro «sigue». Su límite declarado es el uso de Codex. Se ha creado un objetivo persistente **activo** en este chat; los checkpoints no terminan el objetivo ni requieren permiso para la siguiente tarea.
+## Control de continuidad
+
+La autorización para el trabajo autónomo sigue vigente. El checkpoint de pistas visibles está publicado y la siguiente auditoría CPU queda definida abajo. La continuación entre turnos depende del estado del objetivo en la aplicación; no sustituir su control de reanudación por otra automatización del mismo trabajo. La [documentación oficial de Goals](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex) recoge `/goal resume` como control del usuario. Los detalles privados de cuenta/uso se consultan en el chat y se omiten de este repositorio.
+
+El usuario autoriza avanzar de forma continuada según el plan experimental, ejecutar las pruebas y mejoras necesarias y resolver decisiones rutinarias sin pedir otro «sigue». Su límite declarado es el uso de Codex. Se ha creado un objetivo persistente en este chat; los checkpoints no terminan el objetivo ni requieren permiso para la siguiente tarea. El control de continuidad figura en el bloque anterior.
 
 ## Operación y permisos
 

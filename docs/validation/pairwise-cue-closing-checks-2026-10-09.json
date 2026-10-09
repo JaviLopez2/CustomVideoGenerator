@@ -223,7 +223,7 @@
   ],
   "task_file_sha256": {
     "AGENT_FACTORY_STATE.md": "1e93b3a836879cf1372cc762074e35737c16945f9f1e8f257ce5a58aa2ba7e15",
-    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md": "781b76d4c19157e236df9658da78ec2ee8013b023df5293aa8e6c2fae3f8e1fb",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md": "145962269477ff59740cb1af5d6f7f959f40060497a8b293162f00c340ee813d",
     "docs/IMAGE_MODEL_ROUTING_RND.md": "e9a486f46d65136571e494261d6676682618e4188ffea14882f814d617ec4f0f",
     "docs/IMAGE_MODEL_ROUTING_HANDOFF.md": "7177b74fc42c6e03b7f7a2ca776d3c3e81c5b5bea300f5971785d4fd71b7c224",
     "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md": "9f57f5a21734fa7d50f68046c47421a3f1e5dc3022449f0a37c830627936bc73",
@@ -258,5 +258,13 @@
     ],
     "reason": "Preserved exact raw pytest RED output with trailing spaces; no source/document/JSON findings.",
     "excluding_only_two_raw_red_logs_exit_code": 0
+  },
+  "publication_verified": {
+    "local_head": "07cd62628a5ad624775dc9cbef70f3111a5c4a2e",
+    "actual_remote_head": "07cd62628a5ad624775dc9cbef70f3111a5c4a2e",
+    "status_clean": true,
+    "own_port_free": true,
+    "shared_queue_running": 0,
+    "shared_queue_pending": 0
   }
 }
