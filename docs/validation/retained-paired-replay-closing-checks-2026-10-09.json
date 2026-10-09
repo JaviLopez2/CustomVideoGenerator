@@ -1,0 +1,199 @@
+{
+  "protocol": "retained-paired-replay-closing-1",
+  "checked_utc": "2026-10-09T21:03:14.356034+00:00",
+  "execution_base_head": "6e28a56561b607f0876582664f8fe35207719ec1",
+  "branch": "factory/image-model-routing-modernization",
+  "fetch_divergence_before_commit": [
+    0,
+    0
+  ],
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_clean": true,
+  "stable_untracked_preserved": true,
+  "application_service_tests_and_bridge_diff_empty": true,
+  "sources_unchanged_after_final_tests": 22,
+  "fresh_verification": {
+    "tests_passed": 282,
+    "new_adapter_cases": 100,
+    "seconds": 15.87,
+    "exit_code": 0,
+    "warnings": 0,
+    "log": {
+      "path": "docs/validation/retained-paired-replay-final-tests-2026-10-09.txt",
+      "sha256": "94aa1737a5d35a10b26c17afa42f8f048eeb0aaed371b267a9e8f5cdc7adbbc8"
+    },
+    "real_cpu_cli_exit_code": 0,
+    "cpu_replay_seconds": 5.964,
+    "cpu_proof_exit_code": 0,
+    "json_parsed": 3,
+    "python_ast_parsed": 3,
+    "secret_pattern_findings": 0,
+    "code_review": "No issues; reproduced source/crop/case root-CWD P2 resolved"
+  },
+  "counts": {
+    "planned_contexts": 14,
+    "retained_raw_rows": 11,
+    "uncertain": 10,
+    "invalid_unavailable": 1,
+    "unattempted_unavailable": 3
+  },
+  "new_activity": {
+    "model_requests": 0,
+    "generation_requests": 0,
+    "downloads": 0,
+    "dependency_changes": 0,
+    "service_control": 0,
+    "human_labels": 0,
+    "application_wiring": 0
+  },
+  "tracked_document_diff_check_exit_code": 0,
+  "staged_checks": {
+    "whitelist_files": 26,
+    "unexpected_staged_files": 0,
+    "unstaged_diff_empty_before_closing_update": true,
+    "source_docs_json_whitespace_exit_code": 0,
+    "full_whitespace_exit_code": 2,
+    "raw_log_whitespace_paths": [
+      "docs/validation/retained-paired-replay-export-red-tests-2026-10-09.txt",
+      "docs/validation/retained-paired-replay-green-tests-2026-10-09.txt",
+      "docs/validation/retained-paired-replay-red-tests-2026-10-09.txt"
+    ],
+    "raw_pytest_output_preserved": true,
+    "staged_secret_pattern_findings": 0,
+    "all_artifact_bindings_unchanged": true,
+    "check_parser_note": "Initial whitespace-path classifier also matched a +raw pytest excerpt; fixed classifier ignores added content lines. No implementation change."
+  },
+  "files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "d3a30329e0ae83f131b6a98f35cacbc9efeb5840b28d0b2f133fda51f387e507"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "49a38f480502fd8d7779576e5a5ac56693417c3b8df692a182df408bc6cd80a8"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "6439dcf6ad75e0a53bd3bf1326df05818be6dc5c0332f1b51b62954fcf610a78"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "985f8454cf062abaa22c3a906f7dc3a224c8fcc925803e5e1fb16d482e78c355"
+    },
+    {
+      "path": "docs/PAIRED_OBSERVER_INTEGRATION_PLAN.md",
+      "sha256": "24625e478381b5e8b7aa0e27bb989b6327b6868b2b591385ea9ec6819c8d45ca"
+    },
+    {
+      "path": "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+      "sha256": "0c8774dc6bbe4c99301a22b96c0178038cfcd60667f9e5ed8cdb5336e9c18d7d"
+    },
+    {
+      "path": "docs/VISUAL_QA_HANDOFF.md",
+      "sha256": "3d8a716669acabb5846a80ea44369bd817d9326da8ee90fba91edd1b2e27ca43"
+    },
+    {
+      "path": "docs/RETAINED_PAIRED_REPLAY_REPORT.md",
+      "sha256": "48444a8c831174e8cfd97956dd2d0331272fb8a8c19c42c70fe5af03b75a252e"
+    },
+    {
+      "path": "scripts/retained_paired_observations.py",
+      "sha256": "c011d749ff32e47af05fbc5e11e24b7eb4b3f6ee1ab0987158cd926686d5da10"
+    },
+    {
+      "path": "test/test_retained_paired_observations.py",
+      "sha256": "79f586a28dd40e169e0cc0cf0c21f21b516d737ce36453a88fca36fe1e810621"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-coverage-tests-2026-10-09.txt",
+      "sha256": "4e5f23c4f9c5733b34b8c8ed15d542d93eefe6da2126f1803ff32afa78c56f9c"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-cwd-green-tests-2026-10-09.txt",
+      "sha256": "a85c5eaca9e9423f34c060c148d29f3f3dbc191a6e0b25702793c63a652ed7ca"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-cwd-red-tests-2026-10-09.txt",
+      "sha256": "34ddf3cc6bc1743dcd09196e9df0eecc95388a59a57a00ac663f28db8d9c5fef"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-dependency-tests-2026-10-09.txt",
+      "sha256": "cf1c5c1ec94ec6015b2a74e9e098740b3eefa0bb4ab064488113173e625a0e16"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-execution-2026-10-09.txt",
+      "sha256": "a2a7d9176f5e84605047a948e77193091f89b60eb3762d9729bfcb908ad4a69b"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-execution-plan-2026-10-09.json",
+      "sha256": "d159e874e302d7a1c3380bd18a359b5ca8c3e840f51e5007cdbc6b9c00568e03"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-export-red-tests-2026-10-09.txt",
+      "sha256": "95a0d273ea8b1eb32b988958d3a1dbd270b4ff8cbb461dcc7637efaf3816156e"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-final-tests-2026-10-09.txt",
+      "sha256": "94aa1737a5d35a10b26c17afa42f8f048eeb0aaed371b267a9e8f5cdc7adbbc8"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-green-tests-2026-10-09.txt",
+      "sha256": "094d9305556c4f8c3952e27e4598ddd6183841a7c8d88cc9de3c7200319bbe93"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-green-v2-tests-2026-10-09.txt",
+      "sha256": "6ebe9331c0b105e7cfb23f7214e15d16eeefd11eabfcfbb9a9e72ac920665182"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-red-tests-2026-10-09.txt",
+      "sha256": "09de5d4be4541231f414ad1de276803a692ece46ff61763e56bcb8731c96dc12"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-result-2026-10-09.json",
+      "sha256": "e013ebef3d0a3a0b1fa2c06ebaff7063b90829acaba6050e32edc9b8d91a0390"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-verification-2026-10-09.json",
+      "sha256": "caa316ce5e0bcae70afa939be932820db977fbf213536bba78359485e6cdeeb3"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-verification-execution-2026-10-09.txt",
+      "sha256": "fb2ae426b8a567f65139df7a29d00f033413de67ccee6621b492b74fa4a6d497"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-verifier-2026-10-09.py",
+      "sha256": "6b7bcc971455a43671c4df427e1541bcd95a5ff40add755e44cadb5e644e78ae"
+    }
+  ],
+  "checkpoint_files": [
+    "AGENT_FACTORY_STATE.md",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+    "docs/IMAGE_MODEL_ROUTING_RND.md",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+    "docs/PAIRED_OBSERVER_INTEGRATION_PLAN.md",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+    "docs/VISUAL_QA_HANDOFF.md",
+    "docs/RETAINED_PAIRED_REPLAY_REPORT.md",
+    "scripts/retained_paired_observations.py",
+    "test/test_retained_paired_observations.py",
+    "docs/validation/retained-paired-replay-coverage-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-cwd-green-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-cwd-red-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-dependency-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-execution-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-execution-plan-2026-10-09.json",
+    "docs/validation/retained-paired-replay-export-red-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-final-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-green-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-green-v2-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-red-tests-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-result-2026-10-09.json",
+    "docs/validation/retained-paired-replay-verification-2026-10-09.json",
+    "docs/validation/retained-paired-replay-verification-execution-2026-10-09.txt",
+    "docs/validation/retained-paired-replay-verifier-2026-10-09.py",
+    "docs/validation/retained-paired-replay-closing-checks-2026-10-09.json"
+  ],
+  "commit_identity": "Resolve checkpoint commit with Git log/origin; execution base is not final SHA",
+  "objective_complete": false,
+  "next": "Separate explicitly injected private MPT diagnostic bridge, ordered pair/image-stage binding and non-interference tests; then independent perception calibration and complete QA latency."
+}

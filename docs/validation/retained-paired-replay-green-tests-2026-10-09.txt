@@ -1,0 +1,30 @@
+......................................................F................. [ 87%]
+..........                                                               [100%]
+================================== FAILURES ===================================
+______ test_wrong_lookup_context_never_reuses_candidate_alone[cue-order] ______
+
+bundle = namespace(kind='cue', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-140/test_wrong_look...okup_context_neve2\\replay-report.json', 'sha256': '33e9e51208a90748d6a3bcebd7c2735db797954af177b86fb2dfe7b04d37c83e'})
+field = 'order'
+
+    @pytest.mark.parametrize("field", ["subject", "cue_query", "order", "region", "source"])
+    def test_wrong_lookup_context_never_reuses_candidate_alone(bundle, field):
+        store = load(bundle); kwargs = args_for(bundle, 2)
+        if field == "subject": kwargs[field] = "different subject"
+        elif field == "cue_query": kwargs[field] = "different cue"
+        elif field == "order": kwargs["images"] = list(reversed(kwargs["images"])); kwargs["region_ids"] = list(reversed(kwargs["region_ids"]))
+        elif field == "region": kwargs["region_ids"][0] = "unknown"
+        else:
+            path = bundle.root / "different.png"; path.write_bytes(b"different source bytes"); kwargs["images"][0] = path
+        result = store.lookup(**kwargs)
+>       assert result["status"] == "unavailable" and not result["admission_allowed"]
+E       AssertionError: assert ('uncertain' == 'unavailable'
+E         
+E         - unavailable
+E         + uncertain)
+
+test\test_retained_paired_observations.py:195: AssertionError
+=========================== short test summary info ===========================
+FAILED test/test_retained_paired_observations.py::test_wrong_lookup_context_never_reuses_candidate_alone[cue-order]
+1 failed, 81 passed in 8.54s
+
+Python exit code: 1

@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: retained paired replay closed
+
+From `6e28a56`, source-bound experimental adapter, four pinned cohorts/14planned contexts/11retained outputs:10uncertain,1invalid unavailable,3unattempted unavailable. Exact raw, ordered subject/query and source/prepared proof; scores null/no admission/physical truth. Real CPU CLI/proof exit0;100 new adapter cases/282 final relevant pass15.87s/exit0/no warnings. Root/CWD P2 reproduced and fixed with absolute image descriptors before delegation; final review no issues. [Report](RETAINED_PAIRED_REPLAY_REPORT.md).0newmodel/generation/download/service/app/model/gate/routing/dependency/workflow/label/stable changes; no accuracy or candidate selection.
+
+Next explicit private MPT diagnostic bridge, separate non-interference tests/ordered context/image-stage checks; keep single-image store/scoped_qa and no app import of scripts. Independent quantity/geometry/state sensitivity, valid cross-family negatives, coverage/calibration and complete QA latency remain. [Autonomous handoff](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action/8080 now; closing SHA via Git/origin, earlier blocks historical.
+
 ## Current checkpoint: paired-observer integration audit completed
 
 From `90ff646`,12source/8retained bindings,4native fullframes verified. Existing single-image store rejects both cue raw reports; exact pixel equivalence is not file hash equivalence for two512frames. Pair replay must bind ordered roles, subject/query and source/prepared correspondence. Empty contract not_required and valid cue diagnostic cannot verify admission. Existing selectivity/cache/private diagnostic seam preserved;142 focused existing tests pass6.27s/exit0/no warnings, CPU recipe exit0. [Audit/plan](PAIRED_OBSERVER_INTEGRATION_PLAN.md).0model/generation/download/service/application/runtime/label/model/gate/routing/dependency/workflow/stable changes.

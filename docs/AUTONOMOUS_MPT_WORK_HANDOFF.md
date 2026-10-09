@@ -1,5 +1,11 @@
 # Continuación autónoma de MPT — 2026-10-09
 
+## Checkpoint vigente — replay pareado y próxima integración CPU
+
+Base `6e28a56`, worktree/rama experimental, cambios nuevos anteriores conservados, diez worktrees. Adaptador experimental source-bound y100 tests nuevos;282 finales relevantes pasan15,87s/exit0/sin avisos. Fallo root/CWD reproducido con homónimo externo válido y fuente interna corrupta; rutas de imágenes relativas rechazadas antes de delegar, revisión final no issues. Cuatro informes conservados:14contextos/11raw,10uncertain/1raw inválido unavailable/3sin ejecutar unavailable; scoresnull/sin admisión, raw literal y roles/sujeto/consulta/píxeles ligados. [Informe y archivos](RETAINED_PAIRED_REPLAY_REPORT.md), [replay](validation/retained-paired-replay-result-2026-10-09.json), [prueba](validation/retained-paired-replay-verification-2026-10-09.json).0nueva consulta/generación/descarga/servicio/deps/workflow/app/routing/default/label/estable. Cierre SHA mediante Git/origin.
+
+Siguiente acción autónoma: puente diagnóstico explícitamente inyectado al punto privado MPT, mantener store monoimagen/QA, probar no interferencia y binding de par/etapa de imagen, sin importar scripts experimentales desde app. Preparación CPU no necesita8080/otros servicios ni aprobación humana. Mantener objetivo activo; las revisiones humanas que falten no se inventan ni bloquean tareas independientes. Elección/calibración perceptual, negativos geométricos válidos de otra familia, cantidad/estado y latencia completa permanecen pendientes. Estados/next siguientes históricos.
+
 ## Control de continuidad
 
 La autorización para el trabajo autónomo sigue vigente. El checkpoint de pistas visibles está publicado y la siguiente auditoría CPU queda definida abajo. La continuación entre turnos depende del estado del objetivo en la aplicación; no sustituir su control de reanudación por otra automatización del mismo trabajo. La [documentación oficial de Goals](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex) recoge `/goal resume` como control del usuario. Los detalles privados de cuenta/uso se consultan en el chat y se omiten de este repositorio.

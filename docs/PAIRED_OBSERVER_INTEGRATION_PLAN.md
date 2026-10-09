@@ -1,5 +1,11 @@
 # Observadores pareados: auditoría e integración diagnóstica — 2026-10-09
 
+## Estado vigente — primera entrega ejecutada, 2026-10-09
+
+Adaptador aislado y replay CPU cerrados desde `6e28a56`:14contextos de cuatro informes/11raw retenidos,10uncertain/1raw inválido unavailable/3no ejecutados unavailable.100 nuevas regresiones,282 finales relevantes pasan15,87s/exit0/sin avisos; P2 root/CWD corregido y revisión final no issues. [Informe](RETAINED_PAIRED_REPLAY_REPORT.md). Diseño congelado y fuentes anteriores conservados;0nuevoHTTP/generación/descarga/servicio/app/default/routing/label. La propuesta/142tests siguientes corresponden a la auditoría anterior, no son el estado pendiente del adaptador.
+
+Siguiente entrega separada: puente diagnóstico explícitamente inyectado al punto privado existente, contexto pareado/etapa de imagen y pruebas de no interferencia; mantener monoimagen/scoped_qa, no importar scripts experimentales desde app. Calibración independiente y QA completo pendientes; ningún candidato aprobado, sin intervención/8080 ahora.
+
 Desde `90ff646452c51200618e317829574b5ea0fb11ce`, worktree/rama experimental, inicio limpio y diez worktrees. La auditoría confirma un punto de diagnóstico existente, pero su store de una imagen no representa los nuevos pares. Se prepara una extensión de replay offline; **no se conecta un juez al gate ni se modifica la aplicación en esta fase**.
 
 ## Qué existe y qué falta

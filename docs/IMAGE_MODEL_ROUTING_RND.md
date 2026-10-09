@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — replay pareado implementado, 2026-10-09
+
+Desde `6e28a56`, nuevo adaptador aislado en scripts; replay CPU real de cuatro informes fijados:14contextos/11filas retenidas,10uncertain/1raw inválido unavailable/3no ejecutados unavailable. Conserva raw, contexto ordenado, roles/sujeto/consulta y correspondencia source-prepared; scores null/sin admisión ni verdad física. 100 tests nuevos del adaptador y282 relevantes finales pasan15,87s/exit0/sin avisos. P2 de rutas relativas/CWD reproducido y corregido antes del replay; revisión final sin hallazgos. [Informe](RETAINED_PAIRED_REPLAY_REPORT.md), [resultado](validation/retained-paired-replay-result-2026-10-09.json).0nueva inferencia/generación/descarga/servicios/deps/workflows/app/QA/routing/defaults/labels/estable.
+
+Siguiente puente diagnóstico explícitamente inyectado al punto privado MPT, con pruebas de no interferencia, contexto pareado y etapa de imagen; mantener store monoimagen/scoped_qa, sin importar scripts experimentales desde app. No hay candidato aprobado: sensibilidad/calibración independiente en cantidad/geometría/estado y latencia completa pendientes. Autonomía continúa, nada que abrir/revisar ahora; SHA de cierre mediante Git/origin. Bloques siguientes históricos.
+
 ## Actualización — frontera de integración pareada auditada, 2026-10-09
 
 Desde `90ff646`, auditoría CPU liga12fuentes/8inputs: QA/cache/selectividad y diagnóstico monoimagen ya existen, pero dos raw de cue son rechazados por protocolo; pares necesitan roles/consulta/source-prepared explícitos. Dos512 cambian bytes por metadata aunque píxeles exactos. Contrato vacío not_required y diagnóstico cue válido no certifican admisión. 142 tests existentes focales pasan6,27s/exit0/sin avisos, receta exit0; cero inferencia/generación/descarga/app/servicios/modelos/gates/routing/deps/workflows/estable o labels modificados. [Plan](PAIRED_OBSERVER_INTEGRATION_PLAN.md).

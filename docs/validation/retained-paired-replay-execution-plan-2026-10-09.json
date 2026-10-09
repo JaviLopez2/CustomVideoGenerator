@@ -1,0 +1,148 @@
+{
+  "protocol": "retained-paired-replay-execution-plan-1",
+  "declared_utc": "2026-10-09T20:58:40.114199+00:00",
+  "execution_base_head": "6e28a56561b607f0876582664f8fe35207719ec1",
+  "branch": "factory/image-model-routing-modernization",
+  "status": "frozen_pending_cpu_replay",
+  "previous_goal_turn_classification": "no_progress: status-only user-requested summary; current continuation reproduces and corrects reviewed path defect",
+  "scope": "Experimental adapter/test changes only; four retained reports, exact native source/prepared correspondence; no application wiring or factual admission",
+  "design": {
+    "path": "docs/validation/retained-paired-replay-design-2026-10-09.json",
+    "sha256": "98105494cb65adc680f62bbd41cf1087b35c5d30538b380c8cffc53cfe97fc8f"
+  },
+  "sources": [
+    {
+      "path": "scripts/retained_paired_observations.py",
+      "sha256": "c011d749ff32e47af05fbc5e11e24b7eb4b3f6ee1ab0987158cd926686d5da10"
+    },
+    {
+      "path": "test/test_retained_paired_observations.py",
+      "sha256": "79f586a28dd40e169e0cc0cf0c21f21b516d737ce36453a88fca36fe1e810621"
+    },
+    {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    {
+      "path": "test/test_pairwise_cue_runner.py",
+      "sha256": "db2b73c52be8e4c340ca7b339a4d8b8291fe2ee8603f40c585904072a664bd0c"
+    },
+    {
+      "path": "test/test_pairwise_cue_observations.py",
+      "sha256": "3e64dba0ccebd279d85a511eebab29dcbef34c3089eb7078e2eeb227d985b642"
+    },
+    {
+      "path": "test/test_paired_shape_runner.py",
+      "sha256": "6b7e1a9d7f4e79983b7a63131b4120512f67b3b4395730b4126840fe395d05a5"
+    },
+    {
+      "path": "test/test_paired_shape_preflight.py",
+      "sha256": "d165c97df83e07b4aadf977cfb2cb120b371b23dc88d538f1d9ee3857fb0cb3f"
+    },
+    {
+      "path": "test/test_paired_shape_observations.py",
+      "sha256": "12748b7bbd720677361ed4325120b599c17419b87f95699553c79b3e5606c23f"
+    },
+    {
+      "path": "test/test_prepare_visual_regions.py",
+      "sha256": "239f3cc9630cc8fe0c670309811794ff2e14889485e89e483163598dc83346ca"
+    },
+    {
+      "path": "docs/validation/retained-paired-replay-verifier-2026-10-09.py",
+      "sha256": "6b7bcc971455a43671c4df427e1541bcd95a5ff40add755e44cadb5e644e78ae"
+    },
+    {
+      "path": "app/services/visual_qa.py",
+      "sha256": "47482f1fe7769b0fa1e8f77e3acf82976e604d5b4e9c92edc8e51dccf9b6d6e2"
+    },
+    {
+      "path": "app/services/visual_observation_diagnostics.py",
+      "sha256": "e0e9afed845bc6f3a0402e8bc70ac76dd358e67554fcd4cfb691fb690b3d1c58"
+    },
+    {
+      "path": "app/services/material.py",
+      "sha256": "0f8de76251120330f50eaf4cc9a9d2a13c29c50efce99a123d357d830e25325c"
+    },
+    {
+      "path": "app/services/klein4b_experimental.py",
+      "sha256": "74dcb7e7bacfd809e2dcf5dc05e700d08874b5b8c43ef50693eb2ca24d15da13"
+    },
+    {
+      "path": "app/services/llm.py",
+      "sha256": "27fe7fa2b0a1da6d6054437dd6d95d058263fb7c2b7244e23e8d41b0ef4e7981"
+    },
+    {
+      "path": "scripts/observe_pairwise_cue.py",
+      "sha256": "5f030493d895f3c1c1e9e7b9425480e6f50a8eab3d75d9c8240de5a74e5562f5"
+    },
+    {
+      "path": "scripts/pairwise_cue_observations.py",
+      "sha256": "6936a9686481a4dc485fc32bdcfb4875375ff9ecdce053d7efa9fe1180244e04"
+    },
+    {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    {
+      "path": "scripts/prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    },
+    {
+      "path": "test/services/test_visual_qa.py",
+      "sha256": "2ab2b143fd8f4f21c664156bd4b312a163b16da6bbef780008f86a82c6720169"
+    },
+    {
+      "path": "test/services/test_visual_observation_diagnostics.py",
+      "sha256": "b850116c85f50c31de59167d776695b21bd7cec0d5de574944a0b1f021a18d12"
+    }
+  ],
+  "final_tests": {
+    "log": {
+      "path": "docs/validation/retained-paired-replay-final-tests-2026-10-09.txt",
+      "sha256": "94aa1737a5d35a10b26c17afa42f8f048eeb0aaed371b267a9e8f5cdc7adbbc8"
+    },
+    "passed": 282,
+    "new_adapter_cases": 100,
+    "seconds": 15.87,
+    "exit_code": 0,
+    "warnings": 0,
+    "integration_tests_enabled": false
+  },
+  "review": {
+    "status": "No issues; source/crop/case CWD P2 resolved",
+    "red_cases": 6,
+    "valid_absolute_controls": 2,
+    "green_cases": 8
+  },
+  "budgets": {
+    "model_requests": 0,
+    "generation_requests": 0,
+    "downloads": 0,
+    "service_control": 0
+  },
+  "expected_statuses": {
+    "uncertain": 10,
+    "unavailable": 4
+  },
+  "expected_reasons": {
+    "recorded_paired_output_only": 10,
+    "recorded_output_unavailable": 1,
+    "no_recorded_pair": 3
+  },
+  "expected_retained_rows": 11,
+  "output": "docs/validation/retained-paired-replay-result-2026-10-09.json",
+  "verification_output": "docs/validation/retained-paired-replay-verification-2026-10-09.json",
+  "non_claims": [
+    "human labels",
+    "calibrated confidence",
+    "physical identity/temperature/motion",
+    "candidate selection",
+    "full QA latency",
+    "automatic routing readiness"
+  ],
+  "next": "After replay closure, separately implement explicitly injected private MPT diagnostic bridge with non-interference tests; no app imports of experimental scripts and no scoped_qa replacement"
+}

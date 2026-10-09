@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: retained paired replay implemented and verified
+
+From `6e28a56`, experimental source-bound adapter snapshots four pinned cue/shape reports without application wiring. Real CPU replay:14planned contexts/11retained rows,10uncertain/1invalid unavailable/3unattempted unavailable; raw final outputs and context preserved, scores null/no admission or physical truth. 100 new adapter cases;282 relevant tests pass15.87s/exit0/no warnings. Review CWD/root defect reproduced then fixed by absolute rooted image descriptors; final review no issues. [Report](docs/RETAINED_PAIRED_REPLAY_REPORT.md).0newmodel/generation/download/service/dependency/workflow/app/routing/gate/default/label/stable changes.
+
+Next separately implement explicit private MPT diagnostic bridge with non-interference proof and ordered pair/image-stage binding; preserve single-image store and scoped_qa, no app imports of experimental scripts. Independent quantity/geometry/state calibration, valid structural negatives and complete QA latency still pending. [Autonomous handoff](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md); no user action/8080 needed now, closing SHA via Git/origin. Earlier checkpoint/next blocks historical.
+
 ## Current checkpoint: paired-observer integration boundary audited
 
 From `90ff646`, CPU audit binds12sources and8retained inputs, verifies4fullframes and reproduces rejection of both cue reports by the existing single-image store. Two metadata-free512frames differ in file SHA despite exact pixels: replay needs source/prepared mapping and ordered context. Existing QA selectivity/cache/admission already implemented; not_required and valid cue diagnostic do not verify a scene. 142 existing focused QA/state/diagnostic tests pass6.27s/exit0/no warnings; no app/script runtime changes or new labels/inference/generation. [Audit and plan](docs/PAIRED_OBSERVER_INTEGRATION_PLAN.md).

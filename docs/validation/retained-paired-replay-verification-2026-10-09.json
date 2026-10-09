@@ -1,0 +1,143 @@
+{
+  "protocol": "retained-paired-replay-proof-1",
+  "execution_plan_sha256": "d159e874e302d7a1c3380bd18a359b5ca8c3e840f51e5007cdbc6b9c00568e03",
+  "result_sha256": "e013ebef3d0a3a0b1fa2c06ebaff7063b90829acaba6050e32edc9b8d91a0390",
+  "retained_rows_preserved": 11,
+  "planned_contexts": 14,
+  "statuses": {
+    "uncertain": 10,
+    "unavailable": 4
+  },
+  "reasons": {
+    "recorded_paired_output_only": 10,
+    "recorded_output_unavailable": 1,
+    "no_recorded_pair": 3
+  },
+  "cohorts": [
+    {
+      "kind": "cue",
+      "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+      "planned_contexts": 4,
+      "retained_rows": 4,
+      "statuses": {
+        "uncertain": 4
+      }
+    },
+    {
+      "kind": "cue",
+      "reported_model_repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "planned_contexts": 4,
+      "retained_rows": 1,
+      "statuses": {
+        "unavailable": 4
+      }
+    },
+    {
+      "kind": "shape",
+      "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+      "planned_contexts": 3,
+      "retained_rows": 3,
+      "statuses": {
+        "uncertain": 3
+      }
+    },
+    {
+      "kind": "shape",
+      "reported_model_repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "planned_contexts": 3,
+      "retained_rows": 3,
+      "statuses": {
+        "uncertain": 3
+      }
+    }
+  ],
+  "lookup_controls": [
+    {
+      "raw_sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c",
+      "wrong_subject": "unavailable",
+      "unrecorded_reversed_pair": "unavailable",
+      "wrong_cue": "unavailable"
+    },
+    {
+      "raw_sha256": "1a8364b4c4c93c03a5f285881e5764ed0f3a9d87a54e54eeb132675aac14133d",
+      "wrong_subject": "unavailable",
+      "unrecorded_reversed_pair": "unavailable",
+      "wrong_cue": "unavailable"
+    },
+    {
+      "raw_sha256": "939335f268c0993aeb2c3479ed6dc0e8ebd1bf854b2d2e25b378aea63019cb16",
+      "wrong_subject": "unavailable",
+      "unrecorded_reversed_pair": "unavailable",
+      "wrong_cue": "not_applicable"
+    },
+    {
+      "raw_sha256": "aeef2b9c008acb3ee25c4b6f083bf86c7801efb290bd8d2d3c691ff89d191e0a",
+      "wrong_subject": "unavailable",
+      "unrecorded_reversed_pair": "unavailable",
+      "wrong_cue": "not_applicable"
+    }
+  ],
+  "source_prepared_mappings": [
+    {
+      "kind": "cue",
+      "region_id": "previous_baseline",
+      "role": "current",
+      "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "prepared_sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+      "coverage_relation": "contained",
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "kind": "cue",
+      "region_id": "temporal_warm_512",
+      "role": "current",
+      "source_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "prepared_sha256": "dcd9c928c4b24e0f827f8860b0e14ae0507ccb13aab1236942ebff9cfaeba841",
+      "coverage_relation": "contained",
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "kind": "cue",
+      "region_id": "mpt_temporal_hot_768",
+      "role": "previous",
+      "source_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "prepared_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "coverage_relation": "contained",
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "kind": "cue",
+      "region_id": "mpt_temporal_cooled_768",
+      "role": "current",
+      "source_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "prepared_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "coverage_relation": "contained",
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "kind": "shape",
+      "region_id": "image_4",
+      "role": "reference",
+      "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "prepared_sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+      "coverage_relation": "contained",
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "kind": "shape",
+      "region_id": "image_5",
+      "role": "candidate",
+      "source_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "prepared_sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+      "coverage_relation": "contained",
+      "semantic_coverage_review": "pending"
+    }
+  ],
+  "frozen_sources_unchanged": true,
+  "model_requests": 0,
+  "generation_requests": 0,
+  "human_gold_added": false,
+  "perceptual_accuracy_measured": false,
+  "candidate_selected": false,
+  "application_wired": false
+}

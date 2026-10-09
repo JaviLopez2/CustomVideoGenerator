@@ -1,0 +1,815 @@
+{
+  "protocol": "retained-paired-visual-diagnostic-1",
+  "design_sha256": "98105494cb65adc680f62bbd41cf1087b35c5d30538b380c8cffc53cfe97fc8f",
+  "adapter_sha256": "c011d749ff32e47af05fbc5e11e24b7eb4b3f6ee1ab0987158cd926686d5da10",
+  "model_requests": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "service_changes": 0,
+  "admission_allowed": false,
+  "human_gold_added": false,
+  "cohorts": [
+    {
+      "kind": "cue",
+      "raw_sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c",
+      "rows": [
+        {
+          "case_id": "previous_same_bytes",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\"previous_subject_presence\": \"present\", \"previous_cue_visibility\": \"not_observed\", \"previous_evidence\": \"No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug.\", \"current_subject_presence\": \"present\", \"current_cue_visibility\": \"not_observed\", \"current_evidence\": \"No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug.\"}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "previous_subject_presence": "present",
+              "previous_cue_visibility": "not_observed",
+              "previous_evidence": "No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug.",
+              "current_subject_presence": "present",
+              "current_cue_visibility": "not_observed",
+              "current_evidence": "No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug."
+            },
+            "input_consistency_violation": false,
+            "visible_transition": "no_visible_change",
+            "protocol": "pairwise-visible-cue-observations-1",
+            "source_report_sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c",
+            "source_plan_sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54",
+            "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+            "reported_model_fingerprint": "209f7b6176c829f6212c22dd4b65d396c70945416d1c596455d4dc6f3c6aa1c5",
+            "preparation_sha256": "cba401a3f79661a036535bd43ce2545c853b31d225ad793ef465f679bbc2bf85",
+            "manifest_sha256": "888d62bae61677e9fae3a9e1b39d3b851122b0ce10c7578aa8b13aeff6afe92c",
+            "snapshot_key": "9c5f7b92080633f7cce5d25a5448b54f40cd95294fdf77fb2937312deb345bfc",
+            "ordered_regions": [
+              "previous_baseline",
+              "previous_baseline"
+            ],
+            "subject": "mug",
+            "cue_query": "Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.",
+            "inputs": [
+              {
+                "role": "previous",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "current",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "retained_warm_512",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\n  \"previous_subject_presence\": \"present\",\n  \"previous_cue_visibility\": \"not_observed\",\n  \"previous_evidence\": \"The opening of the red mug is visible, but no pale translucent wisps or plume-shaped marks are emerging from it.\",\n  \"current_subject_presence\": \"present\",\n  \"current_cue_visibility\": \"observed\",\n  \"current_evidence\": \"Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug.\"\n}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "previous_subject_presence": "present",
+              "previous_cue_visibility": "not_observed",
+              "previous_evidence": "The opening of the red mug is visible, but no pale translucent wisps or plume-shaped marks are emerging from it.",
+              "current_subject_presence": "present",
+              "current_cue_visibility": "observed",
+              "current_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug."
+            },
+            "input_consistency_violation": false,
+            "visible_transition": "reported_appearance",
+            "protocol": "pairwise-visible-cue-observations-1",
+            "source_report_sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c",
+            "source_plan_sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54",
+            "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+            "reported_model_fingerprint": "209f7b6176c829f6212c22dd4b65d396c70945416d1c596455d4dc6f3c6aa1c5",
+            "preparation_sha256": "cba401a3f79661a036535bd43ce2545c853b31d225ad793ef465f679bbc2bf85",
+            "manifest_sha256": "888d62bae61677e9fae3a9e1b39d3b851122b0ce10c7578aa8b13aeff6afe92c",
+            "snapshot_key": "036267dfb0a55547b1746c7fa98668fffd385402981e8a0b6e30122184ff8168",
+            "ordered_regions": [
+              "previous_baseline",
+              "temporal_warm_512"
+            ],
+            "subject": "mug",
+            "cue_query": "Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.",
+            "inputs": [
+              {
+                "role": "previous",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "current",
+                "source_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+                "prepared_sha256": "dcd9c928c4b24e0f827f8860b0e14ae0507ccb13aab1236942ebff9cfaeba841",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "retained_hot_768",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\n  \"previous_subject_presence\": \"present\",\n  \"previous_cue_visibility\": \"not_observed\",\n  \"previous_evidence\": \"The opening of the red mug is visible, but there are no pale translucent wisps or plume-shaped marks emerging from it.\",\n  \"current_subject_presence\": \"present\",\n  \"current_cue_visibility\": \"observed\",\n  \"current_evidence\": \"Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug and rising upwards.\"\n}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "previous_subject_presence": "present",
+              "previous_cue_visibility": "not_observed",
+              "previous_evidence": "The opening of the red mug is visible, but there are no pale translucent wisps or plume-shaped marks emerging from it.",
+              "current_subject_presence": "present",
+              "current_cue_visibility": "observed",
+              "current_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug and rising upwards."
+            },
+            "input_consistency_violation": false,
+            "visible_transition": "reported_appearance",
+            "protocol": "pairwise-visible-cue-observations-1",
+            "source_report_sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c",
+            "source_plan_sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54",
+            "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+            "reported_model_fingerprint": "209f7b6176c829f6212c22dd4b65d396c70945416d1c596455d4dc6f3c6aa1c5",
+            "preparation_sha256": "cba401a3f79661a036535bd43ce2545c853b31d225ad793ef465f679bbc2bf85",
+            "manifest_sha256": "888d62bae61677e9fae3a9e1b39d3b851122b0ce10c7578aa8b13aeff6afe92c",
+            "snapshot_key": "6f96f08c57261b9bac54c7e2e88115c0e98e631881af84f8d4817dc286757cc6",
+            "ordered_regions": [
+              "previous_baseline",
+              "mpt_temporal_hot_768"
+            ],
+            "subject": "mug",
+            "cue_query": "Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.",
+            "inputs": [
+              {
+                "role": "previous",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "current",
+                "source_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+                "prepared_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "retained_cooled_768",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\n  \"previous_subject_presence\": \"present\",\n  \"previous_cue_visibility\": \"observed\",\n  \"previous_evidence\": \"Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the mug and rising upwards.\",\n  \"current_subject_presence\": \"present\",\n  \"current_cue_visibility\": \"not_observed\",\n  \"current_evidence\": \"The area immediately above the mug's opening is dark and lacks any visible pale translucent wisps or plume-shaped marks.\"\n}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "previous_subject_presence": "present",
+              "previous_cue_visibility": "observed",
+              "previous_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the mug and rising upwards.",
+              "current_subject_presence": "present",
+              "current_cue_visibility": "not_observed",
+              "current_evidence": "The area immediately above the mug's opening is dark and lacks any visible pale translucent wisps or plume-shaped marks."
+            },
+            "input_consistency_violation": false,
+            "visible_transition": "reported_disappearance",
+            "protocol": "pairwise-visible-cue-observations-1",
+            "source_report_sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c",
+            "source_plan_sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54",
+            "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+            "reported_model_fingerprint": "209f7b6176c829f6212c22dd4b65d396c70945416d1c596455d4dc6f3c6aa1c5",
+            "preparation_sha256": "cba401a3f79661a036535bd43ce2545c853b31d225ad793ef465f679bbc2bf85",
+            "manifest_sha256": "888d62bae61677e9fae3a9e1b39d3b851122b0ce10c7578aa8b13aeff6afe92c",
+            "snapshot_key": "5af7051ead18b250fdc7cb34ca7845a03623a94b85e65c15b3d56478b6b97395",
+            "ordered_regions": [
+              "mpt_temporal_hot_768",
+              "mpt_temporal_cooled_768"
+            ],
+            "subject": "mug",
+            "cue_query": "Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.",
+            "inputs": [
+              {
+                "role": "previous",
+                "source_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+                "prepared_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "current",
+                "source_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+                "prepared_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "cue",
+      "raw_sha256": "1a8364b4c4c93c03a5f285881e5764ed0f3a9d87a54e54eeb132675aac14133d",
+      "rows": [
+        {
+          "case_id": "previous_same_bytes",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "unavailable",
+            "verdict": "unavailable",
+            "available": false,
+            "reason": "recorded_output_unavailable",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\n  \"previous_subject_presence\": \"uncertain\",\n  \"previous_cue_visibility\": \"not_observed\",\n  \"previous_evidence\": \"The mug is not clearly visible in the frame, making it uncertain whether it is present.\",\n  \"current_subject_presence\": \"uncertain\",\n  \"current_cue_visibility\": \"not_observed\",\n  \"current_evidence\": \"The mug is not clearly visible in the frame, making it uncertain whether it is present.\"\n}",
+              "recorded_transport_status": "unavailable",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "protocol": "pairwise-visible-cue-observations-1",
+            "source_report_sha256": "1a8364b4c4c93c03a5f285881e5764ed0f3a9d87a54e54eeb132675aac14133d",
+            "source_plan_sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54",
+            "reported_model_repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+            "reported_model_fingerprint": "ac342ea42941cb630fc7139617cd9f014b9721698b7710edcc655514154ec8a1",
+            "preparation_sha256": "cba401a3f79661a036535bd43ce2545c853b31d225ad793ef465f679bbc2bf85",
+            "manifest_sha256": "888d62bae61677e9fae3a9e1b39d3b851122b0ce10c7578aa8b13aeff6afe92c",
+            "snapshot_key": "015bf65248013887ae109de3249aab4d7c3264425ddb15a38a913dae39db87eb",
+            "ordered_regions": [
+              "previous_baseline",
+              "previous_baseline"
+            ],
+            "subject": "mug",
+            "cue_query": "Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.",
+            "inputs": [
+              {
+                "role": "previous",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "current",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "retained_warm_512",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "unavailable",
+            "verdict": "unavailable",
+            "available": false,
+            "reason": "no_recorded_pair",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0
+          }
+        },
+        {
+          "case_id": "retained_hot_768",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "unavailable",
+            "verdict": "unavailable",
+            "available": false,
+            "reason": "no_recorded_pair",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0
+          }
+        },
+        {
+          "case_id": "retained_cooled_768",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "unavailable",
+            "verdict": "unavailable",
+            "available": false,
+            "reason": "no_recorded_pair",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0
+          }
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "raw_sha256": "939335f268c0993aeb2c3479ed6dc0e8ebd1bf854b2d2e25b378aea63019cb16",
+      "rows": [
+        {
+          "case_id": "red_same_bytes",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"The visible shape and arrangement of the mug's major parts (cylindrical body, C-shaped handle, and open top) are identical in both images.\"}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "reference_subject_presence": "present",
+              "candidate_subject_presence": "present",
+              "major_shape_change": "not_observed",
+              "difference_evidence": "The visible shape and arrangement of the mug's major parts (cylindrical body, C-shaped handle, and open top) are identical in both images."
+            },
+            "input_consistency_violation": false,
+            "hints": [],
+            "protocol": "paired-major-shape-observations-1",
+            "source_report_sha256": "939335f268c0993aeb2c3479ed6dc0e8ebd1bf854b2d2e25b378aea63019cb16",
+            "source_plan_sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016",
+            "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+            "reported_model_fingerprint": "209f7b6176c829f6212c22dd4b65d396c70945416d1c596455d4dc6f3c6aa1c5",
+            "preparation_sha256": "da77e1f7f8c73273740444ada5963d0e8e823faac28bb5b248bae79cece958ba",
+            "manifest_sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee",
+            "snapshot_key": "89f2ef0bd4d745059c7bbacf686938d41134c459dbf3f37a1817bc83bcb58ee1",
+            "ordered_regions": [
+              "image_4",
+              "image_4"
+            ],
+            "subject": "mug",
+            "cue_query": null,
+            "inputs": [
+              {
+                "role": "reference",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "candidate",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "blue_same_bytes",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"The visible shape and arrangement of the mug's major parts (cylindrical body, C-shaped handle, open top) are identical in both images.\"}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "reference_subject_presence": "present",
+              "candidate_subject_presence": "present",
+              "major_shape_change": "not_observed",
+              "difference_evidence": "The visible shape and arrangement of the mug's major parts (cylindrical body, C-shaped handle, open top) are identical in both images."
+            },
+            "input_consistency_violation": false,
+            "hints": [],
+            "protocol": "paired-major-shape-observations-1",
+            "source_report_sha256": "939335f268c0993aeb2c3479ed6dc0e8ebd1bf854b2d2e25b378aea63019cb16",
+            "source_plan_sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016",
+            "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+            "reported_model_fingerprint": "209f7b6176c829f6212c22dd4b65d396c70945416d1c596455d4dc6f3c6aa1c5",
+            "preparation_sha256": "da77e1f7f8c73273740444ada5963d0e8e823faac28bb5b248bae79cece958ba",
+            "manifest_sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee",
+            "snapshot_key": "87d4090a01e426f8122950694263206fe698034bfbae3058b02a157f7a7bbf34",
+            "ordered_regions": [
+              "image_5",
+              "image_5"
+            ],
+            "subject": "mug",
+            "cue_query": null,
+            "inputs": [
+              {
+                "role": "reference",
+                "source_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+                "prepared_sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "candidate",
+                "source_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+                "prepared_sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "retained_color_pair",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"The visible shape and arrangement of the major parts (cylindrical body, C-shaped handle, rim) are identical in both images. The only difference is the color of the mug.\"}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "reference_subject_presence": "present",
+              "candidate_subject_presence": "present",
+              "major_shape_change": "not_observed",
+              "difference_evidence": "The visible shape and arrangement of the major parts (cylindrical body, C-shaped handle, rim) are identical in both images. The only difference is the color of the mug."
+            },
+            "input_consistency_violation": false,
+            "hints": [],
+            "protocol": "paired-major-shape-observations-1",
+            "source_report_sha256": "939335f268c0993aeb2c3479ed6dc0e8ebd1bf854b2d2e25b378aea63019cb16",
+            "source_plan_sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016",
+            "reported_model_repo": "unsloth/Qwen3.5-9B-GGUF",
+            "reported_model_fingerprint": "209f7b6176c829f6212c22dd4b65d396c70945416d1c596455d4dc6f3c6aa1c5",
+            "preparation_sha256": "da77e1f7f8c73273740444ada5963d0e8e823faac28bb5b248bae79cece958ba",
+            "manifest_sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee",
+            "snapshot_key": "6287e2d2e22a49c79a9dbbad9bccf6964a6b4f92f0c80d2f4e21281c7f68c2b3",
+            "ordered_regions": [
+              "image_4",
+              "image_5"
+            ],
+            "subject": "mug",
+            "cue_query": null,
+            "inputs": [
+              {
+                "role": "reference",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "candidate",
+                "source_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+                "prepared_sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "raw_sha256": "aeef2b9c008acb3ee25c4b6f083bf86c7801efb290bd8d2d3c691ff89d191e0a",
+      "rows": [
+        {
+          "case_id": "red_same_bytes",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"Both images show an identical red mug with the same handle shape and overall cylindrical form.\"\n}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "reference_subject_presence": "present",
+              "candidate_subject_presence": "present",
+              "major_shape_change": "not_observed",
+              "difference_evidence": "Both images show an identical red mug with the same handle shape and overall cylindrical form."
+            },
+            "input_consistency_violation": false,
+            "hints": [],
+            "protocol": "paired-major-shape-observations-1",
+            "source_report_sha256": "aeef2b9c008acb3ee25c4b6f083bf86c7801efb290bd8d2d3c691ff89d191e0a",
+            "source_plan_sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016",
+            "reported_model_repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+            "reported_model_fingerprint": "ac342ea42941cb630fc7139617cd9f014b9721698b7710edcc655514154ec8a1",
+            "preparation_sha256": "da77e1f7f8c73273740444ada5963d0e8e823faac28bb5b248bae79cece958ba",
+            "manifest_sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee",
+            "snapshot_key": "6d24f45df995192dd0e4c9ecbf41d3b45aa13743f1ef48efe1f718dfe4c23461",
+            "ordered_regions": [
+              "image_4",
+              "image_4"
+            ],
+            "subject": "mug",
+            "cue_query": null,
+            "inputs": [
+              {
+                "role": "reference",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "candidate",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "blue_same_bytes",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"The visible shape and arrangement of the mug's major parts — cylindrical body, rim, and C-shaped handle — are identical in both images.\"\n}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "reference_subject_presence": "present",
+              "candidate_subject_presence": "present",
+              "major_shape_change": "not_observed",
+              "difference_evidence": "The visible shape and arrangement of the mug's major parts — cylindrical body, rim, and C-shaped handle — are identical in both images."
+            },
+            "input_consistency_violation": false,
+            "hints": [],
+            "protocol": "paired-major-shape-observations-1",
+            "source_report_sha256": "aeef2b9c008acb3ee25c4b6f083bf86c7801efb290bd8d2d3c691ff89d191e0a",
+            "source_plan_sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016",
+            "reported_model_repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+            "reported_model_fingerprint": "ac342ea42941cb630fc7139617cd9f014b9721698b7710edcc655514154ec8a1",
+            "preparation_sha256": "da77e1f7f8c73273740444ada5963d0e8e823faac28bb5b248bae79cece958ba",
+            "manifest_sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee",
+            "snapshot_key": "561f052a37de0bbb2a2f3daff465c0788e708152b325a6125e262583cffb91dc",
+            "ordered_regions": [
+              "image_5",
+              "image_5"
+            ],
+            "subject": "mug",
+            "cue_query": null,
+            "inputs": [
+              {
+                "role": "reference",
+                "source_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+                "prepared_sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "candidate",
+                "source_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+                "prepared_sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        },
+        {
+          "case_id": "retained_color_pair",
+          "result": {
+            "version": "retained-paired-visual-diagnostic-1",
+            "status": "uncertain",
+            "verdict": "uncertain",
+            "available": true,
+            "reason": "recorded_paired_output_only",
+            "availability_scope": "recorded_output_only",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "pixel_truth_verified": false,
+            "model_requests": 0,
+            "generation_requests": 0,
+            "raw_observation": {
+              "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"Both mugs have the same cylindrical body, rim, and C-shaped handle. The overall form and arrangement of major parts are identical.\"\n}",
+              "recorded_transport_status": "completed",
+              "finish_reason": "stop",
+              "reasoning_characters": 0
+            },
+            "observation": {
+              "reference_subject_presence": "present",
+              "candidate_subject_presence": "present",
+              "major_shape_change": "not_observed",
+              "difference_evidence": "Both mugs have the same cylindrical body, rim, and C-shaped handle. The overall form and arrangement of major parts are identical."
+            },
+            "input_consistency_violation": false,
+            "hints": [],
+            "protocol": "paired-major-shape-observations-1",
+            "source_report_sha256": "aeef2b9c008acb3ee25c4b6f083bf86c7801efb290bd8d2d3c691ff89d191e0a",
+            "source_plan_sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016",
+            "reported_model_repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+            "reported_model_fingerprint": "ac342ea42941cb630fc7139617cd9f014b9721698b7710edcc655514154ec8a1",
+            "preparation_sha256": "da77e1f7f8c73273740444ada5963d0e8e823faac28bb5b248bae79cece958ba",
+            "manifest_sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee",
+            "snapshot_key": "ec50fb67756ec4c72cc61923f44e2749d835156d2efef9d1add779b509e8264f",
+            "ordered_regions": [
+              "image_4",
+              "image_5"
+            ],
+            "subject": "mug",
+            "cue_query": null,
+            "inputs": [
+              {
+                "role": "reference",
+                "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+                "prepared_sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              },
+              {
+                "role": "candidate",
+                "source_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+                "prepared_sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+                "coverage_relation": "contained",
+                "semantic_coverage_review": "pending"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

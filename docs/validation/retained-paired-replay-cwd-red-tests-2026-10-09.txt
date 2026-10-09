@@ -1,0 +1,276 @@
+FFFFFF..                                                                 [100%]
+================================== FAILURES ===================================
+_ test_relative_image_descriptors_rejected_before_cwd_dependent_reads[cue-source] _
+
+bundle = namespace(kind='cue', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-144/test_relative_i..._image_descriptor0\\replay-report.json', 'sha256': '8577b0f65e92ae7c2a5c428952db9f0ad7049f31afd6e2824ee71ef02a4cb9c6'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C6D0A3410>
+target = 'source'
+
+    @pytest.mark.parametrize("target", ["source", "crop", "case"])
+    def test_relative_image_descriptors_rejected_before_cwd_dependent_reads(bundle, monkeypatch, target):
+        load(bundle)  # The original absolute fixture is valid.
+        manifest_key = "artifact_manifest" if bundle.kind == "cue" else "region_manifest"
+        preparation = json.loads(Path(bundle.method["region_preparation"]["path"]).read_text(encoding="utf-8"))
+        manifest = json.loads(Path(bundle.method[manifest_key]["path"]).read_text(encoding="utf-8"))
+        descriptor = (preparation["preparation"]["regions"][0]["source"] if target == "source" else
+                      manifest["regions"][0]["crop"] if target == "crop" else
+                      bundle.method["cases"][0][bundle.roles[0]])
+        original = Path(descriptor["path"])
+        relative = original.relative_to(bundle.root)
+        outside = bundle.root.parent / (bundle.root.name + "-other-cwd")
+        homonym = outside / relative
+        homonym.parent.mkdir(parents=True, exist_ok=True)
+        homonym.write_bytes(original.read_bytes())
+        descriptor["path"] = str(relative)
+        if target == "source":
+            # Keep every declaration coherent. The legacy reconstruction can now
+            # read the valid external homonym instead of the changed rooted file.
+            for row in preparation["preparation"]["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            for row in manifest["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            original.write_bytes(b"changed source inside replay root")
+            assert sha(original) != descriptor["sha256"] and sha(homonym) == descriptor["sha256"]
+        rebind_region_metadata(bundle, preparation, manifest)
+        monkeypatch.chdir(outside)
+        refresh_case_bindings(bundle)
+        runner = cue_runner if bundle.kind == "cue" else shape_runner
+        delegated, old_preflight = [], runner.preflight_plan
+        def tracked(*args, **kwargs):
+            delegated.append(True)
+            return old_preflight(*args, **kwargs)
+        monkeypatch.setattr(runner, "preflight_plan", tracked)
+>       with pytest.raises(ValueError, match="absolute"):
+E       Failed: DID NOT RAISE ValueError
+
+D:\Apps\MPT-worktrees\image-model-routing-modernization\test\test_retained_paired_observations.py:397: Failed
+_ test_relative_image_descriptors_rejected_before_cwd_dependent_reads[cue-crop] _
+
+bundle = namespace(kind='cue', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-144/test_relative_i..._image_descriptor1\\replay-report.json', 'sha256': 'afc14323c43fa368818bb812967a067d1a785ad73e48d2c7956894d03537b6a9'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C6D21FA10>
+target = 'crop'
+
+    @pytest.mark.parametrize("target", ["source", "crop", "case"])
+    def test_relative_image_descriptors_rejected_before_cwd_dependent_reads(bundle, monkeypatch, target):
+        load(bundle)  # The original absolute fixture is valid.
+        manifest_key = "artifact_manifest" if bundle.kind == "cue" else "region_manifest"
+        preparation = json.loads(Path(bundle.method["region_preparation"]["path"]).read_text(encoding="utf-8"))
+        manifest = json.loads(Path(bundle.method[manifest_key]["path"]).read_text(encoding="utf-8"))
+        descriptor = (preparation["preparation"]["regions"][0]["source"] if target == "source" else
+                      manifest["regions"][0]["crop"] if target == "crop" else
+                      bundle.method["cases"][0][bundle.roles[0]])
+        original = Path(descriptor["path"])
+        relative = original.relative_to(bundle.root)
+        outside = bundle.root.parent / (bundle.root.name + "-other-cwd")
+        homonym = outside / relative
+        homonym.parent.mkdir(parents=True, exist_ok=True)
+        homonym.write_bytes(original.read_bytes())
+        descriptor["path"] = str(relative)
+        if target == "source":
+            # Keep every declaration coherent. The legacy reconstruction can now
+            # read the valid external homonym instead of the changed rooted file.
+            for row in preparation["preparation"]["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            for row in manifest["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            original.write_bytes(b"changed source inside replay root")
+            assert sha(original) != descriptor["sha256"] and sha(homonym) == descriptor["sha256"]
+        rebind_region_metadata(bundle, preparation, manifest)
+        monkeypatch.chdir(outside)
+        refresh_case_bindings(bundle)
+        runner = cue_runner if bundle.kind == "cue" else shape_runner
+        delegated, old_preflight = [], runner.preflight_plan
+        def tracked(*args, **kwargs):
+            delegated.append(True)
+            return old_preflight(*args, **kwargs)
+        monkeypatch.setattr(runner, "preflight_plan", tracked)
+>       with pytest.raises(ValueError, match="absolute"):
+E       Failed: DID NOT RAISE ValueError
+
+D:\Apps\MPT-worktrees\image-model-routing-modernization\test\test_retained_paired_observations.py:397: Failed
+_ test_relative_image_descriptors_rejected_before_cwd_dependent_reads[cue-case] _
+
+bundle = namespace(kind='cue', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-144/test_relative_i..._image_descriptor2\\replay-report.json', 'sha256': '14eab77eab0cbb8f0e541a1608de37368b06add6c65128e26877fd9fe8738b7b'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C6D0AD190>
+target = 'case'
+
+    @pytest.mark.parametrize("target", ["source", "crop", "case"])
+    def test_relative_image_descriptors_rejected_before_cwd_dependent_reads(bundle, monkeypatch, target):
+        load(bundle)  # The original absolute fixture is valid.
+        manifest_key = "artifact_manifest" if bundle.kind == "cue" else "region_manifest"
+        preparation = json.loads(Path(bundle.method["region_preparation"]["path"]).read_text(encoding="utf-8"))
+        manifest = json.loads(Path(bundle.method[manifest_key]["path"]).read_text(encoding="utf-8"))
+        descriptor = (preparation["preparation"]["regions"][0]["source"] if target == "source" else
+                      manifest["regions"][0]["crop"] if target == "crop" else
+                      bundle.method["cases"][0][bundle.roles[0]])
+        original = Path(descriptor["path"])
+        relative = original.relative_to(bundle.root)
+        outside = bundle.root.parent / (bundle.root.name + "-other-cwd")
+        homonym = outside / relative
+        homonym.parent.mkdir(parents=True, exist_ok=True)
+        homonym.write_bytes(original.read_bytes())
+        descriptor["path"] = str(relative)
+        if target == "source":
+            # Keep every declaration coherent. The legacy reconstruction can now
+            # read the valid external homonym instead of the changed rooted file.
+            for row in preparation["preparation"]["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            for row in manifest["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            original.write_bytes(b"changed source inside replay root")
+            assert sha(original) != descriptor["sha256"] and sha(homonym) == descriptor["sha256"]
+        rebind_region_metadata(bundle, preparation, manifest)
+        monkeypatch.chdir(outside)
+        refresh_case_bindings(bundle)
+        runner = cue_runner if bundle.kind == "cue" else shape_runner
+        delegated, old_preflight = [], runner.preflight_plan
+        def tracked(*args, **kwargs):
+            delegated.append(True)
+            return old_preflight(*args, **kwargs)
+        monkeypatch.setattr(runner, "preflight_plan", tracked)
+>       with pytest.raises(ValueError, match="absolute"):
+E       Failed: DID NOT RAISE ValueError
+
+D:\Apps\MPT-worktrees\image-model-routing-modernization\test\test_retained_paired_observations.py:397: Failed
+_ test_relative_image_descriptors_rejected_before_cwd_dependent_reads[shape-source] _
+
+bundle = namespace(kind='shape', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-144/test_relative..._image_descriptor3\\replay-report.json', 'sha256': 'f18488e426c4d59707da762b4579257262cc481997e449c71048ebed0c6fcbde'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C6D373E90>
+target = 'source'
+
+    @pytest.mark.parametrize("target", ["source", "crop", "case"])
+    def test_relative_image_descriptors_rejected_before_cwd_dependent_reads(bundle, monkeypatch, target):
+        load(bundle)  # The original absolute fixture is valid.
+        manifest_key = "artifact_manifest" if bundle.kind == "cue" else "region_manifest"
+        preparation = json.loads(Path(bundle.method["region_preparation"]["path"]).read_text(encoding="utf-8"))
+        manifest = json.loads(Path(bundle.method[manifest_key]["path"]).read_text(encoding="utf-8"))
+        descriptor = (preparation["preparation"]["regions"][0]["source"] if target == "source" else
+                      manifest["regions"][0]["crop"] if target == "crop" else
+                      bundle.method["cases"][0][bundle.roles[0]])
+        original = Path(descriptor["path"])
+        relative = original.relative_to(bundle.root)
+        outside = bundle.root.parent / (bundle.root.name + "-other-cwd")
+        homonym = outside / relative
+        homonym.parent.mkdir(parents=True, exist_ok=True)
+        homonym.write_bytes(original.read_bytes())
+        descriptor["path"] = str(relative)
+        if target == "source":
+            # Keep every declaration coherent. The legacy reconstruction can now
+            # read the valid external homonym instead of the changed rooted file.
+            for row in preparation["preparation"]["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            for row in manifest["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            original.write_bytes(b"changed source inside replay root")
+            assert sha(original) != descriptor["sha256"] and sha(homonym) == descriptor["sha256"]
+        rebind_region_metadata(bundle, preparation, manifest)
+        monkeypatch.chdir(outside)
+        refresh_case_bindings(bundle)
+        runner = cue_runner if bundle.kind == "cue" else shape_runner
+        delegated, old_preflight = [], runner.preflight_plan
+        def tracked(*args, **kwargs):
+            delegated.append(True)
+            return old_preflight(*args, **kwargs)
+        monkeypatch.setattr(runner, "preflight_plan", tracked)
+>       with pytest.raises(ValueError, match="absolute"):
+E       Failed: DID NOT RAISE ValueError
+
+D:\Apps\MPT-worktrees\image-model-routing-modernization\test\test_retained_paired_observations.py:397: Failed
+_ test_relative_image_descriptors_rejected_before_cwd_dependent_reads[shape-crop] _
+
+bundle = namespace(kind='shape', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-144/test_relative..._image_descriptor4\\replay-report.json', 'sha256': '715831df21c701d3369dab6890edd34264dfb7498d9a65725fa1bb3cb173188b'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C6D342610>
+target = 'crop'
+
+    @pytest.mark.parametrize("target", ["source", "crop", "case"])
+    def test_relative_image_descriptors_rejected_before_cwd_dependent_reads(bundle, monkeypatch, target):
+        load(bundle)  # The original absolute fixture is valid.
+        manifest_key = "artifact_manifest" if bundle.kind == "cue" else "region_manifest"
+        preparation = json.loads(Path(bundle.method["region_preparation"]["path"]).read_text(encoding="utf-8"))
+        manifest = json.loads(Path(bundle.method[manifest_key]["path"]).read_text(encoding="utf-8"))
+        descriptor = (preparation["preparation"]["regions"][0]["source"] if target == "source" else
+                      manifest["regions"][0]["crop"] if target == "crop" else
+                      bundle.method["cases"][0][bundle.roles[0]])
+        original = Path(descriptor["path"])
+        relative = original.relative_to(bundle.root)
+        outside = bundle.root.parent / (bundle.root.name + "-other-cwd")
+        homonym = outside / relative
+        homonym.parent.mkdir(parents=True, exist_ok=True)
+        homonym.write_bytes(original.read_bytes())
+        descriptor["path"] = str(relative)
+        if target == "source":
+            # Keep every declaration coherent. The legacy reconstruction can now
+            # read the valid external homonym instead of the changed rooted file.
+            for row in preparation["preparation"]["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            for row in manifest["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            original.write_bytes(b"changed source inside replay root")
+            assert sha(original) != descriptor["sha256"] and sha(homonym) == descriptor["sha256"]
+        rebind_region_metadata(bundle, preparation, manifest)
+        monkeypatch.chdir(outside)
+        refresh_case_bindings(bundle)
+        runner = cue_runner if bundle.kind == "cue" else shape_runner
+        delegated, old_preflight = [], runner.preflight_plan
+        def tracked(*args, **kwargs):
+            delegated.append(True)
+            return old_preflight(*args, **kwargs)
+        monkeypatch.setattr(runner, "preflight_plan", tracked)
+>       with pytest.raises(ValueError, match="absolute"):
+E       Failed: DID NOT RAISE ValueError
+
+D:\Apps\MPT-worktrees\image-model-routing-modernization\test\test_retained_paired_observations.py:397: Failed
+_ test_relative_image_descriptors_rejected_before_cwd_dependent_reads[shape-case] _
+
+bundle = namespace(kind='shape', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-144/test_relative..._image_descriptor5\\replay-report.json', 'sha256': '4bd2ea6b08d929ed94f4c1381376df27279e87e40018a794397aa3c694a8bbf2'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C6D399710>
+target = 'case'
+
+    @pytest.mark.parametrize("target", ["source", "crop", "case"])
+    def test_relative_image_descriptors_rejected_before_cwd_dependent_reads(bundle, monkeypatch, target):
+        load(bundle)  # The original absolute fixture is valid.
+        manifest_key = "artifact_manifest" if bundle.kind == "cue" else "region_manifest"
+        preparation = json.loads(Path(bundle.method["region_preparation"]["path"]).read_text(encoding="utf-8"))
+        manifest = json.loads(Path(bundle.method[manifest_key]["path"]).read_text(encoding="utf-8"))
+        descriptor = (preparation["preparation"]["regions"][0]["source"] if target == "source" else
+                      manifest["regions"][0]["crop"] if target == "crop" else
+                      bundle.method["cases"][0][bundle.roles[0]])
+        original = Path(descriptor["path"])
+        relative = original.relative_to(bundle.root)
+        outside = bundle.root.parent / (bundle.root.name + "-other-cwd")
+        homonym = outside / relative
+        homonym.parent.mkdir(parents=True, exist_ok=True)
+        homonym.write_bytes(original.read_bytes())
+        descriptor["path"] = str(relative)
+        if target == "source":
+            # Keep every declaration coherent. The legacy reconstruction can now
+            # read the valid external homonym instead of the changed rooted file.
+            for row in preparation["preparation"]["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            for row in manifest["regions"]:
+                if row["source"]["path"] == str(original): row["source"]["path"] = str(relative)
+            original.write_bytes(b"changed source inside replay root")
+            assert sha(original) != descriptor["sha256"] and sha(homonym) == descriptor["sha256"]
+        rebind_region_metadata(bundle, preparation, manifest)
+        monkeypatch.chdir(outside)
+        refresh_case_bindings(bundle)
+        runner = cue_runner if bundle.kind == "cue" else shape_runner
+        delegated, old_preflight = [], runner.preflight_plan
+        def tracked(*args, **kwargs):
+            delegated.append(True)
+            return old_preflight(*args, **kwargs)
+        monkeypatch.setattr(runner, "preflight_plan", tracked)
+>       with pytest.raises(ValueError, match="absolute"):
+E       Failed: DID NOT RAISE ValueError
+
+D:\Apps\MPT-worktrees\image-model-routing-modernization\test\test_retained_paired_observations.py:397: Failed
+=========================== short test summary info ===========================
+FAILED test/test_retained_paired_observations.py::test_relative_image_descriptors_rejected_before_cwd_dependent_reads[cue-source]
+FAILED test/test_retained_paired_observations.py::test_relative_image_descriptors_rejected_before_cwd_dependent_reads[cue-crop]
+FAILED test/test_retained_paired_observations.py::test_relative_image_descriptors_rejected_before_cwd_dependent_reads[cue-case]
+FAILED test/test_retained_paired_observations.py::test_relative_image_descriptors_rejected_before_cwd_dependent_reads[shape-source]
+FAILED test/test_retained_paired_observations.py::test_relative_image_descriptors_rejected_before_cwd_dependent_reads[shape-crop]
+FAILED test/test_retained_paired_observations.py::test_relative_image_descriptors_rejected_before_cwd_dependent_reads[shape-case]
+6 failed, 2 passed, 92 deselected in 1.48s
+
+Python exit code: 1

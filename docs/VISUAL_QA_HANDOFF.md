@@ -1,5 +1,11 @@
 # Visual QA — Windows checkpoint, 2026-10-08
 
+## Current paired replay checkpoint — 2026-10-09
+
+From `6e28a56`, new experimental offline adapter only: four retained reports/14contexts/11raw preserved,10uncertain/1invalid unavailable/3no recorded pair unavailable. 100 new cases and282 final relevant tests pass15.87s/exit0/no warnings; root/CWD review defect corrected, final no issues. Real CPU replay/proof exit0, null scores/no admission. [Report](RETAINED_PAIRED_REPLAY_REPORT.md). VisualQA/selectivity/cache/private material seam/single-image store remain unchanged;0newmodel/generation/download/service/dependency/workflow/app/routing/gate/default/label/stable changes.
+
+Next separately inject paired diagnostics at private MPT seam with ordered context/image-stage and non-interference proof, no app import of scripts/scoped_qa replacement. Neither valid diagnostics nor not_required certify qa_verified. Quantity/geometry/state calibration with independent labels and complete QA latency still pending. [Autonomous handoff](AUTONOMOUS_MPT_WORK_HANDOFF.md); no user action now, closing SHA through Git/origin, earlier blocks historical.
+
 ## Current integration audit — 2026-10-09
 
 From `90ff646`, current visual-qa-4, existing cache/selectivity/admission and injected single-image diagnostic inspected, not reimplemented. 142 focused existing QA/state/diagnostic tests pass6.27s/exit0/no warnings; CPU pinned recipe verifies4nativeframes, source/prepared hash difference in two512 and new paired report incompatibility. [Audit and next design](PAIRED_OBSERVER_INTEGRATION_PLAN.md). No app/tests/gates/routing/default/runtime/service/model/label changes and0newmodel/generation/download requests.

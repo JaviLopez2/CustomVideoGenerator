@@ -1,0 +1,122 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_________ test_export_write_scope_before_loading_reports[cue-outside] _________
+
+bundle = namespace(kind='cue', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_wri...rite_scope_before0\\replay-report.json', 'sha256': '0be0b233f726e2c5286727494187cae5411075eabf838b85b313925d07b0e838'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000028EF76C60D0>
+fault = 'outside'
+
+    @pytest.mark.parametrize("fault", ["outside", "existing"])
+    def test_export_write_scope_before_loading_reports(bundle, monkeypatch, fault):
+        design = write_json(bundle.root / "export-design.json", {"protocol": "retained-paired-replay-design-1"})
+        output = bundle.root.parent / (bundle.root.name + '-outside-export.json') if fault == "outside" else bundle.root / "existing.json"
+        if fault == "existing": output.write_bytes(b"preserve this file")
+        def forbidden(*args, **kwargs): raise AssertionError("Invalid output must not load reports")
+        monkeypatch.setattr(replay.RetainedPairedObservations, "from_files", forbidden)
+>       with pytest.raises((ValueError, FileExistsError)): replay.export_replay(design, output, root=bundle.root)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_paired_observations.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+design_binding = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-139\\test_export_write_scope_before0\\export-design.json', 'sha256': '3e2fe7d8648546befe6998335e37b5e90bbb6d6e138ec06ef02b8ac85120ff7d'}
+output = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_write_scope_before0-outside-export.json')
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_write_scope_before0')
+
+    def export_replay(design_binding, output, *, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\retained_paired_observations.py:15: NotImplementedError
+________ test_export_write_scope_before_loading_reports[cue-existing] _________
+
+bundle = namespace(kind='cue', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_wri...rite_scope_before1\\replay-report.json', 'sha256': '90d99b78d1a41269b921f0b262bf13d76a777f685a5f88ae67dfd9e7c7565159'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000028EF72D2350>
+fault = 'existing'
+
+    @pytest.mark.parametrize("fault", ["outside", "existing"])
+    def test_export_write_scope_before_loading_reports(bundle, monkeypatch, fault):
+        design = write_json(bundle.root / "export-design.json", {"protocol": "retained-paired-replay-design-1"})
+        output = bundle.root.parent / (bundle.root.name + '-outside-export.json') if fault == "outside" else bundle.root / "existing.json"
+        if fault == "existing": output.write_bytes(b"preserve this file")
+        def forbidden(*args, **kwargs): raise AssertionError("Invalid output must not load reports")
+        monkeypatch.setattr(replay.RetainedPairedObservations, "from_files", forbidden)
+>       with pytest.raises((ValueError, FileExistsError)): replay.export_replay(design, output, root=bundle.root)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_paired_observations.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+design_binding = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-139\\test_export_write_scope_before1\\export-design.json', 'sha256': '3e2fe7d8648546befe6998335e37b5e90bbb6d6e138ec06ef02b8ac85120ff7d'}
+output = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_write_scope_before1/existing.json')
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_write_scope_before1')
+
+    def export_replay(design_binding, output, *, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\retained_paired_observations.py:15: NotImplementedError
+________ test_export_write_scope_before_loading_reports[shape-outside] ________
+
+bundle = namespace(kind='shape', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_w...rite_scope_before2\\replay-report.json', 'sha256': 'feb255badedff65eaf0bb5eed7d7328b1670536871d6924395cf92ef1629ffd9'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000028EF7388350>
+fault = 'outside'
+
+    @pytest.mark.parametrize("fault", ["outside", "existing"])
+    def test_export_write_scope_before_loading_reports(bundle, monkeypatch, fault):
+        design = write_json(bundle.root / "export-design.json", {"protocol": "retained-paired-replay-design-1"})
+        output = bundle.root.parent / (bundle.root.name + '-outside-export.json') if fault == "outside" else bundle.root / "existing.json"
+        if fault == "existing": output.write_bytes(b"preserve this file")
+        def forbidden(*args, **kwargs): raise AssertionError("Invalid output must not load reports")
+        monkeypatch.setattr(replay.RetainedPairedObservations, "from_files", forbidden)
+>       with pytest.raises((ValueError, FileExistsError)): replay.export_replay(design, output, root=bundle.root)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_paired_observations.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+design_binding = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-139\\test_export_write_scope_before2\\export-design.json', 'sha256': '3e2fe7d8648546befe6998335e37b5e90bbb6d6e138ec06ef02b8ac85120ff7d'}
+output = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_write_scope_before2-outside-export.json')
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_write_scope_before2')
+
+    def export_replay(design_binding, output, *, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\retained_paired_observations.py:15: NotImplementedError
+_______ test_export_write_scope_before_loading_reports[shape-existing] ________
+
+bundle = namespace(kind='shape', root=WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_w...rite_scope_before3\\replay-report.json', 'sha256': '4efb9f2bb5fb9a1b3da202825d6c7abc0df32a0baedabdaf5ab320f64c110b48'})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000028EF7607B90>
+fault = 'existing'
+
+    @pytest.mark.parametrize("fault", ["outside", "existing"])
+    def test_export_write_scope_before_loading_reports(bundle, monkeypatch, fault):
+        design = write_json(bundle.root / "export-design.json", {"protocol": "retained-paired-replay-design-1"})
+        output = bundle.root.parent / (bundle.root.name + '-outside-export.json') if fault == "outside" else bundle.root / "existing.json"
+        if fault == "existing": output.write_bytes(b"preserve this file")
+        def forbidden(*args, **kwargs): raise AssertionError("Invalid output must not load reports")
+        monkeypatch.setattr(replay.RetainedPairedObservations, "from_files", forbidden)
+>       with pytest.raises((ValueError, FileExistsError)): replay.export_replay(design, output, root=bundle.root)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_paired_observations.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+design_binding = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-139\\test_export_write_scope_before3\\export-design.json', 'sha256': '3e2fe7d8648546befe6998335e37b5e90bbb6d6e138ec06ef02b8ac85120ff7d'}
+output = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_write_scope_before3/existing.json')
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-139/test_export_write_scope_before3')
+
+    def export_replay(design_binding, output, *, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\retained_paired_observations.py:15: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_retained_paired_observations.py::test_export_write_scope_before_loading_reports[cue-outside]
+FAILED test/test_retained_paired_observations.py::test_export_write_scope_before_loading_reports[cue-existing]
+FAILED test/test_retained_paired_observations.py::test_export_write_scope_before_loading_reports[shape-outside]
+FAILED test/test_retained_paired_observations.py::test_export_write_scope_before_loading_reports[shape-existing]
+4 failed, 78 deselected in 0.63s
+
+Python exit code: 1
