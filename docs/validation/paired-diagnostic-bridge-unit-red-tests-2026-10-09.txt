@@ -1,0 +1,631 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 92%]
+FFFFFF                                                                   [100%]
+================================== FAILURES ===================================
+_______ test_original_pair_replayed_with_pipeline_roles_and_stage[cue] ________
+test\services\test_paired_visual_observation_diagnostics.py:41: in test_original_pair_replayed_with_pipeline_roles_and_stage
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+______ test_original_pair_replayed_with_pipeline_roles_and_stage[shape] _______
+test\services\test_paired_visual_observation_diagnostics.py:41: in test_original_pair_replayed_with_pipeline_roles_and_stage
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_missing_or_wrong_context_never_becomes_evidence[cue-missing_context] __
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_missing_or_wrong_context_never_becomes_evidence[cue-empty_context] ___
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_missing_or_wrong_context_never_becomes_evidence[cue-unknown_kind] ____
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_missing_or_wrong_context_never_becomes_evidence[cue-missing_subject] __
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_missing_or_wrong_context_never_becomes_evidence[cue-other_subject] ___
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+____ test_missing_or_wrong_context_never_becomes_evidence[cue-bad_regions] ____
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_missing_or_wrong_context_never_becomes_evidence[cue-wrong_region] ____
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+____ test_missing_or_wrong_context_never_becomes_evidence[cue-wrong_query] ____
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_missing_or_wrong_context_never_becomes_evidence[cue-missing_observer] __
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_missing_or_wrong_context_never_becomes_evidence[cue-invalid_observer] __
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_missing_or_wrong_context_never_becomes_evidence[cue-missing_role] ____
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_missing_or_wrong_context_never_becomes_evidence[shape-missing_context] _
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_missing_or_wrong_context_never_becomes_evidence[shape-empty_context] __
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_missing_or_wrong_context_never_becomes_evidence[shape-unknown_kind] ___
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_missing_or_wrong_context_never_becomes_evidence[shape-missing_subject] _
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_missing_or_wrong_context_never_becomes_evidence[shape-other_subject] __
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_missing_or_wrong_context_never_becomes_evidence[shape-bad_regions] ___
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_missing_or_wrong_context_never_becomes_evidence[shape-wrong_region] ___
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_missing_or_wrong_context_never_becomes_evidence[shape-wrong_query] ___
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_missing_or_wrong_context_never_becomes_evidence[shape-missing_observer] _
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_missing_or_wrong_context_never_becomes_evidence[shape-invalid_observer] _
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_missing_or_wrong_context_never_becomes_evidence[shape-missing_role] ___
+test\services\test_paired_visual_observation_diagnostics.py:66: in test_missing_or_wrong_context_never_becomes_evidence
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__________ test_bad_provider_envelope_cannot_cross_bridge[cue-pass] ___________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-admission] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-rejection] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__________ test_bad_provider_envelope_cannot_cross_bridge[cue-score] __________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-requests] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[cue-generation] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[cue-budget_bool] _______
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-available] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_________ test_bad_provider_envelope_cannot_cross_bridge[cue-version] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_________ test_bad_provider_envelope_cannot_cross_bridge[cue-source] __________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__________ test_bad_provider_envelope_cannot_cross_bridge[cue-roles] __________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-protocol] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_________ test_bad_provider_envelope_cannot_cross_bridge[cue-subject] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__________ test_bad_provider_envelope_cannot_cross_bridge[cue-query] __________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_________ test_bad_provider_envelope_cannot_cross_bridge[cue-object] __________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-nonfinite] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-exception] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_________ test_bad_provider_envelope_cannot_cross_bridge[shape-pass] __________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-admission] _______
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-rejection] _______
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_________ test_bad_provider_envelope_cannot_cross_bridge[shape-score] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-requests] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+______ test_bad_provider_envelope_cannot_cross_bridge[shape-generation] _______
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+______ test_bad_provider_envelope_cannot_cross_bridge[shape-budget_bool] ______
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-available] _______
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[shape-version] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[shape-source] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_________ test_bad_provider_envelope_cannot_cross_bridge[shape-roles] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-protocol] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[shape-subject] ________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_________ test_bad_provider_envelope_cannot_cross_bridge[shape-query] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+________ test_bad_provider_envelope_cannot_cross_bridge[shape-object] _________
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-nonfinite] _______
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-exception] _______
+test\services\test_paired_visual_observation_diagnostics.py:95: in test_bad_provider_envelope_cannot_cross_bridge
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_result_is_deep_copied_and_unknown_provider_fields_not_copied[cue] ____
+test\services\test_paired_visual_observation_diagnostics.py:105: in test_result_is_deep_copied_and_unknown_provider_fields_not_copied
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_result_is_deep_copied_and_unknown_provider_fields_not_copied[shape] ___
+test\services\test_paired_visual_observation_diagnostics.py:105: in test_result_is_deep_copied_and_unknown_provider_fields_not_copied
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_changed_source_unavailable_without_scene_decision[cue-before-candidate] _
+test\services\test_paired_visual_observation_diagnostics.py:120: in test_changed_source_unavailable_without_scene_decision
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_changed_source_unavailable_without_scene_decision[cue-before-first] ___
+test\services\test_paired_visual_observation_diagnostics.py:120: in test_changed_source_unavailable_without_scene_decision
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_changed_source_unavailable_without_scene_decision[cue-during-candidate] _
+test\services\test_paired_visual_observation_diagnostics.py:120: in test_changed_source_unavailable_without_scene_decision
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_changed_source_unavailable_without_scene_decision[cue-during-first] ___
+test\services\test_paired_visual_observation_diagnostics.py:120: in test_changed_source_unavailable_without_scene_decision
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_changed_source_unavailable_without_scene_decision[shape-before-candidate] _
+test\services\test_paired_visual_observation_diagnostics.py:120: in test_changed_source_unavailable_without_scene_decision
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_changed_source_unavailable_without_scene_decision[shape-before-first] __
+test\services\test_paired_visual_observation_diagnostics.py:120: in test_changed_source_unavailable_without_scene_decision
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_changed_source_unavailable_without_scene_decision[shape-during-candidate] _
+test\services\test_paired_visual_observation_diagnostics.py:120: in test_changed_source_unavailable_without_scene_decision
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_changed_source_unavailable_without_scene_decision[shape-during-first] __
+test\services\test_paired_visual_observation_diagnostics.py:120: in test_changed_source_unavailable_without_scene_decision
+    result = bridge.diagnose(**args)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_final_image_applicability_preserves_before_qa_snapshot[cue-candidate] __
+test\services\test_paired_visual_observation_diagnostics.py:128: in test_final_image_applicability_preserves_before_qa_snapshot
+    original = bridge.diagnose(**args)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_final_image_applicability_preserves_before_qa_snapshot[cue-first] ____
+test\services\test_paired_visual_observation_diagnostics.py:128: in test_final_image_applicability_preserves_before_qa_snapshot
+    original = bridge.diagnose(**args)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_final_image_applicability_preserves_before_qa_snapshot[cue-missing_final] _
+test\services\test_paired_visual_observation_diagnostics.py:128: in test_final_image_applicability_preserves_before_qa_snapshot
+    original = bridge.diagnose(**args)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_final_image_applicability_preserves_before_qa_snapshot[cue-same_bytes_copy] _
+test\services\test_paired_visual_observation_diagnostics.py:128: in test_final_image_applicability_preserves_before_qa_snapshot
+    original = bridge.diagnose(**args)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_final_image_applicability_preserves_before_qa_snapshot[shape-candidate] _
+test\services\test_paired_visual_observation_diagnostics.py:128: in test_final_image_applicability_preserves_before_qa_snapshot
+    original = bridge.diagnose(**args)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_final_image_applicability_preserves_before_qa_snapshot[shape-first] ___
+test\services\test_paired_visual_observation_diagnostics.py:128: in test_final_image_applicability_preserves_before_qa_snapshot
+    original = bridge.diagnose(**args)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_final_image_applicability_preserves_before_qa_snapshot[shape-missing_final] _
+test\services\test_paired_visual_observation_diagnostics.py:128: in test_final_image_applicability_preserves_before_qa_snapshot
+    original = bridge.diagnose(**args)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+_ test_final_image_applicability_preserves_before_qa_snapshot[shape-same_bytes_copy] _
+test\services\test_paired_visual_observation_diagnostics.py:128: in test_final_image_applicability_preserves_before_qa_snapshot
+    original = bridge.diagnose(**args)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+___ test_unchanged_final_image_stays_diagnostic_without_another_lookup[cue] ___
+test\services\test_paired_visual_observation_diagnostics.py:147: in test_unchanged_final_image_stays_diagnostic_without_another_lookup
+    result = finish(bridge.diagnose(**args), args)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+__ test_unchanged_final_image_stays_diagnostic_without_another_lookup[shape] __
+test\services\test_paired_visual_observation_diagnostics.py:147: in test_unchanged_final_image_stays_diagnostic_without_another_lookup
+    result = finish(bridge.diagnose(**args), args)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+app\services\paired_visual_observation_diagnostics.py:5: in diagnose
+    raise NotImplementedError
+E   NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_original_pair_replayed_with_pipeline_roles_and_stage[cue]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_original_pair_replayed_with_pipeline_roles_and_stage[shape]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-missing_context]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-empty_context]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-unknown_kind]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-missing_subject]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-other_subject]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-bad_regions]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-wrong_region]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-wrong_query]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-missing_observer]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-invalid_observer]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[cue-missing_role]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-missing_context]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-empty_context]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-unknown_kind]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-missing_subject]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-other_subject]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-bad_regions]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-wrong_region]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-wrong_query]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-missing_observer]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-invalid_observer]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_missing_or_wrong_context_never_becomes_evidence[shape-missing_role]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-pass]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-admission]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-rejection]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-score]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-requests]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-generation]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-budget_bool]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-available]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-version]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-source]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-roles]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-protocol]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-subject]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-query]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-object]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-nonfinite]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-exception]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-pass]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-admission]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-rejection]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-score]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-requests]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-generation]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-budget_bool]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-available]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-version]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-source]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-roles]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-protocol]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-subject]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-query]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-object]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-nonfinite]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-exception]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_result_is_deep_copied_and_unknown_provider_fields_not_copied[cue]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_result_is_deep_copied_and_unknown_provider_fields_not_copied[shape]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_changed_source_unavailable_without_scene_decision[cue-before-candidate]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_changed_source_unavailable_without_scene_decision[cue-before-first]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_changed_source_unavailable_without_scene_decision[cue-during-candidate]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_changed_source_unavailable_without_scene_decision[cue-during-first]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_changed_source_unavailable_without_scene_decision[shape-before-candidate]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_changed_source_unavailable_without_scene_decision[shape-before-first]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_changed_source_unavailable_without_scene_decision[shape-during-candidate]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_changed_source_unavailable_without_scene_decision[shape-during-first]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_final_image_applicability_preserves_before_qa_snapshot[cue-candidate]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_final_image_applicability_preserves_before_qa_snapshot[cue-first]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_final_image_applicability_preserves_before_qa_snapshot[cue-missing_final]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_final_image_applicability_preserves_before_qa_snapshot[cue-same_bytes_copy]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_final_image_applicability_preserves_before_qa_snapshot[shape-candidate]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_final_image_applicability_preserves_before_qa_snapshot[shape-first]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_final_image_applicability_preserves_before_qa_snapshot[shape-missing_final]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_final_image_applicability_preserves_before_qa_snapshot[shape-same_bytes_copy]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_unchanged_final_image_stays_diagnostic_without_another_lookup[cue]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_unchanged_final_image_stays_diagnostic_without_another_lookup[shape]
+78 failed in 8.36s
+
+Python exit code: 1

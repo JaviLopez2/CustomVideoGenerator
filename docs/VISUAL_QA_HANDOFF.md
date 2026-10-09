@@ -1,5 +1,11 @@
 # Visual QA — Windows checkpoint, 2026-10-08
 
+## Current private paired diagnostic bridge — 2026-10-09
+
+From `5ad52e0`, optional private callbacks/context metadata attach paired records before QA and revalidate after retries/grading, never selection/rejection/admission. Actual selected reference vs same-key previous rendered image separated; no scripts imported by app/default calls.157newcases,330finaltests+2subtests pass25.26s/exit0/no warnings; two review defects corrected/final no issues. Real retained files in actual caller, generator/upload/QA/render substituted:12mockscenes/8reader calls/4uncertain/8unavailable, outputs equal vsdisabled. [Report](PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md).0realmodel/generation/upload/video/download/service/dependency/workflow/label/stable changes, QA/cache/selectivity/routing/default behavior retained.
+
+Neither valid diagnostic nor not_required verifies Klein; tests exercise valid second-scene observation then explicit rejection. Missing/changed final images preserve before-QA snapshots as unavailable for final output. Next retained cross-family count/structural/state controls with independent labels and exact adjacency gaps; baseline->hot raw cannot certify warm->hot. Full QA calibration/latency pending. [Autonomy](AUTONOMOUS_MPT_WORK_HANDOFF.md), no CPU-preparation action needed; closing SHA via Git/origin, older blocks historical.
+
 ## Current paired replay checkpoint — 2026-10-09
 
 From `6e28a56`, new experimental offline adapter only: four retained reports/14contexts/11raw preserved,10uncertain/1invalid unavailable/3no recorded pair unavailable. 100 new cases and282 final relevant tests pass15.87s/exit0/no warnings; root/CWD review defect corrected, final no issues. Real CPU replay/proof exit0, null scores/no admission. [Report](RETAINED_PAIRED_REPLAY_REPORT.md). VisualQA/selectivity/cache/private material seam/single-image store remain unchanged;0newmodel/generation/download/service/dependency/workflow/app/routing/gate/default/label/stable changes.

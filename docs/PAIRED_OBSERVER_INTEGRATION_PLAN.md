@@ -1,5 +1,11 @@
 # Observadores pareados: auditoría e integración diagnóstica — 2026-10-09
 
+## Estado vigente — puente privado ejecutado y verificado
+
+Desde `5ad52e0`, callbacks/contextos explícitos en caller privado MPT; referencia seleccionada/anterior aceptado-renderizado de la misma clave, capturas pre-QA y finalización post-QA/retry/grading, nullscores/sin autoridad/default calls.157casos nuevos/330finaltests+2subtests pasan25,26s/exit0/sin avisos, revisión final no issues. [Informe](PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md). Archivo real/caller real con generación/upload/QA/render sustituidos:12escenas,8lecturas,4uncertain/8unavailable, salidas iguales vsdisabled.0inferencia/generación/upload/vídeo/descarga/servicios/deps/workflows/labels/estable reales, QA/routing/default behavior igual.
+
+El adaptador y este puente ya están cerrados; propuestas siguientes son históricas. Próximo controles perceptuales de otra familia y parejas adyacentes exactas sobre artifacts existentes; human calibration/latencia completa pendientes, ningún juez seleccionado. Baseline→hot raw no equivale a warm→hot del pipeline. Preparación CPU no necesita8080 ni intervención rutinaria.
+
 ## Estado vigente — primera entrega ejecutada, 2026-10-09
 
 Adaptador aislado y replay CPU cerrados desde `6e28a56`:14contextos de cuatro informes/11raw retenidos,10uncertain/1raw inválido unavailable/3no ejecutados unavailable.100 nuevas regresiones,282 finales relevantes pasan15,87s/exit0/sin avisos; P2 root/CWD corregido y revisión final no issues. [Informe](RETAINED_PAIRED_REPLAY_REPORT.md). Diseño congelado y fuentes anteriores conservados;0nuevoHTTP/generación/descarga/servicio/app/default/routing/label. La propuesta/142tests siguientes corresponden a la auditoría anterior, no son el estado pendiente del adaptador.

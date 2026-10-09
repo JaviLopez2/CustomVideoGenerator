@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — puente privado pareado verificado, 2026-10-09
+
+Desde `5ad52e0`, callbacks/contextos privados opt-in en MPT, app sin imports de scripts. Referencia ligada al input seleccionado y anterior aceptado/renderizado de la misma clave; post-QA/retry/grading invalida bytes distintos, guarda snapshot anterior.157casos nuevos,330tests+2subtests pasan25,26s/exit0/sin avisos; dos P2 de revisión corregidos, final no issues. Demostración CPU con archivos reales/caller real y generación/upload/QA/render simulados:12escenas por recorrido,8lecturas,4uncertain/8unavailable, resultados igual sin/con diagnóstico. [Informe](PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md).0real consultas/generaciones/uploads/vídeos/descargas/servicios/deps/workflows/labels/estable; QA/routing/defaults conservados, binding local por entrada del pack como metadato.
+
+Próximo preparar controles de cantidad/estructura/estado de otra familia sobre imágenes existentes y pares adyacentes exactos pendientes. Raw baseline→hot no corresponde a warm→hot del pipeline, conserva unavailable. Calibración independiente y latencia QA completa pendientes; ningún juez escogido/routing activado. Preparación CPU autónoma sin servicios/acción humana; SHA de cierre por Git/origin, bloques siguientes históricos.
+
 ## Actualización — replay pareado implementado, 2026-10-09
 
 Desde `6e28a56`, nuevo adaptador aislado en scripts; replay CPU real de cuatro informes fijados:14contextos/11filas retenidas,10uncertain/1raw inválido unavailable/3no ejecutados unavailable. Conserva raw, contexto ordenado, roles/sujeto/consulta y correspondencia source-prepared; scores null/sin admisión ni verdad física. 100 tests nuevos del adaptador y282 relevantes finales pasan15,87s/exit0/sin avisos. P2 de rutas relativas/CWD reproducido y corregido antes del replay; revisión final sin hallazgos. [Informe](RETAINED_PAIRED_REPLAY_REPORT.md), [resultado](validation/retained-paired-replay-result-2026-10-09.json).0nueva inferencia/generación/descarga/servicios/deps/workflows/app/QA/routing/defaults/labels/estable.

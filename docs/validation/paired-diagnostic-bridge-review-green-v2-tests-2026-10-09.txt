@@ -1,0 +1,20 @@
+.....F..                                                                 [100%]
+================================== FAILURES ===================================
+______ test_selected_pack_reference_is_bound_or_unavailable[environment] ______
+test\services\test_material_paired_diagnostics.py:201: in test_selected_pack_reference_is_bound_or_unavailable
+    assert generator.call_args.kwargs["reference_images"] == ["chosen-upload.png"]
+E   AssertionError: assert [] == ['chosen-upload.png']
+E     
+E     Right contains one more item: 'chosen-upload.png'
+E     Use -v to get more diff
+---------------------------- Captured stdout call -----------------------------
+[32m2026-10-09 23:27:30[0m | [33m[1mWARNING[0m | "./app/services/material.py:7695":[34m _download_videos_openai_image_on_demand[0m - [33m[1mprecision route suppressed because the current manual identity pack does not target reference_target='environment'; scene=1[0m
+[32m2026-10-09 23:27:30[0m | [1mINFO[0m | "./app/services/material.py:7944":[34m _download_videos_openai_image_on_demand[0m - [1mgenerating OpenAI image scene 1/1: route=standard, model=qwen-image-2.1, duration=1.00s, prompt='object'[0m
+[32m2026-10-09 23:27:30[0m | [1mINFO[0m | "./app/services/material.py:8889":[34m _download_videos_openai_image_on_demand[0m - [1mimage material rendered: C:\Users\JAVIER\AppData\Local\Temp\pytest-of-JAVIER\pytest-159\test_selected_pack_reference_i1\candidate.png.mp4, duration=1.00s[0m
+[32m2026-10-09 23:27:30[0m | [1mINFO[0m | "./app/services/material.py:8941":[34m _download_videos_openai_image_on_demand[0m - [1msemantic OpenAI image materials complete: scenes=1, generated=1.00s, required=1.00s[0m
+[32m2026-10-09 23:27:30[0m | [32m[1mSUCCESS[0m | "./app/services/material.py:8952":[34m _download_videos_openai_image_on_demand[0m - [32m[1mgenerated and rendered 1 image materials[0m
+=========================== short test summary info ===========================
+FAILED test/services/test_material_paired_diagnostics.py::test_selected_pack_reference_is_bound_or_unavailable[environment]
+1 failed, 7 passed, 149 deselected in 2.97s
+
+Python exit code: 1

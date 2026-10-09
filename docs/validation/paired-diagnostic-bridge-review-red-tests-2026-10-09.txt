@@ -1,0 +1,103 @@
+FFFFFFFF                                                                 [100%]
+================================== FAILURES ===================================
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-empty_raw] ________
+test\services\test_paired_visual_observation_diagnostics.py:105: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+________ test_bad_provider_envelope_cannot_cross_bridge[cue-blank_raw] ________
+test\services\test_paired_visual_observation_diagnostics.py:105: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-empty_raw] _______
+test\services\test_paired_visual_observation_diagnostics.py:105: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+_______ test_bad_provider_envelope_cannot_cross_bridge[shape-blank_raw] _______
+test\services\test_paired_visual_observation_diagnostics.py:105: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+________ test_selected_pack_reference_is_bound_or_unavailable[anchor] _________
+test\services\test_material_paired_diagnostics.py:201: in test_selected_pack_reference_is_bound_or_unavailable
+    else: assert observer.call_args.args[0][0] == chosen
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-157/test_selected_pack_reference_i0/first.png') == WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-157/test_selected_pack_reference_i0/chosen.png')
+---------------------------- Captured stdout call -----------------------------
+[32m2026-10-09 23:26:19[0m | [1mINFO[0m | "./app/services/material.py:7794":[34m _download_videos_openai_image_on_demand[0m - [1musing scene-adaptive manual references for precision scene: scene=1, refs=1, need='identity', shot='full', framing='full_subject', subject='object'[0m
+[32m2026-10-09 23:26:19[0m | [1mINFO[0m | "./app/services/material.py:7943":[34m _download_videos_openai_image_on_demand[0m - [1mgenerating OpenAI image scene 1/1: route=precision, model=qwen-image-2.1, duration=1.00s, prompt='object'[0m
+[32m2026-10-09 23:26:19[0m | [1mINFO[0m | "./app/services/material.py:8024":[34m _download_videos_openai_image_on_demand[0m - [1mQwen precision direct generation: scene=1, attempt=1/2, refs=1, profile=balanced[0m
+[32m2026-10-09 23:26:19[0m | [1mINFO[0m | "./app/services/material.py:8765":[34m _download_videos_openai_image_on_demand[0m - [1mprecision full-scene single-pass: preserving generated subject/background composition for scene=1, image='candidate.png'[0m
+[32m2026-10-09 23:26:19[0m | [1mINFO[0m | "./app/services/material.py:8779":[34m _download_videos_openai_image_on_demand[0m - [1mprecision scene has no preceding standard style anchor; keeping generated colors unchanged[0m
+[32m2026-10-09 23:26:19[0m | [1mINFO[0m | "./app/services/material.py:8889":[34m _download_videos_openai_image_on_demand[0m - [1mimage material rendered: C:\Users\JAVIER\AppData\Local\Temp\pytest-of-JAVIER\pytest-157\test_selected_pack_reference_i0\candidate.png.mp4, duration=1.00s[0m
+[32m2026-10-09 23:26:19[0m | [1mINFO[0m | "./app/services/material.py:8941":[34m _download_videos_openai_image_on_demand[0m - [1msemantic OpenAI image materials complete: scenes=1, generated=1.00s, required=1.00s[0m
+[32m2026-10-09 23:26:20[0m | [32m[1mSUCCESS[0m | "./app/services/material.py:8952":[34m _download_videos_openai_image_on_demand[0m - [32m[1mgenerated and rendered 1 image materials[0m
+______ test_selected_pack_reference_is_bound_or_unavailable[environment] ______
+test\services\test_material_paired_diagnostics.py:199: in test_selected_pack_reference_is_bound_or_unavailable
+    assert generator.call_args.kwargs["reference_images"] == ["chosen-upload.png"]
+E   AssertionError: assert [] == ['chosen-upload.png']
+E     
+E     Right contains one more item: 'chosen-upload.png'
+E     Use -v to get more diff
+---------------------------- Captured stdout call -----------------------------
+[32m2026-10-09 23:26:20[0m | [33m[1mWARNING[0m | "./app/services/material.py:7694":[34m _download_videos_openai_image_on_demand[0m - [33m[1mprecision route suppressed because the current manual identity pack does not target reference_target='environment'; scene=1[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:7943":[34m _download_videos_openai_image_on_demand[0m - [1mgenerating OpenAI image scene 1/1: route=standard, model=qwen-image-2.1, duration=1.00s, prompt='object'[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8889":[34m _download_videos_openai_image_on_demand[0m - [1mimage material rendered: C:\Users\JAVIER\AppData\Local\Temp\pytest-of-JAVIER\pytest-157\test_selected_pack_reference_i1\candidate.png.mp4, duration=1.00s[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8941":[34m _download_videos_openai_image_on_demand[0m - [1msemantic OpenAI image materials complete: scenes=1, generated=1.00s, required=1.00s[0m
+[32m2026-10-09 23:26:20[0m | [32m[1mSUCCESS[0m | "./app/services/material.py:8952":[34m _download_videos_openai_image_on_demand[0m - [32m[1mgenerated and rendered 1 image materials[0m
+________ test_selected_pack_reference_is_bound_or_unavailable[unbound] ________
+test\services\test_material_paired_diagnostics.py:200: in test_selected_pack_reference_is_bound_or_unavailable
+    if selection in {"unbound", "duplicate"}: observer.assert_not_called()
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\unittest\mock.py:900: in assert_not_called
+    raise AssertionError(msg)
+E   AssertionError: Expected 'mock' to not have been called. Called 1 times.
+E   Calls: [call([WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-157/test_selected_pack_reference_i2/first.png'), WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-157/test_selected_pack_reference_i2/candidate.png')], region_ids=['reference', 'candidate'], subject='object', cue_query=None)].
+---------------------------- Captured stdout call -----------------------------
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:7794":[34m _download_videos_openai_image_on_demand[0m - [1musing scene-adaptive manual references for precision scene: scene=1, refs=1, need='identity', shot='full', framing='full_subject', subject='object'[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:7943":[34m _download_videos_openai_image_on_demand[0m - [1mgenerating OpenAI image scene 1/1: route=precision, model=qwen-image-2.1, duration=1.00s, prompt='object'[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8024":[34m _download_videos_openai_image_on_demand[0m - [1mQwen precision direct generation: scene=1, attempt=1/2, refs=1, profile=balanced[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8765":[34m _download_videos_openai_image_on_demand[0m - [1mprecision full-scene single-pass: preserving generated subject/background composition for scene=1, image='candidate.png'[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8779":[34m _download_videos_openai_image_on_demand[0m - [1mprecision scene has no preceding standard style anchor; keeping generated colors unchanged[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8889":[34m _download_videos_openai_image_on_demand[0m - [1mimage material rendered: C:\Users\JAVIER\AppData\Local\Temp\pytest-of-JAVIER\pytest-157\test_selected_pack_reference_i2\candidate.png.mp4, duration=1.00s[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8941":[34m _download_videos_openai_image_on_demand[0m - [1msemantic OpenAI image materials complete: scenes=1, generated=1.00s, required=1.00s[0m
+[32m2026-10-09 23:26:20[0m | [32m[1mSUCCESS[0m | "./app/services/material.py:8952":[34m _download_videos_openai_image_on_demand[0m - [32m[1mgenerated and rendered 1 image materials[0m
+_______ test_selected_pack_reference_is_bound_or_unavailable[duplicate] _______
+test\services\test_material_paired_diagnostics.py:200: in test_selected_pack_reference_is_bound_or_unavailable
+    if selection in {"unbound", "duplicate"}: observer.assert_not_called()
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\unittest\mock.py:900: in assert_not_called
+    raise AssertionError(msg)
+E   AssertionError: Expected 'mock' to not have been called. Called 1 times.
+E   Calls: [call([WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-157/test_selected_pack_reference_i3/first.png'), WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-157/test_selected_pack_reference_i3/candidate.png')], region_ids=['reference', 'candidate'], subject='object', cue_query=None)].
+---------------------------- Captured stdout call -----------------------------
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:7794":[34m _download_videos_openai_image_on_demand[0m - [1musing scene-adaptive manual references for precision scene: scene=1, refs=1, need='identity', shot='full', framing='full_subject', subject='object'[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:7943":[34m _download_videos_openai_image_on_demand[0m - [1mgenerating OpenAI image scene 1/1: route=precision, model=qwen-image-2.1, duration=1.00s, prompt='object'[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8024":[34m _download_videos_openai_image_on_demand[0m - [1mQwen precision direct generation: scene=1, attempt=1/2, refs=1, profile=balanced[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8765":[34m _download_videos_openai_image_on_demand[0m - [1mprecision full-scene single-pass: preserving generated subject/background composition for scene=1, image='candidate.png'[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8779":[34m _download_videos_openai_image_on_demand[0m - [1mprecision scene has no preceding standard style anchor; keeping generated colors unchanged[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8889":[34m _download_videos_openai_image_on_demand[0m - [1mimage material rendered: C:\Users\JAVIER\AppData\Local\Temp\pytest-of-JAVIER\pytest-157\test_selected_pack_reference_i3\candidate.png.mp4, duration=1.00s[0m
+[32m2026-10-09 23:26:20[0m | [1mINFO[0m | "./app/services/material.py:8941":[34m _download_videos_openai_image_on_demand[0m - [1msemantic OpenAI image materials complete: scenes=1, generated=1.00s, required=1.00s[0m
+[32m2026-10-09 23:26:20[0m | [32m[1mSUCCESS[0m | "./app/services/material.py:8952":[34m _download_videos_openai_image_on_demand[0m - [32m[1mgenerated and rendered 1 image materials[0m
+=========================== short test summary info ===========================
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-empty_raw]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-blank_raw]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-empty_raw]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-blank_raw]
+FAILED test/services/test_material_paired_diagnostics.py::test_selected_pack_reference_is_bound_or_unavailable[anchor]
+FAILED test/services/test_material_paired_diagnostics.py::test_selected_pack_reference_is_bound_or_unavailable[environment]
+FAILED test/services/test_material_paired_diagnostics.py::test_selected_pack_reference_is_bound_or_unavailable[unbound]
+FAILED test/services/test_material_paired_diagnostics.py::test_selected_pack_reference_is_bound_or_unavailable[duplicate]
+8 failed, 149 deselected in 3.48s
+
+Python exit code: 1

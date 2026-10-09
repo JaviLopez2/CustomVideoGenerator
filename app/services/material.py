@@ -30,6 +30,7 @@ from app.services import (
     task_artifacts,
     visual_qa,
     visual_observation_diagnostics,
+    paired_visual_observation_diagnostics,
     video,
     volcengine_seedance,
 )
@@ -2378,6 +2379,7 @@ def _prepare_manual_precision_reference_pack(
             {
                 "slot": len(comfyui_inputs),
                 "local_file": local_path.name,
+                "local_path": str(local_path),
                 "original_file": entry.get("original") or None,
                 "role": entry.get("role") or "identity",
                 "description": entry.get("description") or None,
@@ -7272,6 +7274,8 @@ def _download_videos_openai_image_on_demand(
     scene_framing_intents: list[str] | None = None,
     scene_qa_contracts: list[dict] | None = None,
     visual_observation_store: visual_observation_diagnostics.RetainedVisualObservations | None = None,
+    paired_visual_observers: dict[str, Any] | None = None,
+    scene_paired_observation_contexts: list[dict | None] | None = None,
 ) -> List[str]:
     """Generate OpenAI-compatible images in narration order.
 
@@ -7389,6 +7393,8 @@ def _download_videos_openai_image_on_demand(
     continuity_root_includes_primary: dict[str, bool] = {}
     continuity_last_temporal_captions: dict[str, str] = {}
     continuity_last_temporal_states: dict[str, str] = {}
+    # Diagnostic history only; generation continues to edit its stable root.
+    paired_previous_images: dict[str, str] = {}
     for scene_index, search_term in enumerate(search_terms):
         if semantic_timing:
             try:
@@ -7559,6 +7565,7 @@ def _download_videos_openai_image_on_demand(
             continuity_root_images.pop(continuity_key, None)
             continuity_root_scenes.pop(continuity_key, None)
             continuity_root_includes_primary.pop(continuity_key, None)
+            paired_previous_images.pop(continuity_key, None)
             continuity_source_path = ""
             continuity_source_scene = None
             continuity_root_includes = None
@@ -8353,6 +8360,30 @@ def _download_videos_openai_image_on_demand(
             )
             _precision_diagnostics_persist(task_id, precision_diagnostics)
 
+        paired_diagnostic = None
+        paired_inputs = {"reference": None, "previous": None}
+        if items and paired_visual_observers is not None:
+            paired_inputs["reference"] = paired_visual_observation_diagnostics.selected_reference_path(
+                reference_images, reference_info,
+            )
+            paired_inputs["previous"] = paired_previous_images.get(continuity_key)
+            paired_context = (
+                scene_paired_observation_contexts[scene_index]
+                if isinstance(scene_paired_observation_contexts, list)
+                and scene_index < len(scene_paired_observation_contexts) else None
+            )
+            paired_diagnostic = paired_visual_observation_diagnostics.diagnose(
+                items[0].url, **paired_inputs, subject=reference_subject,
+                contexts=paired_context, observers=paired_visual_observers,
+            )
+            if not isinstance(items[0].source_info, dict):
+                items[0].source_info = {}
+            items[0].source_info["paired_visual_observation_diagnostic"] = paired_diagnostic
+            precision_diagnostics["plan_scenes"][scene_index]["paired_visual_observation_diagnostic"] = (
+                _precision_diagnostics_json_safe(paired_diagnostic)
+            )
+            _precision_diagnostics_persist(task_id, precision_diagnostics)
+
         # Risk-bounded semantic QA for the exact failure modes seen in
         # real benchmarks: evidence fallbacks that become unrelated scenes, and the
         # first frame of a continuity chain becoming a bad root. It runs on these
@@ -8750,6 +8781,19 @@ def _download_videos_openai_image_on_demand(
                     "keeping generated colors unchanged"
                 )
 
+        if paired_diagnostic is not None:
+            paired_diagnostic = paired_visual_observation_diagnostics.finalize(
+                paired_diagnostic, items[0].url if items else None, **paired_inputs,
+            )
+            if items:
+                if not isinstance(items[0].source_info, dict):
+                    items[0].source_info = {}
+                items[0].source_info["paired_visual_observation_diagnostic"] = paired_diagnostic
+            precision_diagnostics["plan_scenes"][scene_index]["paired_visual_observation_diagnostic"] = (
+                _precision_diagnostics_json_safe(paired_diagnostic)
+            )
+            _precision_diagnostics_persist(task_id, precision_diagnostics)
+
         if items:
             final_duplicate_qa = None
             if isinstance(items[0].source_info, dict):
@@ -8840,6 +8884,8 @@ def _download_videos_openai_image_on_demand(
                 continue
 
             scene_rendered = True
+            if paired_visual_observers is not None and continuity_key not in {"", "none"}:
+                paired_previous_images[continuity_key] = item.url
             logger.info(
                 f"image material rendered: {video_file}, "
                 f"duration={desired_duration:.2f}s"

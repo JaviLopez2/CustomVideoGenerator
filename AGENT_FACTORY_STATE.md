@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: paired private MPT diagnostic bridge verified
+
+From `5ad52e0`, explicit callbacks/scene contexts at private material seam, defaults None/no diagnostic reads; app imports no scripts. Reference bound to selected input, cue previous accepted/rendered same-key image; pre-QA snapshots finalized after retries/grading, changed/missing sources unavailable with prior data retained.157new cases;330tests+2subtests pass25.26s/exit0/no warnings. Two review P2 fixed/final no issues. Real retained-file CPU demonstration traverses actual loop with generator/upload/QA/render substitutes:12scenes/cohorts4,8reader calls,4uncertain/8unavailable; disabled/injected outputs equal. [Report](docs/PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md).0realmodel/generation/upload/video/download/service/dependency/workflow/label/stable changes; QA/routing/default behavior unchanged, one per-pack local path metadata field added.
+
+Next prepare cross-family structural/count/state controls from existing images and exact missing adjacent-pair contexts; independent labels remain pending and are not invented. Baseline->hot cue cannot stand for warm->hot in pipeline. Perception calibration/abstention/full QA latency still needed before judge selection/routing. [Autonomy](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action/8080 for CPU preparation; closing SHA via Git/origin. Earlier next/checkpoint blocks historical.
+
 ## Current checkpoint: retained paired replay implemented and verified
 
 From `6e28a56`, experimental source-bound adapter snapshots four pinned cue/shape reports without application wiring. Real CPU replay:14planned contexts/11retained rows,10uncertain/1invalid unavailable/3unattempted unavailable; raw final outputs and context preserved, scores null/no admission or physical truth. 100 new adapter cases;282 relevant tests pass15.87s/exit0/no warnings. Review CWD/root defect reproduced then fixed by absolute rooted image descriptors; final review no issues. [Report](docs/RETAINED_PAIRED_REPLAY_REPORT.md).0newmodel/generation/download/service/dependency/workflow/app/routing/gate/default/label/stable changes.

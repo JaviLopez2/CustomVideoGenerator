@@ -1,0 +1,22 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_____ test_requested_unavailable_pair_is_not_reported_as_unrequested[cue] _____
+test\services\test_paired_visual_observation_diagnostics.py:165: in test_requested_unavailable_pair_is_not_reported_as_unrequested
+    assert result["reason"] == "paired_diagnostic_unavailable"
+E   AssertionError: assert 'no_requested_pairs' == 'paired_diagn...c_unavailable'
+E     
+E     - paired_diagnostic_unavailable
+E     + no_requested_pairs
+____ test_requested_unavailable_pair_is_not_reported_as_unrequested[shape] ____
+test\services\test_paired_visual_observation_diagnostics.py:165: in test_requested_unavailable_pair_is_not_reported_as_unrequested
+    assert result["reason"] == "paired_diagnostic_unavailable"
+E   AssertionError: assert 'no_requested_pairs' == 'paired_diagn...c_unavailable'
+E     
+E     - paired_diagnostic_unavailable
+E     + no_requested_pairs
+=========================== short test summary info ===========================
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_requested_unavailable_pair_is_not_reported_as_unrequested[cue]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_requested_unavailable_pair_is_not_reported_as_unrequested[shape]
+2 failed, 90 deselected in 0.49s
+
+Python exit code: 1

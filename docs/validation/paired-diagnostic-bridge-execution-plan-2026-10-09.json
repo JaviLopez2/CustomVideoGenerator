@@ -1,0 +1,126 @@
+{
+  "protocol": "paired-diagnostic-bridge-execution-plan-1",
+  "declared_utc": "2026-10-09T21:31:26.834479+00:00",
+  "execution_base_head": "5ad52e072412e16191036a6b5b7121dd93c9619c",
+  "previous_goal_turn_classification": "progress: published source-bound paired replay/tests/handoff; current continuation connects private diagnostics only",
+  "scope": "Real retained artifacts through actual private caller with all generation/upload/QA/render runtime offline substitutes; compare disabled vs explicitly injected diagnostics",
+  "design": {
+    "path": "docs/PAIRED_DIAGNOSTIC_BRIDGE_PLAN.md",
+    "sha256": "6519c252cd12e28ab6a888864d710df02f5c036ff68725b7b83d66a5c397e91c"
+  },
+  "sources": [
+    {
+      "path": "app/services/material.py",
+      "sha256": "2b80fb84296131338dbb063b78588478d9f07b10e9f3c69e6079e5408bf44c52"
+    },
+    {
+      "path": "app/services/paired_visual_observation_diagnostics.py",
+      "sha256": "c25879a6b4248ab7c821add9a8dc4401e76330d93a6498174f9cc71278825b66"
+    },
+    {
+      "path": "app/services/visual_qa.py",
+      "sha256": "47482f1fe7769b0fa1e8f77e3acf82976e604d5b4e9c92edc8e51dccf9b6d6e2"
+    },
+    {
+      "path": "app/services/visual_observation_diagnostics.py",
+      "sha256": "e0e9afed845bc6f3a0402e8bc70ac76dd358e67554fcd4cfb691fb690b3d1c58"
+    },
+    {
+      "path": "app/services/klein4b_experimental.py",
+      "sha256": "74dcb7e7bacfd809e2dcf5dc05e700d08874b5b8c43ef50693eb2ca24d15da13"
+    },
+    {
+      "path": "scripts/retained_paired_observations.py",
+      "sha256": "c011d749ff32e47af05fbc5e11e24b7eb4b3f6ee1ab0987158cd926686d5da10"
+    },
+    {
+      "path": "scripts/observe_pairwise_cue.py",
+      "sha256": "5f030493d895f3c1c1e9e7b9425480e6f50a8eab3d75d9c8240de5a74e5562f5"
+    },
+    {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    {
+      "path": "scripts/pairwise_cue_observations.py",
+      "sha256": "6936a9686481a4dc485fc32bdcfb4875375ff9ecdce053d7efa9fe1180244e04"
+    },
+    {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    {
+      "path": "scripts/prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    },
+    {
+      "path": "test/services/test_corrective_continuity.py",
+      "sha256": "587ce5459bd1d013582cd1f89a95bb138936dfaa35e611f4945cf405d77b20be"
+    },
+    {
+      "path": "test/services/test_paired_visual_observation_diagnostics.py",
+      "sha256": "3d38ececcd4fe676c0ec299f93d379a0b9da002b0b73d3511dc445ec9cf17a43"
+    },
+    {
+      "path": "test/services/test_material_paired_diagnostics.py",
+      "sha256": "8cf05aa7d8c4873432421c75419e5399409fb3e88f448dfcc3c599b163b06f71"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-recipe-2026-10-09.py",
+      "sha256": "62def33d8d68f7fba9fb6dbf0e7d5dc973c1a88481f3aaa28760affc48a2923a"
+    }
+  ],
+  "retained_design": {
+    "path": "docs/validation/retained-paired-replay-design-2026-10-09.json",
+    "sha256": "98105494cb65adc680f62bbd41cf1087b35c5d30538b380c8cffc53cfe97fc8f"
+  },
+  "review": {
+    "status": "No issues; both P2 resolved",
+    "issues_reproduced": [
+      "excluded pack source used instead of selected input",
+      "empty/blank raw accepted available"
+    ],
+    "correction": "Per-entry absolute local_path bound to selected comfyui_input, ambiguity unavailable; nonblank final raw required",
+    "routing_guards_preserved": true
+  },
+  "final_tests": {
+    "log": {
+      "path": "docs/validation/paired-diagnostic-bridge-final-v2-tests-2026-10-09.txt",
+      "sha256": "610198ccdf5a10575a202e0cf03ab58e994b922f110ebcd55b83fca14732d8b3"
+    },
+    "passed": 330,
+    "subtests_passed": 2,
+    "new_tests": 157,
+    "exit_code": 0,
+    "warnings": 0
+  },
+  "budgets": {
+    "real_model_requests": 0,
+    "real_generation_requests": 0,
+    "downloads": 0,
+    "service_control": 0,
+    "uploads": 0,
+    "real_rendered_videos": 0
+  },
+  "expected_mock_scenes": 12,
+  "expected_diagnostic_statuses": {
+    "uncertain": 4,
+    "unavailable": 8
+  },
+  "expected_retained_reader_calls": 8,
+  "expected_baseline_injected_outputs_equal": true,
+  "known_context_gap": "Saved hot cue compared baseline->hot, not warm->hot; first scene has no prior/reference, cannot fake self",
+  "output": "docs/validation/paired-diagnostic-bridge-result-2026-10-09.json",
+  "non_claims": [
+    "perception accuracy",
+    "new independent labels",
+    "full QA latency",
+    "candidate selected",
+    "routing ready"
+  ],
+  "next": "Audit valid structural/count/state negatives and exact adjacent-pair gaps on retained artifacts, then fixed bounded judge protocol with independent review needs explicit and abstention preserved"
+}

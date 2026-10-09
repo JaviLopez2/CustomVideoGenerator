@@ -1,0 +1,438 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFFFFFFFFFFFFFFFFFFFF                  [100%]
+================================== FAILURES ===================================
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-valid-pass] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-valid-fail] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-valid-uncertain] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-valid-unavailable] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-exception-pass] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-exception-fail] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-exception-uncertain] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-exception-unavailable] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-invalid-pass] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-invalid-fail] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-invalid-uncertain] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-invalid-unavailable] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-missing_context-pass] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-missing_context-fail] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-missing_context-uncertain] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-missing_context-unavailable] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-valid-pass] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-valid-fail] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-valid-uncertain] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-valid-unavailable] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-exception-pass] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-exception-fail] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-exception-uncertain] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-exception-unavailable] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-invalid-pass] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-invalid-fail] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-invalid-uncertain] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-invalid-unavailable] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-missing_context-pass] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-missing_context-fail] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-missing_context-uncertain] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-missing_context-unavailable] _
+test\services\test_material_paired_diagnostics.py:55: in test_paired_diagnostic_cannot_change_qa_or_generation_count
+    result = run(**kwargs, scene_qa_contracts=[{"identity_critical": True}] * 2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+___________ test_diagnostic_metadata_does_not_abort_scene[cue-None] ___________
+test\services\test_material_paired_diagnostics.py:84: in test_diagnostic_metadata_does_not_abort_scene
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+________ test_diagnostic_metadata_does_not_abort_scene[cue-contexts1] _________
+test\services\test_material_paired_diagnostics.py:84: in test_diagnostic_metadata_does_not_abort_scene
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+________ test_diagnostic_metadata_does_not_abort_scene[cue-contexts2] _________
+test\services\test_material_paired_diagnostics.py:84: in test_diagnostic_metadata_does_not_abort_scene
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+________ test_diagnostic_metadata_does_not_abort_scene[cue-contexts3] _________
+test\services\test_material_paired_diagnostics.py:84: in test_diagnostic_metadata_does_not_abort_scene
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+__________ test_diagnostic_metadata_does_not_abort_scene[shape-None] __________
+test\services\test_material_paired_diagnostics.py:84: in test_diagnostic_metadata_does_not_abort_scene
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_______ test_diagnostic_metadata_does_not_abort_scene[shape-contexts1] ________
+test\services\test_material_paired_diagnostics.py:84: in test_diagnostic_metadata_does_not_abort_scene
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_______ test_diagnostic_metadata_does_not_abort_scene[shape-contexts2] ________
+test\services\test_material_paired_diagnostics.py:84: in test_diagnostic_metadata_does_not_abort_scene
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_______ test_diagnostic_metadata_does_not_abort_scene[shape-contexts3] ________
+test\services\test_material_paired_diagnostics.py:84: in test_diagnostic_metadata_does_not_abort_scene
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_________ test_reference_stays_root_while_cue_previous_advances[cue] __________
+test\services\test_material_paired_diagnostics.py:94: in test_reference_stays_root_while_cue_previous_advances
+    assert len(run(**options(args, 3))) == 3
+               ^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+________ test_reference_stays_root_while_cue_previous_advances[shape] _________
+test\services\test_material_paired_diagnostics.py:94: in test_reference_stays_root_while_cue_previous_advances
+    assert len(run(**options(args, 3))) == 3
+               ^^^^^^^^^^^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+__________ test_previous_never_crosses_phase_or_root_reset[cue-key] ___________
+test\services\test_material_paired_diagnostics.py:108: in test_previous_never_crosses_phase_or_root_reset
+    assert len(run(**kwargs)) == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_______ test_previous_never_crosses_phase_or_root_reset[cue-root_reset] _______
+test\services\test_material_paired_diagnostics.py:108: in test_previous_never_crosses_phase_or_root_reset
+    assert len(run(**kwargs)) == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_________ test_previous_never_crosses_phase_or_root_reset[shape-key] __________
+test\services\test_material_paired_diagnostics.py:108: in test_previous_never_crosses_phase_or_root_reset
+    assert len(run(**kwargs)) == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+______ test_previous_never_crosses_phase_or_root_reset[shape-root_reset] ______
+test\services\test_material_paired_diagnostics.py:108: in test_previous_never_crosses_phase_or_root_reset
+    assert len(run(**kwargs)) == 2
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+________ test_valid_observation_does_not_verify_klein_without_qa[cue] _________
+test\services\test_material_paired_diagnostics.py:117: in test_valid_observation_does_not_verify_klein_without_qa
+    assert run(**kwargs) == [] and generator.call_count == 1
+           ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_______ test_valid_observation_does_not_verify_klein_without_qa[shape] ________
+test\services\test_material_paired_diagnostics.py:117: in test_valid_observation_does_not_verify_klein_without_qa
+    assert run(**kwargs) == [] and generator.call_count == 1
+           ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_postprocessing_invalidates_old_observation_without_requery[cue-replacement] _
+test\services\test_material_paired_diagnostics.py:133: in test_postprocessing_invalidates_old_observation_without_requery
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2 and observer.call_count == 1
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_postprocessing_invalidates_old_observation_without_requery[cue-same_path] _
+test\services\test_material_paired_diagnostics.py:133: in test_postprocessing_invalidates_old_observation_without_requery
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2 and observer.call_count == 1
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_postprocessing_invalidates_old_observation_without_requery[shape-replacement] _
+test\services\test_material_paired_diagnostics.py:133: in test_postprocessing_invalidates_old_observation_without_requery
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2 and observer.call_count == 1
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_postprocessing_invalidates_old_observation_without_requery[shape-same_path] _
+test\services\test_material_paired_diagnostics.py:133: in test_postprocessing_invalidates_old_observation_without_requery
+    assert len(run(**kwargs)) == 2 and generator.call_count == 2 and observer.call_count == 1
+               ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_existing_gross_retry_keeps_decision_and_invalidates_prior_candidate[cue] _
+test\services\test_material_paired_diagnostics.py:151: in test_existing_gross_retry_keeps_decision_and_invalidates_prior_candidate
+    assert run(**kwargs)[-1] == str(retry) + ".mp4"
+           ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+_ test_existing_gross_retry_keeps_decision_and_invalidates_prior_candidate[shape] _
+test\services\test_material_paired_diagnostics.py:151: in test_existing_gross_retry_keeps_decision_and_invalidates_prior_candidate
+    assert run(**kwargs)[-1] == str(retry) + ".mp4"
+           ^^^^^^^^^^^^^
+test\services\test_corrective_continuity.py:38: in run
+    return material._download_videos_openai_image_on_demand(
+E   TypeError: _download_videos_openai_image_on_demand() got an unexpected keyword argument 'paired_visual_observers'
+=========================== short test summary info ===========================
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-valid-pass]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-valid-fail]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-valid-uncertain]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-valid-unavailable]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-exception-pass]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-exception-fail]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-exception-uncertain]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-exception-unavailable]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-invalid-pass]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-invalid-fail]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-invalid-uncertain]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-invalid-unavailable]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-missing_context-pass]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-missing_context-fail]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-missing_context-uncertain]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[cue-missing_context-unavailable]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-valid-pass]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-valid-fail]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-valid-uncertain]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-valid-unavailable]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-exception-pass]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-exception-fail]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-exception-uncertain]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-exception-unavailable]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-invalid-pass]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-invalid-fail]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-invalid-uncertain]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-invalid-unavailable]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-missing_context-pass]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-missing_context-fail]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-missing_context-uncertain]
+FAILED test/services/test_material_paired_diagnostics.py::test_paired_diagnostic_cannot_change_qa_or_generation_count[shape-missing_context-unavailable]
+FAILED test/services/test_material_paired_diagnostics.py::test_diagnostic_metadata_does_not_abort_scene[cue-None]
+FAILED test/services/test_material_paired_diagnostics.py::test_diagnostic_metadata_does_not_abort_scene[cue-contexts1]
+FAILED test/services/test_material_paired_diagnostics.py::test_diagnostic_metadata_does_not_abort_scene[cue-contexts2]
+FAILED test/services/test_material_paired_diagnostics.py::test_diagnostic_metadata_does_not_abort_scene[cue-contexts3]
+FAILED test/services/test_material_paired_diagnostics.py::test_diagnostic_metadata_does_not_abort_scene[shape-None]
+FAILED test/services/test_material_paired_diagnostics.py::test_diagnostic_metadata_does_not_abort_scene[shape-contexts1]
+FAILED test/services/test_material_paired_diagnostics.py::test_diagnostic_metadata_does_not_abort_scene[shape-contexts2]
+FAILED test/services/test_material_paired_diagnostics.py::test_diagnostic_metadata_does_not_abort_scene[shape-contexts3]
+FAILED test/services/test_material_paired_diagnostics.py::test_reference_stays_root_while_cue_previous_advances[cue]
+FAILED test/services/test_material_paired_diagnostics.py::test_reference_stays_root_while_cue_previous_advances[shape]
+FAILED test/services/test_material_paired_diagnostics.py::test_previous_never_crosses_phase_or_root_reset[cue-key]
+FAILED test/services/test_material_paired_diagnostics.py::test_previous_never_crosses_phase_or_root_reset[cue-root_reset]
+FAILED test/services/test_material_paired_diagnostics.py::test_previous_never_crosses_phase_or_root_reset[shape-key]
+FAILED test/services/test_material_paired_diagnostics.py::test_previous_never_crosses_phase_or_root_reset[shape-root_reset]
+FAILED test/services/test_material_paired_diagnostics.py::test_valid_observation_does_not_verify_klein_without_qa[cue]
+FAILED test/services/test_material_paired_diagnostics.py::test_valid_observation_does_not_verify_klein_without_qa[shape]
+FAILED test/services/test_material_paired_diagnostics.py::test_postprocessing_invalidates_old_observation_without_requery[cue-replacement]
+FAILED test/services/test_material_paired_diagnostics.py::test_postprocessing_invalidates_old_observation_without_requery[cue-same_path]
+FAILED test/services/test_material_paired_diagnostics.py::test_postprocessing_invalidates_old_observation_without_requery[shape-replacement]
+FAILED test/services/test_material_paired_diagnostics.py::test_postprocessing_invalidates_old_observation_without_requery[shape-same_path]
+FAILED test/services/test_material_paired_diagnostics.py::test_existing_gross_retry_keeps_decision_and_invalidates_prior_candidate[cue]
+FAILED test/services/test_material_paired_diagnostics.py::test_existing_gross_retry_keeps_decision_and_invalidates_prior_candidate[shape]
+54 failed, 1 passed in 7.63s
+
+Python exit code: 1

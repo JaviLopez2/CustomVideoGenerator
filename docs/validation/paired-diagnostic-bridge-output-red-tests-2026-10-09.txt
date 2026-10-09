@@ -1,0 +1,102 @@
+FFFFFFFFFFFF                                                             [100%]
+================================== FAILURES ===================================
+_______ test_bad_provider_envelope_cannot_cross_bridge[cue-missing_raw] _______
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+___ test_bad_provider_envelope_cannot_cross_bridge[cue-missing_observation] ___
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+_______ test_bad_provider_envelope_cannot_cross_bridge[cue-raw_finish] ________
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+______ test_bad_provider_envelope_cannot_cross_bridge[cue-raw_transport] ______
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+______ test_bad_provider_envelope_cannot_cross_bridge[cue-raw_reasoning] ______
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+______ test_bad_provider_envelope_cannot_cross_bridge[cue-oversized_raw] ______
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+______ test_bad_provider_envelope_cannot_cross_bridge[shape-missing_raw] ______
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+__ test_bad_provider_envelope_cannot_cross_bridge[shape-missing_observation] __
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+______ test_bad_provider_envelope_cannot_cross_bridge[shape-raw_finish] _______
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+_____ test_bad_provider_envelope_cannot_cross_bridge[shape-raw_transport] _____
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+_____ test_bad_provider_envelope_cannot_cross_bridge[shape-raw_reasoning] _____
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+_____ test_bad_provider_envelope_cannot_cross_bridge[shape-oversized_raw] _____
+test\services\test_paired_visual_observation_diagnostics.py:103: in test_bad_provider_envelope_cannot_cross_bridge
+    assert result["status"] == "unavailable" and not result["observations"][kind]["available"]
+E   AssertionError: assert ('uncertain' == 'unavailable'
+E     
+E     - unavailable
+E     + uncertain)
+=========================== short test summary info ===========================
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-missing_raw]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-missing_observation]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-raw_finish]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-raw_transport]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-raw_reasoning]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[cue-oversized_raw]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-missing_raw]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-missing_observation]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-raw_finish]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-raw_transport]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-raw_reasoning]
+FAILED test/services/test_paired_visual_observation_diagnostics.py::test_bad_provider_envelope_cannot_cross_bridge[shape-oversized_raw]
+12 failed, 78 deselected in 1.85s
+
+Python exit code: 1

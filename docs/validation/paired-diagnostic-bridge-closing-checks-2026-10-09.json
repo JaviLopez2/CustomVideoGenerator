@@ -1,0 +1,250 @@
+{
+  "protocol": "paired-diagnostic-bridge-closing-1",
+  "checked_utc": "2026-10-09T21:39:30.458670+00:00",
+  "execution_base_head": "5ad52e072412e16191036a6b5b7121dd93c9619c",
+  "branch": "factory/image-model-routing-modernization",
+  "fetch_divergence_before_commit": [
+    0,
+    0
+  ],
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_clean": true,
+  "stable_untracked_preserved": true,
+  "untouched": [
+    "QA",
+    "single_image_store",
+    "Klein admission",
+    "scripts",
+    "bridge workflows",
+    "models",
+    "dependencies",
+    "services",
+    "human labels",
+    "main"
+  ],
+  "new_metadata": "Manual reference pack local_path per entry; selector/routing untouched",
+  "fresh_verification": {
+    "passed": 330,
+    "subtests_passed": 2,
+    "new_tests": 157,
+    "seconds": 25.26,
+    "exit_code": 0,
+    "warnings": 0,
+    "log": {
+      "path": "docs/validation/paired-diagnostic-bridge-final-v2-tests-2026-10-09.txt",
+      "sha256": "610198ccdf5a10575a202e0cf03ab58e994b922f110ebcd55b83fca14732d8b3"
+    },
+    "cpu_recipe_exit_code": 0,
+    "cpu_demo_seconds": 7.599,
+    "mock_scenes": 12,
+    "reader_calls": 8,
+    "statuses": {
+      "uncertain": 4,
+      "unavailable": 8
+    },
+    "baseline_injected_outputs_equal": true,
+    "review": "No issues; both P2 resolved",
+    "json_parsed": 2,
+    "python_ast_parsed": 5,
+    "new_secret_pattern_findings": 0,
+    "scanner_note": "An inherited _safe_public_url docstring URL example matches generic user-info regex. AST confirms unchanged documentation, not new credentials. Initial regex-code classification corrected to docstring. Added lines and other task files have no matches; no values printed.",
+    "app_script_imports": 0,
+    "frozen_sources_unchanged": 16,
+    "tracked_whitespace_exit_code": 0
+  },
+  "real_activity": {
+    "model_requests": 0,
+    "generation_requests": 0,
+    "uploads": 0,
+    "rendered_videos": 0,
+    "downloads": 0,
+    "service_control": 0,
+    "human_labels": 0
+  },
+  "staged_checks": {
+    "whitelist_files": 33,
+    "unexpected_staged_files": 0,
+    "unstaged_diff_empty_before_closing_update": true,
+    "source_docs_json_whitespace_exit_code": 0,
+    "full_whitespace_exit_code": 2,
+    "raw_log_whitespace_paths": [
+      "docs/validation/paired-diagnostic-bridge-output-red-tests-2026-10-09.txt",
+      "docs/validation/paired-diagnostic-bridge-reason-red-tests-2026-10-09.txt",
+      "docs/validation/paired-diagnostic-bridge-review-green-tests-2026-10-09.txt",
+      "docs/validation/paired-diagnostic-bridge-review-green-v2-tests-2026-10-09.txt",
+      "docs/validation/paired-diagnostic-bridge-review-red-tests-2026-10-09.txt"
+    ],
+    "raw_pytest_output_preserved": true,
+    "new_staged_secret_pattern_findings": 0,
+    "inherited_docstring_example_excluded_as_verified_in_closing_scan": true,
+    "all_artifact_bindings_unchanged": true
+  },
+  "files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "e707b54ef074ed92e38f72ed689053aa3ee160a6860c7ee7bf2862078e49c5d5"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "99028299511e410b2afd89f0d3686424071a86f09428ffe12621ac6b4cf90fcb"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "ed545a93f3f133ca897da2321c5afc220a0a115ec8f6be4b19e58c50414d4fb5"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "ada2a9943f96c0427cafde5b005790fd28dee637ac7462e74232dcbab843d7d1"
+    },
+    {
+      "path": "docs/PAIRED_OBSERVER_INTEGRATION_PLAN.md",
+      "sha256": "e414d8bb4f53cc979bb6ddb00050eb0171b3ee9e4d65be6eed3840d19f7f39c8"
+    },
+    {
+      "path": "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+      "sha256": "efb1209bf075475d6de7f876d2080bc6f3fb93ee6f2a3ad0a9c045fe7a96662e"
+    },
+    {
+      "path": "docs/VISUAL_QA_HANDOFF.md",
+      "sha256": "68b29ebbe998c34439ba3fc95e72d8f89ae6f3d282775602b4bcf84f1a6dde51"
+    },
+    {
+      "path": "docs/PAIRED_DIAGNOSTIC_BRIDGE_PLAN.md",
+      "sha256": "6519c252cd12e28ab6a888864d710df02f5c036ff68725b7b83d66a5c397e91c"
+    },
+    {
+      "path": "docs/PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md",
+      "sha256": "4fbe08d284b28c59d3a38952ca24a29673d19003a881d53cef7f05c00d5d25a3"
+    },
+    {
+      "path": "app/services/material.py",
+      "sha256": "2b80fb84296131338dbb063b78588478d9f07b10e9f3c69e6079e5408bf44c52"
+    },
+    {
+      "path": "app/services/paired_visual_observation_diagnostics.py",
+      "sha256": "c25879a6b4248ab7c821add9a8dc4401e76330d93a6498174f9cc71278825b66"
+    },
+    {
+      "path": "test/services/test_paired_visual_observation_diagnostics.py",
+      "sha256": "3d38ececcd4fe676c0ec299f93d379a0b9da002b0b73d3511dc445ec9cf17a43"
+    },
+    {
+      "path": "test/services/test_material_paired_diagnostics.py",
+      "sha256": "8cf05aa7d8c4873432421c75419e5399409fb3e88f448dfcc3c599b163b06f71"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-admission-history-tests-2026-10-09.txt",
+      "sha256": "5cfecc72cc4d605dc5b7432dea9d598b63b6349f40348a32434a382e1ef370b5"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-caller-green-tests-2026-10-09.txt",
+      "sha256": "890397c0695c32ac4d56d55416e5eda5f5113023e10b08478753a2a7428c0778"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-caller-red-tests-2026-10-09.txt",
+      "sha256": "15c740e044fec5fdc9bd19a9553e534dc41afc8963ab64d5c3bff541649e35f0"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-execution-2026-10-09.txt",
+      "sha256": "42b31608829ff8fd78e65fb48f07121269da3b6cd7bb17c8645469001a1107c6"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-execution-plan-2026-10-09.json",
+      "sha256": "0e59b00e3d8794d0de2ba1067b8b164652aa7c26f954c6e731ee1da98891e074"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-final-tests-2026-10-09.txt",
+      "sha256": "d837b09979a5cf6c1c13c25545cdd050862627d4cc74c7ba4f8049fe02cace5e"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-final-v2-tests-2026-10-09.txt",
+      "sha256": "610198ccdf5a10575a202e0cf03ab58e994b922f110ebcd55b83fca14732d8b3"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-output-green-tests-2026-10-09.txt",
+      "sha256": "191438cc6b19f243c2d9c4b5477d0d0a928a22702e383beb71bc9b0e65c05116"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-output-red-tests-2026-10-09.txt",
+      "sha256": "4e699675232ce4713014697afba272b2b5fbb303543081b4a870d804985788e4"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-reason-green-tests-2026-10-09.txt",
+      "sha256": "af453a25faa7d3d164cccbdbeb612a780ea61dee0bb9ea59a9cdf3e400f5a8fc"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-reason-red-tests-2026-10-09.txt",
+      "sha256": "12a0f560aeaec9fc9c3d6535122ff92e29e7012a4fa503c0b9ef738459b48fe3"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-recipe-2026-10-09.py",
+      "sha256": "62def33d8d68f7fba9fb6dbf0e7d5dc973c1a88481f3aaa28760affc48a2923a"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-result-2026-10-09.json",
+      "sha256": "f66182bfa73eb4b916383818acc499c136a241be460b39ed16f0ed6315375408"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-review-green-tests-2026-10-09.txt",
+      "sha256": "ed41aca002ddf7f7c2d127c16c487fb476dd003a07e3372f958f465d8570c839"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-review-green-v2-tests-2026-10-09.txt",
+      "sha256": "3dfd17244526d8b72552a5a97764a6894d76a77ab6f8dcda6fd814cc7a129f72"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-review-green-v3-tests-2026-10-09.txt",
+      "sha256": "100332cf3b9fd82844123e24ed32fc49dc27699c3f708e5f8ace7876b86c62ba"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-review-red-tests-2026-10-09.txt",
+      "sha256": "7c29a90f05e27213f706ab7c9a9e67d4e5e7de6ea3b2ef0adb79e7f8945ed66d"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-unit-green-tests-2026-10-09.txt",
+      "sha256": "2f18c4092eba78cf40a47d654af3388f2634a90da940dd3ce60f6c9ae524c16a"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-unit-red-tests-2026-10-09.txt",
+      "sha256": "3c55214a615e800a961433257f6f73980c64ad5e2cdf966e2b74a4124839f92b"
+    }
+  ],
+  "checkpoint_files": [
+    "AGENT_FACTORY_STATE.md",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+    "docs/IMAGE_MODEL_ROUTING_RND.md",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+    "docs/PAIRED_OBSERVER_INTEGRATION_PLAN.md",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+    "docs/VISUAL_QA_HANDOFF.md",
+    "docs/PAIRED_DIAGNOSTIC_BRIDGE_PLAN.md",
+    "docs/PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md",
+    "app/services/material.py",
+    "app/services/paired_visual_observation_diagnostics.py",
+    "test/services/test_paired_visual_observation_diagnostics.py",
+    "test/services/test_material_paired_diagnostics.py",
+    "docs/validation/paired-diagnostic-bridge-admission-history-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-caller-green-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-caller-red-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-execution-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-execution-plan-2026-10-09.json",
+    "docs/validation/paired-diagnostic-bridge-final-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-final-v2-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-output-green-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-output-red-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-reason-green-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-reason-red-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-recipe-2026-10-09.py",
+    "docs/validation/paired-diagnostic-bridge-result-2026-10-09.json",
+    "docs/validation/paired-diagnostic-bridge-review-green-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-review-green-v2-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-review-green-v3-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-review-red-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-unit-green-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-unit-red-tests-2026-10-09.txt",
+    "docs/validation/paired-diagnostic-bridge-closing-checks-2026-10-09.json"
+  ],
+  "closing_sha": "Resolve checkpoint with Git/origin; execution base is not final SHA",
+  "objective_complete": false,
+  "next": "Prepare cross-family quantity/structure/state controls from retained files; exact adjacent pairs and independent label gaps, then fixed bounded judge protocol, no automatic routing."
+}

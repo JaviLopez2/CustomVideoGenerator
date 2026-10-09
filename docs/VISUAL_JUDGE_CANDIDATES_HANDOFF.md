@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: private paired diagnostic bridge closed
+
+From `5ad52e0`, app boundary explicitly injected at private material seam, no app script imports/default reads. Selected reference binding and accepted/rendered same-key previous image preserved; final byte changes/retry/missing invalidate applicability with earlier observation retained.157newcases,330finaltests+2subtests pass25.26s/exit0/no warnings; reviewed excluded-source/blank-output P2 fixed, no issues. [Report](PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md). Four real retained stores through actual caller with generation/upload/QA/render substituted:12mockscenes perrun,8reader calls,4uncertain/8unavailable; output equality vsdisabled.0realinference/generation/upload/video/download/service/dependency/workflow/label/stable changes; no perception accuracy/selection.
+
+Next prepare independent structural/count/state controls from existing artifacts, actual adjacent contexts and human-label gaps. Saved baseline->hot cannot represent actual warm->hot; availability remains false there. Calibration, valid cross-family negatives, abstention and complete QA latency still needed. [Autonomy](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action/8080 for CPU preparation; closing SHA Git/origin, earlier sections historical.
+
 ## Current checkpoint: retained paired replay closed
 
 From `6e28a56`, source-bound experimental adapter, four pinned cohorts/14planned contexts/11retained outputs:10uncertain,1invalid unavailable,3unattempted unavailable. Exact raw, ordered subject/query and source/prepared proof; scores null/no admission/physical truth. Real CPU CLI/proof exit0;100 new adapter cases/282 final relevant pass15.87s/exit0/no warnings. Root/CWD P2 reproduced and fixed with absolute image descriptors before delegation; final review no issues. [Report](RETAINED_PAIRED_REPLAY_REPORT.md).0newmodel/generation/download/service/app/model/gate/routing/dependency/workflow/label/stable changes; no accuracy or candidate selection.
