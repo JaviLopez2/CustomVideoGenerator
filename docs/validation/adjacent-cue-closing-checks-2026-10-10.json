@@ -1,0 +1,151 @@
+{
+  "protocol": "adjacent-cue-closing-checks-1",
+  "checked_utc": "2026-10-09T22:06:06.799353+00:00",
+  "base_head": "bace7ab3a0005b3265ed10654de822c2c14500e4",
+  "branch": "factory/image-model-routing-modernization",
+  "source_plan_code_and_fullframes_reverified": true,
+  "recipe_syntax_and_binding_verified": true,
+  "model_requests": 2,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "model_results": [
+    {
+      "model": "qwen35",
+      "binding": {
+        "path": "docs/validation/adjacent-cue-qwen35-2026-10-09.json",
+        "sha256": "252d2061e93cf316abf01619600cfa446b9fc79282e59ae72caa61c314dc8854"
+      },
+      "seconds": 5.566830399999162,
+      "load_seconds": 4.031057300002431,
+      "status": "completed",
+      "cue_pattern": "reported_visible_in_both",
+      "verdict": "uncertain"
+    },
+    {
+      "model": "qwen3vl",
+      "binding": {
+        "path": "docs/validation/adjacent-cue-qwen3vl-2026-10-09.json",
+        "sha256": "af0d31cc4edd569b97ecaa02076004d4dac118c6446d6c28b68cb98dc0467c61"
+      },
+      "seconds": 5.623289600000135,
+      "load_seconds": 4.041297800002212,
+      "status": "completed",
+      "cue_pattern": "reported_visible_in_both",
+      "verdict": "uncertain"
+    }
+  ],
+  "pid_checks": [
+    {
+      "pid": 27884,
+      "open_process_error": 87,
+      "live": false
+    },
+    {
+      "pid": 23440,
+      "open_process_error": 87,
+      "live": false
+    }
+  ],
+  "resources": {
+    "ram_free_gib": 18.27523422241211,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1299,
+      "total_mib": 12288,
+      "utilization_percent": 20,
+      "temperature_c": 30
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "health": [
+    {
+      "port": 8080,
+      "path": "/health",
+      "error_type": "URLError"
+    },
+    {
+      "port": 8090,
+      "path": "/",
+      "http_status": 404
+    },
+    {
+      "port": 8188,
+      "path": "/system_stats",
+      "http_status": 200
+    },
+    {
+      "port": 8188,
+      "path": "/queue",
+      "http_status": 200,
+      "running": 0,
+      "pending": 0
+    }
+  ],
+  "stable": {
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "tracked_changes": 0,
+    "untracked_count": 14
+  },
+  "worktree_count": 10,
+  "focused_test_log": {
+    "path": "docs/validation/adjacent-cue-focused-tests-2026-10-09.txt",
+    "sha256": "919bcdd3f768174ac33867b002685f1ea4291e2a8dc1201850bc991232ac25af"
+  },
+  "test_result": "131 passed in 3.31s, Python exit code0",
+  "new_file_json_and_secret_checks": {
+    "new_files_checked": 10,
+    "tracked_diff_files_checked": 4,
+    "matches": 0
+  },
+  "review": "Read-only independent review of recipe/plan: no findings; verify-only exit0, no inference by reviewer",
+  "human_clock_review": "pending",
+  "human_accuracy_metrics": null,
+  "adjacent_replay_integration": "pending separate compatible support",
+  "production_admission": false,
+  "closing_files": [
+    {
+      "path": "docs/ADJACENT_CUE_AND_CONTROL_PREPARATION_REPORT.md",
+      "sha256": "90799883450b23fc7bd2cac6a625d469926a360b11ca791e7db1301f62fad24e"
+    },
+    {
+      "path": "docs/validation/adjacent-cue-focused-tests-2026-10-09.txt",
+      "sha256": "919bcdd3f768174ac33867b002685f1ea4291e2a8dc1201850bc991232ac25af"
+    },
+    {
+      "path": "docs/validation/adjacent-cue-plan-2026-10-09.json",
+      "sha256": "2d3daa3b493a6cb7d3bb3a17fc91641b606311bea1a9b355d95e420496e63fed"
+    },
+    {
+      "path": "docs/validation/adjacent-cue-qwen35-2026-10-09.json",
+      "sha256": "252d2061e93cf316abf01619600cfa446b9fc79282e59ae72caa61c314dc8854"
+    },
+    {
+      "path": "docs/validation/adjacent-cue-qwen3vl-2026-10-09.json",
+      "sha256": "af0d31cc4edd569b97ecaa02076004d4dac118c6446d6c28b68cb98dc0467c61"
+    },
+    {
+      "path": "docs/validation/adjacent-cue-recipe-2026-10-09.py",
+      "sha256": "6301e87c02ce603b89a64a8cd8f3eeb962db3a7ba57d89aa08ae11a81e0ed60e"
+    },
+    {
+      "path": "docs/validation/adjacent-cue-resource-preflight-2026-10-09.json",
+      "sha256": "283dc2db9c3c8d60f6e5ad79673fdc303f46e7b866ef60299f31bd55ec1d5b09"
+    },
+    {
+      "path": "docs/validation/clock-count-comparison-preparation-2026-10-10.json",
+      "sha256": "5004480976f2bef721b3d3b5b8f195d9ca10e2fd066e06cfcd756272923f334d"
+    },
+    {
+      "path": "docs/validation/clock-independent-review-preparation-2026-10-09.json",
+      "sha256": "04b7822ead0a3c8ca9975bbc609085a71139108f1d3be97bf72d6423695a15b7"
+    },
+    {
+      "path": "docs/validation/retained-camera-control-audit-2026-10-09.json",
+      "sha256": "4b42f4a20b18ccae31d40e052c6e68bba2c424e98865e464f09eb80709b1d65c"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "protocol": "retained-adjacent-cue-plan-1",
+  "declared_utc": "2026-10-09T21:56:19.132449+00:00",
+  "execution_base_head": "bace7ab3a0005b3265ed10654de822c2c14500e4",
+  "question": "Obtain the missing retained warm-to-hot adjacent-frame visible-cue observation using the published prompt/schema/decoding, without inferring temperature or physical identity.",
+  "published_source_plan": {
+    "path": "docs\\validation\\pairwise-visible-cue-probe-plan-2026-10-09.json",
+    "sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54"
+  },
+  "recipe": {
+    "path": "docs\\validation\\adjacent-cue-recipe-2026-10-09.py",
+    "sha256": "6301e87c02ce603b89a64a8cd8f3eeb962db3a7ba57d89aa08ae11a81e0ed60e"
+  },
+  "comparison_candidates": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "budget": {
+    "requests_per_model": 1,
+    "maximum_requests_total": 2,
+    "automatic_retries": 0,
+    "new_generation_requests": 0,
+    "new_downloads": 0,
+    "stop_at_first_invalid_or_unavailable": true
+  },
+  "cases": [
+    {
+      "case_id": "retained_warm_to_hot_adjacent",
+      "previous_region_id": "temporal_warm_512",
+      "current_region_id": "mpt_temporal_hot_768",
+      "previous": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_01.png",
+        "sha256": "dcd9c928c4b24e0f827f8860b0e14ae0507ccb13aab1236942ebff9cfaeba841",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "current": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_02.png",
+        "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+        "size": [
+          768,
+          1376
+        ]
+      }
+    }
+  ],
+  "human_gold": false,
+  "expected_cue_visibility": null,
+  "scope": [
+    "One new ordered context; the published baseline-to-hot context and stopped Qwen3-VL cohort remain unchanged",
+    "No new control retry, prompt/schema/crop/tokens tuning or reuse of labels as model input",
+    "One new owned server per existing candidate, sequential; published resource/weights/runtime and native-input safeguards retained",
+    "Raw failures remain unavailable; scores separate and null; no production admission/rejection or state-temperature truth",
+    "CPU verification first; preserve sources/code/previous raw; logs/images ignored; record local request/load separately from full QA latency"
+  ],
+  "integration_gap": "The current replay adapter does not accept this separate recipe result protocol; integrate later through a tested compatible loader, never relabel an old baseline-to-hot observation."
+}

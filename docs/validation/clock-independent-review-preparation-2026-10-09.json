@@ -1,0 +1,98 @@
+{
+  "protocol": "independent-visible-count-review-1",
+  "declared_utc": "2026-10-09T21:46:54.110763+00:00",
+  "board": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\clock-independent-review-2026-10-09\\review-board.svg",
+    "sha256": "97b99355fa295da35443401ff230d466ea16cebb09a3f52df9baa59f7c14d2b4"
+  },
+  "source_dataset": {
+    "path": "docs/validation/visual-qa-dataset-2026-10-08.json",
+    "sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f"
+  },
+  "display": "Four full native PNG images embedded unchanged in SVG; no crop/markup/model names/past labels/desired counts",
+  "question": "Count visible hands radiating from the clock pivot, including a seconds hand if present; exclude dial markers/shadows/reflections. Count visible keys separately. Report uncertain rather than force a number if overlapping or unclear.",
+  "rows": [
+    {
+      "review_id": "1",
+      "case_id": "valid_cloth_edit",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "requested_fields": [
+        "visible_watch_hands",
+        "visible_keys"
+      ],
+      "human_review_status": "pending",
+      "human_value": null,
+      "dataset_labels_changed": false
+    },
+    {
+      "review_id": "2",
+      "case_id": "mpt_t2i_text_contract_768",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+        "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "requested_fields": [
+        "visible_watch_hands",
+        "visible_keys"
+      ],
+      "human_review_status": "pending",
+      "human_value": null,
+      "dataset_labels_changed": false
+    },
+    {
+      "review_id": "3",
+      "case_id": "mpt_explicit_quantity_seed43",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+        "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "requested_fields": [
+        "visible_watch_hands",
+        "visible_keys"
+      ],
+      "human_review_status": "pending",
+      "human_value": null,
+      "dataset_labels_changed": false
+    },
+    {
+      "review_id": "4",
+      "case_id": "z_image_t2i_768",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\z_image_t2i_768\\openai-image-644f7e2133d4.png",
+        "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "requested_fields": [
+        "visible_watch_hands",
+        "visible_keys"
+      ],
+      "human_review_status": "pending",
+      "human_value": null,
+      "dataset_labels_changed": false
+    }
+  ],
+  "previous_human_ABC_changed": false,
+  "production_admission": false,
+  "new_generation_requests": 0,
+  "new_model_requests": 0,
+  "independent_of_model": true,
+  "perfect_blinding_claimed": false
+}

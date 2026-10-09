@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: actual adjacent cue obtained; independent calibration pending
+
+From `bace7ab`, one newly declared warm→hot context, two requests/0retry/generation/download: both existing judges report cue observed in both frames, stop/0reasoning, 5.567s/5.623s request and 4.031s/4.041s own load. Scores null/uncertain/no admission; presence alone does not establish temperature or progression. Published observer/runner unchanged, 131 existing focused tests pass3.31s/exit0; CPU recipe verification and independent review clean. Own PIDs27884/23440 closed. [Report](docs/ADJACENT_CUE_AND_CONTROL_PREPARATION_REPORT.md). Four clock originals/6archived count rows prepared for still-pending human review, no labels/metrics invented. Four retained camera/photo sources match Factory manifest; recorded packs traced, anchor ICC/nontrivial alpha preparation still needed, no structural negative established. App/defaults/QA/gates/routing/weights/deps/workflows/production intact.
+
+Next prepare explicit camera color/alpha/provenance and add compatible replay support for the separate adjacent recipe result; keep old baseline→hot raw distinct. Record human counts verbatim when available. Independent sensitivity/false alarms/abstention and full QA latency remain pending. No servers or routine approval for CPU work; objective active. SHA checkpoint via Git/origin. Earlier blocks historical.
+
 ## Current checkpoint: paired private MPT diagnostic bridge verified
 
 From `5ad52e0`, explicit callbacks/scene contexts at private material seam, defaults None/no diagnostic reads; app imports no scripts. Reference bound to selected input, cue previous accepted/rendered same-key image; pre-QA snapshots finalized after retries/grading, changed/missing sources unavailable with prior data retained.157new cases;330tests+2subtests pass25.26s/exit0/no warnings. Two review P2 fixed/final no issues. Real retained-file CPU demonstration traverses actual loop with generator/upload/QA/render substitutes:12scenes/cohorts4,8reader calls,4uncertain/8unavailable; disabled/injected outputs equal. [Report](docs/PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md).0realmodel/generation/upload/video/download/service/dependency/workflow/label/stable changes; QA/routing/default behavior unchanged, one per-pack local path metadata field added.

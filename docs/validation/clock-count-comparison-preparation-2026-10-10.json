@@ -1,0 +1,226 @@
+{
+  "protocol": "independent-clock-count-comparison-preparation-1",
+  "prepared_utc": "2026-10-09T22:02:37.806964+00:00",
+  "bindings": {
+    "review_preparation": {
+      "path": "docs/validation/clock-independent-review-preparation-2026-10-09.json",
+      "sha256": "04b7822ead0a3c8ca9975bbc609085a71139108f1d3be97bf72d6423695a15b7"
+    },
+    "full_qa_archive": {
+      "path": "docs/validation/visual-judge-full-blind-contract-2026-10-08.json",
+      "sha256": "637481e340d0abe4687fdfc863903819b382c7765d5df096e5d90ff0aa450c23"
+    },
+    "prefill_archive": {
+      "path": "docs/validation/visual-judge-prefill-idle-controls-2026-10-08.json",
+      "sha256": "fea73ce0a72961b03ee36c651fb83370e5a2ec989264321c3b2a7ebb703b7bf8"
+    }
+  },
+  "board_original_bytes_verified": true,
+  "rows": [
+    {
+      "review_id": "1",
+      "case_id": "valid_cloth_edit",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_review_status": "pending",
+      "human_value": null,
+      "human_model_agreement": null,
+      "archived_observations": [
+        {
+          "archive": "full_qa_blind_counts",
+          "archive_row_id": "valid_cloth_edit",
+          "model": "unsloth/Qwen3.5-9B-GGUF",
+          "input_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "One silver key with bow, shaft, and bit clearly visible next to the watch."
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two distinct hands (hour and minute) visible on the watch face; no second hand."
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "model_remarks_are_not_physical_truth": true
+        },
+        {
+          "archive": "prefill_single_fullframe",
+          "archive_row_id": "positive_full",
+          "model": "unsloth/Qwen3.5-9B-GGUF",
+          "input_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "counts": [
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two distinct hands are clearly visible radiating from the center: a shorter hour hand pointing near 10 and a longer minute hand pointing near 2. No seconds hand is present. Pixel evidence: hands originate at central pivot, extend outward with clear separation from dial markings."
+            }
+          ],
+          "transport_status": "completed",
+          "finish_reason": "stop",
+          "reasoning_characters": 0
+        }
+      ]
+    },
+    {
+      "review_id": "2",
+      "case_id": "mpt_t2i_text_contract_768",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+        "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_review_status": "pending",
+      "human_value": null,
+      "human_model_agreement": null,
+      "archived_observations": [
+        {
+          "archive": "full_qa_blind_counts",
+          "archive_row_id": "mpt_t2i_text_contract_768",
+          "model": "unsloth/Qwen3.5-9B-GGUF",
+          "input_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "One silver key clearly visible to the right of the watch; intact structure, no fusion."
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 3,
+              "uncertain": false,
+              "reason": "Three distinct hands visible: hour, minute, and second hand all present and functional."
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "model_remarks_are_not_physical_truth": true
+        },
+        {
+          "archive": "prefill_single_fullframe",
+          "archive_row_id": "negative_full",
+          "model": "unsloth/Qwen3.5-9B-GGUF",
+          "input_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+          "counts": [
+            {
+              "subject": "watch hands",
+              "observed_count": 3,
+              "uncertain": false,
+              "reason": "Three distinct hands are clearly visible radiating from the center: hour hand (short, pointing near 10), minute hand (longer, pointing near 2), and seconds hand (thin, pointing near 4). All are unobscured and fully visible."
+            }
+          ],
+          "transport_status": "completed",
+          "finish_reason": "stop",
+          "reasoning_characters": 0
+        }
+      ]
+    },
+    {
+      "review_id": "3",
+      "case_id": "mpt_explicit_quantity_seed43",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+        "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_review_status": "pending",
+      "human_value": null,
+      "human_model_agreement": null,
+      "archived_observations": [
+        {
+          "archive": "full_qa_blind_counts",
+          "archive_row_id": "mpt_explicit_quantity_seed43",
+          "model": "unsloth/Qwen3.5-9B-GGUF",
+          "input_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two silver keys visible: one with bow, one without; both metallic and distinct."
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two hands (hour and minute) clearly visible on watch face."
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "model_remarks_are_not_physical_truth": true
+        }
+      ]
+    },
+    {
+      "review_id": "4",
+      "case_id": "z_image_t2i_768",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\z_image_t2i_768\\openai-image-644f7e2133d4.png",
+        "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_review_status": "pending",
+      "human_value": null,
+      "human_model_agreement": null,
+      "archived_observations": [
+        {
+          "archive": "full_qa_blind_counts",
+          "archive_row_id": "z_image_t2i_768",
+          "model": "unsloth/Qwen3.5-9B-GGUF",
+          "input_sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "One silver-colored key with bow, shaft, and bit clearly visible next to the watch."
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 3,
+              "uncertain": false,
+              "reason": "Three distinct hands visible: hour, minute, and second hand all present on dial."
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "model_remarks_are_not_physical_truth": true
+        }
+      ]
+    }
+  ],
+  "distinct_original_images": 4,
+  "new_model_requests": 0,
+  "new_generation_requests": 0,
+  "human_accuracy_metrics": null,
+  "limits": [
+    "Counts extracted literally from archived raw content; no new inference, model verdict rewrite or human gold invented.",
+    "Multiple views/protocols of one original image are not independent samples; only two prefill full-frame rows included.",
+    "Existing assistant dataset labels and the prior human key A/B/C review remain unchanged.",
+    "Cases were selected after earlier model results, so this subset is not an unbiased general accuracy test.",
+    "Pending human uncertain must remain uncertain; do not force a numeric adjudication or silently translate it into pass."
+  ]
+}

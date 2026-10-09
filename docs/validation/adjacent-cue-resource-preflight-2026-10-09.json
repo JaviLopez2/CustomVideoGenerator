@@ -1,0 +1,42 @@
+{
+  "protocol": "adjacent-cue-resource-preflight-1",
+  "checked_utc": "2026-10-09T21:56:48.521622+00:00",
+  "ram_free_gib": 18.18878936767578,
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 3060",
+    "used_mib": 1297,
+    "total_mib": 12288,
+    "utilization_percent": 8,
+    "temperature_c": 30
+  },
+  "ports_open": {
+    "8080": false,
+    "8092": false
+  },
+  "health": [
+    {
+      "port": 8080,
+      "path": "/health",
+      "error_type": "URLError"
+    },
+    {
+      "port": 8090,
+      "path": "/",
+      "http_status": 404
+    },
+    {
+      "port": 8188,
+      "path": "/system_stats",
+      "http_status": 200
+    },
+    {
+      "port": 8188,
+      "path": "/queue",
+      "http_status": 200,
+      "running": 0,
+      "pending": 0
+    }
+  ],
+  "generation_requests": 0,
+  "model_requests": 0
+}

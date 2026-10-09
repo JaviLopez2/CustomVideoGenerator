@@ -1,0 +1,142 @@
+{
+  "protocol": "retained-cross-family-camera-audit-1",
+  "checked_utc": "2026-10-09T21:59:30.873047+00:00",
+  "run_id": "f36297f1-5cc4-43bf-8d4a-d6bb8725faef",
+  "bindings": {
+    "diagnostics": {
+      "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\precision_diagnostics.json",
+      "sha256": "2a30d5969b22a24b956f4f4a95362fa269b33ba75540a973b2adf354a7f62fb7"
+    },
+    "artifact_manifest": {
+      "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\artifact_manifest.json",
+      "sha256": "511858a8656fa67a659c7627ec625f07a52e2e39fde091ffbb229ac8b88eb261"
+    },
+    "reference_manifest": {
+      "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\user_references\\manifest.json",
+      "sha256": "80eef4781ca02ebe934d1046e3faa367cd0f818c4ec08c40326c045d5a69eeae"
+    },
+    "region_helper": {
+      "path": "scripts\\prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    }
+  },
+  "sources": [
+    {
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\user_references\\reference-05.png",
+        "sha256": "56214c597d825fcc469151284b2981577caec8b9ff466c961fb8ed849b7cad07",
+        "size": [
+          800,
+          800
+        ]
+      },
+      "mode": "RGBA",
+      "metadata_keys": [
+        "exif",
+        "icc_profile",
+        "dpi"
+      ],
+      "exif_orientation": 1,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "artifact_manifest_bytes_verified": true,
+      "native_helper_check": {
+        "eligible": false,
+        "error": "Unsupported profile/orientation; do not silently transform"
+      }
+    },
+    {
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-7cafe3ecfbb9.png",
+        "sha256": "4a755cde7a4ee323549a709f91cbf6ba815f6d16f5016a198c06d68847016333",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "mode": "RGBA",
+      "metadata_keys": [],
+      "exif_orientation": null,
+      "alpha_extrema": [
+        241,
+        255
+      ],
+      "artifact_manifest_bytes_verified": true
+    },
+    {
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-06d8ce7bd117.png",
+        "sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "size": [
+          1024,
+          1536
+        ]
+      },
+      "mode": "RGB",
+      "metadata_keys": [],
+      "exif_orientation": null,
+      "alpha_extrema": null,
+      "artifact_manifest_bytes_verified": true
+    },
+    {
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-cbbf8a76af1b.png",
+        "sha256": "bae3516c5353db16f8bab639772f8fe58dd0c0de0ae4cb7e7d720650d6c3d19b",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "mode": "RGBA",
+      "metadata_keys": [],
+      "exif_orientation": null,
+      "alpha_extrema": [
+        246,
+        255
+      ],
+      "artifact_manifest_bytes_verified": true
+    }
+  ],
+  "recorded_relationships": [
+    {
+      "scene": 3,
+      "primary_subject": "camera",
+      "selected_candidate_source_index": 1,
+      "ordered_reference_source_indices": [
+        0
+      ],
+      "top_level_reference_disagrees_with_selected_pack": true,
+      "top_level_reference_file": "reference-01.jpg"
+    },
+    {
+      "scene": 9,
+      "primary_subject": "photo print",
+      "selected_candidate_source_index": 3,
+      "ordered_reference_source_indices": [
+        2,
+        0
+      ]
+    }
+  ],
+  "assistant_inspection": {
+    "origin": "assistant inspection of original full images, known scene context; not independent human gold",
+    "scene3": "Broad camera folding arrangement is visually comparable; addition of the exiting paper is visible. A major structural defect has not been established.",
+    "scene9": "The print has a broadly similar depicted round element and crossing lines; angle/composition change, and its right edge is clipped by the image boundary. This does not prove physical identity or full border coverage.",
+    "human_labels": "pending",
+    "structural_negative_established": false,
+    "pixel_count_gold": null,
+    "physical_identity_established": false
+  },
+  "input_limits": [
+    "Anchor has embedded ICC/EXIF with orientation1 and nontrivial alpha. Helper rejection reproduced; no profile stripping, compositing, conversion or source rewrite performed.",
+    "Candidates also have nontrivial alpha. Display/compositing policy needs an explicit preparation before any new camera model cohort.",
+    "Recorded selected reference pack is verified, not a capture of the remote HTTP input bytes; old top-level reference must not substitute for that pack.",
+    "The photo continuity root is generated in the prior run; it is not an independent human image or measurement."
+  ],
+  "generation_requests": 0,
+  "model_requests": 0,
+  "production_admission": false,
+  "source_files_changed": false
+}

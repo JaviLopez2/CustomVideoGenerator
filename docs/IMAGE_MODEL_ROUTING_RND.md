@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — observación adyacente y preparación de controles, 2026-10-10
+
+Desde `bace7ab`, se declara y ejecuta un contexto warm→hot distinto del antiguo baseline→hot: dos consultas/0retry/generación/descarga. Qwen3.5/Qwen3-VL reportan pista observada en ambos,5,567s/5,623s, carga propia~4,03s/4,04s; formatos válidos, scores null/uncertain/sin admisión. No demuestra aumento de temperatura/intensidad/progresión ni precisión/latencia de QA completo.131 tests publicados enfocados pasan3,31s/exit0, receta CPU verificada/revisión independiente sin hallazgos. Los ocho módulos ligados no cambian. [Informe](ADJACENT_CUE_AND_CONTROL_PREPARATION_REPORT.md), raw y límites allí.
+
+Cuatro relojes: revisión humana independiente sigue pendiente, seis recuentos archivados vinculados sin nuevas solicitudes ni cambios de labels/ABC. Cuatro fuentes cámara/foto cotejadas con Factory; relaciones del pack real registradas, no prueba de bytes HTTP. Ancla con ICC/alpha requiere preparación explícita; no se acredita un negativo estructural. Próximo: preparar esos inputs y añadir soporte compatible del nuevo raw al replay, sin activar QA/routing/gates. Calibración, errores/abstención y medición completa pendientes; ningún juez seleccionado para producción.
+
 ## Actualización — puente privado pareado verificado, 2026-10-09
 
 Desde `5ad52e0`, callbacks/contextos privados opt-in en MPT, app sin imports de scripts. Referencia ligada al input seleccionado y anterior aceptado/renderizado de la misma clave; post-QA/retry/grading invalida bytes distintos, guarda snapshot anterior.157casos nuevos,330tests+2subtests pasan25,26s/exit0/sin avisos; dos P2 de revisión corregidos, final no issues. Demostración CPU con archivos reales/caller real y generación/upload/QA/render simulados:12escenas por recorrido,8lecturas,4uncertain/8unavailable, resultados igual sin/con diagnóstico. [Informe](PAIRED_DIAGNOSTIC_BRIDGE_REPORT.md).0real consultas/generaciones/uploads/vídeos/descargas/servicios/deps/workflows/labels/estable; QA/routing/defaults conservados, binding local por entrada del pack como metadato.
