@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: generated structural edit, negative not established
+
+Base ace19e7, user opened8188;1 pinned Klein edit512²/4steps/seed42 completed HTTP200/PNG and Comfy success/completed,14.127s. Assistant sees lower handle attachment still connected, no unambiguous gap: do not label valid negative or score any judge. Human review requested/pending on full/2x detail three-image board. 0 judge requests/retries, no new selection evidence. [Execution/protocol](MUG_STRUCTURAL_CONTROL_PROTOCOL.md), [raw](validation/mug-structural-control-generation-2026-10-09.json), [assistant review, not gold](validation/mug-structural-control-assistant-review-2026-10-09.json).
+
+3 asset hashes plus binary/workflow/source bindings reverified, unique input copy without overwrite, own8091 closed/free/queue0/0, shared8188 retained.0 benchmarks/downloads/code/app/dependencies/models/gates/routing/workflow/stable changes;80 previous offline tests historical, actual proof HTTP/history/PNG/hash/closure. Preserve ignored output dir and input; v2 board direct integer2x detail replaces only earlier two-stage render. Next human response: intact/ambiguous ends cohort without inference; separate method/budget before any new generation, no automatic retry. Clear contrary observation requires inspection/site review before execution plan. Candidates stay experimental diagnostics, no identity/admission/promotion. Closing SHA via Git/origin.
+
 ## Current checkpoint: reviewed structural mug control protocol prepared
 
 Base d765e58, [fixed minimal protocol](MUG_STRUCTURAL_CONTROL_PROTOCOL.md): retained red/blue positives plus one lower handle attachment interruption (not created yet). At most1 edit512²/4steps/seed42,0retries; artifact/contact human review before at most6 observations,3 per existing pinned judge, same current location prompt/schema/profile. No labels/desired counts/review coordinates in judge payloads. Count correctness without exclusive spatial support remains partial, not identity/admission or promotion. Negative SHA/reviewed execution plan deliberately absent until verified control exists.

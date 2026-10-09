@@ -1,0 +1,81 @@
+{
+  "review_status": "pending_human_response",
+  "source": "assistant_visual_inspection_after_generation",
+  "independent_human_gold": false,
+  "generation_record": "docs/validation/mug-structural-control-generation-2026-10-09.json",
+  "candidate_sha256": "e1725efb05ed662f6266aa07cf1322e4b2813e275628199141cebd446759610f",
+  "assistant_assessment": "Lower handle attachment still appears connected; no clear air gap. Candidate not currently usable as a structural-negative control.",
+  "candidate_usable": false,
+  "human_override_or_confirmation_received": false,
+  "judge_requests": 0,
+  "automatic_retries": 0,
+  "board": {
+    "path": "local_image_stack/experiments/bridge/target/mug-structural-control-generation-2026-10-09/review-board-v2.png",
+    "sha256": "ae5904f1090e08d02e9a0fdd6037976cc1e3a5c827c7494bdd52efcb7b016024",
+    "size": [
+      1644,
+      1080
+    ],
+    "scope": "Derived engineering review figure; original full PNGs preserved; direct integer2x nearest detail crop; not a model input"
+  },
+  "images": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "display_label": "ROJA ORIGINAL",
+      "full_image_resized": false,
+      "detail_crop_original_pixels": [
+        302,
+        187,
+        447,
+        382
+      ],
+      "detail_scale": 2,
+      "detail_resampling": "nearest",
+      "original_unchanged": true
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "display_label": "AZUL: CONTROL DE COLOR",
+      "full_image_resized": false,
+      "detail_crop_original_pixels": [
+        302,
+        187,
+        447,
+        382
+      ],
+      "detail_scale": 2,
+      "detail_resampling": "nearest",
+      "original_unchanged": true
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\mug-structural-control-generation-2026-10-09\\result.png",
+      "sha256": "e1725efb05ed662f6266aa07cf1322e4b2813e275628199141cebd446759610f",
+      "display_label": "EDICION: REVISAR UNION INFERIOR",
+      "full_image_resized": false,
+      "detail_crop_original_pixels": [
+        302,
+        187,
+        447,
+        382
+      ],
+      "detail_scale": 2,
+      "detail_resampling": "nearest",
+      "original_unchanged": true
+    }
+  ],
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "next_action": "Ask user whether lower attachment is visibly separated; no inference, relabeling or regeneration before usable control review.",
+  "previous_board_render_preserved": {
+    "path": "local_image_stack/experiments/bridge/target/mug-structural-control-generation-2026-10-09/review-board.png",
+    "sha256": "ae5904f1090e08d02e9a0fdd6037976cc1e3a5c827c7494bdd52efcb7b016024",
+    "size": [
+      1644,
+      1080
+    ],
+    "scope": "Derived engineering review figure; full source PNGs preserved, nearest detail crop only; not a model input"
+  },
+  "render_correction": "Direct integer2x nearest enlargement replaces two-stage nearest resize in previous ignored draft; source PNGs unchanged."
+}

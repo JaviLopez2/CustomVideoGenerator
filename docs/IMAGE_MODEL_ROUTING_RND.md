@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — edición completada, negativo estructural no establecido, 2026-10-09
+
+Desde `ace19e7`,1 edición Klein fijada512²/4pasos/seed42 retorna HTTP200/PNG y Comfy success/completed,14,127s. La inspección del asistente ve unión inferior aún conectada: artifact no utilizable como negativo por ahora; revisión humana del tablero pendiente. 0 consultas a jueces/0reintentos, ningún resultado factual nuevo de candidatos. [Protocolo/ejecución](MUG_STRUCTURAL_CONTROL_PROTOCOL.md), [raw](validation/mug-structural-control-generation-2026-10-09.json), [inspección sin gold](validation/mug-structural-control-assistant-review-2026-10-09.json).
+
+Pesos/binario/workflows/fuentes revalidados; input único sin sobrescritura,8091 propio cerrado/cola0/0,8188 conservado. Sin benchmarks/descargas/cambios código/deps/modelos/routing/gates/workflows/estable.80 tests offline anteriores históricos; prueba técnica actual HTTP/historial/PNG/hashes/cierre. Un prompt que pide cortar no demuestra que el corte exista; no puntuar jueces con ese supuesto. Siguiente respuesta humana; si intacto/ambiguo, cerrar cohorte y preparar otra metodología/presupuesto antes de nueva creación, sin reintentos automáticos o relabeling.
+
 ## Actualización — protocolo de control estructural preparado, 2026-10-09
 
 Desde `d765e58`, [protocolo mínimo](MUG_STRUCTURAL_CONTROL_PROTOCOL.md) fija positivos rojo/azul retenidos y un negativo de unión inferior del asa interrumpida todavía inexistente. Petición exacta preparada,512²/4pasos/seed42; máximo1 edición/0reintentos y revisión humana de artifacts/sitios antes de máximo6 consultas,3 por juez existente/perfil intacto. La comparación exige separar conteo y soporte espacial, no solo agrupar contactos en una caja. No transmite labels, counts deseados ni coordenadas de revisión al juez; no demuestra identidad ni calibra/promueve candidatos.

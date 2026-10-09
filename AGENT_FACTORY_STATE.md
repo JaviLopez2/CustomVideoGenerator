@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: structural mug edit completed, control not yet usable — 2026-10-09
+
+From published `ace19e7`, user opened Comfy8188; exactly1 pinned edit512²/4steps/seed42 returned HTTP200/PNG,14.127s, history success/completed, prompt dffb644f-29ce-4756-8bab-73397abd249c. Candidate SHA e1725efb05ed662f6266aa07cf1322e4b2813e275628199141cebd446759610f. Assistant sees lower attachment still connected; do not label a valid structural negative or score judges. [Execution/update](docs/MUG_STRUCTURAL_CONTROL_PROTOCOL.md), [raw](docs/validation/mug-structural-control-generation-2026-10-09.json). Human review requested on three-image full/2x detail board and remains pending.
+
+3 asset hashes plus binary/workflow/source bindings reverified, source copied once to unique Comfy input without overwrite. Own8091 closed/free, queue0/0, shared8188 kept. 0 VLM/retries/benchmarks/downloads/app/dependency/model/gate/routing/workflow/stable changes. Prior80 offline tests historical; fresh proof is actual HTTP/history/PNG/hash/process closure. Preserve ignored generation dir/response/history/PNG/boards and input plus originals. Next human confirmation; if intact/unclear, end this cohort without inference, no automatic new generation. No reviewed execution plan/negative truth/promotion. Closing SHA via history/origin, base distinct.
+
 ## Current checkpoint: structural mug control prepared — 2026-10-09
 
 From published `d765e58`, [minimal protocol](docs/MUG_STRUCTURAL_CONTROL_PROTOCOL.md) fixes red/blue retained positives and one not-yet-created lower handle attachment interruption. Exact edit request/seed42/512²/four steps pinned; maximum1 generation,0 retries, then human artifact/contact review before at most6 existing-profile observations,3 per pinned judge. No label/count/review coordinates in judge payloads. Diagnostic count and exclusive-site support stay separate; no identity/admission/promotion.
