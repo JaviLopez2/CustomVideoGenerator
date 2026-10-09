@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-09",
+  "execution_base_head": "03c36ba788090f8e904d5d7b49200e543cf98f8c",
+  "revisions": [
+    {
+      "revision": "v1",
+      "report_sha256": "8bdad9a810d56ca7f09d54dc215cf5a8ef8adf0b24a6be5cd2da95453c2e2c1f",
+      "annotation_sha256": "e0e96f7a1142dcf1a0ac2abfeaa46a99272cd6b09be84790d95d1646a3c70d05",
+      "svg_source_images_verified": 6,
+      "mask_raw_and_png_hashes_verified": 6,
+      "identity_comparisons": 0
+    },
+    {
+      "revision": "v2",
+      "report_sha256": "052d510c25372f31264eb7df0afed9b2839af64dce0d8c6f5db088f863616d52",
+      "annotation_sha256": "9c01401d2dc1b54cf60f58c3d21e867078f10a74c2a05fc7c1a5c52700c692a1",
+      "svg_source_images_verified": 6,
+      "mask_raw_and_png_hashes_verified": 6,
+      "identity_comparisons": 0
+    },
+    {
+      "revision": "final",
+      "report_sha256": "b5065f62ceb96558bedb016e9caaad51bd00922ef6b1d8f56801abdcc1e6c2a0",
+      "annotation_sha256": "9c01401d2dc1b54cf60f58c3d21e867078f10a74c2a05fc7c1a5c52700c692a1",
+      "svg_source_images_verified": 6,
+      "mask_raw_and_png_hashes_verified": 6,
+      "identity_comparisons": 0
+    }
+  ],
+  "final_assistant_drafts": {
+    "outer_contours": 6,
+    "holes_annotated": 3,
+    "landmarks": 36,
+    "boundary_margin_pixels": "3..5, estimated drawing/blur margin; no statistical confidence or pixel gold"
+  },
+  "final_static_board": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\spatial-annotation-review-final-2026-10-09\\review-board.png",
+    "sha256": "395889ec2aeef85e311df5e337f414858d6b9a6c64e51b24bc57d3e40a37b11e",
+    "size": [
+      1800,
+      1320
+    ],
+    "git_ignored": true
+  },
+  "visual_inspection": "Assistant inspected six initial rendered SVG-derived figures, both corrected A/B figures and final static board; not an independent region review.",
+  "independent_review_status": "pending",
+  "pixel_truth_verified": false,
+  "physical_identity_established": false,
+  "eligible_for_identity_metrics": false,
+  "admission_allowed": false,
+  "identity_comparisons": 0,
+  "generation_requests": 0,
+  "vlm_requests": 0,
+  "browser_validation": {
+    "file_url_attempt": "blocked by browser URL security policy; only http/https allowed",
+    "workaround_attempted": false,
+    "interactive_controls_tested_in_browser": false,
+    "safer_artifact": "static SVG/PNG render validation and original-byte/hash checks; no alternate browser or HTTP server"
+  },
+  "rendering": {
+    "MPT_matplotlib_available": false,
+    "bundled_python_matplotlib_available": false,
+    "used": "existing MPT Pillow coordinate diagrams; existing bundled Node/sharp SVG rasterizer",
+    "fontconfig_cache_errors": "restricted outside-worktree font cache path; six PNGs rendered successfully, exit0; no global configuration/cache permission changes",
+    "new_dependencies": 0
+  },
+  "files_to_preserve_on_archive": "all spatial-annotation-draft/review-v1/review-v2/review-final ignored directories, original images, renderer initial snapshot and previous models/runtime artifacts"
+}

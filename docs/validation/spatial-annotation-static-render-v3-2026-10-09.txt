@@ -1,0 +1,23 @@
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+image_0: rendered original-bound SVG review figure
+image_1: rendered original-bound SVG review figure
+image_2: rendered original-bound SVG review figure
+image_3: rendered original-bound SVG review figure
+image_4: rendered original-bound SVG review figure
+image_5: rendered original-bound SVG review figure
+node_exit_code=0

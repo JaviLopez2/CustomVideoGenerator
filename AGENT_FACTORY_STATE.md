@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: spatial drafts and human region review — 2026-10-09
+
+From published `03c36ba`: six manual contours, three holes and 36 landmarks prepared with immutable original-byte/hash bindings; standalone renderer/validator and 16 tests, no app wiring or identity scores. User found B shape mismatch, narrow A bands and left mug overshoot; v3 redraws those boundaries while preserving all landmarks/holes. Second review still finds shadow inclusion in oblique B: full B mask disputed/excluded from identity measurement and calibration. No silence interpreted as approval, no pixel gold or certified correspondence. Both verbatim reviews preserved separately from unchanged A/B/C. [Report](docs/SPATIAL_ANNOTATION_REVIEW_REPORT.md).
+
+105 fresh focused tests pass, 1 expected warning,6.06 s / exit 0 after v3; RED/GREEN and earlier logs separate. All raster checks prove structure only. Static SVG/PNG validated; HTML browser controls untested because file URL policy blocked the attempt, no workaround. Preserve all ignored draft/review directories and original assets. 0 VLM/generation/GPU/downloads/services/deps/model/routing/gate/workflow changes. Stable tracked intact. Next bounded part/pose protocol with uncertain B boundary excluded, before any metric/calibration. Closing SHA via history/origin; execution_head remains 03c36ba.
+
 ## Independent spatial audit — 2026-10-09
 
 From published `0e4a0aa`, fixed CPU cohort on6 retained originals completes: SIFT full/nativeROI±8 and HSV three-threshold masks, no VLM/GPU/generation/downloads/services. C/recolor align locally; A and B both lack finite nativeROI fit, so absence of matches cannot judge shape. Color masks select incomplete parts/background; Dice ordering reverses with thresholds. All scores remain diagnostic/uncertain, no admission. Added isolated reproducible script/tests only, no app/routing/gates/deps/workflow changes. API FailedEstimation correction preserved with real RED→GREEN and unchanged parameters.89 fresh tests pass exit0,1expected warning. [Report](docs/SPATIAL_GEOMETRY_AUDIT_REPORT.md). Next explicit complete-object masks/part landmarks and independent review before calibration; no further prompt fishing. Stable tracked intact; preserve ignored SVG/originals. Closing SHA via history/origin.

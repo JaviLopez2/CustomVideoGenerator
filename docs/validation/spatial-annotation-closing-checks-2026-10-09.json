@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-09",
+  "execution_base_head": "03c36ba788090f8e904d5d7b49200e543cf98f8c",
+  "revisions_verified": [
+    {
+      "revision": "v1",
+      "annotation_sha256": "e0e96f7a1142dcf1a0ac2abfeaa46a99272cd6b09be84790d95d1646a3c70d05",
+      "report_sha256": "8bdad9a810d56ca7f09d54dc215cf5a8ef8adf0b24a6be5cd2da95453c2e2c1f",
+      "original_byte_bindings_verified": 6,
+      "mask_svg_hashes_verified": 6,
+      "html_hash_verified": true
+    },
+    {
+      "revision": "v2",
+      "annotation_sha256": "9c01401d2dc1b54cf60f58c3d21e867078f10a74c2a05fc7c1a5c52700c692a1",
+      "report_sha256": "052d510c25372f31264eb7df0afed9b2839af64dce0d8c6f5db088f863616d52",
+      "original_byte_bindings_verified": 6,
+      "mask_svg_hashes_verified": 6,
+      "html_hash_verified": true
+    },
+    {
+      "revision": "final",
+      "annotation_sha256": "9c01401d2dc1b54cf60f58c3d21e867078f10a74c2a05fc7c1a5c52700c692a1",
+      "report_sha256": "b5065f62ceb96558bedb016e9caaad51bd00922ef6b1d8f56801abdcc1e6c2a0",
+      "original_byte_bindings_verified": 6,
+      "mask_svg_hashes_verified": 6,
+      "html_hash_verified": true
+    },
+    {
+      "revision": "v3",
+      "annotation_sha256": "906455f8c9da5c818b033b9a0499de2abf308943b1c18b6f71ad3771b8a4d16f",
+      "report_sha256": "5b832b31f261b91abbd68f7bb5addb098d14509cf8951f61d0ba952c113b6131",
+      "original_byte_bindings_verified": 6,
+      "mask_svg_hashes_verified": 6,
+      "html_hash_verified": true
+    }
+  ],
+  "v3_review_status": "partial_review; B full mask disputed due to residual shadow and oblique view",
+  "image_2_full_mask_use": "excluded from identity measurement/calibration",
+  "all_landmarks_and_holes_unchanged_from_v2": true,
+  "first_two_images_and_annotations_unchanged": true,
+  "human_overall_review_sha256_unchanged": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3",
+  "human_overall_git_content_unchanged_after_EOL_normalization": true,
+  "user_reviews_preserved_verbatim_and_board_bound": true,
+  "static_board": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\spatial-annotation-review-v3-2026-10-09\\review-board.png",
+    "sha256": "cb62360e1ac39ff783ba977e19e7651088137e6671f911a964a831aa0bd011a5",
+    "size": [
+      1800,
+      1320
+    ],
+    "git_ignored": true
+  },
+  "structural_counts": {
+    "outer_contours": 6,
+    "holes": 3,
+    "landmarks": 36
+  },
+  "fresh_tests": {
+    "passed": 105,
+    "warnings": 1,
+    "warning_scope": "expected degenerate RANSAC control",
+    "duration_seconds": 6.06,
+    "python_exit_code": 0,
+    "integration_env": "0",
+    "log": "docs\\validation\\spatial-annotation-after-review-tests-2026-10-09.txt",
+    "log_sha256": "adad6517ceaf90730ef5ecedc495b74a3d7da0b348b6a043eb147fe3c34a4452",
+    "arguments": [
+      "test/test_spatial_annotation_review.py",
+      "test/test_spatial_geometry_audit.py",
+      "test/services/test_visual_qa.py",
+      "test/services/test_visual_observation_diagnostics.py"
+    ]
+  },
+  "secret_pattern_counts": {
+    "openai_key": 0,
+    "github_classic": 0,
+    "github_fine_grained": 0,
+    "aws_key": 0,
+    "private_key": 0,
+    "url_credentials": 0
+  },
+  "scan_limits": "pattern check of task files and access instructions; not an exhaustive secret detector",
+  "json_files_validated_before_closing_file": 10,
+  "protected_experimental_paths_diff_empty": true,
+  "protected_paths_checked": [
+    "app",
+    "requirements.txt",
+    "pyproject.toml",
+    "uv.lock",
+    "config.example.toml",
+    "local_image_stack/workflows",
+    "scripts/audit_spatial_geometry.py",
+    "test/test_spatial_geometry_audit.py",
+    "AGENTS.md",
+    "docs/LOCAL_WINDOWS_ACCESS_HANDOFF.md"
+  ],
+  "fetch_divergence_before_checkpoint": "0/0",
+  "stable_head_read_after_fetch": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status_read_after_fetch": "empty; existing untracked preserved",
+  "browser_controls_tested": false,
+  "browser_limit": "file URL blocked by browser policy; no alternate browser or HTTP workaround",
+  "static_figures_rendered_and_assistant_inspected": true,
+  "fontconfig_cache_warnings": "no writable external cache; six PNGs still rendered exit0; permissions unchanged",
+  "identity_comparisons": 0,
+  "vlm_requests": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "gpu_benchmarks": 0,
+  "services_started_stopped_reconfigured": 0,
+  "pixel_truth_verified": false,
+  "physical_identity_established": false,
+  "eligible_for_identity_metrics": false,
+  "admission_allowed": false,
+  "closing_checkpoint_sha": "resolve via subsequent Git commit and origin; distinct from execution base",
+  "staged_scope_review": {
+    "files": 29,
+    "scope": "isolated preparation script/test and related docs/evidence only",
+    "production_or_generated_artifacts_staged": false,
+    "json_valid_in_index": 11,
+    "secret_pattern_matches_in_index": 0,
+    "non_log_diff_check_exit_code": 0,
+    "raw_log_trailing_whitespace_not_rewritten": 14,
+    "raw_stdout_preservation": "only raw validation .txt logs contain trailing whitespace; content preserved, Git may normalize configured line endings"
+  }
+}

@@ -1,0 +1,1868 @@
+{
+  "protocol": "retained-spatial-annotation-draft-1",
+  "declared_on": "2026-10-09",
+  "execution_base_head": "03c36ba788090f8e904d5d7b49200e543cf98f8c",
+  "annotation_source": "assistant_manual_draft",
+  "independent_review_status": "pending",
+  "pixel_truth_verified": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "eligible_for_identity_metrics": false,
+  "human_overall_review_sha256": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3",
+  "human_review_scope": "Existing A/B/C overall shape judgments remain separate; they do not approve these regions or landmarks.",
+  "coordinate_system": "original-image-integer-pixels-x-y",
+  "mask_definition": "Projected visible target appearance; outer silhouette includes visible mug interior, excludes cast shadows; holes subtract visible background apertures only.",
+  "uncertainty_definition": "Estimated drawing/blur margin in original pixels; not a statistical confidence interval.",
+  "registration_policy_draft": {
+    "candidate_operations_after_region_review": [
+      "translation",
+      "in_plane_rotation",
+      "uniform_scale"
+    ],
+    "perspective_changes": "not calibrated; remain unresolved",
+    "anisotropic_warp": "not authorized as identity normalization",
+    "reflection": "not authorized",
+    "occluded_parts": "unknown; never fill from expectation",
+    "physical_landmark_correspondence": "unestablished",
+    "acceptance_tolerance": null,
+    "production_authority": false
+  },
+  "rows": [
+    {
+      "id": "image_0",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+      "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "size": [
+        768,
+        1376
+      ],
+      "family": "key",
+      "display_label": "Llave: referencia inicial",
+      "outer": [
+        [
+          535,
+          628
+        ],
+        [
+          544,
+          625
+        ],
+        [
+          556,
+          626
+        ],
+        [
+          563,
+          632
+        ],
+        [
+          563,
+          646
+        ],
+        [
+          559,
+          682
+        ],
+        [
+          565,
+          686
+        ],
+        [
+          569,
+          693
+        ],
+        [
+          566,
+          701
+        ],
+        [
+          560,
+          704
+        ],
+        [
+          559,
+          710
+        ],
+        [
+          565,
+          715
+        ],
+        [
+          566,
+          723
+        ],
+        [
+          560,
+          729
+        ],
+        [
+          553,
+          726
+        ],
+        [
+          543,
+          850
+        ],
+        [
+          612,
+          857
+        ],
+        [
+          613,
+          872
+        ],
+        [
+          607,
+          876
+        ],
+        [
+          611,
+          884
+        ],
+        [
+          604,
+          886
+        ],
+        [
+          592,
+          884
+        ],
+        [
+          591,
+          897
+        ],
+        [
+          605,
+          898
+        ],
+        [
+          611,
+          903
+        ],
+        [
+          608,
+          908
+        ],
+        [
+          605,
+          910
+        ],
+        [
+          609,
+          916
+        ],
+        [
+          604,
+          921
+        ],
+        [
+          610,
+          928
+        ],
+        [
+          606,
+          933
+        ],
+        [
+          547,
+          930
+        ],
+        [
+          546,
+          921
+        ],
+        [
+          540,
+          921
+        ],
+        [
+          539,
+          929
+        ],
+        [
+          536,
+          937
+        ],
+        [
+          523,
+          941
+        ],
+        [
+          510,
+          939
+        ],
+        [
+          502,
+          934
+        ],
+        [
+          528,
+          729
+        ],
+        [
+          521,
+          726
+        ],
+        [
+          516,
+          720
+        ],
+        [
+          518,
+          714
+        ],
+        [
+          526,
+          709
+        ],
+        [
+          527,
+          702
+        ],
+        [
+          521,
+          699
+        ],
+        [
+          518,
+          693
+        ],
+        [
+          522,
+          687
+        ],
+        [
+          528,
+          681
+        ]
+      ],
+      "holes": [],
+      "landmarks": [
+        {
+          "id": "shaft_upper_cap",
+          "point": [
+            551,
+            633
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "shaft_lower_cap",
+          "point": [
+            522,
+            934
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "visible_band_site_1",
+          "point": [
+            544,
+            694
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "visible_band_site_2",
+          "point": [
+            540,
+            721
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "blade_notch_corner",
+          "point": [
+            591,
+            897
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "blade_lower_corner",
+          "point": [
+            605,
+            910
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        }
+      ],
+      "boundary_uncertainty_pixels": 3,
+      "independent_review_status": "pending",
+      "review_viewbox": [
+        478,
+        601,
+        159,
+        364
+      ],
+      "limitations": [
+        "Visible 2D silhouette approximation; cast shadows excluded.",
+        "Coordinates and roles are assistant estimates, not gold or verified inter-image correspondences.",
+        "No inferred hidden geometry or production tolerance."
+      ]
+    },
+    {
+      "id": "image_1",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "size": [
+        768,
+        1376
+      ],
+      "family": "key",
+      "display_label": "Llave: tela roja / C",
+      "outer": [
+        [
+          537,
+          628
+        ],
+        [
+          544,
+          625
+        ],
+        [
+          558,
+          627
+        ],
+        [
+          565,
+          632
+        ],
+        [
+          566,
+          645
+        ],
+        [
+          561,
+          682
+        ],
+        [
+          568,
+          688
+        ],
+        [
+          569,
+          696
+        ],
+        [
+          565,
+          702
+        ],
+        [
+          560,
+          707
+        ],
+        [
+          560,
+          712
+        ],
+        [
+          568,
+          717
+        ],
+        [
+          566,
+          725
+        ],
+        [
+          558,
+          729
+        ],
+        [
+          552,
+          728
+        ],
+        [
+          544,
+          851
+        ],
+        [
+          613,
+          858
+        ],
+        [
+          614,
+          871
+        ],
+        [
+          607,
+          877
+        ],
+        [
+          612,
+          884
+        ],
+        [
+          606,
+          888
+        ],
+        [
+          593,
+          884
+        ],
+        [
+          592,
+          898
+        ],
+        [
+          606,
+          899
+        ],
+        [
+          612,
+          904
+        ],
+        [
+          608,
+          909
+        ],
+        [
+          605,
+          912
+        ],
+        [
+          609,
+          917
+        ],
+        [
+          605,
+          922
+        ],
+        [
+          610,
+          929
+        ],
+        [
+          606,
+          934
+        ],
+        [
+          548,
+          931
+        ],
+        [
+          548,
+          922
+        ],
+        [
+          541,
+          922
+        ],
+        [
+          540,
+          931
+        ],
+        [
+          535,
+          937
+        ],
+        [
+          523,
+          941
+        ],
+        [
+          510,
+          939
+        ],
+        [
+          503,
+          934
+        ],
+        [
+          530,
+          729
+        ],
+        [
+          522,
+          726
+        ],
+        [
+          517,
+          721
+        ],
+        [
+          519,
+          715
+        ],
+        [
+          527,
+          710
+        ],
+        [
+          529,
+          704
+        ],
+        [
+          522,
+          701
+        ],
+        [
+          519,
+          696
+        ],
+        [
+          523,
+          687
+        ],
+        [
+          530,
+          682
+        ]
+      ],
+      "holes": [],
+      "landmarks": [
+        {
+          "id": "shaft_upper_cap",
+          "point": [
+            552,
+            634
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "shaft_lower_cap",
+          "point": [
+            522,
+            934
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "visible_band_site_1",
+          "point": [
+            547,
+            695
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "visible_band_site_2",
+          "point": [
+            542,
+            721
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "blade_notch_corner",
+          "point": [
+            592,
+            898
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "blade_lower_corner",
+          "point": [
+            605,
+            912
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        }
+      ],
+      "boundary_uncertainty_pixels": 3,
+      "independent_review_status": "pending",
+      "review_viewbox": [
+        479,
+        601,
+        159,
+        364
+      ],
+      "limitations": [
+        "Visible 2D silhouette approximation; cast shadows excluded.",
+        "Coordinates and roles are assistant estimates, not gold or verified inter-image correspondences.",
+        "No inferred hidden geometry or production tolerance."
+      ]
+    },
+    {
+      "id": "image_2",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+      "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "size": [
+        768,
+        1376
+      ],
+      "family": "key",
+      "display_label": "Llave: B",
+      "outer": [
+        [
+          394,
+          1115
+        ],
+        [
+          441,
+          1086
+        ],
+        [
+          445,
+          1078
+        ],
+        [
+          453,
+          1074
+        ],
+        [
+          460,
+          1076
+        ],
+        [
+          467,
+          1080
+        ],
+        [
+          531,
+          1037
+        ],
+        [
+          534,
+          1023
+        ],
+        [
+          541,
+          1016
+        ],
+        [
+          552,
+          1017
+        ],
+        [
+          594,
+          989
+        ],
+        [
+          605,
+          987
+        ],
+        [
+          614,
+          989
+        ],
+        [
+          636,
+          996
+        ],
+        [
+          646,
+          1004
+        ],
+        [
+          650,
+          1013
+        ],
+        [
+          650,
+          1022
+        ],
+        [
+          644,
+          1028
+        ],
+        [
+          615,
+          1043
+        ],
+        [
+          635,
+          1051
+        ],
+        [
+          645,
+          1058
+        ],
+        [
+          646,
+          1064
+        ],
+        [
+          645,
+          1075
+        ],
+        [
+          634,
+          1080
+        ],
+        [
+          629,
+          1078
+        ],
+        [
+          621,
+          1068
+        ],
+        [
+          613,
+          1062
+        ],
+        [
+          610,
+          1060
+        ],
+        [
+          605,
+          1062
+        ],
+        [
+          613,
+          1069
+        ],
+        [
+          622,
+          1074
+        ],
+        [
+          621,
+          1083
+        ],
+        [
+          617,
+          1089
+        ],
+        [
+          607,
+          1086
+        ],
+        [
+          589,
+          1078
+        ],
+        [
+          576,
+          1070
+        ],
+        [
+          570,
+          1066
+        ],
+        [
+          568,
+          1058
+        ],
+        [
+          576,
+          1048
+        ],
+        [
+          579,
+          1047
+        ],
+        [
+          566,
+          1040
+        ],
+        [
+          563,
+          1047
+        ],
+        [
+          552,
+          1056
+        ],
+        [
+          543,
+          1050
+        ],
+        [
+          476,
+          1095
+        ],
+        [
+          475,
+          1103
+        ],
+        [
+          468,
+          1110
+        ],
+        [
+          459,
+          1114
+        ],
+        [
+          450,
+          1110
+        ],
+        [
+          410,
+          1135
+        ],
+        [
+          400,
+          1137
+        ],
+        [
+          393,
+          1133
+        ],
+        [
+          390,
+          1125
+        ]
+      ],
+      "holes": [
+        {
+          "id": "hole_0",
+          "polygon": [
+            [
+              614,
+              1000
+            ],
+            [
+              619,
+              997
+            ],
+            [
+              626,
+              998
+            ],
+            [
+              631,
+              1002
+            ],
+            [
+              633,
+              1006
+            ],
+            [
+              627,
+              1010
+            ],
+            [
+              620,
+              1010
+            ],
+            [
+              615,
+              1007
+            ]
+          ],
+          "interpretation": "visible background aperture, assistant draft"
+        }
+      ],
+      "landmarks": [
+        {
+          "id": "shaft_distal_tip",
+          "point": [
+            400,
+            1122
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "shaft_proximal_connection",
+          "point": [
+            535,
+            1040
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "visible_collar_site_1",
+          "point": [
+            460,
+            1090
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "visible_collar_site_2",
+          "point": [
+            547,
+            1032
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "bow_opening_center",
+          "point": [
+            624,
+            1003
+          ],
+          "region": "hole_0",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "blade_outer_corner",
+          "point": [
+            638,
+            1069
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        }
+      ],
+      "boundary_uncertainty_pixels": 5,
+      "independent_review_status": "pending",
+      "review_viewbox": [
+        366,
+        963,
+        308,
+        198
+      ],
+      "limitations": [
+        "Visible 2D silhouette approximation; cast shadows excluded.",
+        "Coordinates and roles are assistant estimates, not gold or verified inter-image correspondences.",
+        "No inferred hidden geometry or production tolerance.",
+        "Contour redrawn following human feedback; new coordinates are assistant estimates awaiting review, not pixel gold."
+      ]
+    },
+    {
+      "id": "image_3",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+      "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "size": [
+        768,
+        1376
+      ],
+      "family": "key",
+      "display_label": "Llave: A",
+      "outer": [
+        [
+          602,
+          968
+        ],
+        [
+          610,
+          968
+        ],
+        [
+          620,
+          974
+        ],
+        [
+          623,
+          981
+        ],
+        [
+          617,
+          995
+        ],
+        [
+          611,
+          1004
+        ],
+        [
+          611,
+          1011
+        ],
+        [
+          609,
+          1018
+        ],
+        [
+          605,
+          1023
+        ],
+        [
+          602,
+          1023
+        ],
+        [
+          600,
+          1031
+        ],
+        [
+          594,
+          1035
+        ],
+        [
+          587,
+          1034
+        ],
+        [
+          582,
+          1030
+        ],
+        [
+          545,
+          1100
+        ],
+        [
+          592,
+          1114
+        ],
+        [
+          591,
+          1124
+        ],
+        [
+          585,
+          1130
+        ],
+        [
+          579,
+          1128
+        ],
+        [
+          575,
+          1134
+        ],
+        [
+          584,
+          1138
+        ],
+        [
+          579,
+          1144
+        ],
+        [
+          584,
+          1150
+        ],
+        [
+          578,
+          1164
+        ],
+        [
+          553,
+          1160
+        ],
+        [
+          535,
+          1153
+        ],
+        [
+          536,
+          1140
+        ],
+        [
+          530,
+          1138
+        ],
+        [
+          528,
+          1151
+        ],
+        [
+          516,
+          1150
+        ],
+        [
+          513,
+          1155
+        ],
+        [
+          506,
+          1159
+        ],
+        [
+          497,
+          1158
+        ],
+        [
+          488,
+          1152
+        ],
+        [
+          483,
+          1143
+        ],
+        [
+          486,
+          1135
+        ],
+        [
+          563,
+          1025
+        ],
+        [
+          562,
+          1021
+        ],
+        [
+          562,
+          1017
+        ],
+        [
+          565,
+          1012
+        ],
+        [
+          565,
+          1009
+        ],
+        [
+          567,
+          1003
+        ],
+        [
+          574,
+          999
+        ],
+        [
+          578,
+          994
+        ],
+        [
+          585,
+          989
+        ],
+        [
+          591,
+          980
+        ]
+      ],
+      "holes": [],
+      "landmarks": [
+        {
+          "id": "shaft_upper_cap",
+          "point": [
+            610,
+            978
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "shaft_lower_cap",
+          "point": [
+            500,
+            1146
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "visible_band_site_1",
+          "point": [
+            591,
+            1005
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "visible_band_site_2",
+          "point": [
+            578,
+            1023
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "blade_upper_corner",
+          "point": [
+            592,
+            1114
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "blade_notch_corner",
+          "point": [
+            575,
+            1134
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 4,
+          "physical_correspondence_established": false
+        }
+      ],
+      "boundary_uncertainty_pixels": 5,
+      "independent_review_status": "pending",
+      "review_viewbox": [
+        459,
+        944,
+        188,
+        244
+      ],
+      "limitations": [
+        "Visible 2D silhouette approximation; cast shadows excluded.",
+        "Coordinates and roles are assistant estimates, not gold or verified inter-image correspondences.",
+        "No inferred hidden geometry or production tolerance.",
+        "Contour redrawn following human feedback; new coordinates are assistant estimates awaiting review, not pixel gold."
+      ]
+    },
+    {
+      "id": "image_4",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "size": [
+        512,
+        512
+      ],
+      "family": "mug",
+      "display_label": "Taza roja",
+      "outer": [
+        [
+          164,
+          178
+        ],
+        [
+          177,
+          173
+        ],
+        [
+          210,
+          169
+        ],
+        [
+          256,
+          168
+        ],
+        [
+          295,
+          170
+        ],
+        [
+          326,
+          173
+        ],
+        [
+          341,
+          179
+        ],
+        [
+          347,
+          187
+        ],
+        [
+          346,
+          206
+        ],
+        [
+          359,
+          209
+        ],
+        [
+          375,
+          205
+        ],
+        [
+          392,
+          208
+        ],
+        [
+          408,
+          217
+        ],
+        [
+          420,
+          230
+        ],
+        [
+          426,
+          246
+        ],
+        [
+          429,
+          262
+        ],
+        [
+          426,
+          280
+        ],
+        [
+          421,
+          300
+        ],
+        [
+          410,
+          319
+        ],
+        [
+          396,
+          337
+        ],
+        [
+          378,
+          352
+        ],
+        [
+          358,
+          365
+        ],
+        [
+          335,
+          373
+        ],
+        [
+          331,
+          391
+        ],
+        [
+          325,
+          400
+        ],
+        [
+          309,
+          407
+        ],
+        [
+          279,
+          412
+        ],
+        [
+          240,
+          414
+        ],
+        [
+          208,
+          411
+        ],
+        [
+          187,
+          402
+        ],
+        [
+          177,
+          391
+        ],
+        [
+          171,
+          361
+        ],
+        [
+          167,
+          322
+        ],
+        [
+          165,
+          284
+        ],
+        [
+          164,
+          240
+        ],
+        [
+          163,
+          204
+        ],
+        [
+          164,
+          185
+        ]
+      ],
+      "holes": [
+        {
+          "id": "hole_0",
+          "polygon": [
+            [
+              348,
+              237
+            ],
+            [
+              359,
+              227
+            ],
+            [
+              375,
+              226
+            ],
+            [
+              389,
+              232
+            ],
+            [
+              400,
+              243
+            ],
+            [
+              407,
+              258
+            ],
+            [
+              409,
+              275
+            ],
+            [
+              403,
+              291
+            ],
+            [
+              395,
+              306
+            ],
+            [
+              382,
+              319
+            ],
+            [
+              368,
+              331
+            ],
+            [
+              354,
+              339
+            ],
+            [
+              342,
+              343
+            ],
+            [
+              335,
+              341
+            ],
+            [
+              334,
+              327
+            ],
+            [
+              336,
+              310
+            ],
+            [
+              339,
+              287
+            ],
+            [
+              342,
+              263
+            ],
+            [
+              346,
+              244
+            ]
+          ],
+          "interpretation": "visible background aperture, assistant draft"
+        }
+      ],
+      "landmarks": [
+        {
+          "id": "mouth_left",
+          "point": [
+            170,
+            180
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "mouth_right",
+          "point": [
+            337,
+            181
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "upper_handle_attachment",
+          "point": [
+            347,
+            222
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "lower_handle_attachment",
+          "point": [
+            338,
+            354
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "handle_outer_side",
+          "point": [
+            422,
+            267
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "handle_opening_center",
+          "point": [
+            374,
+            281
+          ],
+          "region": "hole_0",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        }
+      ],
+      "boundary_uncertainty_pixels": 3,
+      "independent_review_status": "pending",
+      "review_viewbox": [
+        136,
+        144,
+        317,
+        294
+      ],
+      "limitations": [
+        "Visible 2D silhouette approximation; cast shadows excluded.",
+        "Coordinates and roles are assistant estimates, not gold or verified inter-image correspondences.",
+        "No inferred hidden geometry or production tolerance.",
+        "Contour redrawn following human feedback; new coordinates are assistant estimates awaiting review, not pixel gold."
+      ]
+    },
+    {
+      "id": "image_5",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "size": [
+        512,
+        512
+      ],
+      "family": "mug",
+      "display_label": "Taza azul",
+      "outer": [
+        [
+          163,
+          180
+        ],
+        [
+          180,
+          173
+        ],
+        [
+          211,
+          169
+        ],
+        [
+          255,
+          168
+        ],
+        [
+          293,
+          170
+        ],
+        [
+          326,
+          174
+        ],
+        [
+          342,
+          180
+        ],
+        [
+          348,
+          189
+        ],
+        [
+          347,
+          207
+        ],
+        [
+          360,
+          209
+        ],
+        [
+          377,
+          205
+        ],
+        [
+          395,
+          210
+        ],
+        [
+          410,
+          219
+        ],
+        [
+          422,
+          233
+        ],
+        [
+          428,
+          250
+        ],
+        [
+          430,
+          265
+        ],
+        [
+          427,
+          285
+        ],
+        [
+          421,
+          302
+        ],
+        [
+          409,
+          321
+        ],
+        [
+          393,
+          339
+        ],
+        [
+          375,
+          354
+        ],
+        [
+          356,
+          367
+        ],
+        [
+          335,
+          374
+        ],
+        [
+          331,
+          390
+        ],
+        [
+          326,
+          400
+        ],
+        [
+          309,
+          408
+        ],
+        [
+          281,
+          412
+        ],
+        [
+          242,
+          414
+        ],
+        [
+          209,
+          411
+        ],
+        [
+          189,
+          404
+        ],
+        [
+          178,
+          392
+        ],
+        [
+          172,
+          362
+        ],
+        [
+          168,
+          325
+        ],
+        [
+          164,
+          284
+        ],
+        [
+          163,
+          241
+        ],
+        [
+          163,
+          208
+        ],
+        [
+          163,
+          190
+        ]
+      ],
+      "holes": [
+        {
+          "id": "hole_0",
+          "polygon": [
+            [
+              348,
+              237
+            ],
+            [
+              362,
+              227
+            ],
+            [
+              379,
+              227
+            ],
+            [
+              393,
+              234
+            ],
+            [
+              403,
+              246
+            ],
+            [
+              409,
+              262
+            ],
+            [
+              409,
+              277
+            ],
+            [
+              403,
+              295
+            ],
+            [
+              392,
+              311
+            ],
+            [
+              379,
+              324
+            ],
+            [
+              366,
+              334
+            ],
+            [
+              351,
+              342
+            ],
+            [
+              340,
+              345
+            ],
+            [
+              335,
+              341
+            ],
+            [
+              335,
+              328
+            ],
+            [
+              337,
+              307
+            ],
+            [
+              339,
+              285
+            ],
+            [
+              343,
+              260
+            ],
+            [
+              346,
+              244
+            ]
+          ],
+          "interpretation": "visible background aperture, assistant draft"
+        }
+      ],
+      "landmarks": [
+        {
+          "id": "mouth_left",
+          "point": [
+            170,
+            180
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "mouth_right",
+          "point": [
+            338,
+            182
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "upper_handle_attachment",
+          "point": [
+            348,
+            221
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "lower_handle_attachment",
+          "point": [
+            338,
+            354
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "handle_outer_side",
+          "point": [
+            423,
+            268
+          ],
+          "region": "foreground",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        },
+        {
+          "id": "handle_opening_center",
+          "point": [
+            374,
+            281
+          ],
+          "region": "hole_0",
+          "uncertainty_pixels": 3,
+          "physical_correspondence_established": false
+        }
+      ],
+      "boundary_uncertainty_pixels": 3,
+      "independent_review_status": "pending",
+      "review_viewbox": [
+        136,
+        144,
+        318,
+        294
+      ],
+      "limitations": [
+        "Visible 2D silhouette approximation; cast shadows excluded.",
+        "Coordinates and roles are assistant estimates, not gold or verified inter-image correspondences.",
+        "No inferred hidden geometry or production tolerance.",
+        "Contour redrawn following human feedback; new coordinates are assistant estimates awaiting review, not pixel gold."
+      ]
+    }
+  ],
+  "supersedes_annotation_sha256": "9c01401d2dc1b54cf60f58c3d21e867078f10a74c2a05fc7c1a5c52700c692a1",
+  "revision_reason": "User region review found B silhouette mismatched, A band silhouette too narrow and both mug left edges outside the object. Assistant redraws those boundaries against original pixels, preserves holes and all landmarks. No scores computed; corrected contours remain pending new region review.",
+  "response_to_human_region_review_sha256": "b4049d4335c9534be9c76329b1489e1df63b66ba593beaa4e3c3af5ab4181ef6",
+  "changed_rows": [
+    "image_2",
+    "image_3",
+    "image_4",
+    "image_5"
+  ]
+}

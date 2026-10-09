@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: manual spatial drafts, partial human region review
+
+Base 03c36ba; six full-object draft contours, three background holes and 36 landmarks prepared in isolated SHA-bound renderer/validator. Two direct human reviews preserved verbatim separately from unchanged overall A/B/C. V3 redraws B shape, A band width and left mug boundaries without moving any point/hole. Human still sees shadow inclusion in oblique B: its full mask is disputed/excluded from identity measurement and calibration. Approximate point/hole agreement is not pixel truth or physical correspondence; silence about other contours is not approval. All authority/metric-eligibility flags false, 0 identity scores/VLM/generation. [Report](SPATIAL_ANNOTATION_REVIEW_REPORT.md).
+
+16 new tests; 105 fresh focused pass / 1 expected warning/6.06 s / exit 0 after v3. Structural raster validity cannot prove a contour is semantically correct. SVG/PNG rendered and inspected; HTML controls untested after browser file-policy rejection, no workaround. Preserve ignored drafts/revisions/originals; app/judges/defaults/gates/deps/workflows/routing/model/stable unchanged, no servers/GPU/downloads. Next bounded component/pose protocol with uncertainty and B full-mask exclusion before metrics/calibration; structural-negative mug still missing. Closing SHA via Git/origin, execution base distinct.
+
 ## Current checkpoint: independent CPU spatial audit complete
 
 Base published `0e4a0aa`, experimental branch/worktree reused, clean start.6 retained originals,7 fixed comparisons,24 feature extractions/28SIFT registrations/12mask comparisons in completed cohort. C/recolor align locally; A and B both lack finite nativeROI fit; HSV incomplete masks reverse score ordering as threshold changes. Wrong-target small fits repeat coordinate sites. No calibrated perceptual ranking, no identity/admission/rejection. [Report](SPATIAL_GEOMETRY_AUDIT_REPORT.md). Script/tests isolated from app;0VLM/generations/GPU benchmarks/downloads/deps/services/workflows/routing/gate changes.

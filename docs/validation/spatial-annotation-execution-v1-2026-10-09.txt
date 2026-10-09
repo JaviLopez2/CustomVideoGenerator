@@ -1,0 +1,1 @@
+{"report": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\spatial-annotation-review-v1-2026-10-09.json", "board": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\spatial-annotation-review-v1-2026-10-09\\review.html", "rows": 6, "review_status": "pending", "identity_comparisons": 0}

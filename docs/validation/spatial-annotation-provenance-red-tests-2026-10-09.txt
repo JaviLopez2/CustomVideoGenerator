@@ -1,0 +1,23 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_____ test_pending_regions_cannot_be_declared_reviewed_at_document_level ______
+
+    def test_pending_regions_cannot_be_declared_reviewed_at_document_level():
+        document = {"protocol": "retained-spatial-annotation-draft-1", "annotation_source": "assistant_manual_draft",
+                    "independent_review_status": "reviewed", "rows": [row()]}
+>       with pytest.raises(ValueError, match="pending"):
+E       Failed: DID NOT RAISE ValueError
+
+test\test_spatial_annotation_review.py:73: Failed
+________ test_landmark_cannot_claim_certified_physical_correspondence _________
+
+    def test_landmark_cannot_claim_certified_physical_correspondence():
+        value = row(); value["landmarks"][0]["physical_correspondence_established"] = True
+>       with pytest.raises(ValueError, match="correspondence"):
+E       Failed: DID NOT RAISE ValueError
+
+test\test_spatial_annotation_review.py:79: Failed
+=========================== short test summary info ===========================
+FAILED test/test_spatial_annotation_review.py::test_pending_regions_cannot_be_declared_reviewed_at_document_level
+FAILED test/test_spatial_annotation_review.py::test_landmark_cannot_claim_certified_physical_correspondence
+2 failed, 14 deselected in 0.14s

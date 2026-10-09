@@ -1,0 +1,292 @@
+FFFFFFFFFFFFFF                                                           [100%]
+================================== FAILURES ===================================
+_ test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring0] __
+
+ring = [[-1, 0], [10, 0], [10, 10]]
+
+    @pytest.mark.parametrize("ring", [ [[-1, 0], [10, 0], [10, 10]],
+        [[0, 0], [80, 0], [10, 10]], [[0, 0], [True, 4], [5, 10]],
+        [[0, 0], [3, 3], [6, 6]], [[0, 0], [20, 20], [0, 20], [20, 0]],
+        [[0, 0], [0, 20], [20, 20], [20, 0], [10, 0], [10, 25]] ])
+    def test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected(ring):
+        with pytest.raises(ValueError):
+>           M["validate_ring"](ring, (80, 60))
+
+test\test_spatial_annotation_review.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ring = [[-1, 0], [10, 0], [10, 10]], size = (80, 60)
+
+    def validate_ring(ring, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:5: NotImplementedError
+_ test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring1] __
+
+ring = [[0, 0], [80, 0], [10, 10]]
+
+    @pytest.mark.parametrize("ring", [ [[-1, 0], [10, 0], [10, 10]],
+        [[0, 0], [80, 0], [10, 10]], [[0, 0], [True, 4], [5, 10]],
+        [[0, 0], [3, 3], [6, 6]], [[0, 0], [20, 20], [0, 20], [20, 0]],
+        [[0, 0], [0, 20], [20, 20], [20, 0], [10, 0], [10, 25]] ])
+    def test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected(ring):
+        with pytest.raises(ValueError):
+>           M["validate_ring"](ring, (80, 60))
+
+test\test_spatial_annotation_review.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ring = [[0, 0], [80, 0], [10, 10]], size = (80, 60)
+
+    def validate_ring(ring, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:5: NotImplementedError
+_ test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring2] __
+
+ring = [[0, 0], [True, 4], [5, 10]]
+
+    @pytest.mark.parametrize("ring", [ [[-1, 0], [10, 0], [10, 10]],
+        [[0, 0], [80, 0], [10, 10]], [[0, 0], [True, 4], [5, 10]],
+        [[0, 0], [3, 3], [6, 6]], [[0, 0], [20, 20], [0, 20], [20, 0]],
+        [[0, 0], [0, 20], [20, 20], [20, 0], [10, 0], [10, 25]] ])
+    def test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected(ring):
+        with pytest.raises(ValueError):
+>           M["validate_ring"](ring, (80, 60))
+
+test\test_spatial_annotation_review.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ring = [[0, 0], [True, 4], [5, 10]], size = (80, 60)
+
+    def validate_ring(ring, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:5: NotImplementedError
+_ test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring3] __
+
+ring = [[0, 0], [3, 3], [6, 6]]
+
+    @pytest.mark.parametrize("ring", [ [[-1, 0], [10, 0], [10, 10]],
+        [[0, 0], [80, 0], [10, 10]], [[0, 0], [True, 4], [5, 10]],
+        [[0, 0], [3, 3], [6, 6]], [[0, 0], [20, 20], [0, 20], [20, 0]],
+        [[0, 0], [0, 20], [20, 20], [20, 0], [10, 0], [10, 25]] ])
+    def test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected(ring):
+        with pytest.raises(ValueError):
+>           M["validate_ring"](ring, (80, 60))
+
+test\test_spatial_annotation_review.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ring = [[0, 0], [3, 3], [6, 6]], size = (80, 60)
+
+    def validate_ring(ring, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:5: NotImplementedError
+_ test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring4] __
+
+ring = [[0, 0], [20, 20], [0, 20], [20, 0]]
+
+    @pytest.mark.parametrize("ring", [ [[-1, 0], [10, 0], [10, 10]],
+        [[0, 0], [80, 0], [10, 10]], [[0, 0], [True, 4], [5, 10]],
+        [[0, 0], [3, 3], [6, 6]], [[0, 0], [20, 20], [0, 20], [20, 0]],
+        [[0, 0], [0, 20], [20, 20], [20, 0], [10, 0], [10, 25]] ])
+    def test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected(ring):
+        with pytest.raises(ValueError):
+>           M["validate_ring"](ring, (80, 60))
+
+test\test_spatial_annotation_review.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ring = [[0, 0], [20, 20], [0, 20], [20, 0]], size = (80, 60)
+
+    def validate_ring(ring, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:5: NotImplementedError
+_ test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring5] __
+
+ring = [[0, 0], [0, 20], [20, 20], [20, 0], [10, 0], [10, 25]]
+
+    @pytest.mark.parametrize("ring", [ [[-1, 0], [10, 0], [10, 10]],
+        [[0, 0], [80, 0], [10, 10]], [[0, 0], [True, 4], [5, 10]],
+        [[0, 0], [3, 3], [6, 6]], [[0, 0], [20, 20], [0, 20], [20, 0]],
+        [[0, 0], [0, 20], [20, 20], [20, 0], [10, 0], [10, 25]] ])
+    def test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected(ring):
+        with pytest.raises(ValueError):
+>           M["validate_ring"](ring, (80, 60))
+
+test\test_spatial_annotation_review.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ring = [[0, 0], [0, 20], [20, 20], [20, 0], [10, 0], [10, 25]], size = (80, 60)
+
+    def validate_ring(ring, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:5: NotImplementedError
+________ test_mask_retains_full_foreground_and_cuts_only_declared_hole ________
+
+    def test_mask_retains_full_foreground_and_cuts_only_declared_hole():
+>       mask, stats = M["rasterize"](row())
+                      ^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_annotation_review.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'id': 'object_0', 'size': [80, 60], 'path': 'retained.png', 'sha256': '0000000000000000000000000000000000000000000000000000000000000000', ...}
+
+    def rasterize(row):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:9: NotImplementedError
+_________________ test_hole_outside_outer_contour_is_rejected _________________
+
+    def test_hole_outside_outer_contour_is_rejected():
+        value = row(); value["holes"][0]["polygon"] = [[5, 5], [30, 5], [30, 30], [5, 30]]
+        with pytest.raises(ValueError, match="hole"):
+>           M["rasterize"](value)
+
+test\test_spatial_annotation_review.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'id': 'object_0', 'size': [80, 60], 'path': 'retained.png', 'sha256': '0000000000000000000000000000000000000000000000000000000000000000', ...}
+
+    def rasterize(row):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:9: NotImplementedError
+_____________________ test_overlapping_holes_are_rejected _____________________
+
+    def test_overlapping_holes_are_rejected():
+        value = row(); value["holes"].append({"id": "hole_1", "polygon": [[35, 25], [55, 25], [55, 45], [35, 45]]})
+        with pytest.raises(ValueError, match="overlap"):
+>           M["rasterize"](value)
+
+test\test_spatial_annotation_review.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'id': 'object_0', 'size': [80, 60], 'path': 'retained.png', 'sha256': '0000000000000000000000000000000000000000000000000000000000000000', ...}
+
+    def rasterize(row):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:9: NotImplementedError
+_________ test_landmark_region_is_verified_without_guessing_its_role __________
+
+    def test_landmark_region_is_verified_without_guessing_its_role():
+        value = row(); value["landmarks"][0]["point"] = [35, 30]
+        with pytest.raises(ValueError, match="landmark"):
+>           M["rasterize"](value)
+
+test\test_spatial_annotation_review.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'id': 'object_0', 'size': [80, 60], 'path': 'retained.png', 'sha256': '0000000000000000000000000000000000000000000000000000000000000000', ...}
+
+    def rasterize(row):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:9: NotImplementedError
+____________________ test_duplicate_landmarks_are_rejected ____________________
+
+    def test_duplicate_landmarks_are_rejected():
+        value = row(); value["landmarks"].append(copy.deepcopy(value["landmarks"][0]))
+        with pytest.raises(ValueError, match="duplicate"):
+>           M["rasterize"](value)
+
+test\test_spatial_annotation_review.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'id': 'object_0', 'size': [80, 60], 'path': 'retained.png', 'sha256': '0000000000000000000000000000000000000000000000000000000000000000', ...}
+
+    def rasterize(row):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:9: NotImplementedError
+________ test_draft_cannot_claim_independent_human_region_verification ________
+
+    def test_draft_cannot_claim_independent_human_region_verification():
+        document = {"protocol": "retained-spatial-annotation-draft-1", "annotation_source": "assistant_manual_draft",
+                    "pixel_truth_verified": True, "admission_allowed": False, "rows": [row()]}
+        with pytest.raises(ValueError):
+>           M["validate_document"](document)
+
+test\test_spatial_annotation_review.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+document = {'protocol': 'retained-spatial-annotation-draft-1', 'annotation_source': 'assistant_manual_draft', 'pixel_truth_verified': True, 'admission_allowed': False, ...}
+
+    def validate_document(document):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:13: NotImplementedError
+_______ test_hash_and_declared_size_bind_source_without_modifying_bytes _______
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-93/test_hash_and_declared_size_bi0')
+
+    def test_hash_and_declared_size_bind_source_without_modifying_bytes(tmp_path):
+        path = tmp_path / "source.png"; Image.new("RGB", (80, 60), "red").save(path)
+        before = path.read_bytes(); value = row(); value.update(path=str(path), sha256=hashlib.sha256(before).hexdigest())
+>       assert M["load_source"](value) == before and path.read_bytes() == before
+               ^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_annotation_review.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'id': 'object_0', 'size': [80, 60], 'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-93\\te..._and_declared_size_bi0\\source.png', 'sha256': 'e533419a5d8be8c6385f6aa69fa14bb397eab411a93fa35f41bf209763de942e', ...}
+
+    def load_source(row):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:17: NotImplementedError
+___________ test_review_output_does_not_replace_existing_artifacts ____________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-93/test_review_output_does_not_re0')
+
+    def test_review_output_does_not_replace_existing_artifacts(tmp_path):
+        path = tmp_path / "review.json"; path.write_text("retained", encoding="utf-8")
+        with pytest.raises(ValueError):
+>           M["preserve_outputs"](path, tmp_path / "figures")
+
+test\test_spatial_annotation_review.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+report = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-93/test_review_output_does_not_re0/review.json')
+directory = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-93/test_review_output_does_not_re0/figures')
+
+    def preserve_outputs(report, directory):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\prepare_spatial_annotation_review.py:21: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_spatial_annotation_review.py::test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring0]
+FAILED test/test_spatial_annotation_review.py::test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring1]
+FAILED test/test_spatial_annotation_review.py::test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring2]
+FAILED test/test_spatial_annotation_review.py::test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring3]
+FAILED test/test_spatial_annotation_review.py::test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring4]
+FAILED test/test_spatial_annotation_review.py::test_out_of_bounds_degenerate_or_self_intersecting_ring_is_rejected[ring5]
+FAILED test/test_spatial_annotation_review.py::test_mask_retains_full_foreground_and_cuts_only_declared_hole
+FAILED test/test_spatial_annotation_review.py::test_hole_outside_outer_contour_is_rejected
+FAILED test/test_spatial_annotation_review.py::test_overlapping_holes_are_rejected
+FAILED test/test_spatial_annotation_review.py::test_landmark_region_is_verified_without_guessing_its_role
+FAILED test/test_spatial_annotation_review.py::test_duplicate_landmarks_are_rejected
+FAILED test/test_spatial_annotation_review.py::test_draft_cannot_claim_independent_human_region_verification
+FAILED test/test_spatial_annotation_review.py::test_hash_and_declared_size_bind_source_without_modifying_bytes
+FAILED test/test_spatial_annotation_review.py::test_review_output_does_not_replace_existing_artifacts
+14 failed in 0.22s

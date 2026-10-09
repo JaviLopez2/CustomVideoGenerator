@@ -1,0 +1,25 @@
+{
+  "reviewed_on": "2026-10-09",
+  "review_source": "direct_user_message",
+  "reviewed_annotation_path": "docs/validation/spatial-annotation-draft-v2-2026-10-09.json",
+  "reviewed_annotation_sha256": "9c01401d2dc1b54cf60f58c3d21e867078f10a74c2a05fc7c1a5c52700c692a1",
+  "reviewed_board_sha256": "395889ec2aeef85e311df5e337f414858d6b9a6c64e51b24bc57d3e40a37b11e",
+  "verbatim_answer": "los contornos azules, fallan en la llave B, no coinciden en la forma de la llave. En las dos tazas el contorno azul se sale ligeramente en la parte izquierda de la taza. En la llave A, el contorno se hace un poco mas estrecho en la parte de los anillos. Los huecos rosas coinciden mas o menos en las dos tazas. Por ultimo los puntos amarillos, parecen coincidir correctamente.",
+  "scope": "Approximate visual inspection at the displayed board scale; original A/B/C overall judgments remain separate and unchanged.",
+  "contour_review": {
+    "image_2": "correction_required: contour does not match key B",
+    "image_3": "correction_required: contour too narrow near key A bands",
+    "image_4": "correction_required: left mug contour extends slightly beyond object",
+    "image_5": "correction_required: left mug contour extends slightly beyond object",
+    "image_0": "no specific comment; not interpreted as approval",
+    "image_1": "no specific comment; not interpreted as approval"
+  },
+  "mug_hole_review": "roughly_coincident_at_display_scale",
+  "landmark_review": "apparently_coincident_at_display_scale",
+  "overall_region_status": "corrections_required",
+  "pixel_truth_verified": false,
+  "physical_identity_established": false,
+  "eligible_for_identity_metrics": false,
+  "admission_allowed": false,
+  "updated_draft_requires_review": true
+}

@@ -1,0 +1,22 @@
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+image_0 rendered
+image_1 rendered
+image_2 rendered
+image_3 rendered
+image_4 rendered
+image_5 rendered

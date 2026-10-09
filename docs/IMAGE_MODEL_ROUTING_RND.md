@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — anotaciones y revisión humana de regiones, 2026-10-09
+
+Desde `03c36ba`: seis contornos manuales, tres huecos y 36 puntos sobre originales intactos, con renderer/validador aislado y 16 tests nuevos. La primera revisión humana detectó B mal trazada, anillos de A estrechos y borde izquierdo de tazas excedido; v3 corrige esas zonas sin cambiar puntos/huecos. La segunda revisión mantiene B discutida por sombra/perspectiva: máscara completa excluida de medición de identidad y calibración. No gold por píxel, correspondencias certificadas, score o aprobación. Dos respuestas literales vinculadas a SHA separadas de A/B/C, sin interpretar silencios como aprobación. [Informe](SPATIAL_ANNOTATION_REVIEW_REPORT.md).
+
+105 tests actuales pasan, 1 warning esperado,6,06 s / exit 0; logs históricos distintos. Consistencia geométrica del polígono no demuestra verdad perceptual. SVG/PNG locales visualizados; controles HTML sin prueba de navegador por bloqueo file://, sin elusión. 0 VLM/generaciones/benchmarksGPU/descargas/servicios o cambios app/modelos/routing/gates/deps/workflows/estable. Próximo: protocolo acotado de componentes/pose e incertidumbre antes de métricas; B no apta para máscara completa. Negativo estructural de taza y tolerancias siguen pendientes.
+
 ## Actualización — auditoría espacial CPU, 2026-10-09
 
 Desde `0e4a0aa`,6 retenciones y7 comparaciones fijas: SIFT reconoce correspondencias C/recolor, pero A y B carecen de encaje finito en los tres recortes nativos. Máscaras HSV incompletas y dependientes de umbral invierten orden A/B; no se calibran contra labels ni habilitan decisiones. [Informe y evidencia](SPATIAL_GEOMETRY_AUDIT_REPORT.md).0inferencias/generaciones/descargas/benchmarksGPU, sin iniciar servicios o modificar app/routing/modelos/gates/deps/workflows/estable. Script CPU aislado reproducible y14tests nuevos;89tests actuales pasan exit0,1warning esperado. Fallo API corregido con regresión, planes/errores conservados, mismos parámetros. Siguiente: máscaras de objeto completo y landmarks con procedencia/revisión independiente, controles negativos antes de calibrar. A/B/C y suites históricas intactos; no presenta accuracy ni identidad probada.

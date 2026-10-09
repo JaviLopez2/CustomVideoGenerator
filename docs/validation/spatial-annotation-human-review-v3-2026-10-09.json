@@ -1,0 +1,19 @@
+{
+  "reviewed_on": "2026-10-09",
+  "review_source": "direct_user_message",
+  "reviewed_annotation_path": "docs/validation/spatial-annotation-draft-v3-2026-10-09.json",
+  "reviewed_annotation_sha256": "906455f8c9da5c818b033b9a0499de2abf308943b1c18b6f71ad3771b8a4d16f",
+  "reviewed_board_sha256": "cb62360e1ac39ff783ba977e19e7651088137e6671f911a964a831aa0bd011a5",
+  "verbatim_answer": "en la llave B, el contorno coge un poco de la somra y hace que no encaje perfectamente, tambien es verdad que esa imagen tiene una perspectiva algo mas dificil.",
+  "scope": "Approximate board-scale region review, distinct from unchanged historical overall A/B/C shape judgments.",
+  "image_2_contour_status": "disputed: residual cast-shadow inclusion; oblique perspective complicates boundary separation",
+  "image_2_full_mask_use": "excluded from identity measurement and calibration until metal/shadow ambiguity and pose policy are resolved",
+  "other_contours": "no additional comment in this reply; not interpreted as explicit approval",
+  "landmarks_and_holes": "unchanged from v2; retain the prior approximate comments, without promoting to pixel truth or physical correspondence",
+  "overall_region_status": "partial_review_with_unresolved_boundary",
+  "pixel_truth_verified": false,
+  "physical_identity_established": false,
+  "eligible_for_identity_metrics": false,
+  "admission_allowed": false,
+  "further_identity_measurements_in_this_phase": 0
+}

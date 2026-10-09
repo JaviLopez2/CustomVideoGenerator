@@ -1,5 +1,15 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — borradores espaciales y dos revisiones humanas, 2026-10-09
+
+Base publicada `03c36ba788090f8e904d5d7b49200e543cf98f8c`, mismo worktree/rama experimental. Se conservaron los borradores uncommitted al reanudar. Se añaden renderer/validador aislado, 16 tests, tres versiones de contornos, reportes/logs y dos respuestas humanas literales vinculadas a anotación/tablero SHA. Seis contornos, tres huecos, 36 puntos; originales y A/B/C intactos. [Informe y límites](SPATIAL_ANNOTATION_REVIEW_REPORT.md), [v3](validation/spatial-annotation-draft-v3-2026-10-09.json), [última revisión](validation/spatial-annotation-human-review-v3-2026-10-09.json).
+
+V3 redibuja B, anillos de A y borde izquierdo de las tazas, preserva todos los puntos/huecos y ambas primeras imágenes. B aún incorpora sombra según el usuario y su perspectiva dificulta el borde: máscara completa discutida y excluida de identidad/calibración. Puntos parecen coincidir y huecos de taza coinciden aproximadamente según la primera revisión; eso no certifica píxeles o correspondencia física. Sin comentarios adicionales no se aprueban otros contornos automáticamente. 0 scores/VLM/generaciones/descargas/benchmarksGPU/servicios ni cambios app/gates/flags/modelos/routing/deps/workflows/estable.
+
+105 tests actuales pasan con 1 warning esperado,6,06 s, exit 0; logs RED/GREEN y ejecución anterior separados. Guardas de procedencia verificadas. [Cierre](validation/spatial-annotation-closing-checks-2026-10-09.json). SVG/PNG estáticos comprobados/visualizados; HTML generado sin validación de interacción porque navegador bloquea file://, sin workaround. Guardar todos los target/spatial-annotation-* ignorados, snapshot inicial del renderer y originales al archivar. Fetch 0/0; stable/tracked protegido en 6d27ba4. SHA de cierre por Git/origin, no execution_head del report.
+
+Siguiente tarea concreta: protocolo de componentes/pose con incertidumbre explícita, manteniendo B fuera de mediciones de máscara completa hasta resolver metal/sombra. No pedir otra vez los juicios globales A/B/C, no convertir inspección aproximada en gold, ni calibrar sin correspondencias/tolerancias y negativo estructural de taza revisado. No hace falta abrir servicios para este checkpoint; no hay nueva autorización de pesos, generación o promoción.
+
 ## Estado vigente — auditoría espacial independiente, 2026-10-09
 
 Base publicada `0e4a0aa`; mismo worktree/rama experimental, inicialmente limpio. Auditado CPU SIFT full/ROI±8 y HSV S0,15/0,25/0,35 sobre6 retenciones,7 comparaciones. C/recolor tienen registro local; A y B no encajan en ROI y máscaras incompletas invierten scores: no gate de forma/identidad. Todos uncertain/unavailable, sin aprobación/rechazo. [Informe](SPATIAL_GEOMETRY_AUDIT_REPORT.md), [raw](validation/spatial-geometry-audit-results-2026-10-09.json), [análisis](validation/spatial-geometry-audit-analysis-2026-10-09.json).0VLM/generaciones/descargas/benchmarksGPU/servicios iniciados.
