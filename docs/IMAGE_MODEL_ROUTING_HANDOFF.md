@@ -1,5 +1,11 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — control descartado por revisión humana, 2026-10-09
+
+Base publicada `82f3496e1e560f5182f9b82e61f0cdd2cc116250`, misma carpeta/rama, status/diffs iniciales vacíos/diez worktrees, fetch0/0. Usuario: **«no se ve una separacion real.»**, sobre candidate e1725efb y board ae5904f1. [Respuesta literal/SHA](validation/mug-structural-control-human-review-2026-10-09.json), [protocolo](MUG_STRUCTURAL_CONTROL_PROTOCOL.md). Cohorte cerrada con negativo inutilizable;1 generación anterior consumida/0reintentos/0 consultas a jueces. No inferir label negativo, fallo de jueces, counts humanos de positivos o gold por píxel. Raw/artifacts y snapshot de revisión pendiente anterior intactos.
+
+Siguiente tarea separada: preparar y verificar offline un grafo experimental de edición local con máscara; preservar superior y píxeles fuera de región, declarar1edit512²/4pasos/seed42/0retry, revisión humana antes de hasta6 consultas. Nodos de máscara/composición disponibles por GET actual; compatibilidad Klein/inpainting aún no probada. No se creó máscara/grafo/payload/imagen nueva ni cambió plantilla compilada. Usar pesos/deps existentes; si exige otros o cambiar servicios compartidos, parar por alcance. [Cierre](validation/mug-structural-control-human-review-closing-checks-2026-10-09.json) verifica JSON/respuesta/SHA/scope/diff/secret patterns; no unit tests nuevos por documentación,80 previos históricos.0 nueva generación/VLM/GPU/descarga/benchmark/servicios/app/modelos/gates/routing/deps/workflows/estable. Stable HEAD/tracked6d27ba4 confirmado por lectura; cierre SHA vía Git/origin.
+
 ## Estado vigente — edición estructural ejecutada, control aún no utilizable, 2026-10-09
 
 Base publicada `ace19e77bc7d803067bbfb438cd6240de23097a3`, misma carpeta/rama confirmadas, status/diffs iniciales vacíos y diez worktrees. Usuario abrió8188. Una única edición fijada,512²/4pasos/seed42: HTTP200/PNG,14,127s; prompt_id dffb644f-29ce-4756-8bab-73397abd249c, Comfy success/completed sin execution_error. Resultado SHA e1725efb05ed662f6266aa07cf1322e4b2813e275628199141cebd446759610f. [Registro](validation/mug-structural-control-generation-2026-10-09.json), [protocolo actualizado](MUG_STRUCTURAL_CONTROL_PROTOCOL.md).

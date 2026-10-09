@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — revisión humana descarta el control, 2026-10-09
+
+Desde82f3496, usuario confirma **«no se ve una separacion real.»** sobre imagen e1725efb/tablero ae5904f1. [Respuesta vinculada](validation/mug-structural-control-human-review-2026-10-09.json). Cohorte cerrada negativo inutilizable,1 generación previa/0retries/0jueces; el fallo de creación no mide capacidades de los candidatos. No convertir el prompt en label ni inferir revisión de counts positivos. Evidencia original conservada.
+
+Próxima propuesta: grafo experimental de edición enmascarada preparado/validado offline primero, proteger superior y pixels fuera de región,1edit512²/4pasos/seed42/0retry, revisión antes de6 consultas como máximo. GET confirma nodos locales de máscara/composición, no compatibilidad o resultado Klein. Ningún grafo/máscara/imagen nueva,0 nuevas generaciones/VLM/benchmarks/servicios/descargas/cambios app/modelos/gates/routing/workflows/deps/estable. [Alcance y criterios](MUG_STRUCTURAL_CONTROL_PROTOCOL.md); JSON/hash/diff checks frescos, sin atribuir80 tests históricos a esta revisión documental.
+
 ## Actualización — edición completada, negativo estructural no establecido, 2026-10-09
 
 Desde `ace19e7`,1 edición Klein fijada512²/4pasos/seed42 retorna HTTP200/PNG y Comfy success/completed,14,127s. La inspección del asistente ve unión inferior aún conectada: artifact no utilizable como negativo por ahora; revisión humana del tablero pendiente. 0 consultas a jueces/0reintentos, ningún resultado factual nuevo de candidatos. [Protocolo/ejecución](MUG_STRUCTURAL_CONTROL_PROTOCOL.md), [raw](validation/mug-structural-control-generation-2026-10-09.json), [inspección sin gold](validation/mug-structural-control-assistant-review-2026-10-09.json).

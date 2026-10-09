@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: human rejected structural mug control — 2026-10-09
+
+From published82f3496, user confirms verbatim "no se ve una separacion real." on candidate e1725efb and board ae5904f1. [Bound human review](docs/validation/mug-structural-control-human-review-2026-10-09.json); cohort closed unusable negative,1 generation consumed/0retries/0judge requests. No judge failure inferred or positive contact counts implicitly confirmed. Original outputs/raw/historical pending assistant review preserved, not relabeled.
+
+Next separate task: prepare masked local-edit experimental graph offline, red source512²/4steps/seed42, planned1edit/0retry; protect upper contact and preserve pixels outside mask, human negative review before any of up to6 judge observations. Existing Comfy mask/composite nodes listed by GET only; no compatible Klein inpaint graph proven/created, no mask or new dispatch. [Updated protocol](docs/MUG_STRUCTURAL_CONTROL_PROTOCOL.md). 0 new generation/VLM/GPU/benchmarks/download/service/app/model/dependency/gate/routing/workflow/stable changes in this review phase; no unit tests rerun for documentation, fresh SHA/JSON/diff checks. Closing SHA via history/origin, base distinct.
+
 ## Current checkpoint: structural mug edit completed, control not yet usable — 2026-10-09
 
 From published `ace19e7`, user opened Comfy8188; exactly1 pinned edit512²/4steps/seed42 returned HTTP200/PNG,14.127s, history success/completed, prompt dffb644f-29ce-4756-8bab-73397abd249c. Candidate SHA e1725efb05ed662f6266aa07cf1322e4b2813e275628199141cebd446759610f. Assistant sees lower attachment still connected; do not label a valid structural negative or score judges. [Execution/update](docs/MUG_STRUCTURAL_CONTROL_PROTOCOL.md), [raw](docs/validation/mug-structural-control-generation-2026-10-09.json). Human review requested on three-image full/2x detail board and remains pending.

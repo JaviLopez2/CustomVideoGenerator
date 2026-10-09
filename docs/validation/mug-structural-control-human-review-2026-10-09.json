@@ -1,0 +1,50 @@
+{
+  "protocol": "mug-structural-control-human-review-1",
+  "recorded_utc": "2026-10-09T12:04:05.565858+00:00",
+  "recording_base_head": "82f3496e1e560f5182f9b82e61f0cdd2cc116250",
+  "source": "direct_user_message",
+  "user_reply_verbatim": "no se ve una separacion real.",
+  "generation_record": {
+    "path": "docs/validation/mug-structural-control-generation-2026-10-09.json",
+    "sha256": "fad1797913ba8ba6bad95f08949883ca659bb221cbdc817f3727da19be51b1b5"
+  },
+  "assistant_review_snapshot": {
+    "path": "docs/validation/mug-structural-control-assistant-review-2026-10-09.json",
+    "sha256": "77f281e777225f406fd89d1e8dfa8e7232cfa3a2de8fb87db18f81fcd6d99e26",
+    "status_pending_in_that_historical_snapshot": true
+  },
+  "candidate": {
+    "path": "local_image_stack/experiments/bridge/target/mug-structural-control-generation-2026-10-09/result.png",
+    "sha256": "e1725efb05ed662f6266aa07cf1322e4b2813e275628199141cebd446759610f",
+    "size": [
+      512,
+      512
+    ],
+    "format": "PNG"
+  },
+  "board": {
+    "path": "local_image_stack/experiments/bridge/target/mug-structural-control-generation-2026-10-09/review-board-v2.png",
+    "sha256": "ae5904f1090e08d02e9a0fdd6037976cc1e3a5c827c7494bdd52efcb7b016024",
+    "size": [
+      1644,
+      1080
+    ],
+    "scope": "Derived engineering review figure; original full PNGs preserved; direct integer2x nearest detail crop; not a model input"
+  },
+  "human_observation": "No real separation visible at the lower handle attachment",
+  "candidate_usable_as_structural_negative": false,
+  "cohort_status": "closed_unusable_negative_control",
+  "reason": "Requested structural defect was not produced; never infer a negative label from edit prompt",
+  "human_review_is_blind": false,
+  "pixel_truth_verified": false,
+  "positive_contact_counts_confirmed_by_this_reply": false,
+  "positive_contact_review_status": "not_answered_in_this_reply; no implied approval",
+  "judge_requests_in_cohort": 0,
+  "generation_requests_in_cohort": 1,
+  "automatic_retries": 0,
+  "remaining_generation_budget_in_this_cohort": 0,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "candidate_promotion_allowed": false,
+  "next_task": "Prepare a separate masked local-edit graph/protocol, validate offline first; no further generation in this closed cohort"
+}

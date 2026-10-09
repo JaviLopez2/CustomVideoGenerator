@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: human-confirmed unusable structural control
+
+Base82f3496; direct user says "no se ve una separacion real." on e1725efb candidate/ae5904f1 board. [Verbatim SHA-bound review](validation/mug-structural-control-human-review-2026-10-09.json). Cohort closed unusable negative:1 previous generation/0retries/0judge requests. Does not evaluate a judge or imply positive contact-count approval/pixel gold. Historical assistant-pending snapshot/raw/originals untouched.
+
+Next separate task: offline masked local-edit graph/contract preparation; protect upper contact/exact outside-mask pixels, proposed1edit512²/4steps/seed42/0retry and human review before up to6 observations. Comfy mask/composite nodes present by GET; compatible Klein inpainting graph still unproven/uncreated.0 new generation/VLM/GPU/benchmarks/download/service/app/model/dependency/gate/routing/workflow/stable changes in this doc phase. Fresh JSON/SHA/scope/diff checks,80 prior tests historical. [Protocol](MUG_STRUCTURAL_CONTROL_PROTOCOL.md), closing SHA via Git/origin. Candidates stay experimental diagnostics; no promotion/admission/identity.
+
 ## Current checkpoint: generated structural edit, negative not established
 
 Base ace19e7, user opened8188;1 pinned Klein edit512²/4steps/seed42 completed HTTP200/PNG and Comfy success/completed,14.127s. Assistant sees lower handle attachment still connected, no unambiguous gap: do not label valid negative or score any judge. Human review requested/pending on full/2x detail three-image board. 0 judge requests/retries, no new selection evidence. [Execution/protocol](MUG_STRUCTURAL_CONTROL_PROTOCOL.md), [raw](validation/mug-structural-control-generation-2026-10-09.json), [assistant review, not gold](validation/mug-structural-control-assistant-review-2026-10-09.json).

@@ -1,0 +1,87 @@
+{
+  "checked_utc": "2026-10-09T12:05:07.706712+00:00",
+  "recording_base_head": "82f3496e1e560f5182f9b82e61f0cdd2cc116250",
+  "human_review_sha256": "c79e676bc885732368769246184d28e84738933e2d6b82c0573b93b8c759fdaf",
+  "verbatim_reply_preserved": true,
+  "candidate_and_board_sha_bound": true,
+  "generation_and_assistant_snapshot_preserved": true,
+  "candidate_unusable": true,
+  "cohort_closed": true,
+  "positive_counts_not_inferred": true,
+  "new_generation_requests": 0,
+  "new_judge_requests": 0,
+  "source_bindings_verified": 15,
+  "original_pngs_verified": 2,
+  "reviewed_execution_plan_exists": false,
+  "next_option_only_proposed": true,
+  "masked_graph_created": false,
+  "masked_edit_compatibility_validated": false,
+  "node_capability_method": "readonly local GET /object_info,timeout3s; availability not Klein compatibility or generation readiness",
+  "local_node_capabilities": {
+    "LoadImageMask": {
+      "available": true,
+      "required_input_names": [
+        "image",
+        "channel"
+      ]
+    },
+    "ImageToMask": {
+      "available": true,
+      "required_input_names": [
+        "image",
+        "channel"
+      ]
+    },
+    "VAEEncodeForInpaint": {
+      "available": true,
+      "required_input_names": [
+        "pixels",
+        "vae",
+        "mask",
+        "grow_mask_by"
+      ]
+    },
+    "SetLatentNoiseMask": {
+      "available": true,
+      "required_input_names": [
+        "samples",
+        "mask"
+      ]
+    },
+    "InpaintModelConditioning": {
+      "available": true,
+      "required_input_names": [
+        "positive",
+        "negative",
+        "vae",
+        "pixels",
+        "mask",
+        "noise_mask"
+      ]
+    },
+    "ImageCompositeMasked": {
+      "available": true,
+      "required_input_names": [
+        "destination",
+        "source",
+        "x",
+        "y",
+        "resize_source"
+      ]
+    }
+  },
+  "no_unit_tests_run": "Documentation/human observation only; prior80 tests historical",
+  "verification_python_exit_code": 0,
+  "unstaged_diff_check_exit_code": 0,
+  "only_five_existing_docs_modified": true,
+  "secret_patterns_scanned": 6,
+  "secret_pattern_hits": 0,
+  "secret_scan_exhaustive": false,
+  "fetch_ahead_behind_before_edit": [
+    0,
+    0
+  ],
+  "stable_head_read_before_edit": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status_read_before_edit": "empty",
+  "note": "No service/process/model/weight/dependency/workflow/app/stable modifications; closing SHA from Git after publishing."
+}
