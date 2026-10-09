@@ -1,0 +1,382 @@
+{
+  "protocol": "pairwise-visible-cue-analysis-1",
+  "analysed_utc": "2026-10-09T19:22:45.570260+00:00",
+  "execution_base_head": "277f356cd492cb990aaf17047e8b5264a83339c8",
+  "plan": {
+    "path": "docs/validation/pairwise-visible-cue-probe-plan-2026-10-09.json",
+    "sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54"
+  },
+  "cohorts": [
+    {
+      "model": "unsloth/Qwen3.5-9B-GGUF",
+      "raw": {
+        "path": "docs/validation/pairwise-cue-qwen35-2026-10-09.json",
+        "sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c"
+      },
+      "owned_pid": 19704,
+      "owned_pid_absent": true,
+      "owned_server_closed": true,
+      "http_model_requests": 4,
+      "responses_received": 4,
+      "valid_observations": 4,
+      "invalid_observations": 0,
+      "unattempted_cases": [],
+      "load_seconds": 4.029236800000945,
+      "request_mean_seconds": 5.712125924997963,
+      "request_median_seconds": 5.727137249999942,
+      "request_sum_seconds": 22.848503699991852,
+      "rows": [
+        {
+          "case_id": "previous_same_bytes",
+          "transport_status": "completed",
+          "seconds": 5.5254169999971054,
+          "request_sha256": "8fd60144cf72bb077165c22a3f95e47c6881b9a1c32196d46ad7125ec6c88fa3",
+          "inputs": [
+            {
+              "role": "previous",
+              "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+            },
+            {
+              "role": "current",
+              "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "usage": {
+            "completion_tokens": 95,
+            "prompt_tokens": 2243,
+            "total_tokens": 2338,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 2243,
+            "prompt_ms": 2987.632,
+            "prompt_per_token_ms": 1.3319803834150692,
+            "prompt_per_second": 750.761807344412,
+            "predicted_n": 95,
+            "predicted_ms": 2011.434,
+            "predicted_per_token_ms": 21.39823404255319,
+            "predicted_per_second": 46.7328284199233
+          },
+          "server_response_received": true,
+          "observation": {
+            "previous_subject_presence": "present",
+            "previous_cue_visibility": "not_observed",
+            "previous_evidence": "No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug.",
+            "current_subject_presence": "present",
+            "current_cue_visibility": "not_observed",
+            "current_evidence": "No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug."
+          },
+          "diagnostic": {
+            "version": "pairwise-visible-cue-observations-1",
+            "verdict": "uncertain",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "visible_transition": "no_visible_change",
+            "input_consistency_violation": false,
+            "reason": "exact_input_consistency"
+          },
+          "correctness_score": null,
+          "human_gold": false
+        },
+        {
+          "case_id": "retained_warm_512",
+          "transport_status": "completed",
+          "seconds": 5.635143100000278,
+          "request_sha256": "cd10b2ba886be2c57b281c48c105547439d71767d4875a589014823a80a01a40",
+          "inputs": [
+            {
+              "role": "previous",
+              "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+            },
+            {
+              "role": "current",
+              "sha256": "dcd9c928c4b24e0f827f8860b0e14ae0507ccb13aab1236942ebff9cfaeba841"
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "usage": {
+            "completion_tokens": 110,
+            "prompt_tokens": 2243,
+            "total_tokens": 2353,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 2243,
+            "prompt_ms": 2864.822,
+            "prompt_per_token_ms": 1.2772278198840838,
+            "prompt_per_second": 782.9456769041847,
+            "predicted_n": 110,
+            "predicted_ms": 2280.284,
+            "predicted_per_token_ms": 20.920036697247706,
+            "predicted_per_second": 47.80106337631628
+          },
+          "server_response_received": true,
+          "observation": {
+            "previous_subject_presence": "present",
+            "previous_cue_visibility": "not_observed",
+            "previous_evidence": "The opening of the red mug is visible, but no pale translucent wisps or plume-shaped marks are emerging from it.",
+            "current_subject_presence": "present",
+            "current_cue_visibility": "observed",
+            "current_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug."
+          },
+          "diagnostic": {
+            "version": "pairwise-visible-cue-observations-1",
+            "verdict": "uncertain",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "visible_transition": "reported_appearance",
+            "input_consistency_violation": false,
+            "reason": "reported_visible_cue_pattern_only"
+          },
+          "correctness_score": null,
+          "human_gold": false
+        },
+        {
+          "case_id": "retained_hot_768",
+          "transport_status": "completed",
+          "seconds": 5.8191313999996055,
+          "request_sha256": "ce768094ab50a43c7ce28e756be1e4f854456d4c9c1fce84d2307f95380052bc",
+          "inputs": [
+            {
+              "role": "previous",
+              "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+            },
+            {
+              "role": "current",
+              "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814"
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "usage": {
+            "completion_tokens": 114,
+            "prompt_tokens": 2251,
+            "total_tokens": 2365,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 2251,
+            "prompt_ms": 2921.024,
+            "prompt_per_token_ms": 1.2976561528209685,
+            "prompt_per_second": 770.6201660787451,
+            "predicted_n": 114,
+            "predicted_ms": 2365.989,
+            "predicted_per_token_ms": 20.93795575221239,
+            "predicted_per_second": 47.760154421681584
+          },
+          "server_response_received": true,
+          "observation": {
+            "previous_subject_presence": "present",
+            "previous_cue_visibility": "not_observed",
+            "previous_evidence": "The opening of the red mug is visible, but there are no pale translucent wisps or plume-shaped marks emerging from it.",
+            "current_subject_presence": "present",
+            "current_cue_visibility": "observed",
+            "current_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug and rising upwards."
+          },
+          "diagnostic": {
+            "version": "pairwise-visible-cue-observations-1",
+            "verdict": "uncertain",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "visible_transition": "reported_appearance",
+            "input_consistency_violation": false,
+            "reason": "reported_visible_cue_pattern_only"
+          },
+          "correctness_score": null,
+          "human_gold": false
+        },
+        {
+          "case_id": "retained_cooled_768",
+          "transport_status": "completed",
+          "seconds": 5.8688121999948635,
+          "request_sha256": "2787da4d6657363a953edbc58962ecdbe2278352aeb39853d860bb2799a2ebe5",
+          "inputs": [
+            {
+              "role": "previous",
+              "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814"
+            },
+            {
+              "role": "current",
+              "sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729"
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "usage": {
+            "completion_tokens": 111,
+            "prompt_tokens": 2259,
+            "total_tokens": 2370,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 2259,
+            "prompt_ms": 2966.431,
+            "prompt_per_token_ms": 1.3131611332447986,
+            "prompt_per_second": 761.5211680298648,
+            "predicted_n": 111,
+            "predicted_ms": 2248.935,
+            "predicted_per_token_ms": 20.444863636363635,
+            "predicted_per_second": 48.912040588100595
+          },
+          "server_response_received": true,
+          "observation": {
+            "previous_subject_presence": "present",
+            "previous_cue_visibility": "observed",
+            "previous_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the mug and rising upwards.",
+            "current_subject_presence": "present",
+            "current_cue_visibility": "not_observed",
+            "current_evidence": "The area immediately above the mug's opening is dark and lacks any visible pale translucent wisps or plume-shaped marks."
+          },
+          "diagnostic": {
+            "version": "pairwise-visible-cue-observations-1",
+            "verdict": "uncertain",
+            "identity_score": null,
+            "state_score": null,
+            "progression_score": null,
+            "admission_allowed": false,
+            "automatic_rejection": false,
+            "physical_identity_established": false,
+            "physical_temperature_measured": false,
+            "visible_transition": "reported_disappearance",
+            "input_consistency_violation": false,
+            "reason": "reported_visible_cue_pattern_only"
+          },
+          "correctness_score": null,
+          "human_gold": false
+        }
+      ]
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "raw": {
+        "path": "docs/validation/pairwise-cue-qwen3vl-2026-10-09.json",
+        "sha256": "1a8364b4c4c93c03a5f285881e5764ed0f3a9d87a54e54eeb132675aac14133d"
+      },
+      "owned_pid": 18176,
+      "owned_pid_absent": true,
+      "owned_server_closed": true,
+      "http_model_requests": 1,
+      "responses_received": 1,
+      "valid_observations": 0,
+      "invalid_observations": 1,
+      "unattempted_cases": [
+        "retained_warm_512",
+        "retained_hot_768",
+        "retained_cooled_768"
+      ],
+      "load_seconds": 4.041554700001143,
+      "request_mean_seconds": 5.411588100003428,
+      "request_median_seconds": 5.411588100003428,
+      "request_sum_seconds": 5.411588100003428,
+      "rows": [
+        {
+          "case_id": "previous_same_bytes",
+          "transport_status": "unavailable",
+          "seconds": 5.411588100003428,
+          "request_sha256": "8fd60144cf72bb077165c22a3f95e47c6881b9a1c32196d46ad7125ec6c88fa3",
+          "inputs": [
+            {
+              "role": "previous",
+              "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+            },
+            {
+              "role": "current",
+              "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+            }
+          ],
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "usage": {
+            "completion_tokens": 98,
+            "prompt_tokens": 2239,
+            "total_tokens": 2337,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "server_timings": {
+            "cache_n": 0,
+            "prompt_n": 2239,
+            "prompt_ms": 3021.223,
+            "prompt_per_token_ms": 1.349362661902635,
+            "prompt_per_second": 741.0906113186614,
+            "predicted_n": 98,
+            "predicted_ms": 1882.035,
+            "predicted_per_token_ms": 19.40242268041237,
+            "predicted_per_second": 51.539955420595255
+          },
+          "server_response_received": true,
+          "error_type": "ValueError",
+          "validation_reason": "Cue visibility requires established subject",
+          "invalid_raw_fields_for_audit_only": {
+            "previous_subject_presence": "uncertain",
+            "previous_cue_visibility": "not_observed",
+            "previous_evidence": "The mug is not clearly visible in the frame, making it uncertain whether it is present.",
+            "current_subject_presence": "uncertain",
+            "current_cue_visibility": "not_observed",
+            "current_evidence": "The mug is not clearly visible in the frame, making it uncertain whether it is present."
+          },
+          "diagnostic": null,
+          "correctness_score": null,
+          "human_gold": false
+        }
+      ]
+    }
+  ],
+  "total_http_model_requests": 5,
+  "valid_observations": 4,
+  "invalid_observations": 1,
+  "requests_not_attempted_after_stop": 3,
+  "byte_consistency_controls_valid": 1,
+  "human_gold_added": false,
+  "accuracy_or_population_ranking_assigned": false,
+  "generation_requests": 0,
+  "downloads": 0,
+  "retries": 0,
+  "scores_calibrated": false,
+  "admission_allowed": false,
+  "qualitative_comparison_to_prequery_assistant_view": {
+    "human_gold": false,
+    "qwen35_warm_hot": "Reports visible appearance, broadly agrees with known assistant prequery view; not blind accuracy.",
+    "qwen35_cooled": "Reports disappearance/not_observed but describes the opening/area as dark. Prequery assistant view was ambiguous; possible failure to follow prompt uncertainty rule, retained without post-hoc normalization or temperature conclusion.",
+    "qwen3vl": "Server returned complete JSON but uncertain subject with not_observed cue violates predefined requirement. Parser unavailable is a validation failure, not an HTTP outage. Cannot score the three unattempted temporal cases or infer general model incapability."
+  },
+  "timing_limits": [
+    "n4 valid for Qwen3.5 versus n1 invalid for Qwen3-VL; not a comparable speed ranking.",
+    "Local request time includes payload/source recheck/HTTP/parse; own readiness load separately, weight/runtime hashing not included.",
+    "No representative p95, peak VRAM or end-to-end MPT/QA latency.",
+    "All reported cached_tokens/cache_n zero in these five requests."
+  ],
+  "decision": "Close both fixed cohorts without rescue. Qwen3.5 supplied usable structured observations in this protocol, but semantic uncertainty and independent calibration remain unresolved. Neither candidate approved for automatic QA.",
+  "next": "CPU audit of existing QA integration/contract boundaries and evidence gaps; prepare a diagnostic-only integration plan without production wiring, arbitrary scores, relabeling or new inference."
+}

@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — pistas visibles observadas, 2026-10-09
+
+Desde `277f356`, observador genérico subject+cue y runner aislados; 66 tests nuevos y 182 finales pasan en 3,43s/exit0/sin avisos, revisión de código sin hallazgos. Plan liga ocho fuentes y cuatro fullframes nativos, verificados antes de carga/cada HTTP. Cinco respuestas: Qwen3.5 cuatro válidas; Qwen3-VL presencia uncertain con pista not_observed en el control, inválida y parada con tres casos sin ejecutar. Cero retries/generaciones/descargas. [Informe](PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md). Qwen3.5 reporta aparición en warm/hot y desaparición en cooled, pero describe zona oscura en este último; incumplimiento semántico posible conservado, sin gold humano/accuracy/temperatura/identidad. Diagnósticos válidos uncertain, scores separados null, sin admisión. Labels/captions/QA históricos intactos.
+
+Ambos PID propios cerrados/ausentes y cola0/0, compartidos/app/modelos/defaults/gates/routing/workflows/deps/estable conservados. Ningún juez aprobado: falta sensibilidad/calibración independiente y latencia completa. Siguiente CPU: auditar contrato QA/punto de integración y preparar modo diagnóstico con abstención, reutilizando selectividad/caché; sin llamadas por defecto ni umbrales arbitrarios. Autonomía activa, nada que abrir/aprobar ahora. Snapshots siguientes históricos.
+
 ## Actualización — fotogramas temporales y método directo preparados, 2026-10-09
 
 Desdecc98f6e, inspección de4fuentes: warm/hot con columnas visibles, cold con abertura ambigua/luz azul, sin temperatura/inmovilidad/identidad certificadas. Labels/captions/QAuncertain históricos preservados, sin alias smoke→steam. Cuatro fullframes RGB metadata-free con mismo píxel/modo/dimensiones, receta NumPy exit0/helper sin cambio; no pytest nuevo atribuido. [Informe](RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md).0 nueva inferencia/generación/descarga/servicios/modelos/app/gates/routing/deps/estable.

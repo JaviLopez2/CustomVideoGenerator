@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: direct visible-cue cohorts closed
+
+From `277f356`, two isolated experimental scripts and 66 new regressions; 182 final tests pass in 3.43s/exit0/no warnings, code review no issues, executed code bound by SHA and unchanged after tests. Five HTTP responses: Qwen3.5 four valid observations (self consistency, two reported appearances and one reported disappearance); Qwen3-VL first response violates subject-presence/cue contract, three cases unattempted, no retries. [Report](docs/PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md). Qwen3.5 describes a dark area yet reports not_observed: semantic uncertainty risk retained, not independent accuracy or temperature/identity proof. All valid diagnostics uncertain, three score fields null, no automatic admission. Historical labels/captions/QA unchanged.
+
+Two own8092 PIDs closed/absent, shared queue0/0. No generation/download/model/app/gate/routing/dependency/workflow/stable changes. Next CPU audit of existing QA contract/integration boundaries and evidence gaps, preparing diagnostic-only integration plan; preserve existing selectivity/cache, no arbitrary calibrated scores or default calls. [Autonomous handoff](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action; final SHA via Git/origin. Earlier next-implementation sections are historical.
+
 ## Current checkpoint: temporal full frames inspected and prepared
 
 Fromcc98f6e,4 original retained temporal frames inspected with source hashes: warm/hot wispy columns visible, cold opening ambiguous despite blue light. No temperature/motion/identity gold inferred, prior labels/captions and3uncertain v4 results unchanged.4 metadata-free full RGB frames preserve all native pixels/mode/dimensions, independent NumPy checks/recipe exit0; helper/app/runner unchanged, no fresh pytest claimed. [Report](docs/RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md).0 inference/generation/download/service/model/gate/routing/dependency/stable changes.

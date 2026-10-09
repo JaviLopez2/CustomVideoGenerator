@@ -1,0 +1,1145 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                             [100%]
+================================== FAILURES ===================================
+____________ test_generic_prompt_and_schema_match_declared_method _____________
+
+    def test_generic_prompt_and_schema_match_declared_method():
+        design = json.loads((Path(__file__).parents[1] / "docs/validation/pairwise-visible-cue-design-2026-10-09.json").read_text(encoding="utf-8"))
+>       assert observer.prompt(design["subject"], design["cue_query"]) == design["model_prompt"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = 'mug'
+cue_query = 'Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.'
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+____________ test_invalid_generic_query_never_dispatches[subject-] ____________
+
+field = 'subject', value = ''
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = '', cue_query = 'Visible material cue'
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+___________ test_invalid_generic_query_never_dispatches[subject- ] ____________
+
+field = 'subject', value = ' '
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = ' ', cue_query = 'Visible material cue'
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+__________ test_invalid_generic_query_never_dispatches[subject-None] __________
+
+field = 'subject', value = None
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = None, cue_query = 'Visible material cue'
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+___________ test_invalid_generic_query_never_dispatches[subject-3] ____________
+
+field = 'subject', value = 3
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = 3, cue_query = 'Visible material cue'
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+_ test_invalid_generic_query_never_dispatches[subject-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx] _
+
+field = 'subject'
+value = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+cue_query = 'Visible material cue'
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+___________ test_invalid_generic_query_never_dispatches[cue_query-] ___________
+
+field = 'cue_query', value = ''
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = 'branch', cue_query = ''
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+__________ test_invalid_generic_query_never_dispatches[cue_query- ] ___________
+
+field = 'cue_query', value = ' '
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = 'branch', cue_query = ' '
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+_________ test_invalid_generic_query_never_dispatches[cue_query-None] _________
+
+field = 'cue_query', value = None
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = 'branch', cue_query = None
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+__________ test_invalid_generic_query_never_dispatches[cue_query-3] ___________
+
+field = 'cue_query', value = 3
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = 'branch', cue_query = 3
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+_ test_invalid_generic_query_never_dispatches[cue_query-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx] _
+
+field = 'cue_query'
+value = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+    @pytest.mark.parametrize("field,value", [("subject", ""), ("subject", " "), ("subject", None), ("subject", 3), ("subject", "x" * 513),
+                                            ("cue_query", ""), ("cue_query", " "), ("cue_query", None), ("cue_query", 3), ("cue_query", "x" * 1025)])
+    def test_invalid_generic_query_never_dispatches(field, value):
+        query = {"subject": "branch", "cue_query": "Visible material cue"}; query[field] = value
+>       with pytest.raises(ValueError): observer.prompt(**query)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+subject = 'branch'
+cue_query = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+    def prompt(subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:4: NotImplementedError
+_______ test_payload_preserves_png_order_and_keeps_annotations_offline ________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test_payload_preserves_png_ord0\\pre...1c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}]
+
+    def test_payload_preserves_png_order_and_keeps_annotations_offline(images):
+>       request = observer.payload(*images, "branch", "Visible material cue")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+previous = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test_payload_preserves_png_ord0\\prev...1bc935e2645a4b25f1782992874498bfc553146563111a1d6931f6f982a0', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}
+current = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test_payload_preserves_png_ord0\\curr...31c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}
+subject = 'branch', cue_query = 'Visible material cue'
+
+    def payload(previous, current, subject, cue_query):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:10: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[missing] ________
+
+fault = 'missing'
+
+    @pytest.mark.parametrize("fault", ["missing", "extra", "enum", "type", "blank", "long", "absent_observed", "uncertain_absence"])
+    def test_invalid_or_contradictory_observation_is_rejected(fault):
+        value = answer()
+        if fault == "missing": value.pop("current_evidence")
+        elif fault == "extra": value["temperature"] = "hot"
+        elif fault == "enum": value["current_cue_visibility"] = "present"
+        elif fault == "type": value["current_evidence"] = 3
+        elif fault == "blank": value["current_evidence"] = " "
+        elif fault == "long": value["current_evidence"] = "x" * 161
+        elif fault == "absent_observed": value["current_subject_presence"] = "absent"
+        else:
+            value["previous_subject_presence"] = "uncertain"
+            value["previous_cue_visibility"] = "not_observed"
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+
+    def validate(value):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:13: NotImplementedError
+________ test_invalid_or_contradictory_observation_is_rejected[extra] _________
+
+fault = 'extra'
+
+    @pytest.mark.parametrize("fault", ["missing", "extra", "enum", "type", "blank", "long", "absent_observed", "uncertain_absence"])
+    def test_invalid_or_contradictory_observation_is_rejected(fault):
+        value = answer()
+        if fault == "missing": value.pop("current_evidence")
+        elif fault == "extra": value["temperature"] = "hot"
+        elif fault == "enum": value["current_cue_visibility"] = "present"
+        elif fault == "type": value["current_evidence"] = 3
+        elif fault == "blank": value["current_evidence"] = " "
+        elif fault == "long": value["current_evidence"] = "x" * 161
+        elif fault == "absent_observed": value["current_subject_presence"] = "absent"
+        else:
+            value["previous_subject_presence"] = "uncertain"
+            value["previous_cue_visibility"] = "not_observed"
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+
+    def validate(value):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:13: NotImplementedError
+_________ test_invalid_or_contradictory_observation_is_rejected[enum] _________
+
+fault = 'enum'
+
+    @pytest.mark.parametrize("fault", ["missing", "extra", "enum", "type", "blank", "long", "absent_observed", "uncertain_absence"])
+    def test_invalid_or_contradictory_observation_is_rejected(fault):
+        value = answer()
+        if fault == "missing": value.pop("current_evidence")
+        elif fault == "extra": value["temperature"] = "hot"
+        elif fault == "enum": value["current_cue_visibility"] = "present"
+        elif fault == "type": value["current_evidence"] = 3
+        elif fault == "blank": value["current_evidence"] = " "
+        elif fault == "long": value["current_evidence"] = "x" * 161
+        elif fault == "absent_observed": value["current_subject_presence"] = "absent"
+        else:
+            value["previous_subject_presence"] = "uncertain"
+            value["previous_cue_visibility"] = "not_observed"
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+
+    def validate(value):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:13: NotImplementedError
+_________ test_invalid_or_contradictory_observation_is_rejected[type] _________
+
+fault = 'type'
+
+    @pytest.mark.parametrize("fault", ["missing", "extra", "enum", "type", "blank", "long", "absent_observed", "uncertain_absence"])
+    def test_invalid_or_contradictory_observation_is_rejected(fault):
+        value = answer()
+        if fault == "missing": value.pop("current_evidence")
+        elif fault == "extra": value["temperature"] = "hot"
+        elif fault == "enum": value["current_cue_visibility"] = "present"
+        elif fault == "type": value["current_evidence"] = 3
+        elif fault == "blank": value["current_evidence"] = " "
+        elif fault == "long": value["current_evidence"] = "x" * 161
+        elif fault == "absent_observed": value["current_subject_presence"] = "absent"
+        else:
+            value["previous_subject_presence"] = "uncertain"
+            value["previous_cue_visibility"] = "not_observed"
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+
+    def validate(value):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:13: NotImplementedError
+________ test_invalid_or_contradictory_observation_is_rejected[blank] _________
+
+fault = 'blank'
+
+    @pytest.mark.parametrize("fault", ["missing", "extra", "enum", "type", "blank", "long", "absent_observed", "uncertain_absence"])
+    def test_invalid_or_contradictory_observation_is_rejected(fault):
+        value = answer()
+        if fault == "missing": value.pop("current_evidence")
+        elif fault == "extra": value["temperature"] = "hot"
+        elif fault == "enum": value["current_cue_visibility"] = "present"
+        elif fault == "type": value["current_evidence"] = 3
+        elif fault == "blank": value["current_evidence"] = " "
+        elif fault == "long": value["current_evidence"] = "x" * 161
+        elif fault == "absent_observed": value["current_subject_presence"] = "absent"
+        else:
+            value["previous_subject_presence"] = "uncertain"
+            value["previous_cue_visibility"] = "not_observed"
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+
+    def validate(value):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:13: NotImplementedError
+_________ test_invalid_or_contradictory_observation_is_rejected[long] _________
+
+fault = 'long'
+
+    @pytest.mark.parametrize("fault", ["missing", "extra", "enum", "type", "blank", "long", "absent_observed", "uncertain_absence"])
+    def test_invalid_or_contradictory_observation_is_rejected(fault):
+        value = answer()
+        if fault == "missing": value.pop("current_evidence")
+        elif fault == "extra": value["temperature"] = "hot"
+        elif fault == "enum": value["current_cue_visibility"] = "present"
+        elif fault == "type": value["current_evidence"] = 3
+        elif fault == "blank": value["current_evidence"] = " "
+        elif fault == "long": value["current_evidence"] = "x" * 161
+        elif fault == "absent_observed": value["current_subject_presence"] = "absent"
+        else:
+            value["previous_subject_presence"] = "uncertain"
+            value["previous_cue_visibility"] = "not_observed"
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+
+    def validate(value):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:13: NotImplementedError
+___ test_invalid_or_contradictory_observation_is_rejected[absent_observed] ____
+
+fault = 'absent_observed'
+
+    @pytest.mark.parametrize("fault", ["missing", "extra", "enum", "type", "blank", "long", "absent_observed", "uncertain_absence"])
+    def test_invalid_or_contradictory_observation_is_rejected(fault):
+        value = answer()
+        if fault == "missing": value.pop("current_evidence")
+        elif fault == "extra": value["temperature"] = "hot"
+        elif fault == "enum": value["current_cue_visibility"] = "present"
+        elif fault == "type": value["current_evidence"] = 3
+        elif fault == "blank": value["current_evidence"] = " "
+        elif fault == "long": value["current_evidence"] = "x" * 161
+        elif fault == "absent_observed": value["current_subject_presence"] = "absent"
+        else:
+            value["previous_subject_presence"] = "uncertain"
+            value["previous_cue_visibility"] = "not_observed"
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'absent', ...}
+
+    def validate(value):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:13: NotImplementedError
+__ test_invalid_or_contradictory_observation_is_rejected[uncertain_absence] ___
+
+fault = 'uncertain_absence'
+
+    @pytest.mark.parametrize("fault", ["missing", "extra", "enum", "type", "blank", "long", "absent_observed", "uncertain_absence"])
+    def test_invalid_or_contradictory_observation_is_rejected(fault):
+        value = answer()
+        if fault == "missing": value.pop("current_evidence")
+        elif fault == "extra": value["temperature"] = "hot"
+        elif fault == "enum": value["current_cue_visibility"] = "present"
+        elif fault == "type": value["current_evidence"] = 3
+        elif fault == "blank": value["current_evidence"] = " "
+        elif fault == "long": value["current_evidence"] = "x" * 161
+        elif fault == "absent_observed": value["current_subject_presence"] = "absent"
+        else:
+            value["previous_subject_presence"] = "uncertain"
+            value["previous_cue_visibility"] = "not_observed"
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'uncertain', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+
+    def validate(value):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:13: NotImplementedError
+__________ test_incomplete_reply_not_silently_normalized[truncated] ___________
+
+fault = 'truncated'
+
+    @pytest.mark.parametrize("fault", ["truncated", "reasoning", "duplicate_key", "multiple_choices", "non_json", "blank", "missing_message"])
+    def test_incomplete_reply_not_silently_normalized(fault):
+        reply = response()
+        if fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden analysis"
+        elif fault == "duplicate_key": reply["choices"][0]["message"]["content"] = '{"current_evidence":"x","current_evidence":"y"}'
+        elif fault == "multiple_choices": reply["choices"].append(copy.deepcopy(reply["choices"][0]))
+        elif fault == "non_json": reply["choices"][0]["message"]["content"] = "No visible cue"
+        elif fault == "blank": reply["choices"][0]["message"]["content"] = " "
+        else: reply["choices"][0].pop("message")
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reply = {'choices': [{'message': {'content': '{"previous_subject_presence": "present", "previous_cue_visibility": "not_observe...rent_evidence": "A visible cue beside the subject"}'}, 'finish_reason': 'length'}], 'usage': {'completion_tokens': 70}}
+
+    def parse_response(reply):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:16: NotImplementedError
+__________ test_incomplete_reply_not_silently_normalized[reasoning] ___________
+
+fault = 'reasoning'
+
+    @pytest.mark.parametrize("fault", ["truncated", "reasoning", "duplicate_key", "multiple_choices", "non_json", "blank", "missing_message"])
+    def test_incomplete_reply_not_silently_normalized(fault):
+        reply = response()
+        if fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden analysis"
+        elif fault == "duplicate_key": reply["choices"][0]["message"]["content"] = '{"current_evidence":"x","current_evidence":"y"}'
+        elif fault == "multiple_choices": reply["choices"].append(copy.deepcopy(reply["choices"][0]))
+        elif fault == "non_json": reply["choices"][0]["message"]["content"] = "No visible cue"
+        elif fault == "blank": reply["choices"][0]["message"]["content"] = " "
+        else: reply["choices"][0].pop("message")
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reply = {'choices': [{'message': {'content': '{"previous_subject_presence": "present", "previous_cue_visibility": "not_observe...the subject"}', 'reasoning_content': 'hidden analysis'}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 70}}
+
+    def parse_response(reply):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:16: NotImplementedError
+________ test_incomplete_reply_not_silently_normalized[duplicate_key] _________
+
+fault = 'duplicate_key'
+
+    @pytest.mark.parametrize("fault", ["truncated", "reasoning", "duplicate_key", "multiple_choices", "non_json", "blank", "missing_message"])
+    def test_incomplete_reply_not_silently_normalized(fault):
+        reply = response()
+        if fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden analysis"
+        elif fault == "duplicate_key": reply["choices"][0]["message"]["content"] = '{"current_evidence":"x","current_evidence":"y"}'
+        elif fault == "multiple_choices": reply["choices"].append(copy.deepcopy(reply["choices"][0]))
+        elif fault == "non_json": reply["choices"][0]["message"]["content"] = "No visible cue"
+        elif fault == "blank": reply["choices"][0]["message"]["content"] = " "
+        else: reply["choices"][0].pop("message")
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reply = {'choices': [{'message': {'content': '{"current_evidence":"x","current_evidence":"y"}'}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 70}}
+
+    def parse_response(reply):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:16: NotImplementedError
+_______ test_incomplete_reply_not_silently_normalized[multiple_choices] _______
+
+fault = 'multiple_choices'
+
+    @pytest.mark.parametrize("fault", ["truncated", "reasoning", "duplicate_key", "multiple_choices", "non_json", "blank", "missing_message"])
+    def test_incomplete_reply_not_silently_normalized(fault):
+        reply = response()
+        if fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden analysis"
+        elif fault == "duplicate_key": reply["choices"][0]["message"]["content"] = '{"current_evidence":"x","current_evidence":"y"}'
+        elif fault == "multiple_choices": reply["choices"].append(copy.deepcopy(reply["choices"][0]))
+        elif fault == "non_json": reply["choices"][0]["message"]["content"] = "No visible cue"
+        elif fault == "blank": reply["choices"][0]["message"]["content"] = " "
+        else: reply["choices"][0].pop("message")
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reply = {'choices': [{'message': {'content': '{"previous_subject_presence": "present", "previous_cue_visibility": "not_observe...urrent_evidence": "A visible cue beside the subject"}'}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 70}}
+
+    def parse_response(reply):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:16: NotImplementedError
+___________ test_incomplete_reply_not_silently_normalized[non_json] ___________
+
+fault = 'non_json'
+
+    @pytest.mark.parametrize("fault", ["truncated", "reasoning", "duplicate_key", "multiple_choices", "non_json", "blank", "missing_message"])
+    def test_incomplete_reply_not_silently_normalized(fault):
+        reply = response()
+        if fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden analysis"
+        elif fault == "duplicate_key": reply["choices"][0]["message"]["content"] = '{"current_evidence":"x","current_evidence":"y"}'
+        elif fault == "multiple_choices": reply["choices"].append(copy.deepcopy(reply["choices"][0]))
+        elif fault == "non_json": reply["choices"][0]["message"]["content"] = "No visible cue"
+        elif fault == "blank": reply["choices"][0]["message"]["content"] = " "
+        else: reply["choices"][0].pop("message")
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reply = {'choices': [{'message': {'content': 'No visible cue'}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 70}}
+
+    def parse_response(reply):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:16: NotImplementedError
+____________ test_incomplete_reply_not_silently_normalized[blank] _____________
+
+fault = 'blank'
+
+    @pytest.mark.parametrize("fault", ["truncated", "reasoning", "duplicate_key", "multiple_choices", "non_json", "blank", "missing_message"])
+    def test_incomplete_reply_not_silently_normalized(fault):
+        reply = response()
+        if fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden analysis"
+        elif fault == "duplicate_key": reply["choices"][0]["message"]["content"] = '{"current_evidence":"x","current_evidence":"y"}'
+        elif fault == "multiple_choices": reply["choices"].append(copy.deepcopy(reply["choices"][0]))
+        elif fault == "non_json": reply["choices"][0]["message"]["content"] = "No visible cue"
+        elif fault == "blank": reply["choices"][0]["message"]["content"] = " "
+        else: reply["choices"][0].pop("message")
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reply = {'choices': [{'message': {'content': ' '}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 70}}
+
+    def parse_response(reply):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:16: NotImplementedError
+_______ test_incomplete_reply_not_silently_normalized[missing_message] ________
+
+fault = 'missing_message'
+
+    @pytest.mark.parametrize("fault", ["truncated", "reasoning", "duplicate_key", "multiple_choices", "non_json", "blank", "missing_message"])
+    def test_incomplete_reply_not_silently_normalized(fault):
+        reply = response()
+        if fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden analysis"
+        elif fault == "duplicate_key": reply["choices"][0]["message"]["content"] = '{"current_evidence":"x","current_evidence":"y"}'
+        elif fault == "multiple_choices": reply["choices"].append(copy.deepcopy(reply["choices"][0]))
+        elif fault == "non_json": reply["choices"][0]["message"]["content"] = "No visible cue"
+        elif fault == "blank": reply["choices"][0]["message"]["content"] = " "
+        else: reply["choices"][0].pop("message")
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reply = {'choices': [{'finish_reason': 'stop'}], 'usage': {'completion_tokens': 70}}
+
+    def parse_response(reply):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:16: NotImplementedError
+_ test_cue_pattern_never_certifies_physical_state_or_identity[not_observed-observed-reported_appearance] _
+
+previous = 'not_observed', current = 'observed'
+transition = 'reported_appearance'
+
+    @pytest.mark.parametrize("previous,current,transition", [
+        ("not_observed", "observed", "reported_appearance"),
+        ("observed", "not_observed", "reported_disappearance"),
+        ("observed", "observed", "reported_visible_in_both"),
+        ("not_observed", "not_observed", "reported_not_observed_in_both"),
+        ("uncertain", "observed", None), ("observed", "uncertain", None),
+    ])
+    def test_cue_pattern_never_certifies_physical_state_or_identity(previous, current, transition):
+>       value = observer.diagnostic(answer(previous, current))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = False
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+_ test_cue_pattern_never_certifies_physical_state_or_identity[observed-not_observed-reported_disappearance] _
+
+previous = 'observed', current = 'not_observed'
+transition = 'reported_disappearance'
+
+    @pytest.mark.parametrize("previous,current,transition", [
+        ("not_observed", "observed", "reported_appearance"),
+        ("observed", "not_observed", "reported_disappearance"),
+        ("observed", "observed", "reported_visible_in_both"),
+        ("not_observed", "not_observed", "reported_not_observed_in_both"),
+        ("uncertain", "observed", None), ("observed", "uncertain", None),
+    ])
+    def test_cue_pattern_never_certifies_physical_state_or_identity(previous, current, transition):
+>       value = observer.diagnostic(answer(previous, current))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = False
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+_ test_cue_pattern_never_certifies_physical_state_or_identity[observed-observed-reported_visible_in_both] _
+
+previous = 'observed', current = 'observed'
+transition = 'reported_visible_in_both'
+
+    @pytest.mark.parametrize("previous,current,transition", [
+        ("not_observed", "observed", "reported_appearance"),
+        ("observed", "not_observed", "reported_disappearance"),
+        ("observed", "observed", "reported_visible_in_both"),
+        ("not_observed", "not_observed", "reported_not_observed_in_both"),
+        ("uncertain", "observed", None), ("observed", "uncertain", None),
+    ])
+    def test_cue_pattern_never_certifies_physical_state_or_identity(previous, current, transition):
+>       value = observer.diagnostic(answer(previous, current))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = False
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+_ test_cue_pattern_never_certifies_physical_state_or_identity[not_observed-not_observed-reported_not_observed_in_both] _
+
+previous = 'not_observed', current = 'not_observed'
+transition = 'reported_not_observed_in_both'
+
+    @pytest.mark.parametrize("previous,current,transition", [
+        ("not_observed", "observed", "reported_appearance"),
+        ("observed", "not_observed", "reported_disappearance"),
+        ("observed", "observed", "reported_visible_in_both"),
+        ("not_observed", "not_observed", "reported_not_observed_in_both"),
+        ("uncertain", "observed", None), ("observed", "uncertain", None),
+    ])
+    def test_cue_pattern_never_certifies_physical_state_or_identity(previous, current, transition):
+>       value = observer.diagnostic(answer(previous, current))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = False
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+_ test_cue_pattern_never_certifies_physical_state_or_identity[uncertain-observed-None] _
+
+previous = 'uncertain', current = 'observed', transition = None
+
+    @pytest.mark.parametrize("previous,current,transition", [
+        ("not_observed", "observed", "reported_appearance"),
+        ("observed", "not_observed", "reported_disappearance"),
+        ("observed", "observed", "reported_visible_in_both"),
+        ("not_observed", "not_observed", "reported_not_observed_in_both"),
+        ("uncertain", "observed", None), ("observed", "uncertain", None),
+    ])
+    def test_cue_pattern_never_certifies_physical_state_or_identity(previous, current, transition):
+>       value = observer.diagnostic(answer(previous, current))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'uncertain', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = False
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+_ test_cue_pattern_never_certifies_physical_state_or_identity[observed-uncertain-None] _
+
+previous = 'observed', current = 'uncertain', transition = None
+
+    @pytest.mark.parametrize("previous,current,transition", [
+        ("not_observed", "observed", "reported_appearance"),
+        ("observed", "not_observed", "reported_disappearance"),
+        ("observed", "observed", "reported_visible_in_both"),
+        ("not_observed", "not_observed", "reported_not_observed_in_both"),
+        ("uncertain", "observed", None), ("observed", "uncertain", None),
+    ])
+    def test_cue_pattern_never_certifies_physical_state_or_identity(previous, current, transition):
+>       value = observer.diagnostic(answer(previous, current))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = False
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+__________________ test_absent_subject_preserves_uncertainty __________________
+
+    def test_absent_subject_preserves_uncertainty():
+        value = answer("uncertain", "observed"); value["previous_subject_presence"] = "absent"
+>       result = observer.diagnostic(value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'absent', 'previous_cue_visibility': 'uncertain', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = False
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+________ test_equal_byte_inputs_cannot_be_progression_proof[observed] _________
+
+visibility = 'observed'
+
+    @pytest.mark.parametrize("visibility", ["observed", "not_observed", "uncertain"])
+    def test_equal_byte_inputs_cannot_be_progression_proof(visibility):
+>       result = observer.diagnostic(answer(visibility, visibility), identical_inputs=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = True
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+______ test_equal_byte_inputs_cannot_be_progression_proof[not_observed] _______
+
+visibility = 'not_observed'
+
+    @pytest.mark.parametrize("visibility", ["observed", "not_observed", "uncertain"])
+    def test_equal_byte_inputs_cannot_be_progression_proof(visibility):
+>       result = observer.diagnostic(answer(visibility, visibility), identical_inputs=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'not_observed', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = True
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+________ test_equal_byte_inputs_cannot_be_progression_proof[uncertain] ________
+
+visibility = 'uncertain'
+
+    @pytest.mark.parametrize("visibility", ["observed", "not_observed", "uncertain"])
+    def test_equal_byte_inputs_cannot_be_progression_proof(visibility):
+>       result = observer.diagnostic(answer(visibility, visibility), identical_inputs=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'previous_subject_presence': 'present', 'previous_cue_visibility': 'uncertain', 'previous_evidence': 'No clear requested cue in the visible region', 'current_subject_presence': 'present', ...}
+identical_inputs = True
+
+    def diagnostic(value, *, identical_inputs=False):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:19: NotImplementedError
+______________ test_four_cases_complete_without_annotation_leak _______________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test_four_cases_complete_witho0\\pre...1c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}]
+
+    def test_four_cases_complete_without_annotation_leak(images):
+        calls = []
+        def request(body): calls.append(body); return response()
+>       rows = observer.collect([case(images, f"case{i}") for i in range(4)], "branch", "Visible material cue", request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'case0', 'previous': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\tes...0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}, 'offline_expected': 'DO_NOT_SEND_EXPECTATION'}]
+subject = 'branch', cue_query = 'Visible material cue'
+request_fn = <function test_four_cases_complete_without_annotation_leak.<locals>.request at 0x000001CC676C9300>
+on_result = None
+
+    def collect(cases, subject, cue_query, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:22: NotImplementedError
+________ test_identical_control_inconsistency_is_kept_and_stops_cohort ________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test_identical_control_inconsi0\\pre...1c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}]
+
+    def test_identical_control_inconsistency_is_kept_and_stops_cohort(images):
+        first = case([images[0], images[0]], "self")
+        calls, callbacks = [], []
+        def request(body): calls.append(body); return response()  # Contradictory cue categories on identical bytes.
+>       rows = observer.collect([first, case(images)], "branch", "Visible material cue", request, callbacks.append)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'self', 'previous': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test...0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}, 'offline_expected': 'DO_NOT_SEND_EXPECTATION'}]
+subject = 'branch', cue_query = 'Visible material cue'
+request_fn = <function test_identical_control_inconsistency_is_kept_and_stops_cohort.<locals>.request at 0x000001CC69B98400>
+on_result = <built-in method append of list object at 0x000001CC69D2A500>
+
+    def collect(cases, subject, cue_query, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:22: NotImplementedError
+_______________ test_first_failure_stops_without_retry[timeout] _______________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test_first_failure_stops_witho0\\pre...1c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}]
+fault = 'timeout'
+
+    @pytest.mark.parametrize("fault", ["timeout", "truncated", "changed_image"])
+    def test_first_failure_stops_without_retry(images, fault):
+        calls = []
+        if fault == "changed_image": Path(images[0]["path"]).write_bytes(b"changed")
+        def request(body):
+            calls.append(body)
+            if fault == "timeout": raise TimeoutError("test")
+            return response(finish_reason="length")
+>       rows = observer.collect([case(images, "first"), case(images, "second")], "branch", "Visible material cue", request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'first', 'previous': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\tes...0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}, 'offline_expected': 'DO_NOT_SEND_EXPECTATION'}]
+subject = 'branch', cue_query = 'Visible material cue'
+request_fn = <function test_first_failure_stops_without_retry.<locals>.request at 0x000001CC69C3EFC0>
+on_result = None
+
+    def collect(cases, subject, cue_query, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:22: NotImplementedError
+______________ test_first_failure_stops_without_retry[truncated] ______________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test_first_failure_stops_witho1\\pre...1c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}]
+fault = 'truncated'
+
+    @pytest.mark.parametrize("fault", ["timeout", "truncated", "changed_image"])
+    def test_first_failure_stops_without_retry(images, fault):
+        calls = []
+        if fault == "changed_image": Path(images[0]["path"]).write_bytes(b"changed")
+        def request(body):
+            calls.append(body)
+            if fault == "timeout": raise TimeoutError("test")
+            return response(finish_reason="length")
+>       rows = observer.collect([case(images, "first"), case(images, "second")], "branch", "Visible material cue", request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'first', 'previous': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\tes...0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}, 'offline_expected': 'DO_NOT_SEND_EXPECTATION'}]
+subject = 'branch', cue_query = 'Visible material cue'
+request_fn = <function test_first_failure_stops_without_retry.<locals>.request at 0x000001CC676C91C0>
+on_result = None
+
+    def collect(cases, subject, cue_query, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:22: NotImplementedError
+____________ test_first_failure_stops_without_retry[changed_image] ____________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\test_first_failure_stops_witho2\\pre...1c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}]
+fault = 'changed_image'
+
+    @pytest.mark.parametrize("fault", ["timeout", "truncated", "changed_image"])
+    def test_first_failure_stops_without_retry(images, fault):
+        calls = []
+        if fault == "changed_image": Path(images[0]["path"]).write_bytes(b"changed")
+        def request(body):
+            calls.append(body)
+            if fault == "timeout": raise TimeoutError("test")
+            return response(finish_reason="length")
+>       rows = observer.collect([case(images, "first"), case(images, "second")], "branch", "Visible material cue", request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'first', 'previous': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-132\\tes...0eb6d77e982', 'size': [16, 32], 'offline_label': 'CUE_LABEL_SENTINEL'}, 'offline_expected': 'DO_NOT_SEND_EXPECTATION'}]
+subject = 'branch', cue_query = 'Visible material cue'
+request_fn = <function test_first_failure_stops_without_retry.<locals>.request at 0x000001CC69C3F100>
+on_result = None
+
+    def collect(cases, subject, cue_query, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:22: NotImplementedError
+_______________ test_outside_fixed_case_budget_rejected[cases0] _______________
+
+cases = []
+
+    @pytest.mark.parametrize("cases", [[], [{}] * 5])
+    def test_outside_fixed_case_budget_rejected(cases):
+>       with pytest.raises(ValueError): observer.collect(cases, "branch", "Visible cue", lambda _: None)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [], subject = 'branch', cue_query = 'Visible cue'
+request_fn = <function test_outside_fixed_case_budget_rejected.<locals>.<lambda> at 0x000001CC69C3E7A0>
+on_result = None
+
+    def collect(cases, subject, cue_query, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:22: NotImplementedError
+_______________ test_outside_fixed_case_budget_rejected[cases1] _______________
+
+cases = [{}, {}, {}, {}, {}]
+
+    @pytest.mark.parametrize("cases", [[], [{}] * 5])
+    def test_outside_fixed_case_budget_rejected(cases):
+>       with pytest.raises(ValueError): observer.collect(cases, "branch", "Visible cue", lambda _: None)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_observations.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{}, {}, {}, {}, {}], subject = 'branch', cue_query = 'Visible cue'
+request_fn = <function test_outside_fixed_case_budget_rejected.<locals>.<lambda> at 0x000001CC69CC93A0>
+on_result = None
+
+    def collect(cases, subject, cue_query, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\pairwise_cue_observations.py:22: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_pairwise_cue_observations.py::test_generic_prompt_and_schema_match_declared_method
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[subject-]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[subject- ]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[subject-None]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[subject-3]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[subject-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[cue_query-]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[cue_query- ]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[cue_query-None]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[cue_query-3]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_generic_query_never_dispatches[cue_query-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]
+FAILED test/test_pairwise_cue_observations.py::test_payload_preserves_png_order_and_keeps_annotations_offline
+FAILED test/test_pairwise_cue_observations.py::test_invalid_or_contradictory_observation_is_rejected[missing]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_or_contradictory_observation_is_rejected[extra]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_or_contradictory_observation_is_rejected[enum]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_or_contradictory_observation_is_rejected[type]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_or_contradictory_observation_is_rejected[blank]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_or_contradictory_observation_is_rejected[long]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_or_contradictory_observation_is_rejected[absent_observed]
+FAILED test/test_pairwise_cue_observations.py::test_invalid_or_contradictory_observation_is_rejected[uncertain_absence]
+FAILED test/test_pairwise_cue_observations.py::test_incomplete_reply_not_silently_normalized[truncated]
+FAILED test/test_pairwise_cue_observations.py::test_incomplete_reply_not_silently_normalized[reasoning]
+FAILED test/test_pairwise_cue_observations.py::test_incomplete_reply_not_silently_normalized[duplicate_key]
+FAILED test/test_pairwise_cue_observations.py::test_incomplete_reply_not_silently_normalized[multiple_choices]
+FAILED test/test_pairwise_cue_observations.py::test_incomplete_reply_not_silently_normalized[non_json]
+FAILED test/test_pairwise_cue_observations.py::test_incomplete_reply_not_silently_normalized[blank]
+FAILED test/test_pairwise_cue_observations.py::test_incomplete_reply_not_silently_normalized[missing_message]
+FAILED test/test_pairwise_cue_observations.py::test_cue_pattern_never_certifies_physical_state_or_identity[not_observed-observed-reported_appearance]
+FAILED test/test_pairwise_cue_observations.py::test_cue_pattern_never_certifies_physical_state_or_identity[observed-not_observed-reported_disappearance]
+FAILED test/test_pairwise_cue_observations.py::test_cue_pattern_never_certifies_physical_state_or_identity[observed-observed-reported_visible_in_both]
+FAILED test/test_pairwise_cue_observations.py::test_cue_pattern_never_certifies_physical_state_or_identity[not_observed-not_observed-reported_not_observed_in_both]
+FAILED test/test_pairwise_cue_observations.py::test_cue_pattern_never_certifies_physical_state_or_identity[uncertain-observed-None]
+FAILED test/test_pairwise_cue_observations.py::test_cue_pattern_never_certifies_physical_state_or_identity[observed-uncertain-None]
+FAILED test/test_pairwise_cue_observations.py::test_absent_subject_preserves_uncertainty
+FAILED test/test_pairwise_cue_observations.py::test_equal_byte_inputs_cannot_be_progression_proof[observed]
+FAILED test/test_pairwise_cue_observations.py::test_equal_byte_inputs_cannot_be_progression_proof[not_observed]
+FAILED test/test_pairwise_cue_observations.py::test_equal_byte_inputs_cannot_be_progression_proof[uncertain]
+FAILED test/test_pairwise_cue_observations.py::test_four_cases_complete_without_annotation_leak
+FAILED test/test_pairwise_cue_observations.py::test_identical_control_inconsistency_is_kept_and_stops_cohort
+FAILED test/test_pairwise_cue_observations.py::test_first_failure_stops_without_retry[timeout]
+FAILED test/test_pairwise_cue_observations.py::test_first_failure_stops_without_retry[truncated]
+FAILED test/test_pairwise_cue_observations.py::test_first_failure_stops_without_retry[changed_image]
+FAILED test/test_pairwise_cue_observations.py::test_outside_fixed_case_budget_rejected[cases0]
+FAILED test/test_pairwise_cue_observations.py::test_outside_fixed_case_budget_rejected[cases1]
+44 failed in 0.47s
+
+Python exit code: 1

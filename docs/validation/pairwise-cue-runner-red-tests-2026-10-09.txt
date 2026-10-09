@@ -1,0 +1,527 @@
+FFFFFFFFFFFFFFFFFFFFFF                                                   [100%]
+================================== FAILURES ===================================
+___ test_fixed_design_validates_without_mutating_sources_or_inventing_gold ____
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_fixed_design_validates_wi0')
+
+    def test_fixed_design_validates_without_mutating_sources_or_inventing_gold(plan, tmp_path):
+        before = copy.deepcopy(plan)
+>       method = runner.validate_plan(plan, tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_pairwise_cue_runner.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_fixed_design_validates_wi0')
+
+    def validate_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:15: NotImplementedError
+____________ test_invalid_method_rejected_before_runtime[version] _____________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b0')
+fault = 'version'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b0')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+_____________ test_invalid_method_rejected_before_runtime[budget] _____________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b1')
+fault = 'budget'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b1')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+_____________ test_invalid_method_rejected_before_runtime[retry] ______________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b2')
+fault = 'retry'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b2')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+_____________ test_invalid_method_rejected_before_runtime[tokens] _____________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b3')
+fault = 'tokens'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b3')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+____________ test_invalid_method_rejected_before_runtime[thinking] ____________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b4')
+fault = 'thinking'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b4')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+___________ test_invalid_method_rejected_before_runtime[case_order] ___________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b5')
+fault = 'case_order'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b5')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+___________ test_invalid_method_rejected_before_runtime[human_gold] ___________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b6')
+fault = 'human_gold'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b6')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+____________ test_invalid_method_rejected_before_runtime[cue_gold] ____________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b7')
+fault = 'cue_gold'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b7')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+_____________ test_invalid_method_rejected_before_runtime[prompt] _____________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b8')
+fault = 'prompt'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b8')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+_____________ test_invalid_method_rejected_before_runtime[schema] _____________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b9')
+fault = 'schema'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b9')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+_________ test_invalid_method_rejected_before_runtime[first_control] __________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b10')
+fault = 'first_control'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "thinking", "case_order", "human_gold", "cue_gold", "prompt", "schema", "first_control"])
+    def test_invalid_method_rejected_before_runtime(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_invalid_method_rejected_b10')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+________________ test_changed_code_or_design_binding_rejected _________________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_changed_code_or_design_bi0')
+
+    def test_changed_code_or_design_binding_rejected(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_changed_code_or_design_bi0')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+___________ test_region_bindings_must_agree_with_preparation_result ___________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_region_bindings_must_agre0')
+
+    def test_region_bindings_must_agree_with_preparation_result(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_region_bindings_must_agre0')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+______________ test_identical_control_requires_identical_inputs _______________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_identical_control_require0')
+
+    def test_identical_control_requires_identical_inputs(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_identical_control_require0')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+________ test_changed_original_blocks_even_if_prepared_frame_is_intact ________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_changed_original_blocks_e0')
+
+    def test_changed_original_blocks_even_if_prepared_frame_is_intact(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_changed_original_blocks_e0')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+__________________ test_non_fullframe_cannot_be_substituted ___________________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_non_fullframe_cannot_be_s0')
+
+    def test_non_fullframe_cannot_be_substituted(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+
+test\test_pairwise_cue_runner.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_non_fullframe_cannot_be_s0')
+
+    def preflight_plan(plan, root):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:18: NotImplementedError
+_______ test_main_records_http_budget_and_closes_owned_context[None-4] ________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_main_records_http_budget_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000015BD133B5D0>
+mutation = None, requests = 4
+
+    @pytest.mark.parametrize("mutation,requests", [(None, 4), ("source_on_load", 0), ("source_after_first", 1), ("inconsistent_control", 1)])
+    def test_main_records_http_budget_and_closes_owned_context(plan, tmp_path, monkeypatch, mutation, requests):
+        monkeypatch.setattr(runner, "workspace_root", lambda: tmp_path)
+        d = json.loads(Path(plan["design"]["path"]).read_text(encoding="utf-8"))
+        repo = d["comparison_candidates"][0]
+        weights = tmp_path / "local_image_stack/experiments/bridge/target/visual-judge-models" / repo.split("/")[-1]
+        weights.mkdir(parents=True)
+        artifacts = []
+        for name in ("model.gguf", "projector.gguf"):
+            p = weights / name; p.write_bytes(b"fixture, no model")
+            artifacts.append({"file": name, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()})
+        d["assets_manifest"] = write_json(tmp_path / "assets.json", {"models": [{"repo": repo, "files": artifacts}], "runtime": {"tag": "fixture"}})
+        plan["design"] = write_json(Path(plan["design"]["path"]), d)
+        monkeypatch.setattr(runner.shared, "verify_runtime", lambda *args: {"fixture": True})
+        monkeypatch.setattr(runner.shared.base, "gpu_memory", lambda: 0)
+        class Port:
+            def __enter__(self): return self
+            def __exit__(self, *a): pass
+            def settimeout(self, *a): pass
+            def connect_ex(self, *a): return 111
+>       monkeypatch.setattr(runner.socket, "socket", lambda *a: Port())
+                            ^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_pairwise_cue' has no attribute 'socket'
+
+test\test_pairwise_cue_runner.py:155: AttributeError
+__ test_main_records_http_budget_and_closes_owned_context[source_on_load-0] ___
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_main_records_http_budget_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000015BCFE1E690>
+mutation = 'source_on_load', requests = 0
+
+    @pytest.mark.parametrize("mutation,requests", [(None, 4), ("source_on_load", 0), ("source_after_first", 1), ("inconsistent_control", 1)])
+    def test_main_records_http_budget_and_closes_owned_context(plan, tmp_path, monkeypatch, mutation, requests):
+        monkeypatch.setattr(runner, "workspace_root", lambda: tmp_path)
+        d = json.loads(Path(plan["design"]["path"]).read_text(encoding="utf-8"))
+        repo = d["comparison_candidates"][0]
+        weights = tmp_path / "local_image_stack/experiments/bridge/target/visual-judge-models" / repo.split("/")[-1]
+        weights.mkdir(parents=True)
+        artifacts = []
+        for name in ("model.gguf", "projector.gguf"):
+            p = weights / name; p.write_bytes(b"fixture, no model")
+            artifacts.append({"file": name, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()})
+        d["assets_manifest"] = write_json(tmp_path / "assets.json", {"models": [{"repo": repo, "files": artifacts}], "runtime": {"tag": "fixture"}})
+        plan["design"] = write_json(Path(plan["design"]["path"]), d)
+        monkeypatch.setattr(runner.shared, "verify_runtime", lambda *args: {"fixture": True})
+        monkeypatch.setattr(runner.shared.base, "gpu_memory", lambda: 0)
+        class Port:
+            def __enter__(self): return self
+            def __exit__(self, *a): pass
+            def settimeout(self, *a): pass
+            def connect_ex(self, *a): return 111
+>       monkeypatch.setattr(runner.socket, "socket", lambda *a: Port())
+                            ^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_pairwise_cue' has no attribute 'socket'
+
+test\test_pairwise_cue_runner.py:155: AttributeError
+_ test_main_records_http_budget_and_closes_owned_context[source_after_first-1] _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_main_records_http_budget_2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000015BD1342310>
+mutation = 'source_after_first', requests = 1
+
+    @pytest.mark.parametrize("mutation,requests", [(None, 4), ("source_on_load", 0), ("source_after_first", 1), ("inconsistent_control", 1)])
+    def test_main_records_http_budget_and_closes_owned_context(plan, tmp_path, monkeypatch, mutation, requests):
+        monkeypatch.setattr(runner, "workspace_root", lambda: tmp_path)
+        d = json.loads(Path(plan["design"]["path"]).read_text(encoding="utf-8"))
+        repo = d["comparison_candidates"][0]
+        weights = tmp_path / "local_image_stack/experiments/bridge/target/visual-judge-models" / repo.split("/")[-1]
+        weights.mkdir(parents=True)
+        artifacts = []
+        for name in ("model.gguf", "projector.gguf"):
+            p = weights / name; p.write_bytes(b"fixture, no model")
+            artifacts.append({"file": name, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()})
+        d["assets_manifest"] = write_json(tmp_path / "assets.json", {"models": [{"repo": repo, "files": artifacts}], "runtime": {"tag": "fixture"}})
+        plan["design"] = write_json(Path(plan["design"]["path"]), d)
+        monkeypatch.setattr(runner.shared, "verify_runtime", lambda *args: {"fixture": True})
+        monkeypatch.setattr(runner.shared.base, "gpu_memory", lambda: 0)
+        class Port:
+            def __enter__(self): return self
+            def __exit__(self, *a): pass
+            def settimeout(self, *a): pass
+            def connect_ex(self, *a): return 111
+>       monkeypatch.setattr(runner.socket, "socket", lambda *a: Port())
+                            ^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_pairwise_cue' has no attribute 'socket'
+
+test\test_pairwise_cue_runner.py:155: AttributeError
+_ test_main_records_http_budget_and_closes_owned_context[inconsistent_control-1] _
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_main_records_http_budget_3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000015BD134A990>
+mutation = 'inconsistent_control', requests = 1
+
+    @pytest.mark.parametrize("mutation,requests", [(None, 4), ("source_on_load", 0), ("source_after_first", 1), ("inconsistent_control", 1)])
+    def test_main_records_http_budget_and_closes_owned_context(plan, tmp_path, monkeypatch, mutation, requests):
+        monkeypatch.setattr(runner, "workspace_root", lambda: tmp_path)
+        d = json.loads(Path(plan["design"]["path"]).read_text(encoding="utf-8"))
+        repo = d["comparison_candidates"][0]
+        weights = tmp_path / "local_image_stack/experiments/bridge/target/visual-judge-models" / repo.split("/")[-1]
+        weights.mkdir(parents=True)
+        artifacts = []
+        for name in ("model.gguf", "projector.gguf"):
+            p = weights / name; p.write_bytes(b"fixture, no model")
+            artifacts.append({"file": name, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()})
+        d["assets_manifest"] = write_json(tmp_path / "assets.json", {"models": [{"repo": repo, "files": artifacts}], "runtime": {"tag": "fixture"}})
+        plan["design"] = write_json(Path(plan["design"]["path"]), d)
+        monkeypatch.setattr(runner.shared, "verify_runtime", lambda *args: {"fixture": True})
+        monkeypatch.setattr(runner.shared.base, "gpu_memory", lambda: 0)
+        class Port:
+            def __enter__(self): return self
+            def __exit__(self, *a): pass
+            def settimeout(self, *a): pass
+            def connect_ex(self, *a): return 111
+>       monkeypatch.setattr(runner.socket, "socket", lambda *a: Port())
+                            ^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_pairwise_cue' has no attribute 'socket'
+
+test\test_pairwise_cue_runner.py:155: AttributeError
+___________ test_output_outside_workspace_rejected_before_services ____________
+
+plan = {'protocol': 'pairwise-visible-cue-probe-plan-1', 'design': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-...ripts\\paired_shape_preflight.py', 'sha256': 'f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83'}, ...}}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-134/test_output_outside_workspace_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000015BD126B110>
+
+    def test_output_outside_workspace_rejected_before_services(plan, tmp_path, monkeypatch):
+        monkeypatch.setattr(runner, "workspace_root", lambda: tmp_path)
+        p = tmp_path / "plan.json"; write_json(p, plan)
+        outside = tmp_path.parent / "do-not-write-cue-report.json"
+        monkeypatch.setattr(sys, "argv", ["runner", "--plan", str(p), "--model-repo", "unsloth/Qwen3.5-9B-GGUF", "--output", str(outside), "--log-dir", str(tmp_path / "logs")])
+        def forbidden(*a, **k): raise AssertionError("No services for invalid write scope")
+        monkeypatch.setattr(runner.shared.base, "gpu_memory", forbidden)
+>       with pytest.raises(ValueError): runner.main()
+                                        ^^^^^^^^^^^^^
+
+test\test_pairwise_cue_runner.py:194: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_pairwise_cue.py:21: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_pairwise_cue_runner.py::test_fixed_design_validates_without_mutating_sources_or_inventing_gold
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[version]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[budget]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[retry]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[tokens]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[thinking]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[case_order]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[human_gold]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[cue_gold]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[prompt]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[schema]
+FAILED test/test_pairwise_cue_runner.py::test_invalid_method_rejected_before_runtime[first_control]
+FAILED test/test_pairwise_cue_runner.py::test_changed_code_or_design_binding_rejected
+FAILED test/test_pairwise_cue_runner.py::test_region_bindings_must_agree_with_preparation_result
+FAILED test/test_pairwise_cue_runner.py::test_identical_control_requires_identical_inputs
+FAILED test/test_pairwise_cue_runner.py::test_changed_original_blocks_even_if_prepared_frame_is_intact
+FAILED test/test_pairwise_cue_runner.py::test_non_fullframe_cannot_be_substituted
+FAILED test/test_pairwise_cue_runner.py::test_main_records_http_budget_and_closes_owned_context[None-4]
+FAILED test/test_pairwise_cue_runner.py::test_main_records_http_budget_and_closes_owned_context[source_on_load-0]
+FAILED test/test_pairwise_cue_runner.py::test_main_records_http_budget_and_closes_owned_context[source_after_first-1]
+FAILED test/test_pairwise_cue_runner.py::test_main_records_http_budget_and_closes_owned_context[inconsistent_control-1]
+FAILED test/test_pairwise_cue_runner.py::test_output_outside_workspace_rejected_before_services
+22 failed in 1.15s
+
+Python exit code: 1

@@ -1,5 +1,13 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: direct visible-cue cohorts completed/stopped
+
+From `277f356`, isolated generic subject+cue observer/runner, 66 new regressions and182 final pass3.43s/exit0/no warnings; code review no issues, eight source bindings unchanged after final test. Five HTTP responses/0retry/generation/download: Qwen3.5 four valid; Qwen3-VL uncertain subject with not_observed cue violates predefined contract on first self control, three unattempted. [Report](PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md), [closing checks](validation/pairwise-cue-closing-checks-2026-10-09.json). Both own8092 closed/PIDs absent, shared queue0/0, MPT/QA/models/gates/routing/workflows/deps/stable unchanged.
+
+Qwen3.5 reports two appearances/one disappearance, but last evidence describes darkness with not_observed despite uncertainty instruction. Preserve semantic risk and raw, no post-hoc label correction; prior assistant view not blind human gold. Valid diagnostics all uncertain, separate scores null; no still-liquid/physical temperature/identity/admission or candidate approval. n4/n1 timings not equivalent/general ranking; old captions/labels/QA untouched.
+
+Next CPU audit of QA contract/integration boundaries and evidence gaps, then diagnostic-only integration plan reusing existing selectivity/cache. No default scene calls or arbitrary thresholds; independent geometry/count/state calibration and end-to-end latency still pending. [Autonomy active](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action or8080 needed. Earlier next-implementation states historical, final SHA via Git/origin.
+
 ## Current checkpoint: retained temporal visual inputs and direct-cue method prepared
 
 Fromcc98f6e,4 existing frames reviewed/hash-bound: warm/hot visible wispy columns,coldopening ambiguous; no physical temperature/motion/identity proof. Prior labels/captions/3uncertain v4 results unchanged.4 full native RGB PNGs metadata-free, NumPy verifies pixels/mode/dimensions, recipe exit0; existing helper/QA/runner unchanged,116tests historical. [Report](RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md).0 new inference/generation/download/service/model/gate/routing/dependency/stable changes.

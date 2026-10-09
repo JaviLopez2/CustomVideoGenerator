@@ -1,0 +1,357 @@
+{
+  "protocol": "pairwise-visible-cue-observations-1",
+  "execution_head": "277f356cd492cb990aaf17047e8b5264a83339c8",
+  "plan_sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54",
+  "design": {
+    "path": "docs/validation/pairwise-visible-cue-design-2026-10-09.json",
+    "sha256": "a7d5eda5d5201d95633d0cfa2ba67c4cc0f9d7572cc3c6402dc63fbf1a826aee"
+  },
+  "implementation": {
+    "runner": {
+      "path": "scripts/observe_pairwise_cue.py",
+      "sha256": "5f030493d895f3c1c1e9e7b9425480e6f50a8eab3d75d9c8240de5a74e5562f5"
+    },
+    "observer": {
+      "path": "scripts/pairwise_cue_observations.py",
+      "sha256": "6936a9686481a4dc485fc32bdcfb4875375ff9ecdce053d7efa9fe1180244e04"
+    },
+    "shared_runner": {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    "region_checks": {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    "region_helper": {
+      "path": "scripts/prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    },
+    "png_loader": {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    "transport": {
+      "path": "scripts/evaluate_multimodal_judges.py",
+      "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+    },
+    "model_selector": {
+      "path": "scripts/observe_visual_geometry.py",
+      "sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b"
+    }
+  },
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "input_preflight": {
+    "protocol": "pairwise-cue-input-preflight-1",
+    "regions_verified": 4,
+    "native_fullframe_pixels_verified": true,
+    "human_gold": false,
+    "semantic_human_coverage": "pending",
+    "admission_allowed": false,
+    "physical_identity_established": false,
+    "physical_temperature_measured": false
+  },
+  "subject": "mug",
+  "cue_query": "Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.",
+  "rows": [
+    {
+      "case_id": "previous_same_bytes",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "8fd60144cf72bb077165c22a3f95e47c6881b9a1c32196d46ad7125ec6c88fa3",
+      "inputs": [
+        {
+          "role": "previous",
+          "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+        },
+        {
+          "role": "current",
+          "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+        }
+      ],
+      "final_content": "{\"previous_subject_presence\": \"present\", \"previous_cue_visibility\": \"not_observed\", \"previous_evidence\": \"No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug.\", \"current_subject_presence\": \"present\", \"current_cue_visibility\": \"not_observed\", \"current_evidence\": \"No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 95,
+        "prompt_tokens": 2243,
+        "total_tokens": 2338,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2243,
+        "prompt_ms": 2987.632,
+        "prompt_per_token_ms": 1.3319803834150692,
+        "prompt_per_second": 750.761807344412,
+        "predicted_n": 95,
+        "predicted_ms": 2011.434,
+        "predicted_per_token_ms": 21.39823404255319,
+        "predicted_per_second": 46.7328284199233
+      },
+      "observation": {
+        "previous_subject_presence": "present",
+        "previous_cue_visibility": "not_observed",
+        "previous_evidence": "No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug.",
+        "current_subject_presence": "present",
+        "current_cue_visibility": "not_observed",
+        "current_evidence": "No pale translucent wisps or plume-shaped marks are visible emerging from the opening of the red mug."
+      },
+      "diagnostic": {
+        "version": "pairwise-visible-cue-observations-1",
+        "verdict": "uncertain",
+        "identity_score": null,
+        "state_score": null,
+        "progression_score": null,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "physical_temperature_measured": false,
+        "visible_transition": "no_visible_change",
+        "input_consistency_violation": false,
+        "reason": "exact_input_consistency"
+      },
+      "seconds": 5.5254169999971054
+    },
+    {
+      "case_id": "retained_warm_512",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "cd10b2ba886be2c57b281c48c105547439d71767d4875a589014823a80a01a40",
+      "inputs": [
+        {
+          "role": "previous",
+          "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+        },
+        {
+          "role": "current",
+          "sha256": "dcd9c928c4b24e0f827f8860b0e14ae0507ccb13aab1236942ebff9cfaeba841"
+        }
+      ],
+      "final_content": "{\n  \"previous_subject_presence\": \"present\",\n  \"previous_cue_visibility\": \"not_observed\",\n  \"previous_evidence\": \"The opening of the red mug is visible, but no pale translucent wisps or plume-shaped marks are emerging from it.\",\n  \"current_subject_presence\": \"present\",\n  \"current_cue_visibility\": \"observed\",\n  \"current_evidence\": \"Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 110,
+        "prompt_tokens": 2243,
+        "total_tokens": 2353,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2243,
+        "prompt_ms": 2864.822,
+        "prompt_per_token_ms": 1.2772278198840838,
+        "prompt_per_second": 782.9456769041847,
+        "predicted_n": 110,
+        "predicted_ms": 2280.284,
+        "predicted_per_token_ms": 20.920036697247706,
+        "predicted_per_second": 47.80106337631628
+      },
+      "observation": {
+        "previous_subject_presence": "present",
+        "previous_cue_visibility": "not_observed",
+        "previous_evidence": "The opening of the red mug is visible, but no pale translucent wisps or plume-shaped marks are emerging from it.",
+        "current_subject_presence": "present",
+        "current_cue_visibility": "observed",
+        "current_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug."
+      },
+      "diagnostic": {
+        "version": "pairwise-visible-cue-observations-1",
+        "verdict": "uncertain",
+        "identity_score": null,
+        "state_score": null,
+        "progression_score": null,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "physical_temperature_measured": false,
+        "visible_transition": "reported_appearance",
+        "input_consistency_violation": false,
+        "reason": "reported_visible_cue_pattern_only"
+      },
+      "seconds": 5.635143100000278
+    },
+    {
+      "case_id": "retained_hot_768",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "ce768094ab50a43c7ce28e756be1e4f854456d4c9c1fce84d2307f95380052bc",
+      "inputs": [
+        {
+          "role": "previous",
+          "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+        },
+        {
+          "role": "current",
+          "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814"
+        }
+      ],
+      "final_content": "{\n  \"previous_subject_presence\": \"present\",\n  \"previous_cue_visibility\": \"not_observed\",\n  \"previous_evidence\": \"The opening of the red mug is visible, but there are no pale translucent wisps or plume-shaped marks emerging from it.\",\n  \"current_subject_presence\": \"present\",\n  \"current_cue_visibility\": \"observed\",\n  \"current_evidence\": \"Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug and rising upwards.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 114,
+        "prompt_tokens": 2251,
+        "total_tokens": 2365,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2251,
+        "prompt_ms": 2921.024,
+        "prompt_per_token_ms": 1.2976561528209685,
+        "prompt_per_second": 770.6201660787451,
+        "predicted_n": 114,
+        "predicted_ms": 2365.989,
+        "predicted_per_token_ms": 20.93795575221239,
+        "predicted_per_second": 47.760154421681584
+      },
+      "observation": {
+        "previous_subject_presence": "present",
+        "previous_cue_visibility": "not_observed",
+        "previous_evidence": "The opening of the red mug is visible, but there are no pale translucent wisps or plume-shaped marks emerging from it.",
+        "current_subject_presence": "present",
+        "current_cue_visibility": "observed",
+        "current_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the red mug and rising upwards."
+      },
+      "diagnostic": {
+        "version": "pairwise-visible-cue-observations-1",
+        "verdict": "uncertain",
+        "identity_score": null,
+        "state_score": null,
+        "progression_score": null,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "physical_temperature_measured": false,
+        "visible_transition": "reported_appearance",
+        "input_consistency_violation": false,
+        "reason": "reported_visible_cue_pattern_only"
+      },
+      "seconds": 5.8191313999996055
+    },
+    {
+      "case_id": "retained_cooled_768",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "2787da4d6657363a953edbc58962ecdbe2278352aeb39853d860bb2799a2ebe5",
+      "inputs": [
+        {
+          "role": "previous",
+          "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814"
+        },
+        {
+          "role": "current",
+          "sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729"
+        }
+      ],
+      "final_content": "{\n  \"previous_subject_presence\": \"present\",\n  \"previous_cue_visibility\": \"observed\",\n  \"previous_evidence\": \"Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the mug and rising upwards.\",\n  \"current_subject_presence\": \"present\",\n  \"current_cue_visibility\": \"not_observed\",\n  \"current_evidence\": \"The area immediately above the mug's opening is dark and lacks any visible pale translucent wisps or plume-shaped marks.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 111,
+        "prompt_tokens": 2259,
+        "total_tokens": 2370,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2259,
+        "prompt_ms": 2966.431,
+        "prompt_per_token_ms": 1.3131611332447986,
+        "prompt_per_second": 761.5211680298648,
+        "predicted_n": 111,
+        "predicted_ms": 2248.935,
+        "predicted_per_token_ms": 20.444863636363635,
+        "predicted_per_second": 48.912040588100595
+      },
+      "observation": {
+        "previous_subject_presence": "present",
+        "previous_cue_visibility": "observed",
+        "previous_evidence": "Pale translucent wisps or plume-shaped marks are visibly emerging from the opening of the mug and rising upwards.",
+        "current_subject_presence": "present",
+        "current_cue_visibility": "not_observed",
+        "current_evidence": "The area immediately above the mug's opening is dark and lacks any visible pale translucent wisps or plume-shaped marks."
+      },
+      "diagnostic": {
+        "version": "pairwise-visible-cue-observations-1",
+        "verdict": "uncertain",
+        "identity_score": null,
+        "state_score": null,
+        "progression_score": null,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "physical_temperature_measured": false,
+        "visible_transition": "reported_disappearance",
+        "input_consistency_violation": false,
+        "reason": "reported_visible_cue_pattern_only"
+      },
+      "seconds": 5.8688121999948635
+    }
+  ],
+  "http_model_requests_attempted": 4,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "owned_server_closed": true,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "physical_temperature_measured": false,
+  "policy": {
+    "labels_sent": false,
+    "case_names_sent": false,
+    "full_native_frames": true,
+    "max_tokens": 256,
+    "thinking": false,
+    "scores_separate_and_null": true
+  },
+  "owned_pid": 19704,
+  "load_seconds": 4.029236800000945,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "requests_attempted": 4,
+  "unattempted_cases": []
+}

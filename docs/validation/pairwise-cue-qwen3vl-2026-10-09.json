@@ -1,0 +1,157 @@
+{
+  "protocol": "pairwise-visible-cue-observations-1",
+  "execution_head": "277f356cd492cb990aaf17047e8b5264a83339c8",
+  "plan_sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54",
+  "design": {
+    "path": "docs/validation/pairwise-visible-cue-design-2026-10-09.json",
+    "sha256": "a7d5eda5d5201d95633d0cfa2ba67c4cc0f9d7572cc3c6402dc63fbf1a826aee"
+  },
+  "implementation": {
+    "runner": {
+      "path": "scripts/observe_pairwise_cue.py",
+      "sha256": "5f030493d895f3c1c1e9e7b9425480e6f50a8eab3d75d9c8240de5a74e5562f5"
+    },
+    "observer": {
+      "path": "scripts/pairwise_cue_observations.py",
+      "sha256": "6936a9686481a4dc485fc32bdcfb4875375ff9ecdce053d7efa9fe1180244e04"
+    },
+    "shared_runner": {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    "region_checks": {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    "region_helper": {
+      "path": "scripts/prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    },
+    "png_loader": {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    "transport": {
+      "path": "scripts/evaluate_multimodal_judges.py",
+      "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+    },
+    "model_selector": {
+      "path": "scripts/observe_visual_geometry.py",
+      "sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b"
+    }
+  },
+  "model": {
+    "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "size": 5027784800,
+        "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+      },
+      {
+        "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+        "size": 1159029824,
+        "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "input_preflight": {
+    "protocol": "pairwise-cue-input-preflight-1",
+    "regions_verified": 4,
+    "native_fullframe_pixels_verified": true,
+    "human_gold": false,
+    "semantic_human_coverage": "pending",
+    "admission_allowed": false,
+    "physical_identity_established": false,
+    "physical_temperature_measured": false
+  },
+  "subject": "mug",
+  "cue_query": "Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.",
+  "rows": [
+    {
+      "case_id": "previous_same_bytes",
+      "transport_status": "unavailable",
+      "request_attempted": true,
+      "request_sha256": "8fd60144cf72bb077165c22a3f95e47c6881b9a1c32196d46ad7125ec6c88fa3",
+      "inputs": [
+        {
+          "role": "previous",
+          "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+        },
+        {
+          "role": "current",
+          "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0"
+        }
+      ],
+      "final_content": "{\n  \"previous_subject_presence\": \"uncertain\",\n  \"previous_cue_visibility\": \"not_observed\",\n  \"previous_evidence\": \"The mug is not clearly visible in the frame, making it uncertain whether it is present.\",\n  \"current_subject_presence\": \"uncertain\",\n  \"current_cue_visibility\": \"not_observed\",\n  \"current_evidence\": \"The mug is not clearly visible in the frame, making it uncertain whether it is present.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 98,
+        "prompt_tokens": 2239,
+        "total_tokens": 2337,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2239,
+        "prompt_ms": 3021.223,
+        "prompt_per_token_ms": 1.349362661902635,
+        "prompt_per_second": 741.0906113186614,
+        "predicted_n": 98,
+        "predicted_ms": 1882.035,
+        "predicted_per_token_ms": 19.40242268041237,
+        "predicted_per_second": 51.539955420595255
+      },
+      "error_type": "ValueError",
+      "seconds": 5.411588100003428
+    }
+  ],
+  "http_model_requests_attempted": 1,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "owned_server_closed": true,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "physical_temperature_measured": false,
+  "policy": {
+    "labels_sent": false,
+    "case_names_sent": false,
+    "full_native_frames": true,
+    "max_tokens": 256,
+    "thinking": false,
+    "scores_separate_and_null": true
+  },
+  "owned_pid": 18176,
+  "load_seconds": 4.041554700001143,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "requests_attempted": 1,
+  "unattempted_cases": [
+    "retained_warm_512",
+    "retained_hot_768",
+    "retained_cooled_768"
+  ]
+}

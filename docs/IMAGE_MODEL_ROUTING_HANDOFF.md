@@ -1,5 +1,13 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — cohortes de pistas visibles cerradas
+
+Base `277f356cd492cb990aaf17047e8b5264a83339c8`, inicio limpio y diez worktrees. [Informe](PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md): dos scripts aislados/66 nuevos tests, 182 finales pasan3,43s/exit0/sin avisos; revisión de código sin hallazgos, ocho bindings sin cambio después del test. Cinco HTTP/0retry/generación/descarga: Qwen3.5 cuatro válidas; Qwen3-VL JSON completo pero presencia uncertain+pista not_observed, rechazo local y tres pares sin ejecutar. Dos own8092 cerrados/PIDs ausentes y cola0/0. Raw/plan/inputs/logs conservados. App/defaults/modelos/QA/gates/routing/deps/workflows/estable intactos, [cierre](validation/pairwise-cue-closing-checks-2026-10-09.json); SHA final por Git/origin.
+
+Qwen3.5 reporta dos apariciones y una desaparición, pero not_observed en zona descrita oscura requiere cautela: regla semántica de incertidumbre posiblemente incumplida, sin normalizar raw. Cuatro diagnósticos uncertain, identity/state/progression scores separados null; sin gold humano, temperatura física, inmovilidad del líquido, identity/admisión o candidato aprobado. Antiguos labels/captions/tres QAuncertain intactos. Qwen3-VL no tiene resultado en los tres casos restantes; no ranking de velocidad con n4/n1.
+
+Próximo autónomo CPU: auditar contrato/punto de integración de QA y huecos de evidencia; preparar plan diagnóstico sin activar gates/defaults, umbrales arbitrarios o llamadas por escena. Reutilizar selectividad/caché existentes. Geometría/recuentos/estados con negativos válidos, etiquetas independientes y latencia completa siguen pendientes. No intervención ni8080 ahora; [objetivo activo](AUTONOMOUS_MPT_WORK_HANDOFF.md). Estados siguientes históricos.
+
 ## Estado vigente — auditoría temporal visual y fullframes preparados
 
 Basecc98f6e4f10cd49b54806856d2f6403654b5aa21, experimental con inicio limpio/10worktrees. [Informe](RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md):4fuentes inspeccionadas/hash, warm/hot con formas de vapor visibles y borde superior recortado; coldabertura ambigua y color/luz no acreditan temperatura/inmovilidad/ausencia global. Revisiones del asistente, no gold humano; antiguos labels/captions/3QAuncertain no modificados ni reevaluados.4fullframes RGB exactos NumPy/modo/dims/metadata vacía, receta exit0; helper/QA/runner intactos y116tests anteriores históricos.0 consultas/generaciones/descargas/servicios/gates/modelos/defaults/routing/deps/estable. [Cierre](validation/retained-temporal-visual-input-closing-checks-2026-10-09.json); SHA final por Git/origin.

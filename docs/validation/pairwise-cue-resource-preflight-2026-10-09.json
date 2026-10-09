@@ -1,0 +1,41 @@
+{
+  "protocol": "pairwise-cue-resource-preflight-1",
+  "checked_utc": "2026-10-09T18:05:55.220667+00:00",
+  "ram_free_gib": 16.86,
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 3060",
+    "used_mib": 1119,
+    "total_mib": 12288,
+    "utilization_percent": 14
+  },
+  "health": [
+    {
+      "port": 8080,
+      "path": "/health",
+      "error_type": "URLError"
+    },
+    {
+      "port": 8090,
+      "path": "/",
+      "http_status": 404
+    },
+    {
+      "port": 8188,
+      "path": "/system_stats",
+      "http_status": 200
+    },
+    {
+      "port": 8188,
+      "path": "/queue",
+      "http_status": 200,
+      "running": 0,
+      "pending": 0
+    }
+  ],
+  "ports_open": {
+    "8080": false,
+    "8092": false
+  },
+  "generation_requests": 0,
+  "model_requests": 0
+}

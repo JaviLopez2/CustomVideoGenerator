@@ -1,0 +1,262 @@
+{
+  "protocol": "pairwise-cue-closing-checks-1",
+  "checked_utc": "2026-10-09T19:22:49.676249+00:00",
+  "execution_base_head": "277f356cd492cb990aaf17047e8b5264a83339c8",
+  "origin_base_head": "277f356cd492cb990aaf17047e8b5264a83339c8",
+  "divergence_before_commit": [
+    0,
+    0
+  ],
+  "scope": "Two isolated experimental scripts,66new offline regressions and bounded5 local observations; existing MPT/QA integration untouched.",
+  "offline_tests": {
+    "passed": 182,
+    "new_tests": 66,
+    "prior_tests": 116,
+    "seconds": 3.43,
+    "python_exit_code": 0,
+    "warnings": 0,
+    "log": {
+      "path": "docs/validation/pairwise-cue-final-tests-2026-10-09.txt",
+      "sha256": "0c1c37af98b28e088d1faace6b6369d5cc8b9b261b87045e81f25ae8fb539561"
+    },
+    "command": "Python MPT -B -m pytest -q test/test_pairwise_cue_observations.py test/test_pairwise_cue_runner.py test/test_paired_shape_preflight.py test/test_paired_shape_runner.py test/test_paired_shape_observations.py test/test_prepare_visual_regions.py",
+    "MPT_RUN_INTEGRATION_TESTS": "0"
+  },
+  "implementation_bindings_after_final_test": {
+    "runner": {
+      "path": "scripts/observe_pairwise_cue.py",
+      "sha256": "5f030493d895f3c1c1e9e7b9425480e6f50a8eab3d75d9c8240de5a74e5562f5"
+    },
+    "observer": {
+      "path": "scripts/pairwise_cue_observations.py",
+      "sha256": "6936a9686481a4dc485fc32bdcfb4875375ff9ecdce053d7efa9fe1180244e04"
+    },
+    "shared_runner": {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    "region_checks": {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    "region_helper": {
+      "path": "scripts/prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    },
+    "png_loader": {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    "transport": {
+      "path": "scripts/evaluate_multimodal_judges.py",
+      "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+    },
+    "model_selector": {
+      "path": "scripts/observe_visual_geometry.py",
+      "sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b"
+    }
+  },
+  "implementation_unchanged_since_test_and_queries": true,
+  "input_preflight_rechecked_after_cohorts": {
+    "protocol": "pairwise-cue-input-preflight-1",
+    "regions_verified": 4,
+    "native_fullframe_pixels_verified": true,
+    "human_gold": false,
+    "semantic_human_coverage": "pending",
+    "admission_allowed": false,
+    "physical_identity_established": false,
+    "physical_temperature_measured": false
+  },
+  "analysis": {
+    "path": "docs/validation/pairwise-cue-analysis-2026-10-09.json",
+    "sha256": "992eb1315f0465aaaa7aa02f5000d673c463de6818203030a148cbf8bf63f1f5"
+  },
+  "model_http_requests": 5,
+  "valid_observations": 4,
+  "invalid_observations": 1,
+  "complete_http_final_responses": 5,
+  "unattempted_after_validation_stop": 3,
+  "retries": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "reasoning_characters": 0,
+  "scores_separate_and_null_for_all_valid_diagnostics": true,
+  "all_valid_diagnostics_uncertain": true,
+  "human_gold_added": false,
+  "physical_identity_established": false,
+  "physical_temperature_measured": false,
+  "admission_allowed": false,
+  "independent_code_review": "No issues before inference;66new tests passed, final182run afterward, code bytes unchanged.",
+  "result_document_review": "No issues; independent raw/design/analysis/report review after local cohorts.",
+  "owned_processes": [
+    {
+      "pid": 19704,
+      "closed": true,
+      "pid_absent": true,
+      "port": 8092
+    },
+    {
+      "pid": 18176,
+      "closed": true,
+      "pid_absent": true,
+      "port": 8092
+    }
+  ],
+  "resources_after": {
+    "ram_free_gib": 17.04,
+    "gpu": {
+      "used_mib": 1123,
+      "total_mib": 12288,
+      "utilization_percent": 26
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    },
+    "health": [
+      {
+        "port": 8080,
+        "path": "/health",
+        "error_type": "URLError"
+      },
+      {
+        "port": 8090,
+        "path": "/",
+        "http_status": 404
+      },
+      {
+        "port": 8188,
+        "path": "/system_stats",
+        "http_status": 200
+      },
+      {
+        "port": 8188,
+        "path": "/queue",
+        "http_status": 200,
+        "running": 0,
+        "pending": 0
+      }
+    ]
+  },
+  "between_cohort_checks": {
+    "first_owned_pid": 19704,
+    "pid_absent": true,
+    "owned_server_closed": true,
+    "queue_running": 0,
+    "queue_pending": 0,
+    "port_8080_open": false,
+    "port_8092_open": false,
+    "ram_free_gib": 16.93,
+    "ram_method": "GlobalMemoryStatusEx after read-only Get-CimInstance denied; no escalation/ACL changes."
+  },
+  "stable": {
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "tracked_status_clean": true,
+    "existing_untracked_preserved": true,
+    "read_note": "status reported existing .pytest_cache permission denied; no file access changes"
+  },
+  "application_models_dependencies_workflows_gates_routing_stable_untouched": true,
+  "historical_labels_captions_sources_preserved": true,
+  "shared_services_restarted_or_stopped": false,
+  "next": "CPU audit of existing QA integration/contract boundaries and evidence gaps; prepare a diagnostic-only integration plan without production wiring, arbitrary scores, relabeling or new inference.",
+  "tdd_stages": [
+    {
+      "log": {
+        "path": "docs/validation/pairwise-cue-final-tests-2026-10-09.txt",
+        "sha256": "0c1c37af98b28e088d1faace6b6369d5cc8b9b261b87045e81f25ae8fb539561"
+      },
+      "summary": "182 passed in 3.43s"
+    },
+    {
+      "log": {
+        "path": "docs/validation/pairwise-cue-observer-green-tests-2026-10-09.txt",
+        "sha256": "f003cf5c2ef33091e10e478fda29661c29d5fac8b2d2a5d786dd7bb80219cba0"
+      },
+      "summary": "44 passed in 0.28s"
+    },
+    {
+      "log": {
+        "path": "docs/validation/pairwise-cue-observer-red-tests-2026-10-09.txt",
+        "sha256": "241ee63574cd4a9e6e582bcaf92b2e1ebf413982939698468ee9a32ec594fd71"
+      },
+      "summary": "44 failed in 0.47s"
+    },
+    {
+      "log": {
+        "path": "docs/validation/pairwise-cue-runner-green-tests-2026-10-09.txt",
+        "sha256": "77e398bb450d60c4a586aebda4dfdd02fd4ceea1697dff8c002b0f4c9cd6753f"
+      },
+      "summary": "66 passed in 1.59s"
+    },
+    {
+      "log": {
+        "path": "docs/validation/pairwise-cue-runner-red-tests-2026-10-09.txt",
+        "sha256": "96b040c2603b029bfdb85cdbd98402ade19bb0336c68d18f31cf6fc2523aab99"
+      },
+      "summary": "22 failed in 1.15s"
+    }
+  ],
+  "task_files": [
+    "AGENT_FACTORY_STATE.md",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+    "docs/IMAGE_MODEL_ROUTING_RND.md",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+    "docs/PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md",
+    "scripts/observe_pairwise_cue.py",
+    "scripts/pairwise_cue_observations.py",
+    "test/test_pairwise_cue_observations.py",
+    "test/test_pairwise_cue_runner.py",
+    "docs/validation/pairwise-cue-observer-red-tests-2026-10-09.txt",
+    "docs/validation/pairwise-cue-observer-green-tests-2026-10-09.txt",
+    "docs/validation/pairwise-cue-runner-red-tests-2026-10-09.txt",
+    "docs/validation/pairwise-cue-runner-green-tests-2026-10-09.txt",
+    "docs/validation/pairwise-cue-final-tests-2026-10-09.txt",
+    "docs/validation/pairwise-visible-cue-probe-plan-2026-10-09.json",
+    "docs/validation/pairwise-cue-input-preflight-2026-10-09.json",
+    "docs/validation/pairwise-cue-resource-preflight-2026-10-09.json",
+    "docs/validation/pairwise-cue-qwen35-2026-10-09.json",
+    "docs/validation/pairwise-cue-qwen3vl-2026-10-09.json",
+    "docs/validation/pairwise-cue-analysis-2026-10-09.json",
+    "docs/validation/pairwise-cue-closing-checks-2026-10-09.json"
+  ],
+  "task_file_sha256": {
+    "AGENT_FACTORY_STATE.md": "1e93b3a836879cf1372cc762074e35737c16945f9f1e8f257ce5a58aa2ba7e15",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md": "781b76d4c19157e236df9658da78ec2ee8013b023df5293aa8e6c2fae3f8e1fb",
+    "docs/IMAGE_MODEL_ROUTING_RND.md": "e9a486f46d65136571e494261d6676682618e4188ffea14882f814d617ec4f0f",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md": "7177b74fc42c6e03b7f7a2ca776d3c3e81c5b5bea300f5971785d4fd71b7c224",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md": "9f57f5a21734fa7d50f68046c47421a3f1e5dc3022449f0a37c830627936bc73",
+    "docs/PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md": "16c33d4f822e4df5fb5cb9fe9ffa836c8c87d04c17393ee0e8fa92fda65644e3",
+    "scripts/observe_pairwise_cue.py": "5f030493d895f3c1c1e9e7b9425480e6f50a8eab3d75d9c8240de5a74e5562f5",
+    "scripts/pairwise_cue_observations.py": "6936a9686481a4dc485fc32bdcfb4875375ff9ecdce053d7efa9fe1180244e04",
+    "test/test_pairwise_cue_observations.py": "3e64dba0ccebd279d85a511eebab29dcbef34c3089eb7078e2eeb227d985b642",
+    "test/test_pairwise_cue_runner.py": "db2b73c52be8e4c340ca7b339a4d8b8291fe2ee8603f40c585904072a664bd0c",
+    "docs/validation/pairwise-cue-observer-red-tests-2026-10-09.txt": "241ee63574cd4a9e6e582bcaf92b2e1ebf413982939698468ee9a32ec594fd71",
+    "docs/validation/pairwise-cue-observer-green-tests-2026-10-09.txt": "f003cf5c2ef33091e10e478fda29661c29d5fac8b2d2a5d786dd7bb80219cba0",
+    "docs/validation/pairwise-cue-runner-red-tests-2026-10-09.txt": "96b040c2603b029bfdb85cdbd98402ade19bb0336c68d18f31cf6fc2523aab99",
+    "docs/validation/pairwise-cue-runner-green-tests-2026-10-09.txt": "77e398bb450d60c4a586aebda4dfdd02fd4ceea1697dff8c002b0f4c9cd6753f",
+    "docs/validation/pairwise-cue-final-tests-2026-10-09.txt": "0c1c37af98b28e088d1faace6b6369d5cc8b9b261b87045e81f25ae8fb539561",
+    "docs/validation/pairwise-visible-cue-probe-plan-2026-10-09.json": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54",
+    "docs/validation/pairwise-cue-input-preflight-2026-10-09.json": "c738529f6be5ebef056c5ab8613bc5ff3036c1125023d7ad76405dc05267e974",
+    "docs/validation/pairwise-cue-resource-preflight-2026-10-09.json": "c313f032ed8129ae160a702c727d0d239123052faddd16c19e351dc0e76d6591",
+    "docs/validation/pairwise-cue-qwen35-2026-10-09.json": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c",
+    "docs/validation/pairwise-cue-qwen3vl-2026-10-09.json": "1a8364b4c4c93c03a5f285881e5764ed0f3a9d87a54e54eeb132675aac14133d",
+    "docs/validation/pairwise-cue-analysis-2026-10-09.json": "992eb1315f0465aaaa7aa02f5000d673c463de6818203030a148cbf8bf63f1f5"
+  },
+  "self_hash_excluded": true,
+  "json_parsed": 7,
+  "python_ast_parsed": 4,
+  "limited_credential_scan_matches": 0,
+  "credential_scan_scope": "22taskfiles plus unchanged AGENTS.md and LOCAL_WINDOWS_ACCESS_HANDOFF.md; limited token/private-key/bearer patterns, not a universal secret scanner",
+  "whitespace_check": {
+    "full_staged_diff_exit_code": 2,
+    "findings": 62,
+    "files": [
+      "docs/validation/pairwise-cue-observer-red-tests-2026-10-09.txt",
+      "docs/validation/pairwise-cue-runner-red-tests-2026-10-09.txt"
+    ],
+    "reason": "Preserved exact raw pytest RED output with trailing spaces; no source/document/JSON findings.",
+    "excluding_only_two_raw_red_logs_exit_code": 0
+  }
+}
