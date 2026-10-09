@@ -1,0 +1,17 @@
+..........................                                               [100%]
+============================== warnings summary ===============================
+test/test_klein4b_masked.py::test_nonbinary_or_invalid_mask_is_rejected[empty]
+test/test_klein4b_masked.py::test_nonbinary_or_invalid_mask_is_rejected[full]
+test/test_klein4b_masked.py::test_nonbinary_or_invalid_mask_is_rejected[soft]
+test/test_klein4b_masked.py::test_binary_mask_reports_editable_white_pixels_without_truth_claim
+test/test_klein4b_masked.py::test_conservation_oracle_distinguishes_inside_change_outside_drift_and_no_change
+test/test_klein4b_masked.py::test_conservation_oracle_distinguishes_inside_change_outside_drift_and_no_change
+test/test_klein4b_masked.py::test_conservation_oracle_distinguishes_inside_change_outside_drift_and_no_change
+test/test_klein4b_masked.py::test_conservation_oracle_rejects_misaligned_or_alpha_candidate
+test/test_klein4b_masked.py::test_conservation_oracle_rejects_misaligned_or_alpha_candidate
+  D:\Apps\MPT-worktrees\image-model-routing-modernization\local_image_stack\experiments\klein4b_masked.py:78: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+    values = set(image.getdata())
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+26 passed, 9 warnings in 0.37s
+Python exit code: 0

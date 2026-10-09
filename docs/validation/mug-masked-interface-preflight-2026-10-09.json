@@ -1,0 +1,72 @@
+{
+  "execution_base_head": "903e68a1049e24e76c859fc1e2cce95488f39153",
+  "structural_link_validation": {
+    "nodes_checked": 20,
+    "typed_links_checked": 26,
+    "input_file_admission_checked": false,
+    "gpu_execution_validated": false
+  },
+  "source_evidence": [
+    {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\nodes.py",
+      "sha256": "4678d41906fa63780816748b38d9d7bb7364e5504ea4be91b6d8fcb842f5d891",
+      "classes_or_functions": [
+        {
+          "name": "VAEEncodeForInpaint",
+          "line": 412,
+          "end_line": 450
+        },
+        {
+          "name": "LoadImageMask",
+          "line": 1815,
+          "end_line": 1856
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\comfy_extras\\nodes_custom_sampler.py",
+      "sha256": "913d776b5e696c70b77b8184f2af504533fbff2fad62a05cef4ecba87975f0bf",
+      "classes_or_functions": [
+        {
+          "name": "SamplerCustomAdvanced",
+          "line": 1020,
+          "end_line": 1074
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\comfy_extras\\nodes_mask.py",
+      "sha256": "9b60550e7cd7ea8b2b38bb64ef7fd587a3c6cbb97a287c407d11b1a622fca5f7",
+      "classes_or_functions": [
+        {
+          "name": "composite",
+          "line": 12,
+          "end_line": 47
+        },
+        {
+          "name": "ImageCompositeMasked",
+          "line": 80,
+          "end_line": 106
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\comfy_extras\\nodes_flux.py",
+      "sha256": "a4917fd9d4aed2afdbdfc005a527b6381be942200054d7998477a16987e7aff9",
+      "classes_or_functions": [
+        {
+          "name": "EmptyFlux2LatentImage",
+          "line": 37,
+          "end_line": 57
+        }
+      ]
+    }
+  ],
+  "scientific_claim": "Source trace and live interfaces compatible with generic masked latent/composition; model execution or physical defect not validated",
+  "generation_requests": 0,
+  "judge_requests": 0,
+  "services_started_stopped": 0,
+  "shared_input_mask_staged": false,
+  "runtime_validation": "pending",
+  "mask_region_human_review": "pending"
+}

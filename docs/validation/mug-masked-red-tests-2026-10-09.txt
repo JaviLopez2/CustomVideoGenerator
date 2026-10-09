@@ -1,0 +1,679 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFF                                               [100%]
+================================== FAILURES ===================================
+_ test_masked_graph_keeps_existing_conditioning_and_changes_only_target_path __
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+
+    def test_masked_graph_keeps_existing_conditioning_and_changes_only_target_path(manifest):
+        before = copy.deepcopy(manifest)
+        base = prepare_graph(manifest, "local cut", 42, "512x512", (Reference("source.png", "identity_reference"),))
+>       result = prepare_masked_graph(manifest, "local cut", 42, "source.png", "mask.png")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'local cut', seed = 42, source_image = 'source.png'
+mask_image = 'mask.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+______ test_invalid_or_colliding_mask_filename_is_rejected[../mask.png] _______
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+name = '../mask.png'
+
+    @pytest.mark.parametrize("name", ["../mask.png", "C:\\mask.png", "/mask.png", "https://host/mask.png", "", "mask.jpg", "folder/../../mask.png", "source.png"])
+    def test_invalid_or_colliding_mask_filename_is_rejected(manifest, name):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", 42, "source.png", name)
+
+test\test_klein4b_masked.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = 42, source_image = 'source.png'
+mask_image = '../mask.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+______ test_invalid_or_colliding_mask_filename_is_rejected[C:\\mask.png] ______
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+name = 'C:\\mask.png'
+
+    @pytest.mark.parametrize("name", ["../mask.png", "C:\\mask.png", "/mask.png", "https://host/mask.png", "", "mask.jpg", "folder/../../mask.png", "source.png"])
+    def test_invalid_or_colliding_mask_filename_is_rejected(manifest, name):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", 42, "source.png", name)
+
+test\test_klein4b_masked.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = 42, source_image = 'source.png'
+mask_image = 'C:\\mask.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+_______ test_invalid_or_colliding_mask_filename_is_rejected[/mask.png] ________
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+name = '/mask.png'
+
+    @pytest.mark.parametrize("name", ["../mask.png", "C:\\mask.png", "/mask.png", "https://host/mask.png", "", "mask.jpg", "folder/../../mask.png", "source.png"])
+    def test_invalid_or_colliding_mask_filename_is_rejected(manifest, name):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", 42, "source.png", name)
+
+test\test_klein4b_masked.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = 42, source_image = 'source.png', mask_image = '/mask.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+_ test_invalid_or_colliding_mask_filename_is_rejected[https://host/mask.png] __
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+name = 'https://host/mask.png'
+
+    @pytest.mark.parametrize("name", ["../mask.png", "C:\\mask.png", "/mask.png", "https://host/mask.png", "", "mask.jpg", "folder/../../mask.png", "source.png"])
+    def test_invalid_or_colliding_mask_filename_is_rejected(manifest, name):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", 42, "source.png", name)
+
+test\test_klein4b_masked.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = 42, source_image = 'source.png'
+mask_image = 'https://host/mask.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+____________ test_invalid_or_colliding_mask_filename_is_rejected[] ____________
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+name = ''
+
+    @pytest.mark.parametrize("name", ["../mask.png", "C:\\mask.png", "/mask.png", "https://host/mask.png", "", "mask.jpg", "folder/../../mask.png", "source.png"])
+    def test_invalid_or_colliding_mask_filename_is_rejected(manifest, name):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", 42, "source.png", name)
+
+test\test_klein4b_masked.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = 42, source_image = 'source.png', mask_image = ''
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+________ test_invalid_or_colliding_mask_filename_is_rejected[mask.jpg] ________
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+name = 'mask.jpg'
+
+    @pytest.mark.parametrize("name", ["../mask.png", "C:\\mask.png", "/mask.png", "https://host/mask.png", "", "mask.jpg", "folder/../../mask.png", "source.png"])
+    def test_invalid_or_colliding_mask_filename_is_rejected(manifest, name):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", 42, "source.png", name)
+
+test\test_klein4b_masked.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = 42, source_image = 'source.png', mask_image = 'mask.jpg'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+_ test_invalid_or_colliding_mask_filename_is_rejected[folder/../../mask.png] __
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+name = 'folder/../../mask.png'
+
+    @pytest.mark.parametrize("name", ["../mask.png", "C:\\mask.png", "/mask.png", "https://host/mask.png", "", "mask.jpg", "folder/../../mask.png", "source.png"])
+    def test_invalid_or_colliding_mask_filename_is_rejected(manifest, name):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", 42, "source.png", name)
+
+test\test_klein4b_masked.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = 42, source_image = 'source.png'
+mask_image = 'folder/../../mask.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+_______ test_invalid_or_colliding_mask_filename_is_rejected[source.png] _______
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+name = 'source.png'
+
+    @pytest.mark.parametrize("name", ["../mask.png", "C:\\mask.png", "/mask.png", "https://host/mask.png", "", "mask.jpg", "folder/../../mask.png", "source.png"])
+    def test_invalid_or_colliding_mask_filename_is_rejected(manifest, name):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", 42, "source.png", name)
+
+test\test_klein4b_masked.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = 42, source_image = 'source.png'
+mask_image = 'source.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+________________ test_existing_seed_contract_is_preserved[-1] _________________
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+seed = -1
+
+    @pytest.mark.parametrize("seed", [-1, True])
+    def test_existing_seed_contract_is_preserved(manifest, seed):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", seed, "source.png", "mask.png")
+
+test\test_klein4b_masked.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = -1, source_image = 'source.png', mask_image = 'mask.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+_______________ test_existing_seed_contract_is_preserved[True] ________________
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+seed = True
+
+    @pytest.mark.parametrize("seed", [-1, True])
+    def test_existing_seed_contract_is_preserved(manifest, seed):
+        with pytest.raises(ValueError):
+>           prepare_masked_graph(manifest, "cut", seed, "source.png", "mask.png")
+
+test\test_klein4b_masked.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+manifest = {'model_id': 'flux-klein-4b-distilled-fp8', 'status': 'planned', 'components': {'diffusion_model': {'filename': 'flux-..._4b_distilled.json', 'license_source': 'https://github.com/Comfy-Org/workflow_templates/blob/main/LICENSE', ...}}, ...}
+prompt = 'cut', seed = True, source_image = 'source.png'
+mask_image = 'mask.png'
+
+    def prepare_masked_graph(manifest, prompt, seed, source_image, mask_image):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:5: NotImplementedError
+_____ test_live_type_contract_rejects_broken_links_and_cycles[typed_link] _____
+
+fault = 'typed_link'
+
+    @pytest.mark.parametrize("fault", ["typed_link", "bad_slot", "missing_input", "unknown_input", "missing_node_class", "cycle"])
+    def test_live_type_contract_rejects_broken_links_and_cycles(fault):
+        graph = {"a": {"class_type": "Mask", "inputs": {}}, "b": {"class_type": "Consumer", "inputs": {"mask": ["a", 0]}}}
+        contracts = {"Mask": {"required": {}, "optional": {}, "output": ["MASK"]}, "Consumer": {"required": {"mask": "MASK"}, "optional": {}, "output": ["MASK"]}}
+        if fault == "typed_link": contracts["Mask"]["output"] = ["IMAGE"]
+        elif fault == "bad_slot": graph["b"]["inputs"]["mask"][1] = True
+        elif fault == "missing_input": graph["b"]["inputs"] = {}
+        elif fault == "unknown_input": graph["b"]["inputs"]["extra"] = 1
+        elif fault == "missing_node_class": del contracts["Mask"]
+        else:
+            graph["a"]["inputs"]["mask"] = ["b", 0]
+            contracts["Mask"]["required"]["mask"] = "MASK"
+>       with pytest.raises(ValueError): validate_live_links(graph, contracts)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = {'a': {'class_type': 'Mask', 'inputs': {}}, 'b': {'class_type': 'Consumer', 'inputs': {'mask': ['a', 0]}}}
+node_contracts = {'Mask': {'required': {}, 'optional': {}, 'output': ['IMAGE']}, 'Consumer': {'required': {'mask': 'MASK'}, 'optional': {}, 'output': ['MASK']}}
+
+    def validate_live_links(graph, node_contracts):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:9: NotImplementedError
+______ test_live_type_contract_rejects_broken_links_and_cycles[bad_slot] ______
+
+fault = 'bad_slot'
+
+    @pytest.mark.parametrize("fault", ["typed_link", "bad_slot", "missing_input", "unknown_input", "missing_node_class", "cycle"])
+    def test_live_type_contract_rejects_broken_links_and_cycles(fault):
+        graph = {"a": {"class_type": "Mask", "inputs": {}}, "b": {"class_type": "Consumer", "inputs": {"mask": ["a", 0]}}}
+        contracts = {"Mask": {"required": {}, "optional": {}, "output": ["MASK"]}, "Consumer": {"required": {"mask": "MASK"}, "optional": {}, "output": ["MASK"]}}
+        if fault == "typed_link": contracts["Mask"]["output"] = ["IMAGE"]
+        elif fault == "bad_slot": graph["b"]["inputs"]["mask"][1] = True
+        elif fault == "missing_input": graph["b"]["inputs"] = {}
+        elif fault == "unknown_input": graph["b"]["inputs"]["extra"] = 1
+        elif fault == "missing_node_class": del contracts["Mask"]
+        else:
+            graph["a"]["inputs"]["mask"] = ["b", 0]
+            contracts["Mask"]["required"]["mask"] = "MASK"
+>       with pytest.raises(ValueError): validate_live_links(graph, contracts)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = {'a': {'class_type': 'Mask', 'inputs': {}}, 'b': {'class_type': 'Consumer', 'inputs': {'mask': ['a', True]}}}
+node_contracts = {'Mask': {'required': {}, 'optional': {}, 'output': ['MASK']}, 'Consumer': {'required': {'mask': 'MASK'}, 'optional': {}, 'output': ['MASK']}}
+
+    def validate_live_links(graph, node_contracts):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:9: NotImplementedError
+___ test_live_type_contract_rejects_broken_links_and_cycles[missing_input] ____
+
+fault = 'missing_input'
+
+    @pytest.mark.parametrize("fault", ["typed_link", "bad_slot", "missing_input", "unknown_input", "missing_node_class", "cycle"])
+    def test_live_type_contract_rejects_broken_links_and_cycles(fault):
+        graph = {"a": {"class_type": "Mask", "inputs": {}}, "b": {"class_type": "Consumer", "inputs": {"mask": ["a", 0]}}}
+        contracts = {"Mask": {"required": {}, "optional": {}, "output": ["MASK"]}, "Consumer": {"required": {"mask": "MASK"}, "optional": {}, "output": ["MASK"]}}
+        if fault == "typed_link": contracts["Mask"]["output"] = ["IMAGE"]
+        elif fault == "bad_slot": graph["b"]["inputs"]["mask"][1] = True
+        elif fault == "missing_input": graph["b"]["inputs"] = {}
+        elif fault == "unknown_input": graph["b"]["inputs"]["extra"] = 1
+        elif fault == "missing_node_class": del contracts["Mask"]
+        else:
+            graph["a"]["inputs"]["mask"] = ["b", 0]
+            contracts["Mask"]["required"]["mask"] = "MASK"
+>       with pytest.raises(ValueError): validate_live_links(graph, contracts)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = {'a': {'class_type': 'Mask', 'inputs': {}}, 'b': {'class_type': 'Consumer', 'inputs': {}}}
+node_contracts = {'Mask': {'required': {}, 'optional': {}, 'output': ['MASK']}, 'Consumer': {'required': {'mask': 'MASK'}, 'optional': {}, 'output': ['MASK']}}
+
+    def validate_live_links(graph, node_contracts):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:9: NotImplementedError
+___ test_live_type_contract_rejects_broken_links_and_cycles[unknown_input] ____
+
+fault = 'unknown_input'
+
+    @pytest.mark.parametrize("fault", ["typed_link", "bad_slot", "missing_input", "unknown_input", "missing_node_class", "cycle"])
+    def test_live_type_contract_rejects_broken_links_and_cycles(fault):
+        graph = {"a": {"class_type": "Mask", "inputs": {}}, "b": {"class_type": "Consumer", "inputs": {"mask": ["a", 0]}}}
+        contracts = {"Mask": {"required": {}, "optional": {}, "output": ["MASK"]}, "Consumer": {"required": {"mask": "MASK"}, "optional": {}, "output": ["MASK"]}}
+        if fault == "typed_link": contracts["Mask"]["output"] = ["IMAGE"]
+        elif fault == "bad_slot": graph["b"]["inputs"]["mask"][1] = True
+        elif fault == "missing_input": graph["b"]["inputs"] = {}
+        elif fault == "unknown_input": graph["b"]["inputs"]["extra"] = 1
+        elif fault == "missing_node_class": del contracts["Mask"]
+        else:
+            graph["a"]["inputs"]["mask"] = ["b", 0]
+            contracts["Mask"]["required"]["mask"] = "MASK"
+>       with pytest.raises(ValueError): validate_live_links(graph, contracts)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = {'a': {'class_type': 'Mask', 'inputs': {}}, 'b': {'class_type': 'Consumer', 'inputs': {'mask': ['a', 0], 'extra': 1}}}
+node_contracts = {'Mask': {'required': {}, 'optional': {}, 'output': ['MASK']}, 'Consumer': {'required': {'mask': 'MASK'}, 'optional': {}, 'output': ['MASK']}}
+
+    def validate_live_links(graph, node_contracts):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:9: NotImplementedError
+_ test_live_type_contract_rejects_broken_links_and_cycles[missing_node_class] _
+
+fault = 'missing_node_class'
+
+    @pytest.mark.parametrize("fault", ["typed_link", "bad_slot", "missing_input", "unknown_input", "missing_node_class", "cycle"])
+    def test_live_type_contract_rejects_broken_links_and_cycles(fault):
+        graph = {"a": {"class_type": "Mask", "inputs": {}}, "b": {"class_type": "Consumer", "inputs": {"mask": ["a", 0]}}}
+        contracts = {"Mask": {"required": {}, "optional": {}, "output": ["MASK"]}, "Consumer": {"required": {"mask": "MASK"}, "optional": {}, "output": ["MASK"]}}
+        if fault == "typed_link": contracts["Mask"]["output"] = ["IMAGE"]
+        elif fault == "bad_slot": graph["b"]["inputs"]["mask"][1] = True
+        elif fault == "missing_input": graph["b"]["inputs"] = {}
+        elif fault == "unknown_input": graph["b"]["inputs"]["extra"] = 1
+        elif fault == "missing_node_class": del contracts["Mask"]
+        else:
+            graph["a"]["inputs"]["mask"] = ["b", 0]
+            contracts["Mask"]["required"]["mask"] = "MASK"
+>       with pytest.raises(ValueError): validate_live_links(graph, contracts)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = {'a': {'class_type': 'Mask', 'inputs': {}}, 'b': {'class_type': 'Consumer', 'inputs': {'mask': ['a', 0]}}}
+node_contracts = {'Consumer': {'required': {'mask': 'MASK'}, 'optional': {}, 'output': ['MASK']}}
+
+    def validate_live_links(graph, node_contracts):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:9: NotImplementedError
+_______ test_live_type_contract_rejects_broken_links_and_cycles[cycle] ________
+
+fault = 'cycle'
+
+    @pytest.mark.parametrize("fault", ["typed_link", "bad_slot", "missing_input", "unknown_input", "missing_node_class", "cycle"])
+    def test_live_type_contract_rejects_broken_links_and_cycles(fault):
+        graph = {"a": {"class_type": "Mask", "inputs": {}}, "b": {"class_type": "Consumer", "inputs": {"mask": ["a", 0]}}}
+        contracts = {"Mask": {"required": {}, "optional": {}, "output": ["MASK"]}, "Consumer": {"required": {"mask": "MASK"}, "optional": {}, "output": ["MASK"]}}
+        if fault == "typed_link": contracts["Mask"]["output"] = ["IMAGE"]
+        elif fault == "bad_slot": graph["b"]["inputs"]["mask"][1] = True
+        elif fault == "missing_input": graph["b"]["inputs"] = {}
+        elif fault == "unknown_input": graph["b"]["inputs"]["extra"] = 1
+        elif fault == "missing_node_class": del contracts["Mask"]
+        else:
+            graph["a"]["inputs"]["mask"] = ["b", 0]
+            contracts["Mask"]["required"]["mask"] = "MASK"
+>       with pytest.raises(ValueError): validate_live_links(graph, contracts)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = {'a': {'class_type': 'Mask', 'inputs': {'mask': ['b', 0]}}, 'b': {'class_type': 'Consumer', 'inputs': {'mask': ['a', 0]}}}
+node_contracts = {'Mask': {'required': {'mask': 'MASK'}, 'optional': {}, 'output': ['MASK']}, 'Consumer': {'required': {'mask': 'MASK'}, 'optional': {}, 'output': ['MASK']}}
+
+    def validate_live_links(graph, node_contracts):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:9: NotImplementedError
+_ test_live_contract_reports_structural_success_without_file_or_gpu_admission _
+
+    def test_live_contract_reports_structural_success_without_file_or_gpu_admission():
+        graph = {"a": {"class_type": "Mask", "inputs": {}}, "b": {"class_type": "Consumer", "inputs": {"mask": ["a", 0]}}}
+        contracts = {"Mask": {"required": {}, "optional": {}, "output": ["MASK"]}, "Consumer": {"required": {"mask": "MASK"}, "optional": {}, "output": ["IMAGE"]}}
+>       result = validate_live_links(graph, contracts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+graph = {'a': {'class_type': 'Mask', 'inputs': {}}, 'b': {'class_type': 'Consumer', 'inputs': {'mask': ['a', 0]}}}
+node_contracts = {'Mask': {'required': {}, 'optional': {}, 'output': ['MASK']}, 'Consumer': {'required': {'mask': 'MASK'}, 'optional': {}, 'output': ['IMAGE']}}
+
+    def validate_live_links(graph, node_contracts):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:9: NotImplementedError
+______________ test_nonbinary_or_invalid_mask_is_rejected[empty] ______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask0')
+fault = 'empty'
+
+    @pytest.mark.parametrize("fault", ["empty", "full", "soft", "alpha", "wrong_size"])
+    def test_nonbinary_or_invalid_mask_is_rejected(tmp_path, fault):
+        image = Image.new("L", (512, 512), 0)
+        image.putpixel((338, 354), 255)
+        if fault == "empty": image = Image.new("L", image.size, 0)
+        elif fault == "full": image = Image.new("L", image.size, 255)
+        elif fault == "soft": image.putpixel((338, 354), 128)
+        elif fault == "alpha": image = image.convert("RGBA")
+        else: image = image.resize((256, 256))
+        path = tmp_path / "mask.png"; image.save(path)
+>       with pytest.raises(ValueError): inspect_mask(path)
+                                        ^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask0/mask.png')
+
+    def inspect_mask(path):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:13: NotImplementedError
+______________ test_nonbinary_or_invalid_mask_is_rejected[full] _______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask1')
+fault = 'full'
+
+    @pytest.mark.parametrize("fault", ["empty", "full", "soft", "alpha", "wrong_size"])
+    def test_nonbinary_or_invalid_mask_is_rejected(tmp_path, fault):
+        image = Image.new("L", (512, 512), 0)
+        image.putpixel((338, 354), 255)
+        if fault == "empty": image = Image.new("L", image.size, 0)
+        elif fault == "full": image = Image.new("L", image.size, 255)
+        elif fault == "soft": image.putpixel((338, 354), 128)
+        elif fault == "alpha": image = image.convert("RGBA")
+        else: image = image.resize((256, 256))
+        path = tmp_path / "mask.png"; image.save(path)
+>       with pytest.raises(ValueError): inspect_mask(path)
+                                        ^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask1/mask.png')
+
+    def inspect_mask(path):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:13: NotImplementedError
+______________ test_nonbinary_or_invalid_mask_is_rejected[soft] _______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask2')
+fault = 'soft'
+
+    @pytest.mark.parametrize("fault", ["empty", "full", "soft", "alpha", "wrong_size"])
+    def test_nonbinary_or_invalid_mask_is_rejected(tmp_path, fault):
+        image = Image.new("L", (512, 512), 0)
+        image.putpixel((338, 354), 255)
+        if fault == "empty": image = Image.new("L", image.size, 0)
+        elif fault == "full": image = Image.new("L", image.size, 255)
+        elif fault == "soft": image.putpixel((338, 354), 128)
+        elif fault == "alpha": image = image.convert("RGBA")
+        else: image = image.resize((256, 256))
+        path = tmp_path / "mask.png"; image.save(path)
+>       with pytest.raises(ValueError): inspect_mask(path)
+                                        ^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask2/mask.png')
+
+    def inspect_mask(path):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:13: NotImplementedError
+______________ test_nonbinary_or_invalid_mask_is_rejected[alpha] ______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask3')
+fault = 'alpha'
+
+    @pytest.mark.parametrize("fault", ["empty", "full", "soft", "alpha", "wrong_size"])
+    def test_nonbinary_or_invalid_mask_is_rejected(tmp_path, fault):
+        image = Image.new("L", (512, 512), 0)
+        image.putpixel((338, 354), 255)
+        if fault == "empty": image = Image.new("L", image.size, 0)
+        elif fault == "full": image = Image.new("L", image.size, 255)
+        elif fault == "soft": image.putpixel((338, 354), 128)
+        elif fault == "alpha": image = image.convert("RGBA")
+        else: image = image.resize((256, 256))
+        path = tmp_path / "mask.png"; image.save(path)
+>       with pytest.raises(ValueError): inspect_mask(path)
+                                        ^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask3/mask.png')
+
+    def inspect_mask(path):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:13: NotImplementedError
+___________ test_nonbinary_or_invalid_mask_is_rejected[wrong_size] ____________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask4')
+fault = 'wrong_size'
+
+    @pytest.mark.parametrize("fault", ["empty", "full", "soft", "alpha", "wrong_size"])
+    def test_nonbinary_or_invalid_mask_is_rejected(tmp_path, fault):
+        image = Image.new("L", (512, 512), 0)
+        image.putpixel((338, 354), 255)
+        if fault == "empty": image = Image.new("L", image.size, 0)
+        elif fault == "full": image = Image.new("L", image.size, 255)
+        elif fault == "soft": image.putpixel((338, 354), 128)
+        elif fault == "alpha": image = image.convert("RGBA")
+        else: image = image.resize((256, 256))
+        path = tmp_path / "mask.png"; image.save(path)
+>       with pytest.raises(ValueError): inspect_mask(path)
+                                        ^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_nonbinary_or_invalid_mask4/mask.png')
+
+    def inspect_mask(path):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:13: NotImplementedError
+_____ test_binary_mask_reports_editable_white_pixels_without_truth_claim ______
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_binary_mask_reports_edita0')
+
+    def test_binary_mask_reports_editable_white_pixels_without_truth_claim(tmp_path):
+        mask = Image.new("L", (512, 512), 0)
+        for x in [337, 338, 339]: mask.putpixel((x, 354), 255)
+        path = tmp_path / "mask.png"; mask.save(path)
+>       result = inspect_mask(path)
+                 ^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_binary_mask_reports_edita0/mask.png')
+
+    def inspect_mask(path):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:13: NotImplementedError
+_ test_conservation_oracle_distinguishes_inside_change_outside_drift_and_no_change _
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_conservation_oracle_disti0')
+
+    def test_conservation_oracle_distinguishes_inside_change_outside_drift_and_no_change(tmp_path):
+        original = np.zeros((512, 512, 3), dtype=np.uint8)
+        changed = original.copy(); changed[354, 338] = [255, 12, 5]
+        mask = np.zeros((512, 512), dtype=np.uint8); mask[354, 338] = 255
+        source, candidate, mask_path = [tmp_path / n for n in ["source.png", "candidate.png", "mask.png"]]
+        Image.fromarray(original).save(source); Image.fromarray(changed).save(candidate); Image.fromarray(mask).save(mask_path)
+>       first = check_masked_pixels(source, candidate, mask_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reference = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_conservation_oracle_disti0/source.png')
+candidate = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_conservation_oracle_disti0/candidate.png')
+mask = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_conservation_oracle_disti0/mask.png')
+
+    def check_masked_pixels(reference, candidate, mask):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:17: NotImplementedError
+_______ test_conservation_oracle_rejects_misaligned_or_alpha_candidate ________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_conservation_oracle_rejec0')
+
+    def test_conservation_oracle_rejects_misaligned_or_alpha_candidate(tmp_path):
+        source, candidate, mask = [tmp_path / n for n in ["source.png", "candidate.png", "mask.png"]]
+        Image.new("RGB", (512, 512)).save(source)
+        image = Image.new("L", (512, 512)); image.putpixel((1, 1), 255); image.save(mask)
+        for im in [Image.new("RGB", (256, 256)), Image.new("RGBA", (512, 512))]:
+            im.save(candidate)
+>           with pytest.raises(ValueError): check_masked_pixels(source, candidate, mask)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_klein4b_masked.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reference = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_conservation_oracle_rejec0/source.png')
+candidate = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_conservation_oracle_rejec0/candidate.png')
+mask = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-102/test_conservation_oracle_rejec0/mask.png')
+
+    def check_masked_pixels(reference, candidate, mask):
+>       raise NotImplementedError
+E       NotImplementedError
+
+local_image_stack\experiments\klein4b_masked.py:17: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_klein4b_masked.py::test_masked_graph_keeps_existing_conditioning_and_changes_only_target_path
+FAILED test/test_klein4b_masked.py::test_invalid_or_colliding_mask_filename_is_rejected[../mask.png]
+FAILED test/test_klein4b_masked.py::test_invalid_or_colliding_mask_filename_is_rejected[C:\\mask.png]
+FAILED test/test_klein4b_masked.py::test_invalid_or_colliding_mask_filename_is_rejected[/mask.png]
+FAILED test/test_klein4b_masked.py::test_invalid_or_colliding_mask_filename_is_rejected[https://host/mask.png]
+FAILED test/test_klein4b_masked.py::test_invalid_or_colliding_mask_filename_is_rejected[]
+FAILED test/test_klein4b_masked.py::test_invalid_or_colliding_mask_filename_is_rejected[mask.jpg]
+FAILED test/test_klein4b_masked.py::test_invalid_or_colliding_mask_filename_is_rejected[folder/../../mask.png]
+FAILED test/test_klein4b_masked.py::test_invalid_or_colliding_mask_filename_is_rejected[source.png]
+FAILED test/test_klein4b_masked.py::test_existing_seed_contract_is_preserved[-1]
+FAILED test/test_klein4b_masked.py::test_existing_seed_contract_is_preserved[True]
+FAILED test/test_klein4b_masked.py::test_live_type_contract_rejects_broken_links_and_cycles[typed_link]
+FAILED test/test_klein4b_masked.py::test_live_type_contract_rejects_broken_links_and_cycles[bad_slot]
+FAILED test/test_klein4b_masked.py::test_live_type_contract_rejects_broken_links_and_cycles[missing_input]
+FAILED test/test_klein4b_masked.py::test_live_type_contract_rejects_broken_links_and_cycles[unknown_input]
+FAILED test/test_klein4b_masked.py::test_live_type_contract_rejects_broken_links_and_cycles[missing_node_class]
+FAILED test/test_klein4b_masked.py::test_live_type_contract_rejects_broken_links_and_cycles[cycle]
+FAILED test/test_klein4b_masked.py::test_live_contract_reports_structural_success_without_file_or_gpu_admission
+FAILED test/test_klein4b_masked.py::test_nonbinary_or_invalid_mask_is_rejected[empty]
+FAILED test/test_klein4b_masked.py::test_nonbinary_or_invalid_mask_is_rejected[full]
+FAILED test/test_klein4b_masked.py::test_nonbinary_or_invalid_mask_is_rejected[soft]
+FAILED test/test_klein4b_masked.py::test_nonbinary_or_invalid_mask_is_rejected[alpha]
+FAILED test/test_klein4b_masked.py::test_nonbinary_or_invalid_mask_is_rejected[wrong_size]
+FAILED test/test_klein4b_masked.py::test_binary_mask_reports_editable_white_pixels_without_truth_claim
+FAILED test/test_klein4b_masked.py::test_conservation_oracle_distinguishes_inside_change_outside_drift_and_no_change
+FAILED test/test_klein4b_masked.py::test_conservation_oracle_rejects_misaligned_or_alpha_candidate
+26 failed in 0.44s
+Python exit code: 1

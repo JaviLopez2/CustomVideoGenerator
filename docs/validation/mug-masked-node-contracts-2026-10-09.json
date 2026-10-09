@@ -1,0 +1,212 @@
+{
+  "checked_utc": "2026-10-09T12:17:01.035772+00:00",
+  "method": "GET /object_info,timeout3s; only required/optional types and output ports retained",
+  "node_contracts": {
+    "CFGGuider": {
+      "required": {
+        "model": "MODEL",
+        "positive": "CONDITIONING",
+        "negative": "CONDITIONING",
+        "cfg": "FLOAT"
+      },
+      "optional": {},
+      "output": [
+        "GUIDER"
+      ]
+    },
+    "CLIPLoader": {
+      "required": {
+        "clip_name": "COMBO",
+        "type": "COMBO"
+      },
+      "optional": {
+        "device": "COMBO"
+      },
+      "output": [
+        "CLIP"
+      ]
+    },
+    "CLIPTextEncode": {
+      "required": {
+        "text": "STRING",
+        "clip": "CLIP"
+      },
+      "optional": {},
+      "output": [
+        "CONDITIONING"
+      ]
+    },
+    "ConditioningZeroOut": {
+      "required": {
+        "conditioning": "CONDITIONING"
+      },
+      "optional": {},
+      "output": [
+        "CONDITIONING"
+      ]
+    },
+    "Flux2Scheduler": {
+      "required": {
+        "steps": "INT",
+        "width": "INT",
+        "height": "INT"
+      },
+      "optional": {},
+      "output": [
+        "SIGMAS"
+      ]
+    },
+    "ImageCompositeMasked": {
+      "required": {
+        "destination": "IMAGE",
+        "source": "IMAGE",
+        "x": "INT",
+        "y": "INT",
+        "resize_source": "BOOLEAN"
+      },
+      "optional": {
+        "mask": "MASK"
+      },
+      "output": [
+        "IMAGE"
+      ]
+    },
+    "ImageScaleToTotalPixels": {
+      "required": {
+        "image": "IMAGE",
+        "upscale_method": "COMBO",
+        "megapixels": "FLOAT",
+        "resolution_steps": "INT"
+      },
+      "optional": {},
+      "output": [
+        "IMAGE"
+      ]
+    },
+    "KSamplerSelect": {
+      "required": {
+        "sampler_name": "COMBO"
+      },
+      "optional": {},
+      "output": [
+        "SAMPLER"
+      ]
+    },
+    "LoadImage": {
+      "required": {
+        "image": "COMBO"
+      },
+      "optional": {},
+      "output": [
+        "IMAGE",
+        "MASK"
+      ]
+    },
+    "LoadImageMask": {
+      "required": {
+        "image": "COMBO",
+        "channel": "COMBO"
+      },
+      "optional": {},
+      "output": [
+        "MASK"
+      ]
+    },
+    "RandomNoise": {
+      "required": {
+        "noise_seed": "INT"
+      },
+      "optional": {},
+      "output": [
+        "NOISE"
+      ]
+    },
+    "ReferenceLatent": {
+      "required": {
+        "conditioning": "CONDITIONING"
+      },
+      "optional": {
+        "latent": "LATENT"
+      },
+      "output": [
+        "CONDITIONING"
+      ]
+    },
+    "SamplerCustomAdvanced": {
+      "required": {
+        "noise": "NOISE",
+        "guider": "GUIDER",
+        "sampler": "SAMPLER",
+        "sigmas": "SIGMAS",
+        "latent_image": "LATENT"
+      },
+      "optional": {},
+      "output": [
+        "LATENT",
+        "LATENT"
+      ]
+    },
+    "SaveImage": {
+      "required": {
+        "images": "IMAGE",
+        "filename_prefix": "STRING"
+      },
+      "optional": {},
+      "output": [
+        "IMAGE"
+      ]
+    },
+    "UNETLoader": {
+      "required": {
+        "unet_name": "COMBO",
+        "weight_dtype": "COMBO"
+      },
+      "optional": {},
+      "output": [
+        "MODEL"
+      ]
+    },
+    "VAEDecode": {
+      "required": {
+        "samples": "LATENT",
+        "vae": "VAE"
+      },
+      "optional": {},
+      "output": [
+        "IMAGE"
+      ]
+    },
+    "VAEEncode": {
+      "required": {
+        "pixels": "IMAGE",
+        "vae": "VAE"
+      },
+      "optional": {},
+      "output": [
+        "LATENT"
+      ]
+    },
+    "VAEEncodeForInpaint": {
+      "required": {
+        "pixels": "IMAGE",
+        "vae": "VAE",
+        "mask": "MASK",
+        "grow_mask_by": "INT"
+      },
+      "optional": {},
+      "output": [
+        "LATENT"
+      ]
+    },
+    "VAELoader": {
+      "required": {
+        "vae_name": "COMBO"
+      },
+      "optional": {},
+      "output": [
+        "VAE"
+      ]
+    }
+  },
+  "input_combo_values_or_files_validated": false
+}

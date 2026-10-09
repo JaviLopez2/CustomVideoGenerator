@@ -4,6 +4,16 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: masked mug graph prepared, region reviewed — 2026-10-09
+
+Execution base `903e68a1049e24e76c859fc1e2cce95488f39153`, same experimental worktree/branch; initial tracked/staged diffs empty, ten worktrees verified. [Masked preparation](docs/MUG_MASKED_EDIT_PREPARATION.md) adds an isolated offline builder, 26 tests, a new graph and SHA-bound protocol. The existing bridge templates, source images, model assets, observer/profile and MPT behavior remain unchanged. No legacy bridge payload is exposed: future execution must submit this exact graph directly to shared Comfy8188.
+
+20 nodes and 26 typed links checked against 19 local node contracts; source trace supports generic masked latent sampling and final composition. This is interface evidence, not GPU/tensor execution, input admission or defect quality. Binary mask: 1215 editable pixels, bounds `[323,335,360,374]`, upper attachment protected. Human reply **"La zona cian es adecuada"** is bound to source/mask/review hashes; it approves only the proposed region. Earlier failed unmasked control stays closed and unusable; positive contact counts and a new negative are not human-validated.
+
+Fresh focused proof: **112 passed in 0.54s, Python exit0, no warnings**, [log](docs/validation/mug-masked-final-tests-2026-10-09.txt). Initial RED26 and GREEN26/9 deprecated Pillow warnings preserved separately; final implementation uses existing NumPy. [Closing checks](docs/validation/mug-masked-closing-checks-2026-10-09.json). 0 new generation/judge/GPU/benchmark/download/service operations; no dependencies, active workflows, aliases, gates, routing or stable changes. Preserve ignored mask/SVG/PNG assets when archiving.
+
+Next: one separate masked edit, 512×512/4 steps/seed42/guidance1, zero retries, after rechecking resources/assets/empty queue and staging only the pinned mask with scoped permission. Require zero changed pixels outside mask, an inside change and human confirmation of a visible lower gap with upper attachment intact. Only then consider up to six observations using existing judges/profile. Execution remains pending; obtain closing SHA from Git/origin, not this execution base. The sections below retain historical snapshots; their pending preparation/review claims are superseded by this checkpoint.
+
 ## Current checkpoint: human rejected structural mug control — 2026-10-09
 
 From published82f3496, user confirms verbatim "no se ve una separacion real." on candidate e1725efb and board ae5904f1. [Bound human review](docs/validation/mug-structural-control-human-review-2026-10-09.json); cohort closed unusable negative,1 generation consumed/0retries/0judge requests. No judge failure inferred or positive contact counts implicitly confirmed. Original outputs/raw/historical pending assistant review preserved, not relabeled.

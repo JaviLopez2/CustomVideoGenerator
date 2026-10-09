@@ -1,5 +1,13 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — grafo enmascarado preparado y región revisada, 2026-10-09
+
+Desde `903e68a1049e24e76c859fc1e2cce95488f39153`, se prepara una cohorte separada de edición local: [informe](MUG_MASKED_EDIT_PREPARATION.md), [grafo](validation/mug-masked-prepared-graph-2026-10-09.json) y [protocolo](validation/mug-masked-protocol-2026-10-09.json). Constructor offline aislado: latente VAE con noise_mask, lectura del canal rojo de máscara binaria y composición final sobre el original. Conserva el conditioning anterior y los tres pesos actuales; no cambia plantillas del bridge, modelos, routing ni dependencias.
+
+20 nodos/26 enlaces comprobados contra 19 clases locales, con traza de fuente por SHA. Esto valida interfaces y estructura; GPU, tensores, admisión de archivos y corte físico siguen sin probar. El usuario responde **«La zona cian es adecuada»**, [revisión vinculada](validation/mug-masked-region-human-review-2026-10-09.json): aprobación de región, no del negativo inexistente, counts positivos, identidad, juez o producción. La máscara tiene 1215 píxeles editables y protege el contacto superior. El control anterior sin separación real permanece descartado; sus diferencias RGB no se convierten en un score perceptual.
+
+26 tests nuevos; **112 tests enfocados pasan en 0,54s, exit0 y sin avisos**, [log fresco](validation/mug-masked-final-tests-2026-10-09.txt). RED/GREEN iniciales preservados; los avisos Pillow iniciales se resolvieron usando NumPy existente. [Cierre](validation/mug-masked-closing-checks-2026-10-09.json). Ninguna generación/inferencia/descarga/benchmark o operación de servicios en esta preparación. No hay nueva evidencia de selección de jueces ni promoción. Siguiente: una edición real con el grafo fijado, 512²/4 pasos/seed42/0 reintentos; verificación exacta fuera de máscara y revisión humana del hueco antes de hasta seis consultas. Las actualizaciones siguientes son snapshots históricos y sus pendientes quedan sustituidos por este estado.
+
 ## Actualización — revisión humana descarta el control, 2026-10-09
 
 Desde82f3496, usuario confirma **«no se ve una separacion real.»** sobre imagen e1725efb/tablero ae5904f1. [Respuesta vinculada](validation/mug-structural-control-human-review-2026-10-09.json). Cohorte cerrada negativo inutilizable,1 generación previa/0retries/0jueces; el fallo de creación no mide capacidades de los candidatos. No convertir el prompt en label ni inferir revisión de counts positivos. Evidencia original conservada.

@@ -1,5 +1,13 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: masked preparation and human region review complete
+
+Base `903e68a1049e24e76c859fc1e2cce95488f39153`. [Separate masked preparation](MUG_MASKED_EDIT_PREPARATION.md) is offline-ready: 20 graph nodes/26 typed links against 19 local classes, generic masked latent path and final pixel composition. Existing model assets, observer, contact profile, compiled bridge templates and defaults untouched. Interfaces/source traces are checked; GPU/tensor execution and file admission are pending. A new offline module and 26 tests do not dispatch or change production behavior.
+
+Human **"La zona cian es adecuada"** approves only the editable region, bound to source/mask/board hashes. Binary mask covers 1215 pixels and protects the upper attachment. No new structural negative, positive contact counts, pixel gold or identity are thereby established. Prior unmasked candidate remains closed unusable; no new judge evidence or promotion.
+
+**112 fresh focused tests passed in 0.54s, exit0/no warnings**, [log](validation/mug-masked-final-tests-2026-10-09.txt); RED/GREEN logs retained, initial Pillow warnings resolved before final run. [Closing checks](validation/mug-masked-closing-checks-2026-10-09.json). 0 new generation/VLM/GPU/benchmark/download/service operations; stable and active configuration untouched. Next separate cohort: one direct Comfy8188 masked edit, 512²/4 steps/seed42, zero retries, exact outside-mask preservation and human visible-gap/upper-contact review. Only after a valid negative and reviewed positive counts may up to six current-profile observations run. Preserve ignored mask/review assets; closing SHA via Git/origin. Pending claims in older snapshots below are historical, superseded by this checkpoint.
+
 ## Current checkpoint: human-confirmed unusable structural control
 
 Base82f3496; direct user says "no se ve una separacion real." on e1725efb candidate/ae5904f1 board. [Verbatim SHA-bound review](validation/mug-structural-control-human-review-2026-10-09.json). Cohort closed unusable negative:1 previous generation/0retries/0judge requests. Does not evaluate a judge or imply positive contact-count approval/pixel gold. Historical assistant-pending snapshot/raw/originals untouched.

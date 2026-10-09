@@ -1,0 +1,127 @@
+{
+  "protocol": "mug-masked-edit-preparation-1",
+  "execution_base_head": "903e68a1049e24e76c859fc1e2cce95488f39153",
+  "declared_utc": "2026-10-09T12:23:22.832015+00:00",
+  "status": "offline_prepared_region_reviewed_runtime_pending",
+  "source_png": {
+    "path": "local_image_stack/experiments/bridge/target/gpu-smoke-512-seed42-2026-10-07/klein4b-t2i-512-seed42.png",
+    "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "size": [
+      512,
+      512
+    ]
+  },
+  "mask": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-preparation-2026-10-09/lower-contact-mask.png",
+    "sha256": "2bd03d6a2a6f8ef85580068b2d036f8c92f45d072ec0551031afe939726bd818",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "L",
+    "white_pixels": 1215,
+    "bounds_exclusive": [
+      323,
+      335,
+      360,
+      374
+    ],
+    "white_means_edit": true,
+    "pixel_truth_verified": false
+  },
+  "human_region_review": {
+    "path": "docs/validation/mug-masked-region-human-review-2026-10-09.json",
+    "sha256": "b39a2f3cb732e7cac0eb899db8fda2d1cc6bd2fa8398eaff78fbf32b53ff3224",
+    "user_reply_verbatim": "La zona cian es adecuada"
+  },
+  "graph": {
+    "path": "docs/validation/mug-masked-prepared-graph-2026-10-09.json",
+    "sha256": "5a239189977bb898b43a28afb1c1e21d94d4ed9f593284e26f8309b27dc439c7",
+    "builder_protocol": "klein4b-masked-preparation-1",
+    "dispatch_allowed": false,
+    "input_file_admission_validated": false,
+    "model_runtime_validated": false,
+    "not_a_legacy_bridge_payload": true
+  },
+  "generation": {
+    "maximum_requests": 1,
+    "automatic_retries": 0,
+    "seed": 42,
+    "width": 512,
+    "height": 512,
+    "steps": 4,
+    "guidance": 1.0,
+    "direct_comfy_endpoint": "http://127.0.0.1:8188/prompt",
+    "future_body_shape": {
+      "prompt": "exact pinned prepared graph",
+      "client_id": "mpt-masked-control-20261009"
+    },
+    "input_source_filename": "MPT_STRUCTURAL_RED_SOURCE_16c94d6f_20261009.png",
+    "input_mask_filename": "MPT_MASKED_LOWER_CONTACT_20261009.png",
+    "poll_deadline_seconds": 180,
+    "http_timeout_seconds": 3,
+    "timeout_does_not_cancel_job": true,
+    "queue_must_be_empty": true,
+    "shared_services_required": [
+      8188
+    ],
+    "original_8090_and_8080_required": false,
+    "actual_requests": 0
+  },
+  "acceptance": {
+    "exact_outside_mask_pixel_preservation": true,
+    "inside_change_required": true,
+    "input_output_rgb_png_512": true,
+    "human_visible_lower_gap_upper_contact_review_required": true,
+    "semantic_control_label_inferred_from_prompt": false,
+    "new_negative_control_human_review_received": false,
+    "physical_identity_established": false,
+    "pixel_truth_verified": false,
+    "admission_allowed": false
+  },
+  "judges": {
+    "maximum_requests": 6,
+    "requests_per_model": 3,
+    "same_existing_contact_profile": true,
+    "current_candidates_only": true,
+    "start_only_after_valid_negative_review": true,
+    "actual_requests": 0
+  },
+  "bounds": {
+    "new_weights_dependencies_or_global_configuration": false,
+    "existing_templates_bridge_aliases_modified": false,
+    "only_one_experimental_graph_added": true,
+    "new_gpu_benchmark": false,
+    "prior_closed_cohort_reopened": false
+  },
+  "source_bindings": [
+    {
+      "path": "local_image_stack/experiments/klein4b_masked.py",
+      "sha256": "81fe5873688ad065415ac0060105198fc093f5c34a37bc64efd3c9d5c765b298"
+    },
+    {
+      "path": "test/test_klein4b_masked.py",
+      "sha256": "ec73e8ea0f83aba2d6d13c9530e890552e9f10f3b8d0425e714abc1c6ab4244c"
+    },
+    {
+      "path": "docs/validation/mug-masked-prepared-graph-2026-10-09.json",
+      "sha256": "5a239189977bb898b43a28afb1c1e21d94d4ed9f593284e26f8309b27dc439c7"
+    },
+    {
+      "path": "docs/validation/mug-masked-node-contracts-2026-10-09.json",
+      "sha256": "7bf6a1574f055fe9f9a9c1f6acb10f3fa02fb0d2dd2a728f417ee3611d0e175a"
+    },
+    {
+      "path": "docs/validation/mug-masked-region-draft-2026-10-09.json",
+      "sha256": "b74ac77a168bdc6d0932d07419b0ca30d7e216d740d54a3204d7baec78f27611"
+    },
+    {
+      "path": "docs/validation/mug-masked-region-human-review-2026-10-09.json",
+      "sha256": "b39a2f3cb732e7cac0eb899db8fda2d1cc6bd2fa8398eaff78fbf32b53ff3224"
+    },
+    {
+      "path": "docs/validation/flux-klein-4b-assets.json",
+      "sha256": "19254f08b7ff3220ae8b6291b0b8015e3cb96dc82ea1371861ef2e765f068cf4"
+    }
+  ]
+}

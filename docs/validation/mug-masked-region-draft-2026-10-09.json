@@ -1,0 +1,97 @@
+{
+  "protocol": "mug-masked-region-draft-1",
+  "status": "assistant_draft_pending_human_review",
+  "source": {
+    "path": "local_image_stack/experiments/bridge/target/gpu-smoke-512-seed42-2026-10-07/klein4b-t2i-512-seed42.png",
+    "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "size": [
+      512,
+      512
+    ]
+  },
+  "polygon_original_pixels": [
+    [
+      326,
+      335
+    ],
+    [
+      351,
+      335
+    ],
+    [
+      359,
+      344
+    ],
+    [
+      356,
+      369
+    ],
+    [
+      330,
+      373
+    ],
+    [
+      323,
+      364
+    ],
+    [
+      324,
+      348
+    ]
+  ],
+  "mask": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-preparation-2026-10-09/lower-contact-mask.png",
+    "sha256": "2bd03d6a2a6f8ef85580068b2d036f8c92f45d072ec0551031afe939726bd818",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "L",
+    "white_pixels": 1215,
+    "bounds_exclusive": [
+      323,
+      335,
+      360,
+      374
+    ],
+    "white_means_edit": true,
+    "pixel_truth_verified": false
+  },
+  "approximate_reviewed_points": {
+    "upper_contact": [
+      347,
+      222
+    ],
+    "lower_contact": [
+      338,
+      354
+    ],
+    "drawing_radius_pixels": 3
+  },
+  "lower_drawing_disk_covered": true,
+  "upper_65x65_neighborhood_black": true,
+  "boundary_is_not_physical_gold": true,
+  "source_png_unchanged": true,
+  "review_svg": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-preparation-2026-10-09/mask-region-review.svg",
+    "sha256": "2ccc433a7f008667020a913d2c76c3e52829de3de62984a34e848c6dbec24bac",
+    "original_png_bytes_embedded": true
+  },
+  "review_png": "local_image_stack/experiments/bridge/target/mug-masked-preparation-2026-10-09/mask-region-review.png",
+  "prior_unmasked_edit_conservation_probe": {
+    "image_sha256": "e1725efb05ed662f6266aa07cf1322e4b2813e275628199141cebd446759610f",
+    "scope": "Existing image only; tests pixel conservation predicate, not identity/quality or a new model response",
+    "outside_changed_pixels": 259939,
+    "inside_changed_pixels": 1200,
+    "outside_pixels_preserved": false,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "generation_requests": 0,
+  "judge_requests": 0,
+  "input_mask_staged_to_comfy": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "negative_control_validated": false
+}

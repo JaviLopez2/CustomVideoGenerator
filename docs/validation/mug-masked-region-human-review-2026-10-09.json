@@ -1,0 +1,48 @@
+{
+  "protocol": "mug-masked-region-human-review-1",
+  "recorded_utc": "2026-10-09T12:23:22.817016+00:00",
+  "recording_base_head": "903e68a1049e24e76c859fc1e2cce95488f39153",
+  "source": "direct_user_async_reply",
+  "user_reply_verbatim": "La zona cian es adecuada",
+  "scope": "Proposed editable region only; no new image, physical defect, positive counts, pixel gold, judge admission or production approval",
+  "region_draft": {
+    "path": "docs/validation/mug-masked-region-draft-2026-10-09.json",
+    "sha256": "b74ac77a168bdc6d0932d07419b0ca30d7e216d740d54a3204d7baec78f27611"
+  },
+  "source_png": {
+    "path": "local_image_stack/experiments/bridge/target/gpu-smoke-512-seed42-2026-10-07/klein4b-t2i-512-seed42.png",
+    "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "size": [
+      512,
+      512
+    ]
+  },
+  "mask": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-preparation-2026-10-09/lower-contact-mask.png",
+    "sha256": "2bd03d6a2a6f8ef85580068b2d036f8c92f45d072ec0551031afe939726bd818",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "L",
+    "white_pixels": 1215,
+    "bounds_exclusive": [
+      323,
+      335,
+      360,
+      374
+    ],
+    "white_means_edit": true,
+    "pixel_truth_verified": false
+  },
+  "review_png": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-preparation-2026-10-09/mask-region-review.png",
+    "sha256": "d8c2bfecc9a8abb91d700085a018c4068a2fedfa5881931a6a27f73382a12882"
+  },
+  "editable_region_reviewed": true,
+  "negative_control_validated": false,
+  "pixel_truth_verified": false,
+  "admission_allowed": false,
+  "generation_requests": 0,
+  "judge_requests": 0
+}

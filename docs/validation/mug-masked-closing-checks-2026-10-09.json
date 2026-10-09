@@ -1,0 +1,191 @@
+{
+  "protocol": "mug-masked-closing-checks-1",
+  "checked_utc": "2026-10-09T12:32:01.630162+00:00",
+  "execution_base_head": "903e68a1049e24e76c859fc1e2cce95488f39153",
+  "branch": "factory/image-model-routing-modernization",
+  "precommit_remote_ahead_behind": [
+    0,
+    0
+  ],
+  "source_bindings_checked": [
+    {
+      "path": "local_image_stack/experiments/klein4b_masked.py",
+      "sha256": "81fe5873688ad065415ac0060105198fc093f5c34a37bc64efd3c9d5c765b298"
+    },
+    {
+      "path": "test/test_klein4b_masked.py",
+      "sha256": "ec73e8ea0f83aba2d6d13c9530e890552e9f10f3b8d0425e714abc1c6ab4244c"
+    },
+    {
+      "path": "docs/validation/mug-masked-prepared-graph-2026-10-09.json",
+      "sha256": "5a239189977bb898b43a28afb1c1e21d94d4ed9f593284e26f8309b27dc439c7"
+    },
+    {
+      "path": "docs/validation/mug-masked-node-contracts-2026-10-09.json",
+      "sha256": "7bf6a1574f055fe9f9a9c1f6acb10f3fa02fb0d2dd2a728f417ee3611d0e175a"
+    },
+    {
+      "path": "docs/validation/mug-masked-region-draft-2026-10-09.json",
+      "sha256": "b74ac77a168bdc6d0932d07419b0ca30d7e216d740d54a3204d7baec78f27611"
+    },
+    {
+      "path": "docs/validation/mug-masked-region-human-review-2026-10-09.json",
+      "sha256": "b39a2f3cb732e7cac0eb899db8fda2d1cc6bd2fa8398eaff78fbf32b53ff3224"
+    },
+    {
+      "path": "docs/validation/flux-klein-4b-assets.json",
+      "sha256": "19254f08b7ff3220ae8b6291b0b8015e3cb96dc82ea1371861ef2e765f068cf4"
+    }
+  ],
+  "previous_protocol_bindings_checked": 15,
+  "previous_original_pngs_checked": [
+    {
+      "path": "local_image_stack/experiments/bridge/target/gpu-smoke-512-seed42-2026-10-07/klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93"
+    },
+    {
+      "path": "local_image_stack/experiments/bridge/target/gpu-single-ref-512-seed42-2026-10-07/klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61"
+    }
+  ],
+  "local_comfy_source_hashes_checked": [
+    {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\nodes.py",
+      "sha256": "4678d41906fa63780816748b38d9d7bb7364e5504ea4be91b6d8fcb842f5d891"
+    },
+    {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\comfy_extras\\nodes_custom_sampler.py",
+      "sha256": "913d776b5e696c70b77b8184f2af504533fbff2fad62a05cef4ecba87975f0bf"
+    },
+    {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\comfy_extras\\nodes_mask.py",
+      "sha256": "9b60550e7cd7ea8b2b38bb64ef7fd587a3c6cbb97a287c407d11b1a622fca5f7"
+    },
+    {
+      "path": "C:\\Users\\JAVIER\\ComfyUI-Installs\\ComfyUI\\ComfyUI\\comfy_extras\\nodes_flux.py",
+      "sha256": "a4917fd9d4aed2afdbdfc005a527b6381be942200054d7998477a16987e7aff9"
+    }
+  ],
+  "prepared_graph_reproduced": true,
+  "structural_link_validation": {
+    "nodes_checked": 20,
+    "typed_links_checked": 26,
+    "input_file_admission_checked": false,
+    "gpu_execution_validated": false
+  },
+  "classes_checked": 19,
+  "legacy_dispatch_payload_absent": true,
+  "mask_inspection": {
+    "size": [
+      512,
+      512
+    ],
+    "mode": "L",
+    "white_pixels": 1215,
+    "bounds_exclusive": [
+      323,
+      335,
+      360,
+      374
+    ],
+    "white_means_edit": true,
+    "pixel_truth_verified": false
+  },
+  "lower_approximate_disk_covered": true,
+  "upper_65x65_region_protected": true,
+  "original_bytes_embedded_in_review_svg": true,
+  "review_png_size": [
+    1150,
+    730
+  ],
+  "human_region_reply_verbatim": "La zona cian es adecuada",
+  "region_review_received": true,
+  "new_negative_control_validated": false,
+  "positive_contact_counts_human_confirmed": false,
+  "pixel_truth_verified": false,
+  "physical_identity_established": false,
+  "admission_allowed": false,
+  "prior_candidate_conservation_probe": {
+    "outside_changed_pixels": 259939,
+    "inside_changed_pixels": 1200,
+    "outside_pixels_preserved": false,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "mask_staged_to_shared_input": false,
+  "existing_source_input_hash_matches": true,
+  "final_tests": {
+    "passed": 112,
+    "seconds": 0.54,
+    "python_exit_code": 0,
+    "warnings": 0,
+    "log": "docs/validation/mug-masked-final-tests-2026-10-09.txt",
+    "sha256": "cf8dfb71be7e1dafb84958bff4fb4fdf2edd9c10ac9a8dff6572fd24dca6789f",
+    "code_and_test_hashes_match_after_run": true,
+    "gpu_test": false
+  },
+  "red_green_logs": [
+    {
+      "path": "docs/validation/mug-masked-red-tests-2026-10-09.txt",
+      "sha256": "7766646e246a4f8cfa30f1e91447866f5281ae07a981d2e94714f6aff9d53e01"
+    },
+    {
+      "path": "docs/validation/mug-masked-green-tests-2026-10-09.txt",
+      "sha256": "c33c5d65b33d67447cc48cdad5fb18d76e02ece8cb455275b042351205dd6077"
+    }
+  ],
+  "current_json_files_parse": 7,
+  "current_local_links_checked": 26,
+  "expected_git_files": [
+    "AGENT_FACTORY_STATE.md",
+    "docs/IMAGE_MODEL_ROUTING_RND.md",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+    "docs/MUG_STRUCTURAL_CONTROL_PROTOCOL.md",
+    "docs/MUG_MASKED_EDIT_PREPARATION.md",
+    "local_image_stack/experiments/klein4b_masked.py",
+    "test/test_klein4b_masked.py",
+    "docs/validation/mug-masked-red-tests-2026-10-09.txt",
+    "docs/validation/mug-masked-green-tests-2026-10-09.txt",
+    "docs/validation/mug-masked-final-tests-2026-10-09.txt",
+    "docs/validation/mug-masked-node-contracts-2026-10-09.json",
+    "docs/validation/mug-masked-prepared-graph-2026-10-09.json",
+    "docs/validation/mug-masked-interface-preflight-2026-10-09.json",
+    "docs/validation/mug-masked-region-draft-2026-10-09.json",
+    "docs/validation/mug-masked-region-human-review-2026-10-09.json",
+    "docs/validation/mug-masked-protocol-2026-10-09.json",
+    "docs/validation/mug-masked-closing-checks-2026-10-09.json"
+  ],
+  "tracked_diff_check_exit_code": 0,
+  "credential_pattern_matches": 0,
+  "secrets_values_disclosed": false,
+  "scope": "New offline module/test/graph, reviewed mask and documentation; existing templates/assets/observer/routing/deps/stable unchanged",
+  "stable_read_before_commit": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_status_empty": true,
+    "existing_untracked_preserved": true
+  },
+  "generation_requests": 0,
+  "judge_requests": 0,
+  "new_gpu_benchmarks": 0,
+  "downloads": 0,
+  "services_started": 0,
+  "services_stopped": 0,
+  "gpu_tensor_execution_validated": false,
+  "input_file_admission_validated": false,
+  "next": "One masked edit after input/resource/queue/asset checks; zero retries, conservation check and human gap review before judge observations",
+  "checkpoint_sha": "Resolve closing commit via Git/origin; execution_base is not closing SHA",
+  "cached_diff_review": {
+    "all_files_check_git_exit_code": 2,
+    "source_docs_json_check_exit_code": 0,
+    "raw_red_log_trailing_spaces": 26,
+    "raw_logs_preserved_verbatim": true,
+    "staged_files": 18,
+    "staged_json_parsed": 7,
+    "staged_credential_pattern_matches": 0,
+    "unstaged_diff_empty_before_this_report_update": true,
+    "post_stage_source_bindings_match": true
+  }
+}
