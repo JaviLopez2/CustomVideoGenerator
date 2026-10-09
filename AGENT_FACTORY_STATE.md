@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: structural mug control prepared — 2026-10-09
+
+From published `d765e58`, [minimal protocol](docs/MUG_STRUCTURAL_CONTROL_PROTOCOL.md) fixes red/blue retained positives and one not-yet-created lower handle attachment interruption. Exact edit request/seed42/512²/four steps pinned; maximum1 generation,0 retries, then human artifact/contact review before at most6 existing-profile observations,3 per pinned judge. No label/count/review coordinates in judge payloads. Diagnostic count and exclusive-site support stay separate; no identity/admission/promotion.
+
+Offline native dry-run exit0/dispatch false equals Python graph; two original PNGs and15 source bindings checked, four weight files present/size matched only (no weight rehash/GPU readiness). 80 fresh focused tests pass,0.25s,exit0/no warnings. 0 actual generation/VLM/GPU/download/service mutations; app/models/gates/deps/routing/workflows/stable untouched. GET3s health8080/8090/8188 unavailable at11:30:52UTC. Next open only shared Comfy8188,8080 closed/GPU without game; own experimental8091 creates at most one control, human review before own sequential8092 judge cohorts. Negative/reviewed execution plan absent intentionally. Closing SHA via history/origin, base distinct; preserve ignored dry-run artifact.
+
 ## Current checkpoint: retained component localization — 2026-10-09
 
 From published `5c71873`, offline site audit replays 12 archived outputs, 8 positive same-image diagnostics / 4 nonapplicable absence controls, 14 disk/box relations. Qwen3.5 red separates both contacts; blue upper disk crosses edge and lower site is uncovered. Qwen3-VL one box spans both sites on both mugs, no exclusive separation. Both cover hole center disks; not mask precision or physical identity. Approximate drawing radius 3px conditional, not gold/confidence; all prior photos/raw/annotations/human labels unchanged, B mask excluded. [Report](docs/RETAINED_COMPONENT_SITES_REPORT.md).

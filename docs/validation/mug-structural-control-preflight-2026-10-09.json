@@ -1,0 +1,76 @@
+{
+  "protocol": "mug-structural-control-offline-preflight-1",
+  "checked_utc": "2026-10-09T11:35:46.968740+00:00",
+  "execution_base_head": "d765e58a76650b6b8410f141eeaecf61deda287f",
+  "protocol_sha256": "02a5af3a4eb48737bde96ea1b4785dfd9fcbf1f0794e8c91ed2b81e0cdd197b6",
+  "generation_request_sha256": "ea406928b1037e4ea090ca1275f7a5fc282d1eeca3c03b9e72ea1578bbc480ba",
+  "checked_original_pngs": [
+    {
+      "case_id": "red_positive",
+      "path": "local_image_stack/experiments/bridge/target/gpu-smoke-512-seed42-2026-10-07/klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "size": [
+        512,
+        512
+      ],
+      "review_status": "pending_contact_count_confirmation",
+      "expected_count_if_human_confirmed": 2
+    },
+    {
+      "case_id": "blue_color_control",
+      "path": "local_image_stack/experiments/bridge/target/gpu-single-ref-512-seed42-2026-10-07/klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "size": [
+        512,
+        512
+      ],
+      "review_status": "pending_contact_count_confirmation",
+      "expected_count_if_human_confirmed": 2
+    }
+  ],
+  "positive_payload_fingerprints": [
+    {
+      "request_sha256": "3262873714764e6a55a767fa13f0b0c52f40aee9a540cb0247a5773e3c6974e2",
+      "unconstrained_request_sha256": "6f085fc693c4c829e1fd3c680e79d86a3b4807adeb5b618328f004332489f32f",
+      "prompt_sha256": "f2fd4273cd3cec4b867c12888641fea60f7248cf79a5c1f1470746aae1fab0bd",
+      "response_format_sha256": "06ac6a7b54ec12e24437209bce6d940a77e68a5b4c4615db3e2eabfe35c57792"
+    },
+    {
+      "request_sha256": "6f86f2c9c76223db0466fbb01fcac668213eb7fca5709e802e6ddb6c5d80b2a6",
+      "unconstrained_request_sha256": "bec019b93e72b305139db253dddd052cb2edc867c5fab06539dbfb36d8ba1c1e",
+      "prompt_sha256": "f2fd4273cd3cec4b867c12888641fea60f7248cf79a5c1f1470746aae1fab0bd",
+      "response_format_sha256": "06ac6a7b54ec12e24437209bce6d940a77e68a5b4c4615db3e2eabfe35c57792"
+    }
+  ],
+  "source_bindings_checked": 15,
+  "native_binary_sha256": "7f8d125f3de758f6c65e7f06bcb43a427c04dec333ba98d386a51af4451d6a85",
+  "native_dry_run_exit_code": 0,
+  "native_dispatch_allowed": false,
+  "python_dispatch_allowed": false,
+  "native_python_graph_equal": true,
+  "dry_run_artifact": "local_image_stack/experiments/bridge/target/mug-structural-control-preparation-2026-10-09/native-dry-run.json",
+  "dry_run_artifact_sha256": "73ce54d12b17289542b946864d0acb457eea5fed6100678cf755a7fc4418bf97",
+  "model_inventory_files_present_and_size_matched": 4,
+  "model_weight_hashes_reverified": false,
+  "runtime_exists": true,
+  "runtime_path": "local_image_stack/experiments/bridge/target/visual-judge-runtime/b11497/llama-server.exe",
+  "runtime_hash_reverified": false,
+  "generation_requests": 0,
+  "judge_requests": 0,
+  "services_started": 0,
+  "services_stopped": 0,
+  "negative_created": false,
+  "human_review_received": false,
+  "gpu_readiness_established": false,
+  "health_snapshot": {
+    "checked_utc": "2026-10-09T11:30:52.854488+00:00",
+    "method": "GET;3s timeout; no response bodies logged",
+    "ports_responding": {
+      "8080": false,
+      "8090": false,
+      "8188": false
+    }
+  },
+  "test_result": "separate fresh test log; not asserted here",
+  "exit_code": 0
+}

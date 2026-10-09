@@ -1,0 +1,49 @@
+{
+  "protocol": "mug-structural-control-preparation-closing-checks-1",
+  "checked_utc": "2026-10-09T11:39:07.671702+00:00",
+  "execution_base_head": "d765e58a76650b6b8410f141eeaecf61deda287f",
+  "fresh_tests": {
+    "passed": 80,
+    "seconds_reported_by_pytest": 0.25,
+    "exit_code": 0,
+    "warnings": 0,
+    "command": "MPT_RUN_INTEGRATION_TESTS=0; python -B -m pytest -q test/test_klein4b_graph.py test/test_visual_geometry_observations.py test/test_visual_location_observations.py test/test_retained_component_sites.py",
+    "log_path": "docs/validation/mug-structural-control-tests-2026-10-09.txt",
+    "log_sha256": "98f2effe2491ffd6c3b5b2426c45320dca1a310bfda4e6edfdd3bdc215322539"
+  },
+  "source_bindings_reverified": 15,
+  "original_pngs_reverified": 2,
+  "planned_requests_pinned": {
+    "generation": 1,
+    "judge": 6,
+    "retries": 0
+  },
+  "actual_requests": {
+    "generation": 0,
+    "judge": 0
+  },
+  "negative_created": false,
+  "human_review_received": false,
+  "reviewed_execution_plan_exists": false,
+  "offline_native_graph_python_equal": true,
+  "dispatch_allowed": false,
+  "only_four_existing_handoffs_modified": true,
+  "implementation_profile_workflow_sources_unchanged": true,
+  "all_protection_flags_false": true,
+  "prepared_jsons_valid": 3,
+  "new_task_files_before_this_report": 6,
+  "secret_patterns_scanned": 6,
+  "secret_scan_files": 10,
+  "secret_pattern_hits": 0,
+  "secret_scan_exhaustive": false,
+  "local_doc_links_checked": true,
+  "unstaged_diff_check_exit_code": 0,
+  "fetch_divergence_before_edit": {
+    "ahead": 0,
+    "behind": 0
+  },
+  "stable_head_before_edit": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status_before_edit": "empty",
+  "commit_push_sha": "verify from Git after checkpoint; base is not closing SHA",
+  "note": "Preparation only; no factual judge result, GPU benchmark or stable/service/model/routing/workflow change."
+}

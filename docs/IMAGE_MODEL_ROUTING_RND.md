@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — protocolo de control estructural preparado, 2026-10-09
+
+Desde `d765e58`, [protocolo mínimo](MUG_STRUCTURAL_CONTROL_PROTOCOL.md) fija positivos rojo/azul retenidos y un negativo de unión inferior del asa interrumpida todavía inexistente. Petición exacta preparada,512²/4pasos/seed42; máximo1 edición/0reintentos y revisión humana de artifacts/sitios antes de máximo6 consultas,3 por juez existente/perfil intacto. La comparación exige separar conteo y soporte espacial, no solo agrupar contactos en una caja. No transmite labels, counts deseados ni coordenadas de revisión al juez; no demuestra identidad ni calibra/promueve candidatos.
+
+Dos originales hash-verified,15 fuentes fijadas, dry-run Rust/Python equivalentes/dispatch false; cuatro pesos presentes/tamaño conforme, no rehash/readiness. 80 tests frescos pasan,0,25s/exit0/sin warnings. 0 generaciones/inferencias/GPU/descargas/servicios/cambios app/modelos/gates/flags/deps/routing/workflows/estable. No resultados nuevos de candidatos ni negativo revisado. Comfy8188 pendiente de apertura;8090 innecesario,8080 cerrado y GPU sin juego. Después crear control y solicitar revisión humana antes de consultas. [Manifiesto](validation/mug-structural-control-protocol-2026-10-09.json), [preflight](validation/mug-structural-control-preflight-2026-10-09.json), [tests](validation/mug-structural-control-tests-2026-10-09.txt).
+
 ## Actualización — localización retenida por sitio, 2026-10-09
 
 Desde `5c71873`: replay offline de12 outputs, 8 diagnósticos de tazas / 4 no aplicables, 14 relaciones disco/caja. Qwen3.5 separa contactos de roja pero azul tiene sitio superior al borde e inferior sin cubrir. Qwen3-VL agrupa ambos en una caja en las dos imágenes. Ambos alcanzan centros de hueco; no precisión de máscara o identidad. Margen de dibujo 3px supuesto, revisión humana aproximada, sin gold o accuracy. Originales/raw/v3/revisiones/A-B-C intactos, B excluida. [Informe](RETAINED_COMPONENT_SITES_REPORT.md).

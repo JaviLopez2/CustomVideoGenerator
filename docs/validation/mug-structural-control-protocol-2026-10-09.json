@@ -1,0 +1,209 @@
+{
+  "protocol": "mug-structural-control-preparation-1",
+  "declared_utc": "2026-10-09T11:35:46.968740+00:00",
+  "execution_base_head": "d765e58a76650b6b8410f141eeaecf61deda287f",
+  "status": "prepared_waiting_for_negative_creation_and_human_review",
+  "purpose": "Two visible attachment sites versus one reviewed interrupted lower attachment; per-image diagnostic only",
+  "human_review_required_before_judge_requests": true,
+  "positive_cases": [
+    {
+      "case_id": "red_positive",
+      "path": "local_image_stack/experiments/bridge/target/gpu-smoke-512-seed42-2026-10-07/klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "size": [
+        512,
+        512
+      ],
+      "review_status": "pending_contact_count_confirmation",
+      "expected_count_if_human_confirmed": 2
+    },
+    {
+      "case_id": "blue_color_control",
+      "path": "local_image_stack/experiments/bridge/target/gpu-single-ref-512-seed42-2026-10-07/klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "size": [
+        512,
+        512
+      ],
+      "review_status": "pending_contact_count_confirmation",
+      "expected_count_if_human_confirmed": 2
+    }
+  ],
+  "negative_case": {
+    "case_id": "interrupted_attachment",
+    "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "artifact_path": null,
+    "sha256": null,
+    "human_review_path": null,
+    "review_status": "not_created",
+    "expected_count_if_human_confirmed": 1,
+    "per_image_sites": "must be fixed before inference; do not transfer source coordinates"
+  },
+  "generation": {
+    "endpoint": "http://127.0.0.1:8091/v1/images/generations",
+    "request": {
+      "path": "docs/validation/mug-structural-control-edit-request-2026-10-09.json",
+      "sha256": "ea406928b1037e4ea090ca1275f7a5fc282d1eeca3c03b9e72ea1578bbc480ba"
+    },
+    "comfy_reference_filename": "MPT_STRUCTURAL_RED_SOURCE_16c94d6f_20261009.png",
+    "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "maximum_requests": 1,
+    "automatic_retries": 0,
+    "fallbacks": 0,
+    "http_timeout_seconds": 180,
+    "timeout_means_cancellation": false,
+    "native_binary_sha256": "7f8d125f3de758f6c65e7f06bcb43a427c04dec333ba98d386a51af4451d6a85",
+    "shared_service_required": 8188,
+    "shared_8090_required": false,
+    "actual_requests_in_preparation": 0
+  },
+  "observation": {
+    "models": [
+      {
+        "repo": "unsloth/Qwen3.5-9B-GGUF",
+        "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+        "files": [
+          {
+            "path": "local_image_stack/experiments/bridge/target/visual-judge-models/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+            "size_bytes": 5680522464,
+            "expected_sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+            "hash_reverified_in_this_preparation": false
+          },
+          {
+            "path": "local_image_stack/experiments/bridge/target/visual-judge-models/Qwen3.5-9B-GGUF/mmproj-F16.gguf",
+            "size_bytes": 918166080,
+            "expected_sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f",
+            "hash_reverified_in_this_preparation": false
+          }
+        ]
+      },
+      {
+        "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+        "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+        "files": [
+          {
+            "path": "local_image_stack/experiments/bridge/target/visual-judge-models/Qwen3-VL-8B-Instruct-GGUF/Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+            "size_bytes": 5027784800,
+            "expected_sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2",
+            "hash_reverified_in_this_preparation": false
+          },
+          {
+            "path": "local_image_stack/experiments/bridge/target/visual-judge-models/Qwen3-VL-8B-Instruct-GGUF/mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+            "size_bytes": 1159029824,
+            "expected_sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38",
+            "hash_reverified_in_this_preparation": false
+          }
+        ]
+      }
+    ],
+    "profile": {
+      "path": "docs/validation/isolated-mug-contacts-profile-2026-10-08.json",
+      "sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12"
+    },
+    "maximum_requests": 6,
+    "requests_per_model": 3,
+    "case_order": [
+      "red_positive",
+      "blue_color_control",
+      "interrupted_attachment"
+    ],
+    "same_existing_prompt_schema": true,
+    "structured_output": true,
+    "max_tokens": 512,
+    "timeout_seconds": 60,
+    "load_timeout_seconds": 90,
+    "temperature": 0,
+    "context": 8192,
+    "reasoning": "off",
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536,
+    "automatic_retries": 0,
+    "stop_each_model_on_invalid_or_unavailable": true,
+    "labels_or_human_coordinates_sent": false,
+    "reviewed_execution_plan_path": "docs/validation/mug-structural-control-reviewed-plan-2026-10-09.json",
+    "reviewed_execution_plan_exists": false,
+    "actual_requests_in_preparation": 0
+  },
+  "analysis": {
+    "scope": "retrospective known positives plus one new reviewed negative; no population accuracy",
+    "coordinate_mapping": "continuous full-image x*width/1000,y*height/1000; no rounding/clamping/box shifts",
+    "drawing_radius_pixels": 3,
+    "uncertainty_is_statistical_confidence": false,
+    "one_exclusive_box_per_reviewed_site": true,
+    "disk_contained": "conditional location support",
+    "disk_intersects_boundary": "uncertain location",
+    "disk_disjoint": "site unsupported",
+    "count_correct_without_localization": "partial signal",
+    "all_three_reviewed_cases_supported": "limited cohort diagnostic success only",
+    "invalid_negative": "unusable control; stop, no label repair or automatic regeneration"
+  },
+  "authority": {
+    "admission_allowed": false,
+    "automatic_rejection": false,
+    "physical_identity_established": false,
+    "pixel_truth_verified": false,
+    "candidate_promotion_allowed": false
+  },
+  "source_bindings": [
+    {
+      "path": "scripts/observe_visual_geometry.py",
+      "sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b"
+    },
+    {
+      "path": "scripts/visual_location_observations.py",
+      "sha256": "1bf26cc3b811b36b312ac9b466ef474b79c913635556aac36bfb7b1e110a6338"
+    },
+    {
+      "path": "scripts/visual_component_observations.py",
+      "sha256": "e0a21860ea99952ed9f9bf64e4261dbfa99990878ce8aa12b343f7b9cde952af"
+    },
+    {
+      "path": "scripts/evaluate_multimodal_judges.py",
+      "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+    },
+    {
+      "path": "scripts/audit_retained_component_sites.py",
+      "sha256": "8c3a044e08af0de961586588efcd9fe4c62510f53653577649fc1cae0ec20882"
+    },
+    {
+      "path": "local_image_stack/experiments/klein4b.py",
+      "sha256": "eec716fc11041d83dd71d8bbe20e900975eec1ff333a32e226cc0694d7c20a13"
+    },
+    {
+      "path": "local_image_stack/experiments/klein4b_graph.py",
+      "sha256": "075f60caa7f31aeb367c13d4287a575c5881366be143697827d696e9fdd39f25"
+    },
+    {
+      "path": "local_image_stack/experiments/workflows/flux-klein-4b-edit-exp.json",
+      "sha256": "0f4c65e60ffe35905ea294ddaf5612276c42fb12fd0d0f2783613611ee138ebe"
+    },
+    {
+      "path": "docs/validation/isolated-mug-contacts-profile-2026-10-08.json",
+      "sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12"
+    },
+    {
+      "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+      "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+    },
+    {
+      "path": "docs/validation/flux-klein-4b-assets.json",
+      "sha256": "19254f08b7ff3220ae8b6291b0b8015e3cb96dc82ea1371861ef2e765f068cf4"
+    },
+    {
+      "path": "docs/validation/spatial-annotation-draft-v3-2026-10-09.json",
+      "sha256": "906455f8c9da5c818b033b9a0499de2abf308943b1c18b6f71ad3771b8a4d16f"
+    },
+    {
+      "path": "docs/validation/spatial-annotation-human-review-2026-10-09.json",
+      "sha256": "b4049d4335c9534be9c76329b1489e1df63b66ba593beaa4e3c3af5ab4181ef6"
+    },
+    {
+      "path": "docs/validation/spatial-annotation-human-review-v3-2026-10-09.json",
+      "sha256": "60e254983acb3dc2c93c78a72104e0b5e8c52b4103027811466f6525af8d96ee"
+    },
+    {
+      "path": "docs/validation/visual-geometry-human-review-2026-10-08.json",
+      "sha256": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3"
+    }
+  ]
+}

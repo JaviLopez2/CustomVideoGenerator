@@ -1,0 +1,14 @@
+{
+  "model": "flux-klein-4b-edit-exp",
+  "prompt": "Edit the reference photograph of the red ceramic mug. Make one local structural change: interrupt the LOWER attachment of the handle to the mug body with a clearly visible narrow air gap, so the lower end of the handle no longer touches the body. Keep the UPPER handle attachment visibly intact and connected. Keep the remaining handle curve, red mug body, rim, position and scale, wooden table, window, background, camera viewpoint and soft natural lighting as close to the reference as possible. Show the entire mug and handle. The lower separation must be a real visible gap, not a painted line, shadow or reflection. No text, arrows or watermark.\nInput image 1 has role identity_reference.",
+  "seed": 42,
+  "size": "512x512",
+  "steps": 4,
+  "guidance": 1.0,
+  "n": 1,
+  "reference_image": "MPT_STRUCTURAL_RED_SOURCE_16c94d6f_20261009.png",
+  "reference_roles": [
+    "identity_reference"
+  ],
+  "response_format": "b64_json"
+}

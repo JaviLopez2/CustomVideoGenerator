@@ -1,0 +1,10 @@
+Offline preflight: PASS
+Base d765e58a76650b6b8410f141eeaecf61deda287f
+2 original PNG SHA/size bindings verified
+15 source bindings pinned
+2 unsent payloads share prompt/schema; no case labels supplied
+Native dry-run exit0, dispatch false, graph equal to existing Python builder
+4 weight files present/size matched; no weight rehash or GPU readiness claim
+0 generation/VLM requests; 0 service mutations
+Negative not created; human review pending
+Python exit code: 0

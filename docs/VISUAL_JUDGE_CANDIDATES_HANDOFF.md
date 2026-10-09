@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: reviewed structural mug control protocol prepared
+
+Base d765e58, [fixed minimal protocol](MUG_STRUCTURAL_CONTROL_PROTOCOL.md): retained red/blue positives plus one lower handle attachment interruption (not created yet). At most1 edit512²/4steps/seed42,0retries; artifact/contact human review before at most6 observations,3 per existing pinned judge, same current location prompt/schema/profile. No labels/desired counts/review coordinates in judge payloads. Count correctness without exclusive spatial support remains partial, not identity/admission or promotion. Negative SHA/reviewed execution plan deliberately absent until verified control exists.
+
+Offline preflight:2 original hashes/sizes and15 source bindings checked; native dry-run exit0/dispatch false equals Python graph. Four weights present/size matched only, no weight rehash/GPU readiness claim. 80 fresh tests pass,0.25s/exit0/no warnings;0 generation/VLM/GPU/download/service/app/model/gate/dependency/routing/workflow/stable changes. Shared8080/8090/8188 not responding to GET3s at11:30:52UTC. Next user opens only Comfy8188,8080 remains closed/GPU no game; own8091 creates one control, human review then separate sequential8092 cohorts. [Manifest](validation/mug-structural-control-protocol-2026-10-09.json), [preflight](validation/mug-structural-control-preflight-2026-10-09.json), [tests](validation/mug-structural-control-tests-2026-10-09.txt). Closing SHA via history/origin; preserve ignored native dry-run plus prior originals.
+
 ## Current checkpoint: retained per-site localization audit
 
 Base 5c71873, 12 original outputs replayed / 8 same-image positive diagnostics / 4 nonapplicable absence controls, 14 disk-box relations. Qwen3.5 separates red contacts but blue upper drawing disk crosses box edge and lower site is uncovered. Qwen3-VL one box spans both locations on both mugs, no exclusive separation. Both cover hole center disks, not segmentation precision or identity. Drawing 3px margin conditional, not confidence/gold; retrospective known outputs, no blind accuracy claim. All photos/raw/v3/human reviews unchanged, B full mask excluded. [Report](RETAINED_COMPONENT_SITES_REPORT.md).
