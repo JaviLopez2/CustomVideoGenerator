@@ -1,0 +1,148 @@
+{
+  "protocol": "retained-paired-replay-design-1",
+  "declared_utc": "2026-10-09T20:17:03.374592+00:00",
+  "execution_base_head": "90ff646452c51200618e317829574b5ea0fb11ce",
+  "status": "design_only; adapter implementation/tests pending",
+  "question": "Can retained paired evidence be replayed with exact ordered source/context bindings and no admission/runtime authority?",
+  "audited_interfaces": {
+    "path": "docs/validation/paired-observer-integration-audit-result-2026-10-09.json",
+    "sha256": "86ca9d96b9743360299324be2cf60f16a5b622e1ff0f0b846aa462d5c161178e"
+  },
+  "implementation_location": "scripts/retained_paired_observations.py; experimental offline adapter, no app import/wiring",
+  "initial_cohorts": [
+    {
+      "raw": {
+        "path": "docs/validation/pairwise-cue-qwen35-2026-10-09.json",
+        "sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c"
+      },
+      "plan": {
+        "path": "docs/validation/pairwise-visible-cue-probe-plan-2026-10-09.json",
+        "sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54"
+      },
+      "kind": "cue"
+    },
+    {
+      "raw": {
+        "path": "docs/validation/pairwise-cue-qwen3vl-2026-10-09.json",
+        "sha256": "1a8364b4c4c93c03a5f285881e5764ed0f3a9d87a54e54eeb132675aac14133d"
+      },
+      "plan": {
+        "path": "docs/validation/pairwise-visible-cue-probe-plan-2026-10-09.json",
+        "sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54"
+      },
+      "kind": "cue"
+    },
+    {
+      "raw": {
+        "path": "docs/validation/cross-family-roi-qwen35-2026-10-09.json",
+        "sha256": "939335f268c0993aeb2c3479ed6dc0e8ebd1bf854b2d2e25b378aea63019cb16"
+      },
+      "plan": {
+        "path": "docs/validation/cross-family-roi-probe-plan-2026-10-09.json",
+        "sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016"
+      },
+      "kind": "shape"
+    },
+    {
+      "raw": {
+        "path": "docs/validation/cross-family-roi-qwen3vl-2026-10-09.json",
+        "sha256": "aeef2b9c008acb3ee25c4b6f083bf86c7801efb290bd8d2d3c691ff89d191e0a"
+      },
+      "plan": {
+        "path": "docs/validation/cross-family-roi-probe-plan-2026-10-09.json",
+        "sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016"
+      },
+      "kind": "shape"
+    }
+  ],
+  "allowed_protocols": [
+    "pairwise-visible-cue-observations-1",
+    "paired-major-shape-observations-1"
+  ],
+  "role_contracts": {
+    "cue": [
+      "previous",
+      "current"
+    ],
+    "shape": [
+      "reference",
+      "candidate"
+    ]
+  },
+  "public_context": {
+    "shape": [
+      "subject"
+    ],
+    "cue": [
+      "subject",
+      "cue_query"
+    ]
+  },
+  "validation_reuse": {
+    "cue": "observe_pairwise_cue.preflight_plan + pairwise_cue_observations.parse_response/diagnostic/payload",
+    "shape": "observe_paired_shape.preflight_plan + paired_shape_observations.parse_response/diagnostic/payload"
+  },
+  "snapshot_key_fields": [
+    "protocol",
+    "reported_model_artifact_fingerprint",
+    "plan_sha256",
+    "report_sha256",
+    "ordered_source_sha256",
+    "ordered_prepared_sha256",
+    "region_preparation_binding",
+    "role_region_ids_and_boxes",
+    "subject",
+    "cue_query_if_required"
+  ],
+  "policy": {
+    "model_requests": 0,
+    "generation_requests": 0,
+    "downloads": 0,
+    "service_control": 0,
+    "max_report_bytes": 4194304,
+    "max_rows_per_report": 128,
+    "source_recheck_before_load_and_lookup": true,
+    "recorded_row_paths_followed": false,
+    "source_prepared_equivalence": "Only pinned helper reconstruction with exact native pixel/mode/dimension and declared region proof, never fuzzy similarity",
+    "lookup_mismatch": "unavailable; zero network; no invented omitted observations",
+    "valid_result": "uncertain; recorded-output availability only",
+    "invalid_result": "unavailable with exact retained raw failure",
+    "identity_score": null,
+    "state_score": null,
+    "progression_score": null,
+    "admission_allowed": false,
+    "automatic_rejection": false,
+    "physical_identity_established": false,
+    "human_gold_added": false,
+    "default_callers_changed": false,
+    "application_qa_or_routing_or_cache_changed": false,
+    "reason_or_category_normalization": false,
+    "diagnostic_stage": "retained_observation_replay; future MPT bridge must declare candidate stage and preserve later-pixel-change invalidation"
+  },
+  "future_tests": [
+    "strict raw/plan/code hash and protocol budget",
+    "duplicate rows/keys, fields, truncation, reasoning, tampered declared observation",
+    "ordered role hashes plus subject/cue matches and invalidations",
+    "source/crop changed before/after snapshot even when other file intact",
+    "alternative internally valid source binding mismatched to frozen plan",
+    "partial/disjoint region rejected before lookup",
+    "raw failures/unattempted cases preserved without rescue",
+    "snapshot deep-copy isolation and unavailable for changed context",
+    "all valid scores null and all admission/rejection/identity flags false",
+    "real replay of four pinned reports, no runtime/download/model calls"
+  ],
+  "integration_steps": [
+    "Finish/test isolated offline adapter and close replay evidence",
+    "Only then implement explicitly injected bridge to existing private diagnostic seam with non-interference tests; do not replace scoped_qa",
+    "Later candidate admission still requires independent perceptual calibration and measured complete QA latency"
+  ],
+  "not_proven": [
+    "perceptual accuracy",
+    "automatic semantic coverage/localization",
+    "physical temperature/motion/identity",
+    "full still-liquid contract",
+    "candidate calibration/selection",
+    "end-to-end QA speed",
+    "automatic routing readiness"
+  ]
+}

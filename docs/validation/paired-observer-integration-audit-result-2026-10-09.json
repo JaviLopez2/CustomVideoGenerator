@@ -1,0 +1,203 @@
+{
+  "protocol": "paired-observer-integration-audit-result-1",
+  "execution_base_head": "90ff646452c51200618e317829574b5ea0fb11ce",
+  "plan_sha256": "c8c49944fb739e420fe80fcfb3195deac5902e9878c13f07f858ee33c9dd97e3",
+  "source_bindings": {
+    "visual_qa": {
+      "path": "app/services/visual_qa.py",
+      "sha256": "47482f1fe7769b0fa1e8f77e3acf82976e604d5b4e9c92edc8e51dccf9b6d6e2"
+    },
+    "single_image_diagnostics": {
+      "path": "app/services/visual_observation_diagnostics.py",
+      "sha256": "e0e9afed845bc6f3a0402e8bc70ac76dd358e67554fcd4cfb691fb690b3d1c58"
+    },
+    "material": {
+      "path": "app/services/material.py",
+      "sha256": "0f8de76251120330f50eaf4cc9a9d2a13c29c50efce99a123d357d830e25325c"
+    },
+    "klein_gate": {
+      "path": "app/services/klein4b_experimental.py",
+      "sha256": "74dcb7e7bacfd809e2dcf5dc05e700d08874b5b8c43ef50693eb2ca24d15da13"
+    },
+    "llm_transport": {
+      "path": "app/services/llm.py",
+      "sha256": "27fe7fa2b0a1da6d6054437dd6d95d058263fb7c2b7244e23e8d41b0ef4e7981"
+    },
+    "cue_runner": {
+      "path": "scripts/observe_pairwise_cue.py",
+      "sha256": "5f030493d895f3c1c1e9e7b9425480e6f50a8eab3d75d9c8240de5a74e5562f5"
+    },
+    "cue_observer": {
+      "path": "scripts/pairwise_cue_observations.py",
+      "sha256": "6936a9686481a4dc485fc32bdcfb4875375ff9ecdce053d7efa9fe1180244e04"
+    },
+    "shape_observer": {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    "region_preflight": {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    "region_helper": {
+      "path": "scripts/prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    },
+    "qa_tests": {
+      "path": "test/services/test_visual_qa.py",
+      "sha256": "2ab2b143fd8f4f21c664156bd4b312a163b16da6bbef780008f86a82c6720169"
+    },
+    "single_image_tests": {
+      "path": "test/services/test_visual_observation_diagnostics.py",
+      "sha256": "b850116c85f50c31de59167d776695b21bd7cec0d5de574944a0b1f021a18d12"
+    }
+  },
+  "retained_input_bindings": {
+    "cue_plan": {
+      "path": "docs/validation/pairwise-visible-cue-probe-plan-2026-10-09.json",
+      "sha256": "9bb63661cb10713a839736047ca34e6e8bcf2977d5c912d8dd4cc0d771239d54"
+    },
+    "cue_qwen35": {
+      "path": "docs/validation/pairwise-cue-qwen35-2026-10-09.json",
+      "sha256": "deea0141d410412f1ceaa0917aea3c296ba0d2723a2ee523c270e4cd70ba2e2c"
+    },
+    "cue_qwen3vl": {
+      "path": "docs/validation/pairwise-cue-qwen3vl-2026-10-09.json",
+      "sha256": "1a8364b4c4c93c03a5f285881e5764ed0f3a9d87a54e54eeb132675aac14133d"
+    },
+    "cue_design": {
+      "path": "docs/validation/pairwise-visible-cue-design-2026-10-09.json",
+      "sha256": "a7d5eda5d5201d95633d0cfa2ba67c4cc0f9d7572cc3c6402dc63fbf1a826aee"
+    },
+    "historical_dataset": {
+      "path": "docs/validation/visual-qa-dataset-2026-10-08.json",
+      "sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f"
+    },
+    "shape_cross_family_plan": {
+      "path": "docs/validation/cross-family-roi-probe-plan-2026-10-09.json",
+      "sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016"
+    },
+    "shape_cross_family_qwen35": {
+      "path": "docs/validation/cross-family-roi-qwen35-2026-10-09.json",
+      "sha256": "939335f268c0993aeb2c3479ed6dc0e8ebd1bf854b2d2e25b378aea63019cb16"
+    },
+    "shape_cross_family_qwen3vl": {
+      "path": "docs/validation/cross-family-roi-qwen3vl-2026-10-09.json",
+      "sha256": "aeef2b9c008acb3ee25c4b6f083bf86c7801efb290bd8d2d3c691ff89d191e0a"
+    }
+  },
+  "sources_ast_parsed": 12,
+  "input_preflight": {
+    "protocol": "pairwise-cue-input-preflight-1",
+    "regions_verified": 4,
+    "native_fullframe_pixels_verified": true,
+    "human_gold": false,
+    "semantic_human_coverage": "pending",
+    "admission_allowed": false,
+    "physical_identity_established": false,
+    "physical_temperature_measured": false
+  },
+  "source_preparation_binding": {
+    "path": "docs/validation/retained-temporal-fullframes-result-2026-10-09.json",
+    "sha256": "77c43c0488c71c9ed47567340ccd8bf14199cb9e365e8bee067f4cefbb34ac52"
+  },
+  "frame_mapping": [
+    {
+      "region_id": "previous_baseline",
+      "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "prepared_sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+      "native_size": [
+        512,
+        512
+      ],
+      "same_file_bytes": false,
+      "same_native_pixels_verified_by_preflight": true
+    },
+    {
+      "region_id": "temporal_warm_512",
+      "source_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "prepared_sha256": "dcd9c928c4b24e0f827f8860b0e14ae0507ccb13aab1236942ebff9cfaeba841",
+      "native_size": [
+        512,
+        512
+      ],
+      "same_file_bytes": false,
+      "same_native_pixels_verified_by_preflight": true
+    },
+    {
+      "region_id": "mpt_temporal_hot_768",
+      "source_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "prepared_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "native_size": [
+        768,
+        1376
+      ],
+      "same_file_bytes": true,
+      "same_native_pixels_verified_by_preflight": true
+    },
+    {
+      "region_id": "mpt_temporal_cooled_768",
+      "source_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "prepared_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "native_size": [
+        768,
+        1376
+      ],
+      "same_file_bytes": true,
+      "same_native_pixels_verified_by_preflight": true
+    }
+  ],
+  "single_image_store_incompatibility": [
+    {
+      "raw_name": "cue_qwen35",
+      "protocol": "pairwise-visible-cue-observations-1",
+      "single_image_store_result": "rejected_unsupported_protocol"
+    },
+    {
+      "raw_name": "cue_qwen3vl",
+      "protocol": "pairwise-visible-cue-observations-1",
+      "single_image_store_result": "rejected_unsupported_protocol"
+    }
+  ],
+  "invalid_archived_cue_validation": "Cue visibility requires established subject",
+  "empty_contract_control": {
+    "verdict": "pass",
+    "available": true,
+    "checks": [],
+    "status": "not_required",
+    "seconds": 1.1000010999850929e-06,
+    "cache_hit": false
+  },
+  "empty_contract_qa_verified": false,
+  "valid_cue_diagnostic_qa_verified": false,
+  "private_injection_points": [
+    {
+      "function": "_download_videos_openai_image_on_demand",
+      "line": 7241,
+      "parameters": [
+        "scene_qa_contracts",
+        "visual_observation_store"
+      ]
+    }
+  ],
+  "historical_dataset_labels": {
+    "cases": 16,
+    "counts": {
+      "pass": 9,
+      "fail": 6,
+      "uncertain": 1
+    },
+    "independent_human_gold": false,
+    "labels_modified": false
+  },
+  "control_scope": "Interface/provenance controls; existing archived observations, no new visual inference",
+  "model_requests": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "service_changes": 0,
+  "application_or_models_or_qa_changed": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "physical_temperature_measured": false,
+  "next": "Implement/test experimental offline pair-aware replay with source/role/subject/query bindings; preserve single-image store and MPT admission. No live inference/default wiring."
+}

@@ -1,5 +1,11 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — contrato y frontera de integración auditados
+
+Base `90ff646452c51200618e317829574b5ea0fb11ce`, limpio/10worktrees al iniciar. [Plan e informe](PAIRED_OBSERVER_INTEGRATION_PLAN.md):12sources/8inputs ligados,4fullframes verificados y dos raw cue rechazados por store monoimagen. Dos512 tienen distinto SHA por metadata, exige mapping source/prepared y roles/contexto; not_required y cueuncertain no verifican gate. QA/cache/selectividad y punto privado diagnóstico existen, no reimplementar. 142 tests existentes pasan6,27s/exit0/sin avisos; receta CPU exit0. Sin cambios de app/tests/runtime/modelos/gates/routing/deps/workflows/estable/labels o nuevas consultas/generaciones/descargas/servicios. [Cierre](validation/paired-observer-integration-audit-closing-checks-2026-10-09.json), SHA final por Git/origin.
+
+Próximo autónomo: implementar/probar adaptador aislado en scripts, replay offline de dos cue+dos shape cross-family fijados; [diseño](validation/retained-paired-replay-design-2026-10-09.json). Reusar parsers/preflight, verificar raw/plan/source/roles/subject/query, conservar fallos/omisiones y snapshot; scores null/uncertain/no admisión. No importar scripts desde app, reemplazar scoped_qa o activar config/defaults. Puente MPT posterior separado; selección/calibración independiente, sensibilidad y QA completo pendientes. Nada que abrir/aprobar ahora; [continuidad](AUTONOMOUS_MPT_WORK_HANDOFF.md). Estados siguientes históricos.
+
 ## Estado vigente — cohortes de pistas visibles cerradas
 
 Base `277f356cd492cb990aaf17047e8b5264a83339c8`, inicio limpio y diez worktrees. [Informe](PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md): dos scripts aislados/66 nuevos tests, 182 finales pasan3,43s/exit0/sin avisos; revisión de código sin hallazgos, ocho bindings sin cambio después del test. Cinco HTTP/0retry/generación/descarga: Qwen3.5 cuatro válidas; Qwen3-VL JSON completo pero presencia uncertain+pista not_observed, rechazo local y tres pares sin ejecutar. Dos own8092 cerrados/PIDs ausentes y cola0/0. Raw/plan/inputs/logs conservados. App/defaults/modelos/QA/gates/routing/deps/workflows/estable intactos, [cierre](validation/pairwise-cue-closing-checks-2026-10-09.json); SHA final por Git/origin.

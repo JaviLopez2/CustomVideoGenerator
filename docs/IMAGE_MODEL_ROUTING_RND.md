@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — frontera de integración pareada auditada, 2026-10-09
+
+Desde `90ff646`, auditoría CPU liga12fuentes/8inputs: QA/cache/selectividad y diagnóstico monoimagen ya existen, pero dos raw de cue son rechazados por protocolo; pares necesitan roles/consulta/source-prepared explícitos. Dos512 cambian bytes por metadata aunque píxeles exactos. Contrato vacío not_required y diagnóstico cue válido no certifican admisión. 142 tests existentes focales pasan6,27s/exit0/sin avisos, receta exit0; cero inferencia/generación/descarga/app/servicios/modelos/gates/routing/deps/workflows/estable o labels modificados. [Plan](PAIRED_OBSERVER_INTEGRATION_PLAN.md).
+
+Siguiente adaptador experimental offline de cuatro reportes fijados, con parsers/preflight actuales, rol/sujeto/consulta y reconstrucción source-bound; [diseño](validation/retained-paired-replay-design-2026-10-09.json),0nuevoHTTP. Mantener app/store monoimagen intactos en esa entrega; puente diagnóstico posterior separado, sin sustituir scoped_qa ni asignar scores arbitrarios. Calibración independiente y latencia completa siguen pendientes. Autonomía continúa sin intervención; snapshots siguientes históricos.
+
 ## Actualización — pistas visibles observadas, 2026-10-09
 
 Desde `277f356`, observador genérico subject+cue y runner aislados; 66 tests nuevos y 182 finales pasan en 3,43s/exit0/sin avisos, revisión de código sin hallazgos. Plan liga ocho fuentes y cuatro fullframes nativos, verificados antes de carga/cada HTTP. Cinco respuestas: Qwen3.5 cuatro válidas; Qwen3-VL presencia uncertain con pista not_observed en el control, inválida y parada con tres casos sin ejecutar. Cero retries/generaciones/descargas. [Informe](PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md). Qwen3.5 reporta aparición en warm/hot y desaparición en cooled, pero describe zona oscura en este último; incumplimiento semántico posible conservado, sin gold humano/accuracy/temperatura/identidad. Diagnósticos válidos uncertain, scores separados null, sin admisión. Labels/captions/QA históricos intactos.

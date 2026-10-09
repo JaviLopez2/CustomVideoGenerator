@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: paired-observer integration boundary audited
+
+From `90ff646`, CPU audit binds12sources and8retained inputs, verifies4fullframes and reproduces rejection of both cue reports by the existing single-image store. Two metadata-free512frames differ in file SHA despite exact pixels: replay needs source/prepared mapping and ordered context. Existing QA selectivity/cache/admission already implemented; not_required and valid cue diagnostic do not verify a scene. 142 existing focused QA/state/diagnostic tests pass6.27s/exit0/no warnings; no app/script runtime changes or new labels/inference/generation. [Audit and plan](docs/PAIRED_OBSERVER_INTEGRATION_PLAN.md).
+
+Next implement/test isolated experimental offline pair-aware replay of four pinned reports, using current parsers/preflight and exact role/subject/query bindings. [Fixed design](docs/validation/retained-paired-replay-design-2026-10-09.json), zero new HTTP/model/generation/download/service budget, no app imports of experimental scripts or default/gate changes. Later private diagnostic bridge separate; independent calibration/full QA latency still pending. [Autonomous handoff](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md); no user action, final SHA via Git/origin, earlier next-audit sections historical.
+
 ## Current checkpoint: direct visible-cue cohorts closed
 
 From `277f356`, two isolated experimental scripts and 66 new regressions; 182 final tests pass in 3.43s/exit0/no warnings, code review no issues, executed code bound by SHA and unchanged after tests. Five HTTP responses: Qwen3.5 four valid observations (self consistency, two reported appearances and one reported disappearance); Qwen3-VL first response violates subject-presence/cue contract, three cases unattempted, no retries. [Report](docs/PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md). Qwen3.5 describes a dark area yet reports not_observed: semantic uncertainty risk retained, not independent accuracy or temperature/identity proof. All valid diagnostics uncertain, three score fields null, no automatic admission. Historical labels/captions/QA unchanged.

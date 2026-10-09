@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: paired-observer integration audit completed
+
+From `90ff646`,12source/8retained bindings,4native fullframes verified. Existing single-image store rejects both cue raw reports; exact pixel equivalence is not file hash equivalence for two512frames. Pair replay must bind ordered roles, subject/query and source/prepared correspondence. Empty contract not_required and valid cue diagnostic cannot verify admission. Existing selectivity/cache/private diagnostic seam preserved;142 focused existing tests pass6.27s/exit0/no warnings, CPU recipe exit0. [Audit/plan](PAIRED_OBSERVER_INTEGRATION_PLAN.md).0model/generation/download/service/application/runtime/label/model/gate/routing/dependency/workflow/stable changes.
+
+Next isolated experimental offline replay adapter for four pinned reports, current strict parsers/preflight, no app imports of scripts/default calls/scoped_qa replacement. [Fixed design](validation/retained-paired-replay-design-2026-10-09.json), new model HTTP budget0. Valid outputs uncertain/null scores, raw unavailable/omissions preserved; later opt-in MPT diagnostic bridge separate. Independent perception/calibration and complete QA latency pending; no candidate approved. [Autonomy](AUTONOMOUS_MPT_WORK_HANDOFF.md), no action/8080 needed, final SHA via Git/origin; earlier next-audit text historical.
+
 ## Current checkpoint: direct visible-cue cohorts completed/stopped
 
 From `277f356`, isolated generic subject+cue observer/runner, 66 new regressions and182 final pass3.43s/exit0/no warnings; code review no issues, eight source bindings unchanged after final test. Five HTTP responses/0retry/generation/download: Qwen3.5 four valid; Qwen3-VL uncertain subject with not_observed cue violates predefined contract on first self control, three unattempted. [Report](PAIRWISE_VISIBLE_CUE_PROBE_REPORT.md), [closing checks](validation/pairwise-cue-closing-checks-2026-10-09.json). Both own8092 closed/PIDs absent, shared queue0/0, MPT/QA/models/gates/routing/workflows/deps/stable unchanged.

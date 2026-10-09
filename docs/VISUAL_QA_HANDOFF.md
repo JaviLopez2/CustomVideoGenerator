@@ -1,5 +1,11 @@
 # Visual QA — Windows checkpoint, 2026-10-08
 
+## Current integration audit — 2026-10-09
+
+From `90ff646`, current visual-qa-4, existing cache/selectivity/admission and injected single-image diagnostic inspected, not reimplemented. 142 focused existing QA/state/diagnostic tests pass6.27s/exit0/no warnings; CPU pinned recipe verifies4nativeframes, source/prepared hash difference in two512 and new paired report incompatibility. [Audit and next design](PAIRED_OBSERVER_INTEGRATION_PLAN.md). No app/tests/gates/routing/default/runtime/service/model/label changes and0newmodel/generation/download requests.
+
+Next experimental offline pair replay, exact role/subject/cue/source-prepared context, parsers/preflight reused; no replacing scoped_qa, callback authority or importing scripts into app. Four pinned existing reports only,0HTTP. Human calibration, quantity/geometry/state sensitivity and end-to-end QA latency still pending; old counts/latencies below historical. [Autonomous current handoff](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action now.
+
 Worktree `D:\Apps\MPT-worktrees\image-model-routing-modernization`, branch `factory/image-model-routing-modernization`. Initial clean local/remote HEAD `87c7ba568b19ed48d041b625f269f5112f0ef4fd`; fetch showed 0/0 divergence. Stable protected HEAD `6d27ba4963ffe469d635db71eaeec506a8ff4b61`.
 
 ## Dataset and audit checkpoint
