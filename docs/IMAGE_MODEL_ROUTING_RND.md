@@ -1,5 +1,9 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — replay retenido y negación v4, 2026-10-09
+
+Base d636da6:3casos temporales siguen uncertain v2/v3/v4 con captions/OD originales, lectura porSHA/task y cero inferencia nueva.10controles literales fijados antes de probar revelan7fallos v3; v4 corrige ausencia posterior/contracciones/freeof y conserva dobles negaciones uncertain, cache versionada invalida v3.30 regresiones nuevas/216 finales pasan6,67s/exit0/sin avisos; dos P2 de modificadores reproducidos con6RED y revisión final cerrada. [Informe](TEMPORAL_CAPTION_REPLAY_REPORT.md). Parser no arregla vocabulario/extracción visual, no se sustituye smoke por steam para conseguir pass.0 nuevas consultas/generaciones/GPU/descargas/deps/servicios/pesos/defaults/workflows/routing/estable. Próximo preparador CPU de regiones source-bound, cobertura y otra familia antes de validar candidato ROI. Evidencia temporal visual fuerte pendiente; histórico no reetiquetado. Objetivo activo sin aprobación rutinaria.
+
 ## Actualización — ambigüedad temporal corregida, 2026-10-09
 
 Desde417dac3, state_check genérico abstiene cualificación/contradicción y no acredita progresión con anterior ambiguo; negativos inequívocos siguen fail y omisión uncertain. VERSIONvisual-qa-3 invalida caché anterior.37 regresiones nuevas,186 tests finales pasan6,55s/exit0/sin avisos; fallo de salto de línea encontrado por revisión, RED4→GREEN y cierre sin hallazgos. [Informe](TEMPORAL_CAPTION_AMBIGUITY_REPORT.md). Parser léxico inglés, no evidencia de fidelidad visual/identidad o negación universal.0 consultas/generaciones/descargas/GPU/servicios, modelos/defaults/plantillas/routing/estable intactos. Próximo replay CPU de captions/contratos temporales archivados v2/v3 y negación explícita restante; luego cross-family ROI. Los12 requests/184tests anteriores no se repiten ni se presentan como prueba del parche. Autonomía vigente sin otra aprobación.

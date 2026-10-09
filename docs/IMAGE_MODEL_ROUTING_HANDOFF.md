@@ -1,5 +1,11 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — replay cerrado, parser v4; preparación ROI siguiente
+
+Base publicada d636da6039089694aed7a6825d141a33a8a4ec57, experimental con inicio limpio/10worktrees. [Replay/informe](TEMPORAL_CAPTION_REPLAY_REPORT.md):3captions temporales/contratos/PNG SHA preservados, v2/v3/v4uncertain; ningún pass visual nuevo.7de10controles de negación fallaban v3; parche genérico v4 y cache invalidada.30tests nuevos/216 finales pasan6,67s/exit0/sin avisos; revisión de modificadores RED6, cierre sin hallazgos.0 nueva inferencia/generación/GPU/descarga/servicio/default/model/dependency/workflow/routing/gate/estable. Primer log RED tiene sustitución de decode del apóstrofo, documentada; demás runs UTF8 de proceso, no global. [Checks](validation/temporal-negation-closing-checks-2026-10-09.json). SHA cierre por Git/origin, no confundir base.
+
+Próxima acción sin otro permiso: preparador reproducible de regiones ligadas a fuentes y plan cross-family/coverage de ROI, sin nuevos modelos/labels humanos o admisión. Los captions no recuperan pistas omitidas; cerrar esta línea antes de más ajustes textuales. Evidencia visual temporal fuerte sigue pendiente, conservar incertidumbre fría y no reabrir control de taza fallido. [Objetivo activo](AUTONOMOUS_MPT_WORK_HANDOFF.md); preparación CPU, no necesita servicios/intervención. Snapshots anteriores históricos.
+
 ## Estado vigente — parser temporal v3 validado; replay CPU siguiente
 
 Base417dac34f5367c58412a0722f509ff3dbb2fbb39, carpeta/rama experimental conservadas, inicio limpio. Se modifica solo app/services/visual_qa.py y se añade test/services/test_visual_qa_state_evidence.py: cualificación/contradicción=>uncertain, anterior ambiguo sin progression1; negativas claras conservadas y caché invalidada mediante VERSION3.37 nuevos/186 finales pasan6,55s/exit0/sin avisos; revisión cerró regresión multilineal con RED4 adicional. [Informe](TEMPORAL_CAPTION_AMBIGUITY_REPORT.md), [cierre](validation/temporal-caption-closing-checks-2026-10-09.json).0 nueva inferencia/generación/GPU/descarga/servicio; no modelos/defaults/deps/plantillas/gates/routing/estable alterados o integración activada. Semántica léxica limitada, no verdad visual o identidad. SHA final por Git/origin.

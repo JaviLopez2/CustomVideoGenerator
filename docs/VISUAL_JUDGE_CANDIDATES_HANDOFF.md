@@ -1,5 +1,9 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: retained temporal replay unchanged, text negation fixed
+
+Fromd636da6,3 archived temporal cases remainuncertain v2/v3/v4; saved-caption/OD SHA/task replay only, no fresh model evidence or human labels.10 predeclared literal controls expose7v3 negation mismatches; generic state_check v4 fixes those, cache version invalidated.30 new tests/216 final pass6.67s/exit0/no warnings;6RED modifier regressions fixed before final independent review no issues. [Report](TEMPORAL_CAPTION_REPLAY_REPORT.md). Judges/assets/defaults/routing/gates/services/deps/workflows/stable untouched,0queries/generation/GPU/download. Next source-bound region preparer and cross-family/coverage ROI protocol CPU; direct temporal visual reliability still pending, no promotion from known3key pairs or text examples. [Active autonomy](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action.
+
 ## Current checkpoint: temporal text ambiguity fixed, judges unchanged
 
 From417dac3, generic state_check qualification/conflict handling corrected, prior ambiguous state cannot establish progression; VERSIONvisual-qa-3 invalidates existing v2 cache keys.37 new CPU tests;186 final pass6.55s/exit0/no warnings, review-found newline regression fixed with4RED first and final review no issues. [Report](TEMPORAL_CAPTION_AMBIGUITY_REPORT.md). No new inference/generation/download/GPU/services, no judge/model/default/gate/routing/workflow/dependency/stable changes. Lexical caption interpretation is not visual reliability or identity. Earlier12paired queries/184tests remain separate. Next CPU replay of saved temporal captions/contracts v2/v3 and explicit-negation audit, then source-bound ROI cross-family controls; no promotion from known3pairs. [Autonomy active](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action required.

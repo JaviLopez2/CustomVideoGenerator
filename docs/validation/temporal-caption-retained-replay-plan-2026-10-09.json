@@ -1,0 +1,149 @@
+{
+  "protocol": "temporal-caption-retained-replay-plan-1",
+  "declared_utc": "2026-10-09T15:45:52.853135+00:00",
+  "execution_base_head": "d636da6039089694aed7a6825d141a33a8a4ec57",
+  "sources": [
+    {
+      "path": "docs/validation/visual-qa-dataset-2026-10-08.json",
+      "sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f"
+    },
+    {
+      "path": "docs/validation/visual-qa-final-results-2026-10-08.json",
+      "sha256": "4652017900a1c5d29f90c6b9c3bd6f8a6a869fb4b161a19c990b8d5614813882"
+    },
+    {
+      "path": "app/services/visual_qa.py",
+      "sha256": "4ff08f8ca503ffe06e8dfb3da7330452c27e1d2abaa4a294297630554e6d62f9"
+    }
+  ],
+  "legacy_source": {
+    "git_ref": "417dac34f5367c58412a0722f509ff3dbb2fbb39",
+    "path": "app/services/visual_qa.py",
+    "git_blob_content_sha256": "2f9a76db3451e323c16152d93f497e33a06eda6dabdd52a7150d4a4de44ad435",
+    "qa_version": "visual-qa-2"
+  },
+  "current_qa_version": "visual-qa-3",
+  "retained_case_ids": [
+    "temporal_warm_512",
+    "mpt_temporal_hot_768",
+    "mpt_temporal_cooled_768"
+  ],
+  "scope": "CPU full VisualQA replay with archived hash-bound caption/OD/previous observations only, plus separate literal-negation probes; not Florence or VLM execution",
+  "provenance_requirements": [
+    "Rehash each candidate/reference/previous local PNG and bind archived observations by image SHA/task",
+    "Preserve original observations and assistant labels; no independent human truth invented",
+    "Load only trusted versioned pure QA module; archived adapter cannot load models or call HTTP",
+    "Capture replay timings as CPU replay only, not new inference or end-to-end latency"
+  ],
+  "synthetic_negation_probes": [
+    {
+      "id": "postfix_absence",
+      "caption": "Frost is absent.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "fail"
+    },
+    {
+      "id": "postfix_not_visible",
+      "caption": "Frost is not visible.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "fail"
+    },
+    {
+      "id": "contracted_negation",
+      "caption": "There isn't any frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "fail"
+    },
+    {
+      "id": "free_of",
+      "caption": "The surface is free of frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "fail"
+    },
+    {
+      "id": "forbidden_postfix_absence",
+      "caption": "Smoke is absent.",
+      "contract": {
+        "forbidden_evidence": [
+          "smoke"
+        ]
+      },
+      "expected_status": "pass"
+    },
+    {
+      "id": "explicit_prefix_control",
+      "caption": "The surface does not show frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "fail"
+    },
+    {
+      "id": "qualified_negation_control",
+      "caption": "There might not be any frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "uncertain"
+    },
+    {
+      "id": "unambiguous_mixed_control",
+      "caption": "There is no smoke but frost covers the surface.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ],
+        "forbidden_evidence": [
+          "smoke"
+        ]
+      },
+      "expected_status": "pass"
+    },
+    {
+      "id": "double_prefix_negation",
+      "caption": "The surface is not without frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "uncertain"
+    },
+    {
+      "id": "double_postfix_negation",
+      "caption": "Frost is not absent.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "uncertain"
+    }
+  ],
+  "synthetic_expected_status_provenance": "Assistant-declared literal-language policy examples; no new photo/human/model labels",
+  "generation_requests": 0,
+  "model_requests": 0,
+  "downloads": 0,
+  "service_changes": 0,
+  "next": "Execute once, preserve cases that remain uncertain; inspect concrete negation failures before a bounded generic patch"
+}

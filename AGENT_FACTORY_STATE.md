@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: retained temporal replay and explicit negation v4
+
+From publishedd636da6, full CPU replay of3 retained temporal cases reproduces archived v2 checks and retains3uncertain under v3/v4; no new extraction or human labels.10 declared literal-negation controls show7v3 mismatches, corrected in generic state_check VERSION4 (postfix absence/contractions/freeof/doubles; bounded modifiers).30 new regressions;216 final pass6.67s/exit0/no warnings. Review reproduced6modifier cases before correction, final no issues. [Report](docs/TEMPORAL_CAPTION_REPLAY_REPORT.md).0 model/generation/GPU/download/dependency/service/model/default/routing/workflow/stable changes; parser remains lexical, not visual truth. Raw captions/data/history preserved.
+
+Next bounded CPU preparation of reusable source-bound regions and cross-family ROI/coverage controls; stop caption prompt/alias fishing on retained missing evidence. Direct visual temporal evidence remains pending. [Active autonomous handoff](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md); no user action, no gate promotion from3known key pairs. Closing SHA via Git/origin; earlier next-negation sections historical.
+
 ## Current checkpoint: temporal ambiguity parser corrected
 
 From published417dac34f5367c58412a0722f509ff3dbb2fbb39, generic state_check now abstains on qualified/contradictory relevant terms, preserves unambiguous failures/omission and cannot certify progression from ambiguous prior evidence. VERSIONvisual-qa-3 invalidates v2 verdict/evidence keys; no new cache layer.37 new CPU tests,186 final pass6.55s/exit0/no warnings,149 prior cases/gates preserved. Review found newline negation regression, reproduced4RED and fixed; final review no issues. [Report](docs/TEMPORAL_CAPTION_AMBIGUITY_REPORT.md). No new inference/generation/GPU/download/service/model/default/routing/workflow/dependency/stable changes. Caption parsing remains lexical, not visual truth or universal negation semantics.

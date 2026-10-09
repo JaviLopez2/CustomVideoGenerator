@@ -1,0 +1,152 @@
+{
+  "protocol": "temporal-negation-closing-checks-1",
+  "checked_utc": "2026-10-09T16:10:25.179888+00:00",
+  "execution_base_head": "d636da6039089694aed7a6825d141a33a8a4ec57",
+  "qa_version": "visual-qa-4",
+  "scope": "Saved-evidence CPU replay plus generic explicit-negation parser/cache version only",
+  "retained_cases_uncertain_v2_v3_v4": 3,
+  "retained_overall_verdict_changes": 0,
+  "ten_literal_probe_mismatches_before": 7,
+  "ten_literal_probe_mismatches_after": 0,
+  "image_bindings_revalidated": {
+    "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\continuity_512\\result.png": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+    "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+    "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_cooled_768\\result.png": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729"
+  },
+  "offline_tests": {
+    "passed": 216,
+    "new_tests": 30,
+    "prior_tests": 186,
+    "seconds": 6.67,
+    "python_exit_code": 0,
+    "warnings": 0,
+    "log": "docs/validation/temporal-negation-final-tests-2026-10-09.txt",
+    "log_sha256": "481b74e2f07a9d0626a3d6846497542e072136eca0783197bbb55f4102deb364",
+    "MPT_RUN_INTEGRATION_TESTS": "0",
+    "command": "Python MPT -B -m pytest -q test/services/test_visual_qa_state_negation.py test/services/test_visual_qa_state_evidence.py test/services/test_visual_qa.py test/services/test_visual_observation_diagnostics.py test/services/test_klein4b_mpt.py test/services/test_corrective_continuity.py test/services/test_evidence_pruning_root_qa.py"
+  },
+  "tdd_stages": [
+    {
+      "path": "docs/validation/temporal-negation-red-tests-2026-10-09.txt",
+      "sha256": "a673ac9ff0c011bfb58bef5862925bb9ee629d9c58ff29921e38508b94edb585",
+      "summary": "18 failed, 6 passed in 0.40s",
+      "exit_code": 1
+    },
+    {
+      "path": "docs/validation/temporal-negation-green-tests-2026-10-09.txt",
+      "sha256": "9f8b89015a3601a080ffff00a351b34f9f7e7ea4406cef3d2609873835b8fdbc",
+      "summary": "100 passed in 3.21s",
+      "exit_code": 0
+    },
+    {
+      "path": "docs/validation/temporal-negation-review-red-tests-2026-10-09.txt",
+      "sha256": "19845efd904e57b9b2e434fcb4ea4573484d51dd89899052ccef2b8ebe11d88a",
+      "summary": "6 failed, 24 passed in 0.37s",
+      "exit_code": 1
+    },
+    {
+      "path": "docs/validation/temporal-negation-final-tests-2026-10-09.txt",
+      "sha256": "481b74e2f07a9d0626a3d6846497542e072136eca0783197bbb55f4102deb364",
+      "summary": "216 passed in 6.67s",
+      "exit_code": 0
+    }
+  ],
+  "independent_review": {
+    "two_P2s": "24char prefix cutoff lost negation; one-modifier double negative missed",
+    "reproduced_before_correction": "6failed24pass",
+    "final": "No issues."
+  },
+  "source_document_whitespace": 0,
+  "raw_red_log_whitespace_preserved": {
+    "docs/validation/temporal-negation-review-red-tests-2026-10-09.txt": 6,
+    "docs/validation/temporal-negation-red-tests-2026-10-09.txt": 17
+  },
+  "first_red_log_utf8_decode_replacement_characters": 11,
+  "other_runs_force_utf8_in_test_process_only": true,
+  "secret_pattern_matches": 0,
+  "pattern_scan_not_exhaustive": true,
+  "task_files": [
+    {
+      "path": "app/services/visual_qa.py",
+      "sha256": "47482f1fe7769b0fa1e8f77e3acf82976e604d5b4e9c92edc8e51dccf9b6d6e2"
+    },
+    {
+      "path": "test/services/test_visual_qa_state_negation.py",
+      "sha256": "a3acf9613432848d33993d8e9e55874ff2ee805cc1ed5e74b5ef8245ab82bd7a"
+    },
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "3d725d5ac5c03127fea22a6e2afe2d26e4a2e9377be88cc117746b05a0b0414c"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "c10e2c405e63372ad34ad84f0b7c4063ea949dd9c94f62f2d08b27929d388c53"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "aafdaf214dadc46a96dd03f7498ccbd23a214e4a93f721f48890dcc884da90a1"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "b4682f80203a361c1a4ec7af646d025c0dd5dc86594057e8c27fc600f9500be9"
+    },
+    {
+      "path": "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+      "sha256": "3f056c7b95cebfe6779cb98d8a25e7820b3d196f4f2f310acf4352fd014f4042"
+    },
+    {
+      "path": "docs/VISUAL_QA_REPORT.md",
+      "sha256": "0624d0b406c5c941d4e286735c2d3cb82898e77dba4fd43eba21ac04944222ba"
+    },
+    {
+      "path": "docs/TEMPORAL_CAPTION_REPLAY_REPORT.md",
+      "sha256": "e3020814608237bf30431f5dd39ada45189f5b7286e6dc94a5dce03fec974977"
+    },
+    {
+      "path": "docs/validation/temporal-caption-retained-replay-plan-2026-10-09.json",
+      "sha256": "fbbbe74b7c7936624b05ef5c3a90b801569a76a87ef10fc1cab0caf36905ef1c"
+    },
+    {
+      "path": "docs/validation/temporal-caption-retained-replay-2026-10-09.json",
+      "sha256": "f325f4a44c271ac5219d9d09213b1c490fcb37e857088f74ba1f34ae9caf2bfc"
+    },
+    {
+      "path": "docs/validation/temporal-caption-retained-replay-v4-2026-10-09.json",
+      "sha256": "180e50578ad572b9f1aa223023335dd3d3157470456315563dda7c9e0e9c4be7"
+    },
+    {
+      "path": "docs/validation/temporal-caption-retained-replay-2026-10-09.py",
+      "sha256": "851251495c18c06eb5ba198e59026e8771039758929f41580042a9055bb7516e"
+    },
+    {
+      "path": "docs/validation/temporal-negation-red-tests-2026-10-09.txt",
+      "sha256": "a673ac9ff0c011bfb58bef5862925bb9ee629d9c58ff29921e38508b94edb585"
+    },
+    {
+      "path": "docs/validation/temporal-negation-green-tests-2026-10-09.txt",
+      "sha256": "9f8b89015a3601a080ffff00a351b34f9f7e7ea4406cef3d2609873835b8fdbc"
+    },
+    {
+      "path": "docs/validation/temporal-negation-review-red-tests-2026-10-09.txt",
+      "sha256": "19845efd904e57b9b2e434fcb4ea4573484d51dd89899052ccef2b8ebe11d88a"
+    },
+    {
+      "path": "docs/validation/temporal-negation-final-tests-2026-10-09.txt",
+      "sha256": "481b74e2f07a9d0626a3d6846497542e072136eca0783197bbb55f4102deb364"
+    }
+  ],
+  "actual_Florence_VLM_or_generation_requests": 0,
+  "gpu_inference_benchmarks_downloads_dependencies": 0,
+  "services_model_workflow_routing_default_flag_or_admission_policy_changes": 0,
+  "historical_labels_or_raw_reports_modified": false,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_clean": true,
+  "preexisting_stable_untracked_preserved": true,
+  "limitations": [
+    "Text controls are not visual truth/accuracy",
+    "Retained captions still omit evidence",
+    "Finite English negation forms only, not universal semantics"
+  ],
+  "next": "Close caption audit; prepare source-bound regions/coverage and cross-family retained ROI protocol, no new routine permission required"
+}

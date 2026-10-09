@@ -1,5 +1,9 @@
 # QA visual local: resultados y límites — 2026-10-08
 
+## Actualización — evidencia retenida no recuperada por texto; negación v4
+
+[Replay y parche](TEMPORAL_CAPTION_REPLAY_REPORT.md), based636da6:3casos temporales mantienen uncertain v2/v3/v4 al reutilizar exactos captions/OD/contratos ligados a SHA. Ninguna inferencia nueva ni alias smoke→steam para aprobar.10controles literales detectan7fallos v3; v4 reconoce ausencia posterior/contracciones/freeof, dobles siguen inciertas y cache v3 se invalida.30 nuevos/216 tests finales pasan6,67s/exit0/sin avisos; modificadores revisados con6RED y cierre sin hallazgos.0 GPU/generación/VLM/Florence/descarga/servicios/defaults/modelos/workflows/gates/routing/estable. Parser léxico acotado, no fiabilidad visual/calibración o temperatura física. Próximo preparación CPU de regiones source-bound/otra familia para ROI; evidencia temporal multimodal directa aún pendiente. Datos/resultados previos conservados.
+
 ## Actualización — parser temporal v3, 2026-10-09
 
 [Parche y prueba](TEMPORAL_CAPTION_AMBIGUITY_REPORT.md), base417dac3: cualificación/contradicción léxica relevante se conserva uncertain, con ambiguous_evidence y score null; evidencia anterior ambigua no acredita progreso. Violación inequívoca y omisión conservan fail/uncertain, sin inferir identidad. VERSIONvisual-qa-3 invalida keys v2; no nueva capa de caché.37 casos nuevos/186 tests finales pasan6,55s/exit0/sin avisos; revisión detectó salto de línea, cuatro RED antes de corrección y revisión final sin hallazgos.0 inferencia/generación/GPU/descargas/servicios/modelos/defaults/gates/routing/deps/estable. Sigue siendo parser léxico inglés limitado, sin solución universal de negación ni validación de fidelidad visual. Próximo replay CPU de captions/contratos guardados v2/v3 antes de más consultas. Los resultados históricos siguientes no se reescriben como v3.

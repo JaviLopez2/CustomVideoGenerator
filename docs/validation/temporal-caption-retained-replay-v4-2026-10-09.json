@@ -1,0 +1,602 @@
+{
+  "protocol": "temporal-caption-retained-replay-v4-1",
+  "checked_utc": "2026-10-09T16:03:45.473835+00:00",
+  "execution_base_head": "d636da6039089694aed7a6825d141a33a8a4ec57",
+  "v3_replay": {
+    "path": "docs/validation/temporal-caption-retained-replay-2026-10-09.json",
+    "sha256": "f325f4a44c271ac5219d9d09213b1c490fcb37e857088f74ba1f34ae9caf2bfc"
+  },
+  "adapter_recipe": {
+    "path": "docs/validation/temporal-caption-retained-replay-2026-10-09.py",
+    "sha256": "851251495c18c06eb5ba198e59026e8771039758929f41580042a9055bb7516e",
+    "only_ArchivedEvidence_and_digest_AST_nodes_used": true
+  },
+  "current_source": {
+    "path": "app/services/visual_qa.py",
+    "sha256": "47482f1fe7769b0fa1e8f77e3acf82976e604d5b4e9c92edc8e51dccf9b6d6e2",
+    "qa_version": "visual-qa-4"
+  },
+  "retained_rows": [
+    {
+      "case_id": "temporal_warm_512",
+      "v3": {
+        "qa_version": "visual-qa-3",
+        "verdict": "uncertain",
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "mug",
+            "observed_count": 1,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "steam"
+            ],
+            "violations": [],
+            "unknown_absence": [],
+            "ambiguous_evidence": []
+          }
+        ],
+        "seconds": 0.001984200000151759
+      },
+      "v4": {
+        "qa_version": "visual-qa-4",
+        "verdict": "uncertain",
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "mug",
+            "observed_count": 1,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "steam"
+            ],
+            "violations": [],
+            "unknown_absence": [],
+            "ambiguous_evidence": []
+          }
+        ],
+        "seconds": 0.0021945000007690396
+      },
+      "read_calls_identical": true,
+      "timing_scope": "CPU replay of saved evidence only",
+      "overall_verdict_changed": false
+    },
+    {
+      "case_id": "mpt_temporal_hot_768",
+      "v3": {
+        "qa_version": "visual-qa-3",
+        "verdict": "uncertain",
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "mug",
+            "observed_count": 1,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "steam"
+            ],
+            "violations": [],
+            "unknown_absence": [],
+            "ambiguous_evidence": []
+          }
+        ],
+        "seconds": 0.0035109000018564984
+      },
+      "v4": {
+        "qa_version": "visual-qa-4",
+        "verdict": "uncertain",
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "uncertain",
+            "subject": "mug",
+            "observed_count": 1,
+            "reason": "caption/recognition does not establish exact cardinality"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "steam"
+            ],
+            "violations": [],
+            "unknown_absence": [],
+            "ambiguous_evidence": []
+          }
+        ],
+        "seconds": 0.003550000001268927
+      },
+      "read_calls_identical": true,
+      "timing_scope": "CPU replay of saved evidence only",
+      "overall_verdict_changed": false
+    },
+    {
+      "case_id": "mpt_temporal_cooled_768",
+      "v3": {
+        "qa_version": "visual-qa-3",
+        "verdict": "uncertain",
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "mug",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "still liquid"
+            ],
+            "violations": [],
+            "unknown_absence": [
+              "steam"
+            ],
+            "ambiguous_evidence": []
+          }
+        ],
+        "seconds": 0.005250500002148328
+      },
+      "v4": {
+        "qa_version": "visual-qa-4",
+        "verdict": "uncertain",
+        "checks": [
+          {
+            "kind": "quantity",
+            "status": "pass",
+            "subject": "mug",
+            "observed_count": 1,
+            "expected_count": 1,
+            "reason": "explicit count or agreement of caption and recognition"
+          },
+          {
+            "kind": "temporal",
+            "status": "uncertain",
+            "state_score": null,
+            "progression_score": null,
+            "identity_score": null,
+            "reason": "missing/ambiguous state evidence",
+            "missing_evidence": [
+              "still liquid"
+            ],
+            "violations": [],
+            "unknown_absence": [
+              "steam"
+            ],
+            "ambiguous_evidence": []
+          }
+        ],
+        "seconds": 0.0052504999985103495
+      },
+      "read_calls_identical": true,
+      "timing_scope": "CPU replay of saved evidence only",
+      "overall_verdict_changed": false
+    }
+  ],
+  "overall_verdict_changes": 0,
+  "literal_probes": [
+    {
+      "id": "postfix_absence",
+      "caption": "Frost is absent.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_literal_policy": "fail",
+      "v3": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [
+          "absent frost"
+        ],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "postfix_not_visible",
+      "caption": "Frost is not visible.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_literal_policy": "fail",
+      "v3": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [
+          "absent frost"
+        ],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "contracted_negation",
+      "caption": "There isn't any frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_literal_policy": "fail",
+      "v3": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [
+          "absent frost"
+        ],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "free_of",
+      "caption": "The surface is free of frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_literal_policy": "fail",
+      "v3": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [
+          "absent frost"
+        ],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "forbidden_postfix_absence",
+      "caption": "Smoke is absent.",
+      "contract": {
+        "forbidden_evidence": [
+          "smoke"
+        ]
+      },
+      "expected_literal_policy": "pass",
+      "v3": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [
+          "smoke"
+        ],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "explicit_prefix_control",
+      "caption": "The surface does not show frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_literal_policy": "fail",
+      "v3": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [
+          "absent frost"
+        ],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [
+          "absent frost"
+        ],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "qualified_negation_control",
+      "caption": "There might not be any frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_literal_policy": "uncertain",
+      "v3": {
+        "status": "uncertain",
+        "state_score": null,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "missing/ambiguous state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": [
+          "frost"
+        ]
+      },
+      "v4": {
+        "status": "uncertain",
+        "state_score": null,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "missing/ambiguous state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": [
+          "frost"
+        ]
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "unambiguous_mixed_control",
+      "caption": "There is no smoke but frost covers the surface.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ],
+        "forbidden_evidence": [
+          "smoke"
+        ]
+      },
+      "expected_literal_policy": "pass",
+      "v3": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "double_prefix_negation",
+      "caption": "The surface is not without frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_literal_policy": "uncertain",
+      "v3": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [
+          "absent frost"
+        ],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "uncertain",
+        "state_score": null,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "missing/ambiguous state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": [
+          "frost"
+        ]
+      },
+      "matches_literal_policy_after": true
+    },
+    {
+      "id": "double_postfix_negation",
+      "caption": "Frost is not absent.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_literal_policy": "uncertain",
+      "v3": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "v4": {
+        "status": "uncertain",
+        "state_score": null,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "missing/ambiguous state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": [
+          "frost"
+        ]
+      },
+      "matches_literal_policy_after": true
+    }
+  ],
+  "literal_mismatches_v3": 7,
+  "literal_mismatches_v4": 0,
+  "new_human_truth_added": false,
+  "generation_or_model_requests": 0,
+  "downloads_or_services_changed": false,
+  "new_inference_latency_or_population_accuracy_claimed": false,
+  "decision": "Ten literal controls now match declared language policy; three retained images remain uncertain because saved captions lack required state evidence. No visual-reliability or admission promotion."
+}

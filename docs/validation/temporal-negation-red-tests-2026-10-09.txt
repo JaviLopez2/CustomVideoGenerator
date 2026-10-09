@@ -1,0 +1,429 @@
+FFFFFFFFFFFFFFF......FFF                                                 [100%]
+================================== FAILURES ===================================
+_ test_explicit_absence_respects_required_and_forbidden_contracts[Frost is absent.-frost] _
+
+caption = 'Frost is absent.', term = 'frost'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[Frost is not visible.-frost] _
+
+caption = 'Frost is not visible.', term = 'frost'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[Frost isn't visible.-frost] _
+
+caption = "Frost isn't visible.", term = 'frost'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[There isn't any frost.-frost] _
+
+caption = "There isn't any frost.", term = 'frost'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[There aren\u2019t any cracks.-cracks] _
+
+caption = 'There aren�t any cracks.', term = 'cracks'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[The surface is free of frost.-frost] _
+
+caption = 'The surface is free of frost.', term = 'frost'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[The surface is devoid of scratches.-scratches] _
+
+caption = 'The surface is devoid of scratches.', term = 'scratches'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[Still liquid is not observed.-still liquid] _
+
+caption = 'Still liquid is not observed.', term = 'still liquid'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[The required mark is missing.-mark] _
+
+caption = 'The required mark is missing.', term = 'mark'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_explicit_absence_respects_required_and_forbidden_contracts[Frost is\nabsent.-frost] _
+
+caption = 'Frost is\nabsent.', term = 'frost'
+
+    @pytest.mark.parametrize("caption,term", [
+        ("Frost is absent.", "frost"),
+        ("Frost is not visible.", "frost"),
+        ("Frost isn't visible.", "frost"),
+        ("There isn't any frost.", "frost"),
+        ("There aren�t any cracks.", "cracks"),
+        ("The surface is free of frost.", "frost"),
+        ("The surface is devoid of scratches.", "scratches"),
+        ("Still liquid is not observed.", "still liquid"),
+        ("The required mark is missing.", "mark"),
+        ("Frost is\nabsent.", "frost"),
+    ])
+    def test_explicit_absence_respects_required_and_forbidden_contracts(caption, term):
+        required = qa.state_check(caption, {"required_evidence": [term]})
+        forbidden = qa.state_check(caption, {"forbidden_evidence": [term]})
+>       assert required["status"] == "fail" and required["state_score"] == 0
+E       AssertionError: assert ('pass' == 'fail'
+E         
+E         - fail
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:24: AssertionError
+_ test_double_negation_does_not_prove_either_state[The surface is not without frost.] _
+
+caption = 'The surface is not without frost.'
+
+    @pytest.mark.parametrize("caption", [
+        "The surface is not without frost.",
+        "Frost is not absent.",
+        "Frost isn't absent.",
+        "The surface is not free of frost.",
+        "Frost is not missing.",
+    ])
+    def test_double_negation_does_not_prove_either_state(caption):
+        for field in ["required_evidence", "forbidden_evidence"]:
+            result = qa.state_check(caption, {field: ["frost"]})
+>           assert result["status"] == "uncertain" and result["state_score"] is None
+E           AssertionError: assert ('fail' == 'uncertain'
+E             
+E             - uncertain
+E             + fail)
+
+test\services\test_visual_qa_state_negation.py:40: AssertionError
+___ test_double_negation_does_not_prove_either_state[Frost is not absent.] ____
+
+caption = 'Frost is not absent.'
+
+    @pytest.mark.parametrize("caption", [
+        "The surface is not without frost.",
+        "Frost is not absent.",
+        "Frost isn't absent.",
+        "The surface is not free of frost.",
+        "Frost is not missing.",
+    ])
+    def test_double_negation_does_not_prove_either_state(caption):
+        for field in ["required_evidence", "forbidden_evidence"]:
+            result = qa.state_check(caption, {field: ["frost"]})
+>           assert result["status"] == "uncertain" and result["state_score"] is None
+E           AssertionError: assert ('pass' == 'uncertain'
+E             
+E             - uncertain
+E             + pass)
+
+test\services\test_visual_qa_state_negation.py:40: AssertionError
+____ test_double_negation_does_not_prove_either_state[Frost isn't absent.] ____
+
+caption = "Frost isn't absent."
+
+    @pytest.mark.parametrize("caption", [
+        "The surface is not without frost.",
+        "Frost is not absent.",
+        "Frost isn't absent.",
+        "The surface is not free of frost.",
+        "Frost is not missing.",
+    ])
+    def test_double_negation_does_not_prove_either_state(caption):
+        for field in ["required_evidence", "forbidden_evidence"]:
+            result = qa.state_check(caption, {field: ["frost"]})
+>           assert result["status"] == "uncertain" and result["state_score"] is None
+E           AssertionError: assert ('pass' == 'uncertain'
+E             
+E             - uncertain
+E             + pass)
+
+test\services\test_visual_qa_state_negation.py:40: AssertionError
+_ test_double_negation_does_not_prove_either_state[The surface is not free of frost.] _
+
+caption = 'The surface is not free of frost.'
+
+    @pytest.mark.parametrize("caption", [
+        "The surface is not without frost.",
+        "Frost is not absent.",
+        "Frost isn't absent.",
+        "The surface is not free of frost.",
+        "Frost is not missing.",
+    ])
+    def test_double_negation_does_not_prove_either_state(caption):
+        for field in ["required_evidence", "forbidden_evidence"]:
+            result = qa.state_check(caption, {field: ["frost"]})
+>           assert result["status"] == "uncertain" and result["state_score"] is None
+E           AssertionError: assert ('fail' == 'uncertain'
+E             
+E             - uncertain
+E             + fail)
+
+test\services\test_visual_qa_state_negation.py:40: AssertionError
+___ test_double_negation_does_not_prove_either_state[Frost is not missing.] ___
+
+caption = 'Frost is not missing.'
+
+    @pytest.mark.parametrize("caption", [
+        "The surface is not without frost.",
+        "Frost is not absent.",
+        "Frost isn't absent.",
+        "The surface is not free of frost.",
+        "Frost is not missing.",
+    ])
+    def test_double_negation_does_not_prove_either_state(caption):
+        for field in ["required_evidence", "forbidden_evidence"]:
+            result = qa.state_check(caption, {field: ["frost"]})
+>           assert result["status"] == "uncertain" and result["state_score"] is None
+E           AssertionError: assert ('pass' == 'uncertain'
+E             
+E             - uncertain
+E             + pass)
+
+test\services\test_visual_qa_state_negation.py:40: AssertionError
+_________ test_postfix_absence_and_presence_conflict_stays_uncertain __________
+
+    def test_postfix_absence_and_presence_conflict_stays_uncertain():
+        result = qa.state_check("Frost is absent. Frost covers the surface.", {"required_evidence": ["frost"]})
+>       assert result["status"] == "uncertain" and result["ambiguous_evidence"] == ["frost"]
+E       AssertionError: assert ('pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass)
+
+test\services\test_visual_qa_state_negation.py:64: AssertionError
+_ test_postfix_previous_absence_establishes_progress_but_double_negation_cannot _
+
+    def test_postfix_previous_absence_establishes_progress_but_double_negation_cannot():
+        contract = {"required_evidence": ["frost"]}
+        clear = qa.state_check("Frost covers the surface.", contract, "Frost is absent.")
+>       assert clear["status"] == "pass" and clear["progression_score"] == 1
+E       AssertionError: assert ('pass' == 'pass'
+E         
+E           pass and None == 1)
+
+test\services\test_visual_qa_state_negation.py:70: AssertionError
+_________ test_v3_cached_false_pass_is_not_reused_after_negation_fix __________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-116/test_v3_cached_false_pass_is_n0')
+
+    def test_v3_cached_false_pass_is_not_reused_after_negation_fix(tmp_path):
+        image = tmp_path / "image.png"
+        Image.new("RGB", (8, 8), "white").save(image)
+        evidence = Captions({str(image): "Frost is absent."})
+        cache = qa.EvidenceCache()
+        contract = {"temporal": {"required_evidence": ["frost"]}}
+        legacy_key = qa.cache_key("visual-qa-3", evidence.model_identity, [qa.digest(image), None, None], contract)
+        cache.put(legacy_key, {"verdict": "pass", "available": True, "checks": [], "qa_version": "visual-qa-3"})
+        result = qa.VisualQA(evidence, cache).assess(image, contract)
+>       assert qa.VERSION != "visual-qa-3"
+E       AssertionError: assert 'visual-qa-3' != 'visual-qa-3'
+E        +  where 'visual-qa-3' = qa.VERSION
+
+test\services\test_visual_qa_state_negation.py:84: AssertionError
+=========================== short test summary info ===========================
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[Frost is absent.-frost]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[Frost is not visible.-frost]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[Frost isn't visible.-frost]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[There isn't any frost.-frost]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[There aren\u2019t any cracks.-cracks]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[The surface is free of frost.-frost]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[The surface is devoid of scratches.-scratches]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[Still liquid is not observed.-still liquid]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[The required mark is missing.-mark]
+FAILED test/services/test_visual_qa_state_negation.py::test_explicit_absence_respects_required_and_forbidden_contracts[Frost is\nabsent.-frost]
+FAILED test/services/test_visual_qa_state_negation.py::test_double_negation_does_not_prove_either_state[The surface is not without frost.]
+FAILED test/services/test_visual_qa_state_negation.py::test_double_negation_does_not_prove_either_state[Frost is not absent.]
+FAILED test/services/test_visual_qa_state_negation.py::test_double_negation_does_not_prove_either_state[Frost isn't absent.]
+FAILED test/services/test_visual_qa_state_negation.py::test_double_negation_does_not_prove_either_state[The surface is not free of frost.]
+FAILED test/services/test_visual_qa_state_negation.py::test_double_negation_does_not_prove_either_state[Frost is not missing.]
+FAILED test/services/test_visual_qa_state_negation.py::test_postfix_absence_and_presence_conflict_stays_uncertain
+FAILED test/services/test_visual_qa_state_negation.py::test_postfix_previous_absence_establishes_progress_but_double_negation_cannot
+FAILED test/services/test_visual_qa_state_negation.py::test_v3_cached_false_pass_is_not_reused_after_negation_fix
+18 failed, 6 passed in 0.40s
+
+Python exit code: 1

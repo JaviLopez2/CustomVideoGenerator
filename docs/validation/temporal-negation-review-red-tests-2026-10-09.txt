@@ -1,0 +1,143 @@
+...............FFFFFF.........                                           [100%]
+================================== FAILURES ===================================
+_ test_modifiers_preserve_negation_scope[required_evidence-The surface is devoid of any detectable frost.-fail-pass] _
+
+caption = 'The surface is devoid of any detectable frost.'
+required_status = 'fail', forbidden_status = 'pass', field = 'required_evidence'
+
+    @pytest.mark.parametrize("caption,required_status,forbidden_status", [
+        ("The surface is devoid of any detectable frost.", "fail", "pass"),
+        ("The surface is not free of any detectable frost.", "uncertain", "uncertain"),
+        ("The surface is not completely free of frost.", "uncertain", "uncertain"),
+    ])
+    @pytest.mark.parametrize("field", ["required_evidence", "forbidden_evidence"])
+    def test_modifiers_preserve_negation_scope(caption, required_status, forbidden_status, field):
+        result = qa.state_check(caption, {field: ["frost"]})
+        expected = required_status if field == "required_evidence" else forbidden_status
+>       assert result["status"] == expected
+E       AssertionError: assert 'pass' == 'fail'
+E         
+E         - fail
+E         + pass
+
+test\services\test_visual_qa_state_negation.py:53: AssertionError
+_ test_modifiers_preserve_negation_scope[required_evidence-The surface is not free of any detectable frost.-uncertain-uncertain] _
+
+caption = 'The surface is not free of any detectable frost.'
+required_status = 'uncertain', forbidden_status = 'uncertain'
+field = 'required_evidence'
+
+    @pytest.mark.parametrize("caption,required_status,forbidden_status", [
+        ("The surface is devoid of any detectable frost.", "fail", "pass"),
+        ("The surface is not free of any detectable frost.", "uncertain", "uncertain"),
+        ("The surface is not completely free of frost.", "uncertain", "uncertain"),
+    ])
+    @pytest.mark.parametrize("field", ["required_evidence", "forbidden_evidence"])
+    def test_modifiers_preserve_negation_scope(caption, required_status, forbidden_status, field):
+        result = qa.state_check(caption, {field: ["frost"]})
+        expected = required_status if field == "required_evidence" else forbidden_status
+>       assert result["status"] == expected
+E       AssertionError: assert 'fail' == 'uncertain'
+E         
+E         - uncertain
+E         + fail
+
+test\services\test_visual_qa_state_negation.py:53: AssertionError
+_ test_modifiers_preserve_negation_scope[required_evidence-The surface is not completely free of frost.-uncertain-uncertain] _
+
+caption = 'The surface is not completely free of frost.'
+required_status = 'uncertain', forbidden_status = 'uncertain'
+field = 'required_evidence'
+
+    @pytest.mark.parametrize("caption,required_status,forbidden_status", [
+        ("The surface is devoid of any detectable frost.", "fail", "pass"),
+        ("The surface is not free of any detectable frost.", "uncertain", "uncertain"),
+        ("The surface is not completely free of frost.", "uncertain", "uncertain"),
+    ])
+    @pytest.mark.parametrize("field", ["required_evidence", "forbidden_evidence"])
+    def test_modifiers_preserve_negation_scope(caption, required_status, forbidden_status, field):
+        result = qa.state_check(caption, {field: ["frost"]})
+        expected = required_status if field == "required_evidence" else forbidden_status
+>       assert result["status"] == expected
+E       AssertionError: assert 'fail' == 'uncertain'
+E         
+E         - uncertain
+E         + fail
+
+test\services\test_visual_qa_state_negation.py:53: AssertionError
+_ test_modifiers_preserve_negation_scope[forbidden_evidence-The surface is devoid of any detectable frost.-fail-pass] _
+
+caption = 'The surface is devoid of any detectable frost.'
+required_status = 'fail', forbidden_status = 'pass'
+field = 'forbidden_evidence'
+
+    @pytest.mark.parametrize("caption,required_status,forbidden_status", [
+        ("The surface is devoid of any detectable frost.", "fail", "pass"),
+        ("The surface is not free of any detectable frost.", "uncertain", "uncertain"),
+        ("The surface is not completely free of frost.", "uncertain", "uncertain"),
+    ])
+    @pytest.mark.parametrize("field", ["required_evidence", "forbidden_evidence"])
+    def test_modifiers_preserve_negation_scope(caption, required_status, forbidden_status, field):
+        result = qa.state_check(caption, {field: ["frost"]})
+        expected = required_status if field == "required_evidence" else forbidden_status
+>       assert result["status"] == expected
+E       AssertionError: assert 'fail' == 'pass'
+E         
+E         - pass
+E         + fail
+
+test\services\test_visual_qa_state_negation.py:53: AssertionError
+_ test_modifiers_preserve_negation_scope[forbidden_evidence-The surface is not free of any detectable frost.-uncertain-uncertain] _
+
+caption = 'The surface is not free of any detectable frost.'
+required_status = 'uncertain', forbidden_status = 'uncertain'
+field = 'forbidden_evidence'
+
+    @pytest.mark.parametrize("caption,required_status,forbidden_status", [
+        ("The surface is devoid of any detectable frost.", "fail", "pass"),
+        ("The surface is not free of any detectable frost.", "uncertain", "uncertain"),
+        ("The surface is not completely free of frost.", "uncertain", "uncertain"),
+    ])
+    @pytest.mark.parametrize("field", ["required_evidence", "forbidden_evidence"])
+    def test_modifiers_preserve_negation_scope(caption, required_status, forbidden_status, field):
+        result = qa.state_check(caption, {field: ["frost"]})
+        expected = required_status if field == "required_evidence" else forbidden_status
+>       assert result["status"] == expected
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_negation.py:53: AssertionError
+_ test_modifiers_preserve_negation_scope[forbidden_evidence-The surface is not completely free of frost.-uncertain-uncertain] _
+
+caption = 'The surface is not completely free of frost.'
+required_status = 'uncertain', forbidden_status = 'uncertain'
+field = 'forbidden_evidence'
+
+    @pytest.mark.parametrize("caption,required_status,forbidden_status", [
+        ("The surface is devoid of any detectable frost.", "fail", "pass"),
+        ("The surface is not free of any detectable frost.", "uncertain", "uncertain"),
+        ("The surface is not completely free of frost.", "uncertain", "uncertain"),
+    ])
+    @pytest.mark.parametrize("field", ["required_evidence", "forbidden_evidence"])
+    def test_modifiers_preserve_negation_scope(caption, required_status, forbidden_status, field):
+        result = qa.state_check(caption, {field: ["frost"]})
+        expected = required_status if field == "required_evidence" else forbidden_status
+>       assert result["status"] == expected
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_negation.py:53: AssertionError
+=========================== short test summary info ===========================
+FAILED test/services/test_visual_qa_state_negation.py::test_modifiers_preserve_negation_scope[required_evidence-The surface is devoid of any detectable frost.-fail-pass]
+FAILED test/services/test_visual_qa_state_negation.py::test_modifiers_preserve_negation_scope[required_evidence-The surface is not free of any detectable frost.-uncertain-uncertain]
+FAILED test/services/test_visual_qa_state_negation.py::test_modifiers_preserve_negation_scope[required_evidence-The surface is not completely free of frost.-uncertain-uncertain]
+FAILED test/services/test_visual_qa_state_negation.py::test_modifiers_preserve_negation_scope[forbidden_evidence-The surface is devoid of any detectable frost.-fail-pass]
+FAILED test/services/test_visual_qa_state_negation.py::test_modifiers_preserve_negation_scope[forbidden_evidence-The surface is not free of any detectable frost.-uncertain-uncertain]
+FAILED test/services/test_visual_qa_state_negation.py::test_modifiers_preserve_negation_scope[forbidden_evidence-The surface is not completely free of frost.-uncertain-uncertain]
+6 failed, 24 passed in 0.37s
+
+Python exit code: 1

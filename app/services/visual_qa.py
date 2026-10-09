@@ -13,7 +13,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
 
-VERSION = "visual-qa-3"
+VERSION = "visual-qa-4"
 NUMBERS = {word: i for i, word in enumerate(
     ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"))}
 STATUSES = {"pass", "fail", "uncertain", "unavailable"}
@@ -202,19 +202,35 @@ def state_check(caption, temporal, previous_caption=""):
     # Keep qualification and negation within the relevant clause, rather than
     # letting an unrelated observation qualify or negate a requested state.
     # A newline can wrap a continuing phrase, so it is not a clause boundary.
-    clauses = re.split(r"(?<=[.!?;])|\b(?:but|whereas|while)\b", caption.casefold())
+    clauses = re.split(r"(?<=[.!?;])|\b(?:but|whereas|while)\b", caption.casefold().replace("\u2019", "'"))
     qualifier = r"\b(?:may|might|could|would|maybe|perhaps|possibly|possible|probably|likely|uncertain|unclear|apparently|seems?|appears?|if|whether)\b"
+    contraction = r"(?:is|are|was|were|has|have|had|does|do|did)n't"
+    copula = r"(?:(?:is|are|was|were|has\s+been|have\s+been|had\s+been)\s+)?"
+    visibility = r"(?:visible|present|seen|observed|detected)"
+    prefix_absence = r"\b(?:no|without|absent|not|" + contraction + r"|(?:free|devoid)\s+of)\s+(?:\w+\s+){0,2}$"
+    postfix_absence = r"^\s+" + copula + r"(?:absent|missing|not\s+" + visibility + r"|" + contraction + r"\s+" + visibility + r")\b"
+    double_prefix = r"\b(?:not|" + contraction + r")\s+(?:\w+\s+){0,1}(?:without|(?:free|devoid)\s+of)\s+(?:\w+\s+){0,2}$"
+    double_postfix = r"^\s+" + copula + r"(?:not|" + contraction + r")\s+(?:absent|missing)\b"
 
     def observed(term):
-        pattern = r"\b" + re.escape(str(term).casefold()) + r"\b"
+        pattern = r"\b" + re.escape(str(term).casefold().replace("\u2019", "'")) + r"\b"
         positive, negative, qualified = False, False, False
         for clause in clauses:
             for match in re.finditer(pattern, clause):
                 if "?" in clause or re.search(qualifier, clause):
                     qualified = True
                     continue
-                prefix = clause[max(0, match.start() - 24):match.start()]
-                negated = bool(re.search(r"\b(?:no|without|absent|not)\s+(?:\w+\s+){0,2}$", prefix))
+                # The regex bounds distance by words; a character cutoff can
+                # discard a negator before otherwise supported modifiers.
+                prefix = clause[:match.start()]
+                suffix = clause[match.end():]
+                before = bool(re.search(prefix_absence, prefix))
+                after = bool(re.search(postfix_absence, suffix))
+                # Indirect/double negatives are not positive visual evidence.
+                if re.search(double_prefix, prefix) or re.search(double_postfix, suffix) or before and after:
+                    qualified = True
+                    continue
+                negated = before or after
                 positive |= not negated
                 negative |= negated
         if qualified or positive and negative:
