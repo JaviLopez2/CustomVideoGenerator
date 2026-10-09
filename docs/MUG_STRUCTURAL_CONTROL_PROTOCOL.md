@@ -1,5 +1,9 @@
 # Control estructural de taza — protocolo previo, 2026-10-09
 
+## Cierre actual de la línea de control enmascarado
+
+La ablación sin referencia completó una generación6,140s y conservó fuera de máscara, pero mantiene unión y parche en decode crudo/final. [Control inutilizable cerrado](MUG_MASKED_NO_REFERENCE_REPORT.md),0 retries/0 jueces, sin otra edición para buscar un pass. El protocolo de contactos de taza queda pendiente de un control válido, sin ampliar esta cohorte ni inferir revisión humana. El plan general continúa con [comparación de forma A/B/C retenidos](validation/paired-shape-probe-plan-2026-10-09.json), labels humanos ya registrados y sin generaciones. Objetivo activo, sin permiso rutinario adicional. Las próximas-ablaciones de snapshots anteriores son históricas.
+
 ## Estado actual — edición enmascarada descartada, siguiente ablación autónoma
 
 Una edición desdef36b2a1 completó técnicamente en12,328s y conserva fuera de máscara, pero no produjo corte limpio: unión inferior conectada/parche visible en revisión del asistente. [Cohorte cerrada inutilizable](MUG_MASKED_EDIT_EXECUTION.md),0 retries/0 jueces. La [siguiente ablación](validation/mug-masked-no-reference-plan-2026-10-09.json) está fijada offline antes de ejecutar,1 generación/0 retries: retirar solo conditioning de referencia y observar decode crudo/final. No reabre la cohorte fallida, cambia producción ni inventa revisión humana. El usuario autoriza [continuidad autónoma](AUTONOMOUS_MPT_WORK_HANDOFF.md), sin esperar otro «sigue»; snapshots inferiores preservados como historial.

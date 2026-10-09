@@ -1,0 +1,102 @@
+{
+  "protocol": "mug-masked-no-reference-closing-checks-1",
+  "checked_utc": "2026-10-09T14:22:06.423527+00:00",
+  "execution_base_head": "4800f80fe224e993f364c9cf52bddf0f85f9cf53",
+  "previous_goal_turn_classification": "progress: executed masked edit and published evidence/autonomy checkpoint",
+  "current_goal_progress": "Executed one-factor probe; ruled out successful control creation in this case and pinned next human-label-backed shape protocol",
+  "remote_divergence_before_commit": [
+    0,
+    0
+  ],
+  "owned_prompt_id": "c41d63e3-cf6c-473d-90f1-d0202c45e79f",
+  "owned_history_exact_graph": true,
+  "comfy_success_completed": true,
+  "outputs_checked": {
+    "13": {
+      "path": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09/result.png",
+      "sha256": "3a13e3675823e5b8b691ab0df60aac9c5fa8d12a36cc7f1c2db5ea4580ed3262",
+      "comfy_output_filename": "MPT_MASKED_NO_REFERENCE_CONTROL_00001_.png"
+    },
+    "40": {
+      "path": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09/raw-decode.png",
+      "sha256": "e2277b3b1de885bca954da19cad9307a526fedc4158a65ab7df4cb3baebfb22e",
+      "comfy_output_filename": "MPT_MASKED_NO_REFERENCE_RAW_00001_.png"
+    }
+  },
+  "structural_links": {
+    "nodes_checked": 17,
+    "typed_links_checked": 20,
+    "input_file_admission_checked": false,
+    "gpu_execution_validated": false
+  },
+  "final_pixel_conservation": {
+    "outside_changed_pixels": 0,
+    "inside_changed_pixels": 1208,
+    "outside_pixels_preserved": true,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "raw_pixel_conservation": {
+    "outside_changed_pixels": 234000,
+    "inside_changed_pixels": 1208,
+    "outside_pixels_preserved": false,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "raw_final_interior_comparison": {
+    "inside_pixels_different": 271,
+    "maximum_channel_difference_inside": 1,
+    "mean_absolute_channel_difference_inside": 0.10891632373113855,
+    "cause_of_numeric_difference_established": false
+  },
+  "assistant_control_decision": "closed_unusable_negative_control",
+  "human_negative_review_received": false,
+  "negative_control_validated": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "generation_requests": 1,
+  "automatic_retries": 0,
+  "judge_requests": 0,
+  "old_source_bindings_preserved": 15,
+  "originals_and_human_reviews_unchanged": true,
+  "svg_original_bytes_verified": true,
+  "comfy_cache_release_before_and_after": true,
+  "queue_after_empty": true,
+  "services_started": 0,
+  "services_stopped": 0,
+  "services_reconfigured": 0,
+  "next_probe_pinned_human_label_images": 6,
+  "next_probe_plan_sha256": "ff4da2fefe388bb5371cc70bcea3522032256f250c6591a892159ad589e0ee72",
+  "next_probe_model_calls_this_phase": 0,
+  "code_model_assets_active_workflows_routing_gates_dependencies_changed": false,
+  "validation_this_phase": "Fresh HTTP/history/PNG/hash/pixel/source/plan checks; no new pytest because code unchanged",
+  "prior_112_tests_are_historical": true,
+  "json_files_parse": 7,
+  "diff_check_exit_code": 0,
+  "credential_pattern_matches": 0,
+  "expected_git_files": [
+    "AGENT_FACTORY_STATE.md",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+    "docs/IMAGE_MODEL_ROUTING_RND.md",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+    "docs/MUG_STRUCTURAL_CONTROL_PROTOCOL.md",
+    "docs/MUG_MASKED_NO_REFERENCE_REPORT.md",
+    "docs/validation/mug-masked-no-reference-cache-release-2026-10-09.json",
+    "docs/validation/mug-masked-no-reference-preflight-2026-10-09.json",
+    "docs/validation/mug-masked-no-reference-generation-2026-10-09.json",
+    "docs/validation/mug-masked-no-reference-review-2026-10-09.json",
+    "docs/validation/mug-masked-no-reference-runtime-closure-2026-10-09.json",
+    "docs/validation/mug-masked-no-reference-closing-checks-2026-10-09.json",
+    "docs/validation/paired-shape-probe-plan-2026-10-09.json"
+  ],
+  "stable_read_before_commit": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "tracked_status_empty": true,
+    "existing_untracked_preserved": true
+  },
+  "persistent_goal_remains_active": true,
+  "checkpoint_sha": "Read closing commit from Git/origin; execution_base distinct"
+}

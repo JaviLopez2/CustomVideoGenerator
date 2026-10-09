@@ -1,0 +1,17 @@
+{
+  "checked_utc": "2026-10-09T14:06:14.754803+00:00",
+  "execution_base_head": "4800f80fe224e993f364c9cf52bddf0f85f9cf53",
+  "reason": "Idle Comfy retained generation model cache; resource preflight prevented POST",
+  "comfy_queue_empty_before": true,
+  "action": "POST /free unload_models=true free_memory=true",
+  "http_status": 200,
+  "vram_free_before_bytes": 2229231080,
+  "vram_free_after_bytes": 11744968704,
+  "elapsed_seconds": 2.047,
+  "services_started": 0,
+  "services_stopped": 0,
+  "services_reconfigured": 0,
+  "generation_requests": 0,
+  "model_files_or_dependencies_changed": false,
+  "resource_threshold_met": true
+}

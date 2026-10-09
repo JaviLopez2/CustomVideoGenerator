@@ -1,0 +1,88 @@
+{
+  "execution_base_head": "4800f80fe224e993f364c9cf52bddf0f85f9cf53",
+  "started_utc": "2026-10-09T14:07:29.079196+00:00",
+  "plan_sha256": "5c94e9bd5c9bc60167a686ac0578753e64b9d68cb353ab1f580969323d2c215d",
+  "graph_sha256": "cd1a7de99418e4f57a150548b4cb63ecc88a3c34a61d0e46448844a6ae6e2e3f",
+  "artifact_directory": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09",
+  "generation_requests_attempted": 1,
+  "automatic_retries": 0,
+  "judge_requests": 0,
+  "post_attempted": true,
+  "status": "http_two_png_completed_pending_visual_review",
+  "admission_allowed": false,
+  "human_negative_review_received": false,
+  "physical_identity_established": false,
+  "queue_before": {
+    "running": 0,
+    "pending": 0
+  },
+  "http_status": 200,
+  "prompt_id": "c41d63e3-cf6c-473d-90f1-d0202c45e79f",
+  "comfy_status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "c41d63e3-cf6c-473d-90f1-d0202c45e79f",
+          "timestamp": 1791554849094
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "c41d63e3-cf6c-473d-90f1-d0202c45e79f",
+          "timestamp": 1791554849103
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "c41d63e3-cf6c-473d-90f1-d0202c45e79f",
+          "timestamp": 1791554853683
+        }
+      ]
+    ]
+  },
+  "execution_events": [
+    "execution_start",
+    "execution_cached",
+    "execution_success"
+  ],
+  "outputs": {
+    "13": {
+      "path": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09/result.png",
+      "sha256": "3a13e3675823e5b8b691ab0df60aac9c5fa8d12a36cc7f1c2db5ea4580ed3262",
+      "comfy_output_filename": "MPT_MASKED_NO_REFERENCE_CONTROL_00001_.png"
+    },
+    "40": {
+      "path": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09/raw-decode.png",
+      "sha256": "e2277b3b1de885bca954da19cad9307a526fedc4158a65ab7df4cb3baebfb22e",
+      "comfy_output_filename": "MPT_MASKED_NO_REFERENCE_RAW_00001_.png"
+    }
+  },
+  "final_pixel_conservation": {
+    "outside_changed_pixels": 0,
+    "inside_changed_pixels": 1208,
+    "outside_pixels_preserved": true,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "raw_pixel_conservation": {
+    "outside_changed_pixels": 234000,
+    "inside_changed_pixels": 1208,
+    "outside_pixels_preserved": false,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "elapsed_seconds": 6.14,
+  "finished_utc": "2026-10-09T14:07:35.223658+00:00",
+  "queue_after": {
+    "running": 0,
+    "pending": 0
+  }
+}

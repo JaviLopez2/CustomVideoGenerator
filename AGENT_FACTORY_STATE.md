@@ -4,6 +4,10 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: reference removal did not repair masked control
+
+Base4800f80, one no-reference probe6.140s/two PNGs/0 retries,0 outside-mask differences/1208 inside. Assistant raw/final review sees connected lower attachment; closed unusable control/0 judges. Idle Comfy cache released once before dispatch after memory preflight stopped it, no service restart. [Result](docs/MUG_MASKED_NO_REFERENCE_REPORT.md). Stop this micro-edit line; next generic paired major-shape observer on already human-reviewed A/B/C, pinned max6 requests/two existing judges/no generation, labels offline only. [Active autonomous handoff](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md). Existing code/assets/templates/gates/stable unchanged;112 tests historical, fresh runtime/hash/pixel checks. Older next-probe claims below are historical; continue without routine approval.
+
 ## Current checkpoint: autonomous continuation and masked result — 2026-10-09
 
 User authorizes continuous experimental work without another "continue" at every checkpoint; a persistent chat goal is active. [Operational handoff](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md). From `f36b2a148b0725d387bb6c54e9eadef3ad5da4fa`, one masked edit completed in12.328s, HTTP200/Comfy success. Exact RGB check:0 outside-mask changes/1213 inside. Assistant enlarged review sees connected lower attachment and patch seam; cohort closed unusable,0 retries/0 judge queries. [Execution report](docs/MUG_MASKED_EDIT_EXECUTION.md). Stable/active templates/assets/deps/gates/routing unchanged; services retained. Prior112 tests historical, fresh proof HTTP/history/hash/pixels/review. Next one-factor reference-conditioning removal probe is pinned offline,1 generation/0 retries; continue automatically, no routine permission question. Earlier preparation-pending claims below are historical. Closing SHA via Git/origin.

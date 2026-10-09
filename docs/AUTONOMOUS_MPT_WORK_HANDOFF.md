@@ -14,10 +14,12 @@ No preguntar por decisiones rutinarias de prueba, documentación o checkpoint. P
 
 ## Resultado nuevo
 
+[Ablación posterior ejecutada y cerrada](MUG_MASKED_NO_REFERENCE_REPORT.md), base `4800f80`: una generación/6,140s, cero retries; retirar la referencia conserva fuera de máscara pero tampoco produce separación limpia. El defecto ya aparece en decode crudo. La línea de microedición se cierra sin otras generaciones para buscar un resultado favorable. La liberación de caché de Comfy, con cola vacía, resolvió un preflight de memoria sin reiniciar servicios.
+
 [Edición enmascarada ejecutada](MUG_MASKED_EDIT_EXECUTION.md): una solicitud directa a8188, 512²/4 pasos/seed42, cero retries. Éxito técnico en 12,328s y conservación exacta fuera de máscara; el resultado sigue conectado y presenta un parche visible según inspección del asistente. Cohorte cerrada como control inutilizable; cero consultas a jueces. Esto no mide la capacidad de un juez.
 
 ## Próxima acción, sin otro permiso rutinario
 
-Ejecutar la ablación offline fijada en [plan de retirada de referencia](validation/mug-masked-no-reference-plan-2026-10-09.json). Una nueva cohorte de una generación, cero retries, misma imagen/máscara/prompt/seed/latente/steps y composición. Única condición de modelo cambiada: conditioning sin ReferenceLatent. Un segundo SaveImage guarda el decode anterior a composición; instrumentación sin otro sampling. Comparar artefacto crudo/final y conservación. No cambia plantillas activas, deps, pesos o servicios.
+Implementar y ejecutar el [plan de comparación de forma principal](validation/paired-shape-probe-plan-2026-10-09.json): A/B/C con revisión humana ya registrada, SHA exactos, dos jueces existentes y seis consultas como máximo, cero retries/generaciones/descargas. Observador/parser genérico con tests offline; no enviar labels, nombres de pares o anotaciones al modelo. La salida es diagnóstico de diferencias visibles, sin veto automático, admisión o identidad física. No usar máscaras disputadas ni repetir la revisión humana anterior.
 
-Si también falla, cerrar esta hipótesis sin seguir ajustando prompts hasta acertar. Evaluar el siguiente trabajo útil del QA sobre artifacts retenidos y mantener incierta la sensibilidad estructural no validada. Si produce un negativo aparentemente adecuado, solicitar una sola revisión independiente de resultado y positivos, sin detener tareas independientes ni convertir la inspección del asistente en respuesta humana. Guardar checkpoints/handoff y continuar mientras el objetivo siga activo.
+Registrar resultados estrictos y latencias, incluidos fallos/uncertainty. No extrapolar una métrica poblacional de estos tres pares ni confundir no observar cambio con demostrar identidad. Continuar los pendientes del QA general según evidencia; mantener incierta la sensibilidad de contactos de taza no validada. Guardar checkpoints/handoff y continuar mientras el objetivo siga activo.

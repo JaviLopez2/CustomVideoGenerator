@@ -1,5 +1,9 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — ablación cerrada, volver a geometría retenida
+
+Desde4800f80, retirar referencia en una generación6,140s tampoco crea corte limpio;0 diferencias fuera/1208 dentro, decode crudo ya contiene parche y unión. [Informe](MUG_MASKED_NO_REFERENCE_REPORT.md). Control inutilizable,0 retries/0 jueces; no sensibilidad medida. Memoria liberada mediante API Comfy con cola vacía antes de enviar, sin reinicios. Se cierra esta línea de microedición. Próxima prueba: comparación conjunta de forma principal sobre A/B/C humanos ya revisados, [plan fijado](validation/paired-shape-probe-plan-2026-10-09.json),6 consultas máximo/dos jueces existentes/0 nuevas generaciones o descargas. Labels offline, no máscaras B/no identidad/admisión/routing. Objetivo activo; código/plantillas/modelos/deps/gates/estable intactos.
+
 ## Actualización — ejecución enmascarada y continuidad autónoma, 2026-10-09
 
 Desde `f36b2a1`, una edición completa en12,328s,0 retries; conserva exactamente todo fuera de máscara y cambia1213 píxeles dentro. Sigue conectada y con borde de parche según revisión ampliada del asistente: negativo inutilizable,0 jueces, sin medir sensibilidad de candidatos. [Ejecución](MUG_MASKED_EDIT_EXECUTION.md). La ruta GPU funciona en este caso; calidad del corte no validada. Siguiente ablación fijada: retirar solo ReferenceLatent, una generación/0 retries, guardar decode crudo además de composición. Usuario autoriza continuidad autónoma; objetivo activo y [handoff](AUTONOMOUS_MPT_WORK_HANDOFF.md), sin otro «sigue». Snapshots anteriores preservados; no nuevos pesos/deps/routing/workflows activos ni cambio estable. Tests112 previos históricos; checks actuales de ejecución/píxeles/SHA.

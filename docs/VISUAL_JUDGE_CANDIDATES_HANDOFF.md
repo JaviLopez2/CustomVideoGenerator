@@ -1,5 +1,9 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: unusable masked control closed, paired shape probe next
+
+Base4800f80. Removing ReferenceLatent in one6.140s edit did not create a clean gap; raw decode already has patch/connected attachment, final0 outside differences/1208 inside. Closed unusable/0 retries/0 judges; no candidate sensitivity evidence. [Report](MUG_MASKED_NO_REFERENCE_REPORT.md). Next pinned generic paired-major-shape diagnostic on already human-reviewed A/B/C, max6 queries/two existing models/no generation or downloads. Labels offline only, disputed B mask excluded; no physical identity, calibration/admission/veto/promotion. Implement/test parser and payload isolation before execution. [Autonomy active](AUTONOMOUS_MPT_WORK_HANDOFF.md); stable/code/assets/deps/active templates/gates unchanged. Earlier pending masked probe sections are historical.
+
 ## Current checkpoint: masked negative unusable; autonomous probe next
 
 Basef36b2a1. One masked edit completed12.328s,0 retries;0 outside-mask changed pixels/1213 inside. Assistant enlarged review sees connected attachment and patch seam; closed unusable control,0 judge requests/no selection evidence. [Execution](MUG_MASKED_EDIT_EXECUTION.md). User authorizes continuous experimental work; persistent goal active, [operational handoff](AUTONOMOUS_MPT_WORK_HANDOFF.md). Next pinned one-factor reference-conditioning removal probe:1 generation/0 retries, raw decode recorded, no judge dispatch. GPU route executes this case but structural sensitivity, positive counts and physical identity remain unvalidated. Historical112 offline tests unchanged; current checks are HTTP/history/SHA/pixels. Candidates remain diagnostics; active templates/deps/routing/gates/stable/services untouched. Earlier pending execution states below are historical.

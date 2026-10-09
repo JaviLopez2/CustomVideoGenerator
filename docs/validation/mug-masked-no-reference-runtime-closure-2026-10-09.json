@@ -1,0 +1,14 @@
+{
+  "checked_utc": "2026-10-09T14:20:17.831875+00:00",
+  "queue_empty": true,
+  "post_generation_cache_release_http": 200,
+  "vram_free_before_bytes": 1215069672,
+  "vram_free_after_bytes": 11744968704,
+  "ports_open": {
+    "8080": false,
+    "8092": false
+  },
+  "services_started": 0,
+  "services_stopped": 0,
+  "generation_requests": 0
+}

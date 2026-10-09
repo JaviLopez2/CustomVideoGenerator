@@ -1,0 +1,65 @@
+{
+  "protocol": "mug-masked-no-reference-review-1",
+  "reviewed_utc": "2026-10-09T14:19:21.483604+00:00",
+  "execution_base_head": "4800f80fe224e993f364c9cf52bddf0f85f9cf53",
+  "source": "assistant_direct_inspection_final_raw_and_three_way_4x_board",
+  "decision": "closed_unusable_negative_control",
+  "observations": [
+    "Lower attachment remains visibly connected after removing ReferenceLatent",
+    "Unnatural light/dark patch visible in raw decode before final composition",
+    "Every final pixel outside mask matches original; raw/final interior has minor exact RGB differences recorded separately"
+  ],
+  "reference_removal_did_not_resolve_defect_in_this_case": true,
+  "reference_conditioning_sole_cause_established": false,
+  "composite_sole_cause_of_missing_gap": false,
+  "internal_model_latent_cause_established": false,
+  "human_negative_review_received": false,
+  "positive_counts_human_confirmed": false,
+  "negative_control_validated": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "generation_budget_consumed": 1,
+  "automatic_retries": 0,
+  "judge_requests": 0,
+  "final_output": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09/result.png",
+    "sha256": "3a13e3675823e5b8b691ab0df60aac9c5fa8d12a36cc7f1c2db5ea4580ed3262",
+    "comfy_output_filename": "MPT_MASKED_NO_REFERENCE_CONTROL_00001_.png"
+  },
+  "raw_decode": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09/raw-decode.png",
+    "sha256": "e2277b3b1de885bca954da19cad9307a526fedc4158a65ab7df4cb3baebfb22e",
+    "comfy_output_filename": "MPT_MASKED_NO_REFERENCE_RAW_00001_.png"
+  },
+  "review_board": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09/review-board.png",
+    "sha256": "1a5e57ab05420b643853d9b5078d392380457de8ecbadcce966dbb7266201a55"
+  },
+  "review_svg": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-no-reference-2026-10-09/review-board.svg",
+    "sha256": "3b621b1ba5d7ce6fc2c5284bbb3315fbe7b29b8dfc5b959fb7061073c245fded"
+  },
+  "final_pixel_conservation": {
+    "outside_changed_pixels": 0,
+    "inside_changed_pixels": 1208,
+    "outside_pixels_preserved": true,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "raw_pixel_conservation": {
+    "outside_changed_pixels": 234000,
+    "inside_changed_pixels": 1208,
+    "outside_pixels_preserved": false,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "raw_final_interior_comparison": {
+    "inside_pixels_different": 271,
+    "maximum_channel_difference_inside": 1,
+    "mean_absolute_channel_difference_inside": 0.10891632373113855,
+    "cause_of_numeric_difference_established": false
+  },
+  "next": "Close masked micro-edit control hypothesis; reuse retained independently reviewed A/B/C for paired major-shape diagnostic, no more generation in this line"
+}
