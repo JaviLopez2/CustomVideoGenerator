@@ -1,0 +1,824 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                       [100%]
+================================== FAILURES ===================================
+__________ test_prompt_and_schema_are_generic_and_match_pinned_plan ___________
+
+    def test_prompt_and_schema_are_generic_and_match_pinned_plan():
+        from pathlib import Path
+        plan = json.loads((Path(__file__).parents[1] / "docs/validation/paired-shape-probe-plan-2026-10-09.json").read_text())
+>       assert observer.prompt(plan["subject"]) == plan["model_prompt"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = 'key'
+
+    def prompt(target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:4: NotImplementedError
+______________________ test_invalid_target_is_rejected[] ______________________
+
+target = ''
+
+    @pytest.mark.parametrize("target", ["", " ", None, 3, "x" * 513])
+    def test_invalid_target_is_rejected(target):
+>       with pytest.raises(ValueError): observer.prompt(target)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = ''
+
+    def prompt(target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:4: NotImplementedError
+_____________________ test_invalid_target_is_rejected[ ] ______________________
+
+target = ' '
+
+    @pytest.mark.parametrize("target", ["", " ", None, 3, "x" * 513])
+    def test_invalid_target_is_rejected(target):
+>       with pytest.raises(ValueError): observer.prompt(target)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = ' '
+
+    def prompt(target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:4: NotImplementedError
+____________________ test_invalid_target_is_rejected[None] ____________________
+
+target = None
+
+    @pytest.mark.parametrize("target", ["", " ", None, 3, "x" * 513])
+    def test_invalid_target_is_rejected(target):
+>       with pytest.raises(ValueError): observer.prompt(target)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = None
+
+    def prompt(target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:4: NotImplementedError
+_____________________ test_invalid_target_is_rejected[3] ______________________
+
+target = 3
+
+    @pytest.mark.parametrize("target", ["", " ", None, 3, "x" * 513])
+    def test_invalid_target_is_rejected(target):
+>       with pytest.raises(ValueError): observer.prompt(target)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = 3
+
+    def prompt(target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:4: NotImplementedError
+_ test_invalid_target_is_rejected[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx] _
+
+target = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+    @pytest.mark.parametrize("target", ["", " ", None, 3, "x" * 513])
+    def test_invalid_target_is_rejected(target):
+>       with pytest.raises(ValueError): observer.prompt(target)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+    def prompt(target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:4: NotImplementedError
+_______ test_payload_preserves_exact_pixels_order_and_excludes_metadata _______
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_payload_preserves_exact_p0\\ref...9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}]
+
+    def test_payload_preserves_exact_pixels_order_and_excludes_metadata(images):
+>       request = observer.payload(*images, "container")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reference = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_payload_preserves_exact_p0\\refe...c935e2645a4b25f1782992874498bfc553146563111a1d6931f6f982a0', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}
+candidate = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_payload_preserves_exact_p0\\cand...c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}
+target = 'container'
+
+    def payload(reference, candidate, target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:10: NotImplementedError
+____________ test_changed_or_misidentified_input_is_rejected[hash] ____________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_0\\ref...fffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}]
+fault = 'hash'
+
+    @pytest.mark.parametrize("fault", ["hash", "size", "format"])
+    def test_changed_or_misidentified_input_is_rejected(images, fault):
+        from pathlib import Path
+        if fault == "hash": images[1]["sha256"] = "f" * 64
+        elif fault == "size": images[1]["size"] = [32, 16]
+        else:
+            path = Path(images[1]["path"])
+            Image.new("RGB", (16, 32)).save(path, format="JPEG")
+            images[1]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+>       with pytest.raises(ValueError): observer.payload(*images, "container")
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reference = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_0\\refe...c935e2645a4b25f1782992874498bfc553146563111a1d6931f6f982a0', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}
+candidate = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_0\\cand...ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}
+target = 'container'
+
+    def payload(reference, candidate, target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:10: NotImplementedError
+____________ test_changed_or_misidentified_input_is_rejected[size] ____________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_1\\ref...9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [32, 16], 'offline_label': 'HUMAN_LABEL_SENTINEL'}]
+fault = 'size'
+
+    @pytest.mark.parametrize("fault", ["hash", "size", "format"])
+    def test_changed_or_misidentified_input_is_rejected(images, fault):
+        from pathlib import Path
+        if fault == "hash": images[1]["sha256"] = "f" * 64
+        elif fault == "size": images[1]["size"] = [32, 16]
+        else:
+            path = Path(images[1]["path"])
+            Image.new("RGB", (16, 32)).save(path, format="JPEG")
+            images[1]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+>       with pytest.raises(ValueError): observer.payload(*images, "container")
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reference = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_1\\refe...c935e2645a4b25f1782992874498bfc553146563111a1d6931f6f982a0', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}
+candidate = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_1\\cand...c9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [32, 16], 'offline_label': 'HUMAN_LABEL_SENTINEL'}
+target = 'container'
+
+    def payload(reference, candidate, target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:10: NotImplementedError
+___________ test_changed_or_misidentified_input_is_rejected[format] ___________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_2\\ref...906f2325b7788a9d158e11a72e5f6282291e77e74dd922eb292c1e621', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}]
+fault = 'format'
+
+    @pytest.mark.parametrize("fault", ["hash", "size", "format"])
+    def test_changed_or_misidentified_input_is_rejected(images, fault):
+        from pathlib import Path
+        if fault == "hash": images[1]["sha256"] = "f" * 64
+        elif fault == "size": images[1]["size"] = [32, 16]
+        else:
+            path = Path(images[1]["path"])
+            Image.new("RGB", (16, 32)).save(path, format="JPEG")
+            images[1]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+>       with pytest.raises(ValueError): observer.payload(*images, "container")
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reference = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_2\\refe...c935e2645a4b25f1782992874498bfc553146563111a1d6931f6f982a0', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}
+candidate = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_changed_or_misidentified_2\\cand...d906f2325b7788a9d158e11a72e5f6282291e77e74dd922eb292c1e621', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}
+target = 'container'
+
+    def payload(reference, candidate, target):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:10: NotImplementedError
+________ test_all_valid_observations_remain_diagnostic_only[observed] _________
+
+change = 'observed'
+
+    @pytest.mark.parametrize("change", ["observed", "not_observed", "uncertain"])
+    def test_all_valid_observations_remain_diagnostic_only(change):
+>       observation = observer.validate(answer(change))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'present', 'major_shape_change': 'observed', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+______ test_all_valid_observations_remain_diagnostic_only[not_observed] _______
+
+change = 'not_observed'
+
+    @pytest.mark.parametrize("change", ["observed", "not_observed", "uncertain"])
+    def test_all_valid_observations_remain_diagnostic_only(change):
+>       observation = observer.validate(answer(change))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'present', 'major_shape_change': 'not_observed', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+________ test_all_valid_observations_remain_diagnostic_only[uncertain] ________
+
+change = 'uncertain'
+
+    @pytest.mark.parametrize("change", ["observed", "not_observed", "uncertain"])
+    def test_all_valid_observations_remain_diagnostic_only(change):
+>       observation = observer.validate(answer(change))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'present', 'major_shape_change': 'uncertain', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update0] ________
+
+update = {'major_shape_change': True}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'present', 'major_shape_change': True, 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update1] ________
+
+update = {'major_shape_change': 'pass'}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'present', 'major_shape_change': 'pass', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update2] ________
+
+update = {'candidate_subject_presence': 'unknown'}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'unknown', 'major_shape_change': 'not_observed', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update3] ________
+
+update = {'reference_subject_presence': []}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': [], 'candidate_subject_presence': 'present', 'major_shape_change': 'not_observed', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update4] ________
+
+update = {'difference_evidence': ''}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'present', 'major_shape_change': 'not_observed', 'difference_evidence': ''}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update5] ________
+
+update = {'difference_evidence': 1}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'present', 'major_shape_change': 'not_observed', 'difference_evidence': 1}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update6] ________
+
+update = {'verdict': 'pass'}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'present', 'major_shape_change': 'not_observed', 'difference_evidence': 'Visible principal parts compared', ...}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update7] ________
+
+update = {'candidate_subject_presence': 'absent'}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'absent', 'major_shape_change': 'not_observed', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_______ test_invalid_or_contradictory_observation_is_rejected[update8] ________
+
+update = {'reference_subject_presence': 'uncertain'}
+
+    @pytest.mark.parametrize("update", [
+        {"major_shape_change": True}, {"major_shape_change": "pass"},
+        {"candidate_subject_presence": "unknown"}, {"reference_subject_presence": []},
+        {"difference_evidence": ""}, {"difference_evidence": 1}, {"verdict": "pass"},
+        {"candidate_subject_presence": "absent"}, {"reference_subject_presence": "uncertain"},
+    ])
+    def test_invalid_or_contradictory_observation_is_rejected(update):
+        value = answer(); value.update(update)
+>       with pytest.raises(ValueError): observer.validate(value)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'uncertain', 'candidate_subject_presence': 'present', 'major_shape_change': 'not_observed', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+___________ test_subject_not_established_only_supports_uncertainty ____________
+
+    def test_subject_not_established_only_supports_uncertainty():
+        value = answer("uncertain"); value["candidate_subject_presence"] = "absent"
+>       result = observer.diagnostic(observer.validate(value))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+answer = {'reference_subject_presence': 'present', 'candidate_subject_presence': 'absent', 'major_shape_change': 'uncertain', 'difference_evidence': 'Visible principal parts compared'}
+
+    def validate(answer):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:13: NotImplementedError
+_________ test_transport_and_json_failures_are_not_repaired[choices] __________
+
+fault = 'choices'
+
+    @pytest.mark.parametrize("fault", ["choices", "empty", "truncated", "reasoning", "markdown", "duplicate_key"])
+    def test_transport_and_json_failures_are_not_repaired(fault):
+        reply = response()
+        if fault == "choices": reply["choices"] = []
+        elif fault == "empty": reply["choices"][0]["message"]["content"] = None
+        elif fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden reasoning"
+        elif fault == "markdown": reply["choices"][0]["message"]["content"] = "```json\n" + json.dumps(answer()) + "\n```"
+        else: reply["choices"][0]["message"]["content"] = json.dumps(answer())[:-1] + ',"major_shape_change":"observed"}'
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+response = {'choices': [], 'usage': {'completion_tokens': 40}}
+
+    def parse_response(response):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:16: NotImplementedError
+__________ test_transport_and_json_failures_are_not_repaired[empty] ___________
+
+fault = 'empty'
+
+    @pytest.mark.parametrize("fault", ["choices", "empty", "truncated", "reasoning", "markdown", "duplicate_key"])
+    def test_transport_and_json_failures_are_not_repaired(fault):
+        reply = response()
+        if fault == "choices": reply["choices"] = []
+        elif fault == "empty": reply["choices"][0]["message"]["content"] = None
+        elif fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden reasoning"
+        elif fault == "markdown": reply["choices"][0]["message"]["content"] = "```json\n" + json.dumps(answer()) + "\n```"
+        else: reply["choices"][0]["message"]["content"] = json.dumps(answer())[:-1] + ',"major_shape_change":"observed"}'
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+response = {'choices': [{'message': {'content': None}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 40}}
+
+    def parse_response(response):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:16: NotImplementedError
+________ test_transport_and_json_failures_are_not_repaired[truncated] _________
+
+fault = 'truncated'
+
+    @pytest.mark.parametrize("fault", ["choices", "empty", "truncated", "reasoning", "markdown", "duplicate_key"])
+    def test_transport_and_json_failures_are_not_repaired(fault):
+        reply = response()
+        if fault == "choices": reply["choices"] = []
+        elif fault == "empty": reply["choices"][0]["message"]["content"] = None
+        elif fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden reasoning"
+        elif fault == "markdown": reply["choices"][0]["message"]["content"] = "```json\n" + json.dumps(answer()) + "\n```"
+        else: reply["choices"][0]["message"]["content"] = json.dumps(answer())[:-1] + ',"major_shape_change":"observed"}'
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+response = {'choices': [{'message': {'content': '{"reference_subject_presence": "present", "candidate_subject_presence": "present...ence_evidence": "Visible principal parts compared"}'}, 'finish_reason': 'length'}], 'usage': {'completion_tokens': 40}}
+
+    def parse_response(response):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:16: NotImplementedError
+________ test_transport_and_json_failures_are_not_repaired[reasoning] _________
+
+fault = 'reasoning'
+
+    @pytest.mark.parametrize("fault", ["choices", "empty", "truncated", "reasoning", "markdown", "duplicate_key"])
+    def test_transport_and_json_failures_are_not_repaired(fault):
+        reply = response()
+        if fault == "choices": reply["choices"] = []
+        elif fault == "empty": reply["choices"][0]["message"]["content"] = None
+        elif fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden reasoning"
+        elif fault == "markdown": reply["choices"][0]["message"]["content"] = "```json\n" + json.dumps(answer()) + "\n```"
+        else: reply["choices"][0]["message"]["content"] = json.dumps(answer())[:-1] + ',"major_shape_change":"observed"}'
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+response = {'choices': [{'message': {'content': '{"reference_subject_presence": "present", "candidate_subject_presence": "present...s compared"}', 'reasoning_content': 'hidden reasoning'}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 40}}
+
+    def parse_response(response):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:16: NotImplementedError
+_________ test_transport_and_json_failures_are_not_repaired[markdown] _________
+
+fault = 'markdown'
+
+    @pytest.mark.parametrize("fault", ["choices", "empty", "truncated", "reasoning", "markdown", "duplicate_key"])
+    def test_transport_and_json_failures_are_not_repaired(fault):
+        reply = response()
+        if fault == "choices": reply["choices"] = []
+        elif fault == "empty": reply["choices"][0]["message"]["content"] = None
+        elif fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden reasoning"
+        elif fault == "markdown": reply["choices"][0]["message"]["content"] = "```json\n" + json.dumps(answer()) + "\n```"
+        else: reply["choices"][0]["message"]["content"] = json.dumps(answer())[:-1] + ',"major_shape_change":"observed"}'
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+response = {'choices': [{'message': {'content': '```json\n{"reference_subject_presence": "present", "candidate_subject_presence":...e_evidence": "Visible principal parts compared"}\n```'}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 40}}
+
+    def parse_response(response):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:16: NotImplementedError
+______ test_transport_and_json_failures_are_not_repaired[duplicate_key] _______
+
+fault = 'duplicate_key'
+
+    @pytest.mark.parametrize("fault", ["choices", "empty", "truncated", "reasoning", "markdown", "duplicate_key"])
+    def test_transport_and_json_failures_are_not_repaired(fault):
+        reply = response()
+        if fault == "choices": reply["choices"] = []
+        elif fault == "empty": reply["choices"][0]["message"]["content"] = None
+        elif fault == "truncated": reply["choices"][0]["finish_reason"] = "length"
+        elif fault == "reasoning": reply["choices"][0]["message"]["reasoning_content"] = "hidden reasoning"
+        elif fault == "markdown": reply["choices"][0]["message"]["content"] = "```json\n" + json.dumps(answer()) + "\n```"
+        else: reply["choices"][0]["message"]["content"] = json.dumps(answer())[:-1] + ',"major_shape_change":"observed"}'
+>       with pytest.raises(ValueError): observer.parse_response(reply)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+response = {'choices': [{'message': {'content': '{"reference_subject_presence": "present", "candidate_subject_presence": "present...ipal parts compared","major_shape_change":"observed"}'}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 40}}
+
+    def parse_response(response):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:16: NotImplementedError
+__ test_successful_response_preserves_observation_without_identity_assertion __
+
+    def test_successful_response_preserves_observation_without_identity_assertion():
+>       result = observer.parse_response(response(answer("observed")))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+response = {'choices': [{'message': {'content': '{"reference_subject_presence": "present", "candidate_subject_presence": "present...erence_evidence": "Visible principal parts compared"}'}, 'finish_reason': 'stop'}], 'usage': {'completion_tokens': 40}}
+
+    def parse_response(response):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:16: NotImplementedError
+___ test_collector_stops_first_invalid_preserving_partial_rows_and_no_retry ___
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_collector_stops_first_inv0\\ref...9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}]
+
+    def test_collector_stops_first_invalid_preserving_partial_rows_and_no_retry(images):
+        calls, saved = [], []
+        def send(request):
+            calls.append(request)
+            return response() if len(calls) == 1 else response(finish_reason="length")
+>       rows = observer.collect(cases(images), "container", send, lambda row: saved.append(copy.deepcopy(row)))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'one', 'reference': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test...', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}, 'offline_expected_major_shape_change': 'observed', ...}]
+target = 'container'
+request_fn = <function test_collector_stops_first_invalid_preserving_partial_rows_and_no_retry.<locals>.send at 0x000001F5907F3100>
+on_result = <function test_collector_stops_first_invalid_preserving_partial_rows_and_no_retry.<locals>.<lambda> at 0x000001F5907F3E20>
+
+    def collect(cases, target, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:22: NotImplementedError
+_______ test_collector_times_out_once_and_preserves_unattempted_budget ________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_collector_times_out_once_0\\ref...9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}]
+
+    def test_collector_times_out_once_and_preserves_unattempted_budget(images):
+        calls = []
+        def send(request):
+            calls.append(request); raise TimeoutError("test timeout")
+>       rows = observer.collect(cases(images), "container", send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:141: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'one', 'reference': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test...', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}, 'offline_expected_major_shape_change': 'observed', ...}]
+target = 'container'
+request_fn = <function test_collector_times_out_once_and_preserves_unattempted_budget.<locals>.send at 0x000001F5907F3920>
+on_result = None
+
+    def collect(cases, target, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:22: NotImplementedError
+_______________ test_collector_does_not_dispatch_changed_image ________________
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_collector_does_not_dispat0\\ref...9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}]
+
+    def test_collector_does_not_dispatch_changed_image(images):
+        images[0]["sha256"] = "f" * 64
+        calls = []
+>       rows = observer.collect(cases(images), "container", lambda request: calls.append(request))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_observations.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'one', 'reference': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test...', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}, 'offline_expected_major_shape_change': 'observed', ...}]
+target = 'container'
+request_fn = <function test_collector_does_not_dispatch_changed_image.<locals>.<lambda> at 0x000001F5908904A0>
+on_result = None
+
+    def collect(cases, target, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:22: NotImplementedError
+_______ test_collector_enforces_predeclared_maximum_before_any_dispatch _______
+
+images = [{'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test_collector_enforces_predec0\\ref...9b6f730aee0489c71839d5725bc7932ba12125bf27df9a0eb6d77e982', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}]
+
+    def test_collector_enforces_predeclared_maximum_before_any_dispatch(images):
+        calls = []
+        with pytest.raises(ValueError):
+>           observer.collect(cases(images) + cases(images), "container", lambda request: calls.append(request))
+
+test\test_paired_shape_observations.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cases = [{'case_id': 'one', 'reference': {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-105\\test...', 'size': [16, 32], 'offline_label': 'HUMAN_LABEL_SENTINEL'}, 'offline_expected_major_shape_change': 'observed', ...}]
+target = 'container'
+request_fn = <function test_collector_enforces_predeclared_maximum_before_any_dispatch.<locals>.<lambda> at 0x000001F5907F3880>
+on_result = None
+
+    def collect(cases, target, request_fn, on_result=None):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\paired_shape_observations.py:22: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_paired_shape_observations.py::test_prompt_and_schema_are_generic_and_match_pinned_plan
+FAILED test/test_paired_shape_observations.py::test_invalid_target_is_rejected[]
+FAILED test/test_paired_shape_observations.py::test_invalid_target_is_rejected[ ]
+FAILED test/test_paired_shape_observations.py::test_invalid_target_is_rejected[None]
+FAILED test/test_paired_shape_observations.py::test_invalid_target_is_rejected[3]
+FAILED test/test_paired_shape_observations.py::test_invalid_target_is_rejected[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]
+FAILED test/test_paired_shape_observations.py::test_payload_preserves_exact_pixels_order_and_excludes_metadata
+FAILED test/test_paired_shape_observations.py::test_changed_or_misidentified_input_is_rejected[hash]
+FAILED test/test_paired_shape_observations.py::test_changed_or_misidentified_input_is_rejected[size]
+FAILED test/test_paired_shape_observations.py::test_changed_or_misidentified_input_is_rejected[format]
+FAILED test/test_paired_shape_observations.py::test_all_valid_observations_remain_diagnostic_only[observed]
+FAILED test/test_paired_shape_observations.py::test_all_valid_observations_remain_diagnostic_only[not_observed]
+FAILED test/test_paired_shape_observations.py::test_all_valid_observations_remain_diagnostic_only[uncertain]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update0]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update1]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update2]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update3]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update4]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update5]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update6]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update7]
+FAILED test/test_paired_shape_observations.py::test_invalid_or_contradictory_observation_is_rejected[update8]
+FAILED test/test_paired_shape_observations.py::test_subject_not_established_only_supports_uncertainty
+FAILED test/test_paired_shape_observations.py::test_transport_and_json_failures_are_not_repaired[choices]
+FAILED test/test_paired_shape_observations.py::test_transport_and_json_failures_are_not_repaired[empty]
+FAILED test/test_paired_shape_observations.py::test_transport_and_json_failures_are_not_repaired[truncated]
+FAILED test/test_paired_shape_observations.py::test_transport_and_json_failures_are_not_repaired[reasoning]
+FAILED test/test_paired_shape_observations.py::test_transport_and_json_failures_are_not_repaired[markdown]
+FAILED test/test_paired_shape_observations.py::test_transport_and_json_failures_are_not_repaired[duplicate_key]
+FAILED test/test_paired_shape_observations.py::test_successful_response_preserves_observation_without_identity_assertion
+FAILED test/test_paired_shape_observations.py::test_collector_stops_first_invalid_preserving_partial_rows_and_no_retry
+FAILED test/test_paired_shape_observations.py::test_collector_times_out_once_and_preserves_unattempted_budget
+FAILED test/test_paired_shape_observations.py::test_collector_does_not_dispatch_changed_image
+FAILED test/test_paired_shape_observations.py::test_collector_enforces_predeclared_maximum_before_any_dispatch
+34 failed in 0.43s
+Python exit code: 1

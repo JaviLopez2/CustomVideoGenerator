@@ -1,0 +1,405 @@
+FFFFFFFFFFFFFFF                                                          [100%]
+================================== FAILURES ===================================
+_______________________ test_frozen_plan_remains_valid ________________________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def test_frozen_plan_remains_valid(plan):
+        before = copy.deepcopy(plan)
+>       assert runner.validate_plan(plan) == plan
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+____ test_altered_protocol_or_budget_is_rejected_before_dispatch[version] _____
+
+plan = {'protocol': 'other', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'version'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'other', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+_____ test_altered_protocol_or_budget_is_rejected_before_dispatch[budget] _____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'budget'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+_____ test_altered_protocol_or_budget_is_rejected_before_dispatch[retry] ______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'retry'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+_____ test_altered_protocol_or_budget_is_rejected_before_dispatch[tokens] _____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'tokens'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+____ test_altered_protocol_or_budget_is_rejected_before_dispatch[timeout] _____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'timeout'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+____ test_altered_protocol_or_budget_is_rejected_before_dispatch[thinking] ____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'thinking'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+___ test_altered_protocol_or_budget_is_rejected_before_dispatch[duplicates] ___
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'duplicates'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+_____ test_altered_protocol_or_budget_is_rejected_before_dispatch[prompt] _____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'prompt'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+_____ test_altered_protocol_or_budget_is_rejected_before_dispatch[schema] _____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'schema'
+
+    @pytest.mark.parametrize("fault", ["version", "budget", "retry", "tokens", "timeout", "thinking", "duplicates", "prompt", "schema"])
+    def test_altered_protocol_or_budget_is_rejected_before_dispatch(plan, fault):
+        if fault == "version": plan["protocol"] = "other"
+        elif fault == "budget": plan["execution"]["requests_per_model"] = 4
+        elif fault == "retry": plan["execution"]["automatic_retries"] = 1
+        elif fault == "tokens": plan["execution"]["max_tokens"] = 512
+        elif fault == "timeout": plan["execution"]["http_timeout_seconds"] = 120
+        elif fault == "thinking": plan["execution"]["thinking"] = True
+        elif fault == "duplicates": plan["cases"][1]["case_id"] = plan["cases"][0]["case_id"]
+        elif fault == "prompt": plan["model_prompt"] += " Label B is a failure."
+        else: plan["response_schema"]["properties"]["verdict"] = {"type": "string"}
+>       with pytest.raises(ValueError): runner.validate_plan(plan)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:7: NotImplementedError
+_________________ test_command_preserves_bounded_vision_flags _________________
+
+    def test_command_preserves_bounded_vision_flags():
+>       args = runner.command(Path("server.exe"), [Path("model.gguf"), Path("mmproj.gguf")])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+server = WindowsPath('server.exe')
+weights = [WindowsPath('model.gguf'), WindowsPath('mmproj.gguf')]
+
+    def command(server, weights):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:4: NotImplementedError
+__________ test_runtime_archive_and_extracted_bytes_are_both_checked __________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-107/test_runtime_archive_and_extra0')
+
+    def test_runtime_archive_and_extracted_bytes_are_both_checked(tmp_path):
+        folder = tmp_path / "test-build"; folder.mkdir()
+        (folder / "llama-server.exe").write_bytes(b"verified executable")
+        archive = tmp_path / "runtime.zip"
+        with zipfile.ZipFile(archive, "w") as z: z.writestr("llama-server.exe", b"verified executable")
+        runtime = {"tag": "test-build", "assets": [{"name": "runtime.zip", "digest": "sha256:" + hashlib.sha256(archive.read_bytes()).hexdigest()}]}
+>       evidence = runner.verify_runtime(tmp_path, runtime)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+runtime_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-107/test_runtime_archive_and_extra0')
+runtime = {'tag': 'test-build', 'assets': [{'name': 'runtime.zip', 'digest': 'sha256:da6d6bbd6bc65aa8de6e36f0dc91e1beb6e55b9358dd5051d2b88714139cf00c'}]}
+
+    def verify_runtime(runtime_root, runtime):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:10: NotImplementedError
+__________ test_owned_server_closes_only_its_process_on_body_failure __________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-107/test_owned_server_closes_only_0')
+
+    def test_owned_server_closes_only_its_process_on_body_failure(tmp_path):
+        process = Process()
+        def request(url, timeout): return {"modalities": {"vision": True}}
+        with pytest.raises(RuntimeError):
+            with runner.owned_server(["server.exe"], tmp_path / "own.log", request, launch(process)) as info:
+                assert info["owned_pid"] == process.pid
+                raise RuntimeError("body failed")
+>       assert process.closed and process.terminated == 1
+E       assert (False)
+E        +  where False = <test.test_paired_shape_runner.Process object at 0x0000011EA7D176D0>.closed
+
+test\test_paired_shape_runner.py:84: AssertionError
+______________ test_readiness_failure_still_closes_owned_process ______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-107/test_readiness_failure_still_c0')
+
+    def test_readiness_failure_still_closes_owned_process(tmp_path):
+        process = Process()
+        def request(url, timeout): return {"modalities": {"vision": False}}
+        with pytest.raises(ValueError):
+>           with runner.owned_server(["server.exe"], tmp_path / "own.log", request, launch(process)): pass
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+command = ['server.exe']
+log_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-107/test_readiness_failure_still_c0/own.log')
+request_fn = <function test_readiness_failure_still_closes_owned_process.<locals>.request at 0x0000011EA58C9260>
+process_factory = <function launch.<locals>.factory at 0x0000011EA7CD27A0>
+
+    def owned_server(command, log_path, request_fn, process_factory):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:13: NotImplementedError
+_____________________ test_owned_log_is_never_overwritten _____________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-107/test_owned_log_is_never_overwr0')
+
+    def test_owned_log_is_never_overwritten(tmp_path):
+        log = tmp_path / "own.log"; log.write_text("preserved")
+        calls = []
+        with pytest.raises(FileExistsError):
+>           with runner.owned_server(["server.exe"], log, lambda *a, **k: None, lambda *a, **k: calls.append(a)): pass
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_runner.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+command = ['server.exe']
+log_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-107/test_owned_log_is_never_overwr0/own.log')
+request_fn = <function test_owned_log_is_never_overwritten.<locals>.<lambda> at 0x0000011EA7CD13A0>
+process_factory = <function test_owned_log_is_never_overwritten.<locals>.<lambda> at 0x0000011EA7D2BE20>
+
+    def owned_server(command, log_path, request_fn, process_factory):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\observe_paired_shape.py:13: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_paired_shape_runner.py::test_frozen_plan_remains_valid - Not...
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[version]
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[budget]
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[retry]
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[tokens]
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[timeout]
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[thinking]
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[duplicates]
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[prompt]
+FAILED test/test_paired_shape_runner.py::test_altered_protocol_or_budget_is_rejected_before_dispatch[schema]
+FAILED test/test_paired_shape_runner.py::test_command_preserves_bounded_vision_flags
+FAILED test/test_paired_shape_runner.py::test_runtime_archive_and_extracted_bytes_are_both_checked
+FAILED test/test_paired_shape_runner.py::test_owned_server_closes_only_its_process_on_body_failure
+FAILED test/test_paired_shape_runner.py::test_readiness_failure_still_closes_owned_process
+FAILED test/test_paired_shape_runner.py::test_owned_log_is_never_overwritten
+15 failed in 0.23s
+Python exit code: 1

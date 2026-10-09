@@ -1,0 +1,125 @@
+{
+  "protocol": "paired-shape-execution-preflight-1",
+  "checked_utc": "2026-10-09T14:42:24.212374+00:00",
+  "execution_base_head": "0746505930e23ddbb007c6eda0634fde9f821037",
+  "code_status": "new harness/test files pending implementation checkpoint; hashes pin actual bytes",
+  "runtime_verified": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "models_rehashed": [
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "files": [
+        {
+          "file": "Qwen3.5-9B-Q4_K_M.gguf",
+          "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8",
+          "bytes": 5680522464
+        },
+        {
+          "file": "mmproj-F16.gguf",
+          "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f",
+          "bytes": 918166080
+        }
+      ]
+    },
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "files": [
+        {
+          "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+          "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2",
+          "bytes": 5027784800
+        },
+        {
+          "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+          "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38",
+          "bytes": 1159029824
+        }
+      ]
+    }
+  ],
+  "requests_prepared_without_dispatch": [
+    {
+      "case_id": "A",
+      "sha256": "123980a21878a604751bf6bea7fe595d29642a997aa5ab5b8c5d4abcea1e2193",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9"
+    },
+    {
+      "case_id": "B",
+      "sha256": "182569cb710a13f3f48297ea0a44263499ba836d6aa243cdfa79dc1020a12eb9",
+      "reference_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb"
+    },
+    {
+      "case_id": "C",
+      "sha256": "28181c5ff5f19dd9a99c7849d694ccd2f3daf51e875e85bf434bef47f67ba8d6",
+      "reference_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+    }
+  ],
+  "source_bindings": [
+    {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "d4ee5fecb83c6805057136d0ef2ae8eecf1a43fe86cad311e2aed070efda07de"
+    },
+    {
+      "path": "test/test_paired_shape_observations.py",
+      "sha256": "12748b7bbd720677361ed4325120b599c17419b87f95699553c79b3e5606c23f"
+    },
+    {
+      "path": "test/test_paired_shape_runner.py",
+      "sha256": "6b7e1a9d7f4e79983b7a63131b4120512f67b3b4395730b4126840fe395d05a5"
+    },
+    {
+      "path": "scripts/evaluate_multimodal_judges.py",
+      "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+    },
+    {
+      "path": "scripts/observe_visual_geometry.py",
+      "sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b"
+    },
+    {
+      "path": "docs/validation/paired-shape-probe-plan-2026-10-09.json",
+      "sha256": "ff4da2fefe388bb5371cc70bcea3522032256f250c6591a892159ad589e0ee72"
+    }
+  ],
+  "offline_tests": {
+    "passed": 184,
+    "seconds": 7.34,
+    "python_exit_code": 0,
+    "warnings": 0,
+    "new_tests": 51,
+    "log": "docs/validation/paired-shape-final-tests-2026-10-09.txt",
+    "log_sha256": "a6eee15776a776ffc373a5c4bc3ef6e28914a0509b3be4c757fbc17ff3d32c19"
+  },
+  "independent_diff_review": "Cavecrew read-only reviewer: No issues",
+  "generation_requests": 0,
+  "judge_requests": 0,
+  "labels_or_case_names_in_payloads": false,
+  "resources_global_snapshot": {
+    "ram_free_bytes": 19219181568,
+    "vram_free_bytes": 11744968704
+  },
+  "comfy_queue_empty": true,
+  "ports_8080_8092_free": true,
+  "services_started": 0,
+  "services_stopped": 0,
+  "admission_allowed": false,
+  "physical_identity_established": false
+}

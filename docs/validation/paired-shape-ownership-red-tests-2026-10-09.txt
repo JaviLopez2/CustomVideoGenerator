@@ -1,0 +1,61 @@
+...............FF                                                        [100%]
+================================== FAILURES ===================================
+___________ test_ownership_state_is_independent_of_other_listeners ____________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-109/test_ownership_state_is_indepe0')
+
+    def test_ownership_state_is_independent_of_other_listeners(tmp_path):
+        process, state = Process(), {}
+>       with runner.owned_server(["server.exe"], tmp_path / "own.log",
+                                 lambda *a, **k: {"modalities": {"vision": True}}, launch(process), state) as info:
+
+test\test_paired_shape_runner.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\contextlib.py:301: in helper
+    return _GeneratorContextManager(func, args, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <contextlib._GeneratorContextManager object at 0x00000252F2884150>
+func = <function owned_server at 0x00000252F285D8A0>
+args = (['server.exe'], WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-109/test_ownership_state_is_i...other_listeners.<locals>.<lambda> at 0x00000252F287CFE0>, <function launch.<locals>.factory at 0x00000252F287C040>, {})
+kwds = {}
+
+    def __init__(self, func, args, kwds):
+>       self.gen = func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E       TypeError: owned_server() takes 4 positional arguments but 5 were given
+
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\contextlib.py:105: TypeError
+____________ test_load_error_records_ownership_and_proven_closure _____________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-109/test_load_error_records_owners0')
+
+    def test_load_error_records_ownership_and_proven_closure(tmp_path):
+        process, state = Process(), {}
+        with pytest.raises(ValueError):
+>           with runner.owned_server(["server.exe"], tmp_path / "own.log",
+
+test\test_paired_shape_runner.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\contextlib.py:301: in helper
+    return _GeneratorContextManager(func, args, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <contextlib._GeneratorContextManager object at 0x00000252F2901990>
+func = <function owned_server at 0x00000252F285D8A0>
+args = (['server.exe'], WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-109/test_load_error_records_o..._proven_closure.<locals>.<lambda> at 0x00000252F28B0720>, <function launch.<locals>.factory at 0x00000252F28B0360>, {})
+kwds = {}
+
+    def __init__(self, func, args, kwds):
+>       self.gen = func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E       TypeError: owned_server() takes 4 positional arguments but 5 were given
+
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\contextlib.py:105: TypeError
+=========================== short test summary info ===========================
+FAILED test/test_paired_shape_runner.py::test_ownership_state_is_independent_of_other_listeners
+FAILED test/test_paired_shape_runner.py::test_load_error_records_ownership_and_proven_closure
+2 failed, 15 passed in 0.24s
+Python exit code: 1
