@@ -1,5 +1,13 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — auditoría espacial independiente, 2026-10-09
+
+Base publicada `0e4a0aa`; mismo worktree/rama experimental, inicialmente limpio. Auditado CPU SIFT full/ROI±8 y HSV S0,15/0,25/0,35 sobre6 retenciones,7 comparaciones. C/recolor tienen registro local; A y B no encajan en ROI y máscaras incompletas invierten scores: no gate de forma/identidad. Todos uncertain/unavailable, sin aprobación/rechazo. [Informe](SPATIAL_GEOMETRY_AUDIT_REPORT.md), [raw](validation/spatial-geometry-audit-results-2026-10-09.json), [análisis](validation/spatial-geometry-audit-analysis-2026-10-09.json).0VLM/generaciones/descargas/benchmarksGPU/servicios iniciados.
+
+Nuevos: scripts/audit_spatial_geometry.py, test/test_spatial_geometry_audit.py, dos planes hash-pinned, capacidades, raw, análisis, logs/closing. App/modelos/routing/gates/flags/deps/workflows/estable intactos. Error de sintaxis y fallo API FailedEstimation retenidos; corrección bool(model) con regresión real RED→GREEN, parámetros iguales.89tests actuales pasan exit0,1warning esperado; suites previas históricas.4SVG locales ignorados con bytes originales intactos; conservar al archivar. Fetch0/0 tras escalación específica para metadata Git; stable/tracked protegido en6d27ba4. Checkpoint final por historial/origin, distinto de execution_head del raw.
+
+Pendiente: anotar objeto completo y landmarks de componentes con overlays y procedencia explícita; revisión independiente antes de tratar anotaciones como gold. Declarar pose/proyección permitidas y sumar negativos estructurales revisados antes de calibrar. No retocar prompts/parámetros para forzar pass, descargar pesos nuevos o activar gates/vídeo automáticamente. No intervención del usuario necesaria para cerrar esta auditoría; no se solicitan de nuevo sus juicios A/B/C.
+
 ## Estado vigente — componentes aislados, 2026-10-08
 
 Desde `3e2b873`, 20 controles retenidos sobre un componente por request, ambos modelos disponibles. Formato completo sin timeouts/truncaciones; hueco del asa mejora, contactos y bandas siguen agrupados/inconsistentes y B no se prioriza. 0generaciones/retries/descargas, código/app/routing/gates/flags/deps/workflows sin cambios. Nuevos perfiles, raw, análisis/replays,20SVG locales y revisión del asistente separada de A/B/C. [Informe](ISOLATED_COMPONENTS_REPORT.md).

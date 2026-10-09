@@ -1,0 +1,608 @@
+{
+  "record_type": "offline spatial audit summary; descriptive, no tuned decision rule",
+  "date": "2026-10-09",
+  "raw_path": "docs\\validation\\spatial-geometry-audit-results-2026-10-09.json",
+  "raw_sha256": "00bc86861ef6be0b48fa5ed0f59db56fd7640bfc6e302655c360b356f0551f0a",
+  "plan_sha256": "c7b3e1747c93c475f239c14be933bfb254da0800be256be0f21f429640a6b1e6",
+  "script_sha256": "65d396d276c4e69de693569c7f4b7c8db8110f7f13cd589a67526b958e68b329",
+  "human_review_path": "docs\\validation\\visual-geometry-human-review-2026-10-08.json",
+  "human_review_sha256": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3",
+  "annotations_separate_from_measurements": [
+    {
+      "pair": "C",
+      "comparison_id": "key_01",
+      "source_case_id": "valid_cloth_edit",
+      "response_verbatim": "Mantiene perfectamente la llave , no se ve ningun cambio en la llave.",
+      "image_hashes": {
+        "reference": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+        "candidate": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+      },
+      "origin": "previous user review, not sent to algorithm; no new per-pixel gold or tolerance"
+    },
+    {
+      "pair": "B",
+      "comparison_id": "key_12",
+      "source_case_id": "continuity_factual_768",
+      "response_verbatim": "Cambia totalmente la forma de la llave. No respeta nada de la llave. La peor sin duda.",
+      "image_hashes": {
+        "reference": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "candidate": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb"
+      },
+      "origin": "previous user review, not sent to algorithm; no new per-pixel gold or tolerance"
+    },
+    {
+      "pair": "A",
+      "comparison_id": "key_13",
+      "source_case_id": "qwen_continuity_factual_768",
+      "response_verbatim": "Conserva la forma de la llave y cambia ligeramente los anillos de la llave haciendolos un poco mas grandes.",
+      "image_hashes": {
+        "reference": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "candidate": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9"
+      },
+      "origin": "previous user review, not sent to algorithm; no new per-pixel gold or tolerance"
+    }
+  ],
+  "measurements": [
+    {
+      "id": "key_self",
+      "reference": "image_0",
+      "candidate": "image_0",
+      "registration": {
+        "full": {
+          "fit_available": true,
+          "match_count": 505,
+          "inlier_count": 505,
+          "inliers_inside_both_manual_rois": 84,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 421,
+          "unique_inlier_candidate_sites": 421,
+          "transform_scale": 1.0000000000000007,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "-8": {
+          "fit_available": true,
+          "match_count": 740,
+          "inlier_count": 740,
+          "inliers_inside_both_manual_rois": 740,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 510,
+          "unique_inlier_candidate_sites": 510,
+          "transform_scale": 1.0000000000000004,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "0": {
+          "fit_available": true,
+          "match_count": 906,
+          "inlier_count": 906,
+          "inliers_inside_both_manual_rois": 906,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 616,
+          "unique_inlier_candidate_sites": 616,
+          "transform_scale": 0.9999999999999999,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "8": {
+          "fit_available": true,
+          "match_count": 1086,
+          "inlier_count": 1086,
+          "inliers_inside_both_manual_rois": 955,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 735,
+          "unique_inlier_candidate_sites": 735,
+          "transform_scale": 0.9999999999999988,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        }
+      },
+      "mask_scores": [
+        {
+          "max_saturation": 0.15,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 1.0,
+          "dilated_dice": 1.0,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        },
+        {
+          "max_saturation": 0.25,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 1.0,
+          "dilated_dice": 1.0,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        },
+        {
+          "max_saturation": 0.35,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 1.0,
+          "dilated_dice": 1.0,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        }
+      ],
+      "status": "uncertain",
+      "admission_allowed": false
+    },
+    {
+      "id": "key_01",
+      "reference": "image_0",
+      "candidate": "image_1",
+      "registration": {
+        "full": {
+          "fit_available": true,
+          "match_count": 288,
+          "inlier_count": 254,
+          "inliers_inside_both_manual_rois": 41,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 214,
+          "unique_inlier_candidate_sites": 214,
+          "transform_scale": 1.0017827291789705,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "-8": {
+          "fit_available": true,
+          "match_count": 98,
+          "inlier_count": 92,
+          "inliers_inside_both_manual_rois": 92,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 80,
+          "unique_inlier_candidate_sites": 80,
+          "transform_scale": 1.0015260872458138,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "0": {
+          "fit_available": true,
+          "match_count": 92,
+          "inlier_count": 86,
+          "inliers_inside_both_manual_rois": 86,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 76,
+          "unique_inlier_candidate_sites": 76,
+          "transform_scale": 1.0017624498151587,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "8": {
+          "fit_available": true,
+          "match_count": 97,
+          "inlier_count": 91,
+          "inliers_inside_both_manual_rois": 82,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 81,
+          "unique_inlier_candidate_sites": 81,
+          "transform_scale": 1.000730009474008,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        }
+      },
+      "mask_scores": [
+        {
+          "max_saturation": 0.15,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.25388106042512537,
+          "dilated_dice": 0.31621107439671575,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        },
+        {
+          "max_saturation": 0.25,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.8418350978504973,
+          "dilated_dice": 0.8631284916201117,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        },
+        {
+          "max_saturation": 0.35,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.7534663510314508,
+          "dilated_dice": 0.837594696969697,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        }
+      ],
+      "status": "uncertain",
+      "admission_allowed": false
+    },
+    {
+      "id": "key_12",
+      "reference": "image_1",
+      "candidate": "image_2",
+      "registration": {
+        "full": {
+          "fit_available": false,
+          "match_count": 5,
+          "inlier_count": 0,
+          "inliers_inside_both_manual_rois": 0,
+          "reason": "no_finite_similarity_fit",
+          "unique_inlier_source_sites": 0,
+          "unique_inlier_candidate_sites": 0,
+          "transform_scale": null,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "-8": {
+          "fit_available": false,
+          "match_count": 3,
+          "inlier_count": 0,
+          "inliers_inside_both_manual_rois": 0,
+          "reason": "no_finite_similarity_fit",
+          "unique_inlier_source_sites": 0,
+          "unique_inlier_candidate_sites": 0,
+          "transform_scale": null,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "0": {
+          "fit_available": false,
+          "match_count": 4,
+          "inlier_count": 0,
+          "inliers_inside_both_manual_rois": 0,
+          "reason": "no_finite_similarity_fit",
+          "unique_inlier_source_sites": 0,
+          "unique_inlier_candidate_sites": 0,
+          "transform_scale": null,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "8": {
+          "fit_available": false,
+          "match_count": 5,
+          "inlier_count": 0,
+          "inliers_inside_both_manual_rois": 0,
+          "reason": "no_finite_similarity_fit",
+          "unique_inlier_source_sites": 0,
+          "unique_inlier_candidate_sites": 0,
+          "transform_scale": null,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        }
+      },
+      "mask_scores": [
+        {
+          "max_saturation": 0.15,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.3564386470499014,
+          "dilated_dice": 0.4343812375249501,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        },
+        {
+          "max_saturation": 0.25,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.5280858676207514,
+          "dilated_dice": 0.6765937645416473,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        },
+        {
+          "max_saturation": 0.35,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.7272,
+          "dilated_dice": 0.8262935586061246,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        }
+      ],
+      "status": "uncertain",
+      "admission_allowed": false
+    },
+    {
+      "id": "key_13",
+      "reference": "image_1",
+      "candidate": "image_3",
+      "registration": {
+        "full": {
+          "fit_available": true,
+          "match_count": 4,
+          "inlier_count": 3,
+          "inliers_inside_both_manual_rois": 2,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 2,
+          "unique_inlier_candidate_sites": 2,
+          "transform_scale": 3.3707561397940444,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "-8": {
+          "fit_available": false,
+          "match_count": 4,
+          "inlier_count": 0,
+          "inliers_inside_both_manual_rois": 0,
+          "reason": "no_finite_similarity_fit",
+          "unique_inlier_source_sites": 0,
+          "unique_inlier_candidate_sites": 0,
+          "transform_scale": null,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "0": {
+          "fit_available": false,
+          "match_count": 4,
+          "inlier_count": 0,
+          "inliers_inside_both_manual_rois": 0,
+          "reason": "no_finite_similarity_fit",
+          "unique_inlier_source_sites": 0,
+          "unique_inlier_candidate_sites": 0,
+          "transform_scale": null,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "8": {
+          "fit_available": false,
+          "match_count": 5,
+          "inlier_count": 0,
+          "inliers_inside_both_manual_rois": 0,
+          "reason": "no_finite_similarity_fit",
+          "unique_inlier_source_sites": 0,
+          "unique_inlier_candidate_sites": 0,
+          "transform_scale": null,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        }
+      },
+      "mask_scores": [
+        {
+          "max_saturation": 0.15,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.8423574508864399,
+          "dilated_dice": 0.8995334370139969,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        },
+        {
+          "max_saturation": 0.25,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.3768204813736011,
+          "dilated_dice": 0.44269358611350484,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        },
+        {
+          "max_saturation": 0.35,
+          "status": "uncertain",
+          "admission_allowed": false,
+          "automatic_rejection": false,
+          "physical_identity_established": false,
+          "pixel_truth_verified": false,
+          "dice": 0.19351894112277498,
+          "dilated_dice": 0.3467764060356653,
+          "reason": "normalized unverified threshold masks; no learned/calibrated decision threshold"
+        }
+      ],
+      "status": "uncertain",
+      "admission_allowed": false
+    },
+    {
+      "id": "mug_self",
+      "reference": "image_4",
+      "candidate": "image_4",
+      "registration": {
+        "full": {
+          "fit_available": true,
+          "match_count": 52,
+          "inlier_count": 52,
+          "inliers_inside_both_manual_rois": 48,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 49,
+          "unique_inlier_candidate_sites": 49,
+          "transform_scale": 1.0000000000000007,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "-8": {
+          "fit_available": true,
+          "match_count": 50,
+          "inlier_count": 50,
+          "inliers_inside_both_manual_rois": 50,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 43,
+          "unique_inlier_candidate_sites": 43,
+          "transform_scale": 1.0,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "0": {
+          "fit_available": true,
+          "match_count": 51,
+          "inlier_count": 51,
+          "inliers_inside_both_manual_rois": 51,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 46,
+          "unique_inlier_candidate_sites": 46,
+          "transform_scale": 1.0000000000000004,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "8": {
+          "fit_available": true,
+          "match_count": 48,
+          "inlier_count": 48,
+          "inliers_inside_both_manual_rois": 48,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 44,
+          "unique_inlier_candidate_sites": 44,
+          "transform_scale": 1.0,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        }
+      },
+      "mask_scores": [],
+      "status": "uncertain",
+      "admission_allowed": false
+    },
+    {
+      "id": "mug_45",
+      "reference": "image_4",
+      "candidate": "image_5",
+      "registration": {
+        "full": {
+          "fit_available": true,
+          "match_count": 38,
+          "inlier_count": 34,
+          "inliers_inside_both_manual_rois": 32,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 32,
+          "unique_inlier_candidate_sites": 32,
+          "transform_scale": 1.0027555428490218,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "-8": {
+          "fit_available": true,
+          "match_count": 36,
+          "inlier_count": 34,
+          "inliers_inside_both_manual_rois": 34,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 29,
+          "unique_inlier_candidate_sites": 29,
+          "transform_scale": 1.0029479037111868,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "0": {
+          "fit_available": true,
+          "match_count": 41,
+          "inlier_count": 37,
+          "inliers_inside_both_manual_rois": 37,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 32,
+          "unique_inlier_candidate_sites": 32,
+          "transform_scale": 1.0027450355572065,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "8": {
+          "fit_available": true,
+          "match_count": 37,
+          "inlier_count": 34,
+          "inliers_inside_both_manual_rois": 34,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 30,
+          "unique_inlier_candidate_sites": 30,
+          "transform_scale": 1.0022057176706156,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        }
+      },
+      "mask_scores": [],
+      "status": "uncertain",
+      "admission_allowed": false
+    },
+    {
+      "id": "different_targets",
+      "reference": "image_1",
+      "candidate": "image_4",
+      "registration": {
+        "full": {
+          "fit_available": true,
+          "match_count": 8,
+          "inlier_count": 3,
+          "inliers_inside_both_manual_rois": 2,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 3,
+          "unique_inlier_candidate_sites": 2,
+          "transform_scale": 0.06194466817868922,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "-8": {
+          "fit_available": true,
+          "match_count": 5,
+          "inlier_count": 3,
+          "inliers_inside_both_manual_rois": 3,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 2,
+          "unique_inlier_candidate_sites": 2,
+          "transform_scale": 0.2836279046461696,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "0": {
+          "fit_available": true,
+          "match_count": 6,
+          "inlier_count": 3,
+          "inliers_inside_both_manual_rois": 3,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 2,
+          "unique_inlier_candidate_sites": 2,
+          "transform_scale": 0.10333387827085337,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        },
+        "8": {
+          "fit_available": true,
+          "match_count": 6,
+          "inlier_count": 3,
+          "inliers_inside_both_manual_rois": 3,
+          "reason": "local_correspondences_only; neither complete shape nor identity certified",
+          "unique_inlier_source_sites": 2,
+          "unique_inlier_candidate_sites": 2,
+          "transform_scale": 0.10333387877915799,
+          "scope": "descriptor inliers and coordinate sites; not parts or physical correspondences certified"
+        }
+      },
+      "mask_scores": [],
+      "status": "uncertain",
+      "admission_allowed": false
+    }
+  ],
+  "figures_verified": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\spatial-geometry-audit-2026-10-09\\image_0.svg",
+      "svg_sha256": "44eae0885126ef82b3a1725fbc23c5ece8aa9b8db087dd1ab4e09ff9c4433290",
+      "embedded_original_image_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "xml_valid": true,
+      "source_bytes_unchanged": true
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\spatial-geometry-audit-2026-10-09\\image_1.svg",
+      "svg_sha256": "6e5cec7e8f2b108bce203cec8ad0518c32ca85d4b086c35776b7a9e3fbcd1b61",
+      "embedded_original_image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "xml_valid": true,
+      "source_bytes_unchanged": true
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\spatial-geometry-audit-2026-10-09\\image_2.svg",
+      "svg_sha256": "c6dd8f8fb62f9fe5c85dad0bf7089dac9a0ccc6d97634afbc9d9e55cb4e3a7c1",
+      "embedded_original_image_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "xml_valid": true,
+      "source_bytes_unchanged": true
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\spatial-geometry-audit-2026-10-09\\image_3.svg",
+      "svg_sha256": "3a6a5a0c8fcfe094c9f1ebbfe50f9b55793fb817180e8b280402914e4957c1c7",
+      "embedded_original_image_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "xml_valid": true,
+      "source_bytes_unchanged": true
+    }
+  ],
+  "findings": [
+    "C: 254 full-image descriptor inliers, only41 within both manual key ROIs; ROI sensitivity yields92/86/91 inliers. Background/shared scene can dominate full-image matching.",
+    "A and B: no finite fit in all three native ROI scopes. Failure to match cannot distinguish preserved overall key shape from known major deformation.",
+    "Different key/mug targets: small fitted sets exist, but3 descriptor inliers collapse to2 distinct sites in each native ROI. A finite similarity fit alone cannot prove object identity.",
+    "C mask Dice varies0.2539..0.8418, A0.1935..0.8424, B0.3564..0.7272 across predeclared saturation thresholds. Score ordering changes; no threshold selected after labels.",
+    "Largest low-saturation component omits major key regions; higher saturation may select table and touch ROI boundary. No mask certified as complete object.",
+    "Mug recolor ROI inliers34/37/34: alignment evidence, no per-contact/hole verification and no structurally malformed-mug negative."
+  ],
+  "decision": "Do not integrate SIFT match counts or HSV mask Dice as admission/identity gates. Retain uncertainty and existing human judgments.",
+  "next_task": "Prepare explicit complete-object masks and component landmarks, with independent visual review and allowed pose/projection changes stated before measuring. Start with existing A/B/C and mug positives; add reviewed structural negatives before calibration. No automatic admission or new weights without scope.",
+  "vlm_requests": 0,
+  "generation_requests": 0,
+  "gpu_benchmark": false,
+  "pixel_truth_verified": false,
+  "physical_identity_established": false,
+  "admission_allowed": false,
+  "automatic_rejection": false
+}

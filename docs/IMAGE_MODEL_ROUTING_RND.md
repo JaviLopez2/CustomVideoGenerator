@@ -1,5 +1,9 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — auditoría espacial CPU, 2026-10-09
+
+Desde `0e4a0aa`,6 retenciones y7 comparaciones fijas: SIFT reconoce correspondencias C/recolor, pero A y B carecen de encaje finito en los tres recortes nativos. Máscaras HSV incompletas y dependientes de umbral invierten orden A/B; no se calibran contra labels ni habilitan decisiones. [Informe y evidencia](SPATIAL_GEOMETRY_AUDIT_REPORT.md).0inferencias/generaciones/descargas/benchmarksGPU, sin iniciar servicios o modificar app/routing/modelos/gates/deps/workflows/estable. Script CPU aislado reproducible y14tests nuevos;89tests actuales pasan exit0,1warning esperado. Fallo API corregido con regresión, planes/errores conservados, mismos parámetros. Siguiente: máscaras de objeto completo y landmarks con procedencia/revisión independiente, controles negativos antes de calibrar. A/B/C y suites históricas intactos; no presenta accuracy ni identidad probada.
+
 ## Actualización — controles aislados, 2026-10-08
 
 Base `3e2b873`: 20 nuevas requests retenidas, 0generaciones. Un componente por prompt/schema preserva definición, presupuesto, modelos y píxeles; ambos detectan hueco del asa/ausencia, pero contactos y bandas no se separan consistentemente. B continúa sin señal de conteo pese a revisión humana de cambio total. No se publica accuracy ni gold de regiones del asistente. [Evidencia y siguiente auditoría espacial independiente](ISOLATED_COMPONENTS_REPORT.md).

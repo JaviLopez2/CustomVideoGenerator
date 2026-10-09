@@ -1,0 +1,3 @@
+D:\Apps\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\site-packages\skimage\measure\fit.py:1490: UserWarning: No inliers found. Model not fitted
+  warn("No inliers found. Model not fitted")
+{"output": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\spatial-geometry-audit-results-2026-10-09.json", "images": 6, "comparisons": 7, "seconds": 7.068702200000189, "status": "uncertain", "generation_requests": 0}

@@ -1,0 +1,42 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+______ test_failed_estimation_return_object_is_checked_before_attributes ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000020FFFD48C10>
+
+    def test_failed_estimation_return_object_is_checked_before_attributes(monkeypatch):
+        points = np.array([[12, 13], [12, 13], [12, 13]], dtype=float)
+        failed = M["SimilarityTransform"].from_estimate(points, points)
+        assert not failed
+        monkeypatch.setitem(M["registration"].__globals__, "ransac",
+                            lambda *args, **kwargs: (failed, np.ones(3, dtype=bool)))
+>       result = M["registration"](points, points)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_geometry_audit.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\audit_spatial_geometry.py:67: in registration
+    if model is None or inliers is None or not np.isfinite(model.params).all():
+                                                           ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = FailedEstimation('SimilarityTransform: Poor conditioning for estimation')
+name = 'params'
+
+    def __getattr__(self, name):
+        msg = (
+            f'{type(self).__name__} has no attribute {name!r}. {self.message}\n\n'
+            f'Hint: {self.hint}'
+        )
+>       raise self.error_cls(msg)
+E       skimage._shared.utils.FailedEstimationAccessError: FailedEstimation has no attribute 'params'. SimilarityTransform: Poor conditioning for estimation
+E       
+E       Hint: You can check for a failed estimation by truth testing the returned object. For failed estimations, `bool(estimation_result)` will be `False`. E.g.
+E       
+E           if not estimation_result:
+E               raise RuntimeError(f'Failed estimation: {estimation_result}')
+
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\site-packages\skimage\_shared\utils.py:528: FailedEstimationAccessError
+=========================== short test summary info ===========================
+FAILED test/test_spatial_geometry_audit.py::test_failed_estimation_return_object_is_checked_before_attributes
+1 failed, 13 deselected in 0.81s

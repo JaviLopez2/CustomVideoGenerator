@@ -1,0 +1,140 @@
+{
+  "protocol": "offline-spatial-geometry-audit-1",
+  "declared_on": "2026-10-09",
+  "execution_base_head": "0e4a0aa5e26674b292d6e7fe7ae76e4273420abf",
+  "script_sha256": "65d396d276c4e69de693569c7f4b7c8db8110f7f13cd589a67526b958e68b329",
+  "annotation_origin": "Assistant approximate bounding ROI selected by direct pixel inspection before computation, not human gold or VLM output. Existing A/B/C known; this is an exploratory non-blinded audit.",
+  "images": [
+    {
+      "id": "image_0",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+      "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "roi": [
+        485,
+        605,
+        640,
+        965
+      ],
+      "family": "key"
+    },
+    {
+      "id": "image_1",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "roi": [
+        485,
+        605,
+        640,
+        965
+      ],
+      "family": "key"
+    },
+    {
+      "id": "image_2",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+      "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "roi": [
+        370,
+        965,
+        675,
+        1155
+      ],
+      "family": "key"
+    },
+    {
+      "id": "image_3",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+      "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "roi": [
+        465,
+        950,
+        635,
+        1180
+      ],
+      "family": "key"
+    },
+    {
+      "id": "image_4",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "roi": [
+        145,
+        155,
+        442,
+        425
+      ],
+      "family": "mug"
+    },
+    {
+      "id": "image_5",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+      "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "roi": [
+        145,
+        155,
+        442,
+        425
+      ],
+      "family": "mug"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "key_self",
+      "reference": "image_0",
+      "candidate": "image_0"
+    },
+    {
+      "id": "key_01",
+      "reference": "image_0",
+      "candidate": "image_1"
+    },
+    {
+      "id": "key_12",
+      "reference": "image_1",
+      "candidate": "image_2"
+    },
+    {
+      "id": "key_13",
+      "reference": "image_1",
+      "candidate": "image_3"
+    },
+    {
+      "id": "mug_self",
+      "reference": "image_4",
+      "candidate": "image_4"
+    },
+    {
+      "id": "mug_45",
+      "reference": "image_4",
+      "candidate": "image_5"
+    },
+    {
+      "id": "different_targets",
+      "reference": "image_1",
+      "candidate": "image_4"
+    }
+  ],
+  "predeclared_method": {
+    "feature": "SIFT defaults scikit-image 0.26.0, full image maxedge768 vs native ROI",
+    "roi_margins_pixels": [
+      -8,
+      0,
+      8
+    ],
+    "matcher": "cross_check=True,max_ratio=0.75,euclidean",
+    "registration": "SimilarityTransform,min_samples3,residual2px,max_trials1000,stop_probability0.99,rng0",
+    "masks": "largest8-connected HSV saturation<=0.15/0.25/0.35,value>=0.35,>=16pixels; no fill or semantic fallback",
+    "normalization": "PCA rotate, uniform longedge112,center128,180flip; raw Dice and separate5x5dilated Dice",
+    "calibrated_threshold": null
+  },
+  "maximum_feature_extractions": 24,
+  "maximum_registration_comparisons": 28,
+  "maximum_mask_comparisons": 12,
+  "inference_requests": 0,
+  "generation_requests": 0,
+  "production_authority": false,
+  "stopping_rule": "One fixed CPU cohort plus predeclared ROI/color sensitivity. Preserve failures; no parameter tuning to recover a pass; findings only.",
+  "previous_plan_sha256": "58eac39c64273a80fe591460b2afe7ce15c7d1e518cedca98999dac0a18d373d",
+  "compatibility_correction": "Check bool(FailedEstimation) before params; same ROI, SIFT, RANSAC, HSV and normalization parameters. Prior cohort stopped without JSON output; execution log retained. No ranking-dependent retuning."
+}

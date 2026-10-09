@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: independent CPU spatial audit complete
+
+Base published `0e4a0aa`, experimental branch/worktree reused, clean start.6 retained originals,7 fixed comparisons,24 feature extractions/28SIFT registrations/12mask comparisons in completed cohort. C/recolor align locally; A and B both lack finite nativeROI fit; HSV incomplete masks reverse score ordering as threshold changes. Wrong-target small fits repeat coordinate sites. No calibrated perceptual ranking, no identity/admission/rejection. [Report](SPATIAL_GEOMETRY_AUDIT_REPORT.md). Script/tests isolated from app;0VLM/generations/GPU benchmarks/downloads/deps/services/workflows/routing/gate changes.
+
+First CPU run stopped on0.26 FailedEstimation API access, error preserved; real regression RED→GREEN and bool(model) correction only, identical inputs/method parameters.89fresh focused tests pass exit0,1expected warning; previous suites historical. A/B/C unchanged;4ignored SVGs verified original-byte-preserving. Stable tracked intact. Next explicit full-object masks/part landmarks with independent review and allowed projection changes before scores; reviewed structural negatives before calibration. No further prompt/budget rescue, new weights or promotion implied. Closing SHA via Git/origin; raw execution_head is prior base. User intervention not needed for this closure.
+
 ## Current checkpoint: isolated components complete, geometry still unresolved
 
 Execution base `3e2b873217006c11196101a841334aefd4e49ccf`, code clean/unchanged; new uncommitted input profiles were hash-pinned before inference. Six independent cohorts: handle opening and contacts on3retentions each, shaft bands on4keys, both existing models; maximum20/actual20, allstop/0reasoning, no timeouts/truncation/retry/generation. Ten candidate request pairs identical; only prompt/schema component scope narrowed versus historical profile. [Report](ISOLATED_COMPONENTS_REPORT.md), [analysis](validation/isolated-components-analysis-2026-10-08.json).

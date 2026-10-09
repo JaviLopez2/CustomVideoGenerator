@@ -1,0 +1,280 @@
+FFFFFFFFFFFF                                                             [100%]
+================================== FAILURES ===================================
+_______________ test_invalid_or_ambiguous_roi_is_rejected[box0] _______________
+
+box = [-1, 0, 10, 10]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 10, 10], [0, 0, 11, 10], [2, 2, 2, 3],
+                                     [0, 0, True, 8], [0, 0, 5.5, 8]])
+    def test_invalid_or_ambiguous_roi_is_rejected(box):
+        with pytest.raises(ValueError):
+>           M["validate_box"](box, (10, 10))
+
+test\test_spatial_geometry_audit.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [-1, 0, 10, 10], size = (10, 10)
+
+    def validate_box(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:5: NotImplementedError
+_______________ test_invalid_or_ambiguous_roi_is_rejected[box1] _______________
+
+box = [0, 0, 11, 10]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 10, 10], [0, 0, 11, 10], [2, 2, 2, 3],
+                                     [0, 0, True, 8], [0, 0, 5.5, 8]])
+    def test_invalid_or_ambiguous_roi_is_rejected(box):
+        with pytest.raises(ValueError):
+>           M["validate_box"](box, (10, 10))
+
+test\test_spatial_geometry_audit.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [0, 0, 11, 10], size = (10, 10)
+
+    def validate_box(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:5: NotImplementedError
+_______________ test_invalid_or_ambiguous_roi_is_rejected[box2] _______________
+
+box = [2, 2, 2, 3]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 10, 10], [0, 0, 11, 10], [2, 2, 2, 3],
+                                     [0, 0, True, 8], [0, 0, 5.5, 8]])
+    def test_invalid_or_ambiguous_roi_is_rejected(box):
+        with pytest.raises(ValueError):
+>           M["validate_box"](box, (10, 10))
+
+test\test_spatial_geometry_audit.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [2, 2, 2, 3], size = (10, 10)
+
+    def validate_box(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:5: NotImplementedError
+_______________ test_invalid_or_ambiguous_roi_is_rejected[box3] _______________
+
+box = [0, 0, True, 8]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 10, 10], [0, 0, 11, 10], [2, 2, 2, 3],
+                                     [0, 0, True, 8], [0, 0, 5.5, 8]])
+    def test_invalid_or_ambiguous_roi_is_rejected(box):
+        with pytest.raises(ValueError):
+>           M["validate_box"](box, (10, 10))
+
+test\test_spatial_geometry_audit.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [0, 0, True, 8], size = (10, 10)
+
+    def validate_box(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:5: NotImplementedError
+_______________ test_invalid_or_ambiguous_roi_is_rejected[box4] _______________
+
+box = [0, 0, 5.5, 8]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 10, 10], [0, 0, 11, 10], [2, 2, 2, 3],
+                                     [0, 0, True, 8], [0, 0, 5.5, 8]])
+    def test_invalid_or_ambiguous_roi_is_rejected(box):
+        with pytest.raises(ValueError):
+>           M["validate_box"](box, (10, 10))
+
+test\test_spatial_geometry_audit.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [0, 0, 5.5, 8], size = (10, 10)
+
+    def validate_box(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:5: NotImplementedError
+________________ test_pixels_are_hash_bound_before_processing _________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-89/test_pixels_are_hash_bound_bef0')
+
+    def test_pixels_are_hash_bound_before_processing(tmp_path):
+        path = tmp_path / "source.png"
+        Image.new("RGB", (40, 30), "red").save(path)
+        sha = hashlib.sha256(path.read_bytes()).hexdigest()
+        record = {"path": str(path), "sha256": sha, "roi": [1, 2, 30, 25]}
+>       assert M["load_pixels"](record).shape == (30, 40, 3)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_geometry_audit.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+record = {'path': 'C:\\Users\\JAVIER\\AppData\\Local\\Temp\\pytest-of-JAVIER\\pytest-89\\test_pixels_are_hash_bound_bef0\\source.png', 'sha256': 'ceac3f83ba2043aa7782b776ec5d595ea33a61c7d65b46c29ec73f57ba1a5c64', 'roi': [1, 2, 30, 25]}
+
+    def load_pixels(record):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:9: NotImplementedError
+_____ test_similarity_fit_uses_cartesian_coordinates_and_ignores_outlier ______
+
+    def test_similarity_fit_uses_cartesian_coordinates_and_ignores_outlier():
+        source = np.array([[0, 0], [30, 0], [0, 40], [25, 40], [12, 19], [45, 12]], dtype=float)
+        target = source * 1.5 + [13, -7]
+        target[-1] = [2000, 800]
+>       result = M["registration"](source, target)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_geometry_audit.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source_xy = array([[ 0.,  0.],
+       [30.,  0.],
+       [ 0., 40.],
+       [25., 40.],
+       [12., 19.],
+       [45., 12.]])
+candidate_xy = array([[  13. ,   -7. ],
+       [  58. ,   -7. ],
+       [  13. ,   53. ],
+       [  50.5,   53. ],
+       [  31. ,   21.5],
+       [2000. ,  800. ]])
+
+    def registration(source_xy, candidate_xy):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:13: NotImplementedError
+_________________ test_too_few_matches_abstain_without_repair _________________
+
+    def test_too_few_matches_abstain_without_repair():
+>       result = M["registration"](np.array([[0, 0], [1, 1]]), np.array([[0, 0], [1, 1]]))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_geometry_audit.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source_xy = array([[0, 0],
+       [1, 1]])
+candidate_xy = array([[0, 0],
+       [1, 1]])
+
+    def registration(source_xy, candidate_xy):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:13: NotImplementedError
+______________ test_perfect_mask_overlap_cannot_approve_identity ______________
+
+    def test_perfect_mask_overlap_cannot_approve_identity():
+        mask = np.zeros((80, 70), dtype=bool)
+        mask[15:65, 20:50] = True
+>       result = M["compare_masks"](mask, mask)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_geometry_audit.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reference = array([[False, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False],
+      ...alse, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False]], shape=(80, 70))
+candidate = array([[False, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False],
+      ...alse, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False]], shape=(80, 70))
+
+    def compare_masks(reference, candidate):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:21: NotImplementedError
+_____________ test_normalization_preserves_large_internal_opening _____________
+
+    def test_normalization_preserves_large_internal_opening():
+        mask = np.zeros((100, 80), dtype=bool)
+        mask[10:90, 10:70] = True
+        mask[35:65, 25:55] = False
+>       normalized = M["normalize_mask"](mask)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_geometry_audit.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+mask = array([[False, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False],
+      ...lse, False, False, ..., False, False, False],
+       [False, False, False, ..., False, False, False]], shape=(100, 80))
+
+    def normalize_mask(mask):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:17: NotImplementedError
+___________________ test_empty_segmentation_is_unavailable ____________________
+
+    def test_empty_segmentation_is_unavailable():
+        empty = np.zeros((30, 30), dtype=bool)
+>       result = M["compare_masks"](empty, empty)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_spatial_geometry_audit.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+reference = array([[False, False, False, False, False, False, False, False, False,
+        False, False, False, False, False, Fals...se, False, False,
+        False, False, False, False, False, False, False, False, False,
+        False, False, False]])
+candidate = array([[False, False, False, False, False, False, False, False, False,
+        False, False, False, False, False, Fals...se, False, False,
+        False, False, False, False, False, False, False, False, False,
+        False, False, False]])
+
+    def compare_masks(reference, candidate):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:21: NotImplementedError
+_____________________ test_existing_outputs_are_preserved _____________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-89/test_existing_outputs_are_pres0')
+
+    def test_existing_outputs_are_preserved(tmp_path):
+        output = tmp_path / "evidence.json"
+        output.write_text("retained", encoding="utf-8")
+        figures = tmp_path / "figures"
+        with pytest.raises(ValueError, match="existing"):
+>           M["reserve_outputs"](output, figures)
+
+test\test_spatial_geometry_audit.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+output = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-89/test_existing_outputs_are_pres0/evidence.json')
+figures = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-89/test_existing_outputs_are_pres0/figures')
+
+    def reserve_outputs(output, figures):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_spatial_geometry.py:25: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_spatial_geometry_audit.py::test_invalid_or_ambiguous_roi_is_rejected[box0]
+FAILED test/test_spatial_geometry_audit.py::test_invalid_or_ambiguous_roi_is_rejected[box1]
+FAILED test/test_spatial_geometry_audit.py::test_invalid_or_ambiguous_roi_is_rejected[box2]
+FAILED test/test_spatial_geometry_audit.py::test_invalid_or_ambiguous_roi_is_rejected[box3]
+FAILED test/test_spatial_geometry_audit.py::test_invalid_or_ambiguous_roi_is_rejected[box4]
+FAILED test/test_spatial_geometry_audit.py::test_pixels_are_hash_bound_before_processing
+FAILED test/test_spatial_geometry_audit.py::test_similarity_fit_uses_cartesian_coordinates_and_ignores_outlier
+FAILED test/test_spatial_geometry_audit.py::test_too_few_matches_abstain_without_repair
+FAILED test/test_spatial_geometry_audit.py::test_perfect_mask_overlap_cannot_approve_identity
+FAILED test/test_spatial_geometry_audit.py::test_normalization_preserves_large_internal_opening
+FAILED test/test_spatial_geometry_audit.py::test_empty_segmentation_is_unavailable
+FAILED test/test_spatial_geometry_audit.py::test_existing_outputs_are_preserved
+12 failed in 0.34s

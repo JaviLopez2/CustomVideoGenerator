@@ -4,6 +4,10 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Independent spatial audit — 2026-10-09
+
+From published `0e4a0aa`, fixed CPU cohort on6 retained originals completes: SIFT full/nativeROI±8 and HSV three-threshold masks, no VLM/GPU/generation/downloads/services. C/recolor align locally; A and B both lack finite nativeROI fit, so absence of matches cannot judge shape. Color masks select incomplete parts/background; Dice ordering reverses with thresholds. All scores remain diagnostic/uncertain, no admission. Added isolated reproducible script/tests only, no app/routing/gates/deps/workflow changes. API FailedEstimation correction preserved with real RED→GREEN and unchanged parameters.89 fresh tests pass exit0,1expected warning. [Report](docs/SPATIAL_GEOMETRY_AUDIT_REPORT.md). Next explicit complete-object masks/part landmarks and independent review before calibration; no further prompt fishing. Stable tracked intact; preserve ignored SVG/originals. Closing SHA via history/origin.
+
 ## Current visual judge selection — 2026-10-08
 
 Latest continuation from `3e2b873`: single-component controls complete, 20 retained VLM requests /0generations /0timeouts/truncations/retries. Both models recognize visible handle holes and target absence; contact splitting remains inconsistent (Qwen3.5 red2/blue1, Qwen3-VL aggregated1/1). Both report one shaft-band region for all4keys; B still no hint despite human-reviewed shape change. 96 fresh focused tests pass, code unchanged (520+17 previous suite remains historical). Six own8092 closed, stable intact. Profiles/raw/replays/20localSVGs preserved. [Report](docs/ISOLATED_COMPONENTS_REPORT.md). Next independent spatial/shape verification audit; no admission or prompt-fishing rescue.
