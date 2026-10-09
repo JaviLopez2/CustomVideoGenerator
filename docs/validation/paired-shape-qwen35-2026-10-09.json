@@ -1,0 +1,227 @@
+{
+  "protocol": "paired-major-shape-observations-1",
+  "execution_head": "92ea66495ff39dfc9368791a0802e6b54b183c49",
+  "harness_sha256": "d4ee5fecb83c6805057136d0ef2ae8eecf1a43fe86cad311e2aed070efda07de",
+  "observer_sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1",
+  "plan_sha256": "ff4da2fefe388bb5371cc70bcea3522032256f250c6591a892159ad589e0ee72",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "subject": "key",
+  "rows": [
+    {
+      "case_id": "A",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "123980a21878a604751bf6bea7fe595d29642a997aa5ab5b8c5d4abcea1e2193",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "candidate",
+          "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9"
+        }
+      ],
+      "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"The key in both images has the same major shape and arrangement of parts: a cylindrical shaft, a knurled head, and a bit with two distinct cuts. The overall form and layout of these principal parts are identical in both images.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 2229,
+        "total_tokens": 2311,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2229,
+        "prompt_ms": 3095.323,
+        "prompt_per_token_ms": 1.3886599371915658,
+        "prompt_per_second": 720.1187081283601,
+        "predicted_n": 82,
+        "predicted_ms": 1648.847,
+        "predicted_per_token_ms": 20.356135802469137,
+        "predicted_per_second": 49.12523721121487
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The key in both images has the same major shape and arrangement of parts: a cylindrical shaft, a knurled head, and a bit with two distinct cuts. The overall form and layout of these principal parts are identical in both images."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 4.934804299999087
+    },
+    {
+      "case_id": "B",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "182569cb710a13f3f48297ea0a44263499ba836d6aa243cdfa79dc1020a12eb9",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "candidate",
+          "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb"
+        }
+      ],
+      "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"Both images show a key with a long, cylindrical shaft and a single, flat blade with a cutout. The overall form and arrangement of the major parts (shaft and blade) are consistent between the two images.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 2229,
+        "total_tokens": 2308,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2229,
+        "prompt_ms": 2953.811,
+        "prompt_per_token_ms": 1.325173171825931,
+        "prompt_per_second": 754.6183557444941,
+        "predicted_n": 79,
+        "predicted_ms": 1694.522,
+        "predicted_per_token_ms": 21.724641025641024,
+        "predicted_per_second": 46.030680038382506
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "Both images show a key with a long, cylindrical shaft and a single, flat blade with a cutout. The overall form and arrangement of the major parts (shaft and blade) are consistent between the two images."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 4.829072000000451
+    },
+    {
+      "case_id": "C",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "28181c5ff5f19dd9a99c7849d694ccd2f3daf51e875e85bf434bef47f67ba8d6",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+        },
+        {
+          "role": "candidate",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        }
+      ],
+      "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"The visible shape and arrangement of the key in both images are identical. It has the same long shaft, a single collar, and a bit with two distinct cuts. The only difference is the color of the fabric background.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 2229,
+        "total_tokens": 2307,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2229,
+        "prompt_ms": 2947.732,
+        "prompt_per_token_ms": 1.3224459398833557,
+        "prompt_per_second": 756.1745776074623,
+        "predicted_n": 78,
+        "predicted_ms": 1554.854,
+        "predicted_per_token_ms": 20.19290909090909,
+        "predicted_per_second": 49.522334572892376
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The visible shape and arrangement of the key in both images are identical. It has the same long shaft, a single collar, and a bit with two distinct cuts. The only difference is the color of the fabric background."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 4.80071620000308
+    }
+  ],
+  "policy": {
+    "labels_sent": false,
+    "case_names_sent": false,
+    "mask_used": false,
+    "max_tokens": 256,
+    "timeout_seconds": 60,
+    "thinking": false
+  },
+  "owned_server_closed": true,
+  "admission_allowed": false,
+  "automatic_rejection": false,
+  "physical_identity_established": false,
+  "owned_pid": 22924,
+  "load_seconds": 4.040217100002337,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "requests_attempted": 3,
+  "unattempted_cases": []
+}

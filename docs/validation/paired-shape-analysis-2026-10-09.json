@@ -1,0 +1,100 @@
+{
+  "protocol": "paired-major-shape-analysis-1",
+  "checked_utc": "2026-10-09T14:57:02.635715+00:00",
+  "execution_head": "92ea66495ff39dfc9368791a0802e6b54b183c49",
+  "plan_sha256": "ff4da2fefe388bb5371cc70bcea3522032256f250c6591a892159ad589e0ee72",
+  "models": [
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "report": "docs/validation/paired-shape-qwen35-2026-10-09.json",
+      "report_sha256": "5e88d05406db5e535d4a73f494beac789b31604a132f13f2b5c6b08fed7c5ea9",
+      "matrix": [
+        {
+          "case_id": "A",
+          "human_expected_major_change": "not_observed",
+          "model_major_change": "not_observed",
+          "category": "TN",
+          "seconds": 4.934804299999087
+        },
+        {
+          "case_id": "B",
+          "human_expected_major_change": "observed",
+          "model_major_change": "not_observed",
+          "category": "FN",
+          "seconds": 4.829072000000451
+        },
+        {
+          "case_id": "C",
+          "human_expected_major_change": "not_observed",
+          "model_major_change": "not_observed",
+          "category": "TN",
+          "seconds": 4.80071620000308
+        }
+      ],
+      "preliminary_task_counts": {
+        "TP": 0,
+        "TN": 2,
+        "FP": 0,
+        "FN": 1,
+        "uncertain": 0,
+        "unavailable": 0
+      },
+      "latency_mean_seconds": 4.854864166667539,
+      "latency_median_seconds": 4.829072000000451,
+      "load_seconds": 4.040217100002337,
+      "owned_server_closed": true
+    },
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "report": "docs/validation/paired-shape-qwen3vl-2026-10-09.json",
+      "report_sha256": "5fffc1a91fb356c241468655b6234a21df600e5fd9ccd6a607f0877c3e1e36fc",
+      "matrix": [
+        {
+          "case_id": "A",
+          "human_expected_major_change": "not_observed",
+          "model_major_change": "not_observed",
+          "category": "TN",
+          "seconds": 5.10003560000041
+        },
+        {
+          "case_id": "B",
+          "human_expected_major_change": "observed",
+          "model_major_change": "not_observed",
+          "category": "FN",
+          "seconds": 3.9808884999984
+        },
+        {
+          "case_id": "C",
+          "human_expected_major_change": "not_observed",
+          "model_major_change": "not_observed",
+          "category": "TN",
+          "seconds": 5.04104340000049
+        }
+      ],
+      "preliminary_task_counts": {
+        "TP": 0,
+        "TN": 2,
+        "FP": 0,
+        "FN": 1,
+        "uncertain": 0,
+        "unavailable": 0
+      },
+      "latency_mean_seconds": 4.7073224999997665,
+      "latency_median_seconds": 5.04104340000049,
+      "load_seconds": 4.041309600001114,
+      "owned_server_closed": true
+    }
+  ],
+  "paired_requests_identical_between_models": true,
+  "actual_requests": 6,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "decision": "Both miss human-confirmed major shape change B; neither validated for automatic geometry admission or veto",
+  "raw_categorical_answers_not_repaired_from_prose": true,
+  "not_observed_is_not_identity_proof": true,
+  "known_retrospective_three_pairs_one_family": true,
+  "population_accuracy_or_p95_claimed": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "next": "Predeclared ROI/context contrast, exact same prompt/schema/decoding/models on crops from earlier source-bound audit regions; no new labels or generation"
+}

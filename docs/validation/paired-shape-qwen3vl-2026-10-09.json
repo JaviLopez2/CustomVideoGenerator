@@ -1,0 +1,227 @@
+{
+  "protocol": "paired-major-shape-observations-1",
+  "execution_head": "92ea66495ff39dfc9368791a0802e6b54b183c49",
+  "harness_sha256": "d4ee5fecb83c6805057136d0ef2ae8eecf1a43fe86cad311e2aed070efda07de",
+  "observer_sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1",
+  "plan_sha256": "ff4da2fefe388bb5371cc70bcea3522032256f250c6591a892159ad589e0ee72",
+  "model": {
+    "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "size": 5027784800,
+        "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+      },
+      {
+        "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+        "size": 1159029824,
+        "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "subject": "key",
+  "rows": [
+    {
+      "case_id": "A",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "123980a21878a604751bf6bea7fe595d29642a997aa5ab5b8c5d4abcea1e2193",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "candidate",
+          "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9"
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"The key in both images has the same visible shape: a cylindrical shaft with a distinct bit at the end. The overall form and arrangement of its major parts are identical.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 2225,
+        "total_tokens": 2298,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2225,
+        "prompt_ms": 3453.432,
+        "prompt_per_token_ms": 1.5521042696629213,
+        "prompt_per_second": 644.2866111161303,
+        "predicted_n": 73,
+        "predicted_ms": 1436.314,
+        "predicted_per_token_ms": 19.948805555555555,
+        "predicted_per_second": 50.12831456074368
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The key in both images has the same visible shape: a cylindrical shaft with a distinct bit at the end. The overall form and arrangement of its major parts are identical."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 5.10003560000041
+    },
+    {
+      "case_id": "B",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "182569cb710a13f3f48297ea0a44263499ba836d6aa243cdfa79dc1020a12eb9",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "candidate",
+          "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb"
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"Both images show a key with a distinct bow, shank, and bit. The key in image 1 has a simple, straight shank and a rectangular bit with a single cut. The key in image 2 has a more ornate bow and a shank with a series of cuts, but both are clearly identifiable as keys with the same fundamental parts and arrangement.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 114,
+        "prompt_tokens": 2225,
+        "total_tokens": 2339,
+        "prompt_tokens_details": {
+          "cached_tokens": 1187
+        }
+      },
+      "server_timings": {
+        "cache_n": 1187,
+        "prompt_n": 1038,
+        "prompt_ms": 1592.36,
+        "prompt_per_token_ms": 1.5340655105973025,
+        "prompt_per_second": 651.8626441257003,
+        "predicted_n": 114,
+        "predicted_ms": 2179.991,
+        "predicted_per_token_ms": 19.291955752212388,
+        "predicted_per_second": 51.83507638334287
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "Both images show a key with a distinct bow, shank, and bit. The key in image 1 has a simple, straight shank and a rectangular bit with a single cut. The key in image 2 has a more ornate bow and a shank with a series of cuts, but both are clearly identifiable as keys with the same fundamental parts and arrangement."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 3.9808884999984
+    },
+    {
+      "case_id": "C",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "28181c5ff5f19dd9a99c7849d694ccd2f3daf51e875e85bf434bef47f67ba8d6",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+        },
+        {
+          "role": "candidate",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"The key in both images has the same visible shape: a cylindrical shaft with a distinct bit at the end. No parts are missing, added, or fused, and the overall form and arrangement are identical.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 2225,
+        "total_tokens": 2305,
+        "prompt_tokens_details": {
+          "cached_tokens": 153
+        }
+      },
+      "server_timings": {
+        "cache_n": 153,
+        "prompt_n": 2072,
+        "prompt_ms": 2994.984,
+        "prompt_per_token_ms": 1.4454555984555983,
+        "prompt_per_second": 691.8233953837483,
+        "predicted_n": 80,
+        "predicted_ms": 1535.158,
+        "predicted_per_token_ms": 19.43237974683544,
+        "predicted_per_second": 51.46050113408523
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The key in both images has the same visible shape: a cylindrical shaft with a distinct bit at the end. No parts are missing, added, or fused, and the overall form and arrangement are identical."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 5.04104340000049
+    }
+  ],
+  "policy": {
+    "labels_sent": false,
+    "case_names_sent": false,
+    "mask_used": false,
+    "max_tokens": 256,
+    "timeout_seconds": 60,
+    "thinking": false
+  },
+  "owned_server_closed": true,
+  "admission_allowed": false,
+  "automatic_rejection": false,
+  "physical_identity_established": false,
+  "owned_pid": 2604,
+  "load_seconds": 4.041309600001114,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "requests_attempted": 3,
+  "unattempted_cases": []
+}

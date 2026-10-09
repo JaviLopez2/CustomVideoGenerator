@@ -1,0 +1,143 @@
+{
+  "protocol": "paired-major-shape-roi-preflight-1",
+  "checked_utc": "2026-10-09T15:06:16.626817+00:00",
+  "execution_base_head": "92ea66495ff39dfc9368791a0802e6b54b183c49",
+  "plan": {
+    "path": "docs/validation/paired-shape-roi-probe-plan-2026-10-09.json",
+    "sha256": "56b4d74f4efbd9c1c352c8a745c026a2d4cd0d0fff729914e4c089d511f1a529"
+  },
+  "source_and_test_bindings": [
+    {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "d4ee5fecb83c6805057136d0ef2ae8eecf1a43fe86cad311e2aed070efda07de"
+    },
+    {
+      "path": "scripts/evaluate_multimodal_judges.py",
+      "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+    },
+    {
+      "path": "scripts/observe_visual_geometry.py",
+      "sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b"
+    },
+    {
+      "path": "test/test_paired_shape_observations.py",
+      "sha256": "12748b7bbd720677361ed4325120b599c17419b87f95699553c79b3e5606c23f"
+    },
+    {
+      "path": "test/test_paired_shape_runner.py",
+      "sha256": "6b7e1a9d7f4e79983b7a63131b4120512f67b3b4395730b4126840fe395d05a5"
+    },
+    {
+      "path": "docs/validation/paired-shape-final-tests-2026-10-09.txt",
+      "sha256": "a6eee15776a776ffc373a5c4bc3ef6e28914a0509b3be4c757fbc17ff3d32c19"
+    }
+  ],
+  "test_result_already_executed_this_phase": {
+    "passed": 184,
+    "new_tests": 51,
+    "seconds": 7.34,
+    "exit_code": 0,
+    "warnings": 0,
+    "source_unchanged_since_run": true,
+    "log": {
+      "path": "docs/validation/paired-shape-final-tests-2026-10-09.txt",
+      "sha256": "a6eee15776a776ffc373a5c4bc3ef6e28914a0509b3be4c757fbc17ff3d32c19"
+    }
+  },
+  "visual_preflight": {
+    "reviewer": "assistant",
+    "all_four_crops_and_full_A_B_frames_inspected": true,
+    "visible_target_major_parts_retained": true,
+    "regions_not_changed_after_model_results": true,
+    "prior_regions_plus_uniform_margin": 8,
+    "exact_source_pixel_subsets_and_modes_verified": true,
+    "no_new_human_gold": true,
+    "B_mask_used": false
+  },
+  "ports_open": {
+    "8080": false,
+    "8092": false
+  },
+  "health": {
+    "8080": {
+      "unavailable": true
+    },
+    "8090": {
+      "http_status": 404
+    },
+    "8188": {
+      "http_status": 200
+    }
+  },
+  "queue": {
+    "running": 0,
+    "pending": 0
+  },
+  "gpu_used_mib": 1105,
+  "available_ram_bytes": 19155529728,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_clean": true,
+  "git_access_note": "Default stable Git read stopped on expected Windows sandbox ownership; safe.directory supplied per read-only Git command for this explicitly trusted path, no global configuration/ACL/file change",
+  "source_plan_prompt_schema_decoding_identical": true,
+  "crop_payloads_without_dispatch": [
+    {
+      "case_id": "A",
+      "request_sha256": "77106f927e1356185a2ebf583264e156a82f23b460897672dc076c5418953e4f",
+      "new_input_sha256s": [
+        "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b",
+        "165f9c737fd77a49afac1492b0aedec39e9580c87529a1fc81377c011e851d50"
+      ],
+      "only_prompt_and_two_pngs": true,
+      "labels_or_case_names_sent": false
+    },
+    {
+      "case_id": "B",
+      "request_sha256": "9e33c61e533fcb10e0fd82fad3aec851031c0690a7061debcf486b9ac4b5e81c",
+      "new_input_sha256s": [
+        "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b",
+        "000eb972df83b6b6ebf62a8f1adca27c5698bb1859749fabfcb2ce907b6b4b04"
+      ],
+      "only_prompt_and_two_pngs": true,
+      "labels_or_case_names_sent": false
+    },
+    {
+      "case_id": "C",
+      "request_sha256": "711be19acb5825da9a6c540761a8c086aa6ffc7786adcf2ce9eb8da6f1cd7eb7",
+      "new_input_sha256s": [
+        "d76cb3d7d5e4e6edaf17c2bfd01660103da9a47025af2cd18a32f2440771e44d",
+        "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b"
+      ],
+      "only_prompt_and_two_pngs": true,
+      "labels_or_case_names_sent": false
+    }
+  ],
+  "new_requests_at_this_preflight": 0,
+  "budget": {
+    "maximum_requests_total": 6,
+    "requests_per_model": 3,
+    "case_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "automatic_retries": 0,
+    "separate_sequential_owned_servers": true,
+    "port": 8092,
+    "context": 8192,
+    "temperature": 0,
+    "max_tokens": 256,
+    "thinking": false,
+    "json_schema": true,
+    "http_timeout_seconds": 60,
+    "stop_model_cohort_at_first_invalid_or_unavailable": true,
+    "min_image_tokens": 1024,
+    "max_image_tokens": 1536,
+    "new_generation_requests": 0,
+    "new_downloads": 0
+  },
+  "next": "Run each declared model cohort once; retain categories without prose rescue and close owned PID."
+}

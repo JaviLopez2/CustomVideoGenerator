@@ -1,0 +1,133 @@
+{
+  "protocol": "paired-major-shape-roi-analysis-1",
+  "checked_utc": "2026-10-09T15:10:19.280386+00:00",
+  "execution_head": "92ea66495ff39dfc9368791a0802e6b54b183c49",
+  "plan": {
+    "path": "docs/validation/paired-shape-roi-probe-plan-2026-10-09.json",
+    "sha256": "56b4d74f4efbd9c1c352c8a745c026a2d4cd0d0fff729914e4c089d511f1a529"
+  },
+  "preflight": {
+    "path": "docs/validation/paired-shape-roi-preflight-2026-10-09.json",
+    "sha256": "f256b80966b633834ba0edc7493250eb9cdd16cf24cdd84cdcc563db4cd70be4"
+  },
+  "full_frame_analysis": {
+    "path": "docs/validation/paired-shape-analysis-2026-10-09.json",
+    "sha256": "3b0cf7692c73625f3c24000771237a87ed5dde65825891a2348a170999c56a75"
+  },
+  "models": [
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "report": "docs/validation/paired-shape-roi-qwen35-2026-10-09.json",
+      "report_sha256": "7defadb47ffe04155c7ef6b9a1e8b6060f4792ef5be1a0e5c0c0e99d670ca596",
+      "matrix": [
+        {
+          "case_id": "A",
+          "human_expected_major_change": "not_observed",
+          "model_major_change": "not_observed",
+          "category": "TN",
+          "seconds": 4.761096799997176,
+          "full_frame_major_change": "not_observed",
+          "full_frame_seconds": 4.934804299999087,
+          "server_cached_prompt_tokens": 0
+        },
+        {
+          "case_id": "B",
+          "human_expected_major_change": "observed",
+          "model_major_change": "observed",
+          "category": "TP",
+          "seconds": 4.828083600001264,
+          "full_frame_major_change": "not_observed",
+          "full_frame_seconds": 4.829072000000451,
+          "server_cached_prompt_tokens": 0
+        },
+        {
+          "case_id": "C",
+          "human_expected_major_change": "not_observed",
+          "model_major_change": "not_observed",
+          "category": "TN",
+          "seconds": 4.478127200000017,
+          "full_frame_major_change": "not_observed",
+          "full_frame_seconds": 4.80071620000308,
+          "server_cached_prompt_tokens": 0
+        }
+      ],
+      "preliminary_task_counts": {
+        "TP": 1,
+        "TN": 2,
+        "FP": 0,
+        "FN": 0,
+        "uncertain": 0,
+        "unavailable": 0
+      },
+      "latency_mean_seconds": 4.689102533332819,
+      "latency_median_seconds": 4.761096799997176,
+      "load_seconds": 4.030746100001124,
+      "owned_server_closed": true
+    },
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "report": "docs/validation/paired-shape-roi-qwen3vl-2026-10-09.json",
+      "report_sha256": "c025f15c4826b799a7cde21bd6370f068d595826862f818667615299586abc10",
+      "matrix": [
+        {
+          "case_id": "A",
+          "human_expected_major_change": "not_observed",
+          "model_major_change": "not_observed",
+          "category": "TN",
+          "seconds": 4.811880799999926,
+          "full_frame_major_change": "not_observed",
+          "full_frame_seconds": 5.10003560000041,
+          "server_cached_prompt_tokens": 0
+        },
+        {
+          "case_id": "B",
+          "human_expected_major_change": "observed",
+          "model_major_change": "observed",
+          "category": "TP",
+          "seconds": 3.2970440999997663,
+          "full_frame_major_change": "not_observed",
+          "full_frame_seconds": 3.9808884999984,
+          "server_cached_prompt_tokens": 1211
+        },
+        {
+          "case_id": "C",
+          "human_expected_major_change": "not_observed",
+          "model_major_change": "not_observed",
+          "category": "TN",
+          "seconds": 4.825118900000234,
+          "full_frame_major_change": "not_observed",
+          "full_frame_seconds": 5.04104340000049,
+          "server_cached_prompt_tokens": 153
+        }
+      ],
+      "preliminary_task_counts": {
+        "TP": 1,
+        "TN": 2,
+        "FP": 0,
+        "FN": 0,
+        "uncertain": 0,
+        "unavailable": 0
+      },
+      "latency_mean_seconds": 4.311347933333309,
+      "latency_median_seconds": 4.811880799999926,
+      "load_seconds": 4.0331321000012395,
+      "owned_server_closed": true
+    }
+  ],
+  "paired_requests_identical_between_models": true,
+  "new_requests": 6,
+  "total_new_requests_full_frame_plus_roi": 12,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "decision": "Both ROI cohorts distinguish human-reviewed major change B and overall-preserved A/C on this known three-pair key cohort; full-frame misses retained, no general validation or automatic geometry gate",
+  "changed_factor": "Input focusing through earlier source-bound regions plus uniform8px; context and effective visual resolution change together",
+  "not_observed_is_not_identity_proof": true,
+  "human_labels_not_rewritten_or_sent_to_models": true,
+  "B_mask_not_used": true,
+  "manual_prior_ROIs_not_an_automatic_localizer": true,
+  "no_population_accuracy_p95_or_pure_resolution_causal_claim": true,
+  "admission_allowed": false,
+  "automatic_rejection": false,
+  "physical_identity_established": false,
+  "next": "Retain promising ROI diagnostic; verify reusable provenance-bound region preparation and cross-family retained controls before any geometry policy integration"
+}

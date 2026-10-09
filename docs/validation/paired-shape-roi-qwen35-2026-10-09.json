@@ -1,0 +1,232 @@
+{
+  "protocol": "paired-major-shape-observations-1",
+  "execution_head": "92ea66495ff39dfc9368791a0802e6b54b183c49",
+  "harness_sha256": "d4ee5fecb83c6805057136d0ef2ae8eecf1a43fe86cad311e2aed070efda07de",
+  "observer_sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1",
+  "plan_sha256": "56b4d74f4efbd9c1c352c8a745c026a2d4cd0d0fff729914e4c089d511f1a529",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "subject": "key",
+  "rows": [
+    {
+      "case_id": "A",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "77106f927e1356185a2ebf583264e156a82f23b460897672dc076c5418953e4f",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b"
+        },
+        {
+          "role": "candidate",
+          "sha256": "165f9c737fd77a49afac1492b0aedec39e9580c87529a1fc81377c011e851d50"
+        }
+      ],
+      "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"Both images show a key with an identical overall form, consisting of a long, cylindrical shaft, a decorative collar near the head, and a rectangular bit with two distinct notches. The arrangement of these major parts is consistent between the two images.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 83,
+        "prompt_tokens": 2257,
+        "total_tokens": 2340,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2257,
+        "prompt_ms": 3046.369,
+        "prompt_per_token_ms": 1.349742578644218,
+        "prompt_per_second": 740.8820139648218,
+        "predicted_n": 83,
+        "predicted_ms": 1655.689,
+        "predicted_per_token_ms": 20.191329268292684,
+        "predicted_per_second": 49.52620933037545
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "Both images show a key with an identical overall form, consisting of a long, cylindrical shaft, a decorative collar near the head, and a rectangular bit with two distinct notches. The arrangement of these major parts is consistent between the two images."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 4.761096799997176
+    },
+    {
+      "case_id": "B",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "9e33c61e533fcb10e0fd82fad3aec851031c0690a7061debcf486b9ac4b5e81c",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b"
+        },
+        {
+          "role": "candidate",
+          "sha256": "000eb972df83b6b6ebf62a8f1adca27c5698bb1859749fabfcb2ce907b6b4b04"
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"observed\",\n  \"difference_evidence\": \"The reference key has a long, cylindrical shaft with a distinct head and a flat, rectangular blade. The candidate key has a shorter shaft, a different shaped head with a hole, and a more complex, non-rectangular blade.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 90,
+        "prompt_tokens": 2261,
+        "total_tokens": 2351,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2261,
+        "prompt_ms": 2964.564,
+        "prompt_per_token_ms": 1.311173816895179,
+        "prompt_per_second": 762.675388353903,
+        "predicted_n": 90,
+        "predicted_ms": 1803.788,
+        "predicted_per_token_ms": 20.267280898876404,
+        "predicted_per_second": 49.340609872113575
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "observed",
+        "difference_evidence": "The reference key has a long, cylindrical shaft with a distinct head and a flat, rectangular blade. The candidate key has a shorter shaft, a different shaped head with a hole, and a more complex, non-rectangular blade."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": [
+          {
+            "kind": "reported_major_shape_change",
+            "evidence": "The reference key has a long, cylindrical shaft with a distinct head and a flat, rectangular blade. The candidate key has a shorter shaft, a different shaped head with a hole, and a more complex, non-rectangular blade."
+          }
+        ]
+      },
+      "seconds": 4.828083600001264
+    },
+    {
+      "case_id": "C",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "711be19acb5825da9a6c540761a8c086aa6ffc7786adcf2ce9eb8da6f1cd7eb7",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "d76cb3d7d5e4e6edaf17c2bfd01660103da9a47025af2cd18a32f2440771e44d"
+        },
+        {
+          "role": "candidate",
+          "sha256": "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b"
+        }
+      ],
+      "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"The visible shape and arrangement of the key's major parts (cylindrical shaft with decorative rings and rectangular bit) are identical in both images.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 65,
+        "prompt_tokens": 2277,
+        "total_tokens": 2342,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2277,
+        "prompt_ms": 2954.548,
+        "prompt_per_token_ms": 1.2975617039964864,
+        "prompt_per_second": 770.6762591096846,
+        "predicted_n": 65,
+        "predicted_ms": 1393.906,
+        "predicted_per_token_ms": 21.77978125,
+        "predicted_per_second": 45.91414342143588
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The visible shape and arrangement of the key's major parts (cylindrical shaft with decorative rings and rectangular bit) are identical in both images."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 4.478127200000017
+    }
+  ],
+  "policy": {
+    "labels_sent": false,
+    "case_names_sent": false,
+    "mask_used": false,
+    "max_tokens": 256,
+    "timeout_seconds": 60,
+    "thinking": false
+  },
+  "owned_server_closed": true,
+  "admission_allowed": false,
+  "automatic_rejection": false,
+  "physical_identity_established": false,
+  "owned_pid": 26356,
+  "load_seconds": 4.030746100001124,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "requests_attempted": 3,
+  "unattempted_cases": []
+}

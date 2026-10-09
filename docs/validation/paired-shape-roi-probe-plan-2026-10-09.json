@@ -1,0 +1,380 @@
+{
+  "protocol": "paired-major-shape-probe-plan-1",
+  "declared_utc": "2026-10-09T15:03:25.546837+00:00",
+  "execution_base_head": "92ea66495ff39dfc9368791a0802e6b54b183c49",
+  "status": "roi_prepared_pending_visual_preflight_and_execution",
+  "question": "Does input focusing using pre-existing whole-key audit regions alter paired major-shape observations, especially missed B, with identical public prompt/schema/decoding/models?",
+  "subject": "key",
+  "human_review": {
+    "path": "docs/validation/visual-geometry-human-review-2026-10-08.json",
+    "sha256": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3"
+  },
+  "cases": [
+    {
+      "case_id": "A",
+      "reference": {
+        "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_0.png",
+        "sha256": "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b",
+        "size": [
+          171,
+          376
+        ]
+      },
+      "candidate": {
+        "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_1.png",
+        "sha256": "165f9c737fd77a49afac1492b0aedec39e9580c87529a1fc81377c011e851d50",
+        "size": [
+          186,
+          246
+        ]
+      },
+      "offline_human_review_verbatim": "Conserva la forma de la llave y cambia ligeramente los anillos de la llave haciendolos un poco mas grandes.",
+      "offline_expected_major_shape_change": "not_observed",
+      "labels_sent_to_model": false,
+      "reference_source_frame": {
+        "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-a-reference.png",
+        "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "candidate_source_frame": {
+        "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-a-candidate.png",
+        "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+        "size": [
+          768,
+          1376
+        ]
+      }
+    },
+    {
+      "case_id": "B",
+      "reference": {
+        "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_0.png",
+        "sha256": "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b",
+        "size": [
+          171,
+          376
+        ]
+      },
+      "candidate": {
+        "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_2.png",
+        "sha256": "000eb972df83b6b6ebf62a8f1adca27c5698bb1859749fabfcb2ce907b6b4b04",
+        "size": [
+          321,
+          206
+        ]
+      },
+      "offline_human_review_verbatim": "Cambia totalmente la forma de la llave. No respeta nada de la llave. La peor sin duda.",
+      "offline_expected_major_shape_change": "observed",
+      "labels_sent_to_model": false,
+      "reference_source_frame": {
+        "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-b-reference.png",
+        "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "candidate_source_frame": {
+        "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-b-candidate.png",
+        "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+        "size": [
+          768,
+          1376
+        ]
+      }
+    },
+    {
+      "case_id": "C",
+      "reference": {
+        "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_3.png",
+        "sha256": "d76cb3d7d5e4e6edaf17c2bfd01660103da9a47025af2cd18a32f2440771e44d",
+        "size": [
+          171,
+          376
+        ]
+      },
+      "candidate": {
+        "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_0.png",
+        "sha256": "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b",
+        "size": [
+          171,
+          376
+        ]
+      },
+      "offline_human_review_verbatim": "Mantiene perfectamente la llave , no se ve ningun cambio en la llave.",
+      "offline_expected_major_shape_change": "not_observed",
+      "labels_sent_to_model": false,
+      "reference_source_frame": {
+        "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-c-reference.png",
+        "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "candidate_source_frame": {
+        "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-c-candidate.png",
+        "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "size": [
+          768,
+          1376
+        ]
+      }
+    }
+  ],
+  "model_prompt": "Compare only the visible shape and arrangement of major parts of the requested subject in image 1 (reference) and image 2 (candidate). Subject: key. A major change means a missing, added or fused principal part, or a clearly different overall form or arrangement. Ignore color, lighting, background, lettering and surface texture. Minor local size variations alone do not establish a major change. Object-name recognition alone does not establish shape preservation. If scale, perspective or occlusion prevents checking, report uncertain. State presence of the subject in each image, report major_shape_change as observed, not_observed or uncertain, and give short visible difference_evidence. not_observed is not proof of physical identity. Return only the specified JSON object.",
+  "response_schema": {
+    "type": "object",
+    "properties": {
+      "reference_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "candidate_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "major_shape_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "difference_evidence": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference_subject_presence",
+      "candidate_subject_presence",
+      "major_shape_change",
+      "difference_evidence"
+    ],
+    "additionalProperties": false
+  },
+  "protocol_scope": "Input-context and effective visual resolution contrast; crop changes both together, so not an isolated resolution causal claim",
+  "comparison_candidates": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "assets_manifest": {
+    "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+    "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+  },
+  "execution": {
+    "maximum_requests_total": 6,
+    "requests_per_model": 3,
+    "case_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "automatic_retries": 0,
+    "separate_sequential_owned_servers": true,
+    "port": 8092,
+    "context": 8192,
+    "temperature": 0,
+    "max_tokens": 256,
+    "thinking": false,
+    "json_schema": true,
+    "http_timeout_seconds": 60,
+    "stop_model_cohort_at_first_invalid_or_unavailable": true,
+    "min_image_tokens": 1024,
+    "max_image_tokens": 1536,
+    "new_generation_requests": 0,
+    "new_downloads": 0
+  },
+  "interpretation": {
+    "expected_labels_are_human_overall_shape_judgments_only": true,
+    "no_exact_identity_or_component_count_ground_truth": true,
+    "B_mask_not_used": true,
+    "known_retrospective_cohort_not_blind_generalization": true,
+    "no_population_accuracy_or_calibration_claim": true,
+    "no_automatic_admission": true,
+    "no_automatic_rejection": true,
+    "no_promotion_or_routing_change": true,
+    "model_no_change_does_not_imply_physical_identity": true
+  },
+  "next": "Inspect all four retained crops against source frames for visible major-part retention; record hash-bound assistant preflight, then execute max6 new paired requests in two sequential owned-server cohorts,0 retries/generations/downloads. No rescue of original categorical results.",
+  "derivation": {
+    "full_frame_plan": {
+      "path": "docs/validation/paired-shape-probe-plan-2026-10-09.json",
+      "sha256": "ff4da2fefe388bb5371cc70bcea3522032256f250c6591a892159ad589e0ee72"
+    },
+    "prior_region_plan": {
+      "path": "docs/validation/spatial-geometry-audit-plan-v2-2026-10-09.json",
+      "sha256": "c7b3e1747c93c475f239c14be933bfb254da0800be256be0f21f429640a6b1e6"
+    },
+    "uniform_margin_pixels": 8,
+    "prior_regions_predate_full_frame_model_outputs": true,
+    "no_new_human_labels_or_gold_masks": true,
+    "four_unique_images": [
+      {
+        "source": {
+          "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-a-reference.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "source_mode": "RGB",
+        "prior_region_id": "image_1",
+        "prior_roi": [
+          485,
+          605,
+          640,
+          965
+        ],
+        "uniform_margin_pixels": 8,
+        "crop_box_xyxy": [
+          477,
+          597,
+          648,
+          973
+        ],
+        "crop": {
+          "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_0.png",
+          "sha256": "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b",
+          "size": [
+            171,
+            376
+          ]
+        },
+        "exact_source_pixel_subset": true,
+        "mode_preserved": true,
+        "resize_or_color_transform": false,
+        "mask_used": false
+      },
+      {
+        "source": {
+          "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-a-candidate.png",
+          "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "source_mode": "RGBA",
+        "prior_region_id": "image_3",
+        "prior_roi": [
+          465,
+          950,
+          635,
+          1180
+        ],
+        "uniform_margin_pixels": 8,
+        "crop_box_xyxy": [
+          457,
+          942,
+          643,
+          1188
+        ],
+        "crop": {
+          "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_1.png",
+          "sha256": "165f9c737fd77a49afac1492b0aedec39e9580c87529a1fc81377c011e851d50",
+          "size": [
+            186,
+            246
+          ]
+        },
+        "exact_source_pixel_subset": true,
+        "mode_preserved": true,
+        "resize_or_color_transform": false,
+        "mask_used": false
+      },
+      {
+        "source": {
+          "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-b-candidate.png",
+          "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "source_mode": "RGB",
+        "prior_region_id": "image_2",
+        "prior_roi": [
+          370,
+          965,
+          675,
+          1155
+        ],
+        "uniform_margin_pixels": 8,
+        "crop_box_xyxy": [
+          362,
+          957,
+          683,
+          1163
+        ],
+        "crop": {
+          "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_2.png",
+          "sha256": "000eb972df83b6b6ebf62a8f1adca27c5698bb1859749fabfcb2ce907b6b4b04",
+          "size": [
+            321,
+            206
+          ]
+        },
+        "exact_source_pixel_subset": true,
+        "mode_preserved": true,
+        "resize_or_color_transform": false,
+        "mask_used": false
+      },
+      {
+        "source": {
+          "path": "local_image_stack/experiments/bridge/target/visual-geometry-blind-review-2026-10-08/pair-c-reference.png",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "source_mode": "RGB",
+        "prior_region_id": "image_0",
+        "prior_roi": [
+          485,
+          605,
+          640,
+          965
+        ],
+        "uniform_margin_pixels": 8,
+        "crop_box_xyxy": [
+          477,
+          597,
+          648,
+          973
+        ],
+        "crop": {
+          "path": "local_image_stack/experiments/bridge/target/paired-shape-roi-preparation-2026-10-09/image_3.png",
+          "sha256": "d76cb3d7d5e4e6edaf17c2bfd01660103da9a47025af2cd18a32f2440771e44d",
+          "size": [
+            171,
+            376
+          ]
+        },
+        "exact_source_pixel_subset": true,
+        "mode_preserved": true,
+        "resize_or_color_transform": false,
+        "mask_used": false
+      }
+    ],
+    "preparation_attempt": {
+      "first_attempt_stopped_before_dispatch": "An unnecessary RGB-only assertion rejected the existing RGBA A frame after the first RGB crop was saved; resume preserves each original mode and verifies exact pixel subsets",
+      "generation_or_model_requests": 0,
+      "partial_first_crop_preserved_byte_identically": true
+    }
+  }
+}

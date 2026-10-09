@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: paired shape ROI contrast and temporal parser audit
+
+Implementation92ea664 (base0746505): isolated generic paired observer/owned runner,51 new tests;184 pass7.34s/exit0/no warnings, sources unchanged after that run. Four completed cohorts/12 retained-image queries/0 retries/generations/downloads. Both full-frame cohorts miss human major change B (TP0/TN2/FN1); both ROI cohorts distinguish B and preserve A/C (TP1/TN2), same prompt/schema/decoding and old source-bound regions+uniform8px. Raw categorical failures retained, known3pairs/not general accuracy or identity/admission. [Report](docs/PAIRED_SHAPE_PROBE_REPORT.md). Four owned8092 closed, shared services/stable/apps/weights/defaults/gates/routing untouched. Manual ROIs are not an automatic localizer; context/effective resolution change together. Closing SHA via Git/origin; older next-probe sections are historical.
+
+Independent read-only audit finds a real temporal parser gap, reproduced locally: qualified/contradictory evidence may pass, and ambiguous previous absence may certify progression. [CPU evidence](docs/validation/temporal-caption-ambiguity-audit-2026-10-09.json). Next small generic TDD state_check fix with cache-version invalidation; no new inference needed. Existing selective checks/cache already implemented. Afterwards cross-family ROI preparation/coverage remains pending, no gate promotion. [Active autonomous handoff](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md); continue without routine approval.
+
 > Source of truth for agents working on this repository.
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.

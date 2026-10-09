@@ -1,0 +1,104 @@
+{
+  "protocol": "temporal-caption-ambiguity-audit-1",
+  "checked_utc": "2026-10-09T15:13:16.553348+00:00",
+  "base_head": "92ea66495ff39dfc9368791a0802e6b54b183c49",
+  "source": {
+    "path": "app/services/visual_qa.py",
+    "sha256": "2f9a76db3451e323c16152d93f497e33a06eda6dabdd52a7150d4a4de44ad435",
+    "version": "visual-qa-2"
+  },
+  "examples": [
+    {
+      "id": "qualified_required",
+      "caption": "The surface may have frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "uncertain",
+      "actual": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": []
+      },
+      "matches_intended_contract": false
+    },
+    {
+      "id": "contradictory_required",
+      "caption": "The surface has frost. The surface has no frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "uncertain",
+      "actual": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": []
+      },
+      "matches_intended_contract": false
+    },
+    {
+      "id": "qualified_forbidden",
+      "caption": "There might be smoke.",
+      "contract": {
+        "forbidden_evidence": [
+          "smoke"
+        ]
+      },
+      "expected_status": "uncertain",
+      "actual": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [
+          "smoke"
+        ],
+        "unknown_absence": []
+      },
+      "matches_intended_contract": false
+    },
+    {
+      "id": "qualified_previous",
+      "caption": "The surface has frost.",
+      "previous_caption": "The surface might have no frost.",
+      "contract": {
+        "required_evidence": [
+          "frost"
+        ]
+      },
+      "expected_status": "pass",
+      "expected_progression": null,
+      "actual": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": 1.0,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": []
+      },
+      "matches_intended_contract": false
+    }
+  ],
+  "scope": "Deterministic CPU function audit only, no image or model-validity claim",
+  "generation_requests": 0,
+  "judge_requests": 0,
+  "next": "TDD small generic state_check patch for qualifying/contradictory state evidence and ambiguous previous state, preserve clear negative fail and invalidate cached verdicts by version"
+}

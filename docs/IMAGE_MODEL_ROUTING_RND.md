@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — comparación conjunta y concentración de entrada, 2026-10-09
+
+Observador genérico aislado publicado92ea664, desde0746505;184 tests/51 nuevos pasan7,34s/exit0/sin avisos. Cuatro cohortes/12 consultas retenidas,0 retries/generaciones/descargas. Ambos jueces fallan B en fotograma completo y lo distinguen en recortes, conservando A/C: TP0/TN2/FN1 frente a TP1/TN2 por modelo. Misma prompt/schema/decoding; regiones anteriores+8px, píxeles/modes exactos. [Informe y tablas](PAIRED_SHAPE_PROBE_REPORT.md). Contexto y resolución efectiva cambian juntos;3pares conocidos no validan identidad, localizador o gate. Categorías raw no reinterpretadas; Bmask excluida, labels humanos intactos/offline. Medias4,3–4,9s para este diagnóstico, carga~4s separada/cache de prefijo visible; sin benchmark/p95 ni ahorro de QA completo certificado.
+
+Cuatro8092 propios cerrados; app/defaults/pesos/deps/plantillas/gates/routing/estable intactos. [Auditoría CPU temporal](validation/temporal-caption-ambiguity-audit-2026-10-09.json) confirma falso pass por cualificación/contradicción y progresión desde evidencia previa ambigua. Próximo parche genérico acotado con TDD y cambio de versión de caché; todavía pendiente. Caché/selectividad ya existen, no repetir fases. La comparación ROI entre familias sigue pendiente antes de cualquier promoción. Objetivo activo y continuidad sin otro permiso; se conservan los snapshots históricos siguientes.
+
 ## Actualización — ablación cerrada, volver a geometría retenida
 
 Desde4800f80, retirar referencia en una generación6,140s tampoco crea corte limpio;0 diferencias fuera/1208 dentro, decode crudo ya contiene parche y unión. [Informe](MUG_MASKED_NO_REFERENCE_REPORT.md). Control inutilizable,0 retries/0 jueces; no sensibilidad medida. Memoria liberada mediante API Comfy con cola vacía antes de enviar, sin reinicios. Se cierra esta línea de microedición. Próxima prueba: comparación conjunta de forma principal sobre A/B/C humanos ya revisados, [plan fijado](validation/paired-shape-probe-plan-2026-10-09.json),6 consultas máximo/dos jueces existentes/0 nuevas generaciones o descargas. Labels offline, no máscaras B/no identidad/admisión/routing. Objetivo activo; código/plantillas/modelos/deps/gates/estable intactos.
