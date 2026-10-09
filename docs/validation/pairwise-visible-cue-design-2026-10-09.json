@@ -1,0 +1,251 @@
+{
+  "protocol": "pairwise-visible-cue-design-1",
+  "declared_utc": "2026-10-09T17:29:33.917185+00:00",
+  "execution_base_head": "cc98f6e4f10cd49b54806856d2f6403654b5aa21",
+  "status": "method_fixed; observer/runner implementation and tests pending, no inference",
+  "question": "Does direct structured observation distinguish the requested visible cue in these retained previous/current frames, where archived captions leave the temporal check unknown, without inferring physical temperature/identity?",
+  "source_preparation": {
+    "path": "docs/validation/retained-temporal-fullframes-result-2026-10-09.json",
+    "sha256": "77c43c0488c71c9ed47567340ccd8bf14199cb9e365e8bee067f4cefbb34ac52"
+  },
+  "region_preparation": {
+    "path": "docs/validation/retained-temporal-visual-input-plan-2026-10-09.json",
+    "sha256": "cba401a3f79661a036535bd43ce2545c853b31d225ad793ef465f679bbc2bf85"
+  },
+  "artifact_manifest": {
+    "path": "local_image_stack/experiments/bridge/target/retained-temporal-fullframes-2026-10-09/manifest.json",
+    "sha256": "888d62bae61677e9fae3a9e1b39d3b851122b0ce10c7578aa8b13aeff6afe92c"
+  },
+  "prequery_assistant_audit": {
+    "path": "docs/validation/retained-temporal-assistant-visual-audit-2026-10-09.json",
+    "sha256": "f40513e3fc6b0de398a5473ed99c48605abe7386bf043d53d3c2852d57e60966"
+  },
+  "subject": "mug",
+  "cue_query": "Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature.",
+  "model_prompt": "Compare the requested visible cue in image 1 (previous frame) and image 2 (current frame). Subject: mug. Requested cue: Pale translucent wisps or plume-shaped marks emerging from or immediately above the visible opening of the subject. Describe only this visible cue, not its physical cause or temperature. State subject presence and cue_visibility separately for each image. Use observed only for a visibly associated cue, not color, lighting, object name or expectation. not_observed means the cue is not seen in the visible relevant area, not a claim of global physical absence. If the relevant area is obstructed, dark or ambiguous, or the subject is not established, use uncertain for its cue. Give a short visible evidence description for each frame. Do not infer physical temperature, chemical cause, liquid motion, elapsed time, physical identity or successful progression. Return only the specified JSON object.",
+  "response_schema": {
+    "type": "object",
+    "properties": {
+      "previous_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "previous_cue_visibility": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "previous_evidence": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "current_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "current_cue_visibility": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "current_evidence": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      }
+    },
+    "required": [
+      "previous_subject_presence",
+      "previous_cue_visibility",
+      "previous_evidence",
+      "current_subject_presence",
+      "current_cue_visibility",
+      "current_evidence"
+    ],
+    "additionalProperties": false
+  },
+  "cases": [
+    {
+      "case_id": "previous_same_bytes",
+      "previous_region_id": "previous_baseline",
+      "current_region_id": "previous_baseline",
+      "previous": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_00.png",
+        "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "current": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_00.png",
+        "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "evidence_origin": "exact_input_control",
+      "human_gold": false,
+      "expected_cue_visibility": null,
+      "expected_visible_transition": "no_visible_change",
+      "historical_temperature_or_identity_label_sent": false
+    },
+    {
+      "case_id": "retained_warm_512",
+      "previous_region_id": "previous_baseline",
+      "current_region_id": "temporal_warm_512",
+      "previous": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_00.png",
+        "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "current": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_01.png",
+        "sha256": "dcd9c928c4b24e0f827f8860b0e14ae0507ccb13aab1236942ebff9cfaeba841",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "evidence_origin": "unlabelled_retained_transition",
+      "human_gold": false,
+      "expected_cue_visibility": null,
+      "expected_visible_transition": null,
+      "historical_temperature_or_identity_label_sent": false
+    },
+    {
+      "case_id": "retained_hot_768",
+      "previous_region_id": "previous_baseline",
+      "current_region_id": "mpt_temporal_hot_768",
+      "previous": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_00.png",
+        "sha256": "cd3ecffc0e6b0a2edc0603090b848e2db1f9636f6fade10f29700cfc7ac803a0",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "current": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_02.png",
+        "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "evidence_origin": "unlabelled_retained_transition",
+      "human_gold": false,
+      "expected_cue_visibility": null,
+      "expected_visible_transition": null,
+      "historical_temperature_or_identity_label_sent": false
+    },
+    {
+      "case_id": "retained_cooled_768",
+      "previous_region_id": "mpt_temporal_hot_768",
+      "current_region_id": "mpt_temporal_cooled_768",
+      "previous": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_02.png",
+        "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "current": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-temporal-fullframes-2026-10-09\\image_03.png",
+        "sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "evidence_origin": "unlabelled_retained_transition",
+      "human_gold": false,
+      "expected_cue_visibility": null,
+      "expected_visible_transition": null,
+      "historical_temperature_or_identity_label_sent": false
+    }
+  ],
+  "comparison_candidates": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "assets_manifest": {
+    "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+    "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+  },
+  "execution": {
+    "requests_per_model": 4,
+    "maximum_requests_total": 8,
+    "case_order": [
+      "previous_same_bytes",
+      "retained_warm_512",
+      "retained_hot_768",
+      "retained_cooled_768"
+    ],
+    "automatic_retries": 0,
+    "port": 8092,
+    "context": 8192,
+    "parallel": 1,
+    "max_tokens": 256,
+    "temperature": 0,
+    "thinking": false,
+    "min_image_tokens": 1024,
+    "max_image_tokens": 1536,
+    "http_timeout_seconds": 60,
+    "separate_sequential_owned_servers": true,
+    "stop_at_first_invalid_or_unavailable": true,
+    "new_generation_requests": 0,
+    "new_downloads": 0
+  },
+  "budget_reason": "Three retained temporal pairs plus one exact duplicate-frame consistency control. New protocol budget8 declared before execution, rather than borrowing or extending the already closed cross-family6-request cohort.",
+  "validation_rules": [
+    "Exact public generic prompt/schema/decoding; query/subject are parameters, no special state rules for these photos",
+    "Source/fullframe pixels/mode/dimensions/helper/manifest/provenance rechecked before own server and each model HTTP",
+    "Both fields require known subject presence; presence absent/uncertain implies its cue uncertain",
+    "Strict duplicate-key/field/enum/type/truncation/reasoning checks; invalid means unavailable/stop, no retry or token rescue",
+    "The identical-input control must not support a visible transition; inconsistent cue categories on identical bytes are retained as inconsistency, never progression proof"
+  ],
+  "diagnostic_rules": {
+    "identity_score": null,
+    "state_score": null,
+    "progression_score": null,
+    "verdict": "uncertain",
+    "physical_identity_established": false,
+    "physical_temperature_measured": false,
+    "admission_allowed": false,
+    "automatic_rejection": false,
+    "visible_transition": "Categorical hint from previous/current observed/not_observed/uncertain; not a calibrated score or physical progression",
+    "not_observed_does_not_certify_global_absence": true,
+    "steam_like_cue_is_not_physical_steam_or_heat_certification": true,
+    "still_liquid_requirement_not_evaluated_by_this_single_cue": true
+  },
+  "stopping_rule": "One fixed cohort per existing model, at most8total/4each; preserve raw failures and close only owned8092. No prompt/crop/label/token retuning, smoke-to-steam alias change, extra recoloring or generation to recover a pass. No production/default/gate/routing changes.",
+  "analysis_limits": [
+    "Existing historical assistant pass/uncertain labels preserved separately; no independent human cue gold or population accuracy",
+    "Self control establishes identical visible inputs, not cue presence/absence correctness",
+    "Measure local request/load separately and cache effects; do not claim full QA reduction/p95 from4rows",
+    "Cold opening remains ambiguous in assistant view; report model agreement/disagreement without relabeling gold or assuming liquid temperature",
+    "Full frames retain the entire captured area; original camera boundary can still clip upper plume, no global scene coverage claim"
+  ],
+  "exact_input_control_policy": "Require equal subject-presence and cue categories for byte-identical input pairs; retain any contradictory raw response as input inconsistency, make diagnostic uncertain with no transition hint, and stop that model cohort before subsequent cases. Equal uncertain categories are allowed, and do not establish cue presence/absence correctness."
+}

@@ -1,0 +1,56 @@
+{
+  "protocol": "retained-temporal-assistant-visual-audit-1",
+  "checked_utc": "2026-10-09T17:29:33.916185+00:00",
+  "execution_base_head": "cc98f6e4f10cd49b54806856d2f6403654b5aa21",
+  "plan": {
+    "path": "docs/validation/retained-temporal-visual-input-plan-2026-10-09.json",
+    "sha256": "cba401a3f79661a036535bd43ce2545c853b31d225ad793ef465f679bbc2bf85"
+  },
+  "prepared_fullframes": {
+    "path": "docs/validation/retained-temporal-fullframes-result-2026-10-09.json",
+    "sha256": "77c43c0488c71c9ed47567340ccd8bf14199cb9e365e8bee067f4cefbb34ac52"
+  },
+  "observations": [
+    {
+      "id": "previous_baseline",
+      "visible_cue_assistant": "not_observed_in_visible_frame",
+      "observation": "Opening and nearby above-rim area visible; no obvious pale rising plume in this view. Interior is dark/red, a liquid surface is not independently established.",
+      "temperature_or_motion": "not established",
+      "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "review_method": "assistant direct view_image original, before new model queries; known retrospective cohort, not blind human gold"
+    },
+    {
+      "id": "temporal_warm_512",
+      "visible_cue_assistant": "observed",
+      "observation": "Prominent translucent pale/golden wispy forms arise from the opening and extend beyond the top image boundary. Dark/brown interior may look liquid-like; not physical cause/heat/motion proof.",
+      "temperature_or_motion": "not established",
+      "source_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+      "review_method": "assistant direct view_image original, before new model queries; known retrospective cohort, not blind human gold"
+    },
+    {
+      "id": "mpt_temporal_hot_768",
+      "visible_cue_assistant": "observed",
+      "observation": "Large wispy plume-shaped forms above opening; upper parts extend to frame boundary. View/framing/scale differ from512 baseline; dark interior does not independently prove motionless liquid.",
+      "temperature_or_motion": "not established",
+      "source_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+      "review_method": "assistant direct view_image original, before new model queries; known retrospective cohort, not blind human gold"
+    },
+    {
+      "id": "mpt_temporal_cooled_768",
+      "visible_cue_assistant": "uncertain",
+      "observation": "No extended plume comparable to warm/hot, but faint forms/reflections within dark opening are ambiguous. Blue lighting is the dominant change; cannot certify global vapor absence, cooled temperature or still liquid.",
+      "temperature_or_motion": "not established",
+      "source_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+      "review_method": "assistant direct view_image original, before new model queries; known retrospective cohort, not blind human gold"
+    }
+  ],
+  "historical_labels_and_captions_modified": false,
+  "human_gold_added": false,
+  "model_requests": 0,
+  "generation_requests": 0,
+  "physical_temperature_measured": false,
+  "physical_identity_established": false,
+  "state_and_progression_scores_assigned": false,
+  "admission_allowed": false,
+  "decision": "A direct pairwise query of the same visible cue in previous/current frames adds information beyond lexical caption matching. Keep this separate from steam physical cause, temperature, liquid immobility, physical identity and full temporal verdict. Full-frame context needed; body-only geometry crops would remove cue areas."
+}

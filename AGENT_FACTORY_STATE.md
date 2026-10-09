@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: temporal full frames inspected and prepared
+
+Fromcc98f6e,4 original retained temporal frames inspected with source hashes: warm/hot wispy columns visible, cold opening ambiguous despite blue light. No temperature/motion/identity gold inferred, prior labels/captions and3uncertain v4 results unchanged.4 metadata-free full RGB frames preserve all native pixels/mode/dimensions, independent NumPy checks/recipe exit0; helper/app/runner unchanged, no fresh pytest claimed. [Report](docs/RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md).0 inference/generation/download/service/model/gate/routing/dependency/stable changes.
+
+Next generic pairwise visible-cue observer/runner CPU implementation/tests:3 retained pairs+1exact-input control per existing judge,max8future queries,256tokens/no thinking/no retries. Scores identity/state/progression separate/null and diagnostics uncertain; cue change only hint, no temperature/identity/automatic admission. [Fixed design](docs/validation/pairwise-visible-cue-design-2026-10-09.json), [active autonomy](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md); no user action. Closing SHA via Git/origin, earlier next-inspection text historical.
+
 ## Current checkpoint: cross-family ROI cohort completed
 
 From3907cd8, neutral v2 provenance and source-bound preflight extend only the experimental runner; v1 human A/B/C remains compatible.33 new regressions/116 final pass2.00s/exit0/no warnings, review no issues.6 retained-mug queries/0 retries/generations/downloads: both judges not_observed on2byte controls and1recolor pair;4consistency agreements,2observations with no human gold, all diagnostic uncertain/no admission or identity. [Report](docs/CROSS_FAMILY_ROI_PROBE_REPORT.md). Partial/background excluded0HTTP; source rechecked before each request.2own8092 closed+PIDs absent; shared services/stable/models/app/gates/routing/deps untouched. Local means4.703/4.168s and load~4s, prefix cache differs, not end-to-end/p95/accuracy proof.

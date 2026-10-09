@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: retained temporal visual inputs and direct-cue method prepared
+
+Fromcc98f6e,4 existing frames reviewed/hash-bound: warm/hot visible wispy columns,coldopening ambiguous; no physical temperature/motion/identity proof. Prior labels/captions/3uncertain v4 results unchanged.4 full native RGB PNGs metadata-free, NumPy verifies pixels/mode/dimensions, recipe exit0; existing helper/QA/runner unchanged,116tests historical. [Report](RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md).0 new inference/generation/download/service/model/gate/routing/dependency/stable changes.
+
+Next CPU generic subject+cue observer/runner implementation/tests with existing process/runtime/preflight; [fixed method](validation/pairwise-visible-cue-design-2026-10-09.json),3retained pairs+1exact-input control per pinned judge,max8future requests/256tokens/0retry/generation/download. Identity/state/progression scores separate/null,all uncertain/no admission; cue change is only hint, no full still-liquid/temperature verdict. Preserve human gold absent and no global absence from not_observed. [Autonomy active](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action; closing SHA via Git/origin, past next-inspection text historical.
+
 ## Current checkpoint: neutral paired runner and retained-mug ROI cohort closed
 
 From3907cd8, v2 neutral provenance/source-bound preflight added, v1 human protocol compatible.33 new tests/116 final pass2.00s/exit0/no warnings; review no issues.6 completed queries/0retry/generation/download: both judges not_observed on2duplicate-byte controls and1retained recoloring pair.4consistency agreements,2unlabelled observations without human gold/correctness; every diagnostic uncertain/no admission/identity. [Report](CROSS_FAMILY_ROI_PROBE_REPORT.md). Partial/background0HTTP; native source/crop/box reconstruction before each HTTP.2own8092 closed/PIDs absent; shared/models/app/gates/routing/deps/stable unchanged. Means4.703/4.168s/load~4s, prefix cache differs, not overall QA/p95/population accuracy or structural sensitivity.

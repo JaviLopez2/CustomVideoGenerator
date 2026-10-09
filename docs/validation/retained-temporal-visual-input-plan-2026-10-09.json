@@ -1,0 +1,242 @@
+{
+  "protocol": "retained-temporal-visual-input-audit-1",
+  "declared_utc": "2026-10-09T17:22:07.336127+00:00",
+  "execution_base_head": "cc98f6e4f10cd49b54806856d2f6403654b5aa21",
+  "purpose": "Inspect actual retained temporal pictures/contracts before deciding which visible-cue queries add information; prepare metadata-free full frames without discarding above-rim context.",
+  "dataset": {
+    "path": "docs/validation/visual-qa-dataset-2026-10-08.json",
+    "sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f"
+  },
+  "legacy_results": {
+    "path": "docs/validation/visual-qa-final-results-2026-10-08.json",
+    "sha256": "4652017900a1c5d29f90c6b9c3bd6f8a6a869fb4b161a19c990b8d5614813882"
+  },
+  "prior_replay_v4": {
+    "path": "docs/validation/temporal-caption-retained-replay-v4-2026-10-09.json",
+    "sha256": "180e50578ad572b9f1aa223023335dd3d3157470456315563dda7c9e0e9c4be7"
+  },
+  "helper": {
+    "path": "scripts/prepare_visual_regions.py",
+    "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+  },
+  "preparation": {
+    "protocol": "visual-region-preparation-plan-1",
+    "margin_pixels": 0,
+    "regions": [
+      {
+        "id": "previous_baseline",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "size": [
+            512,
+            512
+          ]
+        },
+        "box": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "required_box": [
+          0,
+          0,
+          512,
+          512
+        ]
+      },
+      {
+        "id": "temporal_warm_512",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\continuity_512\\result.png",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+          "size": [
+            512,
+            512
+          ]
+        },
+        "box": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "required_box": [
+          0,
+          0,
+          512,
+          512
+        ]
+      },
+      {
+        "id": "mpt_temporal_hot_768",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png",
+          "sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "box": [
+          0,
+          0,
+          768,
+          1376
+        ],
+        "required_box": [
+          0,
+          0,
+          768,
+          1376
+        ]
+      },
+      {
+        "id": "mpt_temporal_cooled_768",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_cooled_768\\result.png",
+          "sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "box": [
+          0,
+          0,
+          768,
+          1376
+        ],
+        "required_box": [
+          0,
+          0,
+          768,
+          1376
+        ]
+      }
+    ]
+  },
+  "output_directory": "local_image_stack/experiments/bridge/target/retained-temporal-fullframes-2026-10-09",
+  "cases": [
+    {
+      "id": "temporal_warm_512",
+      "contract": {
+        "subject": "red ceramic mug",
+        "counts": [
+          {
+            "subject": "mug",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "mug",
+              "cup"
+            ]
+          }
+        ],
+        "temporal": {
+          "expected_state": "visible steam rising from hot tea",
+          "required_evidence": [
+            "steam"
+          ],
+          "previous_state": "no visible steam",
+          "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png"
+        }
+      },
+      "historical_assistant_expected": "pass",
+      "historical_review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "historical_review_reason": "Identity and framing preserved with clear steam",
+      "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "candidate_region_id": "temporal_warm_512"
+    },
+    {
+      "id": "mpt_temporal_hot_768",
+      "contract": {
+        "subject": "red ceramic mug",
+        "counts": [
+          {
+            "subject": "mug",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "mug",
+              "cup"
+            ]
+          }
+        ],
+        "temporal": {
+          "expected_state": "visible steam rising",
+          "required_evidence": [
+            "steam"
+          ],
+          "previous_state": "no visible steam",
+          "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png"
+        },
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png"
+      },
+      "historical_assistant_expected": "pass",
+      "historical_review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "historical_review_reason": "Same mug with visible steam",
+      "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+      "candidate_region_id": "mpt_temporal_hot_768"
+    },
+    {
+      "id": "mpt_temporal_cooled_768",
+      "contract": {
+        "subject": "red ceramic mug",
+        "counts": [
+          {
+            "subject": "mug",
+            "expected_count": 1,
+            "tolerance": 0,
+            "aliases": [
+              "mug",
+              "cup"
+            ]
+          }
+        ],
+        "temporal": {
+          "expected_state": "still liquid without vapor",
+          "required_evidence": [
+            "still liquid"
+          ],
+          "forbidden_evidence": [
+            "steam"
+          ],
+          "previous_state": "visible steam rising",
+          "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png"
+        },
+        "reference_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png"
+      },
+      "historical_assistant_expected": "uncertain",
+      "historical_review_provenance": "Curated from documented assistant visual reviews; not independently human-adjudicated",
+      "historical_review_reason": "Cool illumination changed; complete absence of vapor/temperature not certified",
+      "previous_image": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_temporal_hot_768\\result.png",
+      "candidate_region_id": "mpt_temporal_cooled_768"
+    }
+  ],
+  "review_questions": [
+    "Is the subject opening and area above it visible, obstructed, clipped or ambiguous?",
+    "Are pale wisps/plume-like marks visibly associated with the opening? Visual plausibility is not physical cause or temperature proof.",
+    "Is a liquid-like surface visible, or merely a dark interior? A static smooth surface cannot prove motionlessness.",
+    "Which actual differences are lighting/color, versus visible material cues?",
+    "Does the previous frame explicitly support a change in visible cues, separately from physical identity?"
+  ],
+  "budget": {
+    "unique_original_images": 4,
+    "fullframe_outputs": 4,
+    "model_requests": 0,
+    "generation_requests": 0,
+    "downloads": 0
+  },
+  "interpretation": {
+    "reviewer": "assistant; retained historical labels already known, not blind human gold",
+    "source_images_and_archived_captions_labels_unchanged": true,
+    "physical_temperature_measured": false,
+    "physical_identity_established": false,
+    "admission_allowed": false,
+    "shape_only_roi_reused": false,
+    "new_human_gold": false
+  },
+  "stopping_rule": "One direct inspection and fullframe preparation, fixed whole-frame boxes/no crop tuning; preserve raw/historical judgments. Do not infer temperature from lighting or promote an uncertain visible cue. Next multimodal method/budget must be fixed before any new query."
+}

@@ -1,0 +1,95 @@
+{
+  "protocol": "retained-temporal-visual-input-closing-checks-1",
+  "checked_utc": "2026-10-09T17:40:51.774887+00:00",
+  "execution_base_head": "cc98f6e4f10cd49b54806856d2f6403654b5aa21",
+  "origin_base_head": "cc98f6e4f10cd49b54806856d2f6403654b5aa21",
+  "divergence_before_commit": [
+    0,
+    0
+  ],
+  "scope": "CPU/source-bound fullframe preparation, assistant inspection, fixed next visible-cue method, documentation only",
+  "fresh_proof": {
+    "recipe": "docs/validation/retained-temporal-fullframes-recipe-2026-10-09.py",
+    "recipe_sha256": "a7ba87388e3243eaa508975a53f9a85ef4434ca7a15615482240d79c95646aad",
+    "python_command": "Python MPT -I -B docs/validation/retained-temporal-fullframes-recipe-2026-10-09.py",
+    "python_exit_code": 0,
+    "native_fullframe_array_comparisons": 4,
+    "mode": "RGB",
+    "resize_color_or_content_transform": false,
+    "metadata_keys_all_empty": true,
+    "source_hashes_revalidated": 4,
+    "helper_unchanged": true,
+    "prior_dataset_captions_labels_and_replay_hashes_unchanged": true
+  },
+  "assistant_view_method": "4 originals via view_image original, historical cases known; not blind/human gold",
+  "assistant_observations": {
+    "baseline": "no obvious plume in visible frame",
+    "warm_hot": "prominent plume-like forms, upper image boundary clips them",
+    "cooled": "opening ambiguous, blue light does not establish cold/still/global vapor absence"
+  },
+  "new_local_model_requests": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "service_changes": 0,
+  "fresh_pytest_executed": false,
+  "test_note": "No application/helper/runner/test changes; prior116tests historical, fresh recipe/hash/array/JSON/AST/diff checks only",
+  "independent_method_review": "No issues; subsequent explicit byte-control consistency stop clarification before any implementation/inference, prompt/schema/budget unchanged",
+  "next_method": {
+    "protocol": "pairwise-visible-cue-design-1",
+    "design": {
+      "path": "docs/validation/pairwise-visible-cue-design-2026-10-09.json",
+      "sha256": "a7d5eda5d5201d95633d0cfa2ba67c4cc0f9d7572cc3c6402dc63fbf1a826aee"
+    },
+    "queries_pending": true,
+    "model_candidates": 2,
+    "cases_per_candidate": 4,
+    "maximum_future_requests": 8,
+    "maximum_tokens": 256,
+    "score_fields_separate_and_null": true,
+    "no_human_gold_or_still_liquid_temperature_certification": true
+  },
+  "physical_temperature_measured": false,
+  "physical_identity_established": false,
+  "admission_allowed": false,
+  "human_gold_added": false,
+  "new_state_progression_scores_assigned": false,
+  "json_parsed": 4,
+  "recipe_ast_parsed": true,
+  "limited_credential_scan_matches": 0,
+  "source_doc_whitespace_clean": true,
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_status_clean": true,
+    "existing_untracked_preserved": true
+  },
+  "application_helper_runner_tests_models_dependencies_workflows_gates_routing_untouched": true,
+  "next": "CPU generic pairwise cue observer/runner implementation and tests with existing runtime/ownedPID/region preflight; then pin executable plan and resources before at most8queries. No user action now.",
+  "task_files": [
+    "AGENT_FACTORY_STATE.md",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+    "docs/IMAGE_MODEL_ROUTING_RND.md",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+    "docs/RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md",
+    "docs/validation/retained-temporal-visual-input-plan-2026-10-09.json",
+    "docs/validation/retained-temporal-fullframes-recipe-2026-10-09.py",
+    "docs/validation/retained-temporal-fullframes-result-2026-10-09.json",
+    "docs/validation/retained-temporal-assistant-visual-audit-2026-10-09.json",
+    "docs/validation/pairwise-visible-cue-design-2026-10-09.json"
+  ],
+  "task_file_sha256": {
+    "AGENT_FACTORY_STATE.md": "8e2414764d4957ef2425bc6c36691cbd50034c1aaba2910d15084ffbba7006ae",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md": "7e5a7caf3b6feeb08f0e875062dc5b0a7bdf20dc53fcf4844a632b96963209c8",
+    "docs/IMAGE_MODEL_ROUTING_RND.md": "1edcc22fb113445c79167275b11ca95d3040bbddf49f928ee1faddc646d23ee8",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md": "19bae863326bbb0b6abde2a41f2556f4c2ab584987c50634c4e28635d85bb664",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md": "fac1e3d82d985d13b0237fc762200dedb63ca082ed8ffbc722a8d429241f610a",
+    "docs/RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md": "90aac0a362ab41d2ff2b98e59ff4e93c2b4d660d8841051969eaa4a42a3ee031",
+    "docs/validation/retained-temporal-visual-input-plan-2026-10-09.json": "cba401a3f79661a036535bd43ce2545c853b31d225ad793ef465f679bbc2bf85",
+    "docs/validation/retained-temporal-fullframes-recipe-2026-10-09.py": "a7ba87388e3243eaa508975a53f9a85ef4434ca7a15615482240d79c95646aad",
+    "docs/validation/retained-temporal-fullframes-result-2026-10-09.json": "77c43c0488c71c9ed47567340ccd8bf14199cb9e365e8bee067f4cefbb34ac52",
+    "docs/validation/retained-temporal-assistant-visual-audit-2026-10-09.json": "f40513e3fc6b0de398a5473ed99c48605abe7386bf043d53d3c2852d57e60966",
+    "docs/validation/pairwise-visible-cue-design-2026-10-09.json": "a7d5eda5d5201d95633d0cfa2ba67c4cc0f9d7572cc3c6402dc63fbf1a826aee"
+  },
+  "self_hash_excluded": true
+}

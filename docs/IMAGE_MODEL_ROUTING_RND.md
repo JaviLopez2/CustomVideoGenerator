@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — fotogramas temporales y método directo preparados, 2026-10-09
+
+Desdecc98f6e, inspección de4fuentes: warm/hot con columnas visibles, cold con abertura ambigua/luz azul, sin temperatura/inmovilidad/identidad certificadas. Labels/captions/QAuncertain históricos preservados, sin alias smoke→steam. Cuatro fullframes RGB metadata-free con mismo píxel/modo/dimensiones, receta NumPy exit0/helper sin cambio; no pytest nuevo atribuido. [Informe](RETAINED_TEMPORAL_VISUAL_INPUT_REPORT.md).0 nueva inferencia/generación/descarga/servicios/modelos/app/gates/routing/deps/estable.
+
+[Diseño previo](validation/pairwise-visible-cue-design-2026-10-09.json): observador genérico de una pista, presencia/visibilidad/evidencia por anterior/actual,3pares retenidos+1control bytes/model,max8futuras consultas/0retry/generación/descarga,256tokens. Fotograma completo conserva contexto sobre abertura; no recuperar píxeles fuera de cámara. Scores separadosnull,uncertain/no admisión; no evalúa aún still liquid o calor físico. Próximo implementación/tests CPU y plan ejecutable/preflight antes de inferir. Objetivo activo sin otro permiso; negativos geométricos/calibración pendientes.
+
 ## Actualización — contraste cross-family ROI completado, 2026-10-09
 
 Desde3907cd8, runner v2 neutral y preflight source-bound, v1 humano compatible.33 nuevos/116 finales pasan2,00s/exit0/sin avisos, revisión cerrada.6consultas de tazas retenidas/0retry/generación/descarga: ambos jueces not_observed en dos controles de bytes idénticos y un par recolor sin gold humano.4acuerdos de consistencia y2observaciones no puntuadas; todosuncertain/sin identidad/admisión. [Informe](CROSS_FAMILY_ROI_PROBE_REPORT.md). Parcial/fondo0HTTP, fuente reconstruida/recomprobada antes de enviar; dos PID propios ausentes/8092 libre, compartidos/app/modelos/defaults/gates/routing/deps/estable intactos. Medias4,703/4,168s y carga~4s, cache difiere; no full QA/p95/accuracy o sensibilidad desde duplicados.
