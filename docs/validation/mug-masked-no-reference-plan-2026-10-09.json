@@ -1,0 +1,133 @@
+{
+  "protocol": "mug-masked-no-reference-plan-1",
+  "declared_utc": "2026-10-09T13:59:08.978648+00:00",
+  "execution_base_head": "f36b2a148b0725d387bb6c54e9eadef3ad5da4fa",
+  "status": "offline_prepared_pending_execution",
+  "authority": "Direct user authorization for continuous autonomous experimental tests, 2026-10-09",
+  "prior_cohort_closed_unusable": true,
+  "hypothesis": "Removing visual reference conditioning may reduce restoration of the original lower attachment; unknown until tested",
+  "single_changed_model_condition": "CFGGuider takes original text conditioning instead of ReferenceLatent on positive/negative paths",
+  "conditioning_nodes_removed": [
+    "21",
+    "22",
+    "23",
+    "24"
+  ],
+  "constant_inputs": [
+    "original red RGB PNG",
+    "reviewed binary mask",
+    "VAE-encoded masked target latent",
+    "exact existing text including reference-role clause",
+    "seed42",
+    "512x512",
+    "four steps",
+    "guidance1",
+    "sampler/scheduler/model components",
+    "final original-pixel composition"
+  ],
+  "retained_prompt_role_clause": "Preserved verbatim for one-factor contrast; no ReferenceLatent enters guider in this cohort",
+  "diagnostic_output_added": "SaveImage40 records the same decode already consumed by composition; no extra sampling/model call",
+  "structural_link_check": {
+    "nodes_checked": 17,
+    "typed_links_checked": 20,
+    "input_file_admission_checked": false,
+    "gpu_execution_validated": false
+  },
+  "graph": {
+    "path": "docs/validation/mug-masked-no-reference-graph-2026-10-09.json",
+    "sha256": "cd1a7de99418e4f57a150548b4cb63ecc88a3c34a61d0e46448844a6ae6e2e3f"
+  },
+  "source_png": {
+    "path": "local_image_stack/experiments/bridge/target/gpu-smoke-512-seed42-2026-10-07/klein4b-t2i-512-seed42.png",
+    "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+    "size": [
+      512,
+      512
+    ]
+  },
+  "mask": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-preparation-2026-10-09/lower-contact-mask.png",
+    "sha256": "2bd03d6a2a6f8ef85580068b2d036f8c92f45d072ec0551031afe939726bd818",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "L",
+    "white_pixels": 1215,
+    "bounds_exclusive": [
+      323,
+      335,
+      360,
+      374
+    ],
+    "white_means_edit": true,
+    "pixel_truth_verified": false
+  },
+  "human_region_review": {
+    "path": "docs/validation/mug-masked-region-human-review-2026-10-09.json",
+    "sha256": "b39a2f3cb732e7cac0eb899db8fda2d1cc6bd2fa8398eaff78fbf32b53ff3224",
+    "user_reply_verbatim": "La zona cian es adecuada"
+  },
+  "generation": {
+    "maximum_requests": 1,
+    "automatic_retries": 0,
+    "actual_requests": 0,
+    "seed": 42,
+    "width": 512,
+    "height": 512,
+    "steps": 4,
+    "guidance": 1.0,
+    "endpoint": "http://127.0.0.1:8188/prompt",
+    "client_id": "mpt-masked-no-reference-20261009",
+    "http_timeout_seconds": 3,
+    "poll_deadline_seconds": 180,
+    "timeout_does_not_cancel_job": true,
+    "queue_must_be_empty": true,
+    "input_source_filename": "MPT_STRUCTURAL_RED_SOURCE_16c94d6f_20261009.png",
+    "input_mask_filename": "MPT_MASKED_LOWER_CONTACT_20261009.png",
+    "final_output_node": "13",
+    "raw_decode_output_node": "40"
+  },
+  "acceptance": {
+    "exact_outside_mask_pixel_preservation": true,
+    "inside_change_required": true,
+    "input_output_rgb_png_512": true,
+    "human_visible_lower_gap_upper_contact_review_required": true,
+    "semantic_control_label_inferred_from_prompt": false,
+    "new_negative_control_human_review_received": false,
+    "physical_identity_established": false,
+    "pixel_truth_verified": false,
+    "admission_allowed": false
+  },
+  "judge_requests_this_probe": 0,
+  "judge_stage": "Requires valid negative and independently reviewed positive counts under separate plan; no automatic judge dispatch",
+  "stop_rule": "If unusable, close this hypothesis and do not keep trying prompt variants until success",
+  "new_model_weights_or_dependencies": false,
+  "active_templates_services_or_stable_modified": false,
+  "source_bindings": [
+    {
+      "path": "docs/validation/mug-masked-prepared-graph-2026-10-09.json",
+      "sha256": "5a239189977bb898b43a28afb1c1e21d94d4ed9f593284e26f8309b27dc439c7"
+    },
+    {
+      "path": "docs/validation/mug-masked-protocol-2026-10-09.json",
+      "sha256": "c0aa5df1ac3dabe897f064477c33218b1ac6283aaca308218971e2f8a9183fa1"
+    },
+    {
+      "path": "docs/validation/mug-masked-generation-2026-10-09.json",
+      "sha256": "e90cd14800760a0fc8988fe02edcf74ccbbb627ffca5f034a3a77c2e69d1dfb5"
+    },
+    {
+      "path": "docs/validation/mug-masked-assistant-review-2026-10-09.json",
+      "sha256": "965f694945df1488273134c3da0cf4695116b782dc6421e9f897ccc795287f35"
+    },
+    {
+      "path": "local_image_stack/experiments/klein4b_masked.py",
+      "sha256": "81fe5873688ad065415ac0060105198fc093f5c34a37bc64efd3c9d5c765b298"
+    },
+    {
+      "path": "docs/validation/flux-klein-4b-assets.json",
+      "sha256": "19254f08b7ff3220ae8b6291b0b8015e3cb96dc82ea1371861ef2e765f068cf4"
+    }
+  ]
+}

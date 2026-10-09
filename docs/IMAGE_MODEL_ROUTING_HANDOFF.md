@@ -1,5 +1,9 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — continuar autónomamente tras edición enmascarada, 2026-10-09
+
+Base `f36b2a148b0725d387bb6c54e9eadef3ad5da4fa`, carpeta/rama/diez worktrees confirmados, status/diffs iniciales vacíos. [Ejecución y evidencia](MUG_MASKED_EDIT_EXECUTION.md): una solicitud12,328s,success,0 cambios RGB fuera/1213 dentro; unión inferior aún conectada y parche visible, cohorte cerrada inutilizable/0 retries/0 jueces. Preparación y resultados previos intactos; no inferir label negativo o fallo del juez. [Autonomía vigente](AUTONOMOUS_MPT_WORK_HANDOFF.md): objetivo persistente activo, seguir tareas y checkpoints sin pedir permiso rutinario. Próximo [plan offline](validation/mug-masked-no-reference-plan-2026-10-09.json) retira únicamente conditioning de referencia,1 generación/0 retries y decode crudo como diagnóstico; todavía sin ejecutar. Servicios compartidos conservados, assets rehashados; sin deps/modelos/routing/gates/workflows activos/estable modificados.112 tests de preparación históricos, checks frescos HTTP/historial/hash/píxeles/revisión. Conservar artifacts ignorados; SHA de cierre por Git/origin. Los pendientes anteriores son snapshots históricos.
+
 ## Estado vigente — preparación enmascarada completa, ejecución pendiente, 2026-10-09
 
 Base publicada `903e68a1049e24e76c859fc1e2cce95488f39153`, carpeta/rama experimental confirmadas, status/diffs iniciales vacíos y diez worktrees. Se añaden `local_image_stack/experiments/klein4b_masked.py`, `test/test_klein4b_masked.py`, [informe de preparación](MUG_MASKED_EDIT_PREPARATION.md), grafo/protocolo/contratos y revisión de región por SHA. El constructor no despacha HTTP ni expone el payload legacy sin máscara. Modelos, conditioning, plantillas activas y bridge compilado anteriores intactos.

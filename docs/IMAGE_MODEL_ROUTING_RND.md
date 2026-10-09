@@ -1,5 +1,9 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — ejecución enmascarada y continuidad autónoma, 2026-10-09
+
+Desde `f36b2a1`, una edición completa en12,328s,0 retries; conserva exactamente todo fuera de máscara y cambia1213 píxeles dentro. Sigue conectada y con borde de parche según revisión ampliada del asistente: negativo inutilizable,0 jueces, sin medir sensibilidad de candidatos. [Ejecución](MUG_MASKED_EDIT_EXECUTION.md). La ruta GPU funciona en este caso; calidad del corte no validada. Siguiente ablación fijada: retirar solo ReferenceLatent, una generación/0 retries, guardar decode crudo además de composición. Usuario autoriza continuidad autónoma; objetivo activo y [handoff](AUTONOMOUS_MPT_WORK_HANDOFF.md), sin otro «sigue». Snapshots anteriores preservados; no nuevos pesos/deps/routing/workflows activos ni cambio estable. Tests112 previos históricos; checks actuales de ejecución/píxeles/SHA.
+
 ## Actualización — grafo enmascarado preparado y región revisada, 2026-10-09
 
 Desde `903e68a1049e24e76c859fc1e2cce95488f39153`, se prepara una cohorte separada de edición local: [informe](MUG_MASKED_EDIT_PREPARATION.md), [grafo](validation/mug-masked-prepared-graph-2026-10-09.json) y [protocolo](validation/mug-masked-protocol-2026-10-09.json). Constructor offline aislado: latente VAE con noise_mask, lectura del canal rojo de máscara binaria y composición final sobre el original. Conserva el conditioning anterior y los tres pesos actuales; no cambia plantillas del bridge, modelos, routing ni dependencias.

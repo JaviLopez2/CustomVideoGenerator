@@ -4,6 +4,10 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: autonomous continuation and masked result — 2026-10-09
+
+User authorizes continuous experimental work without another "continue" at every checkpoint; a persistent chat goal is active. [Operational handoff](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md). From `f36b2a148b0725d387bb6c54e9eadef3ad5da4fa`, one masked edit completed in12.328s, HTTP200/Comfy success. Exact RGB check:0 outside-mask changes/1213 inside. Assistant enlarged review sees connected lower attachment and patch seam; cohort closed unusable,0 retries/0 judge queries. [Execution report](docs/MUG_MASKED_EDIT_EXECUTION.md). Stable/active templates/assets/deps/gates/routing unchanged; services retained. Prior112 tests historical, fresh proof HTTP/history/hash/pixels/review. Next one-factor reference-conditioning removal probe is pinned offline,1 generation/0 retries; continue automatically, no routine permission question. Earlier preparation-pending claims below are historical. Closing SHA via Git/origin.
+
 ## Current checkpoint: masked mug graph prepared, region reviewed — 2026-10-09
 
 Execution base `903e68a1049e24e76c859fc1e2cce95488f39153`, same experimental worktree/branch; initial tracked/staged diffs empty, ten worktrees verified. [Masked preparation](docs/MUG_MASKED_EDIT_PREPARATION.md) adds an isolated offline builder, 26 tests, a new graph and SHA-bound protocol. The existing bridge templates, source images, model assets, observer/profile and MPT behavior remain unchanged. No legacy bridge payload is exposed: future execution must submit this exact graph directly to shared Comfy8188.

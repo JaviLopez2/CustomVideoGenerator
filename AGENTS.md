@@ -17,6 +17,7 @@ Leer `AGENT_FACTORY_STATE.md`, `docs/EVIDENCE_CONTINUITY_HANDOFF.md`, `docs/LOCA
 
 ## Reglas de trabajo
 
+- Autorización vigente del usuario, 2026-10-09: avanzar de forma continuada y autónoma según el plan experimental, ejecutando pruebas y mejoras rutinarias sin pedir otro «sigue» después de cada checkpoint. Mantener el objetivo persistente del chat y registrar decisiones, presupuestos y resultados. Un checkpoint no es una pausa ni una petición de permiso. Las valoraciones humanas que falten se registran como pendientes, sin inventarlas; avanzar en tareas independientes cuando sea posible. Esta continuidad conserva la protección de producción y los permisos efectivos de la sesión. Estado y próxima acción en `docs/AUTONOMOUS_MPT_WORK_HANDOFF.md`.
 - Ejecutar los comandos y leer sus resultados directamente; no delegar al usuario la copia de comandos o salidas.
 - Trabajar en ramas/worktrees experimentales. Reutilizar el actual si es adecuado; usar `codex/` para nuevas ramas salvo indicación distinta del usuario.
 - Revisar status y diff, incluidos cambios staged, antes de editar. Conservar cambios existentes; no hacer resets, limpiezas ni staging indiscriminado.

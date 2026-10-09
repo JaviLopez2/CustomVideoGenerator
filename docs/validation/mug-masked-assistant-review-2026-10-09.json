@@ -1,0 +1,52 @@
+{
+  "protocol": "mug-masked-assistant-review-1",
+  "reviewed_utc": "2026-10-09T13:59:08.934648+00:00",
+  "execution_base_head": "f36b2a148b0725d387bb6c54e9eadef3ad5da4fa",
+  "image": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-generation-2026-10-09/result.png",
+    "sha256": "ae2ea098dccfc6068d414ad0730cc1e5b0f210989c6c32cd239eafe0a4070bdf",
+    "comfy_output_filename": "MPT_MASKED_CONTROL_KLEIN4B_00001_.png",
+    "size": [
+      512,
+      512
+    ]
+  },
+  "review_board": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-generation-2026-10-09/review-board.png",
+    "sha256": "00ebe9a4f263cbccddd61039cf0a9ebb2e468249441a495b81a3f81b52c0521e"
+  },
+  "review_svg": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-generation-2026-10-09/review-board.svg",
+    "sha256": "111a8eec6eec06cec5ab6e9607e1d077dd14a0fecdbc3612fc7efcc707ab31e1"
+  },
+  "review_source": "assistant_direct_pixel_inspection_full_and_nearest_4x",
+  "observations": [
+    "Lower attachment remains visibly connected in the enlarged region",
+    "Visible patch boundary and unnatural light/dark region at the mask edge",
+    "Upper attachment and every pixel outside the mask preserved exactly"
+  ],
+  "decision": "closed_unusable_negative_control",
+  "cause_established": false,
+  "hypotheses_not_facts": [
+    "Reference conditioning may favor restoring the original connected shape",
+    "Small masked latent area may restrict meaningful reconstruction"
+  ],
+  "pixel_conservation": {
+    "outside_changed_pixels": 0,
+    "inside_changed_pixels": 1213,
+    "outside_pixels_preserved": true,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "human_negative_review_received": false,
+  "human_region_review_previously_received": true,
+  "positive_contact_counts_human_confirmed": false,
+  "negative_control_validated": false,
+  "pixel_truth_verified": false,
+  "physical_identity_established": false,
+  "admission_allowed": false,
+  "generation_budget_consumed": 1,
+  "automatic_retries": 0,
+  "judge_requests": 0
+}

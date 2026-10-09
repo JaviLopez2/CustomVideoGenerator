@@ -1,5 +1,9 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: masked negative unusable; autonomous probe next
+
+Basef36b2a1. One masked edit completed12.328s,0 retries;0 outside-mask changed pixels/1213 inside. Assistant enlarged review sees connected attachment and patch seam; closed unusable control,0 judge requests/no selection evidence. [Execution](MUG_MASKED_EDIT_EXECUTION.md). User authorizes continuous experimental work; persistent goal active, [operational handoff](AUTONOMOUS_MPT_WORK_HANDOFF.md). Next pinned one-factor reference-conditioning removal probe:1 generation/0 retries, raw decode recorded, no judge dispatch. GPU route executes this case but structural sensitivity, positive counts and physical identity remain unvalidated. Historical112 offline tests unchanged; current checks are HTTP/history/SHA/pixels. Candidates remain diagnostics; active templates/deps/routing/gates/stable/services untouched. Earlier pending execution states below are historical.
+
 ## Current checkpoint: masked preparation and human region review complete
 
 Base `903e68a1049e24e76c859fc1e2cce95488f39153`. [Separate masked preparation](MUG_MASKED_EDIT_PREPARATION.md) is offline-ready: 20 graph nodes/26 typed links against 19 local classes, generic masked latent path and final pixel composition. Existing model assets, observer, contact profile, compiled bridge templates and defaults untouched. Interfaces/source traces are checked; GPU/tensor execution and file admission are pending. A new offline module and 26 tests do not dispatch or change production behavior.

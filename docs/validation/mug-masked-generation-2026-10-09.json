@@ -1,0 +1,79 @@
+{
+  "execution_base_head": "f36b2a148b0725d387bb6c54e9eadef3ad5da4fa",
+  "started_utc": "2026-10-09T13:50:51.634703+00:00",
+  "protocol_sha256": "c0aa5df1ac3dabe897f064477c33218b1ac6283aaca308218971e2f8a9183fa1",
+  "graph_sha256": "5a239189977bb898b43a28afb1c1e21d94d4ed9f593284e26f8309b27dc439c7",
+  "artifact_directory": "local_image_stack/experiments/bridge/target/mug-masked-generation-2026-10-09",
+  "generation_requests_attempted": 1,
+  "automatic_retries": 0,
+  "judge_requests": 0,
+  "post_attempted": true,
+  "status": "http_png_completed_pending_visual_review",
+  "human_negative_review_received": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "queue_before": {
+    "running": 0,
+    "pending": 0
+  },
+  "http_status": 200,
+  "prompt_id": "dadeec50-4ca4-4b0b-999b-06bd39b626b0",
+  "http_admission_elapsed_seconds": 0.015,
+  "comfy_status": {
+    "status_str": "success",
+    "completed": true,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "dadeec50-4ca4-4b0b-999b-06bd39b626b0",
+          "timestamp": 1791553851652
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "nodes": [],
+          "prompt_id": "dadeec50-4ca4-4b0b-999b-06bd39b626b0",
+          "timestamp": 1791553851668
+        }
+      ],
+      [
+        "execution_success",
+        {
+          "prompt_id": "dadeec50-4ca4-4b0b-999b-06bd39b626b0",
+          "timestamp": 1791553863671
+        }
+      ]
+    ]
+  },
+  "execution_events": [
+    "execution_start",
+    "execution_cached",
+    "execution_success"
+  ],
+  "image": {
+    "path": "local_image_stack/experiments/bridge/target/mug-masked-generation-2026-10-09/result.png",
+    "sha256": "ae2ea098dccfc6068d414ad0730cc1e5b0f210989c6c32cd239eafe0a4070bdf",
+    "comfy_output_filename": "MPT_MASKED_CONTROL_KLEIN4B_00001_.png",
+    "size": [
+      512,
+      512
+    ]
+  },
+  "pixel_conservation": {
+    "outside_changed_pixels": 0,
+    "inside_changed_pixels": 1213,
+    "outside_pixels_preserved": true,
+    "structural_negative_validated": false,
+    "human_review_required": true,
+    "admission_allowed": false
+  },
+  "negative_control_validated": false,
+  "elapsed_seconds": 12.328,
+  "finished_utc": "2026-10-09T13:51:03.957893+00:00",
+  "queue_after": {
+    "running": 0,
+    "pending": 0
+  }
+}

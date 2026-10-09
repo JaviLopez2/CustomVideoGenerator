@@ -1,5 +1,9 @@
 # Control estructural de taza — protocolo previo, 2026-10-09
 
+## Estado actual — edición enmascarada descartada, siguiente ablación autónoma
+
+Una edición desdef36b2a1 completó técnicamente en12,328s y conserva fuera de máscara, pero no produjo corte limpio: unión inferior conectada/parche visible en revisión del asistente. [Cohorte cerrada inutilizable](MUG_MASKED_EDIT_EXECUTION.md),0 retries/0 jueces. La [siguiente ablación](validation/mug-masked-no-reference-plan-2026-10-09.json) está fijada offline antes de ejecutar,1 generación/0 retries: retirar solo conditioning de referencia y observar decode crudo/final. No reabre la cohorte fallida, cambia producción ni inventa revisión humana. El usuario autoriza [continuidad autónoma](AUTONOMOUS_MPT_WORK_HANDOFF.md), sin esperar otro «sigue»; snapshots inferiores preservados como historial.
+
 ## Estado actual — nueva cohorte enmascarada preparada, pendiente de ejecutar
 
 La cohorte anterior está cerrada y descartada. Desde `903e68a1049e24e76c859fc1e2cce95488f39153`, se ha terminado la [preparación separada con máscara](MUG_MASKED_EDIT_PREPARATION.md): módulo y grafo nuevos, [protocolo fijado](validation/mug-masked-protocol-2026-10-09.json), contratos/fuente local y verificador exacto de píxeles. 20 nodos y 26 enlaces pasan comprobaciones de interfaces; no hay prueba de GPU/tensores, admisión del grafo o resultado físico todavía. Las plantillas actuales del bridge no se modifican: la prueba futura enviará el grafo directamente a8188.

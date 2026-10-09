@@ -1,5 +1,9 @@
 # Preparación de acceso local — 2026-10-07
 
+## Estado vigente de autonomía — 2026-10-09
+
+El usuario autoriza trabajo experimental continuo, pruebas y mejoras rutinarias sin pedir «sigue» por checkpoint. Objetivo persistente activo y [handoff operativo](AUTONOMOUS_MPT_WORK_HANDOFF.md). La sesión efectiva `workspace-write`/revisión automática ejecuta comandos normales; escalación específica permite Git compartido e input Comfy. No se necesitan nuevos permisos de interfaz para estos accesos comprobados ni se modifica configuración global/ACL. Mantener Windows despierto y Codex abierto para trabajo local. El antecedente de sandbox de07-10 siguiente es histórico, no fallo actual. Servicios8080 cerrado/8090HTTP404/8188HTTP200; la copia de máscara autorizada y la edición funcionan, sin iniciar/parar servicios. Producción/estable protegidos; snapshots de autorización limitada anteriores quedan sustituidos por la instrucción actual, sin inventar mediciones o etiquetas.
+
 Alcance: preparar operación autónoma en este Windows. Modernización detenida; sin tests, benchmarks, generación, cambios de dependencias ni cambios de servicios.
 
 ## Estado comprobado antes de añadir documentación
