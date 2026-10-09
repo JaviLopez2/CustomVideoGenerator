@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: source-bound region preparation completed
+
+From `35059e1`, isolated offline PNG preparation preserves native RGB/RGBA pixels and binds sources/crops/boxes. Eight final artifacts: six declared rectangles contained, one partial and one disjoint; four key crops match the previous cohort byte-for-byte. Independent review reproduced RGB tRNS alpha loss; reject unsupported transparency, final review no issues. Final 83 tests pass in 0.39s/exit0/no warnings, 32 new and51 paired; previous runs preserved separately. [Report](docs/VISUAL_REGION_PREPARATION_REPORT.md). Two CPU cohorts, eight outputs each, all v2 outputs identical to initial; no inference/generation/GPU/download/services/app/model/default/gate/routing/dependency/stable changes.
+
+Next CPU runner extension for explicit evidence provenance and pinned region preflight, then at most6 existing-judge calls on duplicate mug controls plus one retained recoloring pair with no human shape gold. Partial/background inputs receive0 requests; no structural negative, identity or admission claim. [Fixed design](docs/validation/cross-family-roi-probe-design-2026-10-09.json), [active autonomy](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md). Human labels stay pending; no user action. Closing SHA via Git/origin; earlier next-preparation text is historical.
+
 ## Current checkpoint: retained temporal replay and explicit negation v4
 
 From publishedd636da6, full CPU replay of3 retained temporal cases reproduces archived v2 checks and retains3uncertain under v3/v4; no new extraction or human labels.10 declared literal-negation controls show7v3 mismatches, corrected in generic state_check VERSION4 (postfix absence/contractions/freeof/doubles; bounded modifiers).30 new regressions;216 final pass6.67s/exit0/no warnings. Review reproduced6modifier cases before correction, final no issues. [Report](docs/TEMPORAL_CAPTION_REPLAY_REPORT.md).0 model/generation/GPU/download/dependency/service/model/default/routing/workflow/stable changes; parser remains lexical, not visual truth. Raw captions/data/history preserved.

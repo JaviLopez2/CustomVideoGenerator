@@ -1,0 +1,21 @@
+........................F.......                                         [100%]
+================================== FAILURES ===================================
+______________ test_rgb_transparency_cannot_be_silently_dropped _______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-124/test_rgb_transparency_cannot_b0')
+
+    def test_rgb_transparency_cannot_be_silently_dropped(tmp_path):
+        src = source(tmp_path, transparency=(11, 21, 32))
+        with Image.open(src["path"]) as image:
+            assert image.mode == "RGB"
+            assert image.convert("RGBA").getpixel((1, 1)) == (11, 21, 32, 0)
+        out = tmp_path / "out"
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+test\test_prepare_visual_regions.py:131: Failed
+=========================== short test summary info ===========================
+FAILED test/test_prepare_visual_regions.py::test_rgb_transparency_cannot_be_silently_dropped
+1 failed, 31 passed in 0.38s
+
+Python exit code: 1

@@ -1,0 +1,188 @@
+{
+  "protocol": "visual-region-preparation-result-1",
+  "execution_head": "35059e1fa1154f17d165f8f6ef8b7dcbee47a0f4",
+  "plan": {
+    "path": "docs/validation/visual-region-preparation-plan-2026-10-09.json",
+    "sha256": "96bc8d698eae3b35d486682e16a6a8953685567d2e6f9527168b8267f2e494fd"
+  },
+  "recipe_sha256": "c85cc0d60ef9b23ebd0703d2ce3b10458166ec3ea843291d5fbb1ce2e9c90cf0",
+  "helper": {
+    "path": "scripts/prepare_visual_regions.py",
+    "sha256": "77b9ddcf7f83eeff814b3360758f110b98cc1454f4b14b7dd7821f5331b35df9"
+  },
+  "manifest": {
+    "path": "local_image_stack/experiments/bridge/target/visual-region-preparation-2026-10-09/manifest.json",
+    "sha256": "f4c87cde67bb1cb2f13266c130942d214f9cd97c13eb33004b0aa0c103ae0e6d"
+  },
+  "regions": [
+    {
+      "id": "image_0",
+      "source_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "crop_sha256": "d76cb3d7d5e4e6edaf17c2bfd01660103da9a47025af2cd18a32f2440771e44d",
+      "size": [
+        171,
+        376
+      ],
+      "mode": "RGB",
+      "effective_box": [
+        477,
+        597,
+        648,
+        973
+      ],
+      "coverage_relation": "contained",
+      "native_pixel_subset_independently_verified": true,
+      "crop_metadata_keys": [],
+      "semantic_coverage_review": "pending",
+      "historical_key_crop_byte_identical": true
+    },
+    {
+      "id": "image_1",
+      "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "crop_sha256": "035c85fd0a06bcc5dbbbd8e25b001ad5ede0c677b29e03b639d0768627b4953b",
+      "size": [
+        171,
+        376
+      ],
+      "mode": "RGB",
+      "effective_box": [
+        477,
+        597,
+        648,
+        973
+      ],
+      "coverage_relation": "contained",
+      "native_pixel_subset_independently_verified": true,
+      "crop_metadata_keys": [],
+      "semantic_coverage_review": "pending",
+      "historical_key_crop_byte_identical": true
+    },
+    {
+      "id": "image_2",
+      "source_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "crop_sha256": "000eb972df83b6b6ebf62a8f1adca27c5698bb1859749fabfcb2ce907b6b4b04",
+      "size": [
+        321,
+        206
+      ],
+      "mode": "RGB",
+      "effective_box": [
+        362,
+        957,
+        683,
+        1163
+      ],
+      "coverage_relation": "contained",
+      "native_pixel_subset_independently_verified": true,
+      "crop_metadata_keys": [],
+      "semantic_coverage_review": "pending",
+      "historical_key_crop_byte_identical": true
+    },
+    {
+      "id": "image_3",
+      "source_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "crop_sha256": "165f9c737fd77a49afac1492b0aedec39e9580c87529a1fc81377c011e851d50",
+      "size": [
+        186,
+        246
+      ],
+      "mode": "RGBA",
+      "effective_box": [
+        457,
+        942,
+        643,
+        1188
+      ],
+      "coverage_relation": "contained",
+      "native_pixel_subset_independently_verified": true,
+      "crop_metadata_keys": [],
+      "semantic_coverage_review": "pending",
+      "historical_key_crop_byte_identical": true
+    },
+    {
+      "id": "image_4",
+      "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "crop_sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+      "size": [
+        313,
+        286
+      ],
+      "mode": "RGB",
+      "effective_box": [
+        137,
+        147,
+        450,
+        433
+      ],
+      "coverage_relation": "contained",
+      "native_pixel_subset_independently_verified": true,
+      "crop_metadata_keys": [],
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "id": "image_5",
+      "source_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "crop_sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+      "size": [
+        313,
+        286
+      ],
+      "mode": "RGB",
+      "effective_box": [
+        137,
+        147,
+        450,
+        433
+      ],
+      "coverage_relation": "contained",
+      "native_pixel_subset_independently_verified": true,
+      "crop_metadata_keys": [],
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "id": "mug_partial_coverage",
+      "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "crop_sha256": "e9bbea312967f2248fa489b89ed5619a5d92d1f7135a189548c699ad8992e2ad",
+      "size": [
+        313,
+        181
+      ],
+      "mode": "RGB",
+      "effective_box": [
+        137,
+        147,
+        450,
+        328
+      ],
+      "coverage_relation": "partial",
+      "native_pixel_subset_independently_verified": true,
+      "crop_metadata_keys": [],
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "id": "mug_background_control",
+      "source_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "crop_sha256": "b551551c4b845e1dbb3124dfaebc706cb9fefa5e839d434575447f01e725bfe6",
+      "size": [
+        104,
+        104
+      ],
+      "mode": "RGB",
+      "effective_box": [
+        0,
+        0,
+        104,
+        104
+      ],
+      "coverage_relation": "disjoint",
+      "native_pixel_subset_independently_verified": true,
+      "crop_metadata_keys": [],
+      "semantic_coverage_review": "pending"
+    }
+  ],
+  "generation_requests": 0,
+  "model_requests": 0,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "semantic_whole_object_coverage": "pending; technical rectangle coverage only"
+}

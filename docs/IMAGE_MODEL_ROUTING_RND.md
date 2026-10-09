@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — preparador de regiones y controles de cobertura, 2026-10-09
+
+Desde `35059e1`, herramienta offline source-bound y ocho recortes finales: cuatro llaves idénticas en bytes a la cohorte anterior, dos tazas completas, un parcial y un fondo. Cajas anteriores +8px, píxeles/modes exactos, sin metadata textual; cobertura rectangular no equivale a objeto completo. Revisión reproduce pérdida de alpha tRNS en RGB y cierra rechazo con RED→GREEN. 83 tests finales pasan en0,39s/exit0/sin avisos,32 nuevos; primera cohorte/helper/logs preservados, segunda idéntica en bytes. [Informe](VISUAL_REGION_PREPARATION_REPORT.md).0 nueva inferencia/generación/GPU/descargas/servicios/app/modelos/defaults/gates/routing/deps/estable.
+
+[Diseño cross-family](validation/cross-family-roi-probe-design-2026-10-09.json): dos controles de bytes idénticos +un par recolor sin gold humano, máximo6 futuras consultas/dos jueces existentes. Parcial/fondo excluidos antes de consultar, no negativos estructurales. Próximo CPU: runner con procedencia explícita de evidencia y preflight de regiones, compatible con v1; luego recursos/plan ejecutable/cohortes. Sin promoción/identidad o accuracy por estos controles. Temporal visual directo sigue pendiente; objetivo activo sin otro permiso. Se conservan snapshots históricos siguientes.
+
 ## Actualización — replay retenido y negación v4, 2026-10-09
 
 Base d636da6:3casos temporales siguen uncertain v2/v3/v4 con captions/OD originales, lectura porSHA/task y cero inferencia nueva.10controles literales fijados antes de probar revelan7fallos v3; v4 corrige ausencia posterior/contracciones/freeof y conserva dobles negaciones uncertain, cache versionada invalida v3.30 regresiones nuevas/216 finales pasan6,67s/exit0/sin avisos; dos P2 de modificadores reproducidos con6RED y revisión final cerrada. [Informe](TEMPORAL_CAPTION_REPLAY_REPORT.md). Parser no arregla vocabulario/extracción visual, no se sustituye smoke por steam para conseguir pass.0 nuevas consultas/generaciones/GPU/descargas/deps/servicios/pesos/defaults/workflows/routing/estable. Próximo preparador CPU de regiones source-bound, cobertura y otra familia antes de validar candidato ROI. Evidencia temporal visual fuerte pendiente; histórico no reetiquetado. Objetivo activo sin aprobación rutinaria.

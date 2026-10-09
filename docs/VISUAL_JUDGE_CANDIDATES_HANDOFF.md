@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: reusable source-bound regions, cross-family design fixed
+
+From35059e1, offline PNG helper plus8 final crops preserve native mode/pixels/provenance:4 keys byte-identical to prior ROI,2mugs contained,partial/background controls excluded from whole-declared-region eligibility. Rectangle containment is not semantic coverage or identity. Independent review tRNS finding reproduced before rejection; final review no issues.32 new tests/83 final pass0.39s/exit0/no warnings. Two CPU cohorts/all8 v2 outputs byte-identical to initial; initial helper/plan/results retained. [Report](VISUAL_REGION_PREPARATION_REPORT.md).0 queries/generation/GPU/download/service/app/assets/defaults/gates/routing/dependency/stable changes.
+
+Next neutral evidence-provenance and region-preflight runner extension/test, preserving v1. [Fixed cross-family design](validation/cross-family-roi-probe-design-2026-10-09.json):2 duplicate consistency controls +1 retained recoloring pair without human shape gold,max6 future existing-judge calls; partial/background0calls, not structural negatives. No accuracy/identity/admission or localizer claim; direct temporal visual evidence still pending. [Autonomy active](AUTONOMOUS_MPT_WORK_HANDOFF.md), no routine approval/user action. Closing SHA via Git/origin; historical pending preparation below superseded.
+
 ## Current checkpoint: retained temporal replay unchanged, text negation fixed
 
 Fromd636da6,3 archived temporal cases remainuncertain v2/v3/v4; saved-caption/OD SHA/task replay only, no fresh model evidence or human labels.10 predeclared literal controls expose7v3 negation mismatches; generic state_check v4 fixes those, cache version invalidated.30 new tests/216 final pass6.67s/exit0/no warnings;6RED modifier regressions fixed before final independent review no issues. [Report](TEMPORAL_CAPTION_REPLAY_REPORT.md). Judges/assets/defaults/routing/gates/services/deps/workflows/stable untouched,0queries/generation/GPU/download. Next source-bound region preparer and cross-family/coverage ROI protocol CPU; direct temporal visual reliability still pending, no promotion from known3key pairs or text examples. [Active autonomy](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action.

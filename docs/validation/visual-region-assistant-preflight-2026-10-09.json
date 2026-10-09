@@ -1,0 +1,37 @@
+{
+  "protocol": "visual-region-assistant-preflight-1",
+  "reviewer": "assistant direct view_image inspection, not human gold",
+  "preparation_result": {
+    "path": "docs/validation/visual-region-preparation-result-v2-2026-10-09.json",
+    "sha256": "7303f0fb9773e710a101d463f20dc951a17642bdcdd319306612c952d50e47db"
+  },
+  "reviewed_crops": [
+    {
+      "id": "image_4",
+      "sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+      "observation": "Red mug body, rim and handle fit in retained region; no metric or contact count asserted"
+    },
+    {
+      "id": "image_5",
+      "sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+      "observation": "Blue mug body, rim and handle fit in retained region; similar overall outline in qualitative view; color/appearance variation not physical identity proof"
+    },
+    {
+      "id": "mug_partial_coverage",
+      "sha256": "e9bbea312967f2248fa489b89ed5619a5d92d1f7135a189548c699ad8992e2ad",
+      "observation": "Lower mug area and lower handle attachment cut by frame; ineligible for whole-declared-region comparison"
+    },
+    {
+      "id": "mug_background_control",
+      "sha256": "b551551c4b845e1dbb3124dfaebc706cb9fefa5e839d434575447f01e725bfe6",
+      "observation": "Blurred background patch, no mug visible; ineligible for whole-declared-region comparison"
+    }
+  ],
+  "key_crops_reviewed_again": false,
+  "reason": "All4 match byte-for-byte the prior retained cropped cohort; no redundant new semantic review",
+  "human_semantic_coverage_review": "pending",
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "model_requests": 0,
+  "generation_requests": 0
+}

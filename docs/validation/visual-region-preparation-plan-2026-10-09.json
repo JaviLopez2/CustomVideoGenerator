@@ -1,0 +1,237 @@
+{
+  "protocol": "visual-region-preparation-cohort-1",
+  "declared_on": "2026-10-09",
+  "execution_base_head": "35059e1fa1154f17d165f8f6ef8b7dcbee47a0f4",
+  "status": "frozen_before_preparation",
+  "question": "Can one reusable offline tool preserve native pixels/modes/source binding, reproduce prior key crops, and distinguish declared rectangle containment from partial/background inputs?",
+  "prior_regions": {
+    "path": "docs/validation/spatial-geometry-audit-plan-v2-2026-10-09.json",
+    "sha256": "c7b3e1747c93c475f239c14be933bfb254da0800be256be0f21f429640a6b1e6"
+  },
+  "helper": {
+    "path": "scripts/prepare_visual_regions.py",
+    "sha256": "77b9ddcf7f83eeff814b3360758f110b98cc1454f4b14b7dd7821f5331b35df9"
+  },
+  "annotation_origin": "Assistant approximate bounding ROI selected by direct pixel inspection before computation, not human gold or VLM output. Existing A/B/C known; this is an exploratory non-blinded audit.",
+  "preparation": {
+    "protocol": "visual-region-preparation-plan-1",
+    "margin_pixels": 8,
+    "regions": [
+      {
+        "id": "image_0",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "box": [
+          485,
+          605,
+          640,
+          965
+        ],
+        "required_box": [
+          485,
+          605,
+          640,
+          965
+        ]
+      },
+      {
+        "id": "image_1",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "box": [
+          485,
+          605,
+          640,
+          965
+        ],
+        "required_box": [
+          485,
+          605,
+          640,
+          965
+        ]
+      },
+      {
+        "id": "image_2",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+          "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "box": [
+          370,
+          965,
+          675,
+          1155
+        ],
+        "required_box": [
+          370,
+          965,
+          675,
+          1155
+        ]
+      },
+      {
+        "id": "image_3",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+          "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "box": [
+          465,
+          950,
+          635,
+          1180
+        ],
+        "required_box": [
+          465,
+          950,
+          635,
+          1180
+        ]
+      },
+      {
+        "id": "image_4",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "size": [
+            512,
+            512
+          ]
+        },
+        "box": [
+          145,
+          155,
+          442,
+          425
+        ],
+        "required_box": [
+          145,
+          155,
+          442,
+          425
+        ]
+      },
+      {
+        "id": "image_5",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+          "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+          "size": [
+            512,
+            512
+          ]
+        },
+        "box": [
+          145,
+          155,
+          442,
+          425
+        ],
+        "required_box": [
+          145,
+          155,
+          442,
+          425
+        ]
+      },
+      {
+        "id": "mug_partial_coverage",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "size": [
+            512,
+            512
+          ]
+        },
+        "box": [
+          145,
+          155,
+          442,
+          320
+        ],
+        "required_box": [
+          145,
+          155,
+          442,
+          425
+        ]
+      },
+      {
+        "id": "mug_background_control",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+          "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+          "size": [
+            512,
+            512
+          ]
+        },
+        "box": [
+          0,
+          0,
+          96,
+          96
+        ],
+        "required_box": [
+          145,
+          155,
+          442,
+          425
+        ]
+      }
+    ]
+  },
+  "expected_coverage": {
+    "image_0": "contained",
+    "image_1": "contained",
+    "image_2": "contained",
+    "image_3": "contained",
+    "image_4": "contained",
+    "image_5": "contained",
+    "mug_partial_coverage": "partial",
+    "mug_background_control": "disjoint"
+  },
+  "output_directory": "local_image_stack/experiments/bridge/target/visual-region-preparation-2026-10-09",
+  "comparison_binding": {
+    "path": "docs/validation/paired-shape-roi-probe-plan-2026-10-09.json",
+    "sha256": "56b4d74f4efbd9c1c352c8a745c026a2d4cd0d0fff729914e4c089d511f1a529"
+  },
+  "budget": {
+    "region_artifacts": 8,
+    "unique_source_images": 6,
+    "model_requests": 0,
+    "generation_requests": 0,
+    "retries": 0
+  },
+  "interpretation": {
+    "semantic_whole_object_coverage": "pending; rectangle containment cannot establish it",
+    "human_gold_labels_added": false,
+    "structural_negative_created": false,
+    "admission_allowed": false,
+    "physical_identity_established": false,
+    "automatic_localizer": false
+  },
+  "stopping_rule": "One preparation cohort, reject invalid provenance/coordinates before writing; preserve existing output artifacts. Review crops without changing boxes to obtain a desired model result. No inference in this phase."
+}

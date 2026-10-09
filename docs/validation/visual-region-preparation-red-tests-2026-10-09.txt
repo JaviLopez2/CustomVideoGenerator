@@ -1,0 +1,796 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                           [100%]
+================================== FAILURES ===================================
+________ test_native_pixels_mode_and_source_binding_are_preserved[RGB] ________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_native_pixels_mode_and_so0')
+mode = 'RGB'
+
+    @pytest.mark.parametrize("mode", ["RGB", "RGBA"])
+    def test_native_pixels_mode_and_source_binding_are_preserved(tmp_path, mode):
+        src = source(tmp_path, mode)
+        out = tmp_path / "out"
+>       result = regions.prepare(plan(src), out, workspace_root=tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_prepare_visual_regions.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_native_pixels_mode_and_so0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_native_pixels_mode_and_so0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_______ test_native_pixels_mode_and_source_binding_are_preserved[RGBA] ________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_native_pixels_mode_and_so1')
+mode = 'RGBA'
+
+    @pytest.mark.parametrize("mode", ["RGB", "RGBA"])
+    def test_native_pixels_mode_and_source_binding_are_preserved(tmp_path, mode):
+        src = source(tmp_path, mode)
+        out = tmp_path / "out"
+>       result = regions.prepare(plan(src), out, workspace_root=tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_prepare_visual_regions.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '86f44ae3163640d788484d097df08fcead4311bdb5c9f451112d2525c02310ec', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_native_pixels_mode_and_so1/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_native_pixels_mode_and_so1')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+______ test_declared_box_coverage_is_geometry_only[box0-contained-True] _______
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_0')
+box = [1, 1, 4, 3], relation = 'contained', eligible = True
+
+    @pytest.mark.parametrize("box,relation,eligible", [
+        ([1, 1, 4, 3], "contained", True),
+        ([2, 1, 4, 3], "partial", False),
+        ([0, 0, 1, 1], "disjoint", False),
+    ])
+    def test_declared_box_coverage_is_geometry_only(tmp_path, box, relation, eligible):
+>       result = regions.prepare(plan(source(tmp_path), box, [1, 1, 4, 3]), tmp_path / "out", workspace_root=tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_prepare_visual_regions.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3], 'required_box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_______ test_declared_box_coverage_is_geometry_only[box1-partial-False] _______
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_1')
+box = [2, 1, 4, 3], relation = 'partial', eligible = False
+
+    @pytest.mark.parametrize("box,relation,eligible", [
+        ([1, 1, 4, 3], "contained", True),
+        ([2, 1, 4, 3], "partial", False),
+        ([0, 0, 1, 1], "disjoint", False),
+    ])
+    def test_declared_box_coverage_is_geometry_only(tmp_path, box, relation, eligible):
+>       result = regions.prepare(plan(source(tmp_path), box, [1, 1, 4, 3]), tmp_path / "out", workspace_root=tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_prepare_visual_regions.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [2, 1, 4, 3], 'required_box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_1/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_1')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+______ test_declared_box_coverage_is_geometry_only[box2-disjoint-False] _______
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_2')
+box = [0, 0, 1, 1], relation = 'disjoint', eligible = False
+
+    @pytest.mark.parametrize("box,relation,eligible", [
+        ([1, 1, 4, 3], "contained", True),
+        ([2, 1, 4, 3], "partial", False),
+        ([0, 0, 1, 1], "disjoint", False),
+    ])
+    def test_declared_box_coverage_is_geometry_only(tmp_path, box, relation, eligible):
+>       result = regions.prepare(plan(source(tmp_path), box, [1, 1, 4, 3]), tmp_path / "out", workspace_root=tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_prepare_visual_regions.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [0, 0, 1, 1], 'required_box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_2/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_declared_box_coverage_is_2')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_______ test_margin_is_clipped_but_requested_roi_never_silently_clipped _______
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_margin_is_clipped_but_req0')
+
+    def test_margin_is_clipped_but_requested_roi_never_silently_clipped(tmp_path):
+>       result = regions.prepare(plan(source(tmp_path), [0, 0, 2, 2], [0, 0, 2, 2], 1), tmp_path / "out", workspace_root=tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_prepare_visual_regions.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 1, 'regions': [{'id': 'region0', 'source': {'path': ...8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [0, 0, 2, 2], 'required_box': [0, 0, 2, 2]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_margin_is_clipped_but_req0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_margin_is_clipped_but_req0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_________________ test_bad_roi_fails_before_any_output[box0] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_0')
+box = [0, 0, 0, 2]
+
+    @pytest.mark.parametrize("box", [[0, 0, 0, 2], [-1, 0, 2, 2], [0, 0, 6, 2], [3, 0, 2, 2],
+                                    [0.0, 0, 2, 2], [False, 0, 2, 2], [0, 0, 2]])
+    def test_bad_roi_fails_before_any_output(tmp_path, box):
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), box), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [0, 0, 0, 2]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_________________ test_bad_roi_fails_before_any_output[box1] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_1')
+box = [-1, 0, 2, 2]
+
+    @pytest.mark.parametrize("box", [[0, 0, 0, 2], [-1, 0, 2, 2], [0, 0, 6, 2], [3, 0, 2, 2],
+                                    [0.0, 0, 2, 2], [False, 0, 2, 2], [0, 0, 2]])
+    def test_bad_roi_fails_before_any_output(tmp_path, box):
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), box), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ... 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [-1, 0, 2, 2]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_1/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_1')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_________________ test_bad_roi_fails_before_any_output[box2] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_2')
+box = [0, 0, 6, 2]
+
+    @pytest.mark.parametrize("box", [[0, 0, 0, 2], [-1, 0, 2, 2], [0, 0, 6, 2], [3, 0, 2, 2],
+                                    [0.0, 0, 2, 2], [False, 0, 2, 2], [0, 0, 2]])
+    def test_bad_roi_fails_before_any_output(tmp_path, box):
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), box), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [0, 0, 6, 2]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_2/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_2')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_________________ test_bad_roi_fails_before_any_output[box3] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_3')
+box = [3, 0, 2, 2]
+
+    @pytest.mark.parametrize("box", [[0, 0, 0, 2], [-1, 0, 2, 2], [0, 0, 6, 2], [3, 0, 2, 2],
+                                    [0.0, 0, 2, 2], [False, 0, 2, 2], [0, 0, 2]])
+    def test_bad_roi_fails_before_any_output(tmp_path, box):
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), box), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [3, 0, 2, 2]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_3/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_3')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_________________ test_bad_roi_fails_before_any_output[box4] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_4')
+box = [0.0, 0, 2, 2]
+
+    @pytest.mark.parametrize("box", [[0, 0, 0, 2], [-1, 0, 2, 2], [0, 0, 6, 2], [3, 0, 2, 2],
+                                    [0.0, 0, 2, 2], [False, 0, 2, 2], [0, 0, 2]])
+    def test_bad_roi_fails_before_any_output(tmp_path, box):
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), box), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [0.0, 0, 2, 2]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_4/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_4')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_________________ test_bad_roi_fails_before_any_output[box5] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_5')
+box = [False, 0, 2, 2]
+
+    @pytest.mark.parametrize("box", [[0, 0, 0, 2], [-1, 0, 2, 2], [0, 0, 6, 2], [3, 0, 2, 2],
+                                    [0.0, 0, 2, 2], [False, 0, 2, 2], [0, 0, 2]])
+    def test_bad_roi_fails_before_any_output(tmp_path, box):
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), box), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...ha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [False, 0, 2, 2]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_5/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_5')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_________________ test_bad_roi_fails_before_any_output[box6] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_6')
+box = [0, 0, 2]
+
+    @pytest.mark.parametrize("box", [[0, 0, 0, 2], [-1, 0, 2, 2], [0, 0, 6, 2], [3, 0, 2, 2],
+                                    [0.0, 0, 2, 2], [False, 0, 2, 2], [0, 0, 2]])
+    def test_bad_roi_fails_before_any_output(tmp_path, box):
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), box), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...ng', 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [0, 0, 2]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_6/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_roi_fails_before_any_6')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_______________ test_bad_margin_is_not_implicitly_converted[-1] _______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici0')
+margin = -1
+
+    @pytest.mark.parametrize("margin", [-1, True, 1.0, 4097])
+    def test_bad_margin_is_not_implicitly_converted(tmp_path, margin):
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), margin=margin), tmp_path / "out", workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': -1, 'regions': [{'id': 'region0', 'source': {'path':..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+______________ test_bad_margin_is_not_implicitly_converted[True] ______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici1')
+margin = True
+
+    @pytest.mark.parametrize("margin", [-1, True, 1.0, 4097])
+    def test_bad_margin_is_not_implicitly_converted(tmp_path, margin):
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), margin=margin), tmp_path / "out", workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': True, 'regions': [{'id': 'region0', 'source': {'path..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici1/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici1')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+______________ test_bad_margin_is_not_implicitly_converted[1.0] _______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici2')
+margin = 1.0
+
+    @pytest.mark.parametrize("margin", [-1, True, 1.0, 4097])
+    def test_bad_margin_is_not_implicitly_converted(tmp_path, margin):
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), margin=margin), tmp_path / "out", workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 1.0, 'regions': [{'id': 'region0', 'source': {'path'..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici2/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici2')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+______________ test_bad_margin_is_not_implicitly_converted[4097] ______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici3')
+margin = 4097
+
+    @pytest.mark.parametrize("margin", [-1, True, 1.0, 4097])
+    def test_bad_margin_is_not_implicitly_converted(tmp_path, margin):
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path), margin=margin), tmp_path / "out", workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 4097, 'regions': [{'id': 'region0', 'source': {'path..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici3/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_bad_margin_is_not_implici3')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+__________________ test_invalid_source_is_not_admitted[hash] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm0')
+change = 'hash'
+
+    @pytest.mark.parametrize("change", ["hash", "dimensions", "bool_dimensions", "unsupported_format"])
+    def test_invalid_source_is_not_admitted(tmp_path, change):
+        src = source(tmp_path, name="source.jpg" if change == "unsupported_format" else "source.png")
+        if change == "hash":
+            src["sha256"] = "a" * 64
+        elif change == "dimensions":
+            src["size"] = [6, 4]
+        elif change == "bool_dimensions":
+            src["size"] = [True, 4]
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(src), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_______________ test_invalid_source_is_not_admitted[dimensions] _______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm1')
+change = 'dimensions'
+
+    @pytest.mark.parametrize("change", ["hash", "dimensions", "bool_dimensions", "unsupported_format"])
+    def test_invalid_source_is_not_admitted(tmp_path, change):
+        src = source(tmp_path, name="source.jpg" if change == "unsupported_format" else "source.png")
+        if change == "hash":
+            src["sha256"] = "a" * 64
+        elif change == "dimensions":
+            src["size"] = [6, 4]
+        elif change == "bool_dimensions":
+            src["size"] = [True, 4]
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(src), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [6, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm1/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm1')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+____________ test_invalid_source_is_not_admitted[bool_dimensions] _____________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm2')
+change = 'bool_dimensions'
+
+    @pytest.mark.parametrize("change", ["hash", "dimensions", "bool_dimensions", "unsupported_format"])
+    def test_invalid_source_is_not_admitted(tmp_path, change):
+        src = source(tmp_path, name="source.jpg" if change == "unsupported_format" else "source.png")
+        if change == "hash":
+            src["sha256"] = "a" * 64
+        elif change == "dimensions":
+            src["size"] = [6, 4]
+        elif change == "bool_dimensions":
+            src["size"] = [True, 4]
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(src), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [True, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm2/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm2')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+___________ test_invalid_source_is_not_admitted[unsupported_format] ___________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm3')
+change = 'unsupported_format'
+
+    @pytest.mark.parametrize("change", ["hash", "dimensions", "bool_dimensions", "unsupported_format"])
+    def test_invalid_source_is_not_admitted(tmp_path, change):
+        src = source(tmp_path, name="source.jpg" if change == "unsupported_format" else "source.png")
+        if change == "hash":
+            src["sha256"] = "a" * 64
+        elif change == "dimensions":
+            src["size"] = [6, 4]
+        elif change == "bool_dimensions":
+            src["size"] = [True, 4]
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(src), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': 'ab6aac55d4647e5adf018c5a766647d66b32985575ca726252a1ad87933d81c8', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm3/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_invalid_source_is_not_adm3')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+__________________ test_text_metadata_is_not_copied_to_crop ___________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_text_metadata_is_not_copi0')
+
+    def test_text_metadata_is_not_copied_to_crop(tmp_path):
+        metadata = PngImagePlugin.PngInfo()
+        metadata.add_text("private_marker", "not-for-derived-image")
+>       result = regions.prepare(plan(source(tmp_path, pnginfo=metadata)), tmp_path / "out", workspace_root=tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_prepare_visual_regions.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '1c21f3b742c86aaae5506ff622e5297cfaf327aa4b5e95f55ce22073eb9c1d46', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_text_metadata_is_not_copi0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_text_metadata_is_not_copi0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+__________ test_unsupported_color_profile_cannot_be_silently_dropped __________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_unsupported_color_profile0')
+
+    def test_unsupported_color_profile_cannot_be_silently_dropped(tmp_path):
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(tmp_path, icc_profile=b"profile-for-test")), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': 'fcc7e550e308433c02b1e6a167488cc089a44031cb4b960fd4e8708086436c03', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_unsupported_color_profile0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_unsupported_color_profile0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+___________ test_batch_preflight_failure_leaves_zero_partial_files ____________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_batch_preflight_failure_l0')
+
+    def test_batch_preflight_failure_leaves_zero_partial_files(tmp_path):
+        src = source(tmp_path)
+        spec = plan(src)
+        spec["regions"].append({"id": "bad", "source": {**src, "sha256": "b" * 64}, "box": [1, 1, 3, 3]})
+        out = tmp_path / "out"
+        with pytest.raises(ValueError):
+>           regions.prepare(spec, out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'size': [5, 4]}, 'box': [1, 1, 3, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_batch_preflight_failure_l0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_batch_preflight_failure_l0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_________________ test_existing_outputs_are_never_overwritten _________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_existing_outputs_are_neve0')
+
+    def test_existing_outputs_are_never_overwritten(tmp_path):
+        out = tmp_path / "out"
+        out.mkdir()
+        marker = out / "keep.txt"
+        marker.write_text("existing", encoding="utf-8")
+        with pytest.raises(FileExistsError):
+>           regions.prepare(plan(source(tmp_path)), out, workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_existing_outputs_are_neve0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_existing_outputs_are_neve0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+__________________ test_output_scope_cannot_escape_workspace __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_output_scope_cannot_escap0')
+
+    def test_output_scope_cannot_escape_workspace(tmp_path):
+        workspace = tmp_path / "workspace"
+        workspace.mkdir()
+        out = tmp_path / "outside"
+        with pytest.raises(ValueError):
+>           regions.prepare(plan(source(workspace)), out, workspace_root=workspace)
+
+test\test_prepare_visual_regions.py:145: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_output_scope_cannot_escap0/outside')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_output_scope_cannot_escap0/workspace')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_______________ test_ambiguous_plan_is_rejected[duplicate_ids] ________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte0')
+change = 'duplicate_ids'
+
+    @pytest.mark.parametrize("change", ["duplicate_ids", "unknown_fields", "bad_required_box", "too_many"])
+    def test_ambiguous_plan_is_rejected(tmp_path, change):
+        spec = plan(source(tmp_path))
+        if change == "duplicate_ids":
+            spec["regions"].append(dict(spec["regions"][0]))
+        elif change == "unknown_fields":
+            spec["regions"][0]["unexpected"] = True
+        elif change == "bad_required_box":
+            spec["regions"][0]["required_box"] = [0, 0, 9, 9]
+        else:
+            spec["regions"] = [{**spec["regions"][0], "id": str(i)} for i in range(17)]
+        with pytest.raises(ValueError):
+>           regions.prepare(spec, tmp_path / "out", workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ..., 'sha256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte0/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte0')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+_______________ test_ambiguous_plan_is_rejected[unknown_fields] _______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte1')
+change = 'unknown_fields'
+
+    @pytest.mark.parametrize("change", ["duplicate_ids", "unknown_fields", "bad_required_box", "too_many"])
+    def test_ambiguous_plan_is_rejected(tmp_path, change):
+        spec = plan(source(tmp_path))
+        if change == "duplicate_ids":
+            spec["regions"].append(dict(spec["regions"][0]))
+        elif change == "unknown_fields":
+            spec["regions"][0]["unexpected"] = True
+        elif change == "bad_required_box":
+            spec["regions"][0]["required_box"] = [0, 0, 9, 9]
+        else:
+            spec["regions"] = [{**spec["regions"][0], "id": str(i)} for i in range(17)]
+        with pytest.raises(ValueError):
+>           regions.prepare(spec, tmp_path / "out", workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...8988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3], 'unexpected': True}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte1/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte1')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+______________ test_ambiguous_plan_is_rejected[bad_required_box] ______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte2')
+change = 'bad_required_box'
+
+    @pytest.mark.parametrize("change", ["duplicate_ids", "unknown_fields", "bad_required_box", "too_many"])
+    def test_ambiguous_plan_is_rejected(tmp_path, change):
+        spec = plan(source(tmp_path))
+        if change == "duplicate_ids":
+            spec["regions"].append(dict(spec["regions"][0]))
+        elif change == "unknown_fields":
+            spec["regions"][0]["unexpected"] = True
+        elif change == "bad_required_box":
+            spec["regions"][0]["required_box"] = [0, 0, 9, 9]
+        else:
+            spec["regions"] = [{**spec["regions"][0], "id": str(i)} for i in range(17)]
+        with pytest.raises(ValueError):
+>           regions.prepare(spec, tmp_path / "out", workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'region0', 'source': {'path': ...8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3], 'required_box': [0, 0, 9, 9]}]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte2/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte2')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+__________________ test_ambiguous_plan_is_rejected[too_many] __________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte3')
+change = 'too_many'
+
+    @pytest.mark.parametrize("change", ["duplicate_ids", "unknown_fields", "bad_required_box", "too_many"])
+    def test_ambiguous_plan_is_rejected(tmp_path, change):
+        spec = plan(source(tmp_path))
+        if change == "duplicate_ids":
+            spec["regions"].append(dict(spec["regions"][0]))
+        elif change == "unknown_fields":
+            spec["regions"][0]["unexpected"] = True
+        elif change == "bad_required_box":
+            spec["regions"][0]["required_box"] = [0, 0, 9, 9]
+        else:
+            spec["regions"] = [{**spec["regions"][0], "id": str(i)} for i in range(17)]
+        with pytest.raises(ValueError):
+>           regions.prepare(spec, tmp_path / "out", workspace_root=tmp_path)
+
+test\test_prepare_visual_regions.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': '0', 'source': {'path': 'C:\\U...a256': '3db55678988f4b9bf8c2b13ed285225c7512122a9e02357e19ad9870eed30993', 'size': [5, 4]}, 'box': [1, 1, 4, 3]}, ...]}
+output_dir = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte3/out')
+workspace_root = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-120/test_ambiguous_plan_is_rejecte3')
+
+    def prepare(plan, output_dir, *, workspace_root):
+>       raise NotImplementedError("region preparation")
+E       NotImplementedError: region preparation
+
+scripts\prepare_visual_regions.py:5: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_prepare_visual_regions.py::test_native_pixels_mode_and_source_binding_are_preserved[RGB]
+FAILED test/test_prepare_visual_regions.py::test_native_pixels_mode_and_source_binding_are_preserved[RGBA]
+FAILED test/test_prepare_visual_regions.py::test_declared_box_coverage_is_geometry_only[box0-contained-True]
+FAILED test/test_prepare_visual_regions.py::test_declared_box_coverage_is_geometry_only[box1-partial-False]
+FAILED test/test_prepare_visual_regions.py::test_declared_box_coverage_is_geometry_only[box2-disjoint-False]
+FAILED test/test_prepare_visual_regions.py::test_margin_is_clipped_but_requested_roi_never_silently_clipped
+FAILED test/test_prepare_visual_regions.py::test_bad_roi_fails_before_any_output[box0]
+FAILED test/test_prepare_visual_regions.py::test_bad_roi_fails_before_any_output[box1]
+FAILED test/test_prepare_visual_regions.py::test_bad_roi_fails_before_any_output[box2]
+FAILED test/test_prepare_visual_regions.py::test_bad_roi_fails_before_any_output[box3]
+FAILED test/test_prepare_visual_regions.py::test_bad_roi_fails_before_any_output[box4]
+FAILED test/test_prepare_visual_regions.py::test_bad_roi_fails_before_any_output[box5]
+FAILED test/test_prepare_visual_regions.py::test_bad_roi_fails_before_any_output[box6]
+FAILED test/test_prepare_visual_regions.py::test_bad_margin_is_not_implicitly_converted[-1]
+FAILED test/test_prepare_visual_regions.py::test_bad_margin_is_not_implicitly_converted[True]
+FAILED test/test_prepare_visual_regions.py::test_bad_margin_is_not_implicitly_converted[1.0]
+FAILED test/test_prepare_visual_regions.py::test_bad_margin_is_not_implicitly_converted[4097]
+FAILED test/test_prepare_visual_regions.py::test_invalid_source_is_not_admitted[hash]
+FAILED test/test_prepare_visual_regions.py::test_invalid_source_is_not_admitted[dimensions]
+FAILED test/test_prepare_visual_regions.py::test_invalid_source_is_not_admitted[bool_dimensions]
+FAILED test/test_prepare_visual_regions.py::test_invalid_source_is_not_admitted[unsupported_format]
+FAILED test/test_prepare_visual_regions.py::test_text_metadata_is_not_copied_to_crop
+FAILED test/test_prepare_visual_regions.py::test_unsupported_color_profile_cannot_be_silently_dropped
+FAILED test/test_prepare_visual_regions.py::test_batch_preflight_failure_leaves_zero_partial_files
+FAILED test/test_prepare_visual_regions.py::test_existing_outputs_are_never_overwritten
+FAILED test/test_prepare_visual_regions.py::test_output_scope_cannot_escape_workspace
+FAILED test/test_prepare_visual_regions.py::test_ambiguous_plan_is_rejected[duplicate_ids]
+FAILED test/test_prepare_visual_regions.py::test_ambiguous_plan_is_rejected[unknown_fields]
+FAILED test/test_prepare_visual_regions.py::test_ambiguous_plan_is_rejected[bad_required_box]
+FAILED test/test_prepare_visual_regions.py::test_ambiguous_plan_is_rejected[too_many]
+30 failed in 0.45s
+
+Python exit code: 1

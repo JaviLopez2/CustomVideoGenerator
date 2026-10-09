@@ -1,0 +1,158 @@
+{
+  "protocol": "visual-region-preparation-closing-checks-1",
+  "checked_utc": "2026-10-09T16:48:12.119882+00:00",
+  "execution_base_head": "35059e1fa1154f17d165f8f6ef8b7dcbee47a0f4",
+  "origin_base_head": "35059e1fa1154f17d165f8f6ef8b7dcbee47a0f4",
+  "branch": "factory/image-model-routing-modernization",
+  "divergence_before_commit": [
+    0,
+    0
+  ],
+  "scope": "Isolated offline PNG-region helper/tests/recipes/cohorts/design/documentation only",
+  "offline_tests": {
+    "passed": 83,
+    "new_tests": 32,
+    "paired_prior_tests": 51,
+    "seconds": 0.39,
+    "python_exit_code": 0,
+    "warnings": 0,
+    "log": "docs/validation/visual-region-preparation-final-v2-tests-2026-10-09.txt",
+    "log_sha256": "d76229683247634be32027474bc533eeec3590b65cfffe8fe9ff629ae46499d5",
+    "MPT_RUN_INTEGRATION_TESTS": "0",
+    "command": "Python MPT -B -m pytest -q test/test_prepare_visual_regions.py test/test_paired_shape_observations.py test/test_paired_shape_runner.py"
+  },
+  "tdd_stages": [
+    {
+      "path": "docs/validation/visual-region-preparation-final-tests-2026-10-09.txt",
+      "sha256": "eb62457e44071baa30f3f9840442caa39c98bb5fc5d7f01e9614b5e564d2000b",
+      "summary": "82 passed in 0.37s"
+    },
+    {
+      "path": "docs/validation/visual-region-preparation-final-v2-tests-2026-10-09.txt",
+      "sha256": "d76229683247634be32027474bc533eeec3590b65cfffe8fe9ff629ae46499d5",
+      "summary": "83 passed in 0.39s"
+    },
+    {
+      "path": "docs/validation/visual-region-preparation-green-tests-2026-10-09.txt",
+      "sha256": "1c31595903b0529d2f07e52ca2289a8aa8d51840e8c504a59b235d3d58fab32b",
+      "summary": "30 passed in 0.28s"
+    },
+    {
+      "path": "docs/validation/visual-region-preparation-red-tests-2026-10-09.txt",
+      "sha256": "cd44ee94a66fe4133b089f4139d5a12924fe71a5551d866c5189928f46104287",
+      "summary": "30 failed in 0.45s"
+    },
+    {
+      "path": "docs/validation/visual-region-provenance-red-tests-2026-10-09.txt",
+      "sha256": "08e6b7c26a21dbbea14980dfd9f5886c97e186be8e8d4356872f6309b8069a72",
+      "summary": "1 failed, 30 passed in 0.34s"
+    },
+    {
+      "path": "docs/validation/visual-region-transparency-red-tests-2026-10-09.txt",
+      "sha256": "b5fbf9e1325712321e73f89bc946de2ca1ef9a650e8fdbd881020f1cd93eb4fc",
+      "summary": "1 failed, 31 passed in 0.38s"
+    }
+  ],
+  "independent_review": {
+    "first": "P2 RGB tRNS transparency lost while RGB bytes preserved",
+    "reproduced_before_fix": "1 failed,31 passed in0.38s",
+    "correction": "Reject unsupported transparency metadata; sources/boxes/margin unchanged",
+    "final": "No issues"
+  },
+  "artifacts": {
+    "cohorts": 2,
+    "pngs_per_cohort": 8,
+    "final_regions": 8,
+    "unique_originals": 6,
+    "coverage": {
+      "contained": 6,
+      "partial": 1,
+      "disjoint": 1
+    },
+    "previous_key_crop_bytes_identical": 4,
+    "initial_final_crop_bytes_identical": 8,
+    "source_crop_bindings_reverified": true,
+    "native_pixels_independent_numpy_verified": true,
+    "semantic_human_coverage": "pending",
+    "metadata_values_not_logged": true,
+    "manifest": {
+      "path": "local_image_stack/experiments/bridge/target/visual-region-preparation-v2-2026-10-09/manifest.json",
+      "sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee"
+    }
+  },
+  "generation_requests": 0,
+  "model_requests": 0,
+  "gpu_operations": 0,
+  "service_changes": 0,
+  "downloads": 0,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "json_parsed": 6,
+  "python_sources_ast_parsed": 4,
+  "limited_credential_pattern_scan_matches": 0,
+  "source_docs_whitespace_check": "Staged source/docs/recipes/JSON and initial GREEN check exit0; five preserved raw pytest logs excluded after inspecting findings.",
+  "stable": {
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "tracked_status_clean": true,
+    "untracked_preserved": true
+  },
+  "next": "CPU evidence-provenance and region-preflight runner extension, v1 compatible; then fixed max6 existing-judge requests per cross-family design, no human gold invented. No current user intervention.",
+  "task_files": [
+    "AGENT_FACTORY_STATE.md",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+    "docs/IMAGE_MODEL_ROUTING_RND.md",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+    "docs/VISUAL_REGION_PREPARATION_REPORT.md",
+    "scripts/prepare_visual_regions.py",
+    "test/test_prepare_visual_regions.py",
+    "docs/validation/cross-family-roi-probe-design-2026-10-09.json",
+    "docs/validation/visual-region-assistant-preflight-2026-10-09.json",
+    "docs/validation/visual-region-preparation-final-tests-2026-10-09.txt",
+    "docs/validation/visual-region-preparation-final-v2-tests-2026-10-09.txt",
+    "docs/validation/visual-region-preparation-green-tests-2026-10-09.txt",
+    "docs/validation/visual-region-preparation-plan-2026-10-09.json",
+    "docs/validation/visual-region-preparation-plan-v2-2026-10-09.json",
+    "docs/validation/visual-region-preparation-recipe-2026-10-09.py",
+    "docs/validation/visual-region-preparation-recipe-v2-2026-10-09.py",
+    "docs/validation/visual-region-preparation-red-tests-2026-10-09.txt",
+    "docs/validation/visual-region-preparation-result-2026-10-09.json",
+    "docs/validation/visual-region-preparation-result-v2-2026-10-09.json",
+    "docs/validation/visual-region-provenance-red-tests-2026-10-09.txt",
+    "docs/validation/visual-region-transparency-red-tests-2026-10-09.txt"
+  ],
+  "task_file_sha256": {
+    "AGENT_FACTORY_STATE.md": "83fe0f5d9763d094ce4e2c4540fc20b1551d648549a9e17f2b7a9adbd749f73a",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md": "de2a6b1a554d2342cecffdc58db3397946b909eababe5ae9c11c4220ff9f8bca",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md": "1d5b3ad30f90f1c6a1de4891407c85eb46d8fb00b2f003c3b02af8a54e8f85af",
+    "docs/IMAGE_MODEL_ROUTING_RND.md": "798d9634e710bc3ad6782af5b702af0bba1e0deba80b9a6fa07cad793e2a0b64",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md": "fd2f36c83082ae49cf78e00fbb7bf4f42e1f5405f9359bdf317c8ec6b3bdbb4e",
+    "docs/VISUAL_REGION_PREPARATION_REPORT.md": "ad1ea1027927b36473c0ab21d35bf06f88b98435ea8baf0b7653e1d038e73269",
+    "scripts/prepare_visual_regions.py": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c",
+    "test/test_prepare_visual_regions.py": "239f3cc9630cc8fe0c670309811794ff2e14889485e89e483163598dc83346ca",
+    "docs/validation/cross-family-roi-probe-design-2026-10-09.json": "381082257e2cec3e69cb1d46db132fa5d35ef4b9d3b1bb550d5f1836a90cfe7c",
+    "docs/validation/visual-region-assistant-preflight-2026-10-09.json": "15f610df564ebd214f9358a4f2e01375363dd10e4d21de9cbf0ebc88e11e5f88",
+    "docs/validation/visual-region-preparation-final-tests-2026-10-09.txt": "eb62457e44071baa30f3f9840442caa39c98bb5fc5d7f01e9614b5e564d2000b",
+    "docs/validation/visual-region-preparation-final-v2-tests-2026-10-09.txt": "d76229683247634be32027474bc533eeec3590b65cfffe8fe9ff629ae46499d5",
+    "docs/validation/visual-region-preparation-green-tests-2026-10-09.txt": "1c31595903b0529d2f07e52ca2289a8aa8d51840e8c504a59b235d3d58fab32b",
+    "docs/validation/visual-region-preparation-plan-2026-10-09.json": "96bc8d698eae3b35d486682e16a6a8953685567d2e6f9527168b8267f2e494fd",
+    "docs/validation/visual-region-preparation-plan-v2-2026-10-09.json": "da77e1f7f8c73273740444ada5963d0e8e823faac28bb5b248bae79cece958ba",
+    "docs/validation/visual-region-preparation-recipe-2026-10-09.py": "c85cc0d60ef9b23ebd0703d2ce3b10458166ec3ea843291d5fbb1ce2e9c90cf0",
+    "docs/validation/visual-region-preparation-recipe-v2-2026-10-09.py": "0cbf87cda9c89d93ca2bdcd1640f9d926ffbc959b74847ce8f58aa2c31f55f1a",
+    "docs/validation/visual-region-preparation-red-tests-2026-10-09.txt": "cd44ee94a66fe4133b089f4139d5a12924fe71a5551d866c5189928f46104287",
+    "docs/validation/visual-region-preparation-result-2026-10-09.json": "801131d9820de67acac0accb78deb54311354d0703372127c85edcb2771da374",
+    "docs/validation/visual-region-preparation-result-v2-2026-10-09.json": "7303f0fb9773e710a101d463f20dc951a17642bdcdd319306612c952d50e47db",
+    "docs/validation/visual-region-provenance-red-tests-2026-10-09.txt": "08e6b7c26a21dbbea14980dfd9f5886c97e186be8e8d4356872f6309b8069a72",
+    "docs/validation/visual-region-transparency-red-tests-2026-10-09.txt": "b5fbf9e1325712321e73f89bc946de2ca1ef9a650e8fdbd881020f1cd93eb4fc"
+  },
+  "self_hash_excluded": true,
+  "preserved_test_logs_whitespace_findings": {
+    "docs/validation/visual-region-preparation-red-tests-2026-10-09.txt": 30,
+    "docs/validation/visual-region-provenance-red-tests-2026-10-09.txt": 1,
+    "docs/validation/visual-region-transparency-red-tests-2026-10-09.txt": 21,
+    "docs/validation/visual-region-preparation-final-tests-2026-10-09.txt": 5,
+    "docs/validation/visual-region-preparation-final-v2-tests-2026-10-09.txt": 5
+  },
+  "test_log_newline_note": "Some Windows subprocess CRLF output was written through text newline conversion, leaving an extra CR in archived/staged logs. Preserve original evidence files; these formatting findings do not change pytest results. Do not claim a zero full staged whitespace check."
+}

@@ -1,0 +1,234 @@
+{
+  "protocol": "cross-family-paired-shape-design-1",
+  "declared_on": "2026-10-09",
+  "status": "frozen_method; execution blocked until neutral evidence provenance and region preflight are implemented/tested",
+  "question": "Do existing paired major-shape observers stay consistent on exact duplicate inputs and a retained recoloring pair in a second image family when whole declared-region coverage is checked before requests?",
+  "source_preparation": {
+    "path": "docs/validation/visual-region-preparation-result-v2-2026-10-09.json",
+    "sha256": "7303f0fb9773e710a101d463f20dc951a17642bdcdd319306612c952d50e47db"
+  },
+  "artifact_manifest": {
+    "path": "local_image_stack/experiments/bridge/target/visual-region-preparation-v2-2026-10-09/manifest.json",
+    "sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee"
+  },
+  "subject": "mug",
+  "annotations": "Existing assistant ROI boxes from the prior CPU audit; margin8 fixed. No masks, gold shape/count labels or fresh physical-identity review.",
+  "planned_cases": [
+    {
+      "id": "red_same_bytes",
+      "reference_region": "image_4",
+      "candidate_region": "image_4",
+      "expected_major_shape_change": "not_observed",
+      "expectation_origin": "byte-identical input consistency control; no independent perception gold"
+    },
+    {
+      "id": "blue_same_bytes",
+      "reference_region": "image_5",
+      "candidate_region": "image_5",
+      "expected_major_shape_change": "not_observed",
+      "expectation_origin": "byte-identical input consistency control; no independent perception gold"
+    },
+    {
+      "id": "retained_color_pair",
+      "reference_region": "image_4",
+      "candidate_region": "image_5",
+      "expected_major_shape_change": null,
+      "expectation_origin": "human shape gold unavailable; raw categorical observation only, assistant inspection shows similar overall outline with color change; no correctness score"
+    }
+  ],
+  "pre_request_exclusion_controls": [
+    {
+      "region": "mug_partial_coverage",
+      "expected_relation": "partial",
+      "model_requests": 0,
+      "reason": "Declared target rectangle not wholly retained; missing lower area cannot be scored as a structural edit"
+    },
+    {
+      "region": "mug_background_control",
+      "expected_relation": "disjoint",
+      "model_requests": 0,
+      "reason": "No intersection with declared target rectangle; reject whole-target diagnostic before inference"
+    }
+  ],
+  "regions": [
+    {
+      "id": "image_4",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+        "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "crop": {
+        "sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+        "size": [
+          313,
+          286
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_04.png"
+      },
+      "required_box": [
+        145,
+        155,
+        442,
+        425
+      ],
+      "effective_box": [
+        137,
+        147,
+        450,
+        433
+      ],
+      "coverage_relation": "contained",
+      "whole_declared_region_eligible": true,
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "id": "image_5",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-single-ref-512-seed42-2026-10-07\\klein4b-edit-blue-mug-512-seed42.png",
+        "sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "crop": {
+        "sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+        "size": [
+          313,
+          286
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_05.png"
+      },
+      "required_box": [
+        145,
+        155,
+        442,
+        425
+      ],
+      "effective_box": [
+        137,
+        147,
+        450,
+        433
+      ],
+      "coverage_relation": "contained",
+      "whole_declared_region_eligible": true,
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "id": "mug_partial_coverage",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+        "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "crop": {
+        "sha256": "e9bbea312967f2248fa489b89ed5619a5d92d1f7135a189548c699ad8992e2ad",
+        "size": [
+          313,
+          181
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_06.png"
+      },
+      "required_box": [
+        145,
+        155,
+        442,
+        425
+      ],
+      "effective_box": [
+        137,
+        147,
+        450,
+        328
+      ],
+      "coverage_relation": "partial",
+      "whole_declared_region_eligible": false,
+      "semantic_coverage_review": "pending"
+    },
+    {
+      "id": "mug_background_control",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\gpu-smoke-512-seed42-2026-10-07\\klein4b-t2i-512-seed42.png",
+        "sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+        "size": [
+          512,
+          512
+        ]
+      },
+      "crop": {
+        "sha256": "b551551c4b845e1dbb3124dfaebc706cb9fefa5e839d434575447f01e725bfe6",
+        "size": [
+          104,
+          104
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_07.png"
+      },
+      "required_box": [
+        145,
+        155,
+        442,
+        425
+      ],
+      "effective_box": [
+        0,
+        0,
+        104,
+        104
+      ],
+      "coverage_relation": "disjoint",
+      "whole_declared_region_eligible": false,
+      "semantic_coverage_review": "pending"
+    }
+  ],
+  "planned_models": [
+    "Qwen3.5-9B-Q4_K_M",
+    "Qwen3-VL-8B-Instruct-Q4_K_M"
+  ],
+  "assets_manifest": {
+    "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+    "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+  },
+  "method": {
+    "reuse_existing_prompt_schema_decoding": true,
+    "max_tokens": 256,
+    "temperature": 0,
+    "thinking": false,
+    "context": 8192,
+    "parallel": 1,
+    "image_min_tokens": 1024,
+    "image_max_tokens": 1536,
+    "model_loading": "sequential owned8092 only after resource and source preflight",
+    "port": 8092
+  },
+  "budget": {
+    "requests_per_model": 3,
+    "maximum_model_requests": 6,
+    "generations": 0,
+    "downloads": 0,
+    "retries": 0
+  },
+  "implementation_gap": "Current runner binds a human_review file for known three-key tests. Extend protocol evidence provenance without inventing mug human gold; v1 behavior must stay compatible. Check manifest/source/crop/bbox coverage and pixels before dispatch; no aliases/gates/default integration.",
+  "stopping_rule": "Freeze executable plan after CPU regressions and independent review; at most one cohort per model, stop first invalid/unavailable response, preserve outcomes and close only owned8092. No prompt/crop/token retuning to obtain favorable results.",
+  "interpretation": {
+    "human_shape_accuracy_claim": false,
+    "physical_identity_established": false,
+    "admission_allowed": false,
+    "automatic_rejection": false,
+    "automatic_localizer": false,
+    "partial_background_are_structural_negatives": false,
+    "end_to_end_qa_latency_claim": false,
+    "no_new_human_labels": true
+  }
+}
