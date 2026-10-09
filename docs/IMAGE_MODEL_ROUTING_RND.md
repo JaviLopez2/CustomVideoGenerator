@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — límites de componentes y perspectiva, 2026-10-09
+
+Desde `19c660b`: 33 controles sintéticos CPU/66 ajustes, correspondencias conocidas por construcción; cuatro pares retenidos solo auditados por nombres (C6/A5/B0/tazas6). Sin transformación, ratios o score de identidad sobre fotos. Un plano intacto inclinado produce error de similitud; homografía planar falla en partes a distinta profundidad y encaja cuatro esquinas deformadas sin comprobar otras partes. Márgenes de dibujo supuestos pueden cubrir diferencias pequeñas, sin medir tamaño real de A. B sigue discutida/excluida; juicios y revisiones intactos. [Informe con fuentes oficiales y límites](COMPONENT_POSE_LIMITS_REPORT.md).
+
+19 tests nuevos; 124 actuales pasan, 1 warning esperado, 8,86s/exit0. Script/plan/raw aislados, diagrama SVG/PNG local; no cambios app/modelos/routing/gates/flags/deps/workflows/estable ni VLM/generaciones/GPU/descargas/servicios. Siguiente: comparar boxes VLM retenidas de hueco/contactos de taza con puntos aproximadamente revisados en la misma imagen y margen±3px, sin nuevas inferencias o identidad entre vistas. Negativo estructural y calibración pendientes; ningún candidato promovido.
+
 ## Actualización — anotaciones y revisión humana de regiones, 2026-10-09
 
 Desde `03c36ba`: seis contornos manuales, tres huecos y 36 puntos sobre originales intactos, con renderer/validador aislado y 16 tests nuevos. La primera revisión humana detectó B mal trazada, anillos de A estrechos y borde izquierdo de tazas excedido; v3 corrige esas zonas sin cambiar puntos/huecos. La segunda revisión mantiene B discutida por sombra/perspectiva: máscara completa excluida de medición de identidad y calibración. No gold por píxel, correspondencias certificadas, score o aprobación. Dos respuestas literales vinculadas a SHA separadas de A/B/C, sin interpretar silencios como aprobación. [Informe](SPATIAL_ANNOTATION_REVIEW_REPORT.md).

@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: bounded synthetic component/pose limits
+
+Base19c660b; 33 synthetic CPU cases/66 fixed fits, mathematically known correspondences. Four retained pairs have shared nominal roles C6/A5/B0/mugs6; no real photo transform, ratio or identity score calculated. Intact planar tilt defeats similarity; homography cannot recover different-depth parts and can fit four deformed anchors without independent checks. Conditional drawing-error bounds overlap for a small synthetic change, not measured confidence or A ring size. Original six images, v3 and all human reviews preserved; B full mask disputed/excluded and overall shape-change judgment unchanged. [Report](COMPONENT_POSE_LIMITS_REPORT.md).
+
+Isolated script/19 new tests;124 fresh focused pass,1 expected warning,8.86s/exit0. Existing dependencies only; raw/plan and ignored SVG/PNG preserve all synthetic geometry. App/judges/gates/defaults/models/routing/workflows/stable unchanged;0 real identity/VLM/generation/GPU/downloads/services. Next per-image localization audit of existing mug hole/contact boxes versus approximately reviewed points with±3px uncertainty, not cross-view identity or a fresh prompt/model run. Structural-negative mug/calibration still missing; no candidate promoted. Closing SHA via Git/origin, execution base distinct.
+
 ## Current checkpoint: manual spatial drafts, partial human region review
 
 Base 03c36ba; six full-object draft contours, three background holes and 36 landmarks prepared in isolated SHA-bound renderer/validator. Two direct human reviews preserved verbatim separately from unchanged overall A/B/C. V3 redraws B shape, A band width and left mug boundaries without moving any point/hole. Human still sees shadow inclusion in oblique B: its full mask is disputed/excluded from identity measurement and calibration. Approximate point/hole agreement is not pixel truth or physical correspondence; silence about other contours is not approval. All authority/metric-eligibility flags false, 0 identity scores/VLM/generation. [Report](SPATIAL_ANNOTATION_REVIEW_REPORT.md).

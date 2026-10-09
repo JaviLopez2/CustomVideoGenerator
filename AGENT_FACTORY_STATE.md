@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: component and pose limits — 2026-10-09
+
+From published `19c660b`, CPU-only fixed synthetic probe completes: 33 cases/66 fits with known mathematical correspondences, four retained pairs audited for nominal role overlap only (C6/A5/B0/mugs6). No real photo fit, ratios or identity scores. Intact planar tilt breaks similarity; plane homography cannot correct depth parts, and exact four-anchor fitting can hide a constructed corner deformation without independent check points. Synthetic drawing-error bounds overlap for a small part difference; not measured confidence or real A ring size. B full mask remains disputed/excluded, original labels/reviews untouched. [Report](docs/COMPONENT_POSE_LIMITS_REPORT.md).
+
+Isolated script/19 new tests; 124 fresh focused tests pass, 1 expected warning, 8.86 s/exit0. Immutable plan/raw/SVG/PNG preserved, existing dependencies only. App/judges/defaults/gates/flags/routing/models/workflows/stable unchanged; 0 VLM/generation/GPU/downloads/services. Next: audit retained mug component boxes against approximately reviewed per-image sites with ±3px margins; no new inference or cross-view identity. Negative structural mug/calibration still pending. Closing SHA via history/origin; execution base distinct.
+
 ## Current checkpoint: spatial drafts and human region review — 2026-10-09
 
 From published `03c36ba`: six manual contours, three holes and 36 landmarks prepared with immutable original-byte/hash bindings; standalone renderer/validator and 16 tests, no app wiring or identity scores. User found B shape mismatch, narrow A bands and left mug overshoot; v3 redraws those boundaries while preserving all landmarks/holes. Second review still finds shadow inclusion in oblique B: full B mask disputed/excluded from identity measurement and calibration. No silence interpreted as approval, no pixel gold or certified correspondence. Both verbatim reviews preserved separately from unchanged A/B/C. [Report](docs/SPATIAL_ANNOTATION_REVIEW_REPORT.md).

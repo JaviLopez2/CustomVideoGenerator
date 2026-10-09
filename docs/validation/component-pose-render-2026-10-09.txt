@@ -1,0 +1,18 @@
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+Synthetic diagram rasterized; source SVG unchanged.
+node_exit_code=0

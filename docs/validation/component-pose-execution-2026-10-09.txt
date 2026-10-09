@@ -1,0 +1,2 @@
+{"synthetic_cases": 33, "synthetic_fits": 66, "retained_pairs_metadata_only": 4, "real_identity_comparisons": 0}
+python_exit_code=0

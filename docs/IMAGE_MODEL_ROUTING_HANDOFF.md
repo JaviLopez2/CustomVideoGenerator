@@ -1,5 +1,15 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — prueba acotada de componentes y perspectiva, 2026-10-09
+
+Base publicada `19c660b9aff0e5b7f17159c4701ce91838df920e`; mismo worktree/rama, inicialmente limpio. Script experimental y 19 tests nuevos, plan fijado con hashes de script/anotación/revisiones. 33 controles sintéticos/66 ajustes completados, sin inferencias/generaciones/GPU/servicios. Auditoría de cuatro pares retenidos: roles nominales compartidos C6/A5/B0/tazas6, sin correspondencia física certificada ni cálculo geométrico sobre fotos. [Informe](COMPONENT_POSE_LIMITS_REPORT.md), [plan](validation/component-pose-plan-2026-10-09.json), [raw](validation/component-pose-results-2026-10-09.json).
+
+Similitud confunde inclinación planar con discrepancia; homografía del plano no corrige puntos a distinta profundidad. Cuatro anclajes deformados pueden encajar sin validación independiente; cotas de incertidumbre supuestas se solapan en cambio pequeño. Es geometría sintética medida localmente, no pose recuperada de fotos ni calibración de identidad. B mantiene juicio humano de cambio total y máscara discutida/excluida; v3, A/B/C y ambas respuestas humanas intactos. No admisión o promoción; app/defaults/flags/gates/routing/modelos/deps/workflows/estable sin cambios.
+
+124 tests actuales pasan, 1 warning esperado, 8,86s/exit0; RED19/GREEN19 preservados, suite anterior105 histórica. [Cierre](validation/component-pose-closing-checks-2026-10-09.json). Diagrama SVG/PNG inspeccionado en target/component-pose-limits-2026-10-09, ignorado y preservable junto a anteriores assets. Node/sharp existente, sin navegador/servidor ni cambios por caché Fontconfig restringida. Fetch0/0, stable/tracked intactos en6d27ba4; checkpoint final por historial/origin, execution_head previo.
+
+Siguiente tarea concreta: auditoría de localización de los raw guardados isolated-mug-hole/contacts-qwen35/qwen3vl, sobre roja/azul y sitios aproximadamente revisados con margen±3px. Comparar dentro de cada imagen, conservar agregación/omisión, sin repetir inferencias ni tratar cobertura puntual como contorno/identidad. No abrir servicios para ello. Negativo estructural de taza y umbrales calibrados siguen pendientes; no nuevos pesos, generación o promoción implícitos.
+
 ## Estado vigente — borradores espaciales y dos revisiones humanas, 2026-10-09
 
 Base publicada `03c36ba788090f8e904d5d7b49200e543cf98f8c`, mismo worktree/rama experimental. Se conservaron los borradores uncommitted al reanudar. Se añaden renderer/validador aislado, 16 tests, tres versiones de contornos, reportes/logs y dos respuestas humanas literales vinculadas a anotación/tablero SHA. Seis contornos, tres huecos, 36 puntos; originales y A/B/C intactos. [Informe y límites](SPATIAL_ANNOTATION_REVIEW_REPORT.md), [v3](validation/spatial-annotation-draft-v3-2026-10-09.json), [última revisión](validation/spatial-annotation-human-review-v3-2026-10-09.json).

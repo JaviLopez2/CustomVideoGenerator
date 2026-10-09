@@ -1,0 +1,473 @@
+FFFFFFFFFFFFFFFFFFF                                                      [100%]
+================================== FAILURES ===================================
+__________________ test_pinhole_projection_known_coordinates __________________
+
+    def test_pinhole_projection_known_coordinates():
+>       assert np.allclose(M["project"]([[0, 0, 0], [1, 0, 0], [0, 1, 0]]),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                           [[320, 240], [420, 240], [320, 340]])
+
+test\test_component_pose_limits.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+points = [[0, 0, 0], [1, 0, 0], [0, 1, 0]], rx = 0, ry = 0, depth = 6
+focal = 600
+
+    def project(points, rx=0, ry=0, depth=6, focal=600):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:5: NotImplementedError
+_________ test_invalid_or_behind_camera_geometry_is_rejected[points0] _________
+
+points = [[0, 0, -6]]
+
+    @pytest.mark.parametrize("points", [[[0, 0, -6]], [[0, 0, float("nan")]], [[1, 2]]])
+    def test_invalid_or_behind_camera_geometry_is_rejected(points):
+        with pytest.raises(ValueError):
+>           M["project"](points)
+
+test\test_component_pose_limits.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+points = [[0, 0, -6]], rx = 0, ry = 0, depth = 6, focal = 600
+
+    def project(points, rx=0, ry=0, depth=6, focal=600):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:5: NotImplementedError
+_________ test_invalid_or_behind_camera_geometry_is_rejected[points1] _________
+
+points = [[0, 0, nan]]
+
+    @pytest.mark.parametrize("points", [[[0, 0, -6]], [[0, 0, float("nan")]], [[1, 2]]])
+    def test_invalid_or_behind_camera_geometry_is_rejected(points):
+        with pytest.raises(ValueError):
+>           M["project"](points)
+
+test\test_component_pose_limits.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+points = [[0, 0, nan]], rx = 0, ry = 0, depth = 6, focal = 600
+
+    def project(points, rx=0, ry=0, depth=6, focal=600):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:5: NotImplementedError
+_________ test_invalid_or_behind_camera_geometry_is_rejected[points2] _________
+
+points = [[1, 2]]
+
+    @pytest.mark.parametrize("points", [[[0, 0, -6]], [[0, 0, float("nan")]], [[1, 2]]])
+    def test_invalid_or_behind_camera_geometry_is_rejected(points):
+        with pytest.raises(ValueError):
+>           M["project"](points)
+
+test\test_component_pose_limits.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+points = [[1, 2]], rx = 0, ry = 0, depth = 6, focal = 600
+
+    def project(points, rx=0, ry=0, depth=6, focal=600):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:5: NotImplementedError
+________ test_in_plane_uniform_similarity_has_zero_synthetic_residual _________
+
+    def test_in_plane_uniform_similarity_has_zero_synthetic_residual():
+        a = np.array([[0., 0.], [100, 0], [100, 100], [0, 100], [35, 60]])
+        angle = .4
+        rotation = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
+        b = 1.3*a@rotation.T + [10, -20]
+>       r = M["fit_diagnostic"](a, b, "similarity", [0, 1, 2, 3], [4])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = array([[  0.,   0.],
+       [100.,   0.],
+       [100., 100.],
+       [  0., 100.],
+       [ 35.,  60.]])
+target = array([[ 10.        , -20.        ],
+       [129.73792922,  30.6243845 ],
+       [ 79.11354472, 150.36231372],
+       [-40.6243845 ,  99.73792922],
+       [ 21.53364453,  69.56129211]])
+kind = 'similarity', anchors = [0, 1, 2, 3], heldout = [4]
+
+    def fit_diagnostic(source, target, kind, anchors, heldout):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:9: NotImplementedError
+_ test_unchanged_tilted_plane_defeats_similarity_but_homography_predicts_unused_points _
+
+    def test_unchanged_tilted_plane_defeats_similarity_but_homography_predicts_unused_points():
+>       a, b = M["project"](PLANE), M["project"](PLANE, ry=45)
+               ^^^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+points = array([[-1.  , -1.  ,  0.  ],
+       [ 1.  , -1.  ,  0.  ],
+       [ 1.  ,  1.  ,  0.  ],
+       [-1.  ,  1.  ,  0.  ],
+       [ 0.  , -0.55,  0.  ],
+       [ 0.  ,  0.55,  0.  ],
+       [ 0.3 ,  0.2 ,  0.  ],
+       [-0.2 ,  0.35,  0.  ]])
+rx = 0, ry = 0, depth = 6, focal = 600
+
+    def project(points, rx=0, ry=0, depth=6, focal=600):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:5: NotImplementedError
+_____ test_plane_homography_does_not_correct_points_with_different_depth ______
+
+    def test_plane_homography_does_not_correct_points_with_different_depth():
+        xyz = PLANE.copy(); xyz[6, 2] = .8; xyz[7, 2] = -.6
+>       a, b = M["project"](xyz), M["project"](xyz, ry=45)
+               ^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+points = array([[-1.  , -1.  ,  0.  ],
+       [ 1.  , -1.  ,  0.  ],
+       [ 1.  ,  1.  ,  0.  ],
+       [-1.  ,  1.  ,  0.  ],
+       [ 0.  , -0.55,  0.  ],
+       [ 0.  ,  0.55,  0.  ],
+       [ 0.3 ,  0.2 ,  0.8 ],
+       [-0.2 ,  0.35, -0.6 ]])
+rx = 0, ry = 0, depth = 6, focal = 600
+
+    def project(points, rx=0, ry=0, depth=6, focal=600):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:5: NotImplementedError
+___ test_fitting_four_deformed_corners_is_not_independent_shape_validation ____
+
+    def test_fitting_four_deformed_corners_is_not_independent_shape_validation():
+        a = np.array([[0., 0.], [100, 0], [100, 100], [0, 100]])
+        b = a.copy(); b[2] += [25, -10]
+>       r = M["fit_diagnostic"](a, b, "projective", [0, 1, 2, 3], [])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = array([[  0.,   0.],
+       [100.,   0.],
+       [100., 100.],
+       [  0., 100.]])
+target = array([[  0.,   0.],
+       [100.,   0.],
+       [125.,  90.],
+       [  0., 100.]])
+kind = 'projective', anchors = [0, 1, 2, 3], heldout = []
+
+    def fit_diagnostic(source, target, kind, anchors, heldout):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:9: NotImplementedError
+_____ test_deformed_unused_part_remains_visible_despite_exact_anchor_fit ______
+
+    def test_deformed_unused_part_remains_visible_despite_exact_anchor_fit():
+>       a = M["project"](PLANE); b = a.copy(); b[6] += [12, 0]
+            ^^^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+points = array([[-1.  , -1.  ,  0.  ],
+       [ 1.  , -1.  ,  0.  ],
+       [ 1.  ,  1.  ,  0.  ],
+       [-1.  ,  1.  ,  0.  ],
+       [ 0.  , -0.55,  0.  ],
+       [ 0.  ,  0.55,  0.  ],
+       [ 0.3 ,  0.2 ,  0.  ],
+       [-0.2 ,  0.35,  0.  ]])
+rx = 0, ry = 0, depth = 6, focal = 600
+
+    def project(points, rx=0, ry=0, depth=6, focal=600):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:5: NotImplementedError
+_ test_anchor_and_check_points_are_disjoint_unique_in_bounds[anchors0-heldout0] _
+
+anchors = [0, 1, 2, 3], heldout = [3, 4]
+
+    @pytest.mark.parametrize("anchors,heldout", [([0, 1, 2, 3], [3, 4]), ([0, 1, 2, 2], [4]),
+                                                ([0, 1, 2, 99], [4]), ([0, 1, 2, True], [4])])
+    def test_anchor_and_check_points_are_disjoint_unique_in_bounds(anchors, heldout):
+        a = np.array([[0, 0], [100, 0], [100, 100], [0, 100], [50, 60]])
+        with pytest.raises(ValueError):
+>           M["fit_diagnostic"](a, a, "projective", anchors, heldout)
+
+test\test_component_pose_limits.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = array([[  0,   0],
+       [100,   0],
+       [100, 100],
+       [  0, 100],
+       [ 50,  60]])
+target = array([[  0,   0],
+       [100,   0],
+       [100, 100],
+       [  0, 100],
+       [ 50,  60]])
+kind = 'projective', anchors = [0, 1, 2, 3], heldout = [3, 4]
+
+    def fit_diagnostic(source, target, kind, anchors, heldout):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:9: NotImplementedError
+_ test_anchor_and_check_points_are_disjoint_unique_in_bounds[anchors1-heldout1] _
+
+anchors = [0, 1, 2, 2], heldout = [4]
+
+    @pytest.mark.parametrize("anchors,heldout", [([0, 1, 2, 3], [3, 4]), ([0, 1, 2, 2], [4]),
+                                                ([0, 1, 2, 99], [4]), ([0, 1, 2, True], [4])])
+    def test_anchor_and_check_points_are_disjoint_unique_in_bounds(anchors, heldout):
+        a = np.array([[0, 0], [100, 0], [100, 100], [0, 100], [50, 60]])
+        with pytest.raises(ValueError):
+>           M["fit_diagnostic"](a, a, "projective", anchors, heldout)
+
+test\test_component_pose_limits.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = array([[  0,   0],
+       [100,   0],
+       [100, 100],
+       [  0, 100],
+       [ 50,  60]])
+target = array([[  0,   0],
+       [100,   0],
+       [100, 100],
+       [  0, 100],
+       [ 50,  60]])
+kind = 'projective', anchors = [0, 1, 2, 2], heldout = [4]
+
+    def fit_diagnostic(source, target, kind, anchors, heldout):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:9: NotImplementedError
+_ test_anchor_and_check_points_are_disjoint_unique_in_bounds[anchors2-heldout2] _
+
+anchors = [0, 1, 2, 99], heldout = [4]
+
+    @pytest.mark.parametrize("anchors,heldout", [([0, 1, 2, 3], [3, 4]), ([0, 1, 2, 2], [4]),
+                                                ([0, 1, 2, 99], [4]), ([0, 1, 2, True], [4])])
+    def test_anchor_and_check_points_are_disjoint_unique_in_bounds(anchors, heldout):
+        a = np.array([[0, 0], [100, 0], [100, 100], [0, 100], [50, 60]])
+        with pytest.raises(ValueError):
+>           M["fit_diagnostic"](a, a, "projective", anchors, heldout)
+
+test\test_component_pose_limits.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = array([[  0,   0],
+       [100,   0],
+       [100, 100],
+       [  0, 100],
+       [ 50,  60]])
+target = array([[  0,   0],
+       [100,   0],
+       [100, 100],
+       [  0, 100],
+       [ 50,  60]])
+kind = 'projective', anchors = [0, 1, 2, 99], heldout = [4]
+
+    def fit_diagnostic(source, target, kind, anchors, heldout):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:9: NotImplementedError
+_ test_anchor_and_check_points_are_disjoint_unique_in_bounds[anchors3-heldout3] _
+
+anchors = [0, 1, 2, True], heldout = [4]
+
+    @pytest.mark.parametrize("anchors,heldout", [([0, 1, 2, 3], [3, 4]), ([0, 1, 2, 2], [4]),
+                                                ([0, 1, 2, 99], [4]), ([0, 1, 2, True], [4])])
+    def test_anchor_and_check_points_are_disjoint_unique_in_bounds(anchors, heldout):
+        a = np.array([[0, 0], [100, 0], [100, 100], [0, 100], [50, 60]])
+        with pytest.raises(ValueError):
+>           M["fit_diagnostic"](a, a, "projective", anchors, heldout)
+
+test\test_component_pose_limits.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = array([[  0,   0],
+       [100,   0],
+       [100, 100],
+       [  0, 100],
+       [ 50,  60]])
+target = array([[  0,   0],
+       [100,   0],
+       [100, 100],
+       [  0, 100],
+       [ 50,  60]])
+kind = 'projective', anchors = [0, 1, 2, True], heldout = [4]
+
+    def fit_diagnostic(source, target, kind, anchors, heldout):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:9: NotImplementedError
+_______ test_collinear_homography_remains_unavailable_without_nan_json ________
+
+    def test_collinear_homography_remains_unavailable_without_nan_json():
+        a = np.array([[0., 0.], [10, 0], [20, 0], [30, 0]])
+>       r = M["fit_diagnostic"](a, a, "projective", [0, 1, 2, 3], [])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+source = array([[ 0.,  0.],
+       [10.,  0.],
+       [20.,  0.],
+       [30.,  0.]])
+target = array([[ 0.,  0.],
+       [10.,  0.],
+       [20.,  0.],
+       [30.,  0.]])
+kind = 'projective', anchors = [0, 1, 2, 3], heldout = []
+
+    def fit_diagnostic(source, target, kind, anchors, heldout):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:9: NotImplementedError
+__________ test_uncertainty_bounds_overlap_for_small_part_difference __________
+
+    def test_uncertainty_bounds_overlap_for_small_part_difference():
+>       a = M["distance_interval"]([0, 0], [30, 0], 3, 3)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = [0, 0], b = [30, 0], radius_a = 3, radius_b = 3
+
+    def distance_interval(a, b, radius_a, radius_b):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:13: NotImplementedError
+_________________ test_negative_point_uncertainty_is_rejected _________________
+
+    def test_negative_point_uncertainty_is_rejected():
+        with pytest.raises(ValueError):
+>           M["distance_interval"]([0, 0], [30, 0], -1, 3)
+
+test\test_component_pose_limits.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = [0, 0], b = [30, 0], radius_a = -1, radius_b = 3
+
+    def distance_interval(a, b, radius_a, radius_b):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:13: NotImplementedError
+_____ test_role_names_and_reviewed_positions_never_certify_correspondence _____
+
+    def test_role_names_and_reviewed_positions_never_certify_correspondence():
+        p = {"id": "cap", "point": [0, 0], "uncertainty_pixels": 3,
+             "physical_correspondence_established": False}
+        doc = {"eligible_for_identity_metrics": False, "rows": [
+            {"id": "image_0", "landmarks": [p]},
+            {"id": "image_1", "landmarks": [copy.deepcopy(p)]},
+            {"id": "image_2", "landmarks": [{**p, "id": "connection"}]}]}
+>       rows = M["audit_roles"](doc, [["image_0", "image_1"], ["image_0", "image_2"]])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+document = {'eligible_for_identity_metrics': False, 'rows': [{'id': 'image_0', 'landmarks': [{'id': 'cap', 'point': [0, 0], 'unce...rks': [{'id': 'connection', 'point': [0, 0], 'uncertainty_pixels': 3, 'physical_correspondence_established': False}]}]}
+pairs = [['image_0', 'image_1'], ['image_0', 'image_2']]
+
+    def audit_roles(document, pairs):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:21: NotImplementedError
+________________ test_bound_json_refuses_changed_review_input _________________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-97/test_bound_json_refuses_change0')
+
+    def test_bound_json_refuses_changed_review_input(tmp_path):
+        p = tmp_path/"review.json"; p.write_text('{"review":"pending"}')
+        sha = hashlib.sha256(p.read_bytes()).hexdigest()
+>       assert M["read_bound_json"](p, sha) == {"review": "pending"}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_component_pose_limits.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-97/test_bound_json_refuses_change0/review.json')
+expected_hash = '9de4b82a2c5dc4c8dc3a1a2ddfe66f9111b3be50422e245bd29b3712eeaf3b3a'
+
+    def read_bound_json(path, expected_hash):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:25: NotImplementedError
+_____________ test_report_does_not_overwrite_existing_checkpoint ______________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-97/test_report_does_not_overwrite0')
+
+    def test_report_does_not_overwrite_existing_checkpoint(tmp_path):
+        p = tmp_path/"report.json"; p.write_text("retained")
+        with pytest.raises(ValueError):
+>           M["preserve_outputs"](p, tmp_path/"figure.svg")
+
+test\test_component_pose_limits.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+report = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-97/test_report_does_not_overwrite0/report.json')
+figure = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-97/test_report_does_not_overwrite0/figure.svg')
+
+    def preserve_outputs(report, figure):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\probe_component_pose_limits.py:29: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_component_pose_limits.py::test_pinhole_projection_known_coordinates
+FAILED test/test_component_pose_limits.py::test_invalid_or_behind_camera_geometry_is_rejected[points0]
+FAILED test/test_component_pose_limits.py::test_invalid_or_behind_camera_geometry_is_rejected[points1]
+FAILED test/test_component_pose_limits.py::test_invalid_or_behind_camera_geometry_is_rejected[points2]
+FAILED test/test_component_pose_limits.py::test_in_plane_uniform_similarity_has_zero_synthetic_residual
+FAILED test/test_component_pose_limits.py::test_unchanged_tilted_plane_defeats_similarity_but_homography_predicts_unused_points
+FAILED test/test_component_pose_limits.py::test_plane_homography_does_not_correct_points_with_different_depth
+FAILED test/test_component_pose_limits.py::test_fitting_four_deformed_corners_is_not_independent_shape_validation
+FAILED test/test_component_pose_limits.py::test_deformed_unused_part_remains_visible_despite_exact_anchor_fit
+FAILED test/test_component_pose_limits.py::test_anchor_and_check_points_are_disjoint_unique_in_bounds[anchors0-heldout0]
+FAILED test/test_component_pose_limits.py::test_anchor_and_check_points_are_disjoint_unique_in_bounds[anchors1-heldout1]
+FAILED test/test_component_pose_limits.py::test_anchor_and_check_points_are_disjoint_unique_in_bounds[anchors2-heldout2]
+FAILED test/test_component_pose_limits.py::test_anchor_and_check_points_are_disjoint_unique_in_bounds[anchors3-heldout3]
+FAILED test/test_component_pose_limits.py::test_collinear_homography_remains_unavailable_without_nan_json
+FAILED test/test_component_pose_limits.py::test_uncertainty_bounds_overlap_for_small_part_difference
+FAILED test/test_component_pose_limits.py::test_negative_point_uncertainty_is_rejected
+FAILED test/test_component_pose_limits.py::test_role_names_and_reviewed_positions_never_certify_correspondence
+FAILED test/test_component_pose_limits.py::test_bound_json_refuses_changed_review_input
+FAILED test/test_component_pose_limits.py::test_report_does_not_overwrite_existing_checkpoint
+19 failed in 0.34s
+python_exit_code=1
