@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: neutral paired runner and retained-mug ROI cohort closed
+
+From3907cd8, v2 neutral provenance/source-bound preflight added, v1 human protocol compatible.33 new tests/116 final pass2.00s/exit0/no warnings; review no issues.6 completed queries/0retry/generation/download: both judges not_observed on2duplicate-byte controls and1retained recoloring pair.4consistency agreements,2unlabelled observations without human gold/correctness; every diagnostic uncertain/no admission/identity. [Report](CROSS_FAMILY_ROI_PROBE_REPORT.md). Partial/background0HTTP; native source/crop/box reconstruction before each HTTP.2own8092 closed/PIDs absent; shared/models/app/gates/routing/deps/stable unchanged. Means4.703/4.168s/load~4s, prefix cache differs, not overall QA/p95/population accuracy or structural sensitivity.
+
+Next CPU direct inspection of3 retained temporal states/contracts, then a fixed direct visual-evidence protocol separating identity/state/progression. Original labels/captions intact, no human gold fabricated or temperature inference from lighting/color; no more self/recolor or failed mug edit fishing. Geometry-negative calibration remains pending. [Autonomy active](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action; closing SHA via Git/origin, earlier next-runner text historical.
+
 ## Current checkpoint: reusable source-bound regions, cross-family design fixed
 
 From35059e1, offline PNG helper plus8 final crops preserve native mode/pixels/provenance:4 keys byte-identical to prior ROI,2mugs contained,partial/background controls excluded from whole-declared-region eligibility. Rectangle containment is not semantic coverage or identity. Independent review tRNS finding reproduced before rejection; final review no issues.32 new tests/83 final pass0.39s/exit0/no warnings. Two CPU cohorts/all8 v2 outputs byte-identical to initial; initial helper/plan/results retained. [Report](VISUAL_REGION_PREPARATION_REPORT.md).0 queries/generation/GPU/download/service/app/assets/defaults/gates/routing/dependency/stable changes.

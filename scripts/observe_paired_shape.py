@@ -12,6 +12,7 @@ import zipfile
 from scripts import evaluate_multimodal_judges as base
 from scripts.observe_visual_geometry import select_model
 from scripts import paired_shape_observations as observer
+from scripts import paired_shape_preflight as input_checks
 
 def command(server, weights):
     return [str(server), "-m", str(weights[0]), "--mmproj", str(weights[1]),
@@ -21,7 +22,7 @@ def command(server, weights):
             "--chat-template-kwargs", '{"enable_thinking":false}']
 
 def validate_plan(plan):
-    if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+    if plan.get("protocol") not in {"paired-major-shape-probe-plan-1", "paired-major-shape-probe-plan-2"}:
         raise ValueError("Unknown paired protocol")
     expected = {"maximum_requests_total": 6, "requests_per_model": 3, "automatic_retries": 0,
                 "port": 8092, "context": 8192, "temperature": 0, "max_tokens": 256, "thinking": False,
@@ -40,7 +41,22 @@ def validate_plan(plan):
         raise ValueError("Duplicate or reordered cases")
     if plan.get("model_prompt") != observer.prompt(plan.get("subject")) or plan.get("response_schema") != observer.schema():
         raise ValueError("Changed public prompt or response schema")
+    if plan["protocol"] == "paired-major-shape-probe-plan-2":
+        input_checks.validate_evidence(plan)
     return plan
+
+
+def preflight_plan(plan, root):
+    validate_plan(plan)
+    input_checks.checked_bytes(plan["assets_manifest"], root)
+    if plan["protocol"] == "paired-major-shape-probe-plan-2":
+        result = input_checks.preflight(plan, root)
+    else:
+        input_checks.checked_bytes(plan["human_review"], root)
+        result = {"gold_origin": "bound_human_review"}
+    for case in plan["cases"]:
+        observer.payload(case["reference"], case["candidate"], plan["subject"])
+    return {"plan_protocol": plan["protocol"], **result}
 
 def verify_runtime(runtime_root, runtime):
     runtime_root = Path(runtime_root)
@@ -123,6 +139,11 @@ def main():
     output, logs = Path(args.output), Path(args.log_dir)
     if output.exists() or logs.exists():
         raise ValueError("Preserve existing report/logs; no retry")
+    root = Path(__file__).resolve().parents[1]
+    plan = validate_plan(json.loads(Path(args.plan).read_text(encoding="utf-8")))
+    if args.model_repo not in plan["comparison_candidates"]:
+        raise ValueError("Model not declared in plan")
+    input_preflight = preflight_plan(plan, root)
     for port in [8080, 8092]:
         with socket.socket() as connection:
             connection.settimeout(1)
@@ -130,15 +151,6 @@ def main():
                 raise ValueError("8080/8092 must be free")
     if base.gpu_memory() > 5288:
         raise ValueError("Less than7000MiB free on the documented RTX3060")
-    root = Path(__file__).resolve().parents[1]
-    plan = validate_plan(json.loads(Path(args.plan).read_text(encoding="utf-8")))
-    if args.model_repo not in plan["comparison_candidates"]:
-        raise ValueError("Model not declared in plan")
-    for item in [plan["assets_manifest"], plan["human_review"]]:
-        if base.digest(root / item["path"]) != item["sha256"]:
-            raise ValueError("Plan provenance changed")
-    for case in plan["cases"]:
-        observer.payload(case["reference"], case["candidate"], plan["subject"])
     manifest = json.loads((root / plan["assets_manifest"]["path"]).read_text())
     model = select_model(manifest, args.model_repo)
     target = root / "local_image_stack/experiments/bridge/target"
@@ -152,7 +164,9 @@ def main():
     logs.mkdir(parents=True)
     report = {"protocol": observer.VERSION, "execution_head": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
               "harness_sha256": base.digest(__file__), "observer_sha256": base.digest(observer.__file__),
+              "input_checks_sha256": base.digest(input_checks.__file__),
               "plan_sha256": base.digest(args.plan), "model": model, "runtime": runtime,
+              "input_preflight": input_preflight, "http_model_requests_attempted": 0,
               "generation_requests": 0, "automatic_retries": 0, "subject": plan["subject"], "rows": [],
               "policy": {"labels_sent": False, "case_names_sent": False, "mask_used": False,
                          "max_tokens": 256, "timeout_seconds": 60, "thinking": False},
@@ -163,13 +177,17 @@ def main():
     def row_done(row):
         report["rows"].append(row); save()
         print(json.dumps({key: row[key] for key in ["case_id", "transport_status", "seconds"]}), flush=True)
+    def model_request(body):
+        if plan["protocol"] == "paired-major-shape-probe-plan-2":
+            preflight_plan(plan, root)
+        report["http_model_requests_attempted"] += 1
+        return base.request("http://127.0.0.1:8092/v1/chat/completions", body, timeout=60)
     save()
     try:
         with owned_server(command(runtime_root / manifest["runtime"]["tag"] / "llama-server.exe", weights),
                           logs / "server.log", base.request, subprocess.Popen, report):
             save()
-            observer.collect(plan["cases"], plan["subject"], lambda body: base.request(
-                "http://127.0.0.1:8092/v1/chat/completions", body, timeout=60), row_done)
+            observer.collect(plan["cases"], plan["subject"], model_request, row_done)
     except (OSError, ValueError, RuntimeError) as exc:
         report["runtime_error_type"] = type(exc).__name__
     finally:

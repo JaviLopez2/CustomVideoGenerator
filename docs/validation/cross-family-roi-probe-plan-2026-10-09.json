@@ -1,0 +1,207 @@
+{
+  "protocol": "paired-major-shape-probe-plan-2",
+  "declared_utc": "2026-10-09T17:06:08.752746+00:00",
+  "execution_base_head": "3907cd8d6aa884167e7aefaac0fd00deec179370",
+  "status": "frozen_pending_one_cohort_per_model",
+  "question": "Do existing paired major-shape observers stay consistent on exact duplicate inputs and a retained recoloring pair in a second image family when whole declared-region coverage is checked before requests?",
+  "subject": "mug",
+  "evidence_provenance": {
+    "path": "docs/validation/cross-family-roi-probe-design-2026-10-09.json",
+    "sha256": "381082257e2cec3e69cb1d46db132fa5d35ef4b9d3b1bb550d5f1836a90cfe7c"
+  },
+  "region_preparation": {
+    "path": "docs/validation/visual-region-preparation-plan-v2-2026-10-09.json",
+    "sha256": "da77e1f7f8c73273740444ada5963d0e8e823faac28bb5b248bae79cece958ba"
+  },
+  "region_manifest": {
+    "path": "local_image_stack/experiments/bridge/target/visual-region-preparation-v2-2026-10-09/manifest.json",
+    "sha256": "a1731de78be4aaa893ea7d278b78e2b24b644c53ca1c3e020d810a54b5cc58ee"
+  },
+  "excluded_region_controls": [
+    {
+      "region_id": "mug_partial_coverage",
+      "expected_relation": "partial"
+    },
+    {
+      "region_id": "mug_background_control",
+      "expected_relation": "disjoint"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "red_same_bytes",
+      "reference_region_id": "image_4",
+      "candidate_region_id": "image_4",
+      "offline_expectation": {
+        "origin": "byte_identity_control",
+        "expected_major_shape_change": "not_observed",
+        "human_gold": false
+      },
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_04.png",
+        "sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+        "size": [
+          313,
+          286
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_04.png",
+        "sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+        "size": [
+          313,
+          286
+        ]
+      }
+    },
+    {
+      "case_id": "blue_same_bytes",
+      "reference_region_id": "image_5",
+      "candidate_region_id": "image_5",
+      "offline_expectation": {
+        "origin": "byte_identity_control",
+        "expected_major_shape_change": "not_observed",
+        "human_gold": false
+      },
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_05.png",
+        "sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+        "size": [
+          313,
+          286
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_05.png",
+        "sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+        "size": [
+          313,
+          286
+        ]
+      }
+    },
+    {
+      "case_id": "retained_color_pair",
+      "reference_region_id": "image_4",
+      "candidate_region_id": "image_5",
+      "offline_expectation": {
+        "origin": "unlabelled_pair",
+        "expected_major_shape_change": null,
+        "human_gold": false
+      },
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_04.png",
+        "sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a",
+        "size": [
+          313,
+          286
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-region-preparation-v2-2026-10-09\\image_05.png",
+        "sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2",
+        "size": [
+          313,
+          286
+        ]
+      }
+    }
+  ],
+  "model_prompt": "Compare only the visible shape and arrangement of major parts of the requested subject in image 1 (reference) and image 2 (candidate). Subject: mug. A major change means a missing, added or fused principal part, or a clearly different overall form or arrangement. Ignore color, lighting, background, lettering and surface texture. Minor local size variations alone do not establish a major change. Object-name recognition alone does not establish shape preservation. If scale, perspective or occlusion prevents checking, report uncertain. State presence of the subject in each image, report major_shape_change as observed, not_observed or uncertain, and give short visible difference_evidence. not_observed is not proof of physical identity. Return only the specified JSON object.",
+  "response_schema": {
+    "type": "object",
+    "properties": {
+      "reference_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "candidate_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "major_shape_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "difference_evidence": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference_subject_presence",
+      "candidate_subject_presence",
+      "major_shape_change",
+      "difference_evidence"
+    ],
+    "additionalProperties": false
+  },
+  "comparison_candidates": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "assets_manifest": {
+    "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+    "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+  },
+  "execution": {
+    "maximum_requests_total": 6,
+    "requests_per_model": 3,
+    "case_order": [
+      "red_same_bytes",
+      "blue_same_bytes",
+      "retained_color_pair"
+    ],
+    "automatic_retries": 0,
+    "separate_sequential_owned_servers": true,
+    "port": 8092,
+    "context": 8192,
+    "temperature": 0,
+    "max_tokens": 256,
+    "thinking": false,
+    "json_schema": true,
+    "http_timeout_seconds": 60,
+    "stop_model_cohort_at_first_invalid_or_unavailable": true,
+    "min_image_tokens": 1024,
+    "max_image_tokens": 1536,
+    "new_generation_requests": 0,
+    "new_downloads": 0
+  },
+  "implementation": [
+    {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    }
+  ],
+  "interpretation": {
+    "human_shape_accuracy_claim": false,
+    "physical_identity_established": false,
+    "admission_allowed": false,
+    "automatic_rejection": false,
+    "automatic_localizer": false,
+    "partial_background_are_structural_negatives": false,
+    "end_to_end_qa_latency_claim": false,
+    "no_new_human_labels": true
+  },
+  "protocol_scope": "Two exact-input consistency controls and one retained recoloring pair without human shape gold; source-bound ROI diagnostics only, not population geometry accuracy, sensitivity or identity.",
+  "stopping_rule": "Freeze executable plan after CPU regressions and independent review; at most one cohort per model, stop first invalid/unavailable response, preserve outcomes and close only owned8092. No prompt/crop/token retuning to obtain favorable results."
+}

@@ -1,0 +1,443 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFF                                               [100%]
+================================== FAILURES ===================================
+______ test_v2_accepts_neutral_expectations_without_inventing_human_gold ______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_v2_accepts_neutral_expect0')
+
+    def test_v2_accepts_neutral_expectations_without_inventing_human_gold(plan, tmp_path):
+        before = copy.deepcopy(plan)
+>       assert runner.validate_plan(plan) == plan
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+________ test_v2_rejects_ambiguous_or_fabricated_evidence[human_gold] _________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'human_gold'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+_______ test_v2_rejects_ambiguous_or_fabricated_evidence[control_label] _______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'control_label'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+_____ test_v2_rejects_ambiguous_or_fabricated_evidence[unlabelled_label] ______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'unlabelled_label'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+__________ test_v2_rejects_ambiguous_or_fabricated_evidence[origin] ___________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'origin'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+____ test_v2_rejects_ambiguous_or_fabricated_evidence[missing_expectation] ____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'missing_expectation'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+_______ test_v2_rejects_ambiguous_or_fabricated_evidence[legacy_review] _______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'legacy_review'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+_____ test_v2_rejects_ambiguous_or_fabricated_evidence[legacy_case_label] _____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'legacy_case_label'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+______ test_v2_rejects_ambiguous_or_fabricated_evidence[missing_regions] ______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'missing_regions'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+____ test_v2_rejects_ambiguous_or_fabricated_evidence[missing_provenance] _____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+fault = 'missing_provenance'
+
+    @pytest.mark.parametrize("fault", ["human_gold", "control_label", "unlabelled_label", "origin", "missing_expectation", "legacy_review", "legacy_case_label", "missing_regions", "missing_provenance"])
+    def test_v2_rejects_ambiguous_or_fabricated_evidence(plan, fault):
+>       runner.validate_plan(plan)  # Ensure a rejection is not just unsupported v2.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_paired_shape_preflight.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+
+    def validate_plan(plan):
+        if plan.get("protocol") != "paired-major-shape-probe-plan-1":
+>           raise ValueError("Unknown paired protocol")
+E           ValueError: Unknown paired protocol
+
+scripts\observe_paired_shape.py:25: ValueError
+________________ test_byte_control_requires_same_pinned_input _________________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_byte_control_requires_sam0')
+
+    def test_byte_control_requires_same_pinned_input(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:106: AttributeError
+____ test_changed_binding_rejected_before_any_request[evidence_provenance] ____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_changed_binding_rejected_0')
+binding = 'evidence_provenance'
+
+    @pytest.mark.parametrize("binding", ["evidence_provenance", "region_preparation", "region_manifest", "assets_manifest"])
+    def test_changed_binding_rejected_before_any_request(plan, tmp_path, binding):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:114: AttributeError
+____ test_changed_binding_rejected_before_any_request[region_preparation] _____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_changed_binding_rejected_1')
+binding = 'region_preparation'
+
+    @pytest.mark.parametrize("binding", ["evidence_provenance", "region_preparation", "region_manifest", "assets_manifest"])
+    def test_changed_binding_rejected_before_any_request(plan, tmp_path, binding):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:114: AttributeError
+______ test_changed_binding_rejected_before_any_request[region_manifest] ______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_changed_binding_rejected_2')
+binding = 'region_manifest'
+
+    @pytest.mark.parametrize("binding", ["evidence_provenance", "region_preparation", "region_manifest", "assets_manifest"])
+    def test_changed_binding_rejected_before_any_request(plan, tmp_path, binding):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:114: AttributeError
+______ test_changed_binding_rejected_before_any_request[assets_manifest] ______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_changed_binding_rejected_3')
+binding = 'assets_manifest'
+
+    @pytest.mark.parametrize("binding", ["evidence_provenance", "region_preparation", "region_manifest", "assets_manifest"])
+    def test_changed_binding_rejected_before_any_request(plan, tmp_path, binding):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:114: AttributeError
+_________ test_changed_original_is_detected_even_if_crop_stays_pinned _________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_changed_original_is_detec0')
+prepared = ({'protocol': 'visual-region-preparation-plan-1', 'margin_pixels': 0, 'regions': [{'id': 'red', 'source': {'path': 'C:...iginal_is_detec0\\crops\\manifest.json', 'sha256': 'd28428488678f2cfe10ede556aa5082c7a55a9f689aeb9cc6a2b96c33dd52404'})
+
+    def test_changed_original_is_detected_even_if_crop_stays_pinned(plan, tmp_path, prepared):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:120: AttributeError
+_________ test_manifest_claims_are_recomputed_not_trusted[wrong_box] __________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_manifest_claims_are_recom0')
+fault = 'wrong_box'
+
+    @pytest.mark.parametrize("fault", ["wrong_box", "duplicate_id", "false_eligibility", "wrong_plan_hash"])
+    def test_manifest_claims_are_recomputed_not_trusted(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:127: AttributeError
+________ test_manifest_claims_are_recomputed_not_trusted[duplicate_id] ________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_manifest_claims_are_recom1')
+fault = 'duplicate_id'
+
+    @pytest.mark.parametrize("fault", ["wrong_box", "duplicate_id", "false_eligibility", "wrong_plan_hash"])
+    def test_manifest_claims_are_recomputed_not_trusted(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:127: AttributeError
+_____ test_manifest_claims_are_recomputed_not_trusted[false_eligibility] ______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_manifest_claims_are_recom2')
+fault = 'false_eligibility'
+
+    @pytest.mark.parametrize("fault", ["wrong_box", "duplicate_id", "false_eligibility", "wrong_plan_hash"])
+    def test_manifest_claims_are_recomputed_not_trusted(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:127: AttributeError
+______ test_manifest_claims_are_recomputed_not_trusted[wrong_plan_hash] _______
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_manifest_claims_are_recom3')
+fault = 'wrong_plan_hash'
+
+    @pytest.mark.parametrize("fault", ["wrong_box", "duplicate_id", "false_eligibility", "wrong_plan_hash"])
+    def test_manifest_claims_are_recomputed_not_trusted(plan, tmp_path, fault):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:127: AttributeError
+____________ test_forged_crop_hash_cannot_hide_wrong_source_pixels ____________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_forged_crop_hash_cannot_h0')
+
+    def test_forged_crop_hash_cannot_hide_wrong_source_pixels(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:139: AttributeError
+___ test_incomplete_region_rejected_before_ports_gpu_or_processes[partial] ____
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_incomplete_region_rejecte0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E48E1BA910>
+region_id = 'partial'
+
+    @pytest.mark.parametrize("region_id", ["partial", "background"])
+    def test_incomplete_region_rejected_before_ports_gpu_or_processes(plan, tmp_path, monkeypatch, region_id):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:155: AttributeError
+__ test_incomplete_region_rejected_before_ports_gpu_or_processes[background] __
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_incomplete_region_rejecte1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E48E161A50>
+region_id = 'background'
+
+    @pytest.mark.parametrize("region_id", ["partial", "background"])
+    def test_incomplete_region_rejected_before_ports_gpu_or_processes(plan, tmp_path, monkeypatch, region_id):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:155: AttributeError
+_____________ test_exclusion_controls_cannot_be_silently_dropped ______________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_exclusion_controls_cannot0')
+
+    def test_exclusion_controls_cannot_be_silently_dropped(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:172: AttributeError
+___________________ test_v1_human_protocol_remains_separate ___________________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-1', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_v1_human_protocol_remains0')
+
+    def test_v1_human_protocol_remains_separate(plan, tmp_path):
+        plan["protocol"] = "paired-major-shape-probe-plan-1"
+        plan["human_review"] = write_json(tmp_path / "human.json", {"origin": "existing human labels fixture"})
+>       result = runner.preflight_plan(plan, tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:180: AttributeError
+________ test_neutral_expectations_and_coordinates_never_enter_payload ________
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-126/test_neutral_expectations_and_0')
+
+    def test_neutral_expectations_and_coordinates_never_enter_payload(plan, tmp_path):
+>       runner.preflight_plan(plan, tmp_path)
+        ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.observe_paired_shape' has no attribute 'preflight_plan'
+
+test\test_paired_shape_preflight.py:186: AttributeError
+=========================== short test summary info ===========================
+FAILED test/test_paired_shape_preflight.py::test_v2_accepts_neutral_expectations_without_inventing_human_gold
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[human_gold]
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[control_label]
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[unlabelled_label]
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[origin]
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[missing_expectation]
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[legacy_review]
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[legacy_case_label]
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[missing_regions]
+FAILED test/test_paired_shape_preflight.py::test_v2_rejects_ambiguous_or_fabricated_evidence[missing_provenance]
+FAILED test/test_paired_shape_preflight.py::test_byte_control_requires_same_pinned_input
+FAILED test/test_paired_shape_preflight.py::test_changed_binding_rejected_before_any_request[evidence_provenance]
+FAILED test/test_paired_shape_preflight.py::test_changed_binding_rejected_before_any_request[region_preparation]
+FAILED test/test_paired_shape_preflight.py::test_changed_binding_rejected_before_any_request[region_manifest]
+FAILED test/test_paired_shape_preflight.py::test_changed_binding_rejected_before_any_request[assets_manifest]
+FAILED test/test_paired_shape_preflight.py::test_changed_original_is_detected_even_if_crop_stays_pinned
+FAILED test/test_paired_shape_preflight.py::test_manifest_claims_are_recomputed_not_trusted[wrong_box]
+FAILED test/test_paired_shape_preflight.py::test_manifest_claims_are_recomputed_not_trusted[duplicate_id]
+FAILED test/test_paired_shape_preflight.py::test_manifest_claims_are_recomputed_not_trusted[false_eligibility]
+FAILED test/test_paired_shape_preflight.py::test_manifest_claims_are_recomputed_not_trusted[wrong_plan_hash]
+FAILED test/test_paired_shape_preflight.py::test_forged_crop_hash_cannot_hide_wrong_source_pixels
+FAILED test/test_paired_shape_preflight.py::test_incomplete_region_rejected_before_ports_gpu_or_processes[partial]
+FAILED test/test_paired_shape_preflight.py::test_incomplete_region_rejected_before_ports_gpu_or_processes[background]
+FAILED test/test_paired_shape_preflight.py::test_exclusion_controls_cannot_be_silently_dropped
+FAILED test/test_paired_shape_preflight.py::test_v1_human_protocol_remains_separate
+FAILED test/test_paired_shape_preflight.py::test_neutral_expectations_and_coordinates_never_enter_payload
+26 failed in 1.04s
+
+Python exit code: 1

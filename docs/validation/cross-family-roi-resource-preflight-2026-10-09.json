@@ -1,0 +1,45 @@
+{
+  "protocol": "cross-family-roi-resource-preflight-1",
+  "checked_utc": "2026-10-09T17:02:12.713670+00:00",
+  "ram_free_gib": 17.58,
+  "ram_total_gib": 31.77,
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 3060",
+    "used_mib": 1106,
+    "total_mib": 12288,
+    "utilization_percent": 22
+  },
+  "health": [
+    {
+      "port": 8080,
+      "error_type": "URLError"
+    },
+    {
+      "port": 8090,
+      "http_status": 404
+    },
+    {
+      "port": 8188,
+      "http_status": 200,
+      "devices": [
+        {
+          "name": "cuda:0 NVIDIA GeForce RTX 3060 : cudaMallocAsync",
+          "vram_total": 12884377600,
+          "vram_free": 11744968704
+        }
+      ]
+    },
+    {
+      "port": 8188,
+      "http_status": 200,
+      "running": 0,
+      "pending": 0
+    }
+  ],
+  "ports_open": {
+    "8080": false,
+    "8092": false
+  },
+  "generation_requests": 0,
+  "model_requests": 0
+}

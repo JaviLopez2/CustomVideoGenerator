@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — contraste cross-family ROI completado, 2026-10-09
+
+Desde3907cd8, runner v2 neutral y preflight source-bound, v1 humano compatible.33 nuevos/116 finales pasan2,00s/exit0/sin avisos, revisión cerrada.6consultas de tazas retenidas/0retry/generación/descarga: ambos jueces not_observed en dos controles de bytes idénticos y un par recolor sin gold humano.4acuerdos de consistencia y2observaciones no puntuadas; todosuncertain/sin identidad/admisión. [Informe](CROSS_FAMILY_ROI_PROBE_REPORT.md). Parcial/fondo0HTTP, fuente reconstruida/recomprobada antes de enviar; dos PID propios ausentes/8092 libre, compartidos/app/modelos/defaults/gates/routing/deps/estable intactos. Medias4,703/4,168s y carga~4s, cache difiere; no full QA/p95/accuracy o sensibilidad desde duplicados.
+
+Próximo CPU: auditar3imágenes/contratos temporales conservados y fijar evidencia visual directa separando identidad, pistas de estado y progresión. Labels/captions intactos, no temperatura por color/luz ni gold humano inventado. No continuar self/recolors o microediciones fallidas para obtener pass; sensibilidad geométrica independiente sigue pendiente. Objetivo activo sin otro permiso; estados anteriores históricos.
+
 ## Actualización — preparador de regiones y controles de cobertura, 2026-10-09
 
 Desde `35059e1`, herramienta offline source-bound y ocho recortes finales: cuatro llaves idénticas en bytes a la cohorte anterior, dos tazas completas, un parcial y un fondo. Cajas anteriores +8px, píxeles/modes exactos, sin metadata textual; cobertura rectangular no equivale a objeto completo. Revisión reproduce pérdida de alpha tRNS en RGB y cierra rechazo con RED→GREEN. 83 tests finales pasan en0,39s/exit0/sin avisos,32 nuevos; primera cohorte/helper/logs preservados, segunda idéntica en bytes. [Informe](VISUAL_REGION_PREPARATION_REPORT.md).0 nueva inferencia/generación/GPU/descargas/servicios/app/modelos/defaults/gates/routing/deps/estable.

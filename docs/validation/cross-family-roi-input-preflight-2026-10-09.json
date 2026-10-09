@@ -1,0 +1,63 @@
+{
+  "plan": {
+    "path": "docs/validation/cross-family-roi-probe-plan-2026-10-09.json",
+    "sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016"
+  },
+  "implementation": [
+    {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    }
+  ],
+  "preflight": {
+    "plan_protocol": "paired-major-shape-probe-plan-2",
+    "protocol": "paired-shape-neutral-preflight-1",
+    "human_gold": false,
+    "case_expectations": [
+      {
+        "case_id": "red_same_bytes",
+        "origin": "byte_identity_control",
+        "expected_major_shape_change": "not_observed",
+        "human_gold": false
+      },
+      {
+        "case_id": "blue_same_bytes",
+        "origin": "byte_identity_control",
+        "expected_major_shape_change": "not_observed",
+        "human_gold": false
+      },
+      {
+        "case_id": "retained_color_pair",
+        "origin": "unlabelled_pair",
+        "expected_major_shape_change": null,
+        "human_gold": false
+      }
+    ],
+    "regions_verified": 8,
+    "excluded_regions": [
+      {
+        "region_id": "mug_partial_coverage",
+        "coverage_relation": "partial"
+      },
+      {
+        "region_id": "mug_background_control",
+        "coverage_relation": "disjoint"
+      }
+    ],
+    "excluded_model_requests": 0,
+    "semantic_human_coverage": "pending",
+    "admission_allowed": false,
+    "physical_identity_established": false,
+    "pixel_subset_and_provenance_verified": true
+  },
+  "model_requests": 0,
+  "generation_requests": 0
+}

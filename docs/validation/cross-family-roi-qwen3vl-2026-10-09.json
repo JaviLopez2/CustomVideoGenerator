@@ -1,0 +1,270 @@
+{
+  "protocol": "paired-major-shape-observations-1",
+  "execution_head": "3907cd8d6aa884167e7aefaac0fd00deec179370",
+  "harness_sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618",
+  "observer_sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1",
+  "input_checks_sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83",
+  "plan_sha256": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016",
+  "model": {
+    "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "size": 5027784800,
+        "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+      },
+      {
+        "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+        "size": 1159029824,
+        "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "input_preflight": {
+    "plan_protocol": "paired-major-shape-probe-plan-2",
+    "protocol": "paired-shape-neutral-preflight-1",
+    "human_gold": false,
+    "case_expectations": [
+      {
+        "case_id": "red_same_bytes",
+        "origin": "byte_identity_control",
+        "expected_major_shape_change": "not_observed",
+        "human_gold": false
+      },
+      {
+        "case_id": "blue_same_bytes",
+        "origin": "byte_identity_control",
+        "expected_major_shape_change": "not_observed",
+        "human_gold": false
+      },
+      {
+        "case_id": "retained_color_pair",
+        "origin": "unlabelled_pair",
+        "expected_major_shape_change": null,
+        "human_gold": false
+      }
+    ],
+    "regions_verified": 8,
+    "excluded_regions": [
+      {
+        "region_id": "mug_partial_coverage",
+        "coverage_relation": "partial"
+      },
+      {
+        "region_id": "mug_background_control",
+        "coverage_relation": "disjoint"
+      }
+    ],
+    "excluded_model_requests": 0,
+    "semantic_human_coverage": "pending",
+    "admission_allowed": false,
+    "physical_identity_established": false,
+    "pixel_subset_and_provenance_verified": true
+  },
+  "http_model_requests_attempted": 3,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "subject": "mug",
+  "rows": [
+    {
+      "case_id": "red_same_bytes",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "983b81144f794eec9d640870abe73975062432027fe50cb38838a5a9998a6417",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a"
+        },
+        {
+          "role": "candidate",
+          "sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a"
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"Both images show an identical red mug with the same handle shape and overall cylindrical form.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 56,
+        "prompt_tokens": 2269,
+        "total_tokens": 2325,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2269,
+        "prompt_ms": 3232.542,
+        "prompt_per_token_ms": 1.4246549140590568,
+        "prompt_per_second": 701.9243678813763,
+        "predicted_n": 56,
+        "predicted_ms": 1106.539,
+        "predicted_per_token_ms": 20.118890909090908,
+        "predicted_per_second": 49.70452916706957
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "Both images show an identical red mug with the same handle shape and overall cylindrical form."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 4.574515299998893
+    },
+    {
+      "case_id": "blue_same_bytes",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "6ba36553a1dd955ba14bc6cb500fda8be1e374e4a9da980d90ca45fe165af3d7",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2"
+        },
+        {
+          "role": "candidate",
+          "sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2"
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"The visible shape and arrangement of the mug's major parts — cylindrical body, rim, and C-shaped handle — are identical in both images.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 67,
+        "prompt_tokens": 2269,
+        "total_tokens": 2336,
+        "prompt_tokens_details": {
+          "cached_tokens": 153
+        }
+      },
+      "server_timings": {
+        "cache_n": 153,
+        "prompt_n": 2116,
+        "prompt_ms": 3026.347,
+        "prompt_per_token_ms": 1.4302206994328923,
+        "prompt_per_second": 699.1927891943653,
+        "predicted_n": 67,
+        "predicted_ms": 1292.872,
+        "predicted_per_token_ms": 19.5889696969697,
+        "predicted_per_second": 51.0491371148884
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The visible shape and arrangement of the mug's major parts — cylindrical body, rim, and C-shaped handle — are identical in both images."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 4.689385599998786
+    },
+    {
+      "case_id": "retained_color_pair",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "a5c9abb4f35150b340aed7e50df73546b49ac810a510d7209cba5b2347c6515a",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "e99fe81432b58d689becce439e28048456037184bbff80ddf1e44eedf854522a"
+        },
+        {
+          "role": "candidate",
+          "sha256": "466f7af36a83fbdefacde87e2086c2b78ecad387299e06467baf6e8523bf60c2"
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"not_observed\",\n  \"difference_evidence\": \"Both mugs have the same cylindrical body, rim, and C-shaped handle. The overall form and arrangement of major parts are identical.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 2269,
+        "total_tokens": 2335,
+        "prompt_tokens_details": {
+          "cached_tokens": 1209
+        }
+      },
+      "server_timings": {
+        "cache_n": 1209,
+        "prompt_n": 1060,
+        "prompt_ms": 1525.599,
+        "prompt_per_token_ms": 1.4392443396226415,
+        "prompt_per_second": 694.8090553284317,
+        "predicted_n": 66,
+        "predicted_ms": 1291.659,
+        "predicted_per_token_ms": 19.871676923076926,
+        "predicted_per_second": 50.322879335799925
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "Both mugs have the same cylindrical body, rim, and C-shaped handle. The overall form and arrangement of major parts are identical."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 3.2412287999977707
+    }
+  ],
+  "policy": {
+    "labels_sent": false,
+    "case_names_sent": false,
+    "mask_used": false,
+    "max_tokens": 256,
+    "timeout_seconds": 60,
+    "thinking": false
+  },
+  "owned_server_closed": true,
+  "admission_allowed": false,
+  "automatic_rejection": false,
+  "physical_identity_established": false,
+  "owned_pid": 6156,
+  "load_seconds": 4.035681999997905,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "requests_attempted": 3,
+  "unattempted_cases": []
+}

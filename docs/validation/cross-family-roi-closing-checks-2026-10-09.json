@@ -1,0 +1,217 @@
+{
+  "protocol": "cross-family-roi-closing-checks-1",
+  "checked_utc": "2026-10-09T17:16:43.119825+00:00",
+  "execution_base_head": "3907cd8d6aa884167e7aefaac0fd00deec179370",
+  "origin_base_head": "3907cd8d6aa884167e7aefaac0fd00deec179370",
+  "divergence_before_commit": [
+    0,
+    0
+  ],
+  "scope": "Experimental neutral-provenance/source-bound preflight runner and6retained-mug observations; no MPT app/default wiring",
+  "offline_tests": {
+    "passed": 116,
+    "new_tests": 33,
+    "prior_tests": 83,
+    "seconds": 2.0,
+    "python_exit_code": 0,
+    "warnings": 0,
+    "log": "docs/validation/paired-shape-provenance-pinned-final-tests-2026-10-09.txt",
+    "log_sha256": "f1be18b73da475a87397967e95a9a12a614bb4f8cce46e8882ffafa543ef24da",
+    "MPT_RUN_INTEGRATION_TESTS": "0",
+    "command": "Python MPT -B -m pytest -q test/test_paired_shape_preflight.py test/test_paired_shape_runner.py test/test_paired_shape_observations.py test/test_prepare_visual_regions.py"
+  },
+  "tdd_stages": [
+    {
+      "path": "docs/validation/paired-shape-design-binding-red-tests-2026-10-09.txt",
+      "sha256": "d046acf6cf1f8317ec4d03a0b559cbc25468e29bf232f7b8d54c8215e01c37ca",
+      "summary": "2 failed, 31 deselected in 0.35s"
+    },
+    {
+      "path": "docs/validation/paired-shape-provenance-final-tests-2026-10-09.txt",
+      "sha256": "9b297c4ed646339991ff3232caee3d205b38cbf0f1c673faa1844436c262916e",
+      "summary": "116 passed in 2.01s"
+    },
+    {
+      "path": "docs/validation/paired-shape-provenance-green-tests-2026-10-09.txt",
+      "sha256": "706000d23719968c48bc01609e123f076498300efacf97dde889b682981d6f14",
+      "summary": "109 passed in 1.21s"
+    },
+    {
+      "path": "docs/validation/paired-shape-provenance-main-tests-2026-10-09.txt",
+      "sha256": "49d61c21887e01625427d006552ae27f27b2c1892a7751e2a2058f30a71203c8",
+      "summary": "114 passed in 1.57s"
+    },
+    {
+      "path": "docs/validation/paired-shape-provenance-pinned-final-tests-2026-10-09.txt",
+      "sha256": "f1be18b73da475a87397967e95a9a12a614bb4f8cce46e8882ffafa543ef24da",
+      "summary": "116 passed in 2.00s"
+    },
+    {
+      "path": "docs/validation/paired-shape-provenance-red-tests-2026-10-09.txt",
+      "sha256": "fbca4fc2d2e010857723f196027428c2cedbd2ba536af7755a3109076526045f",
+      "summary": "26 failed in 1.04s"
+    }
+  ],
+  "independent_review": {
+    "final": "No issues",
+    "additional_self_audit": "2RED frozen-design binding regressions reproduced and fixed; final review no issues. One subsequent trace-only report field input_checks_sha256 added and116tests rerun2.00s; no behavior change."
+  },
+  "model_http_requests": 6,
+  "completed": 6,
+  "reasoning_characters": 0,
+  "retry": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "byte_consistency_agreements": 4,
+  "unlabelled_comparisons_without_correctness": 2,
+  "all_diagnostic_status": "uncertain",
+  "coverage_control_requests": 0,
+  "input_preflight_rechecked": {
+    "plan_protocol": "paired-major-shape-probe-plan-2",
+    "protocol": "paired-shape-neutral-preflight-1",
+    "human_gold": false,
+    "case_expectations": [
+      {
+        "case_id": "red_same_bytes",
+        "origin": "byte_identity_control",
+        "expected_major_shape_change": "not_observed",
+        "human_gold": false
+      },
+      {
+        "case_id": "blue_same_bytes",
+        "origin": "byte_identity_control",
+        "expected_major_shape_change": "not_observed",
+        "human_gold": false
+      },
+      {
+        "case_id": "retained_color_pair",
+        "origin": "unlabelled_pair",
+        "expected_major_shape_change": null,
+        "human_gold": false
+      }
+    ],
+    "regions_verified": 8,
+    "excluded_regions": [
+      {
+        "region_id": "mug_partial_coverage",
+        "coverage_relation": "partial"
+      },
+      {
+        "region_id": "mug_background_control",
+        "coverage_relation": "disjoint"
+      }
+    ],
+    "excluded_model_requests": 0,
+    "semantic_human_coverage": "pending",
+    "admission_allowed": false,
+    "physical_identity_established": false,
+    "pixel_subset_and_provenance_verified": true
+  },
+  "payloads_equal_between_models": true,
+  "owned_pids_absent": [
+    252,
+    6156
+  ],
+  "owned_servers_closed": 2,
+  "ports_open": {
+    "8080": false,
+    "8092": false
+  },
+  "shared_health_read_only": [
+    {
+      "port": 8090,
+      "path": "/",
+      "http_status": 404
+    },
+    {
+      "port": 8188,
+      "path": "/system_stats",
+      "http_status": 200
+    },
+    {
+      "port": 8188,
+      "path": "/queue",
+      "http_status": 200,
+      "running": 0,
+      "pending": 0
+    }
+  ],
+  "gpu_closing_csv": "1119, 12288, 5",
+  "gpu_closing_columns": [
+    "used_mib",
+    "total_mib",
+    "utilization_percent"
+  ],
+  "gpu_memory_peak_measured": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "automatic_rejection": false,
+  "human_gold_added": false,
+  "population_accuracy_sensitivity_claim": false,
+  "full_qa_latency_measured": false,
+  "app_models_defaults_gates_routing_workflows_dependencies_stable_changed": false,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status_clean": true,
+  "stable_existing_untracked_preserved": true,
+  "json_parsed": 6,
+  "python_ast_parsed": 3,
+  "limited_credential_scan_matches": 0,
+  "source_doc_whitespace_clean": true,
+  "raw_test_logs_preserved": true,
+  "next": "CPU audit of3 retained temporal images/contracts and direct visual-evidence protocol, identity/state/progression separate; no temperature from color/light, no human gold invented, keep fail-closed. No user action now.",
+  "task_files": [
+    "AGENT_FACTORY_STATE.md",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+    "docs/IMAGE_MODEL_ROUTING_RND.md",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+    "docs/CROSS_FAMILY_ROI_PROBE_REPORT.md",
+    "scripts/observe_paired_shape.py",
+    "scripts/paired_shape_preflight.py",
+    "test/test_paired_shape_preflight.py",
+    "docs/validation/cross-family-roi-analysis-2026-10-09.json",
+    "docs/validation/cross-family-roi-input-preflight-2026-10-09.json",
+    "docs/validation/cross-family-roi-probe-plan-2026-10-09.json",
+    "docs/validation/cross-family-roi-qwen35-2026-10-09.json",
+    "docs/validation/cross-family-roi-qwen3vl-2026-10-09.json",
+    "docs/validation/cross-family-roi-resource-preflight-2026-10-09.json",
+    "docs/validation/paired-shape-design-binding-red-tests-2026-10-09.txt",
+    "docs/validation/paired-shape-provenance-final-tests-2026-10-09.txt",
+    "docs/validation/paired-shape-provenance-green-tests-2026-10-09.txt",
+    "docs/validation/paired-shape-provenance-main-tests-2026-10-09.txt",
+    "docs/validation/paired-shape-provenance-pinned-final-tests-2026-10-09.txt",
+    "docs/validation/paired-shape-provenance-red-tests-2026-10-09.txt"
+  ],
+  "task_file_sha256": {
+    "AGENT_FACTORY_STATE.md": "d9ce9e36e9cb3d9d467a6e38e57939deb6c37d9d6b5a07a03be3bb4fa9074ad3",
+    "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md": "783cd348cc525f8aabf956c06ac8cc7693deb801cc7ec1f8275e8a53d1d9b21a",
+    "docs/IMAGE_MODEL_ROUTING_RND.md": "2a39465164c31f0d721b75dfc274d4f51899e331ed6323dedc40ad07626c68cb",
+    "docs/IMAGE_MODEL_ROUTING_HANDOFF.md": "a6931b9bb335894d4850b38827943bc819a0d1d94c87b67f118716ea7b20ea51",
+    "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md": "2dc28e3b8ac556753b31816c72c72917f3fb6b7738a0f58c4278b6930b05ce5a",
+    "docs/CROSS_FAMILY_ROI_PROBE_REPORT.md": "00344045f92e2fdb5044d4896b8d1cdc82f51704c7f56b8d88f941f4fe8cffae",
+    "scripts/observe_paired_shape.py": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618",
+    "scripts/paired_shape_preflight.py": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83",
+    "test/test_paired_shape_preflight.py": "d165c97df83e07b4aadf977cfb2cb120b371b23dc88d538f1d9ee3857fb0cb3f",
+    "docs/validation/cross-family-roi-analysis-2026-10-09.json": "59e5c87e9bfc4d8207f1d42d859fd79c078104b0a4c819a1831adfcd43c6ca1a",
+    "docs/validation/cross-family-roi-input-preflight-2026-10-09.json": "33fd98bbfb605e33fdb845926fec80fda71b3767bc668a516e250018bb610956",
+    "docs/validation/cross-family-roi-probe-plan-2026-10-09.json": "09bde89de15bda3c3b52d956bfd7843e49c1172496863e4cf23ba6ca16de9016",
+    "docs/validation/cross-family-roi-qwen35-2026-10-09.json": "939335f268c0993aeb2c3479ed6dc0e8ebd1bf854b2d2e25b378aea63019cb16",
+    "docs/validation/cross-family-roi-qwen3vl-2026-10-09.json": "aeef2b9c008acb3ee25c4b6f083bf86c7801efb290bd8d2d3c691ff89d191e0a",
+    "docs/validation/cross-family-roi-resource-preflight-2026-10-09.json": "68506dbb7863f1ca63f885692fb926241034ddf964c6681b398628760717932d",
+    "docs/validation/paired-shape-design-binding-red-tests-2026-10-09.txt": "d046acf6cf1f8317ec4d03a0b559cbc25468e29bf232f7b8d54c8215e01c37ca",
+    "docs/validation/paired-shape-provenance-final-tests-2026-10-09.txt": "9b297c4ed646339991ff3232caee3d205b38cbf0f1c673faa1844436c262916e",
+    "docs/validation/paired-shape-provenance-green-tests-2026-10-09.txt": "706000d23719968c48bc01609e123f076498300efacf97dde889b682981d6f14",
+    "docs/validation/paired-shape-provenance-main-tests-2026-10-09.txt": "49d61c21887e01625427d006552ae27f27b2c1892a7751e2a2058f30a71203c8",
+    "docs/validation/paired-shape-provenance-pinned-final-tests-2026-10-09.txt": "f1be18b73da475a87397967e95a9a12a614bb4f8cce46e8882ffafa543ef24da",
+    "docs/validation/paired-shape-provenance-red-tests-2026-10-09.txt": "fbca4fc2d2e010857723f196027428c2cedbd2ba536af7755a3109076526045f"
+  },
+  "self_hash_excluded": true,
+  "staged_whitespace_check": {
+    "full_exit_code": 2,
+    "findings_only_in_preserved_test_logs": {
+      "docs/validation/paired-shape-provenance-red-tests-2026-10-09.txt": 10
+    },
+    "non_log_source_docs_exit_code": 0,
+    "raw_test_log_bytes_not_rewritten": true
+  }
+}

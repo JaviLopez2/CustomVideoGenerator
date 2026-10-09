@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: cross-family ROI cohort completed
+
+From3907cd8, neutral v2 provenance and source-bound preflight extend only the experimental runner; v1 human A/B/C remains compatible.33 new regressions/116 final pass2.00s/exit0/no warnings, review no issues.6 retained-mug queries/0 retries/generations/downloads: both judges not_observed on2byte controls and1recolor pair;4consistency agreements,2observations with no human gold, all diagnostic uncertain/no admission or identity. [Report](docs/CROSS_FAMILY_ROI_PROBE_REPORT.md). Partial/background excluded0HTTP; source rechecked before each request.2own8092 closed+PIDs absent; shared services/stable/models/app/gates/routing/deps untouched. Local means4.703/4.168s and load~4s, prefix cache differs, not end-to-end/p95/accuracy proof.
+
+Next CPU audit of3 retained temporal images/contracts and a direct visual-evidence protocol separating identity/state/progression; preserve all historical labels/captions and absent human gold. No more self/recolor or failed mug microedit fishing, geometry sensitivity remains pending. [Active autonomy](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md); no user action. Closing SHA via Git/origin; previous next-runner/preparation sections historical.
+
 ## Current checkpoint: source-bound region preparation completed
 
 From `35059e1`, isolated offline PNG preparation preserves native RGB/RGBA pixels and binds sources/crops/boxes. Eight final artifacts: six declared rectangles contained, one partial and one disjoint; four key crops match the previous cohort byte-for-byte. Independent review reproduced RGB tRNS alpha loss; reject unsupported transparency, final review no issues. Final 83 tests pass in 0.39s/exit0/no warnings, 32 new and51 paired; previous runs preserved separately. [Report](docs/VISUAL_REGION_PREPARATION_REPORT.md). Two CPU cohorts, eight outputs each, all v2 outputs identical to initial; no inference/generation/GPU/download/services/app/model/default/gate/routing/dependency/stable changes.

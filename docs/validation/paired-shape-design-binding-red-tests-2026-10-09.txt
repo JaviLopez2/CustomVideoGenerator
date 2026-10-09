@@ -1,0 +1,42 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_bindings_must_match_the_frozen_design_not_just_be_internally_valid[region_preparation] _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-129/test_bindings_must_match_the_f0')
+field = 'region_preparation'
+
+    @pytest.mark.parametrize("field", ["region_preparation", "region_manifest"])
+    def test_bindings_must_match_the_frozen_design_not_just_be_internally_valid(plan, tmp_path, field):
+        runner.preflight_plan(plan, tmp_path)
+        original = Path(plan[field]["path"])
+        alias = tmp_path / ("other-" + original.name)
+        alias.write_bytes(original.read_bytes())
+        plan[field] = {"path": str(alias), "sha256": hashlib.sha256(alias.read_bytes()).hexdigest()}
+>       with pytest.raises(ValueError): runner.preflight_plan(plan, tmp_path)
+E       Failed: DID NOT RAISE ValueError
+
+test\test_paired_shape_preflight.py:214: Failed
+_ test_bindings_must_match_the_frozen_design_not_just_be_internally_valid[region_manifest] _
+
+plan = {'protocol': 'paired-major-shape-probe-plan-2', 'declared_utc': '2026-10-09T14:19:21.503603+00:00', 'execution_base_head': '4800f80fe224e993f364c9cf52bddf0f85f9cf53', 'status': 'prepared_pending_harness_and_execution', ...}
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-129/test_bindings_must_match_the_f1')
+field = 'region_manifest'
+
+    @pytest.mark.parametrize("field", ["region_preparation", "region_manifest"])
+    def test_bindings_must_match_the_frozen_design_not_just_be_internally_valid(plan, tmp_path, field):
+        runner.preflight_plan(plan, tmp_path)
+        original = Path(plan[field]["path"])
+        alias = tmp_path / ("other-" + original.name)
+        alias.write_bytes(original.read_bytes())
+        plan[field] = {"path": str(alias), "sha256": hashlib.sha256(alias.read_bytes()).hexdigest()}
+>       with pytest.raises(ValueError): runner.preflight_plan(plan, tmp_path)
+E       Failed: DID NOT RAISE ValueError
+
+test\test_paired_shape_preflight.py:214: Failed
+=========================== short test summary info ===========================
+FAILED test/test_paired_shape_preflight.py::test_bindings_must_match_the_frozen_design_not_just_be_internally_valid[region_preparation]
+FAILED test/test_paired_shape_preflight.py::test_bindings_must_match_the_frozen_design_not_just_be_internally_valid[region_manifest]
+2 failed, 31 deselected in 0.35s
+
+Python exit code: 1
