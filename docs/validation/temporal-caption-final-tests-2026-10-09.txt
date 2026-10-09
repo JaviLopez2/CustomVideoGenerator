@@ -1,0 +1,9 @@
+Command: Python MPT -B -m pytest -q test/services/test_visual_qa_state_evidence.py test/services/test_visual_qa.py test/services/test_visual_observation_diagnostics.py test/services/test_klein4b_mpt.py test/services/test_corrective_continuity.py test/services/test_evidence_pruning_root_qa.py
+MPT_RUN_INTEGRATION_TESTS=0
+
+........................................................................ [ 39%]
+........................................................................ [ 79%]
+......................................                                   [100%]
+182 passed in 6.70s
+
+Python exit code: 0

@@ -1,0 +1,90 @@
+..................FFFF...............                                    [100%]
+================================== FAILURES ===================================
+_ test_line_wrapping_preserves_negation_and_qualification[The surface has no\nfrost.-required_evidence-frost-fail] _
+
+caption = 'The surface has no\nfrost.', field = 'required_evidence'
+term = 'frost', status = 'fail'
+
+    @pytest.mark.parametrize("caption,field,term,status", [
+        ("The surface has no\nfrost.", "required_evidence", "frost", "fail"),
+        ("The container is without\nsmoke.", "forbidden_evidence", "smoke", "pass"),
+        ("There may be\nfrost.", "required_evidence", "frost", "uncertain"),
+        ("There might be no\nsmoke.", "forbidden_evidence", "smoke", "uncertain"),
+    ])
+    def test_line_wrapping_preserves_negation_and_qualification(caption, field, term, status):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == status
+E       AssertionError: assert 'pass' == 'fail'
+E         
+E         - fail
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:60: AssertionError
+_ test_line_wrapping_preserves_negation_and_qualification[The container is without\nsmoke.-forbidden_evidence-smoke-pass] _
+
+caption = 'The container is without\nsmoke.', field = 'forbidden_evidence'
+term = 'smoke', status = 'pass'
+
+    @pytest.mark.parametrize("caption,field,term,status", [
+        ("The surface has no\nfrost.", "required_evidence", "frost", "fail"),
+        ("The container is without\nsmoke.", "forbidden_evidence", "smoke", "pass"),
+        ("There may be\nfrost.", "required_evidence", "frost", "uncertain"),
+        ("There might be no\nsmoke.", "forbidden_evidence", "smoke", "uncertain"),
+    ])
+    def test_line_wrapping_preserves_negation_and_qualification(caption, field, term, status):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == status
+E       AssertionError: assert 'fail' == 'pass'
+E         
+E         - pass
+E         + fail
+
+test\services\test_visual_qa_state_evidence.py:60: AssertionError
+_ test_line_wrapping_preserves_negation_and_qualification[There may be\nfrost.-required_evidence-frost-uncertain] _
+
+caption = 'There may be\nfrost.', field = 'required_evidence', term = 'frost'
+status = 'uncertain'
+
+    @pytest.mark.parametrize("caption,field,term,status", [
+        ("The surface has no\nfrost.", "required_evidence", "frost", "fail"),
+        ("The container is without\nsmoke.", "forbidden_evidence", "smoke", "pass"),
+        ("There may be\nfrost.", "required_evidence", "frost", "uncertain"),
+        ("There might be no\nsmoke.", "forbidden_evidence", "smoke", "uncertain"),
+    ])
+    def test_line_wrapping_preserves_negation_and_qualification(caption, field, term, status):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == status
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:60: AssertionError
+_ test_line_wrapping_preserves_negation_and_qualification[There might be no\nsmoke.-forbidden_evidence-smoke-uncertain] _
+
+caption = 'There might be no\nsmoke.', field = 'forbidden_evidence'
+term = 'smoke', status = 'uncertain'
+
+    @pytest.mark.parametrize("caption,field,term,status", [
+        ("The surface has no\nfrost.", "required_evidence", "frost", "fail"),
+        ("The container is without\nsmoke.", "forbidden_evidence", "smoke", "pass"),
+        ("There may be\nfrost.", "required_evidence", "frost", "uncertain"),
+        ("There might be no\nsmoke.", "forbidden_evidence", "smoke", "uncertain"),
+    ])
+    def test_line_wrapping_preserves_negation_and_qualification(caption, field, term, status):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == status
+E       AssertionError: assert 'fail' == 'uncertain'
+E         
+E         - uncertain
+E         + fail
+
+test\services\test_visual_qa_state_evidence.py:60: AssertionError
+=========================== short test summary info ===========================
+FAILED test/services/test_visual_qa_state_evidence.py::test_line_wrapping_preserves_negation_and_qualification[The surface has no\nfrost.-required_evidence-frost-fail]
+FAILED test/services/test_visual_qa_state_evidence.py::test_line_wrapping_preserves_negation_and_qualification[The container is without\nsmoke.-forbidden_evidence-smoke-pass]
+FAILED test/services/test_visual_qa_state_evidence.py::test_line_wrapping_preserves_negation_and_qualification[There may be\nfrost.-required_evidence-frost-uncertain]
+FAILED test/services/test_visual_qa_state_evidence.py::test_line_wrapping_preserves_negation_and_qualification[There might be no\nsmoke.-forbidden_evidence-smoke-uncertain]
+4 failed, 33 passed in 0.32s
+
+Python exit code: 1

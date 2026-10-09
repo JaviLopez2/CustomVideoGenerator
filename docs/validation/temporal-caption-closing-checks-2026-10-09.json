@@ -1,0 +1,258 @@
+{
+  "protocol": "temporal-caption-closing-checks-1",
+  "checked_utc": "2026-10-09T15:37:28.098749+00:00",
+  "execution_base_head": "417dac34f5367c58412a0722f509ff3dbb2fbb39",
+  "qa_version": "visual-qa-3",
+  "scope": "Generic lexical temporal parser and QA cache-version invalidation only",
+  "prior_audit": {
+    "path": "docs/validation/temporal-caption-ambiguity-audit-2026-10-09.json",
+    "sha256": "77d9f5224ffab54b179b2066895faa0d4688e4e904627cd1a5c5540f6249bd6a",
+    "prior_source_sha256": "2f9a76db3451e323c16152d93f497e33a06eda6dabdd52a7150d4a4de44ad435"
+  },
+  "replays": [
+    {
+      "id": "qualified_required",
+      "before": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": []
+      },
+      "after": {
+        "status": "uncertain",
+        "state_score": null,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "missing/ambiguous state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": [
+          "frost"
+        ]
+      },
+      "matches_intended_contract": true
+    },
+    {
+      "id": "contradictory_required",
+      "before": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": []
+      },
+      "after": {
+        "status": "uncertain",
+        "state_score": null,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "missing/ambiguous state evidence",
+        "missing_evidence": [
+          "frost"
+        ],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": [
+          "frost"
+        ]
+      },
+      "matches_intended_contract": true
+    },
+    {
+      "id": "qualified_forbidden",
+      "before": {
+        "status": "fail",
+        "state_score": 0.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [
+          "smoke"
+        ],
+        "unknown_absence": []
+      },
+      "after": {
+        "status": "uncertain",
+        "state_score": null,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "missing/ambiguous state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [
+          "smoke"
+        ],
+        "ambiguous_evidence": [
+          "smoke"
+        ]
+      },
+      "matches_intended_contract": true
+    },
+    {
+      "id": "qualified_previous",
+      "before": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": 1.0,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": []
+      },
+      "after": {
+        "status": "pass",
+        "state_score": 1.0,
+        "progression_score": null,
+        "identity_score": null,
+        "reason": "observed state evidence",
+        "missing_evidence": [],
+        "violations": [],
+        "unknown_absence": [],
+        "ambiguous_evidence": []
+      },
+      "matches_intended_contract": true
+    }
+  ],
+  "offline_tests": {
+    "passed": 186,
+    "new_tests": 37,
+    "previous_tests": 149,
+    "seconds": 6.55,
+    "python_exit_code": 0,
+    "warnings": 0,
+    "command": "Python MPT -B -m pytest -q test/services/test_visual_qa_state_evidence.py test/services/test_visual_qa.py test/services/test_visual_observation_diagnostics.py test/services/test_klein4b_mpt.py test/services/test_corrective_continuity.py test/services/test_evidence_pruning_root_qa.py",
+    "MPT_RUN_INTEGRATION_TESTS": "0",
+    "log": "docs/validation/temporal-caption-review-final-tests-2026-10-09.txt",
+    "log_sha256": "142a7236f2bdf8126ca27828a431870244b17e1b05740b30de84f2f6f17a71f4"
+  },
+  "tdd_stages": [
+    {
+      "path": "docs/validation/temporal-caption-red-tests-2026-10-09.txt",
+      "sha256": "08f2dfc4910a60bbde6093ea984709d43a9ef9ee3a5ee1da88f1f2603782adc1",
+      "summary": "20 failed, 13 passed in 0.40s",
+      "python_exit_code": 1
+    },
+    {
+      "path": "docs/validation/temporal-caption-green-tests-2026-10-09.txt",
+      "sha256": "3255da20c5fc61069f28534bf507629c5d856ea2b48872fc40b52c66ecacabce",
+      "summary": "72 passed in 3.57s",
+      "python_exit_code": 0
+    },
+    {
+      "path": "docs/validation/temporal-caption-final-tests-2026-10-09.txt",
+      "sha256": "b3ba0f4de61a6bdda82c4a79eb30d7f8e01af08b96f602d585cd1bb2428c7734",
+      "summary": "182 passed in 6.70s",
+      "python_exit_code": 0
+    },
+    {
+      "path": "docs/validation/temporal-caption-review-red-tests-2026-10-09.txt",
+      "sha256": "773c87c0eee8c53f3e1b52d0eb377be0b8515f63e3b50c243c904a0af3615158",
+      "summary": "4 failed, 33 passed in 0.32s",
+      "python_exit_code": 1
+    },
+    {
+      "path": "docs/validation/temporal-caption-review-final-tests-2026-10-09.txt",
+      "sha256": "142a7236f2bdf8126ca27828a431870244b17e1b05740b30de84f2f6f17a71f4",
+      "summary": "186 passed in 6.55s",
+      "python_exit_code": 0
+    }
+  ],
+  "independent_review": {
+    "first_finding": "P2 newline clause splitting discarded negation and qualification across wrapped text",
+    "reproduced_before_edit": "4failed33pass",
+    "change": "Remove only newline clause boundary",
+    "final": "No issues."
+  },
+  "source_document_trailing_whitespace": 0,
+  "raw_red_log_trailing_whitespace_preserved": {
+    "docs/validation/temporal-caption-red-tests-2026-10-09.txt": 16,
+    "docs/validation/temporal-caption-review-red-tests-2026-10-09.txt": 4
+  },
+  "secret_pattern_matches": 0,
+  "pattern_scan_not_exhaustive": true,
+  "task_files": [
+    {
+      "path": "app/services/visual_qa.py",
+      "sha256": "4ff08f8ca503ffe06e8dfb3da7330452c27e1d2abaa4a294297630554e6d62f9"
+    },
+    {
+      "path": "test/services/test_visual_qa_state_evidence.py",
+      "sha256": "fb6006a808cd8782d50057e00876e96a9fad19aa59384625876003f32e9ca69b"
+    },
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "d2e14787821ca41b05ee317a2bbc9921e6fe543ef59e1df6a4e27118ee8f4c42"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "b360d6c1726f00593a18bc0b5c7cc170cdcbff99ca880399c67d3c1241447a87"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "958e1e80378fbfa1b0f95e16b8b4733dcbe5f5785c458e542473624cadb49eb9"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "1132ede2fe62fd1ee6899e9b6de7021cab557b793e23b6bb34bcdb2dcfbd6f2b"
+    },
+    {
+      "path": "docs/VISUAL_JUDGE_CANDIDATES_HANDOFF.md",
+      "sha256": "f62d47967a69194c8257400c7703487a4fa216082086c90fbdae84c140baf775"
+    },
+    {
+      "path": "docs/VISUAL_QA_REPORT.md",
+      "sha256": "2a213a0b940467d3d67d881f8406163d262a2b36b98fd137070f381c0d23ed5e"
+    },
+    {
+      "path": "docs/TEMPORAL_CAPTION_AMBIGUITY_REPORT.md",
+      "sha256": "bc8f85ac586d84026139559e921c32a815f792ba706a69ae04bea23f50d05bf2"
+    },
+    {
+      "path": "docs/validation/temporal-caption-red-tests-2026-10-09.txt",
+      "sha256": "08f2dfc4910a60bbde6093ea984709d43a9ef9ee3a5ee1da88f1f2603782adc1"
+    },
+    {
+      "path": "docs/validation/temporal-caption-green-tests-2026-10-09.txt",
+      "sha256": "3255da20c5fc61069f28534bf507629c5d856ea2b48872fc40b52c66ecacabce"
+    },
+    {
+      "path": "docs/validation/temporal-caption-final-tests-2026-10-09.txt",
+      "sha256": "b3ba0f4de61a6bdda82c4a79eb30d7f8e01af08b96f602d585cd1bb2428c7734"
+    },
+    {
+      "path": "docs/validation/temporal-caption-review-red-tests-2026-10-09.txt",
+      "sha256": "773c87c0eee8c53f3e1b52d0eb377be0b8515f63e3b50c243c904a0af3615158"
+    },
+    {
+      "path": "docs/validation/temporal-caption-review-final-tests-2026-10-09.txt",
+      "sha256": "142a7236f2bdf8126ca27828a431870244b17e1b05740b30de84f2f6f17a71f4"
+    }
+  ],
+  "actual_model_requests": 0,
+  "generation_requests": 0,
+  "gpu_inference_or_benchmarks": 0,
+  "new_downloads_dependencies_models_workflows": 0,
+  "shared_service_changes": 0,
+  "routing_default_flag_or_admission_policy_changes": 0,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_clean": true,
+  "preexisting_stable_untracked_preserved": true,
+  "limitations": [
+    "Lexical English term/clause handling, not universal language or negation semantics",
+    "Does not prove visual truth, component geometry or physical identity",
+    "Earlier paired cohorts are historical and unchanged"
+  ],
+  "next": "CPU replay archived temporal captions/contracts v2/v3 and remaining explicit-negation audit, then cross-family source-bound ROI preparation; goal stays active"
+}

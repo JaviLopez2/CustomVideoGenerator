@@ -1,0 +1,459 @@
+FFFFFFFFFFFFFF..F.F..F.......F.FF                                        [100%]
+================================== FAILURES ===================================
+_ test_qualified_state_is_not_certain[The surface may have frost.-required_evidence-frost] _
+
+caption = 'The surface may have frost.', field = 'required_evidence'
+term = 'frost'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_qualified_state_is_not_certain[Frost might cover the surface.-required_evidence-frost] _
+
+caption = 'Frost might cover the surface.', field = 'required_evidence'
+term = 'frost'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_qualified_state_is_not_certain[Perhaps the bottle is empty.-required_evidence-empty] _
+
+caption = 'Perhaps the bottle is empty.', field = 'required_evidence'
+term = 'empty'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_qualified_state_is_not_certain[The surface has frost, possibly.-required_evidence-frost] _
+
+caption = 'The surface has frost, possibly.', field = 'required_evidence'
+term = 'frost'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_qualified_state_is_not_certain[The surface has frost?-required_evidence-frost] _
+
+caption = 'The surface has frost?', field = 'required_evidence', term = 'frost'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_qualified_state_is_not_certain[If the surface has frost, it is cold.-required_evidence-frost] _
+
+caption = 'If the surface has frost, it is cold.', field = 'required_evidence'
+term = 'frost'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_qualified_state_is_not_certain[There might be smoke.-forbidden_evidence-smoke] _
+
+caption = 'There might be smoke.', field = 'forbidden_evidence', term = 'smoke'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'fail' == 'uncertain'
+E         
+E         - uncertain
+E         + fail
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_qualified_state_is_not_certain[The container may have no smoke.-forbidden_evidence-smoke] _
+
+caption = 'The container may have no smoke.', field = 'forbidden_evidence'
+term = 'smoke'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_qualified_state_is_not_certain[It is unclear whether the surface is wet.-required_evidence-wet] _
+
+caption = 'It is unclear whether the surface is wet.'
+field = 'required_evidence', term = 'wet'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface may have frost.", "required_evidence", "frost"),
+        ("Frost might cover the surface.", "required_evidence", "frost"),
+        ("Perhaps the bottle is empty.", "required_evidence", "empty"),
+        ("The surface has frost, possibly.", "required_evidence", "frost"),
+        ("The surface has frost?", "required_evidence", "frost"),
+        ("If the surface has frost, it is cold.", "required_evidence", "frost"),
+        ("There might be smoke.", "forbidden_evidence", "smoke"),
+        ("The container may have no smoke.", "forbidden_evidence", "smoke"),
+        ("It is unclear whether the surface is wet.", "required_evidence", "wet"),
+    ])
+    def test_qualified_state_is_not_certain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain"
+E       AssertionError: assert 'pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass
+
+test\services\test_visual_qa_state_evidence.py:21: AssertionError
+_ test_conflicting_state_mentions_abstain[The surface has frost. The surface has no frost.-required_evidence-frost] _
+
+caption = 'The surface has frost. The surface has no frost.'
+field = 'required_evidence', term = 'frost'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface has frost. The surface has no frost.", "required_evidence", "frost"),
+        ("The surface has no frost. The surface has frost.", "required_evidence", "frost"),
+        ("Smoke rises. There is no smoke.", "forbidden_evidence", "smoke"),
+        ("There is no smoke. Smoke rises.", "forbidden_evidence", "smoke"),
+        ("Frost is visible. There may be no frost.", "required_evidence", "frost"),
+    ])
+    def test_conflicting_state_mentions_abstain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain" and result["state_score"] is None
+E       AssertionError: assert ('pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass)
+
+test\services\test_visual_qa_state_evidence.py:37: AssertionError
+_ test_conflicting_state_mentions_abstain[The surface has no frost. The surface has frost.-required_evidence-frost] _
+
+caption = 'The surface has no frost. The surface has frost.'
+field = 'required_evidence', term = 'frost'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface has frost. The surface has no frost.", "required_evidence", "frost"),
+        ("The surface has no frost. The surface has frost.", "required_evidence", "frost"),
+        ("Smoke rises. There is no smoke.", "forbidden_evidence", "smoke"),
+        ("There is no smoke. Smoke rises.", "forbidden_evidence", "smoke"),
+        ("Frost is visible. There may be no frost.", "required_evidence", "frost"),
+    ])
+    def test_conflicting_state_mentions_abstain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain" and result["state_score"] is None
+E       AssertionError: assert ('pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass)
+
+test\services\test_visual_qa_state_evidence.py:37: AssertionError
+_ test_conflicting_state_mentions_abstain[Smoke rises. There is no smoke.-forbidden_evidence-smoke] _
+
+caption = 'Smoke rises. There is no smoke.', field = 'forbidden_evidence'
+term = 'smoke'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface has frost. The surface has no frost.", "required_evidence", "frost"),
+        ("The surface has no frost. The surface has frost.", "required_evidence", "frost"),
+        ("Smoke rises. There is no smoke.", "forbidden_evidence", "smoke"),
+        ("There is no smoke. Smoke rises.", "forbidden_evidence", "smoke"),
+        ("Frost is visible. There may be no frost.", "required_evidence", "frost"),
+    ])
+    def test_conflicting_state_mentions_abstain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain" and result["state_score"] is None
+E       AssertionError: assert ('fail' == 'uncertain'
+E         
+E         - uncertain
+E         + fail)
+
+test\services\test_visual_qa_state_evidence.py:37: AssertionError
+_ test_conflicting_state_mentions_abstain[There is no smoke. Smoke rises.-forbidden_evidence-smoke] _
+
+caption = 'There is no smoke. Smoke rises.', field = 'forbidden_evidence'
+term = 'smoke'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface has frost. The surface has no frost.", "required_evidence", "frost"),
+        ("The surface has no frost. The surface has frost.", "required_evidence", "frost"),
+        ("Smoke rises. There is no smoke.", "forbidden_evidence", "smoke"),
+        ("There is no smoke. Smoke rises.", "forbidden_evidence", "smoke"),
+        ("Frost is visible. There may be no frost.", "required_evidence", "frost"),
+    ])
+    def test_conflicting_state_mentions_abstain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain" and result["state_score"] is None
+E       AssertionError: assert ('fail' == 'uncertain'
+E         
+E         - uncertain
+E         + fail)
+
+test\services\test_visual_qa_state_evidence.py:37: AssertionError
+_ test_conflicting_state_mentions_abstain[Frost is visible. There may be no frost.-required_evidence-frost] _
+
+caption = 'Frost is visible. There may be no frost.'
+field = 'required_evidence', term = 'frost'
+
+    @pytest.mark.parametrize("caption,field,term", [
+        ("The surface has frost. The surface has no frost.", "required_evidence", "frost"),
+        ("The surface has no frost. The surface has frost.", "required_evidence", "frost"),
+        ("Smoke rises. There is no smoke.", "forbidden_evidence", "smoke"),
+        ("There is no smoke. Smoke rises.", "forbidden_evidence", "smoke"),
+        ("Frost is visible. There may be no frost.", "required_evidence", "frost"),
+    ])
+    def test_conflicting_state_mentions_abstain(caption, field, term):
+        result = qa.state_check(caption, {field: [term]})
+>       assert result["status"] == "uncertain" and result["state_score"] is None
+E       AssertionError: assert ('pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass)
+
+test\services\test_visual_qa_state_evidence.py:37: AssertionError
+_ test_unrelated_clause_does_not_qualify_or_negate_state[No smoke but frost on the surface.] _
+
+caption = 'No smoke but frost on the surface.'
+
+    @pytest.mark.parametrize("caption", [
+        "The lighting may change. The surface has frost.",
+        "There might be a reflection, but the surface has frost.",
+        "No smoke but frost on the surface.",
+        "Maybe a reflection; frost covers the surface.",
+    ])
+    def test_unrelated_clause_does_not_qualify_or_negate_state(caption):
+        result = qa.state_check(caption, {"required_evidence": ["frost"]})
+>       assert result["status"] == "pass" and result["state_score"] == 1
+E       AssertionError: assert ('fail' == 'pass'
+E         
+E         - pass
+E         + fail)
+
+test\services\test_visual_qa_state_evidence.py:49: AssertionError
+_ test_ambiguous_previous_evidence_never_establishes_progression[The surface might have no frost.] _
+
+previous = 'The surface might have no frost.'
+
+    @pytest.mark.parametrize("previous", [
+        "The surface might have no frost.",
+        "There is no frost. There is frost.",
+        "Frost may be absent.",
+        "No frost?",
+        "The surface is dark.",
+    ])
+    def test_ambiguous_previous_evidence_never_establishes_progression(previous):
+        result = qa.state_check("The surface has frost.", {"required_evidence": ["frost"]}, previous)
+        assert result["status"] == "pass" and result["state_score"] == 1
+>       assert result["progression_score"] is None and result["identity_score"] is None
+E       assert (1.0 is None)
+
+test\services\test_visual_qa_state_evidence.py:62: AssertionError
+__ test_ambiguous_previous_evidence_never_establishes_progression[No frost?] __
+
+previous = 'No frost?'
+
+    @pytest.mark.parametrize("previous", [
+        "The surface might have no frost.",
+        "There is no frost. There is frost.",
+        "Frost may be absent.",
+        "No frost?",
+        "The surface is dark.",
+    ])
+    def test_ambiguous_previous_evidence_never_establishes_progression(previous):
+        result = qa.state_check("The surface has frost.", {"required_evidence": ["frost"]}, previous)
+        assert result["status"] == "pass" and result["state_score"] == 1
+>       assert result["progression_score"] is None and result["identity_score"] is None
+E       assert (1.0 is None)
+
+test\services\test_visual_qa_state_evidence.py:62: AssertionError
+_ test_independent_definite_violation_still_fails_but_ambiguous_previous_cannot_progress _
+
+    def test_independent_definite_violation_still_fails_but_ambiguous_previous_cannot_progress():
+        contract = {"required_evidence": ["frost"], "forbidden_evidence": ["smoke"]}
+        previous = "The surface may have frost. Smoke rises."
+        result = qa.state_check(previous, contract)
+        assert result["status"] == "fail" and result["violations"] == ["smoke"]
+>       assert result["ambiguous_evidence"] == ["frost"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'ambiguous_evidence'
+
+test\services\test_visual_qa_state_evidence.py:82: KeyError
+_________ test_visual_qa_abstains_with_current_or_previous_ambiguity __________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-111/test_visual_qa_abstains_with_c0')
+
+    def test_visual_qa_abstains_with_current_or_previous_ambiguity(tmp_path):
+        current, previous = tmp_path / "current.png", tmp_path / "previous.png"
+        for path in [current, previous]:
+            Image.new("RGB", (8, 8), "white").save(path)
+        evidence = Captions({str(current): "The surface may have frost.",
+                             str(previous): "There is no frost."})
+        contract = {"temporal": {"required_evidence": ["frost"], "previous_state": "without frost",
+                                  "previous_image": str(previous)}}
+        first = qa.VisualQA(evidence).assess(current, contract)
+>       assert first["verdict"] == "uncertain" and first["checks"][0]["state_score"] is None
+E       AssertionError: assert ('pass' == 'uncertain'
+E         
+E         - uncertain
+E         + pass)
+
+test\services\test_visual_qa_state_evidence.py:113: AssertionError
+__________ test_changed_qa_version_ignores_seeded_legacy_pass_cache ___________
+
+tmp_path = WindowsPath('C:/Users/JAVIER/AppData/Local/Temp/pytest-of-JAVIER/pytest-111/test_changed_qa_version_ignore0')
+
+    def test_changed_qa_version_ignores_seeded_legacy_pass_cache(tmp_path):
+        image = tmp_path / "image.png"
+        Image.new("RGB", (8, 8), "white").save(image)
+        evidence = Captions({str(image): "The surface may have frost."})
+        cache = qa.EvidenceCache()
+        contract = {"temporal": {"required_evidence": ["frost"]}}
+        legacy_key = qa.cache_key("visual-qa-2", evidence.model_identity, [qa.digest(image), None, None], contract)
+        cache.put(legacy_key, {"verdict": "pass", "available": True, "checks": [], "qa_version": "visual-qa-2"})
+        result = qa.VisualQA(evidence, cache).assess(image, contract)
+>       assert qa.VERSION != "visual-qa-2"
+E       AssertionError: assert 'visual-qa-2' != 'visual-qa-2'
+E        +  where 'visual-qa-2' = qa.VERSION
+
+test\services\test_visual_qa_state_evidence.py:129: AssertionError
+=========================== short test summary info ===========================
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[The surface may have frost.-required_evidence-frost]
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[Frost might cover the surface.-required_evidence-frost]
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[Perhaps the bottle is empty.-required_evidence-empty]
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[The surface has frost, possibly.-required_evidence-frost]
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[The surface has frost?-required_evidence-frost]
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[If the surface has frost, it is cold.-required_evidence-frost]
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[There might be smoke.-forbidden_evidence-smoke]
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[The container may have no smoke.-forbidden_evidence-smoke]
+FAILED test/services/test_visual_qa_state_evidence.py::test_qualified_state_is_not_certain[It is unclear whether the surface is wet.-required_evidence-wet]
+FAILED test/services/test_visual_qa_state_evidence.py::test_conflicting_state_mentions_abstain[The surface has frost. The surface has no frost.-required_evidence-frost]
+FAILED test/services/test_visual_qa_state_evidence.py::test_conflicting_state_mentions_abstain[The surface has no frost. The surface has frost.-required_evidence-frost]
+FAILED test/services/test_visual_qa_state_evidence.py::test_conflicting_state_mentions_abstain[Smoke rises. There is no smoke.-forbidden_evidence-smoke]
+FAILED test/services/test_visual_qa_state_evidence.py::test_conflicting_state_mentions_abstain[There is no smoke. Smoke rises.-forbidden_evidence-smoke]
+FAILED test/services/test_visual_qa_state_evidence.py::test_conflicting_state_mentions_abstain[Frost is visible. There may be no frost.-required_evidence-frost]
+FAILED test/services/test_visual_qa_state_evidence.py::test_unrelated_clause_does_not_qualify_or_negate_state[No smoke but frost on the surface.]
+FAILED test/services/test_visual_qa_state_evidence.py::test_ambiguous_previous_evidence_never_establishes_progression[The surface might have no frost.]
+FAILED test/services/test_visual_qa_state_evidence.py::test_ambiguous_previous_evidence_never_establishes_progression[No frost?]
+FAILED test/services/test_visual_qa_state_evidence.py::test_independent_definite_violation_still_fails_but_ambiguous_previous_cannot_progress
+FAILED test/services/test_visual_qa_state_evidence.py::test_visual_qa_abstains_with_current_or_previous_ambiguity
+FAILED test/services/test_visual_qa_state_evidence.py::test_changed_qa_version_ignores_seeded_legacy_pass_cache
+20 failed, 13 passed in 0.40s
+
+Python exit code: 1

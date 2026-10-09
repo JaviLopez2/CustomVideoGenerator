@@ -13,7 +13,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
 
-VERSION = "visual-qa-2"
+VERSION = "visual-qa-3"
 NUMBERS = {word: i for i, word in enumerate(
     ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"))}
 STATUSES = {"pass", "fail", "uncertain", "unavailable"}
@@ -199,38 +199,51 @@ def silhouette(candidate, reference, allow_rotation=False):
 def state_check(caption, temporal, previous_caption=""):
     required = temporal.get("required_evidence", [])
     forbidden = temporal.get("forbidden_evidence", [])
-    def present(term):
-        text = caption.casefold()
+    # Keep qualification and negation within the relevant clause, rather than
+    # letting an unrelated observation qualify or negate a requested state.
+    # A newline can wrap a continuing phrase, so it is not a clause boundary.
+    clauses = re.split(r"(?<=[.!?;])|\b(?:but|whereas|while)\b", caption.casefold())
+    qualifier = r"\b(?:may|might|could|would|maybe|perhaps|possibly|possible|probably|likely|uncertain|unclear|apparently|seems?|appears?|if|whether)\b"
+
+    def observed(term):
         pattern = r"\b" + re.escape(str(term).casefold()) + r"\b"
-        matches = list(re.finditer(pattern, text))
-        positive, negative = False, False
-        for match in matches:
-            prefix = text[max(0, match.start() - 24):match.start()]
-            negated = bool(re.search(r"\b(?:no|without|absent|not)\s+(?:\w+\s+){0,2}$", prefix))
-            positive |= not negated
-            negative |= negated
-        return positive, negative
-    violated = [term for term in forbidden if present(term)[0]]
-    violated += ["absent " + term for term in required if present(term)[1] and not present(term)[0]]
-    missing = [term for term in required if not present(term)[0]]
-    unknown_absence = [term for term in forbidden if not present(term)[1] and not present(term)[0]]
+        positive, negative, qualified = False, False, False
+        for clause in clauses:
+            for match in re.finditer(pattern, clause):
+                if "?" in clause or re.search(qualifier, clause):
+                    qualified = True
+                    continue
+                prefix = clause[max(0, match.start() - 24):match.start()]
+                negated = bool(re.search(r"\b(?:no|without|absent|not)\s+(?:\w+\s+){0,2}$", prefix))
+                positive |= not negated
+                negative |= negated
+        if qualified or positive and negative:
+            return "uncertain"
+        return "present" if positive else "absent" if negative else "unmentioned"
+
+    states = {term: observed(term) for term in required + forbidden}
+    ambiguous = [term for term, state in states.items() if state == "uncertain"]
+    violated = [term for term in forbidden if states[term] == "present"]
+    violated += ["absent " + term for term in required if states[term] == "absent"]
+    missing = [term for term in required if states[term] != "present"]
+    unknown_absence = [term for term in forbidden if states[term] in {"uncertain", "unmentioned"}]
     if violated:
         status = "fail"
-    elif (required or forbidden) and not missing and not unknown_absence:
+    elif (required or forbidden) and not missing and not unknown_absence and not ambiguous:
         status = "pass"
     else:
         status = "uncertain"
     progression = None
     if status == "pass" and previous_caption:
         previous = state_check(previous_caption, temporal)
-        progression = 1.0 if previous["status"] == "fail" else None
+        progression = 1.0 if previous["status"] == "fail" and not previous["ambiguous_evidence"] else None
     elif status == "pass" and temporal.get("previous_state"):
         progression = None  # Narrated previous state is not observed visual evidence.
     return {"status": status, "state_score": 1.0 if status == "pass" else 0.0 if status == "fail" else None,
             "progression_score": progression, "identity_score": None,
             "reason": "observed state evidence" if status != "uncertain" else "missing/ambiguous state evidence",
             "missing_evidence": missing, "violations": violated,
-            "unknown_absence": unknown_absence}
+            "unknown_absence": unknown_absence, "ambiguous_evidence": ambiguous}
 
 
 def overall(checks):

@@ -1,5 +1,11 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — parser temporal v3 validado; replay CPU siguiente
+
+Base417dac34f5367c58412a0722f509ff3dbb2fbb39, carpeta/rama experimental conservadas, inicio limpio. Se modifica solo app/services/visual_qa.py y se añade test/services/test_visual_qa_state_evidence.py: cualificación/contradicción=>uncertain, anterior ambiguo sin progression1; negativas claras conservadas y caché invalidada mediante VERSION3.37 nuevos/186 finales pasan6,55s/exit0/sin avisos; revisión cerró regresión multilineal con RED4 adicional. [Informe](TEMPORAL_CAPTION_AMBIGUITY_REPORT.md), [cierre](validation/temporal-caption-closing-checks-2026-10-09.json).0 nueva inferencia/generación/GPU/descarga/servicio; no modelos/defaults/deps/plantillas/gates/routing/estable alterados o integración activada. Semántica léxica limitada, no verdad visual o identidad. SHA final por Git/origin.
+
+Continuar sin permiso rutinario: replay CPU de captions temporales archivados/contratos reales v2/v3, raw/labels humanos intactos; auditar negaciones explícitas aún no cubiertas. Después preparador de regiones source-bound y otra familia antes de gate ROI. No usar controles de taza cerrados ni inferir promoción del éxito A/B/C. [Objetivo activo](AUTONOMOUS_MPT_WORK_HANDOFF.md); nada que abrir para esta siguiente tarea. Pendientes anteriores del parche son historia.
+
 ## Estado vigente — diagnóstico ROI prometedor; corregir evidencia temporal ambigua
 
 Base de implementación0746505930e23ddbb007c6eda0634fde9f821037, HEAD de cuatro cohortes92ea66495ff39dfc9368791a0802e6b54b183c49; rama/worktree experimental conservados. [Informe](PAIRED_SHAPE_PROBE_REPORT.md):12 consultas/0 retries/generaciones/descargas, modelos existentes. Completa: ambosFN B; ROI: ambosTP B/TN A/C. Protocolo/schema/decoding iguales, regiones fijadas en auditoría anterior+8px; no nuevas labels/gold/máscara B ni reinterpretación del raw. Latencia media4,3–4,9s en diagnóstico, no full QA.3pares retrospectivos no justifican gate/identidad/routing/localización automática. 184 tests pasan7,34s/exit0/sin avisos,51 nuevos; fuentes sin cambio desde prueba. Cuatro PID propios cerrados; compartidos/prod/estable/aliases/gates intactos. Conservar cuatro crop PNG y cuatro logs bajo target ignorado; JSON/planes ligeros versionados. SHA de cierre por Git/origin.

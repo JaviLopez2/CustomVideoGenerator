@@ -1,5 +1,9 @@
 # QA visual local: resultados y límites — 2026-10-08
 
+## Actualización — parser temporal v3, 2026-10-09
+
+[Parche y prueba](TEMPORAL_CAPTION_AMBIGUITY_REPORT.md), base417dac3: cualificación/contradicción léxica relevante se conserva uncertain, con ambiguous_evidence y score null; evidencia anterior ambigua no acredita progreso. Violación inequívoca y omisión conservan fail/uncertain, sin inferir identidad. VERSIONvisual-qa-3 invalida keys v2; no nueva capa de caché.37 casos nuevos/186 tests finales pasan6,55s/exit0/sin avisos; revisión detectó salto de línea, cuatro RED antes de corrección y revisión final sin hallazgos.0 inferencia/generación/GPU/descargas/servicios/modelos/defaults/gates/routing/deps/estable. Sigue siendo parser léxico inglés limitado, sin solución universal de negación ni validación de fidelidad visual. Próximo replay CPU de captions/contratos guardados v2/v3 antes de más consultas. Los resultados históricos siguientes no se reescriben como v3.
+
 El camino local nuevo tarda **4,51s de media**, pero decide solo **3 de 16 casos**. Los otros 13 quedan inciertos y el pipeline experimental los rechaza. No está demostrado un QA fiable de partes pequeñas, fusión, identidad factual o progresión temporal. **No activar routing automático ni promover Klein.** Esta fase reduce el coste, conserva evidencia y descubre el siguiente bloqueo; no completa la validación semántica.
 
 ## Estado, alcance y evidencia

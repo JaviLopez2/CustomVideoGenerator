@@ -1,5 +1,9 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: temporal text ambiguity fixed, judges unchanged
+
+From417dac3, generic state_check qualification/conflict handling corrected, prior ambiguous state cannot establish progression; VERSIONvisual-qa-3 invalidates existing v2 cache keys.37 new CPU tests;186 final pass6.55s/exit0/no warnings, review-found newline regression fixed with4RED first and final review no issues. [Report](TEMPORAL_CAPTION_AMBIGUITY_REPORT.md). No new inference/generation/download/GPU/services, no judge/model/default/gate/routing/workflow/dependency/stable changes. Lexical caption interpretation is not visual reliability or identity. Earlier12paired queries/184tests remain separate. Next CPU replay of saved temporal captions/contracts v2/v3 and explicit-negation audit, then source-bound ROI cross-family controls; no promotion from known3pairs. [Autonomy active](AUTONOMOUS_MPT_WORK_HANDOFF.md), no user action required.
+
 ## Current checkpoint: paired ROI input improves known key cohort
 
 Generic observer/owned runner published92ea664, implemented from0746505, no MPT wiring.184 tests pass7.34s/exit0/no warnings,51 new, actual sources unchanged afterwards. Four completed cohorts/12 queries/0 retries/generations/downloads: both existing models miss major B on full frame (TP0/TN2/FN1), both detect it on native ROI (TP1/TN2), A/C unchanged. Same prompt/schema/decoding/roles, source-bound earlier regions+uniform8px, no masks/label leakage or categorical rescue. [Report](PAIRED_SHAPE_PROBE_REPORT.md). Context/effective visual resolution co-vary; known3pairs cannot validate a general geometry gate, automatic localizer, identity or calibration. Mean4.3–4.9s belongs to focused diagnostic, not complete QA; prefix reuse affects latency. Four owned8092 closed; shared servers/apps/weights/defaults/gates/routing/deps/stable untouched. Preserve ignored crops/logs; closing SHA via Git/origin.

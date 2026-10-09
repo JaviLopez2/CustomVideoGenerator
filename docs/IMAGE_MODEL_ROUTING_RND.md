@@ -1,5 +1,9 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — ambigüedad temporal corregida, 2026-10-09
+
+Desde417dac3, state_check genérico abstiene cualificación/contradicción y no acredita progresión con anterior ambiguo; negativos inequívocos siguen fail y omisión uncertain. VERSIONvisual-qa-3 invalida caché anterior.37 regresiones nuevas,186 tests finales pasan6,55s/exit0/sin avisos; fallo de salto de línea encontrado por revisión, RED4→GREEN y cierre sin hallazgos. [Informe](TEMPORAL_CAPTION_AMBIGUITY_REPORT.md). Parser léxico inglés, no evidencia de fidelidad visual/identidad o negación universal.0 consultas/generaciones/descargas/GPU/servicios, modelos/defaults/plantillas/routing/estable intactos. Próximo replay CPU de captions/contratos temporales archivados v2/v3 y negación explícita restante; luego cross-family ROI. Los12 requests/184tests anteriores no se repiten ni se presentan como prueba del parche. Autonomía vigente sin otra aprobación.
+
 ## Actualización — comparación conjunta y concentración de entrada, 2026-10-09
 
 Observador genérico aislado publicado92ea664, desde0746505;184 tests/51 nuevos pasan7,34s/exit0/sin avisos. Cuatro cohortes/12 consultas retenidas,0 retries/generaciones/descargas. Ambos jueces fallan B en fotograma completo y lo distinguen en recortes, conservando A/C: TP0/TN2/FN1 frente a TP1/TN2 por modelo. Misma prompt/schema/decoding; regiones anteriores+8px, píxeles/modes exactos. [Informe y tablas](PAIRED_SHAPE_PROBE_REPORT.md). Contexto y resolución efectiva cambian juntos;3pares conocidos no validan identidad, localizador o gate. Categorías raw no reinterpretadas; Bmask excluida, labels humanos intactos/offline. Medias4,3–4,9s para este diagnóstico, carga~4s separada/cache de prefijo visible; sin benchmark/p95 ni ahorro de QA completo certificado.

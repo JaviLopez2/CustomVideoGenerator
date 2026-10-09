@@ -1,5 +1,11 @@
 # MPT Agent Factory — Project State
 
+## Current checkpoint: temporal ambiguity parser corrected
+
+From published417dac34f5367c58412a0722f509ff3dbb2fbb39, generic state_check now abstains on qualified/contradictory relevant terms, preserves unambiguous failures/omission and cannot certify progression from ambiguous prior evidence. VERSIONvisual-qa-3 invalidates v2 verdict/evidence keys; no new cache layer.37 new CPU tests,186 final pass6.55s/exit0/no warnings,149 prior cases/gates preserved. Review found newline negation regression, reproduced4RED and fixed; final review no issues. [Report](docs/TEMPORAL_CAPTION_AMBIGUITY_REPORT.md). No new inference/generation/GPU/download/service/model/default/routing/workflow/dependency/stable changes. Caption parsing remains lexical, not visual truth or universal negation semantics.
+
+Next CPU replay of archived temporal captions/contracts against v2/v3 and remaining explicit-negation audit; no new user action. Later reproducible source-bound cross-family ROI controls, no gate promotion from known3key pairs. Prior paired12queries/184tests remain separate historical evidence. [Autonomous goal active](docs/AUTONOMOUS_MPT_WORK_HANDOFF.md); closing SHA via Git/origin, base distinct.
+
 ## Current checkpoint: paired shape ROI contrast and temporal parser audit
 
 Implementation92ea664 (base0746505): isolated generic paired observer/owned runner,51 new tests;184 pass7.34s/exit0/no warnings, sources unchanged after that run. Four completed cohorts/12 retained-image queries/0 retries/generations/downloads. Both full-frame cohorts miss human major change B (TP0/TN2/FN1); both ROI cohorts distinguish B and preserve A/C (TP1/TN2), same prompt/schema/decoding and old source-bound regions+uniform8px. Raw categorical failures retained, known3pairs/not general accuracy or identity/admission. [Report](docs/PAIRED_SHAPE_PROBE_REPORT.md). Four owned8092 closed, shared services/stable/apps/weights/defaults/gates/routing untouched. Manual ROIs are not an automatic localizer; context/effective resolution change together. Closing SHA via Git/origin; older next-probe sections are historical.
