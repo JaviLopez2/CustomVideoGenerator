@@ -4,6 +4,12 @@
 > Update this file after meaningful architecture, runtime, benchmark or branch changes.
 > Do not store secrets, API keys or credentials here.
 
+## Current checkpoint: retained component localization — 2026-10-09
+
+From published `5c71873`, offline site audit replays 12 archived outputs, 8 positive same-image diagnostics / 4 nonapplicable absence controls, 14 disk/box relations. Qwen3.5 red separates both contacts; blue upper disk crosses edge and lower site is uncovered. Qwen3-VL one box spans both sites on both mugs, no exclusive separation. Both cover hole center disks; not mask precision or physical identity. Approximate drawing radius 3px conditional, not gold/confidence; all prior photos/raw/annotations/human labels unchanged, B mask excluded. [Report](docs/RETAINED_COMPONENT_SITES_REPORT.md).
+
+Isolated script / 24 new tests; 138 fresh focused pass, 5.16 s / exit 0/no warnings. Eight ignored SVG/PNG plus contact board preserve original image bytes. No inference/generation/GPU/download/service/dependency/app/judge/gate/routing/model/workflow/stable changes. Next prepare a minimal reviewed structural-negative mug protocol (one interrupted handle attachment) with existing red positive, budget/criteria before any new editing or inference; not yet executed or promoted. Closing SHA via history/origin, execution base distinct.
+
 ## Current checkpoint: component and pose limits — 2026-10-09
 
 From published `19c660b`, CPU-only fixed synthetic probe completes: 33 cases/66 fits with known mathematical correspondences, four retained pairs audited for nominal role overlap only (C6/A5/B0/mugs6). No real photo fit, ratios or identity scores. Intact planar tilt breaks similarity; plane homography cannot correct depth parts, and exact four-anchor fitting can hide a constructed corner deformation without independent check points. Synthetic drawing-error bounds overlap for a small part difference; not measured confidence or real A ring size. B full mask remains disputed/excluded, original labels/reviews untouched. [Report](docs/COMPONENT_POSE_LIMITS_REPORT.md).

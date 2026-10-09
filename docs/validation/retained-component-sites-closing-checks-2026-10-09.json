@@ -1,0 +1,194 @@
+{
+  "date": "2026-10-09",
+  "execution_base_head": "5c718730f1d94b0f5e90ab6a410966c0956e74a9",
+  "script_sha256": "8c3a044e08af0de961586588efcd9fe4c62510f53653577649fc1cae0ec20882",
+  "plan_sha256": "6da88ba8953db4368b965f481903b0fb164dcefc0347d9ebf59ff7aad2983531",
+  "raw_sha256": "672ff2497de165c9f74808d2e65e2180baa807790ff01da9ec52982ad7b4e435",
+  "raw_bytes": 39212,
+  "archived_rows_replayed": 12,
+  "same_image_positive_diagnostics": 8,
+  "nonapplicable_absence_rows": 4,
+  "disk_box_relations": 14,
+  "nominal_distances_independently_checked": true,
+  "distinct_matching_checked_by_exhaustive_assignment": true,
+  "original_raw_profiles_annotations_human_reviews_preserved": true,
+  "original_png_hashes_verified": 6,
+  "original_A_B_C_sha256": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3",
+  "all_authority_flags_false": true,
+  "figures": [
+    {
+      "svg": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_opening-image_4.svg",
+      "svg_sha256": "0c5210e6a2de99d3db08979f72263809c9bdd6440428ccbf05f2dd9723507c1b",
+      "png": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_opening-image_4.png",
+      "png_sha256": "f2314a1248ea2927f80ab2c9ce9d2a8ad718d00d65ed88354bab3d88cfd36fc4",
+      "size": [
+        952,
+        556
+      ]
+    },
+    {
+      "svg": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_opening-image_5.svg",
+      "svg_sha256": "23b4d78b85a4210f48954e85f3a42cf5a41e730a1b6f8b9aa3cee680b8fdab76",
+      "png": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_opening-image_5.png",
+      "png_sha256": "43acaa56e683a3483476e715a88bc9e3940951c484dee3b026444c92ca5b8444",
+      "size": [
+        952,
+        556
+      ]
+    },
+    {
+      "svg": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_opening-image_4.svg",
+      "svg_sha256": "90e09a34b2fc1c548169134273a9711191f42f293a34cc8b971b4a3e8e167c16",
+      "png": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_opening-image_4.png",
+      "png_sha256": "b3d08aff1067edfda97ad46895575a23320156a58ba80ce450f95e62205e4223",
+      "size": [
+        952,
+        556
+      ]
+    },
+    {
+      "svg": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_opening-image_5.svg",
+      "svg_sha256": "1adff435964bf01d1a946f02cba9b5434f3b964dae518c197459431b2d52774e",
+      "png": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_opening-image_5.png",
+      "png_sha256": "8ab1a212ca5920e99bc38c6f7e3a5cb35f103d7de06b1d0e102bf8643fca5682",
+      "size": [
+        952,
+        556
+      ]
+    },
+    {
+      "svg": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_body_contacts-image_4.svg",
+      "svg_sha256": "82316b23d9d8ccdcbe736f2965aad9050fcbec7bb4b495be09ff4ab6f6712d6c",
+      "png": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_body_contacts-image_4.png",
+      "png_sha256": "5a6214418bbc3ab23397f67c6829f073984d0311be8a64880f2108ff76bd2469",
+      "size": [
+        952,
+        556
+      ]
+    },
+    {
+      "svg": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_body_contacts-image_5.svg",
+      "svg_sha256": "f0e8b26e45fbb3e566c033b67c5cb78a332ab65d9ec7fdef41721c48e7f16559",
+      "png": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_body_contacts-image_5.png",
+      "png_sha256": "4df2bd3f85f35b6f5113b24e5715a073a2fcfde025f6924d87643adb529db511",
+      "size": [
+        952,
+        556
+      ]
+    },
+    {
+      "svg": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_body_contacts-image_4.svg",
+      "svg_sha256": "d99e58685fc0021f72dfc8f48e17d4ea786e9cca441a6bdf91650d22eaf35aa6",
+      "png": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_body_contacts-image_4.png",
+      "png_sha256": "1fa5024a7c29d207a6e6bc5c8a5fda6eddc28fd2b3af59542e2e4f013fea871f",
+      "size": [
+        952,
+        556
+      ]
+    },
+    {
+      "svg": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_body_contacts-image_5.svg",
+      "svg_sha256": "601afae54c936367bfcae34b5bc165c52aa6288dfb6e645e7113921e5dc04aae",
+      "png": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_body_contacts-image_5.png",
+      "png_sha256": "2b4cb33ca7adb9abe5df734ab7cea9f483763980a8d3f137ad7ffd6a7b349719",
+      "size": [
+        952,
+        556
+      ]
+    }
+  ],
+  "contacts_board": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\contacts-board.png",
+    "sha256": "73d80f8cb9f5043d74606de43ed6ababb8569462dc8ea2a91bdafd3045474c1d",
+    "size": [
+      1904,
+      1212
+    ],
+    "git_ignored": true
+  },
+  "visual_inspection": "all eight rendered figures and contact board viewed by assistant; not new human review or pixel truth",
+  "tests": {
+    "passed": 138,
+    "warnings": 0,
+    "duration_seconds": 5.16,
+    "python_exit_code": 0,
+    "MPT_RUN_INTEGRATION_TESTS": "0",
+    "log": "docs\\validation\\retained-component-sites-final-tests-2026-10-09.txt",
+    "log_sha256": "5fb7f14c154e27982fee55b9c57e9fcbf8d5b9ae24762facf42b2e22a783d531",
+    "arguments": [
+      "test/test_retained_component_sites.py",
+      "test/test_visual_location_observations.py",
+      "test/test_spatial_annotation_review.py",
+      "test/services/test_visual_observation_diagnostics.py",
+      "test/services/test_visual_qa.py"
+    ]
+  },
+  "TDD": {
+    "red": "24 failures on stubs /exit1",
+    "green": "24 passed /exit0"
+  },
+  "protected_paths_diff_empty": true,
+  "protected_paths_checked": [
+    "app",
+    "local_image_stack",
+    "requirements.txt",
+    "pyproject.toml",
+    "uv.lock",
+    "AGENTS.md",
+    "docs/LOCAL_WINDOWS_ACCESS_HANDOFF.md",
+    "scripts/visual_location_observations.py",
+    "scripts/visual_component_observations.py",
+    "scripts/render_visual_location_overlays.py",
+    "scripts/prepare_spatial_annotation_review.py",
+    "scripts/probe_component_pose_limits.py",
+    "scripts/audit_spatial_geometry.py",
+    "test/test_visual_location_observations.py",
+    "test/test_spatial_annotation_review.py",
+    "docs/validation/spatial-annotation-draft-v3-2026-10-09.json",
+    "docs/validation/spatial-annotation-human-review-2026-10-09.json",
+    "docs/validation/spatial-annotation-human-review-v3-2026-10-09.json",
+    "docs/validation/isolated-mug-hole-qwen35-2026-10-08.json",
+    "docs/validation/isolated-mug-hole-profile-2026-10-08.json",
+    "docs/validation/isolated-mug-hole-qwen3vl-2026-10-08.json",
+    "docs/validation/isolated-mug-hole-profile-2026-10-08.json",
+    "docs/validation/isolated-mug-contacts-qwen35-2026-10-08.json",
+    "docs/validation/isolated-mug-contacts-profile-2026-10-08.json",
+    "docs/validation/isolated-mug-contacts-qwen3vl-2026-10-08.json",
+    "docs/validation/isolated-mug-contacts-profile-2026-10-08.json"
+  ],
+  "json_files_checked_before_closing_file": 2,
+  "secret_pattern_counts": {
+    "openai": 0,
+    "github": 0,
+    "aws": 0,
+    "private_key": 0,
+    "credential_url": 0
+  },
+  "scan_limits": "pattern check, not exhaustive detector",
+  "fetch_ahead_behind": "0/0",
+  "stable_head_read_after_fetch": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_status_read_after_fetch": "empty; existing untracked preserved",
+  "rendering": "existing Node/sharp and Pillow; all8 renders exit0; external Fontconfig cache not writable, no permission/config changes",
+  "browser_or_server_started": false,
+  "new_vlm_requests": 0,
+  "generation_requests": 0,
+  "cross_view_fits": 0,
+  "real_identity_comparisons": 0,
+  "GPU_benchmarks": 0,
+  "downloads": 0,
+  "services_started_stopped_reconfigured": 0,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "pixel_truth_verified": false,
+  "mask_precision_verified": false,
+  "closing_checkpoint_sha": "resolve via subsequent commit/origin, distinct from execution base",
+  "staged_scope_review": {
+    "files": 15,
+    "production_or_generated_artifacts_staged": false,
+    "json_files_validated_in_index": 3,
+    "secret_pattern_matches_in_index": 0,
+    "non_log_diff_check_exit_code": 0,
+    "raw_log_trailing_whitespace_preserved": 24,
+    "raw_log_note": "only raw .txt stdout has trailing whitespace; contents preserved, Git may normalize configured line endings"
+  }
+}

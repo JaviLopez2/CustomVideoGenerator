@@ -1,5 +1,15 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Estado vigente — localización offline de componentes, 2026-10-09
+
+Base publicada `5c718730f1d94b0f5e90ab6a410966c0956e74a9`; mismo worktree/rama experimental, limpio al inicio. Nuevo auditor aislado y 24 tests; plan hash-pinned de cuatro raw, dos perfiles, v3 y ambas revisiones. 12 JSON originales revalidados y coverage idéntico, 8 observaciones positivas / 4 no aplicables, 14 relaciones disco/caja. [Informe](RETAINED_COMPONENT_SITES_REPORT.md), [plan](validation/retained-component-sites-plan-2026-10-09.json), [raw](validation/retained-component-sites-results-2026-10-09.json).
+
+Qwen3.5 roja separa ambos contactos; azul solo alcanza disco superior por borde y deja inferior fuera. Qwen3-VL agrupa ambos sitios en una caja en cada taza. Ambos cubren el disco del centro del hueco, insuficiente para precisión de contorno. Margen 3px de dibujo no es confianza estadística ni tolerancia real certificada. No scores de identidad/correspondencias entre fotos, calibración o promoción. Fotos/raw/v3/juicios/revisiones intactos, B máscara completa excluida. 0 VLM/generaciones/descargas/GPU/servicios/cambios app/modelos/gates/flags/deps/routing/workflows/estable.
+
+138 tests actuales pasan, 5,16 s, exit 0, sin warnings; RED24/GREEN24 conservados,124 previos históricos. [Cierre](validation/retained-component-sites-closing-checks-2026-10-09.json). Ocho SVG/PNG y tablero en target/retained-component-sites-2026-10-09, ignorados y preservables con anteriores assets. Bytes incrustados intactos, inspección del asistente separada de revisión humana. Render existente sin navegador/servidor o cambio por caché Fontconfig bloqueada. Fetch 0/0, stable/tracked intactos en 6d27ba4; SHA final por Git/origin, execution_head previo.
+
+Siguiente tarea concreta: preparar protocolo mínimo de positivo rojo retenido y negativo estructural de unión del asa visiblemente interrumpida, con revisión/budget/criterios fijados antes de nueva edición o inferencia. Este checkpoint termina con la auditoría offline; la preparación del control estructural es la siguiente fase. Mantener pesos existentes y autoridad de diagnóstico. Ambos jueces siguen diagnósticos; no pedir de nuevo A/B/C ni ajustar prompts para forzar passes en estos raw.
+
 ## Estado vigente — prueba acotada de componentes y perspectiva, 2026-10-09
 
 Base publicada `19c660b9aff0e5b7f17159c4701ce91838df920e`; mismo worktree/rama, inicialmente limpio. Script experimental y 19 tests nuevos, plan fijado con hashes de script/anotación/revisiones. 33 controles sintéticos/66 ajustes completados, sin inferencias/generaciones/GPU/servicios. Auditoría de cuatro pares retenidos: roles nominales compartidos C6/A5/B0/tazas6, sin correspondencia física certificada ni cálculo geométrico sobre fotos. [Informe](COMPONENT_POSE_LIMITS_REPORT.md), [plan](validation/component-pose-plan-2026-10-09.json), [raw](validation/component-pose-results-2026-10-09.json).

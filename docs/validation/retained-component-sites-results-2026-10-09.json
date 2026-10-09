@@ -1,0 +1,964 @@
+{
+  "protocol": "retained-component-site-audit-1",
+  "pixel_truth_verified": false,
+  "admission_allowed": false,
+  "automatic_rejection": false,
+  "physical_identity_established": false,
+  "mask_precision_verified": false,
+  "execution_head": "5c718730f1d94b0f5e90ab6a410966c0956e74a9",
+  "script_sha256": "8c3a044e08af0de961586588efcd9fe4c62510f53653577649fc1cae0ec20882",
+  "plan_sha256": "6da88ba8953db4368b965f481903b0fb164dcefc0347d9ebf59ff7aad2983531",
+  "annotation_sha256": "906455f8c9da5c818b033b9a0499de2abf308943b1c18b6f71ad3771b8a4d16f",
+  "human_review_sha256s": [
+    "b4049d4335c9534be9c76329b1489e1df63b66ba593beaa4e3c3af5ab4181ef6",
+    "60e254983acb3dc2c93c78a72104e0b5e8c52b4103027811466f6525af8d96ee"
+  ],
+  "rows": [
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "diagnostic",
+      "real_identity_score": null,
+      "site_analysis": {
+        "pixel_truth_verified": false,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "mask_precision_verified": false,
+        "sites": [
+          {
+            "id": "handle_opening_center",
+            "point": [
+              374,
+              281
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_contained",
+                "nominal_inside": true,
+                "signed_margin_pixels": 35.60000000000002,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          }
+        ],
+        "box_count": 1,
+        "site_count": 1,
+        "normalized_boxes": [
+          [
+            650,
+            400,
+            800,
+            650
+          ]
+        ],
+        "pixel_boxes": [
+          [
+            332.8,
+            204.8,
+            409.6,
+            332.8
+          ]
+        ],
+        "box_area_fractions": [
+          0.037500000000000006
+        ],
+        "nominal_site_covered_count": 1,
+        "disk_contained_site_count": 1,
+        "disk_intersected_site_count": 1,
+        "maximum_distinct_contained_matching": 1,
+        "maximum_distinct_intersecting_matching": 1,
+        "maximum_exclusive_contained_matching": 1,
+        "maximum_exclusive_intersecting_matching": 1,
+        "grouped_or_ambiguous_box_indices": [],
+        "interpretation": "point support and exclusivity diagnostics only; no physical count, contour precision or identity decision"
+      },
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "present",
+      "component": "handle_opening",
+      "component_state": "observed",
+      "original_box_count": 1,
+      "reason": "same-image box/drawing-point geometry; no cross-view fit or physical correspondence claim",
+      "model_id": "qwen35",
+      "image_id": "image_4",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "raw_report_sha256": "b842d1ddf01125281bc9197596929aee1d7d824ec0c92ad9a8084566770e1bea",
+      "request_sha256": "cc71d71a4664a17643aed6a7ab034beffcc5b0cc19079e311154a65c329de3b6",
+      "final_content_sha256": "47c3e006135083d7e91390a9ec83f7eabda7d5c916cde091a22816671104989e",
+      "svg_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_opening-image_4.svg",
+      "svg_sha256": "0c5210e6a2de99d3db08979f72263809c9bdd6440428ccbf05f2dd9723507c1b"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "diagnostic",
+      "real_identity_score": null,
+      "site_analysis": {
+        "pixel_truth_verified": false,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "mask_precision_verified": false,
+        "sites": [
+          {
+            "id": "handle_opening_center",
+            "point": [
+              374,
+              281
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_contained",
+                "nominal_inside": true,
+                "signed_margin_pixels": 35.60000000000002,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          }
+        ],
+        "box_count": 1,
+        "site_count": 1,
+        "normalized_boxes": [
+          [
+            650,
+            420,
+            800,
+            680
+          ]
+        ],
+        "pixel_boxes": [
+          [
+            332.8,
+            215.04,
+            409.6,
+            348.16
+          ]
+        ],
+        "box_area_fractions": [
+          0.039000000000000014
+        ],
+        "nominal_site_covered_count": 1,
+        "disk_contained_site_count": 1,
+        "disk_intersected_site_count": 1,
+        "maximum_distinct_contained_matching": 1,
+        "maximum_distinct_intersecting_matching": 1,
+        "maximum_exclusive_contained_matching": 1,
+        "maximum_exclusive_intersecting_matching": 1,
+        "grouped_or_ambiguous_box_indices": [],
+        "interpretation": "point support and exclusivity diagnostics only; no physical count, contour precision or identity decision"
+      },
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "present",
+      "component": "handle_opening",
+      "component_state": "observed",
+      "original_box_count": 1,
+      "reason": "same-image box/drawing-point geometry; no cross-view fit or physical correspondence claim",
+      "model_id": "qwen35",
+      "image_id": "image_5",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor",
+      "raw_report_sha256": "b842d1ddf01125281bc9197596929aee1d7d824ec0c92ad9a8084566770e1bea",
+      "request_sha256": "6c410040f24daeaf4eac1539dbcf9031e54e60d22291eabbf6cf922c691a90c8",
+      "final_content_sha256": "6e51f08b58ea584e53d942fc8ff79e80e673d6a73c779281e0ffe012456d4ac4",
+      "svg_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_opening-image_5.svg",
+      "svg_sha256": "23b4d78b85a4210f48954e85f3a42cf5a41e730a1b6f8b9aa3cee680b8fdab76"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "not_applicable",
+      "real_identity_score": null,
+      "site_analysis": null,
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "absent",
+      "component": "handle_opening",
+      "component_state": "not_applicable",
+      "original_box_count": 0,
+      "reason": "recorded target absence; no contact/point score",
+      "model_id": "qwen35",
+      "image_id": "image_1",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "source_case_id": "valid_cloth_edit",
+      "raw_report_sha256": "b842d1ddf01125281bc9197596929aee1d7d824ec0c92ad9a8084566770e1bea",
+      "request_sha256": "e187e5c4daccacad77184bc90642b4ec33594a3abaa15ed404e595b0fc33f529",
+      "final_content_sha256": "31d1dc94f31345dbed97f02b41224bd0e8d702b568567d3459ae69fe6488e1f6"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "diagnostic",
+      "real_identity_score": null,
+      "site_analysis": {
+        "pixel_truth_verified": false,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "mask_precision_verified": false,
+        "sites": [
+          {
+            "id": "handle_opening_center",
+            "point": [
+              374,
+              281
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_contained",
+                "nominal_inside": true,
+                "signed_margin_pixels": 55.05599999999998,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          }
+        ],
+        "box_count": 1,
+        "site_count": 1,
+        "normalized_boxes": [
+          [
+            620,
+            400,
+            838,
+            720
+          ]
+        ],
+        "pixel_boxes": [
+          [
+            317.44,
+            204.8,
+            429.056,
+            368.64
+          ]
+        ],
+        "box_area_fractions": [
+          0.06975999999999997
+        ],
+        "nominal_site_covered_count": 1,
+        "disk_contained_site_count": 1,
+        "disk_intersected_site_count": 1,
+        "maximum_distinct_contained_matching": 1,
+        "maximum_distinct_intersecting_matching": 1,
+        "maximum_exclusive_contained_matching": 1,
+        "maximum_exclusive_intersecting_matching": 1,
+        "grouped_or_ambiguous_box_indices": [],
+        "interpretation": "point support and exclusivity diagnostics only; no physical count, contour precision or identity decision"
+      },
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "present",
+      "component": "handle_opening",
+      "component_state": "observed",
+      "original_box_count": 1,
+      "reason": "same-image box/drawing-point geometry; no cross-view fit or physical correspondence claim",
+      "model_id": "qwen3vl",
+      "image_id": "image_4",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "raw_report_sha256": "e71231661d788c55eed0a94677e5e14fae8bb6bb9e5c481a2e53bfd01b059495",
+      "request_sha256": "cc71d71a4664a17643aed6a7ab034beffcc5b0cc19079e311154a65c329de3b6",
+      "final_content_sha256": "19388f363aa5976c49bebb0fec242c8b983bd0d3bd755d3a9c3ac918812731ae",
+      "svg_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_opening-image_4.svg",
+      "svg_sha256": "90e09a34b2fc1c548169134273a9711191f42f293a34cc8b971b4a3e8e167c16"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "diagnostic",
+      "real_identity_score": null,
+      "site_analysis": {
+        "pixel_truth_verified": false,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "mask_precision_verified": false,
+        "sites": [
+          {
+            "id": "handle_opening_center",
+            "point": [
+              374,
+              281
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_contained",
+                "nominal_inside": true,
+                "signed_margin_pixels": 55.05599999999998,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          }
+        ],
+        "box_count": 1,
+        "site_count": 1,
+        "normalized_boxes": [
+          [
+            620,
+            398,
+            838,
+            725
+          ]
+        ],
+        "pixel_boxes": [
+          [
+            317.44,
+            203.776,
+            429.056,
+            371.2
+          ]
+        ],
+        "box_area_fractions": [
+          0.07128599999999999
+        ],
+        "nominal_site_covered_count": 1,
+        "disk_contained_site_count": 1,
+        "disk_intersected_site_count": 1,
+        "maximum_distinct_contained_matching": 1,
+        "maximum_distinct_intersecting_matching": 1,
+        "maximum_exclusive_contained_matching": 1,
+        "maximum_exclusive_intersecting_matching": 1,
+        "grouped_or_ambiguous_box_indices": [],
+        "interpretation": "point support and exclusivity diagnostics only; no physical count, contour precision or identity decision"
+      },
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "present",
+      "component": "handle_opening",
+      "component_state": "observed",
+      "original_box_count": 1,
+      "reason": "same-image box/drawing-point geometry; no cross-view fit or physical correspondence claim",
+      "model_id": "qwen3vl",
+      "image_id": "image_5",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor",
+      "raw_report_sha256": "e71231661d788c55eed0a94677e5e14fae8bb6bb9e5c481a2e53bfd01b059495",
+      "request_sha256": "6c410040f24daeaf4eac1539dbcf9031e54e60d22291eabbf6cf922c691a90c8",
+      "final_content_sha256": "473df905a40333825cdc73d101493d5e4a16aab074168e206ed4d2c2773961f2",
+      "svg_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_opening-image_5.svg",
+      "svg_sha256": "1adff435964bf01d1a946f02cba9b5434f3b964dae518c197459431b2d52774e"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "not_applicable",
+      "real_identity_score": null,
+      "site_analysis": null,
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "absent",
+      "component": "handle_opening",
+      "component_state": "not_applicable",
+      "original_box_count": 0,
+      "reason": "recorded target absence; no contact/point score",
+      "model_id": "qwen3vl",
+      "image_id": "image_1",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "source_case_id": "valid_cloth_edit",
+      "raw_report_sha256": "e71231661d788c55eed0a94677e5e14fae8bb6bb9e5c481a2e53bfd01b059495",
+      "request_sha256": "e187e5c4daccacad77184bc90642b4ec33594a3abaa15ed404e595b0fc33f529",
+      "final_content_sha256": "cf490b07e5aa8f423221332cade360153b1c4cf7f5f6185ef92a2416eddb5eb6"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "diagnostic",
+      "real_identity_score": null,
+      "site_analysis": {
+        "pixel_truth_verified": false,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "mask_precision_verified": false,
+        "sites": [
+          {
+            "id": "upper_handle_attachment",
+            "point": [
+              347,
+              222
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_contained",
+                "nominal_inside": true,
+                "signed_margin_pixels": 8.400000000000006,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              },
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_disjoint",
+                "nominal_inside": false,
+                "signed_margin_pixels": -110.80000000000001,
+                "nominal_distance_to_box_pixels": 110.80000000000001,
+                "outside_distance_lower_bound_pixels": 107.80000000000001,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          },
+          {
+            "id": "lower_handle_attachment",
+            "point": [
+              338,
+              354
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_disjoint",
+                "nominal_inside": false,
+                "signed_margin_pixels": -123.6,
+                "nominal_distance_to_box_pixels": 123.6,
+                "outside_distance_lower_bound_pixels": 120.6,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              },
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_contained",
+                "nominal_inside": true,
+                "signed_margin_pixels": 4.399999999999977,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          }
+        ],
+        "box_count": 2,
+        "site_count": 2,
+        "normalized_boxes": [
+          [
+            650,
+            400,
+            700,
+            450
+          ],
+          [
+            650,
+            650,
+            700,
+            700
+          ]
+        ],
+        "pixel_boxes": [
+          [
+            332.8,
+            204.8,
+            358.4,
+            230.4
+          ],
+          [
+            332.8,
+            332.8,
+            358.4,
+            358.4
+          ]
+        ],
+        "box_area_fractions": [
+          0.002499999999999996,
+          0.0024999999999999935
+        ],
+        "nominal_site_covered_count": 2,
+        "disk_contained_site_count": 2,
+        "disk_intersected_site_count": 2,
+        "maximum_distinct_contained_matching": 2,
+        "maximum_distinct_intersecting_matching": 2,
+        "maximum_exclusive_contained_matching": 2,
+        "maximum_exclusive_intersecting_matching": 2,
+        "grouped_or_ambiguous_box_indices": [],
+        "interpretation": "point support and exclusivity diagnostics only; no physical count, contour precision or identity decision"
+      },
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "present",
+      "component": "handle_body_contacts",
+      "component_state": "observed",
+      "original_box_count": 2,
+      "reason": "same-image box/drawing-point geometry; no cross-view fit or physical correspondence claim",
+      "model_id": "qwen35",
+      "image_id": "image_4",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "raw_report_sha256": "e1b20d0306c0f3f832c0b3fc7b4b6d40b85bbfdacfe46a3668c80b753f3911fb",
+      "request_sha256": "3262873714764e6a55a767fa13f0b0c52f40aee9a540cb0247a5773e3c6974e2",
+      "final_content_sha256": "0877c22d4575b8b8e7c8cc03b327d821309a7c5958720844f3f271c1f09d2686",
+      "svg_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_body_contacts-image_4.svg",
+      "svg_sha256": "82316b23d9d8ccdcbe736f2965aad9050fcbec7bb4b495be09ff4ab6f6712d6c"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "diagnostic",
+      "real_identity_score": null,
+      "site_analysis": {
+        "pixel_truth_verified": false,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "mask_precision_verified": false,
+        "sites": [
+          {
+            "id": "upper_handle_attachment",
+            "point": [
+              348,
+              221
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_intersects_boundary",
+                "nominal_inside": true,
+                "signed_margin_pixels": 0.160000000000025,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          },
+          {
+            "id": "lower_handle_attachment",
+            "point": [
+              338,
+              354
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_disjoint",
+                "nominal_inside": false,
+                "signed_margin_pixels": -118.47999999999999,
+                "nominal_distance_to_box_pixels": 118.47999999999999,
+                "outside_distance_lower_bound_pixels": 115.47999999999999,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          }
+        ],
+        "box_count": 1,
+        "site_count": 2,
+        "normalized_boxes": [
+          [
+            620,
+            380,
+            680,
+            460
+          ]
+        ],
+        "pixel_boxes": [
+          [
+            317.44,
+            194.56,
+            348.16,
+            235.52
+          ]
+        ],
+        "box_area_fractions": [
+          0.004800000000000005
+        ],
+        "nominal_site_covered_count": 1,
+        "disk_contained_site_count": 0,
+        "disk_intersected_site_count": 1,
+        "maximum_distinct_contained_matching": 0,
+        "maximum_distinct_intersecting_matching": 1,
+        "maximum_exclusive_contained_matching": 0,
+        "maximum_exclusive_intersecting_matching": 1,
+        "grouped_or_ambiguous_box_indices": [],
+        "interpretation": "point support and exclusivity diagnostics only; no physical count, contour precision or identity decision"
+      },
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "present",
+      "component": "handle_body_contacts",
+      "component_state": "observed",
+      "original_box_count": 1,
+      "reason": "same-image box/drawing-point geometry; no cross-view fit or physical correspondence claim",
+      "model_id": "qwen35",
+      "image_id": "image_5",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor",
+      "raw_report_sha256": "e1b20d0306c0f3f832c0b3fc7b4b6d40b85bbfdacfe46a3668c80b753f3911fb",
+      "request_sha256": "6f86f2c9c76223db0466fbb01fcac668213eb7fca5709e802e6ddb6c5d80b2a6",
+      "final_content_sha256": "305b8ee4523c88357fe034fe7a8f49bcf6b37875ca193d696f9be775f2ed009e",
+      "svg_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen35-handle_body_contacts-image_5.svg",
+      "svg_sha256": "f0e8b26e45fbb3e566c033b67c5cb78a332ab65d9ec7fdef41721c48e7f16559"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "not_applicable",
+      "real_identity_score": null,
+      "site_analysis": null,
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "absent",
+      "component": "handle_body_contacts",
+      "component_state": "not_applicable",
+      "original_box_count": 0,
+      "reason": "recorded target absence; no contact/point score",
+      "model_id": "qwen35",
+      "image_id": "image_1",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "source_case_id": "valid_cloth_edit",
+      "raw_report_sha256": "e1b20d0306c0f3f832c0b3fc7b4b6d40b85bbfdacfe46a3668c80b753f3911fb",
+      "request_sha256": "7298742354a2cab61e4b0d584f7a6cc49c4a666f5ae322bb303c344eee79d45a",
+      "final_content_sha256": "09fe04c5c8167cf7b2e1b627864ae837f130258c5f4f4b8e92a7041d791ac6d2"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "diagnostic",
+      "real_identity_score": null,
+      "site_analysis": {
+        "pixel_truth_verified": false,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "mask_precision_verified": false,
+        "sites": [
+          {
+            "id": "upper_handle_attachment",
+            "point": [
+              347,
+              222
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_intersects_boundary",
+                "nominal_inside": true,
+                "signed_margin_pixels": 1.160000000000025,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          },
+          {
+            "id": "lower_handle_attachment",
+            "point": [
+              338,
+              354
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_contained",
+                "nominal_inside": true,
+                "signed_margin_pixels": 9.519999999999982,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          }
+        ],
+        "box_count": 1,
+        "site_count": 2,
+        "normalized_boxes": [
+          [
+            620,
+            400,
+            680,
+            710
+          ]
+        ],
+        "pixel_boxes": [
+          [
+            317.44,
+            204.8,
+            348.16,
+            363.52
+          ]
+        ],
+        "box_area_fractions": [
+          0.018600000000000012
+        ],
+        "nominal_site_covered_count": 2,
+        "disk_contained_site_count": 1,
+        "disk_intersected_site_count": 2,
+        "maximum_distinct_contained_matching": 1,
+        "maximum_distinct_intersecting_matching": 1,
+        "maximum_exclusive_contained_matching": 0,
+        "maximum_exclusive_intersecting_matching": 0,
+        "grouped_or_ambiguous_box_indices": [
+          0
+        ],
+        "interpretation": "point support and exclusivity diagnostics only; no physical count, contour precision or identity decision"
+      },
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "present",
+      "component": "handle_body_contacts",
+      "component_state": "observed",
+      "original_box_count": 1,
+      "reason": "same-image box/drawing-point geometry; no cross-view fit or physical correspondence claim",
+      "model_id": "qwen3vl",
+      "image_id": "image_4",
+      "image_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+      "source_case_id": "root_mug",
+      "raw_report_sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+      "request_sha256": "3262873714764e6a55a767fa13f0b0c52f40aee9a540cb0247a5773e3c6974e2",
+      "final_content_sha256": "c2d7b143cd8889a6e01192fd7e1fafc27edc77e160d5dc6e2dd9a5c476ba8f8b",
+      "svg_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_body_contacts-image_4.svg",
+      "svg_sha256": "d99e58685fc0021f72dfc8f48e17d4ea786e9cca441a6bdf91650d22eaf35aa6"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "diagnostic",
+      "real_identity_score": null,
+      "site_analysis": {
+        "pixel_truth_verified": false,
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "mask_precision_verified": false,
+        "sites": [
+          {
+            "id": "upper_handle_attachment",
+            "point": [
+              348,
+              221
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_intersects_boundary",
+                "nominal_inside": true,
+                "signed_margin_pixels": 0.160000000000025,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          },
+          {
+            "id": "lower_handle_attachment",
+            "point": [
+              338,
+              354
+            ],
+            "drawing_radius_pixels": 3,
+            "box_relations": [
+              {
+                "pixel_truth_verified": false,
+                "admission_allowed": false,
+                "automatic_rejection": false,
+                "physical_identity_established": false,
+                "mask_precision_verified": false,
+                "relation": "disk_contained",
+                "nominal_inside": true,
+                "signed_margin_pixels": 9.519999999999982,
+                "nominal_distance_to_box_pixels": 0.0,
+                "outside_distance_lower_bound_pixels": 0,
+                "scope": "conditional geometry of an estimated drawing disk; not measured confidence or component truth"
+              }
+            ]
+          }
+        ],
+        "box_count": 1,
+        "site_count": 2,
+        "normalized_boxes": [
+          [
+            620,
+            400,
+            680,
+            710
+          ]
+        ],
+        "pixel_boxes": [
+          [
+            317.44,
+            204.8,
+            348.16,
+            363.52
+          ]
+        ],
+        "box_area_fractions": [
+          0.018600000000000012
+        ],
+        "nominal_site_covered_count": 2,
+        "disk_contained_site_count": 1,
+        "disk_intersected_site_count": 2,
+        "maximum_distinct_contained_matching": 1,
+        "maximum_distinct_intersecting_matching": 1,
+        "maximum_exclusive_contained_matching": 0,
+        "maximum_exclusive_intersecting_matching": 0,
+        "grouped_or_ambiguous_box_indices": [
+          0
+        ],
+        "interpretation": "point support and exclusivity diagnostics only; no physical count, contour precision or identity decision"
+      },
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "present",
+      "component": "handle_body_contacts",
+      "component_state": "observed",
+      "original_box_count": 1,
+      "reason": "same-image box/drawing-point geometry; no cross-view fit or physical correspondence claim",
+      "model_id": "qwen3vl",
+      "image_id": "image_5",
+      "image_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+      "source_case_id": "valid_mug_recolor",
+      "raw_report_sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+      "request_sha256": "6f86f2c9c76223db0466fbb01fcac668213eb7fca5709e802e6ddb6c5d80b2a6",
+      "final_content_sha256": "3a3c4c85cee42143c2f1cde35b6da35aaddb7e41be69a01055e7e4a79a740396",
+      "svg_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\retained-component-sites-2026-10-09\\qwen3vl-handle_body_contacts-image_5.svg",
+      "svg_sha256": "601afae54c936367bfcae34b5bc165c52aa6288dfb6e645e7113921e5dc04aae"
+    },
+    {
+      "pixel_truth_verified": false,
+      "admission_allowed": false,
+      "automatic_rejection": false,
+      "physical_identity_established": false,
+      "mask_precision_verified": false,
+      "status": "not_applicable",
+      "real_identity_score": null,
+      "site_analysis": null,
+      "transport_status": "completed",
+      "finish_reason": "stop",
+      "target_presence": "absent",
+      "component": "handle_body_contacts",
+      "component_state": "not_applicable",
+      "original_box_count": 0,
+      "reason": "recorded target absence; no contact/point score",
+      "model_id": "qwen3vl",
+      "image_id": "image_1",
+      "image_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "source_case_id": "valid_cloth_edit",
+      "raw_report_sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60",
+      "request_sha256": "7298742354a2cab61e4b0d584f7a6cc49c4a666f5ae322bb303c344eee79d45a",
+      "final_content_sha256": "8a5356f7b40466e848add51eb03e564764b979b7dcef99706a611c1ce7278637"
+    }
+  ],
+  "archived_rows_replayed": 12,
+  "same_image_site_diagnostics": 8,
+  "not_applicable_rows": 4,
+  "site_mapping": {
+    "handle_opening": [
+      "handle_opening_center"
+    ],
+    "handle_body_contacts": [
+      "upper_handle_attachment",
+      "lower_handle_attachment"
+    ]
+  },
+  "drawing_uncertainty": "estimated 3px disk, not a statistical interval or ground-truth bound",
+  "coordinate_mapping": "x*width/1000,y*height/1000 continuous extents; no rounding/clamping or added box uncertainty",
+  "real_identity_comparisons": 0,
+  "cross_view_transform_estimates": 0,
+  "vlm_requests": 0,
+  "generation_requests": 0,
+  "scope": "retained localization diagnostics only; no segmentation accuracy, physical counts or candidate promotion"
+}

@@ -1,5 +1,11 @@
 # Comparative visual judges — preparation, 2026-10-08
 
+## Current checkpoint: retained per-site localization audit
+
+Base 5c71873, 12 original outputs replayed / 8 same-image positive diagnostics / 4 nonapplicable absence controls, 14 disk-box relations. Qwen3.5 separates red contacts but blue upper drawing disk crosses box edge and lower site is uncovered. Qwen3-VL one box spans both locations on both mugs, no exclusive separation. Both cover hole center disks, not segmentation precision or identity. Drawing 3px margin conditional, not confidence/gold; retrospective known outputs, no blind accuracy claim. All photos/raw/v3/human reviews unchanged, B full mask excluded. [Report](RETAINED_COMPONENT_SITES_REPORT.md).
+
+Isolated script/24 new tests; 138 fresh focused pass, 5.16 s / exit 0/no warnings. Eight ignored SVG/PNG and contact board hash-bound to immutable originals; 0 VLM/generation/GPU/downloads/services/app/judges/gates/models/deps/routing/workflow/stable changes. Next minimal reviewed mug structural-negative protocol: existing red positive and visibly interrupted handle attachment, budget/criteria before any new edit/inference. No candidate promoted; next phase prepares the structural control. Closing SHA via Git/origin; preserve ignored artifacts with prior assets.
+
 ## Current checkpoint: bounded synthetic component/pose limits
 
 Base19c660b; 33 synthetic CPU cases/66 fixed fits, mathematically known correspondences. Four retained pairs have shared nominal roles C6/A5/B0/mugs6; no real photo transform, ratio or identity score calculated. Intact planar tilt defeats similarity; homography cannot recover different-depth parts and can fit four deformed anchors without independent checks. Conditional drawing-error bounds overlap for a small synthetic change, not measured confidence or A ring size. Original six images, v3 and all human reviews preserved; B full mask disputed/excluded and overall shape-change judgment unchanged. [Report](COMPONENT_POSE_LIMITS_REPORT.md).

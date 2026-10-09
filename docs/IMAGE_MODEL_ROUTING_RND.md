@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — localización retenida por sitio, 2026-10-09
+
+Desde `5c71873`: replay offline de12 outputs, 8 diagnósticos de tazas / 4 no aplicables, 14 relaciones disco/caja. Qwen3.5 separa contactos de roja pero azul tiene sitio superior al borde e inferior sin cubrir. Qwen3-VL agrupa ambos en una caja en las dos imágenes. Ambos alcanzan centros de hueco; no precisión de máscara o identidad. Margen de dibujo 3px supuesto, revisión humana aproximada, sin gold o accuracy. Originales/raw/v3/revisiones/A-B-C intactos, B excluida. [Informe](RETAINED_COMPONENT_SITES_REPORT.md).
+
+24 tests nuevos; 138 actuales pasan, 5,16 s / exit 0/sin warnings. Script aislado, ocho SVG/PNG y tablero local, sin VLM/generación/GPU/descargas/servicios ni cambios app/jueces/modelos/gates/flags/deps/routing/workflows/estable. Próximo: preparar protocolo mínimo de negativo estructural de taza con una unión de asa interrumpida, positivo rojo existente y revisión previa/presupuesto/criterios. Esta fase termina con auditoría offline; conservar los outputs históricos y preparar el control estructural siguiente.
+
 ## Actualización — límites de componentes y perspectiva, 2026-10-09
 
 Desde `19c660b`: 33 controles sintéticos CPU/66 ajustes, correspondencias conocidas por construcción; cuatro pares retenidos solo auditados por nombres (C6/A5/B0/tazas6). Sin transformación, ratios o score de identidad sobre fotos. Un plano intacto inclinado produce error de similitud; homografía planar falla en partes a distinta profundidad y encaja cuatro esquinas deformadas sin comprobar otras partes. Márgenes de dibujo supuestos pueden cubrir diferencias pequeñas, sin medir tamaño real de A. B sigue discutida/excluida; juicios y revisiones intactos. [Informe con fuentes oficiales y límites](COMPONENT_POSE_LIMITS_REPORT.md).

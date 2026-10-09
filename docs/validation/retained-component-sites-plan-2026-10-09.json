@@ -1,0 +1,94 @@
+{
+  "protocol": "retained-component-site-audit-1",
+  "declared_on": "2026-10-09",
+  "execution_base_head": "5c718730f1d94b0f5e90ab6a410966c0956e74a9",
+  "script_sha256_at_plan": "8c3a044e08af0de961586588efcd9fe4c62510f53653577649fc1cae0ec20882",
+  "identity_metrics_allowed": false,
+  "annotation": {
+    "path": "docs/validation/spatial-annotation-draft-v3-2026-10-09.json",
+    "sha256": "906455f8c9da5c818b033b9a0499de2abf308943b1c18b6f71ad3771b8a4d16f"
+  },
+  "human_reviews": [
+    {
+      "path": "docs/validation/spatial-annotation-human-review-2026-10-09.json",
+      "sha256": "b4049d4335c9534be9c76329b1489e1df63b66ba593beaa4e3c3af5ab4181ef6"
+    },
+    {
+      "path": "docs/validation/spatial-annotation-human-review-v3-2026-10-09.json",
+      "sha256": "60e254983acb3dc2c93c78a72104e0b5e8c52b4103027811466f6525af8d96ee"
+    }
+  ],
+  "reports": [
+    {
+      "model_id": "qwen35",
+      "model_label": "Qwen3.5-9B",
+      "raw": {
+        "path": "docs/validation/isolated-mug-hole-qwen35-2026-10-08.json",
+        "sha256": "b842d1ddf01125281bc9197596929aee1d7d824ec0c92ad9a8084566770e1bea"
+      },
+      "profile": {
+        "path": "docs/validation/isolated-mug-hole-profile-2026-10-08.json",
+        "sha256": "9cfbbfe26db9044d44ad262caffc3445fabcc9e0e727080127882ca2f95ae779"
+      }
+    },
+    {
+      "model_id": "qwen3vl",
+      "model_label": "Qwen3-VL-8B",
+      "raw": {
+        "path": "docs/validation/isolated-mug-hole-qwen3vl-2026-10-08.json",
+        "sha256": "e71231661d788c55eed0a94677e5e14fae8bb6bb9e5c481a2e53bfd01b059495"
+      },
+      "profile": {
+        "path": "docs/validation/isolated-mug-hole-profile-2026-10-08.json",
+        "sha256": "9cfbbfe26db9044d44ad262caffc3445fabcc9e0e727080127882ca2f95ae779"
+      }
+    },
+    {
+      "model_id": "qwen35",
+      "model_label": "Qwen3.5-9B",
+      "raw": {
+        "path": "docs/validation/isolated-mug-contacts-qwen35-2026-10-08.json",
+        "sha256": "e1b20d0306c0f3f832c0b3fc7b4b6d40b85bbfdacfe46a3668c80b753f3911fb"
+      },
+      "profile": {
+        "path": "docs/validation/isolated-mug-contacts-profile-2026-10-08.json",
+        "sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12"
+      }
+    },
+    {
+      "model_id": "qwen3vl",
+      "model_label": "Qwen3-VL-8B",
+      "raw": {
+        "path": "docs/validation/isolated-mug-contacts-qwen3vl-2026-10-08.json",
+        "sha256": "3a854aa91a2ffad09d2477caf6f612d5ef72456898325b813d6f2b278cca2f60"
+      },
+      "profile": {
+        "path": "docs/validation/isolated-mug-contacts-profile-2026-10-08.json",
+        "sha256": "8c69ef7a8f9a082c2ca9fb116be827b24e607fdca28fc9e71002c9245547ff12"
+      }
+    }
+  ],
+  "question": "Do archived component boxes reach approximately reviewed sites and separate the two attachment locations within each image?",
+  "coordinate_mapping": "continuous full-image x*width/1000,y*height/1000; no rounding, clamping, shifted boxes or added quantization margin",
+  "uncertainty": "estimated Euclidean drawing disk of3 original pixels; no statistical confidence or pixel truth",
+  "site_mapping": {
+    "handle_opening": [
+      "handle_opening_center"
+    ],
+    "handle_body_contacts": [
+      "upper_handle_attachment",
+      "lower_handle_attachment"
+    ]
+  },
+  "association": "geometric relations only; no role extraction from prose, order-based assignment or cross-image correspondence",
+  "matching": "one distinct box per supported site; exclusive support requires box intersect only one declared site disk",
+  "limits": [
+    "center coverage cannot establish mask precision",
+    "two broad boxes covering both contacts do not establish site separation",
+    "target absence preserved as nonapplicable, no missing-site zero score",
+    "no thresholds calibrated for physical counts, identity, accuracy or candidate promotion",
+    "B full mask remains excluded and unused"
+  ],
+  "vlm_requests": 0,
+  "generation_requests": 0
+}

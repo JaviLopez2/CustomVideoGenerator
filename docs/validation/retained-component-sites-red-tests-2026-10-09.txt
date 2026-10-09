@@ -1,0 +1,482 @@
+FFFFFFFFFFFFFFFFFFFFFFFF                                                 [100%]
+================================== FAILURES ===================================
+_________ test_normalized_box_uses_full_image_extent_without_rounding _________
+
+    def test_normalized_box_uses_full_image_extent_without_rounding():
+>       assert M["box_pixels"]([650, 400, 700, 450], [512, 512]) == pytest.approx([332.8, 204.8, 358.4, 230.4])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [650, 400, 700, 450], size = [512, 512]
+
+    def box_pixels(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:5: NotImplementedError
+____________ test_invalid_boxes_are_not_clamped_or_repaired[box0] _____________
+
+box = [-1, 0, 50, 50]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 50, 50], [0, 0, 1001, 50], [0, 0, 0, 50],
+                                    [0, 10, 20, 5], [0, 0, True, 20], [0, 0, 2.5, 30]])
+    def test_invalid_boxes_are_not_clamped_or_repaired(box):
+        with pytest.raises(ValueError):
+>           M["box_pixels"](box, [100, 100])
+
+test\test_retained_component_sites.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [-1, 0, 50, 50], size = [100, 100]
+
+    def box_pixels(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:5: NotImplementedError
+____________ test_invalid_boxes_are_not_clamped_or_repaired[box1] _____________
+
+box = [0, 0, 1001, 50]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 50, 50], [0, 0, 1001, 50], [0, 0, 0, 50],
+                                    [0, 10, 20, 5], [0, 0, True, 20], [0, 0, 2.5, 30]])
+    def test_invalid_boxes_are_not_clamped_or_repaired(box):
+        with pytest.raises(ValueError):
+>           M["box_pixels"](box, [100, 100])
+
+test\test_retained_component_sites.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [0, 0, 1001, 50], size = [100, 100]
+
+    def box_pixels(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:5: NotImplementedError
+____________ test_invalid_boxes_are_not_clamped_or_repaired[box2] _____________
+
+box = [0, 0, 0, 50]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 50, 50], [0, 0, 1001, 50], [0, 0, 0, 50],
+                                    [0, 10, 20, 5], [0, 0, True, 20], [0, 0, 2.5, 30]])
+    def test_invalid_boxes_are_not_clamped_or_repaired(box):
+        with pytest.raises(ValueError):
+>           M["box_pixels"](box, [100, 100])
+
+test\test_retained_component_sites.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [0, 0, 0, 50], size = [100, 100]
+
+    def box_pixels(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:5: NotImplementedError
+____________ test_invalid_boxes_are_not_clamped_or_repaired[box3] _____________
+
+box = [0, 10, 20, 5]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 50, 50], [0, 0, 1001, 50], [0, 0, 0, 50],
+                                    [0, 10, 20, 5], [0, 0, True, 20], [0, 0, 2.5, 30]])
+    def test_invalid_boxes_are_not_clamped_or_repaired(box):
+        with pytest.raises(ValueError):
+>           M["box_pixels"](box, [100, 100])
+
+test\test_retained_component_sites.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [0, 10, 20, 5], size = [100, 100]
+
+    def box_pixels(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:5: NotImplementedError
+____________ test_invalid_boxes_are_not_clamped_or_repaired[box4] _____________
+
+box = [0, 0, True, 20]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 50, 50], [0, 0, 1001, 50], [0, 0, 0, 50],
+                                    [0, 10, 20, 5], [0, 0, True, 20], [0, 0, 2.5, 30]])
+    def test_invalid_boxes_are_not_clamped_or_repaired(box):
+        with pytest.raises(ValueError):
+>           M["box_pixels"](box, [100, 100])
+
+test\test_retained_component_sites.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [0, 0, True, 20], size = [100, 100]
+
+    def box_pixels(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:5: NotImplementedError
+____________ test_invalid_boxes_are_not_clamped_or_repaired[box5] _____________
+
+box = [0, 0, 2.5, 30]
+
+    @pytest.mark.parametrize("box", [[-1, 0, 50, 50], [0, 0, 1001, 50], [0, 0, 0, 50],
+                                    [0, 10, 20, 5], [0, 0, True, 20], [0, 0, 2.5, 30]])
+    def test_invalid_boxes_are_not_clamped_or_repaired(box):
+        with pytest.raises(ValueError):
+>           M["box_pixels"](box, [100, 100])
+
+test\test_retained_component_sites.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+box = [0, 0, 2.5, 30], size = [100, 100]
+
+    def box_pixels(box, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:5: NotImplementedError
+_____ test_closed_disk_boundary_and_tangent_cases[point0-disk_contained] ______
+
+point = [15, 15], expected = 'disk_contained'
+
+    @pytest.mark.parametrize("point,expected", [([15, 15], "disk_contained"),
+                                              ([10, 15], "disk_intersects_boundary"),
+                                              ([9, 15], "disk_intersects_boundary"),
+                                              ([8, 15], "disk_disjoint")])
+    def test_closed_disk_boundary_and_tangent_cases(point, expected):
+>       result = M["disk_to_box"](point, 1, [10, 10, 20, 20])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = [15, 15], radius = 1, rectangle = [10, 10, 20, 20]
+
+    def disk_to_box(point, radius, rectangle):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:9: NotImplementedError
+_ test_closed_disk_boundary_and_tangent_cases[point1-disk_intersects_boundary] _
+
+point = [10, 15], expected = 'disk_intersects_boundary'
+
+    @pytest.mark.parametrize("point,expected", [([15, 15], "disk_contained"),
+                                              ([10, 15], "disk_intersects_boundary"),
+                                              ([9, 15], "disk_intersects_boundary"),
+                                              ([8, 15], "disk_disjoint")])
+    def test_closed_disk_boundary_and_tangent_cases(point, expected):
+>       result = M["disk_to_box"](point, 1, [10, 10, 20, 20])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = [10, 15], radius = 1, rectangle = [10, 10, 20, 20]
+
+    def disk_to_box(point, radius, rectangle):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:9: NotImplementedError
+_ test_closed_disk_boundary_and_tangent_cases[point2-disk_intersects_boundary] _
+
+point = [9, 15], expected = 'disk_intersects_boundary'
+
+    @pytest.mark.parametrize("point,expected", [([15, 15], "disk_contained"),
+                                              ([10, 15], "disk_intersects_boundary"),
+                                              ([9, 15], "disk_intersects_boundary"),
+                                              ([8, 15], "disk_disjoint")])
+    def test_closed_disk_boundary_and_tangent_cases(point, expected):
+>       result = M["disk_to_box"](point, 1, [10, 10, 20, 20])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = [9, 15], radius = 1, rectangle = [10, 10, 20, 20]
+
+    def disk_to_box(point, radius, rectangle):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:9: NotImplementedError
+______ test_closed_disk_boundary_and_tangent_cases[point3-disk_disjoint] ______
+
+point = [8, 15], expected = 'disk_disjoint'
+
+    @pytest.mark.parametrize("point,expected", [([15, 15], "disk_contained"),
+                                              ([10, 15], "disk_intersects_boundary"),
+                                              ([9, 15], "disk_intersects_boundary"),
+                                              ([8, 15], "disk_disjoint")])
+    def test_closed_disk_boundary_and_tangent_cases(point, expected):
+>       result = M["disk_to_box"](point, 1, [10, 10, 20, 20])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = [8, 15], radius = 1, rectangle = [10, 10, 20, 20]
+
+    def disk_to_box(point, radius, rectangle):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:9: NotImplementedError
+_ test_point_inside_fractional_edge_does_not_guarantee_uncertainty_disk_inside _
+
+    def test_point_inside_fractional_edge_does_not_guarantee_uncertainty_disk_inside():
+>       result = M["disk_to_box"]([348, 221], 3, [317.44, 194.56, 348.16, 235.52])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = [348, 221], radius = 3, rectangle = [317.44, 194.56, 348.16, 235.52]
+
+    def disk_to_box(point, radius, rectangle):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:9: NotImplementedError
+____ test_one_grouped_box_reaches_two_points_but_cannot_separate_two_sites ____
+
+    def test_one_grouped_box_reaches_two_points_but_cannot_separate_two_sites():
+>       result = M["site_support"](sites(), [[400, 150, 600, 850]], [100, 100])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sites = [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}, {'id': 'lower_handle_attachment', 'point': [50, 75], 'uncertainty_pixels': 3}]
+boxes = [[400, 150, 600, 850]], size = [100, 100]
+
+    def site_support(sites, boxes, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:13: NotImplementedError
+________ test_two_wide_boxes_do_not_manufacture_separate_localization _________
+
+    def test_two_wide_boxes_do_not_manufacture_separate_localization():
+>       result = M["site_support"](sites(), [[0, 0, 1000, 1000], [10, 10, 990, 990]], [100, 100])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sites = [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}, {'id': 'lower_handle_attachment', 'point': [50, 75], 'uncertainty_pixels': 3}]
+boxes = [[0, 0, 1000, 1000], [10, 10, 990, 990]], size = [100, 100]
+
+    def site_support(sites, boxes, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:13: NotImplementedError
+_____ test_two_small_distinct_boxes_locate_each_reviewed_site_separately ______
+
+    def test_two_small_distinct_boxes_locate_each_reviewed_site_separately():
+>       result = M["site_support"](sites(), [[400, 150, 600, 350], [400, 650, 600, 850]], [100, 100])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sites = [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}, {'id': 'lower_handle_attachment', 'point': [50, 75], 'uncertainty_pixels': 3}]
+boxes = [[400, 150, 600, 350], [400, 650, 600, 850]], size = [100, 100]
+
+    def site_support(sites, boxes, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:13: NotImplementedError
+______ test_two_entries_covering_only_upper_site_do_not_become_two_parts ______
+
+    def test_two_entries_covering_only_upper_site_do_not_become_two_parts():
+>       result = M["site_support"](sites(), [[400, 150, 600, 350], [410, 160, 590, 340]], [100, 100])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sites = [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}, {'id': 'lower_handle_attachment', 'point': [50, 75], 'uncertainty_pixels': 3}]
+boxes = [[400, 150, 600, 350], [410, 160, 590, 340]], size = [100, 100]
+
+    def site_support(sites, boxes, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:13: NotImplementedError
+_______ test_nearby_disk_is_possible_support_without_contained_support ________
+
+    def test_nearby_disk_is_possible_support_without_contained_support():
+>       result = M["site_support"]([sites()[0]], [[400, 150, 490, 350]], [100, 100])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sites = [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}]
+boxes = [[400, 150, 490, 350]], size = [100, 100]
+
+    def site_support(sites, boxes, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:13: NotImplementedError
+_____________ test_no_boxes_preserves_missing_coordinate_evidence _____________
+
+    def test_no_boxes_preserves_missing_coordinate_evidence():
+>       result = M["site_support"](sites(), [], [100, 100])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sites = [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}, {'id': 'lower_handle_attachment', 'point': [50, 75], 'uncertainty_pixels': 3}]
+boxes = [], size = [100, 100]
+
+    def site_support(sites, boxes, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:13: NotImplementedError
+_____ test_full_frame_box_over_hole_center_never_certifies_mask_precision _____
+
+    def test_full_frame_box_over_hole_center_never_certifies_mask_precision():
+>       result = M["site_support"]([sites()[0]], [[0, 0, 1000, 1000]], [100, 100])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sites = [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}]
+boxes = [[0, 0, 1000, 1000]], size = [100, 100]
+
+    def site_support(sites, boxes, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:13: NotImplementedError
+______________________ test_duplicate_sites_are_rejected ______________________
+
+    def test_duplicate_sites_are_rejected():
+        with pytest.raises(ValueError):
+>           M["site_support"]([sites()[0], copy.deepcopy(sites()[0])], [], [100, 100])
+
+test\test_retained_component_sites.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+sites = [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}, {'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}]
+boxes = [], size = [100, 100]
+
+    def site_support(sites, boxes, size):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:13: NotImplementedError
+____________ test_inventory_replay_rejects_modified_stored_answer _____________
+
+    def test_inventory_replay_rejects_modified_stored_answer():
+        row = archived_row(); row["inventory"] = copy.deepcopy(row["inventory"])
+        row["inventory"]["components"]["handle_body_contacts"]["locations"][0]["box"] = [0, 0, 1000, 1000]
+        with pytest.raises(ValueError):
+>           M["replay_inventory"](row, PROFILE)
+
+test\test_retained_component_sites.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'transport_status': 'completed', 'finish_reason': 'stop', 'final_content': '{"target_presence": {"status": "present",...isible sites.', 'locations': [{'box': [...], 'evidence': 'One site.'}, {'box': [...], 'evidence': 'Another site.'}]}}}}
+profile = {'version': 'target-location-observations-1', 'components': {'handle_body_contacts': 'Separate directly visible handle/body attachment sites.'}}
+
+    def replay_inventory(row, profile):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:17: NotImplementedError
+_______ test_truncated_output_remains_unavailable_without_json_salvage ________
+
+    def test_truncated_output_remains_unavailable_without_json_salvage():
+        row = archived_row(); row.update(finish_reason="length", final_content='{"target_presence":')
+>       assert M["replay_inventory"](row, PROFILE) is None
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'transport_status': 'completed', 'finish_reason': 'length', 'final_content': '{"target_presence":', 'inventory': {'ta...isible sites.', 'locations': [{'box': [...], 'evidence': 'One site.'}, {'box': [...], 'evidence': 'Another site.'}]}}}}
+profile = {'version': 'target-location-observations-1', 'components': {'handle_body_contacts': 'Separate directly visible handle/body attachment sites.'}}
+
+    def replay_inventory(row, profile):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:17: NotImplementedError
+_____ test_target_absence_is_nonapplicable_and_not_missing_contact_score ______
+
+    def test_target_absence_is_nonapplicable_and_not_missing_contact_score():
+        row = archived_row(); answer = row["inventory"]
+        answer["target_presence"]["status"] = "absent"
+        answer["components"]["handle_body_contacts"].update(state="not_applicable", locations=[])
+        row["final_content"] = json.dumps(answer)
+>       result = M["audit_row"](row, PROFILE, annotation())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'transport_status': 'completed', 'finish_reason': 'stop', 'final_content': '{"target_presence": {"status": "absent", ...}, 'components': {'handle_body_contacts': {'state': 'not_applicable', 'evidence': 'Visible sites.', 'locations': []}}}}
+profile = {'version': 'target-location-observations-1', 'components': {'handle_body_contacts': 'Separate directly visible handle/body attachment sites.'}}
+annotation = {'size': [100, 100], 'family': 'mug', 'landmarks': [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}, {'id': 'lower_handle_attachment', 'point': [50, 75], 'uncertainty_pixels': 3}]}
+
+    def audit_row(row, profile, annotation):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:21: NotImplementedError
+_______________ test_valid_report_replay_keeps_authority_false ________________
+
+    def test_valid_report_replay_keeps_authority_false():
+>       row = archived_row(); result = M["audit_row"](row, PROFILE, annotation())
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test\test_retained_component_sites.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'transport_status': 'completed', 'finish_reason': 'stop', 'final_content': '{"target_presence": {"status": "present",...isible sites.', 'locations': [{'box': [...], 'evidence': 'One site.'}, {'box': [...], 'evidence': 'Another site.'}]}}}}
+profile = {'version': 'target-location-observations-1', 'components': {'handle_body_contacts': 'Separate directly visible handle/body attachment sites.'}}
+annotation = {'size': [100, 100], 'family': 'mug', 'landmarks': [{'id': 'upper_handle_attachment', 'point': [50, 25], 'uncertainty_pixels': 3}, {'id': 'lower_handle_attachment', 'point': [50, 75], 'uncertainty_pixels': 3}]}
+
+    def audit_row(row, profile, annotation):
+>       raise NotImplementedError
+E       NotImplementedError
+
+scripts\audit_retained_component_sites.py:21: NotImplementedError
+=========================== short test summary info ===========================
+FAILED test/test_retained_component_sites.py::test_normalized_box_uses_full_image_extent_without_rounding
+FAILED test/test_retained_component_sites.py::test_invalid_boxes_are_not_clamped_or_repaired[box0]
+FAILED test/test_retained_component_sites.py::test_invalid_boxes_are_not_clamped_or_repaired[box1]
+FAILED test/test_retained_component_sites.py::test_invalid_boxes_are_not_clamped_or_repaired[box2]
+FAILED test/test_retained_component_sites.py::test_invalid_boxes_are_not_clamped_or_repaired[box3]
+FAILED test/test_retained_component_sites.py::test_invalid_boxes_are_not_clamped_or_repaired[box4]
+FAILED test/test_retained_component_sites.py::test_invalid_boxes_are_not_clamped_or_repaired[box5]
+FAILED test/test_retained_component_sites.py::test_closed_disk_boundary_and_tangent_cases[point0-disk_contained]
+FAILED test/test_retained_component_sites.py::test_closed_disk_boundary_and_tangent_cases[point1-disk_intersects_boundary]
+FAILED test/test_retained_component_sites.py::test_closed_disk_boundary_and_tangent_cases[point2-disk_intersects_boundary]
+FAILED test/test_retained_component_sites.py::test_closed_disk_boundary_and_tangent_cases[point3-disk_disjoint]
+FAILED test/test_retained_component_sites.py::test_point_inside_fractional_edge_does_not_guarantee_uncertainty_disk_inside
+FAILED test/test_retained_component_sites.py::test_one_grouped_box_reaches_two_points_but_cannot_separate_two_sites
+FAILED test/test_retained_component_sites.py::test_two_wide_boxes_do_not_manufacture_separate_localization
+FAILED test/test_retained_component_sites.py::test_two_small_distinct_boxes_locate_each_reviewed_site_separately
+FAILED test/test_retained_component_sites.py::test_two_entries_covering_only_upper_site_do_not_become_two_parts
+FAILED test/test_retained_component_sites.py::test_nearby_disk_is_possible_support_without_contained_support
+FAILED test/test_retained_component_sites.py::test_no_boxes_preserves_missing_coordinate_evidence
+FAILED test/test_retained_component_sites.py::test_full_frame_box_over_hole_center_never_certifies_mask_precision
+FAILED test/test_retained_component_sites.py::test_duplicate_sites_are_rejected
+FAILED test/test_retained_component_sites.py::test_inventory_replay_rejects_modified_stored_answer
+FAILED test/test_retained_component_sites.py::test_truncated_output_remains_unavailable_without_json_salvage
+FAILED test/test_retained_component_sites.py::test_target_absence_is_nonapplicable_and_not_missing_contact_score
+FAILED test/test_retained_component_sites.py::test_valid_report_replay_keeps_authority_false
+24 failed in 0.25s
+python_exit_code=1

@@ -1,0 +1,2 @@
+{"archived_rows": 12, "site_diagnostics": 8, "not_applicable": 4, "svg_figures": 8, "vlm_requests": 0}
+python_exit_code=0

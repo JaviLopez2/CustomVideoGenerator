@@ -1,0 +1,25 @@
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+
+Fontconfig error: No writable cache directories
+	C:/Users/JAVIER/AppData/Local/fontconfig/cache
+	C:/Users/JAVIER/.cache/fontconfig
+qwen35-handle_opening-image_4.png
+qwen35-handle_opening-image_5.png
+qwen3vl-handle_opening-image_4.png
+qwen3vl-handle_opening-image_5.png
+qwen35-handle_body_contacts-image_4.png
+qwen35-handle_body_contacts-image_5.png
+qwen3vl-handle_body_contacts-image_4.png
+qwen3vl-handle_body_contacts-image_5.png
+node_exit_code=0
