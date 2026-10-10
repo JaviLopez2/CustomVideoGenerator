@@ -1,5 +1,11 @@
 # Auditoría e investigación de routing de imágenes
 
+## Estado vigente — recuentos contrastados, fusión no acreditada, 2026-10-10
+
+[Informe](CLOCK_BLIND_AND_FUSION_PROBE_REPORT.md): desde1833e8b, seis consultas nuevas completadas sin reasoning: cuatro QA ciegos Qwen3-VL y un nuevo par1→3 por juez; full QA Q35 archivado reutilizado. Humano agujas/llaves:2/1,3/1,2/2,3/1. Q35 coincide8/8 campos y VL5/8 sobre cuatro imágenes seleccionadas, sin precisión general demostrada. Ambos dicen geometrypass en3; el fail global Q35 fue por cantidad y el pass VL omite los defectos. Ambos pares reportan cambio, sin describir la unión de dos tallos en un cabezal; identidad afirmada por Q35 sin verificar. Diagnósticos uncertain/sin admisión, labels/raw/A/B/C intactos.0retry/generación/descarga.67tests pertinentes pasan1,21s/exit0, diez controles de preflight y revisión independiente sin hallazgos. Dos PID propios ausentes,8092libre y estable/app/defaults/gates/routing/modelos/deps/workflows/compartidos intactos.
+
+Próximo autónomo CPU: ligar preparación color/alpha y cobertura a cohorte de cámara; controles independientes de partes/uniones entre familias y latencia QA completa. No repetir contrastes cerrados/revisión recibida ni aprobar juez por recuentos o estética. Objetivo activo, nueva entrega medianteGit/origin; preparación/replay anterior1833e8bpublicado. Bloques siguientes históricos.
+
 ## Actualización — recuentos humanos recibidos, conflicto geométrico conservado, 2026-10-10
 
 [Review](validation/clock-visible-count-human-review-2026-10-10.json) liga literal y4SHA: 8campos de manos/llaves coinciden con raw fullframe ciego Qwen3.5, sin muestreo poblacional ni accuracy de QA completo. [Análisis](validation/clock-human-count-and-geometry-analysis-2026-10-10.json) conserva fusión humana de llave3 frente a geometry pass/no fusion; fail combinado era por count, no prueba de geometría fiable. Crop solo3 frente humano/full2 y full+crop2 con pixel subset exacto; no adjudicación humana separada del crop. Preferencia estética4 no acredita identidad ni su contrato de agujas. No relabel/ABC/raw/producción/requests nuevos; revisión recibida.

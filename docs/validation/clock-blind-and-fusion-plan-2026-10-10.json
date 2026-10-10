@@ -1,0 +1,268 @@
+{
+  "protocol": "clock-blind-and-fusion-plan-1",
+  "declared_utc": "2026-10-10T20:42:53.244090+00:00",
+  "execution_base_head": "1833e8b2d9bf2d4d8903338cd9ef4a5e3183436e",
+  "case_order": [
+    "valid_cloth_edit",
+    "mpt_t2i_text_contract_768",
+    "mpt_explicit_quantity_seed43",
+    "z_image_t2i_768"
+  ],
+  "comparison_candidates": [
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "unsloth/Qwen3.5-9B-GGUF"
+  ],
+  "new_blind_candidate": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+  "budget": {
+    "new_blind_requests": 4,
+    "new_pair_requests_per_model": 1,
+    "maximum_requests_total": 6,
+    "automatic_retries": 0,
+    "generation_requests": 0,
+    "downloads": 0,
+    "stop_each_cohort_at_first_invalid_or_unavailable": true
+  },
+  "blind_policy": {
+    "max_tokens": 768,
+    "timeout_seconds": 60,
+    "temperature": 0,
+    "context": 8192,
+    "gpu_layers": 99,
+    "image_max_tokens": 1536,
+    "thinking": false,
+    "response_format": "json_schema",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "evaluation_version": 4,
+    "blind_counts": true,
+    "supplementary_regions": false,
+    "schema_reason_max_length": null
+  },
+  "blind_inputs": [
+    {
+      "case_id": "valid_cloth_edit",
+      "request_sha256": "259518d1814a5a45d5fae3396f005550e1c893abe139c044e304f378a7ea7b6c",
+      "inputs": [
+        {
+          "role": "CANDIDATE",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "REFERENCE slot 1 role identity_reference",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+        },
+        {
+          "role": "GEOMETRY REFERENCE",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+        }
+      ]
+    },
+    {
+      "case_id": "mpt_t2i_text_contract_768",
+      "request_sha256": "c63722cdef4bf52b6977b713a5ea8f446b5c47306fe808c01d0482fd79bafa58",
+      "inputs": [
+        {
+          "role": "CANDIDATE",
+          "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02"
+        }
+      ]
+    },
+    {
+      "case_id": "mpt_explicit_quantity_seed43",
+      "request_sha256": "650013e6dcead0b0149c928d59cb7474e96074bf71cde1c6ff009d20285a74de",
+      "inputs": [
+        {
+          "role": "CANDIDATE",
+          "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+        },
+        {
+          "role": "REFERENCE slot 1 role identity_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "REFERENCE slot 2 role style_reference",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+        },
+        {
+          "role": "GEOMETRY REFERENCE",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        }
+      ]
+    },
+    {
+      "case_id": "z_image_t2i_768",
+      "request_sha256": "34610557f2e2e5de80db25ab97116b42ce4f3ea247121b9af53922419f14d32e",
+      "inputs": [
+        {
+          "role": "CANDIDATE",
+          "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc"
+        }
+      ]
+    }
+  ],
+  "reviewed_sources": [
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "size": [
+        768,
+        1376
+      ]
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+      "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+      "size": [
+        768,
+        1376
+      ]
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+      "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+      "size": [
+        768,
+        1376
+      ]
+    },
+    {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\z_image_t2i_768\\openai-image-644f7e2133d4.png",
+      "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+      "size": [
+        768,
+        1376
+      ]
+    }
+  ],
+  "fusion_pair": {
+    "case_id": "clock_human_fusion_pair",
+    "reference": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "size": [
+        768,
+        1376
+      ]
+    },
+    "candidate": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+      "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+      "size": [
+        768,
+        1376
+      ]
+    }
+  },
+  "fusion_request_sha256": "22b7745048f139cf3a75b52c46d1aee1d09cae7f2e4d3dfe8703312f17a2db21",
+  "shape_prompt": "Compare only the visible shape and arrangement of major parts of the requested subject in image 1 (reference) and image 2 (candidate). Subject: silver key. A major change means a missing, added or fused principal part, or a clearly different overall form or arrangement. Ignore color, lighting, background, lettering and surface texture. Minor local size variations alone do not establish a major change. Object-name recognition alone does not establish shape preservation. If scale, perspective or occlusion prevents checking, report uncertain. State presence of the subject in each image, report major_shape_change as observed, not_observed or uncertain, and give short visible difference_evidence. not_observed is not proof of physical identity. Return only the specified JSON object.",
+  "shape_schema": {
+    "type": "object",
+    "properties": {
+      "reference_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "candidate_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "major_shape_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "difference_evidence": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference_subject_presence",
+      "candidate_subject_presence",
+      "major_shape_change",
+      "difference_evidence"
+    ],
+    "additionalProperties": false
+  },
+  "shape_policy": {
+    "max_tokens": 256,
+    "temperature": 0,
+    "thinking": false,
+    "json_schema": true,
+    "http_timeout_seconds": 60,
+    "same_runtime_as_blind": true
+  },
+  "offline_scope": {
+    "human_counts_received": true,
+    "key3_fusion_reported": true,
+    "geometry_gold_other_three": null,
+    "general_accuracy": null,
+    "reference_identity_adjudication": null,
+    "aesthetic_preference_not_identity_approval": true,
+    "historical_assistant_dataset_labels_unchanged": true,
+    "no_human_or_expected_count_sent": true,
+    "selected_after_old_results": true,
+    "four_images_not_eight_independent_samples": true,
+    "no_latency_equivalence_claim": true
+  },
+  "outputs": {
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF": {
+      "report": "docs/validation/clock-blind-fusion-qwen3vl-2026-10-10.json",
+      "logs": "local_image_stack/experiments/bridge/target/clock-blind-fusion-qwen3vl-2026-10-10"
+    },
+    "unsloth/Qwen3.5-9B-GGUF": {
+      "report": "docs/validation/clock-fusion-qwen35-2026-10-10.json",
+      "logs": "local_image_stack/experiments/bridge/target/clock-fusion-qwen35-2026-10-10"
+    }
+  },
+  "recipe": {
+    "path": "docs/validation/clock-blind-and-fusion-recipe-2026-10-10.py",
+    "sha256": "540f328a804cd9d7dd4588e3c25e3ab7b9cf8219f99f2db29df5caab62224036"
+  },
+  "qa_implementation": {
+    "path": "scripts/evaluate_multimodal_judges.py",
+    "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+  },
+  "shape_implementation": {
+    "path": "scripts/paired_shape_observations.py",
+    "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+  },
+  "shared_runner": {
+    "path": "scripts/observe_paired_shape.py",
+    "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+  },
+  "input_checks": {
+    "path": "scripts/paired_shape_preflight.py",
+    "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+  },
+  "resource_recipe": {
+    "path": "docs/validation/adjacent-cue-recipe-2026-10-09.py",
+    "sha256": "6301e87c02ce603b89a64a8cd8f3eeb962db3a7ba57d89aa08ae11a81e0ed60e"
+  },
+  "dataset": {
+    "path": "docs/validation/visual-qa-dataset-2026-10-08.json",
+    "sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f"
+  },
+  "archived_qwen35": {
+    "path": "docs/validation/visual-judge-full-blind-contract-2026-10-08.json",
+    "sha256": "637481e340d0abe4687fdfc863903819b382c7765d5df096e5d90ff0aa450c23"
+  },
+  "human_review": {
+    "path": "docs/validation/clock-visible-count-human-review-2026-10-10.json",
+    "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+  },
+  "assets_manifest": {
+    "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+    "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+  }
+}

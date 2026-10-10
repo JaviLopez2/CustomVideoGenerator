@@ -1,0 +1,153 @@
+{
+  "protocol": "clock-blind-and-fusion-result-1",
+  "execution_head": "1833e8b2d9bf2d4d8903338cd9ef4a5e3183436e",
+  "plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\clock-blind-and-fusion-plan-2026-10-10.json",
+    "sha256": "4052f08944d21fcdb763e52c6d95944d24f26041998f516acf9d74120134f7ce"
+  },
+  "recipe": {
+    "path": "docs/validation/clock-blind-and-fusion-recipe-2026-10-10.py",
+    "sha256": "540f328a804cd9d7dd4588e3c25e3ab7b9cf8219f99f2db29df5caab62224036"
+  },
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "resource_preflight": {
+    "ram_free_gib": 18.08385467529297,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1167,
+      "total_mib": 12288,
+      "utilization_percent": 5,
+      "temperature_c": 38
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "blind_policy": {
+    "max_tokens": 768,
+    "timeout_seconds": 60,
+    "temperature": 0,
+    "context": 8192,
+    "gpu_layers": 99,
+    "image_max_tokens": 1536,
+    "thinking": false,
+    "response_format": "json_schema",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "evaluation_version": 4,
+    "blind_counts": true,
+    "supplementary_regions": false,
+    "schema_reason_max_length": null
+  },
+  "blind_rows": [],
+  "pair_rows": [
+    {
+      "case_id": "clock_human_fusion_pair",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "22b7745048f139cf3a75b52c46d1aee1d09cae7f2e4d3dfe8703312f17a2db21",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "candidate",
+          "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+        }
+      ],
+      "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"observed\", \"difference_evidence\": \"Image 1 shows a single silver key with a straight shaft and a simple bow. Image 2 shows two keys; one is identical to the one in the reference, but a second key with a distinct, large circular bow has been added, changing the overall arrangement and composition of the keys.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 94,
+        "prompt_tokens": 2230,
+        "total_tokens": 2324,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2230,
+        "prompt_ms": 3009.099,
+        "prompt_per_token_ms": 1.3493717488789239,
+        "prompt_per_second": 741.0856206459142,
+        "predicted_n": 94,
+        "predicted_ms": 1872.794,
+        "predicted_per_token_ms": 20.13756989247312,
+        "predicted_per_second": 49.65842479204867
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "observed",
+        "difference_evidence": "Image 1 shows a single silver key with a straight shaft and a simple bow. Image 2 shows two keys; one is identical to the one in the reference, but a second key with a distinct, large circular bow has been added, changing the overall arrangement and composition of the keys."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": [
+          {
+            "kind": "reported_major_shape_change",
+            "evidence": "Image 1 shows a single silver key with a straight shaft and a simple bow. Image 2 shows two keys; one is identical to the one in the reference, but a second key with a distinct, large circular bow has been added, changing the overall arrangement and composition of the keys."
+          }
+        ]
+      },
+      "seconds": 5.394153399996867
+    }
+  ],
+  "http_model_requests_attempted": 1,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "human_labels_sent": false,
+  "owned_server_closed": true,
+  "owned_pid": 11408,
+  "load_seconds": 4.0366093999982695,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "unattempted_blind_cases": [],
+  "unattempted_pair_cases": []
+}

@@ -1,0 +1,420 @@
+{
+  "protocol": "clock-blind-fusion-analysis-1",
+  "analyzed_utc": "2026-10-10T20:47:27.797942+00:00",
+  "bindings": {
+    "plan": {
+      "path": "docs\\validation\\clock-blind-and-fusion-plan-2026-10-10.json",
+      "sha256": "4052f08944d21fcdb763e52c6d95944d24f26041998f516acf9d74120134f7ce"
+    },
+    "qwen3vl_new_raw": {
+      "path": "docs\\validation\\clock-blind-fusion-qwen3vl-2026-10-10.json",
+      "sha256": "b1054e69de49795f60702c7222f5ad11a03b6a9fb7758dbd200a7789de57d502"
+    },
+    "qwen35_new_pair_raw": {
+      "path": "docs\\validation\\clock-fusion-qwen35-2026-10-10.json",
+      "sha256": "fcb300774b9f30c7b3becfadf39081a8bb204b33e760fff8aa9b4d5fd3d99eb0"
+    },
+    "qwen35_archived_full_qa": {
+      "path": "docs/validation/visual-judge-full-blind-contract-2026-10-08.json",
+      "sha256": "637481e340d0abe4687fdfc863903819b382c7765d5df096e5d90ff0aa450c23"
+    },
+    "human_review": {
+      "path": "docs/validation/clock-visible-count-human-review-2026-10-10.json",
+      "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+    }
+  },
+  "quantity_comparison": [
+    {
+      "review_id": "1",
+      "case_id": "valid_cloth_edit",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_statement_verbatim": "1: veo 2 agujas, la horaria y minutera. Veo 1 llave. ",
+      "models": [
+        {
+          "repo": "unsloth/Qwen3.5-9B-GGUF",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "One silver key with bow, shaft, and bit clearly visible next to the watch.",
+              "human_visible_count": 1,
+              "agrees": true
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two distinct hands (hour and minute) visible on the watch face; no second hand.",
+              "human_visible_count": 2,
+              "agrees": true
+            }
+          ],
+          "geometry": {
+            "status": "pass",
+            "reason": "Silhouette matches reference: round case, crown, ring, key shape. Part arrangement identical â€” watch left, key right, both on fabric."
+          },
+          "seconds": 10.949276600000303,
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "cache_n": 0
+        },
+        {
+          "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "One silver key is clearly visible.",
+              "human_visible_count": 1,
+              "agrees": true
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two watch hands (hour and minute) are clearly visible.",
+              "human_visible_count": 2,
+              "agrees": true
+            }
+          ],
+          "geometry": {
+            "status": "pass",
+            "reason": "The pocket watch and silver key maintain consistent part arrangement and silhouette relative to each other and the background fabric."
+          },
+          "seconds": 8.925564200006193,
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "cache_n": 0
+        }
+      ]
+    },
+    {
+      "review_id": "2",
+      "case_id": "mpt_t2i_text_contract_768",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+        "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_statement_verbatim": "2: veo 3 agujas, la horaria, minutera y segundera. Veo 1 llave minimamente distorsionada comparando con la imagen 1.",
+      "models": [
+        {
+          "repo": "unsloth/Qwen3.5-9B-GGUF",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "One silver key clearly visible to the right of the watch; intact structure, no fusion.",
+              "human_visible_count": 1,
+              "agrees": true
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 3,
+              "uncertain": false,
+              "reason": "Three distinct hands visible: hour, minute, and second hand all present and functional.",
+              "human_visible_count": 3,
+              "agrees": true
+            }
+          ],
+          "geometry": null,
+          "seconds": 5.787317999998777,
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "cache_n": 0
+        },
+        {
+          "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "A single silver key with a distinct bit and bow is visible next to the pocket watch.",
+              "human_visible_count": 1,
+              "agrees": true
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two watch hands (hour and minute) are clearly visible on the watch face.",
+              "human_visible_count": 3,
+              "agrees": false
+            }
+          ],
+          "geometry": null,
+          "seconds": 4.858071299997391,
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "cache_n": 324
+        }
+      ]
+    },
+    {
+      "review_id": "3",
+      "case_id": "mpt_explicit_quantity_seed43",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+        "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_statement_verbatim": "3: Veo 2 agujas, horaria y minutera. Veo 2 llaves que convergen en una, por un cabezal. La peor llave de todas.",
+      "models": [
+        {
+          "repo": "unsloth/Qwen3.5-9B-GGUF",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two silver keys visible: one with bow, one without; both metallic and distinct.",
+              "human_visible_count": 2,
+              "agrees": true
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two hands (hour and minute) clearly visible on watch face.",
+              "human_visible_count": 2,
+              "agrees": true
+            }
+          ],
+          "geometry": {
+            "status": "pass",
+            "reason": "Silhouette matches reference: round watch, elongated keys. Part arrangement consistent â€” watch left, keys right, no fusion or deformation."
+          },
+          "seconds": 11.531361199999083,
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "cache_n": 0
+        },
+        {
+          "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "A single silver key is clearly visible.",
+              "human_visible_count": 2,
+              "agrees": false
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two watch hands (hour and minute) are clearly visible on the watch face.",
+              "human_visible_count": 2,
+              "agrees": true
+            }
+          ],
+          "geometry": {
+            "status": "pass",
+            "reason": "The pocket watch and silver key are arranged as expected, with the watch on the left and the key on the right, maintaining their relative positions and silhouettes."
+          },
+          "seconds": 10.148478399998567,
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "cache_n": 324
+        }
+      ]
+    },
+    {
+      "review_id": "4",
+      "case_id": "z_image_t2i_768",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\z_image_t2i_768\\openai-image-644f7e2133d4.png",
+        "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_statement_verbatim": "4: 3 agujas, horaria, minutera y segundera. Veo 1 llave, diferente a la imagen 1 y 2, pero en mi opinion es la llave que mejor queda, ya que el cabezal es algo que practicamente toda llave tiene y en las imagenes 1 y 2 no tienen. ",
+      "models": [
+        {
+          "repo": "unsloth/Qwen3.5-9B-GGUF",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "One silver-colored key with bow, shaft, and bit clearly visible next to the watch.",
+              "human_visible_count": 1,
+              "agrees": true
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 3,
+              "uncertain": false,
+              "reason": "Three distinct hands visible: hour, minute, and second hand all present on dial.",
+              "human_visible_count": 3,
+              "agrees": true
+            }
+          ],
+          "geometry": null,
+          "seconds": 5.819911000000502,
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "cache_n": 0
+        },
+        {
+          "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+          "counts": [
+            {
+              "subject": "silver key",
+              "observed_count": 1,
+              "uncertain": false,
+              "reason": "A single silver key with a bow and bit is visible next to the pocket watch.",
+              "human_visible_count": 1,
+              "agrees": true
+            },
+            {
+              "subject": "watch hands",
+              "observed_count": 2,
+              "uncertain": false,
+              "reason": "Two watch hands (hour and minute) are clearly visible on the watch dial.",
+              "human_visible_count": 3,
+              "agrees": false
+            }
+          ],
+          "geometry": null,
+          "seconds": 4.851440499995078,
+          "finish_reason": "stop",
+          "reasoning_characters": 0,
+          "cache_n": 324
+        }
+      ]
+    }
+  ],
+  "quantity_summary": [
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "quantity_fields_agree": 8,
+      "quantity_fields_total": 8,
+      "abstentions": 0,
+      "independent_images": 4,
+      "general_accuracy": null,
+      "whole_qa_accuracy": null
+    },
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "quantity_fields_agree": 5,
+      "quantity_fields_total": 8,
+      "abstentions": 0,
+      "independent_images": 4,
+      "general_accuracy": null,
+      "whole_qa_accuracy": null
+    }
+  ],
+  "image3_geometry": {
+    "human_key_fusion_reported": true,
+    "qwen35_archived_geometry": {
+      "status": "pass",
+      "reason": "Silhouette matches reference: round watch, elongated keys. Part arrangement consistent â€” watch left, keys right, no fusion or deformation."
+    },
+    "qwen3vl_new_geometry": {
+      "status": "pass",
+      "reason": "The pocket watch and silver key are arranged as expected, with the watch on the left and the key on the right, maintaining their relative positions and silhouettes."
+    },
+    "both_geometry_pass_conflicts_with_human_fusion": true,
+    "quantity_pass_or_fail_not_geometry_detection": true
+  },
+  "paired_observations": [
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "observed",
+        "difference_evidence": "The key in image 2 has a distinct bow (loop) at the top, whereas the key in image 1 has a simple, unadorned top end."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": [
+          {
+            "kind": "reported_major_shape_change",
+            "evidence": "The key in image 2 has a distinct bow (loop) at the top, whereas the key in image 1 has a simple, unadorned top end."
+          }
+        ]
+      },
+      "seconds": 4.904046699994069,
+      "cache_n": 3,
+      "fusion_or_shared_head_explicitly_described": false,
+      "supports_generic_part_change_hint": true,
+      "physical_identity_claim_verified": false,
+      "comment": "Bow difference is described, not the reported convergence of two shafts at one head."
+    },
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "observed",
+        "difference_evidence": "Image 1 shows a single silver key with a straight shaft and a simple bow. Image 2 shows two keys; one is identical to the one in the reference, but a second key with a distinct, large circular bow has been added, changing the overall arrangement and composition of the keys."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": [
+          {
+            "kind": "reported_major_shape_change",
+            "evidence": "Image 1 shows a single silver key with a straight shaft and a simple bow. Image 2 shows two keys; one is identical to the one in the reference, but a second key with a distinct, large circular bow has been added, changing the overall arrangement and composition of the keys."
+          }
+        ]
+      },
+      "seconds": 5.394153399996867,
+      "cache_n": 0,
+      "fusion_or_shared_head_explicitly_described": false,
+      "supports_generic_part_change_hint": true,
+      "physical_identity_claim_verified": false,
+      "comment": "Generic change hint does not demonstrate shared-head/two-shaft fusion sensitivity. Qwen3.5 identical-reference claim is unverified."
+    }
+  ],
+  "new_requests": 6,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "frozen_cohorts_closed": true,
+  "quantity_candidate_preference": "Qwen3.5 leads on the eight human-count fields in this selected diagnostic set; no general judge selection/admission follows.",
+  "structural_conclusion": "Neither candidate explicitly reports the two-shaft/shared-head defect. Keep structured part/junction evidence separate from quantity/recognition and require independent cross-family negatives.",
+  "no_default_or_gate_change": true,
+  "judge_selected": false,
+  "production_admission": false,
+  "historical_labels_or_raw_changed": false,
+  "limits": [
+    "Four selected original images, not eight independent images; selected after earlier model outputs and not a holdout.",
+    "Human counts are independent of shown model values, but reviewer already knew project context.",
+    "Only image3 has an explicit human fusion statement; other geometry and reference identity remain unadjudicated.",
+    "Original blinded payloads reconstructed by unchanged code/roles/hashes, not recovered historical wire captures.",
+    "Qwen3.5 archived sequence had prior cases/cache; Qwen3-VL sequence is new. Row seconds include pre-request revalidation/persistence overhead in the new recipe.",
+    "No comparable latency claim, measured peak VRAM, end-to-end MPT QA latency, or broad calibrated accuracy from this phase."
+  ]
+}

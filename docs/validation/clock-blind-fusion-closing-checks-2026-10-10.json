@@ -1,0 +1,73 @@
+{
+  "protocol": "clock-blind-fusion-closing-checks-1",
+  "checked_utc": "2026-10-10T20:47:29.943808+00:00",
+  "execution_head": "1833e8b2d9bf2d4d8903338cd9ef4a5e3183436e",
+  "plan": {
+    "path": "docs\\validation\\clock-blind-and-fusion-plan-2026-10-10.json",
+    "sha256": "4052f08944d21fcdb763e52c6d95944d24f26041998f516acf9d74120134f7ce"
+  },
+  "analysis": {
+    "path": "docs\\validation\\clock-blind-fusion-analysis-2026-10-10.json",
+    "sha256": "6830ae3e09f71144cd8260f9f957433eff1944e17a69ee7f32d8c08fcca9d29d"
+  },
+  "actual_model_requests": 6,
+  "generation_requests": 0,
+  "downloads": 0,
+  "automatic_retries": 0,
+  "own_processes": [
+    {
+      "pid": 13224,
+      "open_process_succeeded": false,
+      "windows_error": 87,
+      "absent_proven": true
+    },
+    {
+      "pid": 11408,
+      "open_process_succeeded": false,
+      "windows_error": 87,
+      "absent_proven": true
+    }
+  ],
+  "services": [
+    {
+      "port": 8080,
+      "error_type": "URLError"
+    },
+    {
+      "port": 8090,
+      "http_status": 404
+    },
+    {
+      "port": 8188,
+      "http_status": 200
+    }
+  ],
+  "closing_resources": {
+    "ram_free_gib": 17.942440032958984,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1174,
+      "total_mib": 12288,
+      "utilization_percent": 4,
+      "temperature_c": 32
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_changes": ""
+  },
+  "six_completed_stop_without_reasoning": true,
+  "sources_and_implementations_reverified": true,
+  "sources_raw_labels_unchanged": true,
+  "human_review_new_requests": 0,
+  "relevant_tests_log": {
+    "path": "docs\\validation\\clock-blind-fusion-preparation-tests-2026-10-10.txt",
+    "sha256": "4bfdc937a6816298ea87cd208a0419c9a143b88cbca31bb334b625cd3a3d8c22"
+  },
+  "final_status_requires_postcommit_check": true
+}

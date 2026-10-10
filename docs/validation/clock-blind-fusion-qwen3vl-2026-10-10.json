@@ -1,0 +1,573 @@
+{
+  "protocol": "clock-blind-and-fusion-result-1",
+  "execution_head": "1833e8b2d9bf2d4d8903338cd9ef4a5e3183436e",
+  "plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\clock-blind-and-fusion-plan-2026-10-10.json",
+    "sha256": "4052f08944d21fcdb763e52c6d95944d24f26041998f516acf9d74120134f7ce"
+  },
+  "recipe": {
+    "path": "docs/validation/clock-blind-and-fusion-recipe-2026-10-10.py",
+    "sha256": "540f328a804cd9d7dd4588e3c25e3ab7b9cf8219f99f2db29df5caab62224036"
+  },
+  "model": {
+    "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "size": 5027784800,
+        "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+      },
+      {
+        "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+        "size": 1159029824,
+        "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "resource_preflight": {
+    "ram_free_gib": 18.09463882446289,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1168,
+      "total_mib": 12288,
+      "utilization_percent": 3,
+      "temperature_c": 31
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "blind_policy": {
+    "max_tokens": 768,
+    "timeout_seconds": 60,
+    "temperature": 0,
+    "context": 8192,
+    "gpu_layers": 99,
+    "image_max_tokens": 1536,
+    "thinking": false,
+    "response_format": "json_schema",
+    "flash_attention": "on",
+    "image_min_tokens": 1024,
+    "evaluation_version": 4,
+    "blind_counts": true,
+    "supplementary_regions": false,
+    "schema_reason_max_length": null
+  },
+  "blind_rows": [
+    {
+      "case_id": "valid_cloth_edit",
+      "inputs": [
+        {
+          "role": "CANDIDATE",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "REFERENCE slot 1 role identity_reference",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+        },
+        {
+          "role": "GEOMETRY REFERENCE",
+          "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633"
+        }
+      ],
+      "request_sha256": "259518d1814a5a45d5fae3396f005550e1c893abe139c044e304f378a7ea7b6c",
+      "transport_status": "completed",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One pocket watch is clearly visible.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One silver key is clearly visible.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"The pocket watch and silver key maintain consistent part arrangement and silhouette relative to each other and the background fabric.\"\n  },\n  \"text\": {\n    \"status\": \"pass\",\n    \"reason\": \"No forbidden text is visible.\"\n  }\n}"
+            }
+          }
+        ],
+        "created": 1791665056,
+        "model": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-models\\Qwen3-VL-8B-Instruct-GGUF\\Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "system_fingerprint": "b11497-ff30363a0",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 201,
+          "prompt_tokens": 3485,
+          "total_tokens": 3686,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-k8ybW8qE47zPJivtU1ohjNKIZZBuoj1M",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 3485,
+          "prompt_ms": 4595.45,
+          "prompt_per_token_ms": 1.3186370157819225,
+          "prompt_per_second": 758.358811433048,
+          "predicted_n": 201,
+          "predicted_ms": 3817.665,
+          "predicted_per_token_ms": 19.088325,
+          "predicted_per_second": 52.38804347683729
+        }
+      },
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One pocket watch is clearly visible.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"One silver key is clearly visible.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"The pocket watch and silver key maintain consistent part arrangement and silhouette relative to each other and the background fabric.\"\n  },\n  \"text\": {\n    \"status\": \"pass\",\n    \"reason\": \"No forbidden text is visible.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 201,
+        "prompt_tokens": 3485,
+        "total_tokens": 3686,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 3485,
+        "prompt_ms": 4595.45,
+        "prompt_per_token_ms": 1.3186370157819225,
+        "prompt_per_second": 758.358811433048,
+        "predicted_n": 201,
+        "predicted_ms": 3817.665,
+        "predicted_per_token_ms": 19.088325,
+        "predicted_per_second": 52.38804347683729
+      },
+      "historical_contract_result": {
+        "verdict": "pass",
+        "checks": [
+          {
+            "kind": "quantity",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "One pocket watch is clearly visible."
+          },
+          {
+            "kind": "quantity",
+            "subject": "silver key",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "One silver key is clearly visible."
+          },
+          {
+            "kind": "quantity",
+            "subject": "watch hands",
+            "observed_count": 2,
+            "status": "pass",
+            "reason": "Two watch hands (hour and minute) are clearly visible."
+          },
+          {
+            "kind": "geometry",
+            "status": "pass",
+            "reason": "The pocket watch and silver key maintain consistent part arrangement and silhouette relative to each other and the background fabric."
+          },
+          {
+            "kind": "text",
+            "status": "pass",
+            "reason": "No forbidden text is visible."
+          }
+        ]
+      },
+      "seconds": 8.925564200006193
+    },
+    {
+      "case_id": "mpt_t2i_text_contract_768",
+      "inputs": [
+        {
+          "role": "CANDIDATE",
+          "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02"
+        }
+      ],
+      "request_sha256": "c63722cdef4bf52b6977b713a5ea8f446b5c47306fe808c01d0482fd79bafa58",
+      "transport_status": "completed",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single pocket watch is clearly visible with a brass casing, white face, and Roman numerals.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single silver key with a distinct bit and bow is visible next to the pocket watch.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible on the watch face.\"\n    }\n  ]\n}"
+            }
+          }
+        ],
+        "created": 1791665061,
+        "model": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-models\\Qwen3-VL-8B-Instruct-GGUF\\Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "system_fingerprint": "b11497-ff30363a0",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 164,
+          "prompt_tokens": 1368,
+          "total_tokens": 1532,
+          "prompt_tokens_details": {
+            "cached_tokens": 324
+          }
+        },
+        "id": "chatcmpl-mVrbD0V3PTdw0hGXr6tWwwwOWpySAx3A",
+        "timings": {
+          "cache_n": 324,
+          "prompt_n": 1044,
+          "prompt_ms": 1444.89,
+          "prompt_per_token_ms": 1.3839942528735634,
+          "prompt_per_second": 722.5463530095716,
+          "predicted_n": 164,
+          "predicted_ms": 2906.011,
+          "predicted_per_token_ms": 17.82828834355828,
+          "predicted_per_second": 56.09063420613342
+        }
+      },
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single pocket watch is clearly visible with a brass casing, white face, and Roman numerals.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single silver key with a distinct bit and bow is visible next to the pocket watch.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible on the watch face.\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 164,
+        "prompt_tokens": 1368,
+        "total_tokens": 1532,
+        "prompt_tokens_details": {
+          "cached_tokens": 324
+        }
+      },
+      "server_timings": {
+        "cache_n": 324,
+        "prompt_n": 1044,
+        "prompt_ms": 1444.89,
+        "prompt_per_token_ms": 1.3839942528735634,
+        "prompt_per_second": 722.5463530095716,
+        "predicted_n": 164,
+        "predicted_ms": 2906.011,
+        "predicted_per_token_ms": 17.82828834355828,
+        "predicted_per_second": 56.09063420613342
+      },
+      "historical_contract_result": {
+        "verdict": "pass",
+        "checks": [
+          {
+            "kind": "quantity",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "A single pocket watch is clearly visible with a brass casing, white face, and Roman numerals."
+          },
+          {
+            "kind": "quantity",
+            "subject": "silver key",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "A single silver key with a distinct bit and bow is visible next to the pocket watch."
+          },
+          {
+            "kind": "quantity",
+            "subject": "watch hands",
+            "observed_count": 2,
+            "status": "pass",
+            "reason": "Two watch hands (hour and minute) are clearly visible on the watch face."
+          }
+        ]
+      },
+      "seconds": 4.858071299997391
+    },
+    {
+      "case_id": "mpt_explicit_quantity_seed43",
+      "inputs": [
+        {
+          "role": "CANDIDATE",
+          "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+        },
+        {
+          "role": "REFERENCE slot 1 role identity_reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "REFERENCE slot 2 role style_reference",
+          "sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1"
+        },
+        {
+          "role": "GEOMETRY REFERENCE",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        }
+      ],
+      "request_sha256": "650013e6dcead0b0149c928d59cb7474e96074bf71cde1c6ff009d20285a74de",
+      "transport_status": "completed",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single pocket watch is clearly visible.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single silver key is clearly visible.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible on the watch face.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"The pocket watch and silver key are arranged as expected, with the watch on the left and the key on the right, maintaining their relative positions and silhouettes.\"\n  }\n}"
+            }
+          }
+        ],
+        "created": 1791665071,
+        "model": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-models\\Qwen3-VL-8B-Instruct-GGUF\\Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "system_fingerprint": "b11497-ff30363a0",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 194,
+          "prompt_tokens": 4505,
+          "total_tokens": 4699,
+          "prompt_tokens_details": {
+            "cached_tokens": 324
+          }
+        },
+        "id": "chatcmpl-wpnJegaG21cBk1dyCesQF41JxtYObEro",
+        "timings": {
+          "cache_n": 324,
+          "prompt_n": 4181,
+          "prompt_ms": 5823.915,
+          "prompt_per_token_ms": 1.3929478593637885,
+          "prompt_per_second": 717.9019611378257,
+          "predicted_n": 194,
+          "predicted_ms": 3735.399,
+          "predicted_per_token_ms": 19.35439896373057,
+          "predicted_per_second": 51.6678405707128
+        }
+      },
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single pocket watch is clearly visible.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single silver key is clearly visible.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible on the watch face.\"\n    }\n  ],\n  \"geometry\": {\n    \"status\": \"pass\",\n    \"reason\": \"The pocket watch and silver key are arranged as expected, with the watch on the left and the key on the right, maintaining their relative positions and silhouettes.\"\n  }\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 194,
+        "prompt_tokens": 4505,
+        "total_tokens": 4699,
+        "prompt_tokens_details": {
+          "cached_tokens": 324
+        }
+      },
+      "server_timings": {
+        "cache_n": 324,
+        "prompt_n": 4181,
+        "prompt_ms": 5823.915,
+        "prompt_per_token_ms": 1.3929478593637885,
+        "prompt_per_second": 717.9019611378257,
+        "predicted_n": 194,
+        "predicted_ms": 3735.399,
+        "predicted_per_token_ms": 19.35439896373057,
+        "predicted_per_second": 51.6678405707128
+      },
+      "historical_contract_result": {
+        "verdict": "pass",
+        "checks": [
+          {
+            "kind": "quantity",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "A single pocket watch is clearly visible."
+          },
+          {
+            "kind": "quantity",
+            "subject": "silver key",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "A single silver key is clearly visible."
+          },
+          {
+            "kind": "quantity",
+            "subject": "watch hands",
+            "observed_count": 2,
+            "status": "pass",
+            "reason": "Two watch hands (hour and minute) are clearly visible on the watch face."
+          },
+          {
+            "kind": "geometry",
+            "status": "pass",
+            "reason": "The pocket watch and silver key are arranged as expected, with the watch on the left and the key on the right, maintaining their relative positions and silhouettes."
+          }
+        ]
+      },
+      "seconds": 10.148478399998567
+    },
+    {
+      "case_id": "z_image_t2i_768",
+      "inputs": [
+        {
+          "role": "CANDIDATE",
+          "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc"
+        }
+      ],
+      "request_sha256": "34610557f2e2e5de80db25ab97116b42ce4f3ea247121b9af53922419f14d32e",
+      "transport_status": "completed",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single pocket watch is clearly visible, open, with a brass casing and white dial.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single silver key with a bow and bit is visible next to the pocket watch.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible on the watch dial.\"\n    }\n  ]\n}"
+            }
+          }
+        ],
+        "created": 1791665076,
+        "model": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-models\\Qwen3-VL-8B-Instruct-GGUF\\Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "system_fingerprint": "b11497-ff30363a0",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 161,
+          "prompt_tokens": 1368,
+          "total_tokens": 1529,
+          "prompt_tokens_details": {
+            "cached_tokens": 324
+          }
+        },
+        "id": "chatcmpl-ntABzVCBvxkFoEBn1cvevZb76WuDPvOS",
+        "timings": {
+          "cache_n": 324,
+          "prompt_n": 1044,
+          "prompt_ms": 1446.244,
+          "prompt_per_token_ms": 1.3852911877394636,
+          "prompt_per_second": 721.869891940779,
+          "predicted_n": 161,
+          "predicted_ms": 2865.357,
+          "predicted_per_token_ms": 17.90848125,
+          "predicted_per_second": 55.839464332018665
+        }
+      },
+      "final_content": "{\n  \"counts\": [\n    {\n      \"subject\": \"pocket watch\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single pocket watch is clearly visible, open, with a brass casing and white dial.\"\n    },\n    {\n      \"subject\": \"silver key\",\n      \"observed_count\": 1,\n      \"uncertain\": false,\n      \"reason\": \"A single silver key with a bow and bit is visible next to the pocket watch.\"\n    },\n    {\n      \"subject\": \"watch hands\",\n      \"observed_count\": 2,\n      \"uncertain\": false,\n      \"reason\": \"Two watch hands (hour and minute) are clearly visible on the watch dial.\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 161,
+        "prompt_tokens": 1368,
+        "total_tokens": 1529,
+        "prompt_tokens_details": {
+          "cached_tokens": 324
+        }
+      },
+      "server_timings": {
+        "cache_n": 324,
+        "prompt_n": 1044,
+        "prompt_ms": 1446.244,
+        "prompt_per_token_ms": 1.3852911877394636,
+        "prompt_per_second": 721.869891940779,
+        "predicted_n": 161,
+        "predicted_ms": 2865.357,
+        "predicted_per_token_ms": 17.90848125,
+        "predicted_per_second": 55.839464332018665
+      },
+      "historical_contract_result": {
+        "verdict": "pass",
+        "checks": [
+          {
+            "kind": "quantity",
+            "subject": "pocket watch",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "A single pocket watch is clearly visible, open, with a brass casing and white dial."
+          },
+          {
+            "kind": "quantity",
+            "subject": "silver key",
+            "observed_count": 1,
+            "status": "pass",
+            "reason": "A single silver key with a bow and bit is visible next to the pocket watch."
+          },
+          {
+            "kind": "quantity",
+            "subject": "watch hands",
+            "observed_count": 2,
+            "status": "pass",
+            "reason": "Two watch hands (hour and minute) are clearly visible on the watch dial."
+          }
+        ]
+      },
+      "seconds": 4.851440499995078
+    }
+  ],
+  "pair_rows": [
+    {
+      "case_id": "clock_human_fusion_pair",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "22b7745048f139cf3a75b52c46d1aee1d09cae7f2e4d3dfe8703312f17a2db21",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352"
+        },
+        {
+          "role": "candidate",
+          "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"major_shape_change\": \"observed\",\n  \"difference_evidence\": \"The key in image 2 has a distinct bow (loop) at the top, whereas the key in image 1 has a simple, unadorned top end.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 2226,
+        "total_tokens": 2299,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "server_timings": {
+        "cache_n": 3,
+        "prompt_n": 2223,
+        "prompt_ms": 2951.02,
+        "prompt_per_token_ms": 1.3274943769680612,
+        "prompt_per_second": 753.2988593774355,
+        "predicted_n": 73,
+        "predicted_ms": 1388.872,
+        "predicted_per_token_ms": 19.28988888888889,
+        "predicted_per_second": 51.84063038206544
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "observed",
+        "difference_evidence": "The key in image 2 has a distinct bow (loop) at the top, whereas the key in image 1 has a simple, unadorned top end."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": [
+          {
+            "kind": "reported_major_shape_change",
+            "evidence": "The key in image 2 has a distinct bow (loop) at the top, whereas the key in image 1 has a simple, unadorned top end."
+          }
+        ]
+      },
+      "seconds": 4.904046699994069
+    }
+  ],
+  "http_model_requests_attempted": 5,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "human_labels_sent": false,
+  "owned_server_closed": true,
+  "owned_pid": 13224,
+  "load_seconds": 4.051250600001367,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "unattempted_blind_cases": [],
+  "unattempted_pair_cases": []
+}

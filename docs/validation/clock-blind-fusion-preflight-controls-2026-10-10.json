@@ -1,0 +1,67 @@
+{
+  "protocol": "clock-blind-fusion-preflight-controls-1",
+  "checked_utc": "2026-10-10T20:43:32.262151+00:00",
+  "plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\clock-blind-and-fusion-plan-2026-10-10.json",
+    "sha256": "4052f08944d21fcdb763e52c6d95944d24f26041998f516acf9d74120134f7ce"
+  },
+  "valid_preflight": true,
+  "blind_request_fingerprints_reconstructed": 4,
+  "historic_wire_capture_claimed": false,
+  "historic_roles_hashes_and_implementation_match": true,
+  "rejection_controls": [
+    {
+      "control": "budget_bool",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "excess_budget",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "blind_q35_requery",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "reversed_case_order",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "mismatched_fingerprint",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "schema_bound_change",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "reversed_fusion_pair",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "changed_recipe_binding",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "changed_review_binding",
+      "rejected": true,
+      "http_requests": 0
+    },
+    {
+      "control": "changed_paired_prompt",
+      "rejected": true,
+      "http_requests": 0
+    }
+  ],
+  "human_and_expected_counts_withheld": true,
+  "new_http_requests": 0,
+  "new_generation_requests": 0
+}
