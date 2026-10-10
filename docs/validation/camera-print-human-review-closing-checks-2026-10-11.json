@@ -1,0 +1,59 @@
+{
+  "protocol": "camera-print-human-review-closing-checks-1",
+  "checked_utc": "2026-10-10T22:15:32.870339+00:00",
+  "base_head": "e5afe7db34ae7a6fea86d428bcea765954203d35",
+  "origin_head_after_fetch": "3579f6531cddbb7163bbc7e932a773d0440c5c41",
+  "ahead_behind_before_commit": [
+    1,
+    0
+  ],
+  "branch": "factory/image-model-routing-modernization",
+  "task_files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "48572a3dc058ed8b9da9fdaa879e9c5fc93e045ceec4ccf48c082a056108218e"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "9a1f69d9879ca3df7e11fa887b62240a2889adec10df5fa63507dd695c7e2365"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "c6a2c9851f2ddba9963b9f1803d93369fe44c0948f287afb190a981a686a1a2d"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "6f91031b4ac93df23c1b4faa9743ba0c3f143023dcc56fee9099a8d31b2a1eed"
+    },
+    {
+      "path": "docs/validation/camera-print-human-review-2026-10-11.json",
+      "sha256": "5b02bf230e90375dcf4001c0b15706cff0703a2f54abc15124bdeb5e846aae47"
+    }
+  ],
+  "human_review_status": "received",
+  "four_original_prepared_and_board_inputs_verified": true,
+  "color_alpha_reconstruction_verified_in_review_record": true,
+  "archived_observation_rows_contrasted": 4,
+  "all_review_bindings_reverified": true,
+  "historical_docs_raw_and_cohorts_preserved": true,
+  "credential_scan_passed": true,
+  "whitespace_checks_passed": true,
+  "new_model_requests": 0,
+  "new_generations": 0,
+  "new_tests_run": 0,
+  "change_type": "Documentation and direct human evidence only; CPU provenance checks. No new application behavior.",
+  "previous_roi_tests": {
+    "checkpoint": "e5afe7db34ae7a6fea86d428bcea765954203d35",
+    "passed": 147,
+    "seconds": 2.04,
+    "exit_code": 0,
+    "log": "docs/validation/scoped-fusion-roi-tests-2026-10-11.txt"
+  },
+  "port_8092_open": false,
+  "stable_head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+  "stable_tracked_clean": true,
+  "untracked_not_modified_or_enumerated": true,
+  "goal_objective_complete": false,
+  "user_requested_session_wrap_up": true,
+  "next_session_action": "CPU preparation of independent procedural connection controls outside keys; labels by construction remain separate from real-image human gold"
+}

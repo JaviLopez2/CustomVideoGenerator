@@ -1,0 +1,211 @@
+{
+  "protocol": "camera-print-human-review-1",
+  "recorded_utc": "2026-10-10T22:14:18.319241+00:00",
+  "checkpoint_head": "e5afe7db34ae7a6fea86d428bcea765954203d35",
+  "review_status": "received",
+  "origin": "Direct human reply to camera/print review board in this chat",
+  "statement_verbatim": "A1/A2: La geometrica de la camara es perfecta, respeta forma y detalles. En la parte superior la imagen A2 tiene una pequeña pestaña en un lado con una textura diferente a A1. Pero no queda nada mal.\nB1/B2: La camara de la imagen B1 no es la polaroid sx70 Land Camera, pero supongo que hablamos de la foto impresa. El liquido no lo entiendo mucho, desconozco si se ve asi. En la imagen B2, la foto impresa se respeta totalmente, propociona un nuevo angulo sin perder detalles. La camara sx70 tiene algunas distorisiones. El indicador rojo es mas grande que en A1/A2, justo al lado en B2 hay un detalle que tampoco se refleja en las otras imagenes. Por ultimo las letras que deberian decir SX70 LAND CAMERA, estan totalmente distorsionadas.",
+  "review_preparation": {
+    "path": "docs/validation/camera-independent-review-preparation-2026-10-10.json",
+    "sha256": "9d01129929c8b713be811c2bd8ce59505bb91d74d78e50879064460c7e1fb1ea"
+  },
+  "board": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\camera-independent-review-2026-10-10\\review-board.svg",
+    "sha256": "a7e758ccfea56809756f037c688aaf262abc462d28a1dcdec4674279b7723519"
+  },
+  "input_bindings": [
+    {
+      "review_id": "A1",
+      "input_id": "camera_anchor",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\user_references\\reference-05.png",
+        "sha256": "56214c597d825fcc469151284b2981577caec8b9ff466c961fb8ed849b7cad07",
+        "size": [
+          800,
+          800
+        ]
+      },
+      "prepared": {
+        "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+        "pixel_sha256": "a78578e48115edfd55fb9f49ff0b3d8864ec1a6a3cf3d73a727e4086e350d97c",
+        "size": [
+          800,
+          800
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_00.png"
+      }
+    },
+    {
+      "review_id": "A2",
+      "input_id": "camera_candidate",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-7cafe3ecfbb9.png",
+        "sha256": "4a755cde7a4ee323549a709f91cbf6ba815f6d16f5016a198c06d68847016333",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "prepared": {
+        "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+        "pixel_sha256": "92cb7d0e5bee0a6f80a13d89b5fa6e4ec013e56c0149d6fbb1732971ee4e8230",
+        "size": [
+          768,
+          1376
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_01.png"
+      }
+    },
+    {
+      "review_id": "B1",
+      "input_id": "print_root",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-06d8ce7bd117.png",
+        "sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "size": [
+          1024,
+          1536
+        ]
+      },
+      "prepared": {
+        "sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "pixel_sha256": "c10abddaf578c6dfd8f467f80e459d62d6c0f1a9d8d7e45e8ee85b2925fc74b1",
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_02.png"
+      }
+    },
+    {
+      "review_id": "B2",
+      "input_id": "print_candidate",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-cbbf8a76af1b.png",
+        "sha256": "bae3516c5353db16f8bab639772f8fe58dd0c0de0ae4cb7e7d720650d6c3d19b",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "prepared": {
+        "sha256": "81d236ad6c2380096a8eafdc1f84ce026426b80b7ffb6889bb3af9492ffc2c41",
+        "pixel_sha256": "f74683def8c1451c631186ee74e706f8e9e96b314718c6222c864b4637c64d14",
+        "size": [
+          768,
+          1376
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_03.png"
+      }
+    }
+  ],
+  "source_prepared_and_embedded_pngs_verified": true,
+  "color_alpha_preflight_reconstructed": true,
+  "fully_blind_review_established": false,
+  "interpretation": {
+    "A1_A2": {
+      "reviewed_subject": "visible camera body excluding emerging paper",
+      "reported_overall_form_and_detail_conservation": true,
+      "reported_minor_difference": "small upper side tab with different texture in A2",
+      "strict_no_added_parts_gold": null,
+      "physical_identity_established": false,
+      "aesthetic_comment_does_not_override_difference": true
+    },
+    "B1_B2": {
+      "reviewed_subject": "printed photo shape and frame",
+      "reported_conservation_at_new_angle": true,
+      "photo_whole_object_coverage_gold": null,
+      "liquid_semantics": "human explicitly uncertain",
+      "other_visible_subject_comments": [
+        "B1 camera not identified by user as Polaroid SX70 Land Camera",
+        "B2 camera distortions",
+        "B2 red indicator larger relative to A1/A2",
+        "additional adjacent detail in B2",
+        "SX70 LAND CAMERA lettering distorted"
+      ],
+      "camera_identity_or_ocr_pass": false,
+      "cross_pair_camera_comments_not_inferred_as_A1_A2_gold": true
+    }
+  },
+  "archived_camera_observations": [
+    {
+      "model": "qwen35",
+      "protocol": "profiled-camera-shape",
+      "report": {
+        "path": "docs/validation/profiled-camera-shape-qwen35-2026-10-10.json",
+        "sha256": "3f0becdd5d41f117630d6e7d8f9517f062beba12dbd5638977cb63b70d97b810"
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The visible shape and arrangement of the major parts of the instant camera are identical in both images. The only difference is the addition of a blank photo emerging from the bottom in the candidate image, which is a functional state of the camera rather than a change to its fundamental form or arrangement."
+      },
+      "binary_accuracy_awarded": null,
+      "new_model_requests": 0
+    },
+    {
+      "model": "qwen35",
+      "protocol": "scoped-structure",
+      "report": {
+        "path": "docs/validation/scoped-structure-qwen35-2026-10-10.json",
+        "sha256": "33774a14531d1a6a0748ae2a76b7488adf302cf5b363f8bddfbbae58f2affb38"
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "not_observed",
+        "structural_connections_change": "not_observed",
+        "allowed_state_change": "observed",
+        "structure_evidence": "The camera body, lens, flash unit, and folding mechanism maintain their form and connection points. The front slot is open in both images.",
+        "state_evidence": "A blank white photo sheet is emerging from the front slot in the candidate image, which is not present in the reference image."
+      },
+      "binary_accuracy_awarded": null,
+      "new_model_requests": 0
+    },
+    {
+      "model": "qwen3vl",
+      "protocol": "profiled-camera-shape",
+      "report": {
+        "path": "docs/validation/profiled-camera-shape-qwen3vl-2026-10-10.json",
+        "sha256": "d934894197175b5e467d04c027d2f7c23c5e494955ec93e6122c225fe75f82d8"
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "observed",
+        "difference_evidence": "In image 2, a printed instant photo is emerging from the camera's output slot, which is not present in image 1. This addition alters the visible arrangement of major parts."
+      },
+      "binary_accuracy_awarded": null,
+      "new_model_requests": 0
+    },
+    {
+      "model": "qwen3vl",
+      "protocol": "scoped-structure",
+      "report": {
+        "path": "docs/validation/scoped-structure-qwen3vl-2026-10-10.json",
+        "sha256": "c856d679ca22dbe826291a7f5161c3a77e26160f89d2a82b7974a3c665c4b50c"
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "uncertain",
+        "structural_connections_change": "uncertain",
+        "allowed_state_change": "observed",
+        "structure_evidence": "The front slot of the camera in the candidate image has a white photographic output emerging from it, which is not present in the reference image. The camera body and its attached components appear visually identical in both images, but the presence of the output in the candidate image may indicate a change in the state of the camera's mechanism or a structural modification to accommodate the output. The connection between the camera body and the output is not clearly visible, making it uncertain whether the output is an integral part of the camera's structure or a separately emitted item.",
+        "state_evidence": "The candidate image shows a blank white photo sheet emerging from the front slot, which matches the declared allowed state change. This state change is not a structural change but a functional state of the camera."
+      },
+      "binary_accuracy_awarded": null,
+      "new_model_requests": 0
+    }
+  ],
+  "assessment": "Human reports broad body and photo conservation, with qualified body detail differences and other-camera/text defects. Q35 body not_observed is broadly consistent; no exact identity or binary structural accuracy awarded. Generic VL paper addition concerns excluded functional output, scoped VL abstains. Neither describes the small upper tab. B2 whole-photo clipping exclusion retained pending explicit edge/coverage adjudication; no new requests or post-hoc repair of closed cohorts.",
+  "new_model_requests": 0,
+  "generations": 0,
+  "production_admission": false,
+  "geometry_judge_approved": false
+}
