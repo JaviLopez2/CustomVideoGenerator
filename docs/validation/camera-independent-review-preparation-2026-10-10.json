@@ -1,0 +1,127 @@
+{
+  "protocol": "independent-profiled-camera-review-1",
+  "declared_utc": "2026-10-10T20:57:04.634347+00:00",
+  "board": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\camera-independent-review-2026-10-10\\review-board.svg",
+    "sha256": "a7e758ccfea56809756f037c688aaf262abc462d28a1dcdec4674279b7723519"
+  },
+  "preparation_result": {
+    "path": "docs\\validation\\profiled-camera-input-result-v2-2026-10-10.json",
+    "sha256": "353ea8aca9a488dcd9a66fd7eb4734a58d98801a297deebeee7f01c27b9a2cff"
+  },
+  "display": {
+    "prepared_png_bytes_embedded_exactly": true,
+    "native_image_dimensions_in_svg": true,
+    "all_four_fullframes_in_bounds": true,
+    "color_alpha_policy": "Explicit existing sRGB/alpha-on-white preparation; not original-pixel identity for transformed sources",
+    "overlays_or_geometry_marks": false,
+    "model_observations_or_expected_verdicts_shown": false,
+    "image_crop_or_resize": false,
+    "viewer_may_scale_display": true
+  },
+  "rows": [
+    {
+      "review_id": "A1",
+      "input_id": "camera_anchor",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\user_references\\reference-05.png",
+        "sha256": "56214c597d825fcc469151284b2981577caec8b9ff466c961fb8ed849b7cad07",
+        "size": [
+          800,
+          800
+        ]
+      },
+      "prepared": {
+        "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+        "pixel_sha256": "a78578e48115edfd55fb9f49ff0b3d8864ec1a6a3cf3d73a727e4086e350d97c",
+        "size": [
+          800,
+          800
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_00.png"
+      },
+      "human_statement_verbatim": null,
+      "human_geometry_label": null
+    },
+    {
+      "review_id": "A2",
+      "input_id": "camera_candidate",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-7cafe3ecfbb9.png",
+        "sha256": "4a755cde7a4ee323549a709f91cbf6ba815f6d16f5016a198c06d68847016333",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "prepared": {
+        "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+        "pixel_sha256": "92cb7d0e5bee0a6f80a13d89b5fa6e4ec013e56c0149d6fbb1732971ee4e8230",
+        "size": [
+          768,
+          1376
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_01.png"
+      },
+      "human_statement_verbatim": null,
+      "human_geometry_label": null
+    },
+    {
+      "review_id": "B1",
+      "input_id": "print_root",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-06d8ce7bd117.png",
+        "sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "size": [
+          1024,
+          1536
+        ]
+      },
+      "prepared": {
+        "sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "pixel_sha256": "c10abddaf578c6dfd8f467f80e459d62d6c0f1a9d8d7e45e8ee85b2925fc74b1",
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_02.png"
+      },
+      "human_statement_verbatim": null,
+      "human_geometry_label": null
+    },
+    {
+      "review_id": "B2",
+      "input_id": "print_candidate",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-cbbf8a76af1b.png",
+        "sha256": "bae3516c5353db16f8bab639772f8fe58dd0c0de0ae4cb7e7d720650d6c3d19b",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "prepared": {
+        "sha256": "81d236ad6c2380096a8eafdc1f84ce026426b80b7ffb6889bb3af9492ffc2c41",
+        "pixel_sha256": "f74683def8c1451c631186ee74e706f8e9e96b314718c6222c864b4637c64d14",
+        "size": [
+          768,
+          1376
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_03.png"
+      },
+      "human_statement_verbatim": null,
+      "human_geometry_label": null
+    }
+  ],
+  "question": "A1/A2: compara las partes visibles del cuerpo de la cámara, sin contar el papel que sale. B1/B2: compara la forma y el marco de la fotografía impresa. ¿Hay partes añadidas, ausentes, deformadas o unidas de otra manera? Si el ángulo o un corte impide comprobarlo, indícalo. No se evalúa estética ni se aprueba producción.",
+  "human_review_status": "pending",
+  "assistant_photo_right_border_clip_not_human_gold": true,
+  "new_model_requests": 0,
+  "new_generation_requests": 0,
+  "production_admission": false,
+  "perfect_blinding_claimed": false
+}

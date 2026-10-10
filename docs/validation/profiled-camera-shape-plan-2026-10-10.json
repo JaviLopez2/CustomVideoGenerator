@@ -1,0 +1,165 @@
+{
+  "protocol": "profiled-camera-shape-plan-1",
+  "declared_utc": "2026-10-10T20:57:04.638713+00:00",
+  "execution_base_head": "fa2d04ff9212cb544ac3eb8f753c25b6dfe78313",
+  "budget": {
+    "requests_per_model": 1,
+    "maximum_requests_total": 2,
+    "automatic_retries": 0,
+    "generation_requests": 0,
+    "downloads": 0,
+    "photo_whole_object_requests": 0
+  },
+  "comparison_candidates": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "subject": "instant camera",
+  "cases": [
+    {
+      "case_id": "retained_camera_body_pair",
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_00.png",
+        "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+        "size": [
+          800,
+          800
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_01.png",
+        "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+        "size": [
+          768,
+          1376
+        ]
+      }
+    }
+  ],
+  "human_gold": false,
+  "expected_major_shape_change": null,
+  "model_prompt": "Compare only the visible shape and arrangement of major parts of the requested subject in image 1 (reference) and image 2 (candidate). Subject: instant camera. A major change means a missing, added or fused principal part, or a clearly different overall form or arrangement. Ignore color, lighting, background, lettering and surface texture. Minor local size variations alone do not establish a major change. Object-name recognition alone does not establish shape preservation. If scale, perspective or occlusion prevents checking, report uncertain. State presence of the subject in each image, report major_shape_change as observed, not_observed or uncertain, and give short visible difference_evidence. not_observed is not proof of physical identity. Return only the specified JSON object.",
+  "response_schema": {
+    "type": "object",
+    "properties": {
+      "reference_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "candidate_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "major_shape_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "difference_evidence": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference_subject_presence",
+      "candidate_subject_presence",
+      "major_shape_change",
+      "difference_evidence"
+    ],
+    "additionalProperties": false
+  },
+  "request_sha256": "c0f8933708d80cf54ad9b1ac349bddcf34386cdb1ba03ac9fcb9ea429c6cefbb",
+  "excluded_photo": {
+    "reference_id": "print_root",
+    "candidate_id": "print_candidate",
+    "reason": "candidate_right_border_clipped_assistant_inspection",
+    "human_gold": false,
+    "whole_object_comparison_eligible": false,
+    "model_requests": 0
+  },
+  "human_review_preparation": {
+    "path": "docs/validation/camera-independent-review-preparation-2026-10-10.json",
+    "sha256": "9d01129929c8b713be811c2bd8ce59505bb91d74d78e50879064460c7e1fb1ea"
+  },
+  "policy": {
+    "max_tokens": 256,
+    "temperature": 0,
+    "thinking": false,
+    "http_timeout_seconds": 60,
+    "port": 8092,
+    "context": 8192,
+    "min_image_tokens": 1024,
+    "max_image_tokens": 1536,
+    "automatic_admission": false,
+    "source_pack_not_historic_http_capture": true,
+    "semantic_whole_object_coverage_not_proved_by_rectangle": true
+  },
+  "outputs": {
+    "unsloth/Qwen3.5-9B-GGUF": {
+      "report": "docs/validation/profiled-camera-shape-qwen35-2026-10-10.json",
+      "logs": "local_image_stack/experiments/bridge/target/profiled-camera-shape-qwen35-2026-10-10"
+    },
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF": {
+      "report": "docs/validation/profiled-camera-shape-qwen3vl-2026-10-10.json",
+      "logs": "local_image_stack/experiments/bridge/target/profiled-camera-shape-qwen3vl-2026-10-10"
+    }
+  },
+  "recipe": {
+    "path": "docs/validation/profiled-camera-shape-recipe-2026-10-10.py",
+    "sha256": "c323312059569f3c91c4dd08bbe9faf0d16fa85fce4ec8f9b237091819aca616"
+  },
+  "color_helper": {
+    "path": "scripts/prepare_profiled_visual_inputs.py",
+    "sha256": "dc79a073f2f983b0b95b168f8ee85f7f65984070c19ce97aad2600df69f88d23"
+  },
+  "native_helper": {
+    "path": "scripts/prepare_visual_regions.py",
+    "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+  },
+  "shared_runner": {
+    "path": "scripts/observe_paired_shape.py",
+    "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+  },
+  "observer": {
+    "path": "scripts/paired_shape_observations.py",
+    "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+  },
+  "input_checks": {
+    "path": "scripts/paired_shape_preflight.py",
+    "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+  },
+  "resource_recipe": {
+    "path": "docs/validation/adjacent-cue-recipe-2026-10-09.py",
+    "sha256": "6301e87c02ce603b89a64a8cd8f3eeb962db3a7ba57d89aa08ae11a81e0ed60e"
+  },
+  "color_preparation": {
+    "path": "docs/validation/profiled-camera-input-plan-v2-2026-10-10.json",
+    "sha256": "52c5321236d9732f5b5922991ce5bcee4f3da8fb6ba75175d408fb701c4c9f47"
+  },
+  "color_result": {
+    "path": "docs/validation/profiled-camera-input-result-v2-2026-10-10.json",
+    "sha256": "353ea8aca9a488dcd9a66fd7eb4734a58d98801a297deebeee7f01c27b9a2cff"
+  },
+  "color_manifest": {
+    "path": "local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\manifest.json",
+    "sha256": "4968e1a7dca735d2b882dbe7499aec82f6b8b86a0d439a185683bde0287c0d0c"
+  },
+  "source_audit": {
+    "path": "docs/validation/retained-camera-control-audit-2026-10-09.json",
+    "sha256": "4b42f4a20b18ccae31d40e052c6e68bba2c424e98865e464f09eb80709b1d65c"
+  },
+  "assets_manifest": {
+    "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+    "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+  }
+}

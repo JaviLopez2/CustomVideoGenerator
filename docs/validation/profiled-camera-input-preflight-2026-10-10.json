@@ -1,0 +1,55 @@
+{
+  "plan": {
+    "path": "docs\\validation\\profiled-camera-shape-plan-2026-10-10.json",
+    "sha256": "2fd9a264b1928a95337d5e7b5fbbf5fb9971c2944380cbdcf685b5699a807b67"
+  },
+  "input_preflight": {
+    "protocol": "profiled-camera-transitive-preflight-1",
+    "images": [
+      {
+        "id": "camera_anchor",
+        "source_sha256": "56214c597d825fcc469151284b2981577caec8b9ff466c961fb8ed849b7cad07",
+        "prepared_sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+        "fullframe_rectangle_relation": "contained",
+        "prepared_pixels_exact": true,
+        "original_rgb_samples_unchanged": false,
+        "semantic_whole_object_coverage": "not_established_by_rectangle"
+      },
+      {
+        "id": "camera_candidate",
+        "source_sha256": "4a755cde7a4ee323549a709f91cbf6ba815f6d16f5016a198c06d68847016333",
+        "prepared_sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+        "fullframe_rectangle_relation": "contained",
+        "prepared_pixels_exact": true,
+        "original_rgb_samples_unchanged": false,
+        "semantic_whole_object_coverage": "not_established_by_rectangle"
+      },
+      {
+        "id": "print_root",
+        "source_sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "prepared_sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "fullframe_rectangle_relation": "contained",
+        "prepared_pixels_exact": true,
+        "original_rgb_samples_unchanged": true,
+        "semantic_whole_object_coverage": "not_established_by_rectangle"
+      },
+      {
+        "id": "print_candidate",
+        "source_sha256": "bae3516c5353db16f8bab639772f8fe58dd0c0de0ae4cb7e7d720650d6c3d19b",
+        "prepared_sha256": "81d236ad6c2380096a8eafdc1f84ce026426b80b7ffb6889bb3af9492ffc2c41",
+        "fullframe_rectangle_relation": "contained",
+        "prepared_pixels_exact": true,
+        "original_rgb_samples_unchanged": false,
+        "semantic_whole_object_coverage": "not_established_by_rectangle"
+      }
+    ],
+    "source_selection_rederived": true,
+    "historic_http_capture_claimed": false,
+    "original_pixel_identity_claimed_for_transformed_inputs": false,
+    "human_gold": false,
+    "physical_identity_established": false,
+    "admission_allowed": false
+  },
+  "model_requests": 0,
+  "generation_requests": 0
+}

@@ -1,0 +1,179 @@
+{
+  "protocol": "profiled-camera-shape-result-1",
+  "execution_head": "fa2d04ff9212cb544ac3eb8f753c25b6dfe78313",
+  "plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\profiled-camera-shape-plan-2026-10-10.json",
+    "sha256": "2fd9a264b1928a95337d5e7b5fbbf5fb9971c2944380cbdcf685b5699a807b67"
+  },
+  "recipe": {
+    "path": "docs/validation/profiled-camera-shape-recipe-2026-10-10.py",
+    "sha256": "c323312059569f3c91c4dd08bbe9faf0d16fa85fce4ec8f9b237091819aca616"
+  },
+  "observer_version": "paired-major-shape-observations-1",
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "input_preflight": {
+    "protocol": "profiled-camera-transitive-preflight-1",
+    "images": [
+      {
+        "id": "camera_anchor",
+        "source_sha256": "56214c597d825fcc469151284b2981577caec8b9ff466c961fb8ed849b7cad07",
+        "prepared_sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+        "fullframe_rectangle_relation": "contained",
+        "prepared_pixels_exact": true,
+        "original_rgb_samples_unchanged": false,
+        "semantic_whole_object_coverage": "not_established_by_rectangle"
+      },
+      {
+        "id": "camera_candidate",
+        "source_sha256": "4a755cde7a4ee323549a709f91cbf6ba815f6d16f5016a198c06d68847016333",
+        "prepared_sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+        "fullframe_rectangle_relation": "contained",
+        "prepared_pixels_exact": true,
+        "original_rgb_samples_unchanged": false,
+        "semantic_whole_object_coverage": "not_established_by_rectangle"
+      },
+      {
+        "id": "print_root",
+        "source_sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "prepared_sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "fullframe_rectangle_relation": "contained",
+        "prepared_pixels_exact": true,
+        "original_rgb_samples_unchanged": true,
+        "semantic_whole_object_coverage": "not_established_by_rectangle"
+      },
+      {
+        "id": "print_candidate",
+        "source_sha256": "bae3516c5353db16f8bab639772f8fe58dd0c0de0ae4cb7e7d720650d6c3d19b",
+        "prepared_sha256": "81d236ad6c2380096a8eafdc1f84ce026426b80b7ffb6889bb3af9492ffc2c41",
+        "fullframe_rectangle_relation": "contained",
+        "prepared_pixels_exact": true,
+        "original_rgb_samples_unchanged": false,
+        "semantic_whole_object_coverage": "not_established_by_rectangle"
+      }
+    ],
+    "source_selection_rederived": true,
+    "historic_http_capture_claimed": false,
+    "original_pixel_identity_claimed_for_transformed_inputs": false,
+    "human_gold": false,
+    "physical_identity_established": false,
+    "admission_allowed": false
+  },
+  "resource_preflight": {
+    "ram_free_gib": 17.859935760498047,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1164,
+      "total_mib": 12288,
+      "utilization_percent": 20,
+      "temperature_c": 30
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "rows": [
+    {
+      "case_id": "retained_camera_body_pair",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "request_sha256": "c0f8933708d80cf54ad9b1ac349bddcf34386cdb1ba03ac9fcb9ea429c6cefbb",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff"
+        },
+        {
+          "role": "candidate",
+          "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178"
+        }
+      ],
+      "final_content": "{\"reference_subject_presence\": \"present\", \"candidate_subject_presence\": \"present\", \"major_shape_change\": \"not_observed\", \"difference_evidence\": \"The visible shape and arrangement of the major parts of the instant camera are identical in both images. The only difference is the addition of a blank photo emerging from the bottom in the candidate image, which is a functional state of the camera rather than a change to its fundamental form or arrangement.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 96,
+        "prompt_tokens": 2222,
+        "total_tokens": 2318,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2222,
+        "prompt_ms": 2936.841,
+        "prompt_per_token_ms": 1.3217106210621061,
+        "prompt_per_second": 756.5952668190073,
+        "predicted_n": 96,
+        "predicted_ms": 1932.271,
+        "predicted_per_token_ms": 20.339694736842105,
+        "predicted_per_second": 49.16494632481676
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The visible shape and arrangement of the major parts of the instant camera are identical in both images. The only difference is the addition of a blank photo emerging from the bottom in the candidate image, which is a functional state of the camera rather than a change to its fundamental form or arrangement."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 6.269187600002624
+    }
+  ],
+  "http_model_requests_attempted": 1,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "excluded_photo_requests": 0,
+  "human_gold": false,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "owned_server_closed": true,
+  "owned_pid": 13860,
+  "load_seconds": 4.048304100004316,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "unattempted_cases": []
+}

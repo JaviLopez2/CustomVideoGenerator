@@ -1,0 +1,89 @@
+{
+  "protocol": "profiled-camera-preflight-controls-1",
+  "checked_utc": "2026-10-10T20:58:59.460018+00:00",
+  "plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\profiled-camera-shape-plan-2026-10-10.json",
+    "sha256": "2fd9a264b1928a95337d5e7b5fbbf5fb9971c2944380cbdcf685b5699a807b67"
+  },
+  "valid_preflight": true,
+  "controls": [
+    {
+      "name": "budget_bool",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "excess_total",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "photo_query",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "invented_human_gold",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "invented_expected_label",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "reversed_pair",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "original_pixels_disguised_as_prepared",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "unknown_recipe",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "changed_source_audit",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "exclusion_bypass",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "paired_prompt_changed",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "changed_fingerprint",
+      "rejected": true,
+      "model_requests": 0
+    },
+    {
+      "name": "false_original_samples_unchanged",
+      "rejected": true,
+      "model_requests": 0,
+      "outer_bindings_consistent": true
+    },
+    {
+      "name": "changed_alpha_policy",
+      "rejected": true,
+      "model_requests": 0,
+      "outer_bindings_consistent": true
+    }
+  ],
+  "exact_prepared_native_fullframes": 4,
+  "raw_factory_pack_rederived": true,
+  "whole_object_coverage_not_inferred_from_fullframe_rectangle": true,
+  "human_model_labels_not_sent": true,
+  "model_requests": 0,
+  "generation_requests": 0
+}

@@ -1,0 +1,99 @@
+{
+  "protocol": "profiled-camera-shape-analysis-1",
+  "analyzed_utc": "2026-10-10T21:06:14.869071+00:00",
+  "bindings": {
+    "plan": {
+      "path": "docs\\validation\\profiled-camera-shape-plan-2026-10-10.json",
+      "sha256": "2fd9a264b1928a95337d5e7b5fbbf5fb9971c2944380cbdcf685b5699a807b67"
+    },
+    "review_preparation": {
+      "path": "docs/validation/camera-independent-review-preparation-2026-10-10.json",
+      "sha256": "9d01129929c8b713be811c2bd8ce59505bb91d74d78e50879064460c7e1fb1ea"
+    }
+  },
+  "cohort_rows": [
+    {
+      "repo": "unsloth/Qwen3.5-9B-GGUF",
+      "report": {
+        "path": "docs\\validation\\profiled-camera-shape-qwen35-2026-10-10.json",
+        "sha256": "3f0becdd5d41f117630d6e7d8f9517f062beba12dbd5638977cb63b70d97b810"
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "not_observed",
+        "difference_evidence": "The visible shape and arrangement of the major parts of the instant camera are identical in both images. The only difference is the addition of a blank photo emerging from the bottom in the candidate image, which is a functional state of the camera rather than a change to its fundamental form or arrangement."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": []
+      },
+      "seconds": 6.269187600002624,
+      "load_seconds": 4.048304100004316,
+      "cache_n": 0,
+      "human_gold": null,
+      "human_model_agreement": null
+    },
+    {
+      "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "report": {
+        "path": "docs\\validation\\profiled-camera-shape-qwen3vl-2026-10-10.json",
+        "sha256": "d934894197175b5e467d04c027d2f7c23c5e494955ec93e6122c225fe75f82d8"
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "major_shape_change": "observed",
+        "difference_evidence": "In image 2, a printed instant photo is emerging from the camera's output slot, which is not present in image 1. This addition alters the visible arrangement of major parts."
+      },
+      "diagnostic": {
+        "version": "paired-major-shape-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "hints": [
+          {
+            "kind": "reported_major_shape_change",
+            "evidence": "In image 2, a printed instant photo is emerging from the camera's output slot, which is not present in image 1. This addition alters the visible arrangement of major parts."
+          }
+        ]
+      },
+      "seconds": 5.80153540000174,
+      "load_seconds": 4.05541579999408,
+      "cache_n": 0,
+      "human_gold": null,
+      "human_model_agreement": null
+    }
+  ],
+  "category_disagreement": true,
+  "semantic_boundary": "Qwen3.5 treats the emerging sheet as functional state rather than structural change; Qwen3-VL treats it as an added major part. Neither describes a changed camera-body component.",
+  "physical_identity_established": false,
+  "no_body_defect_established": true,
+  "no_independent_structural_negative_established": true,
+  "human_review_status": "pending",
+  "independent_geometry_accuracy": null,
+  "false_alarm_rate": null,
+  "generations": 0,
+  "new_model_requests": 2,
+  "automatic_retries": 0,
+  "photo_model_requests": 0,
+  "cohorts_closed": true,
+  "no_admission_or_gate_change": true,
+  "color_prepared_stage_not_original_pixels": true,
+  "limits": [
+    "One camera pair, not a general accuracy benchmark or independent structural negative.",
+    "Reference pixels undergo explicit ICC/alpha preparation; preserved native pixels refer to prepared RGB only.",
+    "Fullframe rectangle coverage does not imply whole physical object visibility.",
+    "Clipped photo pair conservatively excluded by assistant inspection, not human gold.",
+    "Generic major-parts prompt has no explicit allowed functional-state changes field. Do not turn category agreement into identity, or category disagreement alone into measured error.",
+    "Request row timer includes full source/color/payload revalidation before HTTP; cold model load separate. No end-to-end MPT QA latency or peak VRAM measured."
+  ],
+  "next_action": "Contrast human review when received. Audit generic part/state boundary against current MPT scene contracts and prepare independent structural controls without post-hoc retuning closed requests; full QA latency and judge selection remain pending."
+}

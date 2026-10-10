@@ -1,0 +1,78 @@
+{
+  "protocol": "profiled-camera-shape-closing-checks-1",
+  "checked_utc": "2026-10-10T21:06:16.999994+00:00",
+  "execution_head": "fa2d04ff9212cb544ac3eb8f753c25b6dfe78313",
+  "plan": {
+    "path": "docs\\validation\\profiled-camera-shape-plan-2026-10-10.json",
+    "sha256": "2fd9a264b1928a95337d5e7b5fbbf5fb9971c2944380cbdcf685b5699a807b67"
+  },
+  "analysis": {
+    "path": "docs\\validation\\profiled-camera-shape-analysis-2026-10-10.json",
+    "sha256": "a35758d772d6982e82dad44e60a37e3fad459e298c41661af3c0c8e56b9a0100"
+  },
+  "actual_model_requests": 2,
+  "generation_requests": 0,
+  "automatic_retries": 0,
+  "downloads": 0,
+  "photo_requests": 0,
+  "own_processes": [
+    {
+      "pid": 13860,
+      "open_process_succeeded": false,
+      "windows_error": 87,
+      "absent_proven": true
+    },
+    {
+      "pid": 23672,
+      "open_process_succeeded": false,
+      "windows_error": 87,
+      "absent_proven": true
+    }
+  ],
+  "closing_resources": {
+    "ram_free_gib": 18.04421615600586,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1156,
+      "total_mib": 12288,
+      "utilization_percent": 3,
+      "temperature_c": 30
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "services": [
+    {
+      "port": 8080,
+      "error_type": "URLError"
+    },
+    {
+      "port": 8090,
+      "http_status": 404
+    },
+    {
+      "port": 8188,
+      "http_status": 200
+    }
+  ],
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_changes": ""
+  },
+  "code_source_versions_prepared_images_original_pack_reverified": true,
+  "board_prepared_pngs_embedded_exactly": true,
+  "human_review_status": "pending",
+  "relevant_tests_log": {
+    "path": "docs\\validation\\profiled-camera-preparation-tests-2026-10-10.txt",
+    "sha256": "8e24fc21a1971daeda6081a030c24f4531585bdbf155f87b4f95611601fed3c4"
+  },
+  "rejection_controls": {
+    "path": "docs\\validation\\profiled-camera-preflight-controls-2026-10-10.json",
+    "sha256": "812cac5e3cc5ba03f2b0409bce1561774ee9a58a7cdc26d589e4dced99ec068c"
+  },
+  "independent_code_review_findings": 0,
+  "postcommit_git_verification_pending": true
+}
