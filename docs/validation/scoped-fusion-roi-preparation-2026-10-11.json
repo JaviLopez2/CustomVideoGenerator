@@ -1,0 +1,31 @@
+{
+  "protocol": "scoped-fusion-roi-preparation-1",
+  "checked_utc": "2026-10-10T22:03:24.709164+00:00",
+  "plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-fusion-roi-plan-2026-10-11.json",
+    "sha256": "90972b583f9632994010b1d24590446e2654cf54604ba993a9e8843c01833744"
+  },
+  "manifest": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-fusion-roi-2026-10-11\\manifest.json",
+    "sha256": "f83150a497114eb94db40e986f69ddeb22134224da855a4d5d978bd65894b344"
+  },
+  "effective_boxes": [
+    [
+      422,
+      522,
+      728,
+      978
+    ],
+    [
+      422,
+      522,
+      728,
+      978
+    ]
+  ],
+  "native_pixel_subsets_reconstructed": true,
+  "resize_or_color_transform": false,
+  "independent_human_crop_review": false,
+  "model_requests": 0,
+  "generations": 0
+}

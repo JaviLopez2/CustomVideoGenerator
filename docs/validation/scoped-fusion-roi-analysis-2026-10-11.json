@@ -1,0 +1,119 @@
+{
+  "protocol": "scoped-fusion-roi-analysis-1",
+  "checked_utc": "2026-10-10T22:09:40.069321+00:00",
+  "base_head": "3579f6531cddbb7163bbc7e932a773d0440c5c41",
+  "plan": {
+    "path": "docs\\validation\\scoped-fusion-roi-plan-2026-10-11.json",
+    "sha256": "90972b583f9632994010b1d24590446e2654cf54604ba993a9e8843c01833744"
+  },
+  "recipe": {
+    "path": "docs\\validation\\scoped-fusion-roi-recipe-2026-10-11.py",
+    "sha256": "e401c9bfd1049a491092066ddf809369382ec4b66a6f9742c834d4f7f47cf2bf"
+  },
+  "human_fullframe_review": {
+    "path": "docs\\validation\\clock-visible-count-human-review-2026-10-10.json",
+    "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+  },
+  "models": [
+    {
+      "model": "qwen35",
+      "new_raw": {
+        "path": "docs\\validation\\scoped-fusion-roi-qwen35-2026-10-11.json",
+        "sha256": "8f7d8d891d50ef1a1c1399f31c0a5edc16b6567d63f9ef966038467ad96a03b3"
+      },
+      "closed_fullframe_raw": {
+        "path": "docs\\validation\\scoped-structure-qwen35-2026-10-10.json",
+        "sha256": "33774a14531d1a6a0748ae2a76b7488adf302cf5b363f8bddfbbae58f2affb38"
+      },
+      "fullframe_structure": "not_observed",
+      "fullframe_connections": "not_observed",
+      "roi_structure": "observed",
+      "roi_connections": "observed",
+      "identical_control_structure": "not_observed",
+      "identical_control_connections": "not_observed",
+      "roi_evidence": "The reference image shows a silver key with a cylindrical shaft and a flat, rectangular bit. The candidate image shows two keys; one matches the reference, but the other has a circular ring head instead of a cylindrical shaft, representing a substantial deformation and addition of principal parts.",
+      "explicit_shared_head_fusion_described": false,
+      "evidence_assessment_method": "Assistant read retained literal reply; no automatic lexical metric or new human adjudication",
+      "cached_prompt_tokens": [
+        0,
+        0
+      ],
+      "prepare_seconds": [
+        0.01579189999756636,
+        0.01593739999952959
+      ],
+      "preflight_http_parse_seconds": [
+        7.393964700000652,
+        8.030243500004872
+      ],
+      "owned_load_seconds": 4.040684299994609
+    },
+    {
+      "model": "qwen3vl",
+      "new_raw": {
+        "path": "docs\\validation\\scoped-fusion-roi-qwen3vl-2026-10-11.json",
+        "sha256": "213d1f748b361689da982a5daa7caaaa130a42383f08045333884ca13418b449"
+      },
+      "closed_fullframe_raw": {
+        "path": "docs\\validation\\scoped-structure-qwen3vl-2026-10-10.json",
+        "sha256": "c856d679ca22dbe826291a7f5161c3a77e26160f89d2a82b7974a3c665c4b50c"
+      },
+      "fullframe_structure": "uncertain",
+      "fullframe_connections": "uncertain",
+      "roi_structure": "uncertain",
+      "roi_connections": "uncertain",
+      "identical_control_structure": "not_observed",
+      "identical_control_connections": "not_observed",
+      "roi_evidence": "Image 1 shows a key with a cylindrical shaft and a simple, flat bow. Image 2 shows a key with a more complex, ring-shaped bow and a different shaft profile. The connection between the bow and shaft appears different, with a distinct collar in Image 2. The bit (key blade) is also visibly different in shape and size. The presence of a second key in Image 2 introduces uncertainty about whether the visible parts are from the same key or different keys. The perspective and occlusion prevent confident verification of the protected structure's integrity.",
+      "explicit_shared_head_fusion_described": false,
+      "evidence_assessment_method": "Assistant read retained literal reply; no automatic lexical metric or new human adjudication",
+      "cached_prompt_tokens": [
+        0,
+        1363
+      ],
+      "prepare_seconds": [
+        0.015846100002818275,
+        0.01697470000362955
+      ],
+      "preflight_http_parse_seconds": [
+        8.390512200006924,
+        7.215850299995509
+      ],
+      "owned_load_seconds": 4.0417491999978665
+    }
+  ],
+  "model_requests_completed": 4,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "native_subset_dimensions": [
+    306,
+    456
+  ],
+  "source_box": [
+    430,
+    530,
+    720,
+    970
+  ],
+  "uniform_margin_pixels": 8,
+  "effective_box": [
+    422,
+    522,
+    728,
+    978
+  ],
+  "independent_human_crop_review": false,
+  "coverage_provenance": "Assistant inspection only; source rectangle and exact native subsets do not prove physical object completeness",
+  "same_prompt_scope_schema_decoding_as_closed_fullframe": true,
+  "context_and_effective_resolution_change_together": true,
+  "selected_after_prior_failure": true,
+  "population_accuracy_measured": false,
+  "qa_end_to_end_latency_measured": false,
+  "verdict": "Partial change/second-key evidence in ROI; neither describes two shafts converging under one shared head. No structural judge approved. Closed fullframe failure retained.",
+  "qwen35_reference_identity_claim_verified": false,
+  "diagnostic_status": "uncertain",
+  "admission_allowed": false,
+  "camera_human_review": "pending",
+  "next_cpu_action": "Prepare independent procedural connection controls outside the retained key family, labelled by construction and kept separate from human real-image gold; no new inference before declaring inputs and budget"
+}

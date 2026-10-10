@@ -1,0 +1,295 @@
+{
+  "protocol": "scoped-fusion-roi-plan-1",
+  "declared_utc": "2026-10-10T22:03:22.803405+00:00",
+  "base_head": "3579f6531cddbb7163bbc7e932a773d0440c5c41",
+  "budget": {
+    "requests_per_model": 2,
+    "maximum_requests_total": 4,
+    "automatic_retries": 0,
+    "generation_requests": 0,
+    "downloads": 0,
+    "max_tokens": 512,
+    "temperature": 0,
+    "thinking": false,
+    "context": 8192,
+    "min_image_tokens": 1024,
+    "max_image_tokens": 1536,
+    "http_timeout_seconds": 60,
+    "port": 8092
+  },
+  "models": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "cases": [
+    {
+      "case_id": "identical_key_roi_control",
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-fusion-roi-2026-10-11\\image_00.png",
+        "sha256": "059cb5e4b0e889ec82af22941d3a39a5e9db526cfa92c2ba73201b1149e153fb",
+        "size": [
+          306,
+          456
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-fusion-roi-2026-10-11\\image_00.png",
+        "sha256": "059cb5e4b0e889ec82af22941d3a39a5e9db526cfa92c2ba73201b1149e153fb",
+        "size": [
+          306,
+          456
+        ]
+      },
+      "scope": {
+        "subject": "silver key",
+        "protected_structure": "The complete key's inherent physical parts and the connections between them.",
+        "allowed_state_changes": []
+      }
+    },
+    {
+      "case_id": "fused_key_roi",
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-fusion-roi-2026-10-11\\image_00.png",
+        "sha256": "059cb5e4b0e889ec82af22941d3a39a5e9db526cfa92c2ba73201b1149e153fb",
+        "size": [
+          306,
+          456
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-fusion-roi-2026-10-11\\image_01.png",
+        "sha256": "969a52f3edf892c1c43ad1dd5a7da32ac4e3856d00d0e4ea5a6540628f75e4dc",
+        "size": [
+          306,
+          456
+        ]
+      },
+      "scope": {
+        "subject": "silver key",
+        "protected_structure": "The complete key's inherent physical parts and the connections between them.",
+        "allowed_state_changes": []
+      }
+    }
+  ],
+  "recipe": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-fusion-roi-recipe-2026-10-11.py",
+    "sha256": "e401c9bfd1049a491092066ddf809369382ec4b66a6f9742c834d4f7f47cf2bf"
+  },
+  "pins": {
+    "docs/validation/scoped-structure-execution-recipe-2026-10-10.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-structure-execution-recipe-2026-10-10.py",
+      "sha256": "9f405162304bf90bc8ed91ac5fb1cd99c8b1a0a416c9fbccce7de5d146a06595"
+    },
+    "docs/validation/scoped-structure-execution-plan-2026-10-10.json": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-structure-execution-plan-2026-10-10.json",
+      "sha256": "4263063cc2166218da84941a36fffe5ac924036e8cde87391b153c0f5d558cda"
+    },
+    "docs/validation/scoped-structure-plan-2026-10-10.json": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-structure-plan-2026-10-10.json",
+      "sha256": "37e4b5d7017fcfbb55e668ad32d8797d18fb2d1ab759e0caed909709e7371cdf"
+    },
+    "docs/validation/scoped-structure-qwen35-2026-10-10.json": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-structure-qwen35-2026-10-10.json",
+      "sha256": "33774a14531d1a6a0748ae2a76b7488adf302cf5b363f8bddfbbae58f2affb38"
+    },
+    "docs/validation/scoped-structure-qwen3vl-2026-10-10.json": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-structure-qwen3vl-2026-10-10.json",
+      "sha256": "c856d679ca22dbe826291a7f5161c3a77e26160f89d2a82b7974a3c665c4b50c"
+    },
+    "docs/validation/clock-visible-count-human-review-2026-10-10.json": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\clock-visible-count-human-review-2026-10-10.json",
+      "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+    },
+    "scripts/scoped_structure_observations.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\scoped_structure_observations.py",
+      "sha256": "c2559fb6b1e2d5ab889ba2b2ff500fc6e4975661bdb5eec219283c57b9dd5e49"
+    },
+    "scripts/prepare_visual_regions.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    },
+    "scripts/observe_paired_shape.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    "docs/validation/adjacent-cue-recipe-2026-10-09.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\adjacent-cue-recipe-2026-10-09.py",
+      "sha256": "6301e87c02ce603b89a64a8cd8f3eeb962db3a7ba57d89aa08ae11a81e0ed60e"
+    }
+  },
+  "source_pair": {
+    "case_id": "human_reported_key_fusion",
+    "reference": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\image_00.png",
+      "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd",
+      "size": [
+        768,
+        1376
+      ]
+    },
+    "candidate": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\image_01.png",
+      "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+      "size": [
+        768,
+        1376
+      ]
+    },
+    "scope": {
+      "subject": "silver key",
+      "protected_structure": "The complete key's inherent physical parts and the connections between them.",
+      "allowed_state_changes": []
+    }
+  },
+  "preparation": {
+    "protocol": "visual-region-preparation-plan-1",
+    "margin_pixels": 8,
+    "regions": [
+      {
+        "id": "reference",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\image_00.png",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "box": [
+          430,
+          530,
+          720,
+          970
+        ],
+        "required_box": [
+          430,
+          530,
+          720,
+          970
+        ]
+      },
+      {
+        "id": "candidate",
+        "source": {
+          "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\image_01.png",
+          "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+          "size": [
+            768,
+            1376
+          ]
+        },
+        "box": [
+          430,
+          530,
+          720,
+          970
+        ],
+        "required_box": [
+          430,
+          530,
+          720,
+          970
+        ]
+      }
+    ]
+  },
+  "manifest": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-fusion-roi-2026-10-11\\manifest.json",
+    "sha256": "f83150a497114eb94db40e986f69ddeb22134224da855a4d5d978bd65894b344"
+  },
+  "response_schema": {
+    "type": "object",
+    "properties": {
+      "reference_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "candidate_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "protected_structure_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "structural_connections_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "allowed_state_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain",
+          "not_applicable"
+        ]
+      },
+      "structure_evidence": {
+        "type": "string"
+      },
+      "state_evidence": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference_subject_presence",
+      "candidate_subject_presence",
+      "protected_structure_change",
+      "structural_connections_change",
+      "allowed_state_change",
+      "structure_evidence",
+      "state_evidence"
+    ],
+    "additionalProperties": false
+  },
+  "request_bindings": [
+    {
+      "case_id": "identical_key_roi_control",
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "request_sha256": "80c41c364aeee50b9168ff0bdcfefaa27dc4e87d9eaacad34052e90f9c456bf6"
+    },
+    {
+      "case_id": "fused_key_roi",
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "request_sha256": "81ea584d60ca9ab2c728b260308f85c9f211a35963ca892226a871fc34db0f2d"
+    }
+  ],
+  "offline_expected": {
+    "identical_key_roi_control": "not_observed",
+    "fused_key_roi": "human fullframe reports fusion; crop coverage reviewed only by assistant"
+  },
+  "coverage_provenance": "Assistant inspected the original fullframes before ROI inference; same source box and margin includes rod ends, bit ends and shared head. Rectangle alone is not physical coverage gold.",
+  "limitations": [
+    "Selected after fullframe failures, exploratory, no held-out accuracy or independent crop review.",
+    "Same pixels/scope/prompt/schema/decoding; context and effective resolution change together.",
+    "No labels, boxes, expected counts or fusion description sent to the judge; no new human labels.",
+    "Closed fullframe cohort not repeated or rewritten; no retries or production authority."
+  ],
+  "outputs": {
+    "unsloth/Qwen3.5-9B-GGUF": {
+      "report": "docs/validation/scoped-fusion-roi-qwen35-2026-10-11.json",
+      "logs": "local_image_stack/experiments/bridge/target/scoped-fusion-roi-qwen35-2026-10-11"
+    },
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF": {
+      "report": "docs/validation/scoped-fusion-roi-qwen3vl-2026-10-11.json",
+      "logs": "local_image_stack/experiments/bridge/target/scoped-fusion-roi-qwen3vl-2026-10-11"
+    }
+  }
+}

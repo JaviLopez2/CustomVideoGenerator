@@ -1,0 +1,227 @@
+{
+  "protocol": "scoped-fusion-roi-result-1",
+  "started_utc": "2026-10-10T22:06:23.005497+00:00",
+  "execution_head": "3579f6531cddbb7163bbc7e932a773d0440c5c41",
+  "plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-fusion-roi-plan-2026-10-11.json",
+    "sha256": "90972b583f9632994010b1d24590446e2654cf54604ba993a9e8843c01833744"
+  },
+  "recipe": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-fusion-roi-recipe-2026-10-11.py",
+    "sha256": "e401c9bfd1049a491092066ddf809369382ec4b66a6f9742c834d4f7f47cf2bf"
+  },
+  "model": {
+    "repo": "unsloth/Qwen3.5-9B-GGUF",
+    "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3.5-9B-Q4_K_M.gguf",
+        "size": 5680522464,
+        "sha256": "03b74727a860a56338e042c4420bb3f04b2fec5734175f4cb9fa853daf52b7e8"
+      },
+      {
+        "file": "mmproj-F16.gguf",
+        "size": 918166080,
+        "sha256": "f70dc3509053962b0d0d3ee8a7eacebf5d60aa560cad78254ae8698516ae029f"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "resource_preflight": {
+    "ram_free_gib": 17.726764678955078,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1177,
+      "total_mib": 12288,
+      "utilization_percent": 4,
+      "temperature_c": 31
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "rows": [
+    {
+      "case_id": "identical_key_roi_control",
+      "protocol": "scoped-structure-state-observations-1",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "prepare_seconds": 0.01579189999756636,
+      "request_parse_seconds": 7.393964700000652,
+      "request_sha256": "80c41c364aeee50b9168ff0bdcfefaa27dc4e87d9eaacad34052e90f9c456bf6",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "059cb5e4b0e889ec82af22941d3a39a5e9db526cfa92c2ba73201b1149e153fb"
+        },
+        {
+          "role": "candidate",
+          "sha256": "059cb5e4b0e889ec82af22941d3a39a5e9db526cfa92c2ba73201b1149e153fb"
+        }
+      ],
+      "raw_choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\"reference_subject_presence\":\"present\",\"candidate_subject_presence\":\"present\",\"protected_structure_change\":\"not_observed\",\"structural_connections_change\":\"not_observed\",\"allowed_state_change\":\"not_applicable\",\"structure_evidence\":\"The candidate image shows a silver key with a cylindrical shaft, a decorative collar, and a rectangular bit with cutouts. The structure and connections between these parts are identical to the reference image.\",\"state_evidence\":\"No allowed state changes are declared in the scope.\"}"
+          }
+        }
+      ],
+      "final_content": "{\"reference_subject_presence\":\"present\",\"candidate_subject_presence\":\"present\",\"protected_structure_change\":\"not_observed\",\"structural_connections_change\":\"not_observed\",\"allowed_state_change\":\"not_applicable\",\"structure_evidence\":\"The candidate image shows a silver key with a cylindrical shaft, a decorative collar, and a rectangular bit with cutouts. The structure and connections between these parts are identical to the reference image.\",\"state_evidence\":\"No allowed state changes are declared in the scope.\"}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 103,
+        "prompt_tokens": 2453,
+        "total_tokens": 2556,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2453,
+        "prompt_ms": 3317.365,
+        "prompt_per_token_ms": 1.3523705666530779,
+        "prompt_per_second": 739.4422983301506,
+        "predicted_n": 103,
+        "predicted_ms": 2129.067,
+        "predicted_per_token_ms": 20.87320588235294,
+        "predicted_per_second": 47.90830913259188
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "not_observed",
+        "structural_connections_change": "not_observed",
+        "allowed_state_change": "not_applicable",
+        "structure_evidence": "The candidate image shows a silver key with a cylindrical shaft, a decorative collar, and a rectangular bit with cutouts. The structure and connections between these parts are identical to the reference image.",
+        "state_evidence": "No allowed state changes are declared in the scope."
+      },
+      "diagnostic": {
+        "version": "scoped-structure-state-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "allowed_state_observation": "not_applicable",
+        "hints": []
+      }
+    },
+    {
+      "case_id": "fused_key_roi",
+      "protocol": "scoped-structure-state-observations-1",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "prepare_seconds": 0.01593739999952959,
+      "request_parse_seconds": 8.030243500004872,
+      "request_sha256": "81ea584d60ca9ab2c728b260308f85c9f211a35963ca892226a871fc34db0f2d",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "059cb5e4b0e889ec82af22941d3a39a5e9db526cfa92c2ba73201b1149e153fb"
+        },
+        {
+          "role": "candidate",
+          "sha256": "969a52f3edf892c1c43ad1dd5a7da32ac4e3856d00d0e4ea5a6540628f75e4dc"
+        }
+      ],
+      "raw_choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"observed\",\n  \"structural_connections_change\": \"observed\",\n  \"allowed_state_change\": \"not_applicable\",\n  \"structure_evidence\": \"The reference image shows a silver key with a cylindrical shaft and a flat, rectangular bit. The candidate image shows two keys; one matches the reference, but the other has a circular ring head instead of a cylindrical shaft, representing a substantial deformation and addition of principal parts.\",\n  \"state_evidence\": \"not_applicable\"\n}"
+          }
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"observed\",\n  \"structural_connections_change\": \"observed\",\n  \"allowed_state_change\": \"not_applicable\",\n  \"structure_evidence\": \"The reference image shows a silver key with a cylindrical shaft and a flat, rectangular bit. The candidate image shows two keys; one matches the reference, but the other has a circular ring head instead of a cylindrical shaft, representing a substantial deformation and addition of principal parts.\",\n  \"state_evidence\": \"not_applicable\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 132,
+        "prompt_tokens": 2453,
+        "total_tokens": 2585,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2453,
+        "prompt_ms": 3307.343,
+        "prompt_per_token_ms": 1.348284957195271,
+        "prompt_per_second": 741.6829763347799,
+        "predicted_n": 132,
+        "predicted_ms": 2752.896,
+        "predicted_per_token_ms": 21.01447328244275,
+        "predicted_per_second": 47.586250988050395
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "observed",
+        "structural_connections_change": "observed",
+        "allowed_state_change": "not_applicable",
+        "structure_evidence": "The reference image shows a silver key with a cylindrical shaft and a flat, rectangular bit. The candidate image shows two keys; one matches the reference, but the other has a circular ring head instead of a cylindrical shaft, representing a substantial deformation and addition of principal parts.",
+        "state_evidence": "not_applicable"
+      },
+      "diagnostic": {
+        "version": "scoped-structure-state-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "allowed_state_observation": "not_applicable",
+        "hints": [
+          {
+            "kind": "reported_structure_change",
+            "evidence": "The reference image shows a silver key with a cylindrical shaft and a flat, rectangular bit. The candidate image shows two keys; one matches the reference, but the other has a circular ring head instead of a cylindrical shaft, representing a substantial deformation and addition of principal parts."
+          },
+          {
+            "kind": "reported_connection_change",
+            "evidence": "The reference image shows a silver key with a cylindrical shaft and a flat, rectangular bit. The candidate image shows two keys; one matches the reference, but the other has a circular ring head instead of a cylindrical shaft, representing a substantial deformation and addition of principal parts."
+          }
+        ]
+      }
+    }
+  ],
+  "http_model_requests_attempted": 2,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "admission_allowed": false,
+  "owned_server_closed": true,
+  "owned_pid": 8728,
+  "load_seconds": 4.040684299994609,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "unattempted_cases": [],
+  "finished_utc": "2026-10-10T22:06:43.972174+00:00"
+}

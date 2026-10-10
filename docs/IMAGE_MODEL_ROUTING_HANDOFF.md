@@ -1,5 +1,13 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Checkpoint vigente — ROI de fusión: señal parcial, 2026-10-11
+
+Desde `3579f6531cddbb7163bbc7e932a773d0440c5c41`, caja/margen nativos fijos antes de cuatro consultas, dos por juez: control idéntico y llave 1→3. Ambos controles not_observed; fusión Q35 observed / VL uncertain. Los dos mencionan dos llaves, ninguno describe los dos tallos convergentes bajo un cabezal. Identidad afirmada por Q35 sin verificar; cobertura del crop inspeccionada solo por asistente. Fallo fullframe conservado; cambio conjunto de contexto/resolución, sin accuracy o causa aislada. Diagnósticos uncertain/sin admisión; ningún juez geométrico aprobado. [Informe](SCOPED_FUSION_ROI_REPORT.md), [análisis](validation/scoped-fusion-roi-analysis-2026-10-11.json).
+
+**147 tests pertinentes pasan de nuevo, 2,04 s, exit 0**; siete planes alterados rechazados y revisión independiente sin hallazgos. Cuatro respuestas stop/sin reasoning; cero retry/generación/descarga. PID propios 8728/18620 ausentes, 8092 libre; 8080 cerrado, 8090 HTTP404 solo liveness, 8188 HTTP200. App, gates, routing, deps, workflows, compartidos y estable intactos. SHA de entrega mediante Git/origin; detalles y logs en informe/checks.
+
+Siguiente autónomo CPU: controles procedurales de conexiones fuera de llaves, etiquetados por construcción y separados del gold humano real; fijar inputs/presupuesto antes de inferir. Cámara humana pendiente, relojes ya revisados; calibración independiente/error/abstención/otra familia humana/QA completo pendientes. Objetivo activo, no hace falta abrir nada ni aprobar otro paso rutinario. Los checkpoints siguientes son históricos.
+
 ## Checkpoint vigente — estructura/estado: fusión no detectada, 2026-10-10
 
 Desde `658e767d3a1a20425c3d6bb4cbc64f4bfeb4db05`, nuevo protocolo experimental explícito de sujeto/estructura protegida/estados permitidos, aislado de app y del observador anterior. Inventario: siete PNG únicos de llaves y dos defectos humanos distintos, ambos de esa familia; cámara sin gold estructural humano. Fullframes de llave con mismos píxeles/modo/dimensiones y metadata eliminada; cámara reutiliza ICC/alpha ligado transitivamente a Factory. Scope manual ligado al prompt real de escena 3, sin campo planner o QA activado. 31 regresiones nuevas; **147 tests pertinentes pasan, 2,10 s, exit 0**. Dos P2 de revisión reproducidos en 4 RED y corregidos: PNG con metadata tardía y retención de raw choices inválidos.

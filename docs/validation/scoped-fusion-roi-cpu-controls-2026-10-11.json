@@ -1,0 +1,48 @@
+{
+  "protocol": "scoped-fusion-roi-cpu-controls-1",
+  "recipe": {
+    "path": "docs/validation/scoped-fusion-roi-recipe-2026-10-11.py",
+    "sha256": "e401c9bfd1049a491092066ddf809369382ec4b66a6f9742c834d4f7f47cf2bf"
+  },
+  "mutant_plan_controls": [
+    {
+      "fault": "budget",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "fault": "boxes",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "fault": "scope",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "fault": "role_order",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "fault": "request",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "fault": "source",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "fault": "candidate_models",
+      "rejected": true,
+      "error_type": "ValueError"
+    }
+  ],
+  "original_plan_preserved": true,
+  "model_requests": 0,
+  "generations": 0,
+  "coverage_inspection": "assistant inspected both crops and fullframes: shared head, both rods and bits fully visible; not independent human crop adjudication"
+}

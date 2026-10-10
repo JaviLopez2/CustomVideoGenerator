@@ -1,0 +1,103 @@
+{
+  "protocol": "scoped-fusion-roi-closing-checks-1",
+  "checked_utc": "2026-10-10T22:12:12.349521+00:00",
+  "base_head": "3579f6531cddbb7163bbc7e932a773d0440c5c41",
+  "origin_base_after_fetch": "3579f6531cddbb7163bbc7e932a773d0440c5c41",
+  "branch": "factory/image-model-routing-modernization",
+  "ahead_behind_before_commit": [
+    0,
+    0
+  ],
+  "task_files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "bbe94549089d794f0fa7bee032cc3c3545b27267a6323103220fdacb1db53cb4"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "63be6eeac4223c4c41cfc07043b2bc3e5d4a4072725d70cc0600e59ec1bda0a9"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "0bdf58a48990a773c8d29bb724bb72f1fcbe157b48bb15c51642a488f7bcd975"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "6baa685695d2e1aa185a624b9f4f57a9de0efdd71cc95855398a65d98a69884a"
+    },
+    {
+      "path": "docs/SCOPED_FUSION_ROI_REPORT.md",
+      "sha256": "6554a0ad9afe2ba266858b594dfa92e5d6725310c2ca2e4fc4863cd5eaf87fe4"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-analysis-2026-10-11.json",
+      "sha256": "6df35ab9d7f134fe7cbd337c9f16e1a8a5854f6f0de943b25f229f374a5f6194"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-cpu-controls-2026-10-11.json",
+      "sha256": "af50a544022c47a4218daeef2bbd26aa2875a788ef83c0691637db1634b81418"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-plan-2026-10-11.json",
+      "sha256": "90972b583f9632994010b1d24590446e2654cf54604ba993a9e8843c01833744"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-preparation-2026-10-11.json",
+      "sha256": "b0ed4bf4dd4b2d9441a8768f1a1a17b76fd32627e1af3b0c6107231ec2ab8ad4"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-qwen35-2026-10-11.json",
+      "sha256": "8f7d8d891d50ef1a1c1399f31c0a5edc16b6567d63f9ef966038467ad96a03b3"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-qwen3vl-2026-10-11.json",
+      "sha256": "213d1f748b361689da982a5daa7caaaa130a42383f08045333884ca13418b449"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-recipe-2026-10-11.py",
+      "sha256": "e401c9bfd1049a491092066ddf809369382ec4b66a6f9742c834d4f7f47cf2bf"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-resource-closing-2026-10-11.json",
+      "sha256": "8a2d8059c89c63624e213f93baa118fedf122d9bd92f1c35581eae52a1831e5f"
+    },
+    {
+      "path": "docs/validation/scoped-fusion-roi-tests-2026-10-11.txt",
+      "sha256": "8aa7155294faa316c596e37f53992baacb202642db8535b437f93186bc0957fa"
+    }
+  ],
+  "credential_pattern_scan_passed": true,
+  "additional_instruction_files_scanned": [
+    "AGENTS.md",
+    "docs/LOCAL_WINDOWS_ACCESS_HANDOFF.md"
+  ],
+  "json_and_python_ast_valid": true,
+  "frozen_plan_and_transitive_sources_reverified": true,
+  "historical_handoffs_preserved": true,
+  "app_and_existing_observer_code_unchanged": true,
+  "test_result": {
+    "passed": 147,
+    "new_cases": 0,
+    "seconds": 2.04,
+    "python_exit_code": 0,
+    "log": "docs/validation/scoped-fusion-roi-tests-2026-10-11.txt"
+  },
+  "mutant_plans_rejected": 7,
+  "independent_recipe_review_findings": 0,
+  "model_requests_completed": 4,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "macro_gpu_benchmarks": 0,
+  "shared_services_controlled": false,
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_clean": true,
+    "untracked_not_modified_or_enumerated": true
+  },
+  "goal": "active",
+  "camera_human_review": "pending",
+  "independent_human_crop_review": false,
+  "next_action": "Prepare CPU procedural connection controls beyond keys; construction labels are separate from independent human real-image gold"
+}
