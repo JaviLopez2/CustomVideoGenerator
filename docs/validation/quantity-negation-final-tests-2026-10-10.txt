@@ -1,0 +1,19 @@
+........................................................................ [ 24%]
+F....................................................................... [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 96%]
+..........                                                               [100%]
+================================== FAILURES ===================================
+_ test_real_scoped_quantity_parser_controls_private_scene_gate[A single object is visible.-True] _
+test\services\test_visual_qa.py:319: in test_real_scoped_quantity_parser_controls_private_scene_gate
+    assert bool(result) is accepted and generation.call_count == 1
+E   assert (False is True)
+E    +  where False = bool([])
+---------------------------- Captured stdout call -----------------------------
+[32m2026-10-10 23:19:37[0m | [1mINFO[0m | "./app/services/material.py:7944":[34m _download_videos_openai_image_on_demand[0m - [1mgenerating OpenAI image scene 1/1: route=standard, model=qwen-image-2.1, duration=1.00s, prompt='object'[0m
+[32m2026-10-10 23:19:37[0m | [31m[1mERROR[0m | "./app/services/material.py:8868":[34m _download_videos_openai_image_on_demand[0m - [31m[1mfailed to generate semantic OpenAI image scene 1; stop to preserve narration alignment[0m
+=========================== short test summary info ===========================
+FAILED test/services/test_visual_qa.py::test_real_scoped_quantity_parser_controls_private_scene_gate[A single object is visible.-True]
+1 failed, 297 passed in 20.34s
+
+Python exit code: 1

@@ -1,0 +1,158 @@
+FFFFFFFFFFFFFFFFF.F.........F                                            [100%]
+================================== FAILURES ===================================
+_ test_negated_count_remains_uncertain_without_replacement_count[Not a single key is visible.-1] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[There are not two keys in this image.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[The image does not show one key.-1] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[The image doesn't show one key.-1] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[The image doesn\u2019t show one key.-1] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[The image is without two keys.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[The image never shows three keys.-3] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[The image cannot show two keys.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[There are not\ntwo metal keys visible.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys are not visible.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys aren't visible.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys aren\u2019t visible.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys cannot be seen.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys are absent.-2] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[A single key is missing.-1] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[No keys are not visible.-0] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Not no keys are visible.-0] _
+test\services\test_visual_qa_quantity_negation.py:30: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+________ test_detector_agreement_does_not_rehabilitate_negated_caption ________
+test\services\test_visual_qa_quantity_negation.py:37: in test_detector_agreement_does_not_rehabilitate_negated_caption
+    assert result["status"] == "uncertain" and result.get("observed_count") is None
+E   AssertionError: assert ('pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass)
+_______ test_new_qa_cache_version_rechecks_and_retains_uncertain_result _______
+test\services\test_visual_qa_quantity_negation.py:73: in test_new_qa_cache_version_rechecks_and_retains_uncertain_result
+    assert first["verdict"] == "uncertain" and first["cache_hit"] is False
+E   AssertionError: assert ('pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass)
+=========================== short test summary info ===========================
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Not a single key is visible.-1]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[There are not two keys in this image.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[The image does not show one key.-1]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[The image doesn't show one key.-1]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[The image doesn\u2019t show one key.-1]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[The image is without two keys.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[The image never shows three keys.-3]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[The image cannot show two keys.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[There are not\ntwo metal keys visible.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys are not visible.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys aren't visible.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys aren\u2019t visible.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys cannot be seen.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys are absent.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[A single key is missing.-1]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[No keys are not visible.-0]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Not no keys are visible.-0]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_detector_agreement_does_not_rehabilitate_negated_caption
+FAILED test/services/test_visual_qa_quantity_negation.py::test_new_qa_cache_version_rechecks_and_retains_uncertain_result
+19 failed, 10 passed in 1.23s
+
+Python exit code: 1

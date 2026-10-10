@@ -13,7 +13,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
 
-VERSION = "visual-qa-4"
+VERSION = "visual-qa-5"
 NUMBERS = {word: i for i, word in enumerate(
     ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"))}
 STATUSES = {"pass", "fail", "uncertain", "unavailable"}
@@ -101,20 +101,45 @@ def aliases(subject, supplied=()):
     return sorted(term for term in terms if term)
 
 
-def caption_counts(caption, subject, supplied=()):
-    observed = set()
+def _negated_count_context(prefix, suffix, mention_modifiers):
+    # Scope negation to this numeric mention, not another object's state.
+    boundary = r"(?<=[.!?;])|\b(?:but|whereas|while)\b"
+    prefix = re.split(boundary, prefix)[-1]
+    suffix = re.split(boundary, suffix)[0]
+    contraction = r"(?:is|are|was|were|does|do|did|has|have|had|can|could)n't"
+    fillers = r"(?:a|an|any|only|just|exactly|even|more|less|fewer|than|clearly|visibly|actually|currently|show|shows|showing|contain|contains|containing|include|includes|including|have|has|see|seen)"
+    before = r"\b(?:not|never|without|no|cannot|" + contraction + r")\s+(?:" + fillers + r"\s+){0,4}$"
+    modifiers = r"(?:(?:clearly|really|currently|actually|readily|entirely|fully|definitely)\s+){0,2}"
+    copula = r"(?:(?:is|are|was|were|has|have|had)\s+)?"
+    visibility = r"(?:visible|present|shown|seen|observed|detected|absent|missing)"
+    after = (r"^\s+" + copula + modifiers + r"(?:absent|missing|(?:not|never|cannot|" + contraction
+             + r")\s+" + modifiers + r"(?:(?:be|been|being)\s+){0,2}" + modifiers + visibility + r")\b")
+    return bool(re.search(before, prefix) or re.search(after, suffix)
+                or re.search(r"\b(?:absent|missing)\b", mention_modifiers))
+
+
+def _caption_count_mentions(caption, subject, supplied=()):
+    observed = []
+    text = caption.casefold().replace("\u2019", "'")
     for term in aliases(subject, supplied):
         noun = re.escape(term) + ("s?" if not term.endswith("s") else "")
         adjectives = r"(?:(?!(?:and|or|beside|with|next|near|behind|above|below|under|on|is|are|has|have|a|an|single|one|two|three)\b)[a-z]+\s+){0,3}?"
-        pattern = r"\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|\d+|no|a|an|single)\s+" + adjectives + noun + r"\b"
-        for match in re.finditer(pattern, caption.casefold()):
+        pattern = (r"\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|\d+|no|a|an|single)\s+"
+                   + r"(?P<modifiers>" + adjectives + r")" + noun + r"\b")
+        for match in re.finditer(pattern, text):
             if re.search(r"\b(?:and|beside|with|next|near|behind|above|below|under|on|is|are|has|have)\b",
                          match.group()[len(match.group(1)): -len(term)]):
                 continue
             word = match.group(1)
             number = int(word) if word.isdigit() else 0 if word in {"no", "zero"} else 1 if word in {"a", "an", "single"} else NUMBERS[word]
-            observed.add((number, word not in {"a", "an"}))
+            observed.append((number, word not in {"a", "an"},
+                             _negated_count_context(text[:match.start()], text[match.end():], match.group("modifiers"))))
     return observed
+
+
+def caption_counts(caption, subject, supplied=()):
+    """Lexical mentions; quantity separately checks whether they are affirmative."""
+    return {(number, explicit) for number, explicit, _ in _caption_count_mentions(caption, subject, supplied)}
 
 
 def quantity(caption, detections, constraint):
@@ -124,7 +149,12 @@ def quantity(caption, detections, constraint):
         raise ValueError("Count and tolerance must be non-negative integers")
     subject = constraint["subject"]
     names = aliases(subject, constraint.get("aliases", []))
-    observations = caption_counts(caption, subject, constraint.get("aliases", []))
+    mentions = _caption_count_mentions(caption, subject, constraint.get("aliases", []))
+    if any(negated for _, _, negated in mentions):
+        # A denied number supplies no replacement count, even if OD echoes it.
+        return {"status": "uncertain", "subject": subject, "observed_count": None,
+                "reason": "negated count mention does not establish visible cardinality"}
+    observations = {(number, explicit) for number, explicit, _ in mentions}
     if observations and re.search(r"\b(?:or|maybe|possibly|perhaps|unclear|might|may)\b", caption.casefold()):
         return {"status": "uncertain", "subject": subject, "reason": "caption expresses count ambiguity"}
     values = {n for n, _ in observations}

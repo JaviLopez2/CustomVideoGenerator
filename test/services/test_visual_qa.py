@@ -293,3 +293,36 @@ def test_empty_contract_does_not_verify_experimental_scene(pipeline, monkeypatch
     monkeypatch.setattr(material, "_new_visual_qa_engine", Mock(return_value=engine))
     assert run(search_terms=["object"], scene_routes=["standard"], scene_subjects=["object"],
                scene_qa_contracts=[{}]) == []
+
+
+@pytest.mark.parametrize("caption,accepted", [
+    ("A single object is visible.", True),
+    ("Not a single object is visible.", False),
+])
+def test_real_scoped_quantity_parser_controls_private_scene_gate(pipeline, monkeypatch, tmp_path, caption, accepted):
+    run, diagnostics = pipeline
+    image = tmp_path / "parser-evidence-fixture.png"
+    Image.new("RGB", (20, 20), "white").save(image)
+    generated = item("scoped-quantity")
+    generated.url = str(image)
+    generated.source_info["model"] = "flux-klein-4b-t2i-exp"
+    generation = Mock(return_value=[generated])
+    monkeypatch.setattr(material, "generate_images_openai", generation)
+    monkeypatch.setitem(config.app, "openai_image_visual_qa_experimental_enabled", True)
+    evidence = Evidence(caption)
+    engine = qa.VisualQA(evidence)
+    monkeypatch.setattr(material, "_new_visual_qa_engine", Mock(return_value=engine))
+    monkeypatch.setattr(material, "_near_duplicate_assessment", lambda *a, **kw: {"actionable": False})
+    gross = Mock(side_effect=AssertionError("No gross QA may rehabilitate an uncertain count"))
+    monkeypatch.setattr(material, "_scene_gross_semantic_assessment", gross)
+    result = run(search_terms=["object"], scene_durations=[1], scene_routes=["standard"],
+                 scene_subjects=["object"], scene_reference_needs=["none"],
+                 scene_qa_contracts=[{"counts": [{"subject": "object", "expected_count": 1}]}])
+    assessment = generated.source_info["visual_qa"]
+    assert assessment["verdict"] == ("pass" if accepted else "uncertain"), assessment
+    assert bool(result) is accepted and generation.call_count == 1
+    assert assessment["qa_version"] == "visual-qa-5"
+    assert len(assessment["checks"]) == 1 and assessment["checks"][0]["kind"] == "quantity"
+    assert assessment["checks"][0]["status"] == ("pass" if accepted else "uncertain")
+    assert len(evidence.calls) == 2
+    gross.assert_not_called()

@@ -1,0 +1,1235 @@
+{
+  "protocol": "part-state-contract-and-quantity-audit-1",
+  "executed_utc": "2026-10-10T21:28:12.831138+00:00",
+  "base_head": "f39b46d3544243f563615e408fe26cc70b935b04",
+  "recipe": {
+    "path": "docs\\validation\\part-state-and-quantity-audit-recipe-2026-10-10.py",
+    "sha256": "70262f128d288aa7807d555b8fef58fa813839a77839448b96b704ed792e17cb"
+  },
+  "bindings": {
+    "app/services/visual_qa.py": {
+      "path": "app/services/visual_qa.py",
+      "sha256": "092690cb77ccf3e67d823512f467601a789c207a979a87f8849ff90033a39fdd"
+    },
+    "app/services/material.py": {
+      "path": "app/services/material.py",
+      "sha256": "2b80fb84296131338dbb063b78588478d9f07b10e9f3c69e6079e5408bf44c52"
+    },
+    "app/services/paired_visual_observation_diagnostics.py": {
+      "path": "app/services/paired_visual_observation_diagnostics.py",
+      "sha256": "c25879a6b4248ab7c821add9a8dc4401e76330d93a6498174f9cc71278825b66"
+    },
+    "scripts/paired_shape_observations.py": {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    "test/services/test_visual_qa_quantity_negation.py": {
+      "path": "test/services/test_visual_qa_quantity_negation.py",
+      "sha256": "b2cdd6b7a25a2505044e14f0840181fe62eda2ff6b5dfff70c6ad5f4a348e3a6"
+    },
+    "test/services/test_visual_qa.py": {
+      "path": "test/services/test_visual_qa.py",
+      "sha256": "9e2fead6d7042d13c0fa20be375f62eacfec9d36fb1064aa6953d0e139a798c3"
+    },
+    "docs/validation/visual-qa-dataset-2026-10-08.json": {
+      "path": "docs/validation/visual-qa-dataset-2026-10-08.json",
+      "sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f"
+    },
+    "docs/validation/visual-qa-final-results-2026-10-08.json": {
+      "path": "docs/validation/visual-qa-final-results-2026-10-08.json",
+      "sha256": "4652017900a1c5d29f90c6b9c3bd6f8a6a869fb4b161a19c990b8d5614813882"
+    },
+    "docs/validation/profiled-camera-shape-analysis-2026-10-10.json": {
+      "path": "docs/validation/profiled-camera-shape-analysis-2026-10-10.json",
+      "sha256": "a35758d772d6982e82dad44e60a37e3fad459e298c41661af3c0c8e56b9a0100"
+    },
+    "docs/validation/profiled-camera-shape-plan-2026-10-10.json": {
+      "path": "docs/validation/profiled-camera-shape-plan-2026-10-10.json",
+      "sha256": "2fd9a264b1928a95337d5e7b5fbbf5fb9971c2944380cbdcf685b5699a807b67"
+    },
+    "docs/validation/camera-independent-review-preparation-2026-10-10.json": {
+      "path": "docs/validation/camera-independent-review-preparation-2026-10-10.json",
+      "sha256": "9d01129929c8b713be811c2bd8ce59505bb91d74d78e50879064460c7e1fb1ea"
+    },
+    "docs/validation/clock-visible-count-human-review-2026-10-10.json": {
+      "path": "docs/validation/clock-visible-count-human-review-2026-10-10.json",
+      "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+    },
+    "docs/validation/quantity-negation-final-v2-tests-2026-10-10.txt": {
+      "path": "docs/validation/quantity-negation-final-v2-tests-2026-10-10.txt",
+      "sha256": "6be67394b6a99d0c94c03d1021b9f23429e4f7cc9ad005c601d52bce026ef8ac"
+    }
+  },
+  "git_v4_source_sha256": "47482f1fe7769b0fa1e8f77e3acf82976e604d5b4e9c92edc8e51dccf9b6d6e2",
+  "versions": {
+    "before": "visual-qa-4",
+    "after": "visual-qa-5"
+  },
+  "unchanged_function_ast": {
+    "state_check": true,
+    "silhouette": true,
+    "overall": true
+  },
+  "contracts": {
+    "public_wrapper_exposes_scene_qa_contracts": false,
+    "private_loop_exposes_scene_qa_contracts": true,
+    "default_evidence_constructor": "FlorenceEvidence",
+    "qa_flag_current_is_literal_true": false,
+    "allowed_changes_reads": [
+      "contract.get(\"allowed_changes\", [])"
+    ],
+    "allowed_change_used": "rotation for outer silhouette only",
+    "identity_critical_is_uncertain": true,
+    "part_or_internal_geometry_not_established_by_outer_mask": true,
+    "paired_observer_generic_major_parts_has_no_allowed_functional_state_context": true,
+    "diagnostic_callback_private_and_explicit": true,
+    "diagnostic_has_no_admission_authority": true
+  },
+  "quantity_replay": {
+    "archive_rows": 16,
+    "quantity_checks": 34,
+    "identical_results": 34,
+    "rows": [
+      {
+        "case_id": "temporal_warm_512",
+        "candidate_sha256": "2488e40a2b674f1e1dba3d483af74fc955bd08c0e99b7906d8db02b67272d5a1",
+        "caption_sha256": "b152010de6e56e20603c747a40c02f1b0959ee7120ebdc6e3eacfb2d93150863",
+        "detections_sha256": "63301c25be7336a1e7aacb125967a080d87b7d159600e3704dd87e13c5373f23",
+        "constraint": {
+          "subject": "mug",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "mug",
+            "cup"
+          ]
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "mug",
+          "observed_count": 1,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "mug",
+          "observed_count": 1,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "unrequested_text",
+        "candidate_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+        "caption_sha256": "8b4c1ca31dce5a972fb021fd51043566bb4971eca86efa7f08d633596869c3af",
+        "detections_sha256": "52354c34777133d9a666e9dcb4ca46bfbc32c5b0d1be6ecfc23472ae94a25609",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "unrequested_text",
+        "candidate_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+        "caption_sha256": "8b4c1ca31dce5a972fb021fd51043566bb4971eca86efa7f08d633596869c3af",
+        "detections_sha256": "52354c34777133d9a666e9dcb4ca46bfbc32c5b0d1be6ecfc23472ae94a25609",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "unrequested_text",
+        "candidate_sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+        "caption_sha256": "8b4c1ca31dce5a972fb021fd51043566bb4971eca86efa7f08d633596869c3af",
+        "detections_sha256": "52354c34777133d9a666e9dcb4ca46bfbc32c5b0d1be6ecfc23472ae94a25609",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "valid_cloth_edit",
+        "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "caption_sha256": "5076d98176688e3235881abdbf3400621779f4917ea26f2ed976417df54be3f8",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "valid_cloth_edit",
+        "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "caption_sha256": "5076d98176688e3235881abdbf3400621779f4917ea26f2ed976417df54be3f8",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "valid_cloth_edit",
+        "candidate_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "caption_sha256": "5076d98176688e3235881abdbf3400621779f4917ea26f2ed976417df54be3f8",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "identity_style_unframed_512",
+        "candidate_sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+        "caption_sha256": "024c8e2d78e3256cced6000c46f561913c33db6312e22d7481121d8eeb6849af",
+        "detections_sha256": "ca26579afcaf97ad13e4493bf76434c7b7c09c404a393555f5259e86b2b0c87c",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "identity_style_unframed_512",
+        "candidate_sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+        "caption_sha256": "024c8e2d78e3256cced6000c46f561913c33db6312e22d7481121d8eeb6849af",
+        "detections_sha256": "ca26579afcaf97ad13e4493bf76434c7b7c09c404a393555f5259e86b2b0c87c",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "identity_style_unframed_512",
+        "candidate_sha256": "fcbcf6cb0bf61f16b252b04cd44479718bdaab7b1611604f024808f89683ba93",
+        "caption_sha256": "024c8e2d78e3256cced6000c46f561913c33db6312e22d7481121d8eeb6849af",
+        "detections_sha256": "ca26579afcaf97ad13e4493bf76434c7b7c09c404a393555f5259e86b2b0c87c",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "identity_style_768",
+        "candidate_sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+        "caption_sha256": "f97ce5b704a2d420b69fd8bb45c2eee3f089e28dca6fdeff705c2341b58a2967",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "identity_style_768",
+        "candidate_sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+        "caption_sha256": "f97ce5b704a2d420b69fd8bb45c2eee3f089e28dca6fdeff705c2341b58a2967",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "identity_style_768",
+        "candidate_sha256": "6108494738e53b812af8083af1e7c3a68579cc313aa0114eecfddf1ed485261e",
+        "caption_sha256": "f97ce5b704a2d420b69fd8bb45c2eee3f089e28dca6fdeff705c2341b58a2967",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "style_identity_reversed_768",
+        "candidate_sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+        "caption_sha256": "f97ce5b704a2d420b69fd8bb45c2eee3f089e28dca6fdeff705c2341b58a2967",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "style_identity_reversed_768",
+        "candidate_sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+        "caption_sha256": "f97ce5b704a2d420b69fd8bb45c2eee3f089e28dca6fdeff705c2341b58a2967",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "style_identity_reversed_768",
+        "candidate_sha256": "3635a4e34d89c8f4af94ffd2f413b361661b7977839d58eb7f134d3c87b41674",
+        "caption_sha256": "f97ce5b704a2d420b69fd8bb45c2eee3f089e28dca6fdeff705c2341b58a2967",
+        "detections_sha256": "da809f7368463577b5b043432868352d2c6a818a0e8f84e671d8acc5d35027e7",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "continuity_factual_768",
+        "candidate_sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+        "caption_sha256": "926b4d054f8c3700a895a24a165338a240d1296f6115f88aaa4ac51e0c086ee1",
+        "detections_sha256": "49a9638fa6fb73d906ad97eef468436301f59e7479e034bb9c5fea8800f4bfe8",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_t2i_text_contract_768",
+        "candidate_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "caption_sha256": "2e05eeb7a42629312bf21849bde09e3d3d4b1c0d3ce2e2f475f12de3d1f80280",
+        "detections_sha256": "61cf7468c056a8d1d97733ed1c9abbe479e5b82f97fa6498b2a3d2f13a4b9c72",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_t2i_text_contract_768",
+        "candidate_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "caption_sha256": "2e05eeb7a42629312bf21849bde09e3d3d4b1c0d3ce2e2f475f12de3d1f80280",
+        "detections_sha256": "61cf7468c056a8d1d97733ed1c9abbe479e5b82f97fa6498b2a3d2f13a4b9c72",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_t2i_text_contract_768",
+        "candidate_sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "caption_sha256": "2e05eeb7a42629312bf21849bde09e3d3d4b1c0d3ce2e2f475f12de3d1f80280",
+        "detections_sha256": "61cf7468c056a8d1d97733ed1c9abbe479e5b82f97fa6498b2a3d2f13a4b9c72",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_temporal_hot_768",
+        "candidate_sha256": "cde32ec55bd249ea21acc4f50933c5e4ef58c236bf0002b47f7da84a3b994814",
+        "caption_sha256": "ffc562b9d84cb67d5029f203aef0bc8e5d7d2a20732af6abbb52fa164ea6f3f7",
+        "detections_sha256": "8636d88d44a8294d5cda8249f1d591176d4158b9f068fb29b54831ff6bec3f7f",
+        "constraint": {
+          "subject": "mug",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "mug",
+            "cup"
+          ]
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "mug",
+          "observed_count": 1,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "mug",
+          "observed_count": 1,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_temporal_cooled_768",
+        "candidate_sha256": "899965cf0cb379a371a1fac4967334b85b2e4ee451ead9c7ddd228a1ef34e729",
+        "caption_sha256": "0f68be6e446f340c8a2b04304b6e8e7bbfe30f1b71138c470c610c3184da4044",
+        "detections_sha256": "faa87b736a9494940fa3a5499f67f866eaeb2fac494714d9792ce0d9b9ef3aae",
+        "constraint": {
+          "subject": "mug",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "mug",
+            "cup"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "mug",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "mug",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_fallback_identity_style_seed43",
+        "candidate_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+        "caption_sha256": "fdbc96269f7cbc9caf1ebe24df537f45920856675b4a614f7d21ab052b4d0053",
+        "detections_sha256": "df633be1c522e7f902dde5549df55ac09956c605ee938b46a7d5f6fa163fe046",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_fallback_identity_style_seed43",
+        "candidate_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+        "caption_sha256": "fdbc96269f7cbc9caf1ebe24df537f45920856675b4a614f7d21ab052b4d0053",
+        "detections_sha256": "df633be1c522e7f902dde5549df55ac09956c605ee938b46a7d5f6fa163fe046",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_fallback_identity_style_seed43",
+        "candidate_sha256": "8513d06d15d2d22b81febe59d974f1211b68845b38d09d858c5a7ec8ecbb430f",
+        "caption_sha256": "fdbc96269f7cbc9caf1ebe24df537f45920856675b4a614f7d21ab052b4d0053",
+        "detections_sha256": "df633be1c522e7f902dde5549df55ac09956c605ee938b46a7d5f6fa163fe046",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_explicit_quantity_seed43",
+        "candidate_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "caption_sha256": "fdbc96269f7cbc9caf1ebe24df537f45920856675b4a614f7d21ab052b4d0053",
+        "detections_sha256": "c2d42ccade3330c527101cc9979b7cbf2831948ce972a5b767f0dcbd362fc796",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "pocket watch",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_explicit_quantity_seed43",
+        "candidate_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "caption_sha256": "fdbc96269f7cbc9caf1ebe24df537f45920856675b4a614f7d21ab052b4d0053",
+        "detections_sha256": "c2d42ccade3330c527101cc9979b7cbf2831948ce972a5b767f0dcbd362fc796",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "mpt_explicit_quantity_seed43",
+        "candidate_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "caption_sha256": "fdbc96269f7cbc9caf1ebe24df537f45920856675b4a614f7d21ab052b4d0053",
+        "detections_sha256": "c2d42ccade3330c527101cc9979b7cbf2831948ce972a5b767f0dcbd362fc796",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "z_image_t2i_768",
+        "candidate_sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "caption_sha256": "321b6fff7dae547661fbc917c0eec2e3181543209f9ea7125098443877d14a5a",
+        "detections_sha256": "848b03b11c8b3b900b152bf9bcfaf8abd2c3be50d995c8159331b488a73a28d6",
+        "constraint": {
+          "subject": "pocket watch",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "pocket watch",
+            "watch",
+            "clock"
+          ]
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "pocket watch",
+          "reason": "conflicting local count evidence"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "pocket watch",
+          "reason": "conflicting local count evidence"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "z_image_t2i_768",
+        "candidate_sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "caption_sha256": "321b6fff7dae547661fbc917c0eec2e3181543209f9ea7125098443877d14a5a",
+        "detections_sha256": "848b03b11c8b3b900b152bf9bcfaf8abd2c3be50d995c8159331b488a73a28d6",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "z_image_t2i_768",
+        "candidate_sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "caption_sha256": "321b6fff7dae547661fbc917c0eec2e3181543209f9ea7125098443877d14a5a",
+        "detections_sha256": "848b03b11c8b3b900b152bf9bcfaf8abd2c3be50d995c8159331b488a73a28d6",
+        "constraint": {
+          "subject": "watch hands",
+          "expected_count": 2,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "watch hands",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "qwen_continuity_factual_768",
+        "candidate_sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+        "caption_sha256": "029f858d3294da265a2220f3535c78dadd66e69ef9646619f33f18b06b2d8e88",
+        "detections_sha256": "eec00e5ec723143effd31c7eaf93eb2749edfc88a547512b9a0d04dd06c0476c",
+        "constraint": {
+          "subject": "silver key",
+          "expected_count": 1,
+          "tolerance": 0
+        },
+        "v4": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "v5": {
+          "status": "uncertain",
+          "subject": "silver key",
+          "observed_count": null,
+          "reason": "caption/recognition does not establish exact cardinality"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "root_mug",
+        "candidate_sha256": "16c94d6f649e693492a47a39a48e35f0ccede34f060c4e9031e385accf10ec93",
+        "caption_sha256": "5bc6fdceab9fe4bfe74715bf9bfdd1ee0e7375a87399d2ebbcb0cb76206e8da3",
+        "detections_sha256": "a993d0d87bcf34d2cd57286f2311ed1c998b615ee36da64cb3ff4d67de5f5f40",
+        "constraint": {
+          "subject": "mug",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "mug",
+            "cup"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "mug",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "mug",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      },
+      {
+        "case_id": "valid_mug_recolor",
+        "candidate_sha256": "a245930e585f44b031f82704c66793016d67e037746937fa2976d7c982fadf61",
+        "caption_sha256": "7dbc960d44763650e20d5f3f1c8a29f2a24f5979267260136286e04acce337ea",
+        "detections_sha256": "9e0484bb088e28ec5826bb1980ab677faa264a1a9dd12692d4b131acd0635bdb",
+        "constraint": {
+          "subject": "mug",
+          "expected_count": 1,
+          "tolerance": 0,
+          "aliases": [
+            "mug",
+            "cup"
+          ]
+        },
+        "v4": {
+          "status": "pass",
+          "subject": "mug",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "v5": {
+          "status": "pass",
+          "subject": "mug",
+          "observed_count": 1,
+          "expected_count": 1,
+          "reason": "explicit count or agreement of caption and recognition"
+        },
+        "same_result": true
+      }
+    ],
+    "meaning": "v4/v5 quantity logic over identical archived caption/OD, not fresh QA or visual accuracy"
+  },
+  "synthetic_controls": [
+    {
+      "caption": "No keys are visible.",
+      "constraint": {
+        "subject": "key",
+        "expected_count": 1
+      },
+      "expected_status": "fail",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "fail",
+        "subject": "key",
+        "observed_count": 0,
+        "expected_count": 1,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "fail",
+        "subject": "key",
+        "observed_count": 0,
+        "expected_count": 1,
+        "reason": "explicit count or agreement of caption and recognition"
+      }
+    },
+    {
+      "caption": "Not a single key is visible.",
+      "constraint": {
+        "subject": "key",
+        "expected_count": 1
+      },
+      "expected_status": "uncertain",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "pass",
+        "subject": "key",
+        "observed_count": 1,
+        "expected_count": 1,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "uncertain",
+        "subject": "key",
+        "observed_count": null,
+        "reason": "negated count mention does not establish visible cardinality"
+      }
+    },
+    {
+      "caption": "There are not two keys in this image.",
+      "constraint": {
+        "subject": "key",
+        "expected_count": 2
+      },
+      "expected_status": "uncertain",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "pass",
+        "subject": "key",
+        "observed_count": 2,
+        "expected_count": 2,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "uncertain",
+        "subject": "key",
+        "observed_count": null,
+        "reason": "negated count mention does not establish visible cardinality"
+      }
+    },
+    {
+      "caption": "The image does not show one key.",
+      "constraint": {
+        "subject": "key",
+        "expected_count": 1
+      },
+      "expected_status": "uncertain",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "pass",
+        "subject": "key",
+        "observed_count": 1,
+        "expected_count": 1,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "uncertain",
+        "subject": "key",
+        "observed_count": null,
+        "reason": "negated count mention does not establish visible cardinality"
+      }
+    },
+    {
+      "caption": "Two keys have not been seen.",
+      "constraint": {
+        "subject": "key",
+        "expected_count": 2
+      },
+      "expected_status": "uncertain",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "pass",
+        "subject": "key",
+        "observed_count": 2,
+        "expected_count": 2,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "uncertain",
+        "subject": "key",
+        "observed_count": null,
+        "reason": "negated count mention does not establish visible cardinality"
+      }
+    },
+    {
+      "caption": "Two keys are not being shown.",
+      "constraint": {
+        "subject": "key",
+        "expected_count": 2
+      },
+      "expected_status": "uncertain",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "pass",
+        "subject": "key",
+        "observed_count": 2,
+        "expected_count": 2,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "uncertain",
+        "subject": "key",
+        "observed_count": null,
+        "reason": "negated count mention does not establish visible cardinality"
+      }
+    },
+    {
+      "caption": "There are two absent keys.",
+      "constraint": {
+        "subject": "key",
+        "expected_count": 2
+      },
+      "expected_status": "uncertain",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "pass",
+        "subject": "key",
+        "observed_count": 2,
+        "expected_count": 2,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "uncertain",
+        "subject": "key",
+        "observed_count": null,
+        "reason": "negated count mention does not establish visible cardinality"
+      }
+    },
+    {
+      "caption": "Two keys have not been painted blue.",
+      "constraint": {
+        "subject": "key",
+        "expected_count": 2
+      },
+      "expected_status": "pass",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "pass",
+        "subject": "key",
+        "observed_count": 2,
+        "expected_count": 2,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "pass",
+        "subject": "key",
+        "observed_count": 2,
+        "expected_count": 2,
+        "reason": "explicit count or agreement of caption and recognition"
+      }
+    },
+    {
+      "caption": "A single camera is visible; the photograph is not developed.",
+      "constraint": {
+        "subject": "camera",
+        "expected_count": 1
+      },
+      "expected_status": "pass",
+      "expectation_provenance": "synthetic linguistic policy control, no image/model inference",
+      "v4": {
+        "status": "pass",
+        "subject": "camera",
+        "observed_count": 1,
+        "expected_count": 1,
+        "reason": "explicit count or agreement of caption and recognition"
+      },
+      "v5": {
+        "status": "pass",
+        "subject": "camera",
+        "observed_count": 1,
+        "expected_count": 1,
+        "reason": "explicit count or agreement of caption and recognition"
+      }
+    }
+  ],
+  "human_camera_review": {
+    "status": "pending",
+    "board_excludes_model_values": true,
+    "chat_disclosed_disagreement": true,
+    "fully_blind_human_review_not_established": true
+  },
+  "human_clock_review": {
+    "status": "received_previously_and_preserved",
+    "counts_hands_keys": [
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        1
+      ]
+    ],
+    "merged_key_is_not_two_detached_objects": true,
+    "aesthetic_preference_not_identity_approval": true
+  },
+  "new_inference_requests": 0,
+  "generation_requests": 0,
+  "model_downloads": 0,
+  "gpu_benchmarks": 0,
+  "service_controls": 0,
+  "next": "Ground a generic subject part/state scope and structural controls before any new judge queries; preserve closed raw and pending independent labels."
+}

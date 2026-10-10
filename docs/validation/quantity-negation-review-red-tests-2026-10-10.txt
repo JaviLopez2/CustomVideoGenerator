@@ -1,0 +1,70 @@
+......................FFFFFF..............FF.                            [100%]
+================================== FAILURES ===================================
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys have not been seen.-2] _
+test\services\test_visual_qa_quantity_negation.py:40: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys are not being shown.-2] _
+test\services\test_visual_qa_quantity_negation.py:40: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys haven't been seen.-2] _
+test\services\test_visual_qa_quantity_negation.py:40: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[Two keys aren't being shown.-2] _
+test\services\test_visual_qa_quantity_negation.py:40: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[There are two absent keys.-2] _
+test\services\test_visual_qa_quantity_negation.py:40: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_count_remains_uncertain_without_replacement_count[There are two missing keys.-2] _
+test\services\test_visual_qa_quantity_negation.py:40: in test_negated_count_remains_uncertain_without_replacement_count
+    assert result["status"] == "uncertain"
+E   AssertionError: assert 'pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass
+_ test_negated_quantity_aliases_are_not_affirmative[Two hands have not been detected.] _
+test\services\test_visual_qa_quantity_negation.py:76: in test_negated_quantity_aliases_are_not_affirmative
+    assert result["status"] == "uncertain" and result.get("observed_count") is None
+E   AssertionError: assert ('pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass)
+_ test_negated_quantity_aliases_are_not_affirmative[There are two absent hands.] _
+test\services\test_visual_qa_quantity_negation.py:76: in test_negated_quantity_aliases_are_not_affirmative
+    assert result["status"] == "uncertain" and result.get("observed_count") is None
+E   AssertionError: assert ('pass' == 'uncertain'
+E     
+E     - uncertain
+E     + pass)
+=========================== short test summary info ===========================
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys have not been seen.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys are not being shown.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys haven't been seen.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[Two keys aren't being shown.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[There are two absent keys.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_count_remains_uncertain_without_replacement_count[There are two missing keys.-2]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_quantity_aliases_are_not_affirmative[Two hands have not been detected.]
+FAILED test/services/test_visual_qa_quantity_negation.py::test_negated_quantity_aliases_are_not_affirmative[There are two absent hands.]
+8 failed, 37 passed in 0.30s
+
+Python exit code: 1

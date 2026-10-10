@@ -1,0 +1,114 @@
+{
+  "protocol": "quantity-negation-closing-checks-1",
+  "checked_utc": "2026-10-10T21:31:19.918762+00:00",
+  "branch": "factory/image-model-routing-modernization",
+  "base_head": "f39b46d3544243f563615e408fe26cc70b935b04",
+  "remote_base_after_fetch": "f39b46d3544243f563615e408fe26cc70b935b04",
+  "ahead_behind_before_commit": [
+    0,
+    0
+  ],
+  "explicit_task_files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "e3c15422bcef4c86568549acd8a4f676c36e48fc3cfb50c316d98e2fcdce54fd"
+    },
+    {
+      "path": "app/services/visual_qa.py",
+      "sha256": "092690cb77ccf3e67d823512f467601a789c207a979a87f8849ff90033a39fdd"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "0d662d4c7f3ed768581a22803f422e2cb7f5713a8723778f58a9f5ad12520e0e"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "f6e70ded015b31df72c7aba02aeae320fa189775d24954350b380127a3729b5d"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "cc185f8695c0ed10083cce28b210498c2c36589fb17523a69882397045124395"
+    },
+    {
+      "path": "test/services/test_visual_qa.py",
+      "sha256": "9e2fead6d7042d13c0fa20be375f62eacfec9d36fb1064aa6953d0e139a798c3"
+    },
+    {
+      "path": "docs/PART_STATE_AND_QUANTITY_AUDIT_REPORT.md",
+      "sha256": "65716e0e3842c6de5753bc4286376cfe94e7de1c73ee3498be4ab315631bda2b"
+    },
+    {
+      "path": "docs/validation/part-state-and-quantity-audit-2026-10-10.json",
+      "sha256": "6ef548969008f44f77e7ff4be346f7f76f266f78960f84d995d93e09c527282b"
+    },
+    {
+      "path": "docs/validation/part-state-and-quantity-audit-recipe-2026-10-10.py",
+      "sha256": "70262f128d288aa7807d555b8fef58fa813839a77839448b96b704ed792e17cb"
+    },
+    {
+      "path": "docs/validation/quantity-negation-final-tests-2026-10-10.txt",
+      "sha256": "598fcba41357c3517a59ac4ef2e2563698090520b8c35dfa0c7a62821f76a7a4"
+    },
+    {
+      "path": "docs/validation/quantity-negation-final-v2-tests-2026-10-10.txt",
+      "sha256": "6be67394b6a99d0c94c03d1021b9f23429e4f7cc9ad005c601d52bce026ef8ac"
+    },
+    {
+      "path": "docs/validation/quantity-negation-green-tests-2026-10-10.txt",
+      "sha256": "ff7369c012f19bdcfe879c0c76b576efa4f71b26c4efc98f91a572548e5dc716"
+    },
+    {
+      "path": "docs/validation/quantity-negation-modifier-red-tests-2026-10-10.txt",
+      "sha256": "b21303f599f3196509276ef4a17cf39f2e8cc0fe4edd1038816faf60b9fccaa6"
+    },
+    {
+      "path": "docs/validation/quantity-negation-red-tests-2026-10-10.txt",
+      "sha256": "9b27cc91433cc58d946ef235c41e57d8908865c00cf998d93fa493a93ae43dc9"
+    },
+    {
+      "path": "docs/validation/quantity-negation-review-green-tests-2026-10-10.txt",
+      "sha256": "b4df2676970a21005f65536040eff2191d1757d703ef1108ce7247c21ec6736f"
+    },
+    {
+      "path": "docs/validation/quantity-negation-review-red-tests-2026-10-10.txt",
+      "sha256": "f272d6d75dd6cb95def10d021da6128b4ce0cf16728858c385e2bab597d6688e"
+    },
+    {
+      "path": "test/services/test_visual_qa_quantity_negation.py",
+      "sha256": "b2cdd6b7a25a2505044e14f0840181fe62eda2ff6b5dfff70c6ad5f4a348e3a6"
+    }
+  ],
+  "source_and_docs_diff_check_exit": 0,
+  "raw_test_logs_preserved": true,
+  "credential_pattern_scan_passed": true,
+  "scan_scope": "added lines, new task files, AGENTS.md and LOCAL_WINDOWS_ACCESS_HANDOFF.md; no values printed",
+  "audit_bindings_reverified": true,
+  "final_tests": {
+    "passed": 384,
+    "seconds": 22.04,
+    "python_exit_code": 0,
+    "new_cases": 47,
+    "log": "docs/validation/quantity-negation-final-v2-tests-2026-10-10.txt"
+  },
+  "review": {
+    "independent_p2": 2,
+    "specific_red_failures": 8,
+    "fixed_and_tested": true
+  },
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_clean": true,
+    "visible_untracked_count": 21,
+    "untracked_inventory_complete": false,
+    "untracked_enumeration_warning": "Git could not open .pytest_cache (permission denied); no changes or access workaround attempted."
+  },
+  "factory_runs_readable": true,
+  "new_generation_requests": 0,
+  "new_inference_requests": 0,
+  "downloads": 0,
+  "gpu_benchmarks": 0,
+  "service_controls": 0,
+  "goal": "active",
+  "next_action": "CPU-only generic part/state scope and retained structural control inventory; camera label pending, no repeat clock review"
+}
