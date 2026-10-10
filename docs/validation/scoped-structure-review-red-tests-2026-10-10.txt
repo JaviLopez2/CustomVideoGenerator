@@ -1,0 +1,28 @@
+...........................FFFF                                          [100%]
+================================== FAILURES ===================================
+__________ test_trailing_png_text_cannot_reach_request[before_iend] ___________
+test\test_scoped_structure_observations.py:179: in test_trailing_png_text_cannot_reach_request
+    assert rows[0]["request_attempted"] is False and rows[0]["transport_status"] == "unavailable"
+E   assert (True is False)
+___________ test_trailing_png_text_cannot_reach_request[after_iend] ___________
+test\test_scoped_structure_observations.py:179: in test_trailing_png_text_cannot_reach_request
+    assert rows[0]["request_attempted"] is False and rows[0]["transport_status"] == "unavailable"
+E   assert (True is False)
+_ test_invalid_response_retains_all_raw_choices_before_validation[multiple_choices] _
+test\test_scoped_structure_observations.py:193: in test_invalid_response_retains_all_raw_choices_before_validation
+    assert rows[0]["raw_choices"] == saved[0]["raw_choices"] == reply["choices"]
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'raw_choices'
+_ test_invalid_response_retains_all_raw_choices_before_validation[numeric_reasoning] _
+test\test_scoped_structure_observations.py:193: in test_invalid_response_retains_all_raw_choices_before_validation
+    assert rows[0]["raw_choices"] == saved[0]["raw_choices"] == reply["choices"]
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'raw_choices'
+=========================== short test summary info ===========================
+FAILED test/test_scoped_structure_observations.py::test_trailing_png_text_cannot_reach_request[before_iend]
+FAILED test/test_scoped_structure_observations.py::test_trailing_png_text_cannot_reach_request[after_iend]
+FAILED test/test_scoped_structure_observations.py::test_invalid_response_retains_all_raw_choices_before_validation[multiple_choices]
+FAILED test/test_scoped_structure_observations.py::test_invalid_response_retains_all_raw_choices_before_validation[numeric_reasoning]
+4 failed, 27 passed in 0.65s
+
+Python exit code: 1

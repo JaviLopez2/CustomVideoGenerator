@@ -1,0 +1,346 @@
+{
+  "protocol": "scoped-structure-state-probe-plan-1",
+  "declared_utc": "2026-10-10T21:44:04.572439+00:00",
+  "base_head": "658e767d3a1a20425c3d6bb4cbc64f4bfeb4db05",
+  "stage": "prepared_cpu_not_executed",
+  "budget": {
+    "requests_per_model": 3,
+    "maximum_requests_total": 6,
+    "automatic_retries": 0,
+    "generation_requests": 0,
+    "downloads": 0,
+    "max_tokens": 512,
+    "temperature": 0,
+    "thinking": false,
+    "http_timeout_seconds": 60,
+    "context": 8192,
+    "min_image_tokens": 1024,
+    "max_image_tokens": 1536,
+    "port": 8092,
+    "owned_sequential_servers_only": true,
+    "stop_each_cohort_at_first_invalid_or_unavailable": true
+  },
+  "models": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "cases": [
+    {
+      "case_id": "identical_key_control",
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\image_00.png",
+        "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\image_00.png",
+        "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "scope": {
+        "subject": "silver key",
+        "protected_structure": "The complete key's inherent physical parts and the connections between them.",
+        "allowed_state_changes": []
+      }
+    },
+    {
+      "case_id": "human_reported_key_fusion",
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\image_00.png",
+        "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\image_01.png",
+        "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "scope": {
+        "subject": "silver key",
+        "protected_structure": "The complete key's inherent physical parts and the connections between them.",
+        "allowed_state_changes": []
+      }
+    },
+    {
+      "case_id": "camera_body_with_declared_output_state",
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_00.png",
+        "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+        "size": [
+          800,
+          800
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_01.png",
+        "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "scope": {
+        "subject": "instant camera",
+        "protected_structure": "The camera body and its attached components, excluding separately emitted photographic output.",
+        "allowed_state_changes": [
+          "a blank white photo sheet emerging from the front slot"
+        ]
+      }
+    }
+  ],
+  "case_order": [
+    "identical_key_control",
+    "human_reported_key_fusion",
+    "camera_body_with_declared_output_state"
+  ],
+  "offline_labels_not_sent": [
+    {
+      "case_id": "identical_key_control",
+      "structure_expectation": "not_observed",
+      "origin": "byte-identical prepared PNG control, not physical identity"
+    },
+    {
+      "case_id": "human_reported_key_fusion",
+      "structure_expectation": "observed",
+      "origin": "direct user's image3 fusion statement; exploratory selected case, not a held-out label",
+      "connection_expectation": "fusion_reported",
+      "numeric_keys_are_not_two_detached_objects": true
+    },
+    {
+      "case_id": "camera_body_with_declared_output_state",
+      "structure_expectation": null,
+      "origin": "camera human review pending; assistant/model outputs not independent gold"
+    }
+  ],
+  "scope_origin": "manual experimental mapping of retained target and scene state; no live planner schema added",
+  "assets_manifest": {
+    "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+    "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+  },
+  "response_schema": {
+    "type": "object",
+    "properties": {
+      "reference_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "candidate_subject_presence": {
+        "type": "string",
+        "enum": [
+          "present",
+          "absent",
+          "uncertain"
+        ]
+      },
+      "protected_structure_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "structural_connections_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain"
+        ]
+      },
+      "allowed_state_change": {
+        "type": "string",
+        "enum": [
+          "observed",
+          "not_observed",
+          "uncertain",
+          "not_applicable"
+        ]
+      },
+      "structure_evidence": {
+        "type": "string"
+      },
+      "state_evidence": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "reference_subject_presence",
+      "candidate_subject_presence",
+      "protected_structure_change",
+      "structural_connections_change",
+      "allowed_state_change",
+      "structure_evidence",
+      "state_evidence"
+    ],
+    "additionalProperties": false
+  },
+  "observer": {
+    "path": "scripts/scoped_structure_observations.py",
+    "sha256": "c2559fb6b1e2d5ab889ba2b2ff500fc6e4975661bdb5eec219283c57b9dd5e49",
+    "version": "scoped-structure-state-observations-1"
+  },
+  "bindings": {
+    "scripts/scoped_structure_observations.py": {
+      "path": "scripts/scoped_structure_observations.py",
+      "sha256": "c2559fb6b1e2d5ab889ba2b2ff500fc6e4975661bdb5eec219283c57b9dd5e49"
+    },
+    "test/test_scoped_structure_observations.py": {
+      "path": "test/test_scoped_structure_observations.py",
+      "sha256": "47c1205bff89c9ce233c218da27b9e46943f1c261af184128a52cda91c112b2d"
+    },
+    "scripts/paired_shape_observations.py": {
+      "path": "scripts/paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    "scripts/paired_shape_preflight.py": {
+      "path": "scripts/paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    "scripts/prepare_visual_regions.py": {
+      "path": "scripts/prepare_visual_regions.py",
+      "sha256": "5e876b7fd44102900707a54daadbdbaf97cad112372709a5682cf7caebb0488c"
+    },
+    "scripts/prepare_profiled_visual_inputs.py": {
+      "path": "scripts/prepare_profiled_visual_inputs.py",
+      "sha256": "dc79a073f2f983b0b95b168f8ee85f7f65984070c19ce97aad2600df69f88d23"
+    },
+    "scripts/observe_paired_shape.py": {
+      "path": "scripts/observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    "scripts/evaluate_multimodal_judges.py": {
+      "path": "scripts/evaluate_multimodal_judges.py",
+      "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+    },
+    "docs/validation/profiled-camera-shape-recipe-2026-10-10.py": {
+      "path": "docs/validation/profiled-camera-shape-recipe-2026-10-10.py",
+      "sha256": "c323312059569f3c91c4dd08bbe9faf0d16fa85fce4ec8f9b237091819aca616"
+    },
+    "docs/validation/profiled-camera-shape-plan-2026-10-10.json": {
+      "path": "docs/validation/profiled-camera-shape-plan-2026-10-10.json",
+      "sha256": "2fd9a264b1928a95337d5e7b5fbbf5fb9971c2944380cbdcf685b5699a807b67"
+    },
+    "docs/validation/retained-camera-control-audit-2026-10-09.json": {
+      "path": "docs/validation/retained-camera-control-audit-2026-10-09.json",
+      "sha256": "4b42f4a20b18ccae31d40e052c6e68bba2c424e98865e464f09eb80709b1d65c"
+    },
+    "docs/validation/profiled-camera-input-plan-v2-2026-10-10.json": {
+      "path": "docs/validation/profiled-camera-input-plan-v2-2026-10-10.json",
+      "sha256": "52c5321236d9732f5b5922991ce5bcee4f3da8fb6ba75175d408fb701c4c9f47"
+    },
+    "docs/validation/profiled-camera-input-result-v2-2026-10-10.json": {
+      "path": "docs/validation/profiled-camera-input-result-v2-2026-10-10.json",
+      "sha256": "353ea8aca9a488dcd9a66fd7eb4734a58d98801a297deebeee7f01c27b9a2cff"
+    },
+    "docs/validation/camera-independent-review-preparation-2026-10-10.json": {
+      "path": "docs/validation/camera-independent-review-preparation-2026-10-10.json",
+      "sha256": "9d01129929c8b713be811c2bd8ce59505bb91d74d78e50879064460c7e1fb1ea"
+    },
+    "docs/validation/visual-geometry-human-review-2026-10-08.json": {
+      "path": "docs/validation/visual-geometry-human-review-2026-10-08.json",
+      "sha256": "9d40d80a3fb00dd95894c729840d5e197c7795fe7bb5a881ee1ed3ce61faf7f3"
+    },
+    "docs/validation/clock-visible-count-human-review-2026-10-10.json": {
+      "path": "docs/validation/clock-visible-count-human-review-2026-10-10.json",
+      "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+    },
+    "docs/validation/visual-qa-dataset-2026-10-08.json": {
+      "path": "docs/validation/visual-qa-dataset-2026-10-08.json",
+      "sha256": "87d5f99a2bdf258012aec080c84f0df4ac89ad1ba39d118d3abe4f52db44d37f"
+    },
+    "docs/MUG_MASKED_EDIT_EXECUTION.md": {
+      "path": "docs/MUG_MASKED_EDIT_EXECUTION.md",
+      "sha256": "7233520e1407bdd78ca67214eea22db6d3f1695fe76300824d224440ac316a51"
+    },
+    "docs/MUG_MASKED_NO_REFERENCE_REPORT.md": {
+      "path": "docs/MUG_MASKED_NO_REFERENCE_REPORT.md",
+      "sha256": "9c615cd3ddd04b0d393ea1a07fe48e1474c9afb66697c77f9a86229509406d93"
+    },
+    "docs/validation/scoped-structure-final-tests-2026-10-10.txt": {
+      "path": "docs/validation/scoped-structure-final-tests-2026-10-10.txt",
+      "sha256": "b9eadf0e1ec7516792c5a80765b83e52c5814dd172f575a5bb2b763b2492121c"
+    }
+  },
+  "inventory": {
+    "path": "docs\\validation\\scoped-structure-inventory-2026-10-10.json",
+    "sha256": "772ae3377ae6ff79c76a0a807933f887b887115cce46c5e31e844d95b60dce79"
+  },
+  "recipe": {
+    "path": "docs\\validation\\scoped-structure-preparation-recipe-2026-10-10.py",
+    "sha256": "137751124f95776b23d89b70bb6fff36667b575c1d56256bfd92f4178150cb51"
+  },
+  "limits": [
+    "New explicit scope and 512-token response budget; not a causal prompt-only ablation of older generic256 results.",
+    "Selection follows prior raw/model/human observations; no general accuracy, holdout or blind human review claimed.",
+    "A completed structural-change enum is not proof of specifically detected fusion; inspect literal evidence independently.",
+    "No identity, admission, automatic rejection or routing authority; old cohorts, labels and raw remain unchanged.",
+    "No independent structural defect of a second family is currently established."
+  ],
+  "request_bindings": [
+    {
+      "case_id": "identical_key_control",
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "request_sha256": "6e7fdee62e660bbc6b636f39c84226d6ca5980ad5539106d621087e99287b4ca",
+      "prompt": "Compare image 1 (reference) and image 2 (candidate) using this declared scope: {\"allowed_state_changes\":[],\"protected_structure\":\"The complete key's inherent physical parts and the connections between them.\",\"subject\":\"silver key\"}. Inspect the visible form of the protected physical structure and connections between its principal parts. Describe visible structural evidence rather than relying on object names. A major structural change is a missing, added, fused or substantially deformed principal part or changed connection between principal parts. Minor local size differences alone do not establish a major change. Separately report visible change of only the declared allowed states; use not_applicable when none are declared. An allowed state never excuses a structural defect. If a difference cannot be assigned confidently to protected structure versus allowed state, report uncertain rather than ignoring it. Ignore lighting, color, surface texture, lettering and background. Perspective, scale, occlusion or cropping that prevents checking requires uncertainty. Report subject presence in each image, protected_structure_change and structural_connections_change as observed, not_observed or uncertain, and allowed_state_change separately. Give short structure_evidence and state_evidence. A connection change implies a structural change. not_observed does not prove identity or complete preservation. If either subject is not established, both structural comparisons must be uncertain, as must state comparison when states are declared. Return only the specified JSON object.",
+      "ordered_inputs": [
+        {
+          "role": "reference",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        },
+        {
+          "role": "candidate",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        }
+      ]
+    },
+    {
+      "case_id": "human_reported_key_fusion",
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "request_sha256": "62b36ca707a84d30aeebcd02fca392751dd745ac59e996a6c515dab4d9db6323",
+      "prompt": "Compare image 1 (reference) and image 2 (candidate) using this declared scope: {\"allowed_state_changes\":[],\"protected_structure\":\"The complete key's inherent physical parts and the connections between them.\",\"subject\":\"silver key\"}. Inspect the visible form of the protected physical structure and connections between its principal parts. Describe visible structural evidence rather than relying on object names. A major structural change is a missing, added, fused or substantially deformed principal part or changed connection between principal parts. Minor local size differences alone do not establish a major change. Separately report visible change of only the declared allowed states; use not_applicable when none are declared. An allowed state never excuses a structural defect. If a difference cannot be assigned confidently to protected structure versus allowed state, report uncertain rather than ignoring it. Ignore lighting, color, surface texture, lettering and background. Perspective, scale, occlusion or cropping that prevents checking requires uncertainty. Report subject presence in each image, protected_structure_change and structural_connections_change as observed, not_observed or uncertain, and allowed_state_change separately. Give short structure_evidence and state_evidence. A connection change implies a structural change. not_observed does not prove identity or complete preservation. If either subject is not established, both structural comparisons must be uncertain, as must state comparison when states are declared. Return only the specified JSON object.",
+      "ordered_inputs": [
+        {
+          "role": "reference",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        },
+        {
+          "role": "candidate",
+          "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+        }
+      ]
+    },
+    {
+      "case_id": "camera_body_with_declared_output_state",
+      "scope_sha256": "8128f12f72089f7521f31a42ad75d696cd032b04e1451448aaf959cd304052da",
+      "request_sha256": "e1c05976bde63d9e5ec2cc15679f56b86e567509b65877b7c87dd38058a9c7f6",
+      "prompt": "Compare image 1 (reference) and image 2 (candidate) using this declared scope: {\"allowed_state_changes\":[\"a blank white photo sheet emerging from the front slot\"],\"protected_structure\":\"The camera body and its attached components, excluding separately emitted photographic output.\",\"subject\":\"instant camera\"}. Inspect the visible form of the protected physical structure and connections between its principal parts. Describe visible structural evidence rather than relying on object names. A major structural change is a missing, added, fused or substantially deformed principal part or changed connection between principal parts. Minor local size differences alone do not establish a major change. Separately report visible change of only the declared allowed states; use not_applicable when none are declared. An allowed state never excuses a structural defect. If a difference cannot be assigned confidently to protected structure versus allowed state, report uncertain rather than ignoring it. Ignore lighting, color, surface texture, lettering and background. Perspective, scale, occlusion or cropping that prevents checking requires uncertainty. Report subject presence in each image, protected_structure_change and structural_connections_change as observed, not_observed or uncertain, and allowed_state_change separately. Give short structure_evidence and state_evidence. A connection change implies a structural change. not_observed does not prove identity or complete preservation. If either subject is not established, both structural comparisons must be uncertain, as must state comparison when states are declared. Return only the specified JSON object.",
+      "ordered_inputs": [
+        {
+          "role": "reference",
+          "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff"
+        },
+        {
+          "role": "candidate",
+          "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178"
+        }
+      ]
+    }
+  ]
+}

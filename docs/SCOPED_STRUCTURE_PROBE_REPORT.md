@@ -1,0 +1,47 @@
+# Estructura protegida y estado permitido — 2026-10-10
+
+**Declarar por separado estructura y estado no ha bastado para detectar la fusión de la llave.** Qwen3.5 niega el cambio; Qwen3-VL se abstiene y no describe explícitamente dos tallos unidos por un cabezal. Ambos son consistentes en el control de imagen idéntica. La cámara permanece sin etiqueta estructural humana, así que no se atribuyen aciertos o falsos positivos. Ningún juez queda aprobado para geometría.
+
+Base `658e767d3a1a20425c3d6bb4cbc64f4bfeb4db05`, worktree/rama experimental, inicio limpio y diez worktrees comprobados. Esta entrega continúa la [auditoría de contratos](PART_STATE_AND_QUANTITY_AUDIT_REPORT.md); conserva los resultados, labels y protocolos anteriores.
+
+## Alcance declarado antes de consultar
+
+Nuevo módulo aislado `scripts/scoped_structure_observations.py`; el observador genérico anterior, app y gates permanecen intactos. Un scope explícito contiene sujeto, estructura protegida y una lista de estados permitidos. El modelo informa por separado cambio de estructura, cambio de conexiones y estado permitido, más evidencia literal. No hay excepciones por nombre de objeto ni reglas que conviertan palabras del texto en aprobación. Una conexión cambiada implica estructura cambiada; el estado permitido nunca excusa un defecto. Presencia insuficiente, respuestas incoherentes o incompletas se rechazan como evidencia. Toda salida diagnóstica mantiene `uncertain`, sin identidad, admisión o veto automático.
+
+La política de cámara protege cuerpo/componentes conectados y separa la salida fotográfica emitida. Su estado literal procede del prompt real de la escena 3: «a blank white photo sheet emerging from the front slot». Es un scope experimental manual ligado a esa evidencia, **no un nuevo campo generado por el planner ni un contrato QA activado en MPT**. La escena antigua tiene `reference_need=none`, `reference_target=output`; no se reescribe como una escena de identidad crítica.
+
+[Inventario verificado](validation/scoped-structure-inventory-2026-10-10.json): siete PNG únicos de llaves. El cambio total B y la fusión de reloj 3 son imágenes distintas, pero ambos defectos humanos pertenecen a la familia de llaves. La cámara aporta otra familia con revisión pendiente. La fotografía recortada y los controles estructurales de taza cerrados como inutilizables siguen excluidos; la aprobación de la zona de máscara no era aprobación del resultado. No se inventa un negativo de otra familia.
+
+Se limpian únicamente metadatos de dos fullframes RGB8 de llave, con el helper nativo publicado: mismo modo, dimensiones y píxeles completos, sin resize, recorte espacial, overlays o cambio de color. Los PNG reconstruidos coinciden exactamente. La comprobación rectangular no acredita por sí sola cobertura física. Cámara reutiliza su preparación ICC/alpha declarada, con reconstrucción transitiva, fuentes Factory, selección real de referencia y versiones ligadas; no conserva todos los píxeles originales transformados. [Recipe CPU](validation/scoped-structure-preparation-recipe-2026-10-10.py), [preflight](validation/scoped-structure-preflight-2026-10-10.json).
+
+[Plan fijado](validation/scoped-structure-plan-2026-10-10.json) y [plan de ejecución](validation/scoped-structure-execution-plan-2026-10-10.json): tres pares por modelo, en orden idéntico/llave fusionada/cámara; seis consultas máximas, cero retries, generaciones o descargas. Inputs, roles, scope, prompt, schema y request están fijados por SHA. Las valoraciones y números de revisión permanecen offline. La selección sigue a resultados y revisiones previos; no es holdout ni una nueva validación humana ciega. El `stage=prepared_cpu_not_executed` del plan congelado describe su estado al declararse; los resultados siguientes acreditan la ejecución posterior.
+
+## Resultado real
+
+| Par | Qwen3.5: estructura / conexiones | Qwen3-VL: estructura / conexiones | Estado permitido | Interpretación limitada |
+|---|---|---|---|---|
+| PNG de llave idéntico | not_observed / not_observed | not_observed / not_observed | not_applicable en ambos | Dos consistencias sobre una misma imagen; no identidad física aprobada |
+| Llave 1 → llave fusionada 3 | not_observed / not_observed | uncertain / uncertain | not_applicable en ambos | Q35 contradice la fusión humana; VL se abstiene, sin detección explícita |
+| Cámara → cámara imprimiendo | not_observed / not_observed | uncertain / uncertain | observed en ambos | Pista funcional reportada; estructura sin gold humano independiente |
+
+Qwen3.5 afirma una sola pieza continua y niega partes añadidas o fusionadas. Qwen3-VL describe diferencias de aro y unión con el tallo, dice que podrían constituir un cambio y se abstiene; no describe los dos tallos convergentes señalados por el usuario. No se concede detección de fusión por una categoría, una descripción parcial o la abstención. La preferencia humana por otra llave y los recuentos anteriores siguen separados de identidad y de este resultado.
+
+En cámara, Qwen3.5 separa el papel del cuerpo; Qwen3-VL observa el estado permitido pero conserva incertidumbre sobre la unión del papel y el cuerpo. No hay nuevo defecto del cuerpo acreditado ni revisión humana completamente ciega tras haber descrito el desacuerdo en el chat. El observador genérico anterior conserva sus categorías históricas; esta metodología nueva no las sustituye ni rescata retrospectivamente.
+
+[Raw Qwen3.5](validation/scoped-structure-qwen35-2026-10-10.json), [raw Qwen3-VL](validation/scoped-structure-qwen3vl-2026-10-10.json), [análisis ligado](validation/scoped-structure-analysis-2026-10-10.json). Seis respuestas `stop`, cero reasoning; máximos 512 tokens, temperatura 0, contexto 8192 e imagen 1024–1536 tokens, un servidor propio 8092 por vez. Runtime b11497, dos ZIP y 54 DLL/EXE verificados; pesos y projector existentes rehashados por cohorte. No se cambia el modelo configurado de MPT.
+
+Preparación de payload por par: 0,039–0,111 s. Preflight transitivo + HTTP + parsing: 7,375–7,678 s en Q35 y 6,768–8,942 s en VL; carga propia 4,041 s en ambos. No son latencia del QA completo de MPT ni una comparación causal de velocidad. Cached prompt tokens Q35 0/0/0 y VL 0/1315/26. Cambian scope, schema y budget de respuesta respecto al protocolo genérico de 256 tokens; no se aísla causalmente un cambio de prompt. No se mide pico de VRAM ni p95.
+
+## Pruebas y cierre
+
+31 regresiones nuevas, CPU: scopes genéricos, estado sin dispensar estructura, conexiones incoherentes, ausencia de sujeto, outputs sin admisión, SHA/orden de bytes, aislamiento de etiquetas/metadata, replies truncados/reasoning/JSON duplicado, no retries, snapshot de scope, cambios de archivos y conservación de raw parcial. [RED inicial](validation/scoped-structure-red-tests-2026-10-10.txt): 27 fallos por API aún ausente, 0,30 s, exit 1. [GREEN inicial](validation/scoped-structure-green-tests-2026-10-10.txt): 61 pasan, 0,30 s, exit 0.
+
+La revisión independiente encontró dos P2: texto PNG posterior a IDAT y pérdida de raw en respuestas con varios choices o reasoning numérico. [Cuatro RED específicos](validation/scoped-structure-review-red-tests-2026-10-10.txt): 4 failed / 27 passed, 0,65 s, exit 1. Corrección: solo chunks IHDR/IDAT/IEND con fin exacto y píxeles cargados, sin trailing data; guardar `raw_choices` antes de validar o resumir. No se repara la respuesta del modelo.
+
+**[Final: 147 passed, 2,10 s, exit 0, sin avisos](validation/scoped-structure-final-tests-2026-10-10.txt)**, 31 nuevos y 116 anteriores. Python MPT `-B -m pytest -q test/test_scoped_structure_observations.py test/test_paired_shape_observations.py test/test_paired_shape_preflight.py test/test_paired_shape_runner.py test/test_prepare_visual_regions.py --tb=short`, `MPT_RUN_INTEGRATION_TESTS=0`. La preparación CPU y el verify-only reconstruyen inputs reales antes de abrir servidores; el [recipe de ejecución](validation/scoped-structure-execution-recipe-2026-10-10.py) repite la verificación antes de cada HTTP, guarda prefijos y cierra únicamente el proceso propio.
+
+[Cierre de recursos](validation/scoped-structure-resource-closing-2026-10-10.json): PID 20944 y 24688 ausentes (`OpenProcess`, error 87), 8092 libre; RAM 17,94 GiB y GPU 1139/12288 MiB, 6%. 8080 cerrado, bridge8090 HTTP404 solo liveness, Comfy8188 HTTP200. Sin controlar servicios compartidos, sin generaciones, descargas, nuevos pesos, dependencias, workflows, routing o app/gates/estable modificados. [Checks finales](validation/scoped-structure-closing-checks-2026-10-10.json); SHA de entrega mediante Git/origin. No se atribuyen los 384 tests del checkpoint anterior a este módulo nuevo.
+
+## Continuación autónoma
+
+Cerrar esta cohorte con su fallo conservado. Preparar en CPU un contraste fullframe/ROI del par fusionado con cajas de origen y cobertura verificadas, margen uniforme y el mismo scope/prompt/schema de esta entrega. Declarar la metodología antes de cualquier consulta; ROI cambia contexto y resolución efectiva, sin probar por sí solo atención o identidad. No añadir la respuesta esperada al prompt ni retunar los datos cerrados. La revisión de cámara sigue pendiente, sin pedir de nuevo la de relojes. Mantener como pendientes calibración de error/abstención, otra familia con defectos estructurales humanos y latencia QA completa. Objetivo activo; ningún juez seleccionado para geometría ni intervención rutinaria requerida para la siguiente preparación CPU.

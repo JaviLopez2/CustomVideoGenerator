@@ -1,0 +1,130 @@
+{
+  "protocol": "scoped-structure-closing-checks-1",
+  "checked_utc": "2026-10-10T21:58:18.686331+00:00",
+  "base_head": "658e767d3a1a20425c3d6bb4cbc64f4bfeb4db05",
+  "origin_base_after_fetch": "658e767d3a1a20425c3d6bb4cbc64f4bfeb4db05",
+  "branch": "factory/image-model-routing-modernization",
+  "ahead_behind_before_commit": [
+    0,
+    0
+  ],
+  "previous_goal_turn_classification": "progress: published quantity fix and contract audit at658e767",
+  "task_files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "409880d3457f08d671de5305c605810a32d3351492f0d67c0585f3dedab9ee22"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "dda2ef79a2448b4ecc8b69b90c6c6f5f116d3809c04f336f0a6d7e044f9f79f0"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "584737bb479d3dde750c1bdb1cdcb8bc1d11e8197eff019874a1bae3fb0bace3"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "4d25cfc2181a12dff6fecac6e95241b6a52bebb9fd3cd4e4b99f24696c8aba6b"
+    },
+    {
+      "path": "docs/SCOPED_STRUCTURE_PROBE_REPORT.md",
+      "sha256": "10695ae1cfb4ac18d8c53bbab4479396be6c8ce509e6dbbb1fa3b47745ea1328"
+    },
+    {
+      "path": "docs/validation/scoped-structure-analysis-2026-10-10.json",
+      "sha256": "e1dcb9665bbd9261a9db64d09c420beee48c7880e1f64220f406c5a786f71d1d"
+    },
+    {
+      "path": "docs/validation/scoped-structure-execution-plan-2026-10-10.json",
+      "sha256": "4263063cc2166218da84941a36fffe5ac924036e8cde87391b153c0f5d558cda"
+    },
+    {
+      "path": "docs/validation/scoped-structure-execution-recipe-2026-10-10.py",
+      "sha256": "9f405162304bf90bc8ed91ac5fb1cd99c8b1a0a416c9fbccce7de5d146a06595"
+    },
+    {
+      "path": "docs/validation/scoped-structure-final-tests-2026-10-10.txt",
+      "sha256": "b9eadf0e1ec7516792c5a80765b83e52c5814dd172f575a5bb2b763b2492121c"
+    },
+    {
+      "path": "docs/validation/scoped-structure-green-tests-2026-10-10.txt",
+      "sha256": "e21b4ec61dcbd124e27fd679ed6ae1a9b24e2dc7f4ba57f4b7e8ce0c93f77e68"
+    },
+    {
+      "path": "docs/validation/scoped-structure-inventory-2026-10-10.json",
+      "sha256": "772ae3377ae6ff79c76a0a807933f887b887115cce46c5e31e844d95b60dce79"
+    },
+    {
+      "path": "docs/validation/scoped-structure-plan-2026-10-10.json",
+      "sha256": "37e4b5d7017fcfbb55e668ad32d8797d18fb2d1ab759e0caed909709e7371cdf"
+    },
+    {
+      "path": "docs/validation/scoped-structure-preflight-2026-10-10.json",
+      "sha256": "07818c01f79f2abce91810692e34410df99490074284cc669a352c327d1411ac"
+    },
+    {
+      "path": "docs/validation/scoped-structure-preparation-recipe-2026-10-10.py",
+      "sha256": "137751124f95776b23d89b70bb6fff36667b575c1d56256bfd92f4178150cb51"
+    },
+    {
+      "path": "docs/validation/scoped-structure-qwen35-2026-10-10.json",
+      "sha256": "33774a14531d1a6a0748ae2a76b7488adf302cf5b363f8bddfbbae58f2affb38"
+    },
+    {
+      "path": "docs/validation/scoped-structure-qwen3vl-2026-10-10.json",
+      "sha256": "c856d679ca22dbe826291a7f5161c3a77e26160f89d2a82b7974a3c665c4b50c"
+    },
+    {
+      "path": "docs/validation/scoped-structure-red-tests-2026-10-10.txt",
+      "sha256": "3f1b453352c0277cf7f0cb5732a060dacccd23912ff824517dd1936d203caf3e"
+    },
+    {
+      "path": "docs/validation/scoped-structure-resource-closing-2026-10-10.json",
+      "sha256": "dc7b749598196ccea9e5a7eda13caae1b0f1456eb5f9a3a9ee2a2b79c7ee1516"
+    },
+    {
+      "path": "docs/validation/scoped-structure-review-red-tests-2026-10-10.txt",
+      "sha256": "e84b868aaee845758ba4395ab05d6fa5eb9245f9973f6a27979a4635310eb125"
+    },
+    {
+      "path": "scripts/scoped_structure_observations.py",
+      "sha256": "c2559fb6b1e2d5ab889ba2b2ff500fc6e4975661bdb5eec219283c57b9dd5e49"
+    },
+    {
+      "path": "test/test_scoped_structure_observations.py",
+      "sha256": "47c1205bff89c9ce233c218da27b9e46943f1c261af184128a52cda91c112b2d"
+    }
+  ],
+  "credential_pattern_scan_passed": true,
+  "json_and_python_ast_valid": true,
+  "all_plan_execution_analysis_code_and_input_bindings_reverified": true,
+  "app_and_legacy_code_unchanged": true,
+  "tests": {
+    "passed": 147,
+    "new_cases": 31,
+    "seconds": 2.1,
+    "python_exit_code": 0,
+    "log": "docs/validation/scoped-structure-final-tests-2026-10-10.txt"
+  },
+  "review": {
+    "independent_p2": 2,
+    "specific_red_failures": 4,
+    "fixed_and_tested": true
+  },
+  "model_requests_completed": 6,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "macro_gpu_benchmarks": 0,
+  "shared_service_controls": 0,
+  "resource_closing": "docs/validation/scoped-structure-resource-closing-2026-10-10.json",
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_clean": true,
+    "untracked_not_modified_or_enumerated": true
+  },
+  "goal": "active",
+  "camera_human_review": "pending",
+  "next_action": "CPU source and coverage preflight of fixed fullframe/ROI fusion pair; no retuning closed cohort or approving geometry judge"
+}

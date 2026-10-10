@@ -1,0 +1,64 @@
+{
+  "protocol": "scoped-structure-preparation-preflight-1",
+  "checked_utc": "2026-10-10T21:44:05.083381+00:00",
+  "plan": {
+    "path": "docs\\validation\\scoped-structure-plan-2026-10-10.json",
+    "sha256": "37e4b5d7017fcfbb55e668ad32d8797d18fb2d1ab759e0caed909709e7371cdf"
+  },
+  "key_pngs_reconstructed_exactly": true,
+  "original_sources_rehashed": true,
+  "camera_transitive_preflight_passed": true,
+  "ordered_request_bindings": [
+    {
+      "case_id": "identical_key_control",
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "request_sha256": "6e7fdee62e660bbc6b636f39c84226d6ca5980ad5539106d621087e99287b4ca",
+      "prompt": "Compare image 1 (reference) and image 2 (candidate) using this declared scope: {\"allowed_state_changes\":[],\"protected_structure\":\"The complete key's inherent physical parts and the connections between them.\",\"subject\":\"silver key\"}. Inspect the visible form of the protected physical structure and connections between its principal parts. Describe visible structural evidence rather than relying on object names. A major structural change is a missing, added, fused or substantially deformed principal part or changed connection between principal parts. Minor local size differences alone do not establish a major change. Separately report visible change of only the declared allowed states; use not_applicable when none are declared. An allowed state never excuses a structural defect. If a difference cannot be assigned confidently to protected structure versus allowed state, report uncertain rather than ignoring it. Ignore lighting, color, surface texture, lettering and background. Perspective, scale, occlusion or cropping that prevents checking requires uncertainty. Report subject presence in each image, protected_structure_change and structural_connections_change as observed, not_observed or uncertain, and allowed_state_change separately. Give short structure_evidence and state_evidence. A connection change implies a structural change. not_observed does not prove identity or complete preservation. If either subject is not established, both structural comparisons must be uncertain, as must state comparison when states are declared. Return only the specified JSON object.",
+      "ordered_inputs": [
+        {
+          "role": "reference",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        },
+        {
+          "role": "candidate",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        }
+      ]
+    },
+    {
+      "case_id": "human_reported_key_fusion",
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "request_sha256": "62b36ca707a84d30aeebcd02fca392751dd745ac59e996a6c515dab4d9db6323",
+      "prompt": "Compare image 1 (reference) and image 2 (candidate) using this declared scope: {\"allowed_state_changes\":[],\"protected_structure\":\"The complete key's inherent physical parts and the connections between them.\",\"subject\":\"silver key\"}. Inspect the visible form of the protected physical structure and connections between its principal parts. Describe visible structural evidence rather than relying on object names. A major structural change is a missing, added, fused or substantially deformed principal part or changed connection between principal parts. Minor local size differences alone do not establish a major change. Separately report visible change of only the declared allowed states; use not_applicable when none are declared. An allowed state never excuses a structural defect. If a difference cannot be assigned confidently to protected structure versus allowed state, report uncertain rather than ignoring it. Ignore lighting, color, surface texture, lettering and background. Perspective, scale, occlusion or cropping that prevents checking requires uncertainty. Report subject presence in each image, protected_structure_change and structural_connections_change as observed, not_observed or uncertain, and allowed_state_change separately. Give short structure_evidence and state_evidence. A connection change implies a structural change. not_observed does not prove identity or complete preservation. If either subject is not established, both structural comparisons must be uncertain, as must state comparison when states are declared. Return only the specified JSON object.",
+      "ordered_inputs": [
+        {
+          "role": "reference",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        },
+        {
+          "role": "candidate",
+          "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+        }
+      ]
+    },
+    {
+      "case_id": "camera_body_with_declared_output_state",
+      "scope_sha256": "8128f12f72089f7521f31a42ad75d696cd032b04e1451448aaf959cd304052da",
+      "request_sha256": "e1c05976bde63d9e5ec2cc15679f56b86e567509b65877b7c87dd38058a9c7f6",
+      "prompt": "Compare image 1 (reference) and image 2 (candidate) using this declared scope: {\"allowed_state_changes\":[\"a blank white photo sheet emerging from the front slot\"],\"protected_structure\":\"The camera body and its attached components, excluding separately emitted photographic output.\",\"subject\":\"instant camera\"}. Inspect the visible form of the protected physical structure and connections between its principal parts. Describe visible structural evidence rather than relying on object names. A major structural change is a missing, added, fused or substantially deformed principal part or changed connection between principal parts. Minor local size differences alone do not establish a major change. Separately report visible change of only the declared allowed states; use not_applicable when none are declared. An allowed state never excuses a structural defect. If a difference cannot be assigned confidently to protected structure versus allowed state, report uncertain rather than ignoring it. Ignore lighting, color, surface texture, lettering and background. Perspective, scale, occlusion or cropping that prevents checking requires uncertainty. Report subject presence in each image, protected_structure_change and structural_connections_change as observed, not_observed or uncertain, and allowed_state_change separately. Give short structure_evidence and state_evidence. A connection change implies a structural change. not_observed does not prove identity or complete preservation. If either subject is not established, both structural comparisons must be uncertain, as must state comparison when states are declared. Return only the specified JSON object.",
+      "ordered_inputs": [
+        {
+          "role": "reference",
+          "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff"
+        },
+        {
+          "role": "candidate",
+          "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178"
+        }
+      ]
+    }
+  ],
+  "new_model_requests": 0,
+  "generation_requests": 0,
+  "admission_allowed": false
+}

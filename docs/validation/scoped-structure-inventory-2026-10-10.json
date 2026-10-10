@@ -1,0 +1,295 @@
+{
+  "protocol": "retained-structure-state-control-inventory-1",
+  "checked_utc": "2026-10-10T21:44:04.567454+00:00",
+  "base_head": "658e767d3a1a20425c3d6bb4cbc64f4bfeb4db05",
+  "key_images": [
+    {
+      "case_id": "valid_cloth_edit",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "size": [
+        768,
+        1376
+      ],
+      "mode": "RGB",
+      "metadata_keys": [
+        "prompt"
+      ],
+      "alpha_extrema": null,
+      "family": "key",
+      "metadata_not_forwarded_to_new_requests": true
+    },
+    {
+      "case_id": "continuity_factual_768",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\continuity_factual_768\\result.png",
+      "sha256": "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+      "size": [
+        768,
+        1376
+      ],
+      "mode": "RGB",
+      "metadata_keys": [
+        "prompt"
+      ],
+      "alpha_extrema": null,
+      "family": "key",
+      "metadata_not_forwarded_to_new_requests": true
+    },
+    {
+      "case_id": "z_image_t2i_768",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\z_image_t2i_768\\openai-image-644f7e2133d4.png",
+      "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+      "size": [
+        768,
+        1376
+      ],
+      "mode": "RGB",
+      "metadata_keys": [],
+      "alpha_extrema": null,
+      "family": "key",
+      "metadata_not_forwarded_to_new_requests": true
+    },
+    {
+      "case_id": "qwen_continuity_factual_768",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\qwen_continuity_factual_768\\openai-image-b6d24cc40509.png",
+      "sha256": "6e7292aad545fe0df96968ecc000fb16645e2c6da99f6b9aedd0c8ca1d82edc9",
+      "size": [
+        768,
+        1376
+      ],
+      "mode": "RGBA",
+      "metadata_keys": [],
+      "alpha_extrema": [
+        242,
+        255
+      ],
+      "family": "key",
+      "metadata_not_forwarded_to_new_requests": true
+    },
+    {
+      "case_id": "unrequested_text",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_t2i_768x1376\\result.png",
+      "sha256": "7edf4f48c3632d3b92447b66de3e6ce1f377cf9e65fe8fb2eb5f6ad2f100d633",
+      "size": [
+        768,
+        1376
+      ],
+      "mode": "RGB",
+      "metadata_keys": [
+        "prompt"
+      ],
+      "alpha_extrema": null,
+      "family": "key",
+      "metadata_not_forwarded_to_new_requests": true
+    },
+    {
+      "case_id": "mpt_t2i_text_contract_768",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+      "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+      "size": [
+        768,
+        1376
+      ],
+      "mode": "RGB",
+      "metadata_keys": [],
+      "alpha_extrema": null,
+      "family": "key",
+      "metadata_not_forwarded_to_new_requests": true
+    },
+    {
+      "case_id": "mpt_explicit_quantity_seed43",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+      "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+      "size": [
+        768,
+        1376
+      ],
+      "mode": "RGB",
+      "metadata_keys": [],
+      "alpha_extrema": null,
+      "family": "key",
+      "metadata_not_forwarded_to_new_requests": true
+    }
+  ],
+  "distinct_key_images": 7,
+  "human_shape_review": {
+    "path": "docs/validation/visual-geometry-human-review-2026-10-08.json",
+    "pairs": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "human_clock_review": {
+    "path": "docs/validation/clock-visible-count-human-review-2026-10-10.json",
+    "images": 4
+  },
+  "human_b_and_clock_fusion_are_distinct_images": true,
+  "human_structural_defect_images_in_inventory": [
+    "224e68edcf33aaad56b556e6c8f35d8d21deb98b613ec5aaad91bd439636c6bb",
+    "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+  ],
+  "independent_structural_defect_families": [
+    "key"
+  ],
+  "camera": {
+    "prepared_pair": {
+      "case_id": "retained_camera_body_pair",
+      "reference": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_00.png",
+        "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+        "size": [
+          800,
+          800
+        ]
+      },
+      "candidate": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_01.png",
+        "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+        "size": [
+          768,
+          1376
+        ]
+      }
+    },
+    "human_structure_label": null,
+    "fully_blind_review_established": false,
+    "state_policy_origin": "explicit experimental scope grounded in scene3 prompt, not a runtime QA contract field",
+    "original_scene_metadata": {
+      "scene": 3,
+      "canonical_subject": "Polaroid SX-70 camera",
+      "reference_need": "none",
+      "reference_target": "output",
+      "continuity_description": ""
+    },
+    "state_prompt_literal": "a blank white photo sheet emerging from the front slot",
+    "transitive_preflight": {
+      "protocol": "profiled-camera-transitive-preflight-1",
+      "images": [
+        {
+          "id": "camera_anchor",
+          "source_sha256": "56214c597d825fcc469151284b2981577caec8b9ff466c961fb8ed849b7cad07",
+          "prepared_sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+          "fullframe_rectangle_relation": "contained",
+          "prepared_pixels_exact": true,
+          "original_rgb_samples_unchanged": false,
+          "semantic_whole_object_coverage": "not_established_by_rectangle"
+        },
+        {
+          "id": "camera_candidate",
+          "source_sha256": "4a755cde7a4ee323549a709f91cbf6ba815f6d16f5016a198c06d68847016333",
+          "prepared_sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+          "fullframe_rectangle_relation": "contained",
+          "prepared_pixels_exact": true,
+          "original_rgb_samples_unchanged": false,
+          "semantic_whole_object_coverage": "not_established_by_rectangle"
+        },
+        {
+          "id": "print_root",
+          "source_sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+          "prepared_sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+          "fullframe_rectangle_relation": "contained",
+          "prepared_pixels_exact": true,
+          "original_rgb_samples_unchanged": true,
+          "semantic_whole_object_coverage": "not_established_by_rectangle"
+        },
+        {
+          "id": "print_candidate",
+          "source_sha256": "bae3516c5353db16f8bab639772f8fe58dd0c0de0ae4cb7e7d720650d6c3d19b",
+          "prepared_sha256": "81d236ad6c2380096a8eafdc1f84ce026426b80b7ffb6889bb3af9492ffc2c41",
+          "fullframe_rectangle_relation": "contained",
+          "prepared_pixels_exact": true,
+          "original_rgb_samples_unchanged": false,
+          "semantic_whole_object_coverage": "not_established_by_rectangle"
+        }
+      ],
+      "source_selection_rederived": true,
+      "historic_http_capture_claimed": false,
+      "original_pixel_identity_claimed_for_transformed_inputs": false,
+      "human_gold": false,
+      "physical_identity_established": false,
+      "admission_allowed": false
+    },
+    "unknown_body_correctness_does_not_count_as_negative_or_false_alarm": true
+  },
+  "exclusions": [
+    {
+      "id": "photo_whole_object",
+      "reason": "candidate right edge clipped by assistant inspection; no whole-object gold"
+    },
+    {
+      "id": "mug_masked_and_no_reference_controls",
+      "reason": "closed unusable structural controls, no clean separation; mask-region approval is not result gold"
+    },
+    {
+      "id": "warm_hot_cooled_mug",
+      "reason": "temporal cue controls do not establish an independently reviewed structural defect"
+    }
+  ],
+  "native_key_preparation": {
+    "plan": {
+      "protocol": "visual-region-preparation-plan-1",
+      "margin_pixels": 0,
+      "regions": [
+        {
+          "id": "key_reference",
+          "source": {
+            "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+            "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+            "size": [
+              768,
+              1376
+            ]
+          },
+          "box": [
+            0,
+            0,
+            768,
+            1376
+          ],
+          "required_box": [
+            0,
+            0,
+            768,
+            1376
+          ]
+        },
+        {
+          "id": "key_fusion",
+          "source": {
+            "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+            "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+            "size": [
+              768,
+              1376
+            ]
+          },
+          "box": [
+            0,
+            0,
+            768,
+            1376
+          ],
+          "required_box": [
+            0,
+            0,
+            768,
+            1376
+          ]
+        }
+      ]
+    },
+    "manifest_path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\scoped-structure-fullframes-2026-10-10\\manifest.json",
+    "manifest_sha256": "4a441cbca8167beeeef53f8403af3ead87a08ae930669357426dcb5012fd9084",
+    "fullframe_pixels_preserved": true,
+    "metadata_removed": true,
+    "color_transform": false,
+    "resampling": false,
+    "rectangle_completeness_not_physical_object_coverage": true
+  },
+  "color_camera_preparation_reused": true,
+  "original_pixel_identity_claimed_for_camera": false,
+  "new_model_requests": 0,
+  "generation_requests": 0,
+  "model_selection_approved": false
+}

@@ -1,0 +1,164 @@
+{
+  "protocol": "scoped-structure-state-probe-analysis-1",
+  "analyzed_utc": "2026-10-10T21:53:54.009773+00:00",
+  "bindings": {
+    "scoped-structure-plan-2026-10-10.json": {
+      "path": "docs\\validation\\scoped-structure-plan-2026-10-10.json",
+      "sha256": "37e4b5d7017fcfbb55e668ad32d8797d18fb2d1ab759e0caed909709e7371cdf"
+    },
+    "scoped-structure-execution-plan-2026-10-10.json": {
+      "path": "docs\\validation\\scoped-structure-execution-plan-2026-10-10.json",
+      "sha256": "4263063cc2166218da84941a36fffe5ac924036e8cde87391b153c0f5d558cda"
+    },
+    "scoped-structure-inventory-2026-10-10.json": {
+      "path": "docs\\validation\\scoped-structure-inventory-2026-10-10.json",
+      "sha256": "772ae3377ae6ff79c76a0a807933f887b887115cce46c5e31e844d95b60dce79"
+    },
+    "scoped-structure-qwen35-2026-10-10.json": {
+      "path": "docs\\validation\\scoped-structure-qwen35-2026-10-10.json",
+      "sha256": "33774a14531d1a6a0748ae2a76b7488adf302cf5b363f8bddfbbae58f2affb38"
+    },
+    "scoped-structure-qwen3vl-2026-10-10.json": {
+      "path": "docs\\validation\\scoped-structure-qwen3vl-2026-10-10.json",
+      "sha256": "c856d679ca22dbe826291a7f5161c3a77e26160f89d2a82b7974a3c665c4b50c"
+    },
+    "scoped-structure-resource-closing-2026-10-10.json": {
+      "path": "docs\\validation\\scoped-structure-resource-closing-2026-10-10.json",
+      "sha256": "dc7b749598196ccea9e5a7eda13caae1b0f1456eb5f9a3a9ee2a2b79c7ee1516"
+    },
+    "clock-visible-count-human-review-2026-10-10.json": {
+      "path": "docs\\validation\\clock-visible-count-human-review-2026-10-10.json",
+      "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+    }
+  },
+  "rows": [
+    {
+      "model": "unsloth/Qwen3.5-9B-GGUF",
+      "case_id": "identical_key_control",
+      "protected_structure_change": "not_observed",
+      "structural_connections_change": "not_observed",
+      "allowed_state_change": "not_applicable",
+      "structure_evidence": "The silver key in both images exhibits an identical physical structure. The principal parts—a cylindrical shaft, a decorative collar, and a bit with two distinct cuts—are present and connected in the same configuration in both the reference and candidate images.",
+      "state_evidence": "No allowed state changes were declared in the scope.",
+      "prepare_seconds": 0.10583300000143936,
+      "request_parse_with_transitive_preflight_seconds": 7.677831600005447,
+      "cached_prompt_tokens": 0,
+      "load_seconds": 4.0405552000011085,
+      "diagnostic_status": "uncertain"
+    },
+    {
+      "model": "unsloth/Qwen3.5-9B-GGUF",
+      "case_id": "human_reported_key_fusion",
+      "protected_structure_change": "not_observed",
+      "structural_connections_change": "not_observed",
+      "allowed_state_change": "not_applicable",
+      "structure_evidence": "The silver key in both images consists of a single, continuous shaft with a distinct head and bit. The connection between the shaft and the head is a simple, unbroken junction. No principal parts are missing, added, fused, or substantially deformed in the candidate image.",
+      "state_evidence": "No allowed state changes are declared in the scope.",
+      "prepare_seconds": 0.10246599999663886,
+      "request_parse_with_transitive_preflight_seconds": 7.522385999996914,
+      "cached_prompt_tokens": 0,
+      "load_seconds": 4.0405552000011085,
+      "diagnostic_status": "uncertain"
+    },
+    {
+      "model": "unsloth/Qwen3.5-9B-GGUF",
+      "case_id": "camera_body_with_declared_output_state",
+      "protected_structure_change": "not_observed",
+      "structural_connections_change": "not_observed",
+      "allowed_state_change": "observed",
+      "structure_evidence": "The camera body, lens, flash unit, and folding mechanism maintain their form and connection points. The front slot is open in both images.",
+      "state_evidence": "A blank white photo sheet is emerging from the front slot in the candidate image, which is not present in the reference image.",
+      "prepare_seconds": 0.039126600000599865,
+      "request_parse_with_transitive_preflight_seconds": 7.375183200005267,
+      "cached_prompt_tokens": 0,
+      "load_seconds": 4.0405552000011085,
+      "diagnostic_status": "uncertain"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "case_id": "identical_key_control",
+      "protected_structure_change": "not_observed",
+      "structural_connections_change": "not_observed",
+      "allowed_state_change": "not_applicable",
+      "structure_evidence": "The silver key's shaft and bow are intact and connected as a single piece. The bit end is present and its tooth pattern is visible. No visible deformation, fusion, or missing parts are observed.",
+      "state_evidence": "No state changes are declared or observed.",
+      "prepare_seconds": 0.10617849999835016,
+      "request_parse_with_transitive_preflight_seconds": 7.275893999998516,
+      "cached_prompt_tokens": 0,
+      "load_seconds": 4.040597999999591,
+      "diagnostic_status": "uncertain"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "case_id": "human_reported_key_fusion",
+      "protected_structure_change": "uncertain",
+      "structural_connections_change": "uncertain",
+      "allowed_state_change": "not_applicable",
+      "structure_evidence": "In image 2, the key's bow appears to be a single, continuous loop, whereas in image 1, the key's bow is a separate, distinct loop. The connection between the bow and the shank appears to be a single, continuous piece in image 2, while in image 1, the connection appears to be a separate, distinct piece. The difference in the bow's form and the connection between the bow and shank is not a minor local size difference and may constitute a structural change.",
+      "state_evidence": "not_applicable",
+      "prepare_seconds": 0.11052310000377474,
+      "request_parse_with_transitive_preflight_seconds": 6.7678802000009455,
+      "cached_prompt_tokens": 1315,
+      "load_seconds": 4.040597999999591,
+      "diagnostic_status": "uncertain"
+    },
+    {
+      "model": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+      "case_id": "camera_body_with_declared_output_state",
+      "protected_structure_change": "uncertain",
+      "structural_connections_change": "uncertain",
+      "allowed_state_change": "observed",
+      "structure_evidence": "The front slot of the camera in the candidate image has a white photographic output emerging from it, which is not present in the reference image. The camera body and its attached components appear visually identical in both images, but the presence of the output in the candidate image may indicate a change in the state of the camera's mechanism or a structural modification to accommodate the output. The connection between the camera body and the output is not clearly visible, making it uncertain whether the output is an integral part of the camera's structure or a separately emitted item.",
+      "state_evidence": "The candidate image shows a blank white photo sheet emerging from the front slot, which matches the declared allowed state change. This state change is not a structural change but a functional state of the camera.",
+      "prepare_seconds": 0.042929700000968296,
+      "request_parse_with_transitive_preflight_seconds": 8.941866900000605,
+      "cached_prompt_tokens": 26,
+      "load_seconds": 4.040597999999591,
+      "diagnostic_status": "uncertain"
+    }
+  ],
+  "qualitative_analysis_provenance": "assistant compares preserved raw to direct user review; not new human labels or automatic text-rule scoring",
+  "identical_control": {
+    "two_consistent_not_observed_reports": true,
+    "distinct_source_images": 1,
+    "physical_identity_approved": false
+  },
+  "fusion": {
+    "human_status": "two key forms converging at one head; not two detached physical objects",
+    "qwen35": "not_observed contradicts human structural defect, explicit denial of added/fused parts",
+    "qwen3vl": "uncertain, discusses bow/shank differences without explicit two-shaft shared-head fusion",
+    "explicit_fusion_detected_by_either_judge": false,
+    "abstention_is_not_successful_detection": true,
+    "case_selected_after_prior_results": true,
+    "generic_accuracy_established": false
+  },
+  "camera": {
+    "qwen35_structure": "not_observed",
+    "qwen3vl_structure": "uncertain",
+    "allowed_state_observed_by_both": true,
+    "human_body_label": null,
+    "correctness_or_false_alarm_scored": false,
+    "fully_blind_human_review_established": false
+  },
+  "method_limits": [
+    "Explicit scope, new response schema, native fullframe metadata cleanup and512 output budget form a new exploratory protocol, not a causal prompt-only256 ablation.",
+    "Human defects established only for key family; camera is another family without independent structural correctness gold.",
+    "Request_parse field includes per-request transitive CPU preflight inside the wrapper plus HTTP and parsing; excludes cold server load and is not full MPT QA latency.",
+    "Qwen3-VL cached prompt tokens are0/1315/26, Qwen3.5 are0/0/0; no comparative speed or p95 claim.",
+    "Enum observations and software validations do not establish pixel truth, geometry correctness, identity, production admission or a new held-out metric."
+  ],
+  "completed_requests": 6,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "new_judge_selected": false,
+  "no_production_admission": true,
+  "closed_cohort_no_additional_requests": true,
+  "next": "CPU preflight of uniformly scoped fullframe/ROI fusion pair and source coverage, using unchanged new prompt/schema; preserve current failures and keep camera review pending.",
+  "raw_response_text": {
+    "preserved_utf8": true,
+    "qwen35_identical_evidence_replacement_chars": 0,
+    "qwen35_identical_evidence_em_dash_codepoint": "U+2014",
+    "no_silent_text_repair": true
+  }
+}

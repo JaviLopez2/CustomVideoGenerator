@@ -1,0 +1,168 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFF                                              [100%]
+================================== FAILURES ===================================
+_ test_declared_scope_is_generic_and_part_of_request_binding[camera-states0] __
+test\test_scoped_structure_observations.py:52: in test_declared_scope_is_generic_and_part_of_request_binding
+    request = observer.payload(*images, declared)
+              ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'payload'
+_ test_declared_scope_is_generic_and_part_of_request_binding[container-states1] _
+test\test_scoped_structure_observations.py:52: in test_declared_scope_is_generic_and_part_of_request_binding
+    request = observer.payload(*images, declared)
+              ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'payload'
+__ test_declared_scope_is_generic_and_part_of_request_binding[tool-states2] ___
+test\test_scoped_structure_observations.py:52: in test_declared_scope_is_generic_and_part_of_request_binding
+    request = observer.payload(*images, declared)
+              ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'payload'
+____ test_invalid_or_label_bearing_scope_rejected_before_request[update0] _____
+test\test_scoped_structure_observations.py:74: in test_invalid_or_label_bearing_scope_rejected_before_request
+    with pytest.raises(ValueError): observer.collect(data, send)
+                                    ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+____ test_invalid_or_label_bearing_scope_rejected_before_request[update1] _____
+test\test_scoped_structure_observations.py:74: in test_invalid_or_label_bearing_scope_rejected_before_request
+    with pytest.raises(ValueError): observer.collect(data, send)
+                                    ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+____ test_invalid_or_label_bearing_scope_rejected_before_request[update2] _____
+test\test_scoped_structure_observations.py:74: in test_invalid_or_label_bearing_scope_rejected_before_request
+    with pytest.raises(ValueError): observer.collect(data, send)
+                                    ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+____ test_invalid_or_label_bearing_scope_rejected_before_request[update3] _____
+test\test_scoped_structure_observations.py:74: in test_invalid_or_label_bearing_scope_rejected_before_request
+    with pytest.raises(ValueError): observer.collect(data, send)
+                                    ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+____ test_invalid_or_label_bearing_scope_rejected_before_request[update4] _____
+test\test_scoped_structure_observations.py:74: in test_invalid_or_label_bearing_scope_rejected_before_request
+    with pytest.raises(ValueError): observer.collect(data, send)
+                                    ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+____ test_invalid_or_label_bearing_scope_rejected_before_request[update5] _____
+test\test_scoped_structure_observations.py:74: in test_invalid_or_label_bearing_scope_rejected_before_request
+    with pytest.raises(ValueError): observer.collect(data, send)
+                                    ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+___ test_reported_structure_never_certifies_identity_or_admission[observed] ___
+test\test_scoped_structure_observations.py:80: in test_reported_structure_never_certifies_identity_or_admission
+    result = observer.diagnostic(answer(change), scope())
+             ^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'diagnostic'
+_ test_reported_structure_never_certifies_identity_or_admission[not_observed] _
+test\test_scoped_structure_observations.py:80: in test_reported_structure_never_certifies_identity_or_admission
+    result = observer.diagnostic(answer(change), scope())
+             ^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'diagnostic'
+__ test_reported_structure_never_certifies_identity_or_admission[uncertain] ___
+test\test_scoped_structure_observations.py:80: in test_reported_structure_never_certifies_identity_or_admission
+    result = observer.diagnostic(answer(change), scope())
+             ^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'diagnostic'
+____ test_state_observation_does_not_override_a_reported_structural_change ____
+test\test_scoped_structure_observations.py:90: in test_state_observation_does_not_override_a_reported_structural_change
+    result = observer.diagnostic(value, declared)
+             ^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'diagnostic'
+___ test_contradictory_or_extra_answer_not_rehabilitated[value0-declared0] ____
+test\test_scoped_structure_observations.py:103: in test_contradictory_or_extra_answer_not_rehabilitated
+    with pytest.raises(ValueError): observer.validate(value, declared)
+                                    ^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'validate'
+___ test_contradictory_or_extra_answer_not_rehabilitated[value1-declared1] ____
+test\test_scoped_structure_observations.py:103: in test_contradictory_or_extra_answer_not_rehabilitated
+    with pytest.raises(ValueError): observer.validate(value, declared)
+                                    ^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'validate'
+___ test_contradictory_or_extra_answer_not_rehabilitated[value2-declared2] ____
+test\test_scoped_structure_observations.py:103: in test_contradictory_or_extra_answer_not_rehabilitated
+    with pytest.raises(ValueError): observer.validate(value, declared)
+                                    ^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'validate'
+___ test_contradictory_or_extra_answer_not_rehabilitated[value3-declared3] ____
+test\test_scoped_structure_observations.py:103: in test_contradictory_or_extra_answer_not_rehabilitated
+    with pytest.raises(ValueError): observer.validate(value, declared)
+                                    ^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'validate'
+___ test_contradictory_or_extra_answer_not_rehabilitated[value4-declared4] ____
+test\test_scoped_structure_observations.py:103: in test_contradictory_or_extra_answer_not_rehabilitated
+    with pytest.raises(ValueError): observer.validate(value, declared)
+                                    ^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'validate'
+__________ test_unestablished_subject_only_has_uncertain_comparison ___________
+test\test_scoped_structure_observations.py:108: in test_unestablished_subject_only_has_uncertain_comparison
+    result = observer.diagnostic(value, scope())
+             ^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'diagnostic'
+__________ test_incomplete_or_nonfinal_json_is_not_repaired[length] ___________
+test\test_scoped_structure_observations.py:120: in test_incomplete_or_nonfinal_json_is_not_repaired
+    with pytest.raises(ValueError): observer.parse_response(reply, scope())
+                                    ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'parse_response'
+_________ test_incomplete_or_nonfinal_json_is_not_repaired[reasoning] _________
+test\test_scoped_structure_observations.py:120: in test_incomplete_or_nonfinal_json_is_not_repaired
+    with pytest.raises(ValueError): observer.parse_response(reply, scope())
+                                    ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'parse_response'
+_________ test_incomplete_or_nonfinal_json_is_not_repaired[duplicate] _________
+test\test_scoped_structure_observations.py:120: in test_incomplete_or_nonfinal_json_is_not_repaired
+    with pytest.raises(ValueError): observer.parse_response(reply, scope())
+                                    ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'parse_response'
+_________ test_incomplete_or_nonfinal_json_is_not_repaired[markdown] __________
+test\test_scoped_structure_observations.py:120: in test_incomplete_or_nonfinal_json_is_not_repaired
+    with pytest.raises(ValueError): observer.parse_response(reply, scope())
+                                    ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'parse_response'
+_______ test_collector_keeps_raw_invalid_reply_stops_and_never_retries ________
+test\test_scoped_structure_observations.py:126: in test_collector_keeps_raw_invalid_reply_stops_and_never_retries
+    rows = observer.collect(data, send, saved.append)
+           ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+_____________ test_changed_second_input_stops_before_second_http ______________
+test\test_scoped_structure_observations.py:139: in test_changed_second_input_stops_before_second_http
+    rows = observer.collect(cases(images), request)
+           ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+_____ test_callback_or_request_cannot_mutate_declared_scope_of_later_case _____
+test\test_scoped_structure_observations.py:151: in test_callback_or_request_cannot_mutate_declared_scope_of_later_case
+    rows = observer.collect(data, send)
+           ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+_____________ test_prompt_ancillary_metadata_rejected_before_http _____________
+test\test_scoped_structure_observations.py:162: in test_prompt_ancillary_metadata_rejected_before_http
+    rows = observer.collect(cases(images), send)
+           ^^^^^^^^^^^^^^^^
+E   AttributeError: module 'scripts.scoped_structure_observations' has no attribute 'collect'
+=========================== short test summary info ===========================
+FAILED test/test_scoped_structure_observations.py::test_declared_scope_is_generic_and_part_of_request_binding[camera-states0]
+FAILED test/test_scoped_structure_observations.py::test_declared_scope_is_generic_and_part_of_request_binding[container-states1]
+FAILED test/test_scoped_structure_observations.py::test_declared_scope_is_generic_and_part_of_request_binding[tool-states2]
+FAILED test/test_scoped_structure_observations.py::test_invalid_or_label_bearing_scope_rejected_before_request[update0]
+FAILED test/test_scoped_structure_observations.py::test_invalid_or_label_bearing_scope_rejected_before_request[update1]
+FAILED test/test_scoped_structure_observations.py::test_invalid_or_label_bearing_scope_rejected_before_request[update2]
+FAILED test/test_scoped_structure_observations.py::test_invalid_or_label_bearing_scope_rejected_before_request[update3]
+FAILED test/test_scoped_structure_observations.py::test_invalid_or_label_bearing_scope_rejected_before_request[update4]
+FAILED test/test_scoped_structure_observations.py::test_invalid_or_label_bearing_scope_rejected_before_request[update5]
+FAILED test/test_scoped_structure_observations.py::test_reported_structure_never_certifies_identity_or_admission[observed]
+FAILED test/test_scoped_structure_observations.py::test_reported_structure_never_certifies_identity_or_admission[not_observed]
+FAILED test/test_scoped_structure_observations.py::test_reported_structure_never_certifies_identity_or_admission[uncertain]
+FAILED test/test_scoped_structure_observations.py::test_state_observation_does_not_override_a_reported_structural_change
+FAILED test/test_scoped_structure_observations.py::test_contradictory_or_extra_answer_not_rehabilitated[value0-declared0]
+FAILED test/test_scoped_structure_observations.py::test_contradictory_or_extra_answer_not_rehabilitated[value1-declared1]
+FAILED test/test_scoped_structure_observations.py::test_contradictory_or_extra_answer_not_rehabilitated[value2-declared2]
+FAILED test/test_scoped_structure_observations.py::test_contradictory_or_extra_answer_not_rehabilitated[value3-declared3]
+FAILED test/test_scoped_structure_observations.py::test_contradictory_or_extra_answer_not_rehabilitated[value4-declared4]
+FAILED test/test_scoped_structure_observations.py::test_unestablished_subject_only_has_uncertain_comparison
+FAILED test/test_scoped_structure_observations.py::test_incomplete_or_nonfinal_json_is_not_repaired[length]
+FAILED test/test_scoped_structure_observations.py::test_incomplete_or_nonfinal_json_is_not_repaired[reasoning]
+FAILED test/test_scoped_structure_observations.py::test_incomplete_or_nonfinal_json_is_not_repaired[duplicate]
+FAILED test/test_scoped_structure_observations.py::test_incomplete_or_nonfinal_json_is_not_repaired[markdown]
+FAILED test/test_scoped_structure_observations.py::test_collector_keeps_raw_invalid_reply_stops_and_never_retries
+FAILED test/test_scoped_structure_observations.py::test_changed_second_input_stops_before_second_http
+FAILED test/test_scoped_structure_observations.py::test_callback_or_request_cannot_mutate_declared_scope_of_later_case
+FAILED test/test_scoped_structure_observations.py::test_prompt_ancillary_metadata_rejected_before_http
+27 failed in 0.30s
+
+Python exit code: 1

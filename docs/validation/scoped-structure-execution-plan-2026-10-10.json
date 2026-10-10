@@ -1,0 +1,31 @@
+{
+  "protocol": "scoped-structure-state-execution-plan-1",
+  "declared_utc": "2026-10-10T21:47:46.360189+00:00",
+  "base_head": "658e767d3a1a20425c3d6bb4cbc64f4bfeb4db05",
+  "probe_plan": {
+    "path": "docs\\validation\\scoped-structure-plan-2026-10-10.json",
+    "sha256": "37e4b5d7017fcfbb55e668ad32d8797d18fb2d1ab759e0caed909709e7371cdf"
+  },
+  "recipe": {
+    "path": "docs\\validation\\scoped-structure-execution-recipe-2026-10-10.py",
+    "sha256": "9f405162304bf90bc8ed91ac5fb1cd99c8b1a0a416c9fbccce7de5d146a06595"
+  },
+  "models": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "maximum_new_requests_total": 6,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "outputs": {
+    "unsloth/Qwen3.5-9B-GGUF": {
+      "report": "docs/validation/scoped-structure-qwen35-2026-10-10.json",
+      "logs": "local_image_stack/experiments/bridge/target/scoped-structure-qwen35-2026-10-10"
+    },
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF": {
+      "report": "docs/validation/scoped-structure-qwen3vl-2026-10-10.json",
+      "logs": "local_image_stack/experiments/bridge/target/scoped-structure-qwen3vl-2026-10-10"
+    }
+  }
+}

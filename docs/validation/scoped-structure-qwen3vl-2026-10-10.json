@@ -1,0 +1,299 @@
+{
+  "protocol": "scoped-structure-state-probe-result-1",
+  "started_utc": "2026-10-10T21:49:29.739257+00:00",
+  "execution_head": "658e767d3a1a20425c3d6bb4cbc64f4bfeb4db05",
+  "execution_plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\scoped-structure-execution-plan-2026-10-10.json",
+    "sha256": "4263063cc2166218da84941a36fffe5ac924036e8cde87391b153c0f5d558cda"
+  },
+  "probe_plan": {
+    "path": "docs\\validation\\scoped-structure-plan-2026-10-10.json",
+    "sha256": "37e4b5d7017fcfbb55e668ad32d8797d18fb2d1ab759e0caed909709e7371cdf"
+  },
+  "recipe": {
+    "path": "docs\\validation\\scoped-structure-execution-recipe-2026-10-10.py",
+    "sha256": "9f405162304bf90bc8ed91ac5fb1cd99c8b1a0a416c9fbccce7de5d146a06595"
+  },
+  "observer": {
+    "path": "scripts/scoped_structure_observations.py",
+    "sha256": "c2559fb6b1e2d5ab889ba2b2ff500fc6e4975661bdb5eec219283c57b9dd5e49",
+    "version": "scoped-structure-state-observations-1"
+  },
+  "model": {
+    "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "size": 5027784800,
+        "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+      },
+      {
+        "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+        "size": 1159029824,
+        "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "resource_preflight": {
+    "ram_free_gib": 17.880992889404297,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1150,
+      "total_mib": 12288,
+      "utilization_percent": 3,
+      "temperature_c": 32
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "rows": [
+    {
+      "case_id": "identical_key_control",
+      "protocol": "scoped-structure-state-observations-1",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "prepare_seconds": 0.10617849999835016,
+      "request_parse_seconds": 7.275893999998516,
+      "request_sha256": "6e7fdee62e660bbc6b636f39c84226d6ca5980ad5539106d621087e99287b4ca",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        },
+        {
+          "role": "candidate",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        }
+      ],
+      "raw_choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"not_observed\",\n  \"structural_connections_change\": \"not_observed\",\n  \"allowed_state_change\": \"not_applicable\",\n  \"structure_evidence\": \"The silver key's shaft and bow are intact and connected as a single piece. The bit end is present and its tooth pattern is visible. No visible deformation, fusion, or missing parts are observed.\",\n  \"state_evidence\": \"No state changes are declared or observed.\"\n}"
+          }
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"not_observed\",\n  \"structural_connections_change\": \"not_observed\",\n  \"allowed_state_change\": \"not_applicable\",\n  \"structure_evidence\": \"The silver key's shaft and bow are intact and connected as a single piece. The bit end is present and its tooth pattern is visible. No visible deformation, fusion, or missing parts are observed.\",\n  \"state_evidence\": \"No state changes are declared or observed.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 116,
+        "prompt_tokens": 2353,
+        "total_tokens": 2469,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2353,
+        "prompt_ms": 3116.192,
+        "prompt_per_token_ms": 1.3243484912877177,
+        "prompt_per_second": 755.0882615705323,
+        "predicted_n": 116,
+        "predicted_ms": 2160.843,
+        "predicted_per_token_ms": 18.78993913043478,
+        "predicted_per_second": 53.219970169049766
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "not_observed",
+        "structural_connections_change": "not_observed",
+        "allowed_state_change": "not_applicable",
+        "structure_evidence": "The silver key's shaft and bow are intact and connected as a single piece. The bit end is present and its tooth pattern is visible. No visible deformation, fusion, or missing parts are observed.",
+        "state_evidence": "No state changes are declared or observed."
+      },
+      "diagnostic": {
+        "version": "scoped-structure-state-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "allowed_state_observation": "not_applicable",
+        "hints": []
+      }
+    },
+    {
+      "case_id": "human_reported_key_fusion",
+      "protocol": "scoped-structure-state-observations-1",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "scope_sha256": "0600428c84afa5cf5546cc5854f0db86d0224469dd0e8116478323e3792dba26",
+      "prepare_seconds": 0.11052310000377474,
+      "request_parse_seconds": 6.7678802000009455,
+      "request_sha256": "62b36ca707a84d30aeebcd02fca392751dd745ac59e996a6c515dab4d9db6323",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "a94f6ad1c451796c974f12f093d92b593afa7f39de216fb9c8f756bb770fd4dd"
+        },
+        {
+          "role": "candidate",
+          "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925"
+        }
+      ],
+      "raw_choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"uncertain\",\n  \"structural_connections_change\": \"uncertain\",\n  \"allowed_state_change\": \"not_applicable\",\n  \"structure_evidence\": \"In image 2, the key's bow appears to be a single, continuous loop, whereas in image 1, the key's bow is a separate, distinct loop. The connection between the bow and the shank appears to be a single, continuous piece in image 2, while in image 1, the connection appears to be a separate, distinct piece. The difference in the bow's form and the connection between the bow and shank is not a minor local size difference and may constitute a structural change.\",\n  \"state_evidence\": \"not_applicable\"\n}"
+          }
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"uncertain\",\n  \"structural_connections_change\": \"uncertain\",\n  \"allowed_state_change\": \"not_applicable\",\n  \"structure_evidence\": \"In image 2, the key's bow appears to be a single, continuous loop, whereas in image 1, the key's bow is a separate, distinct loop. The connection between the bow and the shank appears to be a single, continuous piece in image 2, while in image 1, the connection appears to be a separate, distinct piece. The difference in the bow's form and the connection between the bow and shank is not a minor local size difference and may constitute a structural change.\",\n  \"state_evidence\": \"not_applicable\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 174,
+        "prompt_tokens": 2353,
+        "total_tokens": 2527,
+        "prompt_tokens_details": {
+          "cached_tokens": 1315
+        }
+      },
+      "server_timings": {
+        "cache_n": 1315,
+        "prompt_n": 1038,
+        "prompt_ms": 1604.022,
+        "prompt_per_token_ms": 1.545300578034682,
+        "prompt_per_second": 647.1232938201596,
+        "predicted_n": 174,
+        "predicted_ms": 3194.717,
+        "predicted_per_token_ms": 18.46657225433526,
+        "predicted_per_second": 54.151901404725365
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "uncertain",
+        "structural_connections_change": "uncertain",
+        "allowed_state_change": "not_applicable",
+        "structure_evidence": "In image 2, the key's bow appears to be a single, continuous loop, whereas in image 1, the key's bow is a separate, distinct loop. The connection between the bow and the shank appears to be a single, continuous piece in image 2, while in image 1, the connection appears to be a separate, distinct piece. The difference in the bow's form and the connection between the bow and shank is not a minor local size difference and may constitute a structural change.",
+        "state_evidence": "not_applicable"
+      },
+      "diagnostic": {
+        "version": "scoped-structure-state-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "allowed_state_observation": "not_applicable",
+        "hints": []
+      }
+    },
+    {
+      "case_id": "camera_body_with_declared_output_state",
+      "protocol": "scoped-structure-state-observations-1",
+      "transport_status": "completed",
+      "request_attempted": true,
+      "scope_sha256": "8128f12f72089f7521f31a42ad75d696cd032b04e1451448aaf959cd304052da",
+      "prepare_seconds": 0.042929700000968296,
+      "request_parse_seconds": 8.941866900000605,
+      "request_sha256": "e1c05976bde63d9e5ec2cc15679f56b86e567509b65877b7c87dd38058a9c7f6",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff"
+        },
+        {
+          "role": "candidate",
+          "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178"
+        }
+      ],
+      "raw_choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"uncertain\",\n  \"structural_connections_change\": \"uncertain\",\n  \"allowed_state_change\": \"observed\",\n  \"structure_evidence\": \"The front slot of the camera in the candidate image has a white photographic output emerging from it, which is not present in the reference image. The camera body and its attached components appear visually identical in both images, but the presence of the output in the candidate image may indicate a change in the state of the camera's mechanism or a structural modification to accommodate the output. The connection between the camera body and the output is not clearly visible, making it uncertain whether the output is an integral part of the camera's structure or a separately emitted item.\",\n  \"state_evidence\": \"The candidate image shows a blank white photo sheet emerging from the front slot, which matches the declared allowed state change. This state change is not a structural change but a functional state of the camera.\"\n}"
+          }
+        }
+      ],
+      "final_content": "{\n  \"reference_subject_presence\": \"present\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"uncertain\",\n  \"structural_connections_change\": \"uncertain\",\n  \"allowed_state_change\": \"observed\",\n  \"structure_evidence\": \"The front slot of the camera in the candidate image has a white photographic output emerging from it, which is not present in the reference image. The camera body and its attached components appear visually identical in both images, but the presence of the output in the candidate image may indicate a change in the state of the camera's mechanism or a structural modification to accommodate the output. The connection between the camera body and the output is not clearly visible, making it uncertain whether the output is an integral part of the camera's structure or a separately emitted item.\",\n  \"state_evidence\": \"The candidate image shows a blank white photo sheet emerging from the front slot, which matches the declared allowed state change. This state change is not a structural change but a functional state of the camera.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 212,
+        "prompt_tokens": 2356,
+        "total_tokens": 2568,
+        "prompt_tokens_details": {
+          "cached_tokens": 26
+        }
+      },
+      "server_timings": {
+        "cache_n": 26,
+        "prompt_n": 2330,
+        "prompt_ms": 3066.293,
+        "prompt_per_token_ms": 1.3160055793991416,
+        "prompt_per_second": 759.8751978366059,
+        "predicted_n": 212,
+        "predicted_ms": 3896.918,
+        "predicted_per_token_ms": 18.46880568720379,
+        "predicted_per_second": 54.14535281471152
+      },
+      "observation": {
+        "reference_subject_presence": "present",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "uncertain",
+        "structural_connections_change": "uncertain",
+        "allowed_state_change": "observed",
+        "structure_evidence": "The front slot of the camera in the candidate image has a white photographic output emerging from it, which is not present in the reference image. The camera body and its attached components appear visually identical in both images, but the presence of the output in the candidate image may indicate a change in the state of the camera's mechanism or a structural modification to accommodate the output. The connection between the camera body and the output is not clearly visible, making it uncertain whether the output is an integral part of the camera's structure or a separately emitted item.",
+        "state_evidence": "The candidate image shows a blank white photo sheet emerging from the front slot, which matches the declared allowed state change. This state change is not a structural change but a functional state of the camera."
+      },
+      "diagnostic": {
+        "version": "scoped-structure-state-observations-1",
+        "status": "uncertain",
+        "admission_allowed": false,
+        "automatic_rejection": false,
+        "physical_identity_established": false,
+        "pixel_truth_verified": false,
+        "allowed_state_observation": "observed",
+        "hints": []
+      }
+    }
+  ],
+  "http_model_requests_attempted": 3,
+  "automatic_retries": 0,
+  "generation_requests": 0,
+  "downloads": 0,
+  "admission_allowed": false,
+  "physical_identity_established": false,
+  "owned_server_closed": true,
+  "owned_pid": 24688,
+  "load_seconds": 4.040597999999591,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "unattempted_cases": [],
+  "finished_utc": "2026-10-10T21:49:58.533438+00:00"
+}
