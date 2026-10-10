@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+import re
 from scripts import observe_pairwise_cue as cue_runner
 from scripts import observe_paired_shape as shape_runner
 from scripts import pairwise_cue_observations as cue
@@ -14,6 +15,9 @@ VERSION = "retained-paired-visual-diagnostic-1"
 MAX_REPORT_BYTES = 4 * 1024 * 1024
 MAX_CONTENT_CHARACTERS = 65536
 ROLES = {"cue": ("previous", "current"), "shape": ("reference", "candidate")}
+ADJACENT_RECIPE = Path(__file__).resolve().parents[1] / "docs/validation/adjacent-cue-recipe-2026-10-09.py"
+ADJACENT_BUDGET = {"requests_per_model": 1, "maximum_requests_total": 2, "automatic_retries": 0,
+                   "new_generation_requests": 0, "new_downloads": 0, "stop_at_first_invalid_or_unavailable": True}
 
 
 def digest(value):
@@ -58,7 +62,33 @@ def check_code(binding, module_path, root):
     checks.checked_bytes(binding, root)
 
 
+def adjacent_preflight(plan, root):
+    if not isinstance(plan.get("execution_base_head"), str) or not re.fullmatch(r"[a-f0-9]{40}", plan["execution_base_head"]):
+        raise ValueError("Adjacent plan requires a declared SHA1 HEAD")
+    budget = plan.get("budget")
+    if (not isinstance(budget, dict) or set(budget) != set(ADJACENT_BUDGET)
+            or any(type(budget[k]) is not type(v) or budget[k] != v for k, v in ADJACENT_BUDGET.items())
+            or plan.get("human_gold") is not False or "expected_cue_visibility" not in plan
+            or plan["expected_cue_visibility"] is not None):
+        raise ValueError("Changed fixed adjacent cue budget/evidence")
+    # Known local implementation is checked, never imported/executed from metadata.
+    check_code(plan["recipe"], ADJACENT_RECIPE, root)
+    published = checked_json(plan["published_source_plan"], root)
+    if published.get("protocol") != "pairwise-visible-cue-probe-plan-1":
+        raise ValueError("Adjacent context requires the published source plan")
+    method, regions = preflight(published, "cue", root)
+    by_id = {case["case_id"]: case for case in method["cases"]}
+    warm, hot = by_id["retained_warm_512"], by_id["retained_hot_768"]
+    case = {"case_id": "retained_warm_to_hot_adjacent", "previous_region_id": warm["current_region_id"],
+            "current_region_id": hot["current_region_id"], "previous": warm["current"], "current": hot["current"]}
+    if plan.get("cases") != [case] or plan.get("comparison_candidates") != method["comparison_candidates"]:
+        raise ValueError("Changed derived adjacent context/model candidates")
+    return {**copy.deepcopy(method), "cases": [copy.deepcopy(case)]}, regions
+
+
 def preflight(plan, kind, root):
+    if kind == "cue" and plan.get("protocol") == "retained-adjacent-cue-plan-1":
+        return adjacent_preflight(plan, root)
     if kind == "cue":
         method = checked_json(plan["design"], root)
     elif kind == "shape" and plan.get("protocol") == "paired-major-shape-probe-plan-2":
@@ -150,12 +180,24 @@ class RetainedPairedObservations:
             raw = checked_json(raw_binding, root); plan = checked_json(plan_binding, root)
             method, regions = preflight(plan, kind, root)
             observer = cue if kind == "cue" else shape
-            if (raw.get("protocol") != observer.VERSION or raw.get("plan_sha256") != plan_binding["sha256"]
-                    or raw.get("subject") != method["subject"]):
+            adjacent = kind == "cue" and plan.get("protocol") == "retained-adjacent-cue-plan-1"
+            if adjacent:
+                source = checked_json(plan["published_source_plan"], root)
+                if (raw.get("protocol") != "retained-adjacent-cue-result-1" or raw.get("observer_version") != cue.VERSION
+                        or not isinstance(raw.get("plan"), dict) or not checks.same_binding(raw["plan"], plan_binding, root)
+                        or raw.get("source_plan") != plan["published_source_plan"] or raw.get("recipe") != plan["recipe"]
+                        or raw.get("implementation") != source["implementation"] or raw.get("human_gold") is not False
+                        or any(raw.get(k) is not False for k in ("admission_allowed", "physical_identity_established", "physical_temperature_measured"))
+                        or any(type(raw.get(k)) is not int or raw[k] != 0 for k in ("automatic_retries", "generation_requests"))):
+                    raise ValueError("Report adjacent protocol/plan/code/budget mismatch")
+            elif raw.get("protocol") != observer.VERSION or raw.get("plan_sha256") != plan_binding["sha256"]:
+                raise ValueError("Report protocol/plan mismatch")
+            if raw.get("subject") != method["subject"]:
                 raise ValueError("Report protocol/plan/subject mismatch")
             if kind == "cue":
-                if (raw.get("cue_query") != method["cue_query"] or raw.get("implementation") != plan["implementation"]
-                        or raw.get("design") != plan["design"]):
+                if raw.get("cue_query") != method["cue_query"]:
+                    raise ValueError("Report cue query mismatch")
+                if not adjacent and (raw.get("implementation") != plan["implementation"] or raw.get("design") != plan["design"]):
                     raise ValueError("Report cue/code/design mismatch")
             else:
                 for field, module in (("harness_sha256", shape_runner.__file__), ("observer_sha256", shape.__file__),
@@ -172,6 +214,12 @@ class RetainedPairedObservations:
             rows, cases = raw.get("rows"), method["cases"]
             if not isinstance(rows, list) or len(rows) > min(128, len(cases)):
                 raise ValueError("Invalid retained cohort budget")
+            if adjacent:
+                count = raw.get("http_model_requests_attempted")
+                if (type(count) is not int or not 0 <= count <= 1 or (not rows and count != 0)
+                        or (rows and rows[0].get("transport_status") == "completed" and count != 1)
+                        or raw.get("unattempted_cases") != [case["case_id"] for case in cases[len(rows):]]):
+                    raise ValueError("Adjacent report request/omission budget mismatch")
             store = cls(); store._root = root; store._kind = kind
             store._plan = copy.deepcopy(plan); store._method = copy.deepcopy(method); store._regions = copy.deepcopy(regions)
             store._provenance = {"protocol": observer.VERSION, "source_report_sha256": raw_binding["sha256"],

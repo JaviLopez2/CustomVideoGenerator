@@ -1,0 +1,79 @@
+{
+  "protocol": "human-count-and-geometry-analysis-1",
+  "analyzed_utc": "2026-10-10T20:31:51.147305+00:00",
+  "bindings": {
+    "human_review": {
+      "path": "docs/validation/clock-visible-count-human-review-2026-10-10.json",
+      "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+    },
+    "full_qa_archive": {
+      "path": "docs/validation/visual-judge-full-blind-contract-2026-10-08.json",
+      "sha256": "637481e340d0abe4687fdfc863903819b382c7765d5df096e5d90ff0aa450c23"
+    },
+    "prefill_archive": {
+      "path": "docs/validation/visual-judge-prefill-idle-controls-2026-10-08.json",
+      "sha256": "fea73ce0a72961b03ee36c651fb83370e5a2ec989264321c3b2a7ebb703b7bf8"
+    }
+  },
+  "count_scope": {
+    "model": "unsloth/Qwen3.5-9B-GGUF",
+    "four_selected_original_images": 4,
+    "eight_quantity_fields_agree": 8,
+    "quantity_fields_total": 8,
+    "prefill_duplicate_fullframe_fields_agree": 2,
+    "prefill_additional_independent_images": 0,
+    "whole_qa_accuracy": null,
+    "population_accuracy": null
+  },
+  "structural_disagreement": {
+    "case_id": "mpt_explicit_quantity_seed43",
+    "source_sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+    "human_statement_verbatim": "3: Veo 2 agujas, horaria y minutera. Veo 2 llaves que convergen en una, por un cabezal. La peor llave de todas.",
+    "human_key_fusion_reported": true,
+    "model_geometry": {
+      "status": "pass",
+      "reason": "Silhouette matches reference: round watch, elongated keys. Part arrangement consistent — watch left, keys right, no fusion or deformation."
+    },
+    "historical_combined_verdict": "fail",
+    "reason": "Numeric count agreement does not resolve fusion: archived geometry says no fusion/deformation, contrary to the user visible-structure statement. Historical combined fail comes from quantity; do not treat it as successful geometry detection.",
+    "model_raw_modified": false
+  },
+  "standalone_crop_disagreement": {
+    "source": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+      "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "size": [
+        768,
+        1376
+      ]
+    },
+    "crop": {
+      "query": "pocket watch",
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\visual-judge-regions-2026-10-08\\valid_cloth_edit-main-object.png",
+      "sha256": "a572092db9da0042fa82d6e2b16e7744df644c44f8fb172d236a620bae383732",
+      "bounds": [
+        73,
+        431,
+        455,
+        887
+      ],
+      "source_sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+      "role": "detail of the same candidate"
+    },
+    "exact_source_pixel_subset_verified": true,
+    "human_fullframe_watch_hands": 2,
+    "archived_fullframe_watch_hands": 2,
+    "archived_standalone_crop_watch_hands": 3,
+    "archived_fullframe_plus_crop_watch_hands": 2,
+    "independent_crop_human_review": null,
+    "reason": "Standalone crop conflicts with fullframe human count; verified cropping does not certify a better observation. Do not count alternative views as independent examples or use majority voting to create truth."
+  },
+  "aesthetic_scope": "Key4 aesthetic preference and difference from keys1/2 are retained; no reference-identity approval inferred.",
+  "prior_assistant_labels_changed": false,
+  "prior_human_ABC_changed": false,
+  "new_model_requests": 0,
+  "new_generation_requests": 0,
+  "judge_selected": false,
+  "production_admission": false,
+  "next_test_focus": "Generic principal-parts/junction/fusion observation on source-bound inputs, together with independent cross-family controls; preserve count/shape/state separation."
+}

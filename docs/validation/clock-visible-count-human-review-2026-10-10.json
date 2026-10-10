@@ -1,0 +1,205 @@
+{
+  "protocol": "independent-clock-visible-count-human-review-1",
+  "received_utc": "2026-10-10T20:25:55.317425+00:00",
+  "bindings": {
+    "review_preparation": {
+      "path": "docs/validation/clock-independent-review-preparation-2026-10-09.json",
+      "sha256": "04b7822ead0a3c8ca9975bbc609085a71139108f1d3be97bf72d6423695a15b7"
+    },
+    "comparison_preparation": {
+      "path": "docs/validation/clock-count-comparison-preparation-2026-10-10.json",
+      "sha256": "5004480976f2bef721b3d3b5b8f195d9ca10e2fd066e06cfcd756272923f334d"
+    }
+  },
+  "board": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\clock-independent-review-2026-10-09\\review-board.svg",
+    "sha256": "97b99355fa295da35443401ff230d466ea16cebb09a3f52df9baa59f7c14d2b4"
+  },
+  "human_review_status": "received",
+  "rows": [
+    {
+      "review_id": "1",
+      "case_id": "valid_cloth_edit",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\resolution-details-2026-10-07\\detail_edit_768x1376\\result.png",
+        "sha256": "029f4b8d36a062f932c0fbcea2394856f8dd079773bc051384869c1f4b0d9352",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_statement_verbatim": "1: veo 2 agujas, la horaria y minutera. Veo 1 llave. ",
+      "human_visible_watch_hands": 2,
+      "human_visible_keys": 1,
+      "human_uncertainty_reported": false,
+      "reference_identity_adjudication": null,
+      "geometry_notes_scope": "User qualitative statement only; no automatic severity, strict identity tolerance or production admission inferred",
+      "key_fusion_reported": null,
+      "archived_count_agreement": [
+        {
+          "archive": "full_qa_blind_counts",
+          "row_id": "valid_cloth_edit",
+          "subject": "silver key",
+          "observed_count": 1,
+          "human_visible_count": 1,
+          "agrees": true
+        },
+        {
+          "archive": "full_qa_blind_counts",
+          "row_id": "valid_cloth_edit",
+          "subject": "watch hands",
+          "observed_count": 2,
+          "human_visible_count": 2,
+          "agrees": true
+        },
+        {
+          "archive": "prefill_single_fullframe",
+          "row_id": "positive_full",
+          "subject": "watch hands",
+          "observed_count": 2,
+          "human_visible_count": 2,
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "review_id": "2",
+      "case_id": "mpt_t2i_text_contract_768",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_t2i_text_contract_768\\result.png",
+        "sha256": "e8a1e8d350ff9dd161ec927b9c3793f853e8cec47ba344ff22247b085431ee02",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_statement_verbatim": "2: veo 3 agujas, la horaria, minutera y segundera. Veo 1 llave minimamente distorsionada comparando con la imagen 1.",
+      "human_visible_watch_hands": 3,
+      "human_visible_keys": 1,
+      "human_uncertainty_reported": false,
+      "reference_identity_adjudication": null,
+      "geometry_notes_scope": "User qualitative statement only; no automatic severity, strict identity tolerance or production admission inferred",
+      "key_fusion_reported": null,
+      "archived_count_agreement": [
+        {
+          "archive": "full_qa_blind_counts",
+          "row_id": "mpt_t2i_text_contract_768",
+          "subject": "silver key",
+          "observed_count": 1,
+          "human_visible_count": 1,
+          "agrees": true
+        },
+        {
+          "archive": "full_qa_blind_counts",
+          "row_id": "mpt_t2i_text_contract_768",
+          "subject": "watch hands",
+          "observed_count": 3,
+          "human_visible_count": 3,
+          "agrees": true
+        },
+        {
+          "archive": "prefill_single_fullframe",
+          "row_id": "negative_full",
+          "subject": "watch hands",
+          "observed_count": 3,
+          "human_visible_count": 3,
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "review_id": "3",
+      "case_id": "mpt_explicit_quantity_seed43",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\mpt_explicit_quantity_seed43\\result.png",
+        "sha256": "e9f2b705e0d71798b2dbc3cde7f5053a99a1f6ee3122eeaa1141a72f7fbdb925",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_statement_verbatim": "3: Veo 2 agujas, horaria y minutera. Veo 2 llaves que convergen en una, por un cabezal. La peor llave de todas.",
+      "human_visible_watch_hands": 2,
+      "human_visible_keys": 2,
+      "human_uncertainty_reported": false,
+      "reference_identity_adjudication": null,
+      "geometry_notes_scope": "User qualitative statement only; no automatic severity, strict identity tolerance or production admission inferred",
+      "key_fusion_reported": true,
+      "archived_count_agreement": [
+        {
+          "archive": "full_qa_blind_counts",
+          "row_id": "mpt_explicit_quantity_seed43",
+          "subject": "silver key",
+          "observed_count": 2,
+          "human_visible_count": 2,
+          "agrees": true
+        },
+        {
+          "archive": "full_qa_blind_counts",
+          "row_id": "mpt_explicit_quantity_seed43",
+          "subject": "watch hands",
+          "observed_count": 2,
+          "human_visible_count": 2,
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "review_id": "4",
+      "case_id": "z_image_t2i_768",
+      "source": {
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\autonomous-2026-10-08\\z_image_t2i_768\\openai-image-644f7e2133d4.png",
+        "sha256": "6d70559267314fba3059fb99f7519020826b9b7f5835ab5f80124ccbd3d704dc",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "human_statement_verbatim": "4: 3 agujas, horaria, minutera y segundera. Veo 1 llave, diferente a la imagen 1 y 2, pero en mi opinion es la llave que mejor queda, ya que el cabezal es algo que practicamente toda llave tiene y en las imagenes 1 y 2 no tienen. ",
+      "human_visible_watch_hands": 3,
+      "human_visible_keys": 1,
+      "human_uncertainty_reported": false,
+      "reference_identity_adjudication": null,
+      "geometry_notes_scope": "User qualitative statement only; no automatic severity, strict identity tolerance or production admission inferred",
+      "key_fusion_reported": null,
+      "archived_count_agreement": [
+        {
+          "archive": "full_qa_blind_counts",
+          "row_id": "z_image_t2i_768",
+          "subject": "silver key",
+          "observed_count": 1,
+          "human_visible_count": 1,
+          "agrees": true
+        },
+        {
+          "archive": "full_qa_blind_counts",
+          "row_id": "z_image_t2i_768",
+          "subject": "watch hands",
+          "observed_count": 3,
+          "human_visible_count": 3,
+          "agrees": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "distinct_original_images": 4,
+    "distinct_human_quantity_fields": 8,
+    "full_qa_blind_count_fields_agree": 8,
+    "full_qa_blind_count_fields_total": 8,
+    "prefill_same_image_fields_agree": 2,
+    "prefill_same_image_fields_total": 2,
+    "independent_samples_added_by_prefill": 0
+  },
+  "limits": [
+    "User reports two key shapes converging at one head in image3; retain this fusion separately from numeric visible count, not proof of two detached physical objects.",
+    "User prefers key4 aesthetically and states it differs from keys1/2; this is not identity approval or approval of its three-hand watch contract.",
+    "Cases selected after prior model outputs, four images only; count agreement is not general judge accuracy or whole-image QA approval.",
+    "Prior assistant dataset labels, model raw outputs and human key A/B/C statements remain unchanged."
+  ],
+  "dataset_labels_changed": false,
+  "previous_human_ABC_changed": false,
+  "production_admission": false,
+  "new_model_requests": 0,
+  "new_generation_requests": 0
+}

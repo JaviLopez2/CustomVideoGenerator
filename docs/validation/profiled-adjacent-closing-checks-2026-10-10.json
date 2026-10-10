@@ -1,0 +1,182 @@
+{
+  "protocol": "profiled-adjacent-closing-checks-1",
+  "checked_utc": "2026-10-10T20:33:53.019497+00:00",
+  "base_head": "34e8acd71fbb45dbadb4c9ea2d6dab2411b0b00f",
+  "branch": "factory/image-model-routing-modernization",
+  "source_and_prepared_pngs_reverified": 4,
+  "native_eight_bit_inputs": true,
+  "profile_helper_binding_verified": true,
+  "published_observer_runner_code_unchanged": true,
+  "legacy_cohorts_unchanged": 4,
+  "legacy_contexts_unchanged": 14,
+  "old_results_and_snapshot_keys_identical": true,
+  "current_adapter": {
+    "path": "D:/Apps/MPT-worktrees/image-model-routing-modernization/scripts/retained_paired_observations.py",
+    "sha256": "82a0240d7795494d274ff876710a0c279bf7e7abb86286f25682199a22fb3dee"
+  },
+  "current_profile_helper": {
+    "path": "D:/Apps/MPT-worktrees/image-model-routing-modernization/scripts/prepare_profiled_visual_inputs.py",
+    "sha256": "dc79a073f2f983b0b95b168f8ee85f7f65984070c19ce97aad2600df69f88d23"
+  },
+  "cpu_pipeline_plan": {
+    "path": "docs/validation/adjacent-replay-bridge-plan-2026-10-10.json",
+    "sha256": "6f3b82a2344516ded83bd0dd1d8af5531601e2474a189c03f7413f74d05d03b4"
+  },
+  "cpu_pipeline_result": {
+    "path": "docs/validation/adjacent-replay-bridge-result-2026-10-10.json",
+    "sha256": "82224a8dadcdc492216c79a17e18e2d653cf204e75de084d0adc9527ae7ebd76"
+  },
+  "cpu_outputs_equal": true,
+  "mock_scenes": 4,
+  "retained_reader_calls": 2,
+  "real_model_requests": 0,
+  "real_generation_requests": 0,
+  "human_review": {
+    "path": "docs/validation/clock-visible-count-human-review-2026-10-10.json",
+    "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+  },
+  "human_count_review_status": "received",
+  "human_count_agreement": "8/8 fields,4 selected originals, not general accuracy",
+  "human_geometry_conflict_retained": true,
+  "prior_human_ABC_changed": false,
+  "test_log": {
+    "path": "docs/validation/profiled-adjacent-final-v2-tests-2026-10-10.txt",
+    "sha256": "4be8fc364bc5461337b3d4f31a986167da0aed285c50924c79f4f99c536e7c69"
+  },
+  "test_result": "317 passed in37.48s/exit0;60new",
+  "review_findings": "3P2 reproduced6RED; fixed once; final suitegreen",
+  "stable": {
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "tracked_status_clean": true
+  },
+  "health_read_only": [
+    {
+      "port": 8080,
+      "path": "/health",
+      "error_type": "URLError"
+    },
+    {
+      "port": 8090,
+      "path": "/",
+      "http_status": 404
+    },
+    {
+      "port": 8188,
+      "path": "/system_stats",
+      "http_status": 200
+    }
+  ],
+  "secret_matches": 0,
+  "checked_new_files": 26,
+  "checked_tracked_diff_files": 5,
+  "files": [
+    {
+      "path": "docs/PROFILED_INPUT_AND_ADJACENT_REPLAY_PLAN.md",
+      "sha256": "820714136f18eede3683c336ff522a64131370e553af5a04fbfeb89afd86646f"
+    },
+    {
+      "path": "docs/PROFILED_INPUT_AND_ADJACENT_REPLAY_REPORT.md",
+      "sha256": "565cde1c4bd3b651e5e66cfee63a35f1b0d805d020de117705f422d3c7f7eb23"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-bridge-execution-2026-10-10.txt",
+      "sha256": "fa10baa85be3cd9d35ac24724ef80dec68cc8980e916914eed23cab6cdbc0894"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-bridge-plan-2026-10-10.json",
+      "sha256": "6f3b82a2344516ded83bd0dd1d8af5531601e2474a189c03f7413f74d05d03b4"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-bridge-recipe-2026-10-10.py",
+      "sha256": "6e4727d349c358e781bf174b7fe7307abcf17d18e5fd16d175e6dd902d1906ac"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-bridge-result-2026-10-10.json",
+      "sha256": "82224a8dadcdc492216c79a17e18e2d653cf204e75de084d0adc9527ae7ebd76"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-legacy-after-2026-10-10.json",
+      "sha256": "b14115933b8b060d6e12f72ee09f5c7262adaa08dc957d44e7ad3d28857a8b28"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-legacy-after-v2-2026-10-10.json",
+      "sha256": "befc816051a33c6b68eb722d51ec1d25d6350caf40a33d395254f35effff1d1b"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-legacy-before-2026-10-10.json",
+      "sha256": "e013ebef3d0a3a0b1fa2c06ebaff7063b90829acaba6050e32edc9b8d91a0390"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-red-tests-2026-10-10.txt",
+      "sha256": "55bde7bc0de321a197fd722727d46c5d0e2845fe4df698a23aeff89bf66369b1"
+    },
+    {
+      "path": "docs/validation/adjacent-replay-red-v2-tests-2026-10-10.txt",
+      "sha256": "e553978d7ef12ff1055565086bc2d90672e848eecff9d9640922a8f75bed08c6"
+    },
+    {
+      "path": "docs/validation/clock-human-count-and-geometry-analysis-2026-10-10.json",
+      "sha256": "1aea315ee7e6c9077eaed2bff20258c093cdae1a61392b5276c5600651cf3f7c"
+    },
+    {
+      "path": "docs/validation/clock-visible-count-human-review-2026-10-10.json",
+      "sha256": "246f7fda37250a88db4c1ceade617dee5f64fc09fff57bb7f400b85699890b53"
+    },
+    {
+      "path": "docs/validation/profiled-adjacent-final-tests-2026-10-10.txt",
+      "sha256": "8a4eb68634957d92bb8e10f8778798501eba514eb9e8ebca24289546c980bacd"
+    },
+    {
+      "path": "docs/validation/profiled-adjacent-final-v2-tests-2026-10-10.txt",
+      "sha256": "4be8fc364bc5461337b3d4f31a986167da0aed285c50924c79f4f99c536e7c69"
+    },
+    {
+      "path": "docs/validation/profiled-adjacent-green-tests-2026-10-10.txt",
+      "sha256": "72c2c2cf36a1da37809536501b1fdabbbe5a7d104f08f609cf8eb7b9d428c4df"
+    },
+    {
+      "path": "docs/validation/profiled-adjacent-review-red-tests-2026-10-10.txt",
+      "sha256": "470a81134c105cd92b29c4e029c2ba3ee83c7a21d7665096281cc6ab26ea8103"
+    },
+    {
+      "path": "docs/validation/profiled-camera-input-plan-2026-10-10.json",
+      "sha256": "ab6fcda9e43e333b08aea79f3c8902d5aa213d86e650d4b05bf85fbeae5b2adf"
+    },
+    {
+      "path": "docs/validation/profiled-camera-input-plan-v2-2026-10-10.json",
+      "sha256": "52c5321236d9732f5b5922991ce5bcee4f3da8fb6ba75175d408fb701c4c9f47"
+    },
+    {
+      "path": "docs/validation/profiled-camera-input-result-2026-10-10.json",
+      "sha256": "84f1aad7c5dc00d444ccf02908a5821422a173dd1c9ba81a1fb000f0f8ca551c"
+    },
+    {
+      "path": "docs/validation/profiled-camera-input-result-v2-2026-10-10.json",
+      "sha256": "353ea8aca9a488dcd9a66fd7eb4734a58d98801a297deebeee7f01c27b9a2cff"
+    },
+    {
+      "path": "docs/validation/profiled-input-green-tests-2026-10-10.txt",
+      "sha256": "6cf948e39e69e3f9baf43cbd0471b5a949baebdac1f7b519d830e15159f534ab"
+    },
+    {
+      "path": "docs/validation/profiled-input-red-tests-2026-10-10.txt",
+      "sha256": "10cd6dab2ed68e2910c2860d1ca0e05ac3b839595b3045b6e69dcb4118c12730"
+    },
+    {
+      "path": "scripts/prepare_profiled_visual_inputs.py",
+      "sha256": "dc79a073f2f983b0b95b168f8ee85f7f65984070c19ce97aad2600df69f88d23"
+    },
+    {
+      "path": "test/test_prepare_profiled_visual_inputs.py",
+      "sha256": "675377e81cc0720c5d74a95be9daacc089a95d825ea5b7f6766ee15862bc08db"
+    },
+    {
+      "path": "test/test_retained_adjacent_cue.py",
+      "sha256": "d72a1e72961ca13f1eace80e4066a04ff19a4e9e61eca83bbcdcfe7a478d6531"
+    }
+  ],
+  "goal_complete": false,
+  "judge_selected": false,
+  "production_admission": false
+}

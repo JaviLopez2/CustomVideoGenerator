@@ -1,5 +1,17 @@
 # Handoff de auditoría de modelos — 2026-10-07
 
+## Revisión humana de recuentos recibida, 2026-10-10
+
+[Review literal](validation/clock-visible-count-human-review-2026-10-10.json), [contraste](validation/clock-human-count-and-geometry-analysis-2026-10-10.json): 4originales/8campos de cantidad coinciden con full QA ciego Qwen3.5; prefill añade2registros de esas mismas imágenes, no muestras. Fusión de llave3 reportada por humano contradice geometry pass/no fusion; fail combinado previo viene de cantidad. Crop solo positivo declara3agujas versus humano/full2/full+crop2, pixeles subset verificados; sin gold humano del crop. Preferencia llave4 no es identidad/admisión. Revisión recibida; ABC/labels/raw anteriores intactos,0nueva inferencia/generación, ningún juez aprobado.
+
+Próximo: cerrar/publicar checkpoint preparación/replay y preparar cámara source-bound/cobertura y controles genéricos de partes/uniones/fusión, sin repeatedrequests humanos ni promover QA. Calibración entre familias/latencia completa/selección pendientes, objetivo activo. Las menciones pending de relojes siguientes son históricas.
+
+## Checkpoint vigente — color/alpha y replay adyacente verificados, 2026-10-10
+
+Base `34e8acd`, experimental inicialmente limpio/diez worktrees. Cuatro fuentes cámara/foto8bits→RGB nativo con ICC→sRGB/alpha sobre blanco declarados; fuentes intactas, PNG finales v2 reconstruidos y bytes iguales al primer batch histórico. Loader consume el formato adyacente sin ejecutar receta, mantiene cuatro stores/14contextos/resultados/keys históricos idénticos.317tests pasan37,48s/exit0,60nuevos;3P2 reproducidos6RED/fix único/final verde. Dos informes retenidos por loop MPT offline:4escenas simuladas/2lecturas, primero unavailable/segundo uncertain por candidato; resultados/llamadas iguales sin/con inyección. [Informe](PROFILED_INPUT_AND_ADJACENT_REPLAY_REPORT.md), [continuidad](AUTONOMOUS_MPT_WORK_HANDOFF.md).0nueva inferencia/generación/descarga/jobs/servicios compartidos/app/defaults/gates/routing/modelos/deps/workflows/estable. Ningún juez aprobado.
+
+Próximo CPU: preflight de cohorte cámara ligado a preparación explícita/cobertura/selección de referencias, controles separados cantidad/partes/forma; recuentos humanos pendientes, anotación literal cuando llegue y reuso de raw. Sin gold/negativo estructural inventado, sin atribuir presencia de vapor a progresión térmica. Calibración independiente/error/abstención/latencia completa pendientes. SHA de cierre Git/origin, objetivo activo y nada que abrir/aprobar para preparación; siguientes bloques históricos.
+
 ## Checkpoint vigente — par adyacente observado; calibración pendiente, 2026-10-10
 
 Base `bace7ab`, mismo experimental/diez worktrees, archivo de revisión humana previo conservado. Un par warm→hot nuevo/dos consultas máximas, sin retries/generaciones/descargas: ambos candidatos responden observed→observed, stop/0reasoning,5,567s/5,623s; incertidumbre/scoresnull/sin admisión. Presencia binaria no acredita intensidad/temperatura/progresión.131 tests existentes pasan3,31s/exit0; receta CPU y revisión independiente sin hallazgos, módulos publicados intactos. PID propios27884/23440 cerrados. [Informe](ADJACENT_CUE_AND_CONTROL_PREPARATION_REPORT.md). Cuatro relojes enlazados a seis recuentos archivados, revisión humana pendiente/null; cámara/foto de Factory con cuatro hashes verificados y pack seleccionado trazado, ICC/alpha requieren preparación explícita. No hay negativo estructural nuevo ni etiquetas humanas inventadas.

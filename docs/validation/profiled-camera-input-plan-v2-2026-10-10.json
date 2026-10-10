@@ -1,0 +1,73 @@
+{
+  "protocol": "profiled-camera-input-execution-plan-1",
+  "declared_utc": "2026-10-09T22:28:14.201701+00:00",
+  "source_audit": {
+    "path": "docs/validation/retained-camera-control-audit-2026-10-09.json",
+    "sha256": "4b42f4a20b18ccae31d40e052c6e68bba2c424e98865e464f09eb80709b1d65c"
+  },
+  "helper": {
+    "path": "D:/Apps/MPT-worktrees/image-model-routing-modernization/scripts/prepare_profiled_visual_inputs.py",
+    "sha256": "dc79a073f2f983b0b95b168f8ee85f7f65984070c19ce97aad2600df69f88d23"
+  },
+  "preparation": {
+    "protocol": "profiled-visual-input-plan-1",
+    "background_srgb": [
+      255,
+      255,
+      255
+    ],
+    "images": [
+      {
+        "id": "camera_anchor",
+        "source": {
+          "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\user_references\\reference-05.png",
+          "sha256": "56214c597d825fcc469151284b2981577caec8b9ff466c961fb8ed849b7cad07",
+          "size": [
+            800,
+            800
+          ]
+        }
+      },
+      {
+        "id": "camera_candidate",
+        "source": {
+          "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-7cafe3ecfbb9.png",
+          "sha256": "4a755cde7a4ee323549a709f91cbf6ba815f6d16f5016a198c06d68847016333",
+          "size": [
+            768,
+            1376
+          ]
+        }
+      },
+      {
+        "id": "print_root",
+        "source": {
+          "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-06d8ce7bd117.png",
+          "sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+          "size": [
+            1024,
+            1536
+          ]
+        }
+      },
+      {
+        "id": "print_candidate",
+        "source": {
+          "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-cbbf8a76af1b.png",
+          "sha256": "bae3516c5353db16f8bab639772f8fe58dd0c0de0ae4cb7e7d720650d6c3d19b",
+          "size": [
+            768,
+            1376
+          ]
+        }
+      }
+    ]
+  },
+  "output": "local_image_stack/experiments/bridge/target/profiled-camera-fullframes-2026-10-10-v2",
+  "scope": "Native fullframes with explicit ICC→sRGB/alpha-on-white, original files read only; no human labels/negative truth/inference/generation.",
+  "prior_preparation": {
+    "path": "docs/validation/profiled-camera-input-plan-2026-10-10.json",
+    "sha256": "ab6fcda9e43e333b08aea79f3c8902d5aa213d86e650d4b05bf85fbeae5b2adf"
+  },
+  "review_fix": "Reject non-eight-bit PNG IHDR before decode; earlier outputs remain historical, no source rewriting."
+}

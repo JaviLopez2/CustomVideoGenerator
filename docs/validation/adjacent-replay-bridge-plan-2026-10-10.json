@@ -1,0 +1,64 @@
+{
+  "protocol": "retained-adjacent-mpt-cpu-execution-plan-1",
+  "declared_utc": "2026-10-09T22:29:29.007842+00:00",
+  "base_head": "34e8acd71fbb45dbadb4c9ea2d6dab2411b0b00f",
+  "implementation": [
+    {
+      "path": "docs/validation/adjacent-replay-bridge-recipe-2026-10-10.py",
+      "sha256": "6e4727d349c358e781bf174b7fe7307abcf17d18e5fd16d175e6dd902d1906ac"
+    },
+    {
+      "path": "docs/validation/paired-diagnostic-bridge-recipe-2026-10-09.py",
+      "sha256": "62def33d8d68f7fba9fb6dbf0e7d5dc973c1a88481f3aaa28760affc48a2923a"
+    },
+    {
+      "path": "scripts/retained_paired_observations.py",
+      "sha256": "82a0240d7795494d274ff876710a0c279bf7e7abb86286f25682199a22fb3dee"
+    },
+    {
+      "path": "app/services/paired_visual_observation_diagnostics.py",
+      "sha256": "c25879a6b4248ab7c821add9a8dc4401e76330d93a6498174f9cc71278825b66"
+    },
+    {
+      "path": "app/services/material.py",
+      "sha256": "2b80fb84296131338dbb063b78588478d9f07b10e9f3c69e6079e5408bf44c52"
+    },
+    {
+      "path": "test/services/test_corrective_continuity.py",
+      "sha256": "587ce5459bd1d013582cd1f89a95bb138936dfaa35e611f4945cf405d77b20be"
+    }
+  ],
+  "cohorts": [
+    {
+      "model": "qwen35",
+      "raw": {
+        "path": "docs/validation/adjacent-cue-qwen35-2026-10-09.json",
+        "sha256": "252d2061e93cf316abf01619600cfa446b9fc79282e59ae72caa61c314dc8854"
+      },
+      "plan": {
+        "path": "docs/validation/adjacent-cue-plan-2026-10-09.json",
+        "sha256": "2d3daa3b493a6cb7d3bb3a17fc91641b606311bea1a9b355d95e420496e63fed"
+      }
+    },
+    {
+      "model": "qwen3vl",
+      "raw": {
+        "path": "docs/validation/adjacent-cue-qwen3vl-2026-10-09.json",
+        "sha256": "af0d31cc4edd569b97ecaa02076004d4dac118c6446d6c28b68cb98dc0467c61"
+      },
+      "plan": {
+        "path": "docs/validation/adjacent-cue-plan-2026-10-09.json",
+        "sha256": "2d3daa3b493a6cb7d3bb3a17fc91641b606311bea1a9b355d95e420496e63fed"
+      }
+    }
+  ],
+  "output": "docs/validation/adjacent-replay-bridge-result-2026-10-10.json",
+  "budget": {
+    "real_model_requests": 0,
+    "real_generation_requests": 0,
+    "real_uploads": 0,
+    "real_rendered_videos": 0,
+    "service_control": 0
+  },
+  "limits": "Offline software proof; no full QA latency/accuracy/physical truth/production admission."
+}

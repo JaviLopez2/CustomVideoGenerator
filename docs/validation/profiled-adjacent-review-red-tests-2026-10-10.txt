@@ -1,0 +1,42 @@
+FFFFFF...                                                                [100%]
+================================== FAILURES ===================================
+_ test_rgb_and_rgba_sixteen_bit_png_are_rejected_without_silent_precision_loss[2-3] _
+test\test_prepare_profiled_visual_inputs.py:110: in test_rgb_and_rgba_sixteen_bit_png_are_rejected_without_silent_precision_loss
+    with pytest.raises(ValueError): helper.prepare(plan(row(descriptor)), destination, workspace_root=tmp_path)
+E   Failed: DID NOT RAISE ValueError
+_ test_rgb_and_rgba_sixteen_bit_png_are_rejected_without_silent_precision_loss[6-4] _
+test\test_prepare_profiled_visual_inputs.py:110: in test_rgb_and_rgba_sixteen_bit_png_are_rejected_without_silent_precision_loss
+    with pytest.raises(ValueError): helper.prepare(plan(row(descriptor)), destination, workspace_root=tmp_path)
+E   Failed: DID NOT RAISE ValueError
+______ test_changed_context_or_provenance_is_rejected[head_missing-cue] _______
+test\test_retained_adjacent_cue.py:114: in test_changed_context_or_provenance_is_rejected
+    with pytest.raises(ValueError): store(b)
+E   Failed: DID NOT RAISE ValueError
+______ test_changed_context_or_provenance_is_rejected[head_invalid-cue] _______
+test\test_retained_adjacent_cue.py:114: in test_changed_context_or_provenance_is_rejected
+    with pytest.raises(ValueError): store(b)
+E   Failed: DID NOT RAISE ValueError
+________ test_changed_context_or_provenance_is_rejected[head_type-cue] ________
+test\test_retained_adjacent_cue.py:114: in test_changed_context_or_provenance_is_rejected
+    with pytest.raises(ValueError): store(b)
+E   Failed: DID NOT RAISE ValueError
+_ test_row_preflight_failure_preserves_raw_without_inventing_http[unavailable-0-True-cue] _
+test\test_retained_adjacent_cue.py:166: in test_row_preflight_failure_preserves_raw_without_inventing_http
+    s = store(b); result = s.lookup(**context(s))
+        ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:217: in from_files
+    raise ValueError("Adjacent report request/omission budget mismatch")
+E   ValueError: Adjacent report request/omission budget mismatch
+=========================== short test summary info ===========================
+FAILED test/test_prepare_profiled_visual_inputs.py::test_rgb_and_rgba_sixteen_bit_png_are_rejected_without_silent_precision_loss[2-3]
+FAILED test/test_prepare_profiled_visual_inputs.py::test_rgb_and_rgba_sixteen_bit_png_are_rejected_without_silent_precision_loss[6-4]
+FAILED test/test_retained_adjacent_cue.py::test_changed_context_or_provenance_is_rejected[head_missing-cue]
+FAILED test/test_retained_adjacent_cue.py::test_changed_context_or_provenance_is_rejected[head_invalid-cue]
+FAILED test/test_retained_adjacent_cue.py::test_changed_context_or_provenance_is_rejected[head_type-cue]
+FAILED test/test_retained_adjacent_cue.py::test_row_preflight_failure_preserves_raw_without_inventing_http[unavailable-0-True-cue]
+6 failed, 3 passed, 51 deselected in 1.47s
+
+Python exit code: 1

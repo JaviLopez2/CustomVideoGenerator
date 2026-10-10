@@ -1,5 +1,17 @@
 # Auditoría e investigación de routing de imágenes
 
+## Actualización — recuentos humanos recibidos, conflicto geométrico conservado, 2026-10-10
+
+[Review](validation/clock-visible-count-human-review-2026-10-10.json) liga literal y4SHA: 8campos de manos/llaves coinciden con raw fullframe ciego Qwen3.5, sin muestreo poblacional ni accuracy de QA completo. [Análisis](validation/clock-human-count-and-geometry-analysis-2026-10-10.json) conserva fusión humana de llave3 frente a geometry pass/no fusion; fail combinado era por count, no prueba de geometría fiable. Crop solo3 frente humano/full2 y full+crop2 con pixel subset exacto; no adjudicación humana separada del crop. Preferencia estética4 no acredita identidad ni su contrato de agujas. No relabel/ABC/raw/producción/requests nuevos; revisión recibida.
+
+Siguiente: cerrar checkpoint probado y preparar preflight/controles genéricos de partes/uniones/fusión junto a cámara/otra familia, manteniendo cantidades/forma/estado separados. Selección/calibración entre familias/latencia de QA completa pendientes, objetivo activo; pending de relojes posteriores son históricos.
+
+## Actualización — entradas explícitas y contexto adyacente integrado, 2026-10-10
+
+Desde `34e8acd`, preparación aislada de4fuentes cámara/foto8bits, ICC→sRGB relativo/alpha sobre blanco en canales codificados; RGB nativos sin recorte/resize/metadata auxiliar, fuentes rehash intactas y PNG reconstruidos. Batch final v2/code ligado, anterior histórico. Replay soporta nuevo warm→hot sin código dinámico; fourstores/14contextos/resultados/keys sin cambios.317tests pasan37,48s/exit0,60 nuevos,3P2 reproducidos6RED/corregidos en una pasada. Loop MPT con2stores/4escenas simuladas/2lecturas: firstunavailable/seconduncertain, outputs/calls iguales sin/con diagnóstico; generación/upload/QA/render sustituidos,0inferencias/generaciones/descargas reales. [Informe](PROFILED_INPUT_AND_ADJACENT_REPLAY_REPORT.md), límites/evidencia allí.
+
+La transformación de color/alpha no conserva todos los valores RGB originales ni certifica fotometría; se declara en provenance. Sin juez aprobado/gold humano nuevo/negativo de cámara establecido; recuentos humanos pendientes y baseline→hot histórico separado. Próximo: ligar preparación/cobertura a preflight de cámara y controles perceptuales; calibración independiente/errores/abstención/latencia QA completa pendientes. App/defaults/gates/routing/modelos/deps/workflows/estable intactos.
+
 ## Actualización — observación adyacente y preparación de controles, 2026-10-10
 
 Desde `bace7ab`, se declara y ejecuta un contexto warm→hot distinto del antiguo baseline→hot: dos consultas/0retry/generación/descarga. Qwen3.5/Qwen3-VL reportan pista observada en ambos,5,567s/5,623s, carga propia~4,03s/4,04s; formatos válidos, scores null/uncertain/sin admisión. No demuestra aumento de temperatura/intensidad/progresión ni precisión/latencia de QA completo.131 tests publicados enfocados pasan3,31s/exit0, receta CPU verificada/revisión independiente sin hallazgos. Los ocho módulos ligados no cambian. [Informe](ADJACENT_CUE_AND_CONTROL_PREPARATION_REPORT.md), raw y límites allí.

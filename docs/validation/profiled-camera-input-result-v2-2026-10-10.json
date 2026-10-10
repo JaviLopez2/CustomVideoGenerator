@@ -1,0 +1,187 @@
+{
+  "protocol": "profiled-camera-input-result-1",
+  "checked_utc": "2026-10-09T22:28:15.670117+00:00",
+  "plan": {
+    "path": "docs/validation/profiled-camera-input-plan-v2-2026-10-10.json",
+    "sha256": "52c5321236d9732f5b5922991ce5bcee4f3da8fb6ba75175d408fb701c4c9f47"
+  },
+  "helper": {
+    "path": "D:/Apps/MPT-worktrees/image-model-routing-modernization/scripts/prepare_profiled_visual_inputs.py",
+    "sha256": "dc79a073f2f983b0b95b168f8ee85f7f65984070c19ce97aad2600df69f88d23"
+  },
+  "manifest": {
+    "path": "D:/Apps/MPT-worktrees/image-model-routing-modernization/local_image_stack/experiments/bridge/target/profiled-camera-fullframes-2026-10-10-v2/manifest.json",
+    "sha256": "4968e1a7dca735d2b882dbe7499aec82f6b8b86a0d439a185683bde0287c0d0c"
+  },
+  "sources_rehashed_after": true,
+  "output_pngs_reconstructed_exactly": true,
+  "all_sources_native_eight_bit_png": true,
+  "prepared_png_bytes_identical_to_prior_batch": true,
+  "prior_result": {
+    "path": "docs/validation/profiled-camera-input-result-2026-10-10.json",
+    "sha256": "84f1aad7c5dc00d444ccf02908a5821422a173dd1c9ba81a1fb000f0f8ca551c"
+  },
+  "source_files_changed": false,
+  "model_requests": 0,
+  "generation_requests": 0,
+  "human_review": "pending",
+  "prepared_images": [
+    {
+      "id": "camera_anchor",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\user_references\\reference-05.png",
+        "sha256": "56214c597d825fcc469151284b2981577caec8b9ff466c961fb8ed849b7cad07",
+        "size": [
+          800,
+          800
+        ]
+      },
+      "source_mode": "RGBA",
+      "source_bit_depth": 8,
+      "source_icc_sha256": "88309750b4d3e89bd82edfb350fe0a351eec8997fda0b85302cc9dd96c094b23",
+      "color_policy": "embedded_icc_to_srgb_relative_colorimetric",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "source_alpha_sha256": "f95d89c348e85b4e85139879e2a4df2f27968985f1603233825d9a0c255416e2",
+      "background_srgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha_blending": "encoded_srgb_channels",
+      "rgb_samples_unchanged": false,
+      "spatial_resampling": false,
+      "ancillary_metadata_copied": false,
+      "semantic_human_review": "pending",
+      "prepared": {
+        "sha256": "076def513d3a82b76020e2698d5b747a8e986f85acf532e7d457d242cffbedff",
+        "pixel_sha256": "a78578e48115edfd55fb9f49ff0b3d8864ec1a6a3cf3d73a727e4086e350d97c",
+        "size": [
+          800,
+          800
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_00.png"
+      }
+    },
+    {
+      "id": "camera_candidate",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-7cafe3ecfbb9.png",
+        "sha256": "4a755cde7a4ee323549a709f91cbf6ba815f6d16f5016a198c06d68847016333",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "source_mode": "RGBA",
+      "source_bit_depth": 8,
+      "source_icc_sha256": null,
+      "color_policy": "untagged_assumed_srgb",
+      "alpha_extrema": [
+        241,
+        255
+      ],
+      "source_alpha_sha256": "77e050bd8436060edd588b986cbba7346b79fa9a8417d195d3c8d94ffde5a130",
+      "background_srgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha_blending": "encoded_srgb_channels",
+      "rgb_samples_unchanged": false,
+      "spatial_resampling": false,
+      "ancillary_metadata_copied": false,
+      "semantic_human_review": "pending",
+      "prepared": {
+        "sha256": "c2d023a958b171be4a892cef55f82e0b14f826502f87ed738a7f302519206178",
+        "pixel_sha256": "92cb7d0e5bee0a6f80a13d89b5fa6e4ec013e56c0149d6fbb1732971ee4e8230",
+        "size": [
+          768,
+          1376
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_01.png"
+      }
+    },
+    {
+      "id": "print_root",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-06d8ce7bd117.png",
+        "sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "size": [
+          1024,
+          1536
+        ]
+      },
+      "source_mode": "RGB",
+      "source_bit_depth": 8,
+      "source_icc_sha256": null,
+      "color_policy": "untagged_assumed_srgb",
+      "alpha_extrema": null,
+      "source_alpha_sha256": null,
+      "background_srgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha_blending": "encoded_srgb_channels",
+      "rgb_samples_unchanged": true,
+      "spatial_resampling": false,
+      "ancillary_metadata_copied": false,
+      "semantic_human_review": "pending",
+      "prepared": {
+        "sha256": "e986e0009dc4a907b00a2efb282ee75bc3000bd890689c5e820d1ca111214d8d",
+        "pixel_sha256": "c10abddaf578c6dfd8f467f80e459d62d6c0f1a9d8d7e45e8ee85b2925fc74b1",
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_02.png"
+      }
+    },
+    {
+      "id": "print_candidate",
+      "source": {
+        "path": "D:\\Apps\\MPT-Agent-Factory\\data\\runs\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\storage\\tasks\\f36297f1-5cc4-43bf-8d4a-d6bb8725faef\\openai-image-cbbf8a76af1b.png",
+        "sha256": "bae3516c5353db16f8bab639772f8fe58dd0c0de0ae4cb7e7d720650d6c3d19b",
+        "size": [
+          768,
+          1376
+        ]
+      },
+      "source_mode": "RGBA",
+      "source_bit_depth": 8,
+      "source_icc_sha256": null,
+      "color_policy": "untagged_assumed_srgb",
+      "alpha_extrema": [
+        246,
+        255
+      ],
+      "source_alpha_sha256": "bf346f628a1e66a6582b079b691e1e7a8e328cd56ccbc093b8edfa149ed340ac",
+      "background_srgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha_blending": "encoded_srgb_channels",
+      "rgb_samples_unchanged": false,
+      "spatial_resampling": false,
+      "ancillary_metadata_copied": false,
+      "semantic_human_review": "pending",
+      "prepared": {
+        "sha256": "81d236ad6c2380096a8eafdc1f84ce026426b80b7ffb6889bb3af9492ffc2c41",
+        "pixel_sha256": "f74683def8c1451c631186ee74e706f8e9e96b314718c6222c864b4637c64d14",
+        "size": [
+          768,
+          1376
+        ],
+        "mode": "RGB",
+        "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\profiled-camera-fullframes-2026-10-10-v2\\image_03.png"
+      }
+    }
+  ]
+}

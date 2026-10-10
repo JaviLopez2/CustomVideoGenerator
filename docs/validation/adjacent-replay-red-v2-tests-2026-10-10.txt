@@ -1,0 +1,226 @@
+F..................FFFFFFFFFF                                            [100%]
+================================== FAILURES ===================================
+___ test_original_adjacent_context_raw_and_diagnostic_are_source_bound[cue] ___
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:67: in test_original_adjacent_context_raw_and_diagnostic_are_source_bound
+    s = store(adjacent); ctx = context(s); result = s.lookup(**ctx)
+        ^^^^^^^^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+__ test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass[json-cue] __
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:109: in test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass
+    s = store(b); result = s.lookup(**context(s))
+        ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+_ test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass[reasoning-cue] _
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:109: in test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass
+    s = store(b); result = s.lookup(**context(s))
+        ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+_ test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass[truncated-cue] _
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:109: in test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass
+    s = store(b); result = s.lookup(**context(s))
+        ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+_ test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass[contradiction-cue] _
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:109: in test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass
+    s = store(b); result = s.lookup(**context(s))
+        ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+___________ test_dependency_mutation_invalidates_lookup[source-cue] ___________
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:116: in test_dependency_mutation_invalidates_lookup
+    b = adjacent; s = store(b); ctx = context(s)
+                      ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+___________ test_dependency_mutation_invalidates_lookup[recipe-cue] ___________
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:116: in test_dependency_mutation_invalidates_lookup
+    b = adjacent; s = store(b); ctx = context(s)
+                      ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+_________ test_dependency_mutation_invalidates_lookup[published-cue] __________
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:116: in test_dependency_mutation_invalidates_lookup
+    b = adjacent; s = store(b); ctx = context(s)
+                      ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+________ test_dependency_mutation_invalidates_lookup[preparation-cue] _________
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:116: in test_dependency_mutation_invalidates_lookup
+    b = adjacent; s = store(b); ctx = context(s)
+                      ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+_ test_top_level_file_changes_preserve_snapshot_and_returned_copies_are_isolated[cue] _
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:124: in test_top_level_file_changes_preserve_snapshot_and_returned_copies_are_isolated
+    b = adjacent; s = store(b); ctx = context(s); before = s.lookup(**ctx)
+                      ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+_____________ test_request_not_attempted_remains_unavailable[cue] _____________
+scripts\retained_paired_observations.py:151: in from_files
+    method, regions = preflight(plan, kind, root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:63: in preflight
+    method = checked_json(plan["design"], root)
+                          ^^^^^^^^^^^^^^
+E   KeyError: 'design'
+
+The above exception was the direct cause of the following exception:
+test\test_retained_adjacent_cue.py:135: in test_request_not_attempted_remains_unavailable
+    s = store(b)
+        ^^^^^^^^
+test\test_retained_adjacent_cue.py:58: in store
+    return replay.RetainedPairedObservations.from_files(b.raw_binding, b.plan_binding, kind="cue", root=b.root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\retained_paired_observations.py:211: in from_files
+    raise ValueError("Invalid paired replay provenance") from exc
+E   ValueError: Invalid paired replay provenance
+=========================== short test summary info ===========================
+FAILED test/test_retained_adjacent_cue.py::test_original_adjacent_context_raw_and_diagnostic_are_source_bound[cue]
+FAILED test/test_retained_adjacent_cue.py::test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass[json-cue]
+FAILED test/test_retained_adjacent_cue.py::test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass[reasoning-cue]
+FAILED test/test_retained_adjacent_cue.py::test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass[truncated-cue]
+FAILED test/test_retained_adjacent_cue.py::test_invalid_raw_is_preserved_as_unavailable_despite_saved_pass[contradiction-cue]
+FAILED test/test_retained_adjacent_cue.py::test_dependency_mutation_invalidates_lookup[source-cue]
+FAILED test/test_retained_adjacent_cue.py::test_dependency_mutation_invalidates_lookup[recipe-cue]
+FAILED test/test_retained_adjacent_cue.py::test_dependency_mutation_invalidates_lookup[published-cue]
+FAILED test/test_retained_adjacent_cue.py::test_dependency_mutation_invalidates_lookup[preparation-cue]
+FAILED test/test_retained_adjacent_cue.py::test_top_level_file_changes_preserve_snapshot_and_returned_copies_are_isolated[cue]
+FAILED test/test_retained_adjacent_cue.py::test_request_not_attempted_remains_unavailable[cue]
+11 failed, 18 passed in 3.94s
+
+Python exit code: 1
