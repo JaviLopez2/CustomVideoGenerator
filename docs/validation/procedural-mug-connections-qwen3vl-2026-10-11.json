@@ -1,0 +1,147 @@
+{
+  "protocol": "procedural-mug-connections-result-1",
+  "started_utc": "2026-10-11T20:31:38.184987+00:00",
+  "execution_head": "66d019b91884909be909eb40cbb548386af8527c",
+  "execution_plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\procedural-mug-connections-execution-plan-v2-2026-10-11.json",
+    "sha256": "c83924145a414ff5eab21c2ba7bcbc58b49675c65365f1bd1f67603f0e2a2bb2"
+  },
+  "source_plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\procedural-mug-connections-plan-v2-2026-10-11.json",
+    "sha256": "b72680ff0609fc21cc08968fbdc246371c74a9c83be8bb5f28a5fb02701ce49a"
+  },
+  "recipe": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\procedural-mug-connections-execution-recipe-v2-2026-10-11.py",
+    "sha256": "014c00a75988a088d9646ed2906a6a8bb6bc8dc84be6cdfbe26a23d0e9307ec7"
+  },
+  "model": {
+    "repo": "Qwen/Qwen3-VL-8B-Instruct-GGUF",
+    "revision": "f982a07559d4a2f6c8744d840bf6fccab30eea96",
+    "license": "apache-2.0",
+    "files": [
+      {
+        "file": "Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+        "size": 5027784800,
+        "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+      },
+      {
+        "file": "mmproj-Qwen3VL-8B-Instruct-F16.gguf",
+        "size": 1159029824,
+        "sha256": "ca524100ebf825c9a870db1c580d03879e0da0ab2541697e2458e64891cf9d38"
+      }
+    ]
+  },
+  "runtime": {
+    "archives": [
+      {
+        "name": "llama-b11497-bin-win-cuda-12.4-x64.zip",
+        "sha256": "900cbc58b11d802d3bb07e345d1671290bcab3e628f8cdd3b1cca3db8c67c614"
+      },
+      {
+        "name": "cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+      }
+    ],
+    "extracted_files_checked": 54,
+    "server_sha256": "523d1149f5080c4e67312f577e89d64cd1194b8523d5a3a8c87ffb8eeca4c546"
+  },
+  "resource_preflight": {
+    "ram_free_gib": 17.315650939941406,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1667,
+      "total_mib": 12288,
+      "utilization_percent": 4,
+      "temperature_c": 31
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "rows": [
+    {
+      "case_id": "identical_procedural_mug",
+      "protocol": "scoped-structure-state-observations-1",
+      "transport_status": "unavailable",
+      "request_attempted": true,
+      "scope_sha256": "aecb5e8d1b430158b3929787498fdd9313bd103ab5c15ae8ac41544292d9bf87",
+      "prepare_seconds": 0.0016029000034905039,
+      "request_parse_seconds": 5.234356399996614,
+      "request_sha256": "db85bac358488fee5056acd3cd9b80773c8e63d6f804af4e35f24c3f50ff1779",
+      "inputs": [
+        {
+          "role": "reference",
+          "sha256": "9e954ef37d05e8cd889734eb24524a62fa44add7f3c97fb5bc6bc6228a70615c"
+        },
+        {
+          "role": "candidate",
+          "sha256": "9e954ef37d05e8cd889734eb24524a62fa44add7f3c97fb5bc6bc6228a70615c"
+        }
+      ],
+      "raw_choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "{\n  \"allowed_state_change\": \"not_applicable\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"not_observed\",\n  \"reference_subject_presence\": \"present\",\n  \"state_evidence\": \"not_applicable\",\n  \"structural_connections_change\": \"not_observed\",\n  \"structure_evidence\": \"The mug body and handle are visually identical in both images, with no visible changes to their form, connections, or relative positions.\"\n}"
+          }
+        }
+      ],
+      "final_content": "{\n  \"allowed_state_change\": \"not_applicable\",\n  \"candidate_subject_presence\": \"present\",\n  \"protected_structure_change\": \"not_observed\",\n  \"reference_subject_presence\": \"present\",\n  \"state_evidence\": \"not_applicable\",\n  \"structural_connections_change\": \"not_observed\",\n  \"structure_evidence\": \"The mug body and handle are visually identical in both images, with no visible changes to their form, connections, or relative positions.\"\n}",
+      "finish_reason": "stop",
+      "reasoning_characters": 0,
+      "usage": {
+        "completion_tokens": 103,
+        "prompt_tokens": 2343,
+        "total_tokens": 2446,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "server_timings": {
+        "cache_n": 0,
+        "prompt_n": 2343,
+        "prompt_ms": 3019.05,
+        "prompt_per_token_ms": 1.2885403329065301,
+        "prompt_per_second": 776.0719431609281,
+        "predicted_n": 103,
+        "predicted_ms": 2138.59,
+        "predicted_per_token_ms": 20.966568627450982,
+        "predicted_per_second": 47.69497659672962
+      },
+      "error_type": "ValueError"
+    }
+  ],
+  "raw_model_http_responses": [
+    {
+      "request_index": 0,
+      "http_status": 200,
+      "body_base64": "eyJjaG9pY2VzIjpbeyJmaW5pc2hfcmVhc29uIjoic3RvcCIsImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50Ijoie1xuICBcImFsbG93ZWRfc3RhdGVfY2hhbmdlXCI6IFwibm90X2FwcGxpY2FibGVcIixcbiAgXCJjYW5kaWRhdGVfc3ViamVjdF9wcmVzZW5jZVwiOiBcInByZXNlbnRcIixcbiAgXCJwcm90ZWN0ZWRfc3RydWN0dXJlX2NoYW5nZVwiOiBcIm5vdF9vYnNlcnZlZFwiLFxuICBcInJlZmVyZW5jZV9zdWJqZWN0X3ByZXNlbmNlXCI6IFwicHJlc2VudFwiLFxuICBcInN0YXRlX2V2aWRlbmNlXCI6IFwibm90X2FwcGxpY2FibGVcIixcbiAgXCJzdHJ1Y3R1cmFsX2Nvbm5lY3Rpb25zX2NoYW5nZVwiOiBcIm5vdF9vYnNlcnZlZFwiLFxuICBcInN0cnVjdHVyZV9ldmlkZW5jZVwiOiBcIlRoZSBtdWcgYm9keSBhbmQgaGFuZGxlIGFyZSB2aXN1YWxseSBpZGVudGljYWwgaW4gYm90aCBpbWFnZXMsIHdpdGggbm8gdmlzaWJsZSBjaGFuZ2VzIHRvIHRoZWlyIGZvcm0sIGNvbm5lY3Rpb25zLCBvciByZWxhdGl2ZSBwb3NpdGlvbnMuXCJcbn0ifX1dLCJjcmVhdGVkIjoxNzkxNzUwNzA3LCJtb2RlbCI6IkQ6XFxBcHBzXFxNUFQtd29ya3RyZWVzXFxpbWFnZS1tb2RlbC1yb3V0aW5nLW1vZGVybml6YXRpb25cXGxvY2FsX2ltYWdlX3N0YWNrXFxleHBlcmltZW50c1xcYnJpZGdlXFx0YXJnZXRcXHZpc3VhbC1qdWRnZS1tb2RlbHNcXFF3ZW4zLVZMLThCLUluc3RydWN0LUdHVUZcXFF3ZW4zVkwtOEItSW5zdHJ1Y3QtUTRfS19NLmdndWYiLCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJiMTE0OTctZmYzMDM2M2EwIiwib2JqZWN0IjoiY2hhdC5jb21wbGV0aW9uIiwidXNhZ2UiOnsiY29tcGxldGlvbl90b2tlbnMiOjEwMywicHJvbXB0X3Rva2VucyI6MjM0MywidG90YWxfdG9rZW5zIjoyNDQ2LCJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOnsiY2FjaGVkX3Rva2VucyI6MH19LCJpZCI6ImNoYXRjbXBsLUNnTDcySmFMMFNSVTVmRHB5SVF2aFMxQlZBWnUycTkwIiwidGltaW5ncyI6eyJjYWNoZV9uIjowLCJwcm9tcHRfbiI6MjM0MywicHJvbXB0X21zIjozMDE5LjA1LCJwcm9tcHRfcGVyX3Rva2VuX21zIjoxLjI4ODU0MDMzMjkwNjUzMDEsInByb21wdF9wZXJfc2Vjb25kIjo3NzYuMDcxOTQzMTYwOTI4MSwicHJlZGljdGVkX24iOjEwMywicHJlZGljdGVkX21zIjoyMTM4LjU5LCJwcmVkaWN0ZWRfcGVyX3Rva2VuX21zIjoyMC45NjY1Njg2Mjc0NTA5ODIsInByZWRpY3RlZF9wZXJfc2Vjb25kIjo0Ny42OTQ5NzY1OTY3Mjk2Mn19",
+      "body_size": 1281,
+      "body_sha256": "be52a7eed989bd86d840d30003d3cb5c2f81605c0542ea5e5855b5e772941612",
+      "recorded_before_json_decode": true
+    }
+  ],
+  "http_model_requests_attempted": 1,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "human_gold": false,
+  "admission_allowed": false,
+  "owned_server_closed": true,
+  "owned_pid": 22376,
+  "load_seconds": 4.0438248999998905,
+  "modalities": {
+    "vision": true,
+    "video": true,
+    "audio": false
+  },
+  "port_8092_open_after": false,
+  "unattempted_cases": [
+    "allowed_vapor_only",
+    "connection_gap_same_vapor"
+  ],
+  "finished_utc": "2026-10-11T20:31:48.930336+00:00"
+}

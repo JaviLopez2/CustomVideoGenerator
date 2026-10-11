@@ -1,0 +1,49 @@
+{
+  "protocol": "procedural-mug-execution-cpu-controls-1",
+  "checked_utc": "2026-10-11T20:26:20.851775+00:00",
+  "execution_plan_sha256": "282c488326c749335754e172b7434d52faf9c76dbd6994de921c422051a589f3",
+  "recipe_sha256": "22f2733817ffe441d7bd689cb959c0b1f960b5b97ae1fb26f45e79ce1287da5f",
+  "mutants_rejected": [
+    {
+      "fault": "budget",
+      "rejected": true
+    },
+    {
+      "fault": "outputs",
+      "rejected": true
+    },
+    {
+      "fault": "source",
+      "rejected": true
+    },
+    {
+      "fault": "result",
+      "rejected": true
+    },
+    {
+      "fault": "assets",
+      "rejected": true
+    },
+    {
+      "fault": "pin",
+      "rejected": true
+    },
+    {
+      "fault": "model_order",
+      "rejected": true
+    },
+    {
+      "fault": "retry_policy",
+      "rejected": true
+    },
+    {
+      "fault": "authority",
+      "rejected": true
+    }
+  ],
+  "source_preparation_reconstructed": true,
+  "immutable_original_preserved": true,
+  "maximum_future_requests": 6,
+  "model_requests": 0,
+  "generations": 0
+}

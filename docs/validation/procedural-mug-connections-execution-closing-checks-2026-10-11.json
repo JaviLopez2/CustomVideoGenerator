@@ -1,0 +1,125 @@
+{
+  "protocol": "procedural-mug-execution-closing-checks-1",
+  "checked_utc": "2026-10-11T20:36:28.840249+00:00",
+  "base_head": "66d019b91884909be909eb40cbb548386af8527c",
+  "origin_after_fetch": "66d019b91884909be909eb40cbb548386af8527c",
+  "branch": "factory/image-model-routing-modernization",
+  "ahead_behind_before_commit": [
+    0,
+    0
+  ],
+  "previous_goal_turn_classification": "progress: prepared and published pixel-proven native procedural controls at66d019b",
+  "task_files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "959b4852029e70a310d4994fc6a04759bb39e43121281dd34ef2398243c5d53c"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "e2a20aa2deedb91f23fc931dc5bea3e1bfc4d8424c109fb0c373c4a987b3a1c2"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "19f830a0b7697612cadf1b7741bd98665d33477f425f77d508659edfa63de506"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "960413e44fed709a6a2389cb20151cbbf76e6911ee7f7fa86c5da03e03e495df"
+    },
+    {
+      "path": "docs/PROCEDURAL_MUG_CONNECTIONS_REPORT.md",
+      "sha256": "3e395d94c65c8327a4cf7dfb36eadaa629dbe0ef9406e482710a7d316891afec"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-analysis-2026-10-11.json",
+      "sha256": "080cf6e9451d18b130c67b7c9065ad9711ea7103740d6d6b8584d160bff33da2"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-execution-cpu-controls-2026-10-11.json",
+      "sha256": "56111a55b247abd465c2342140415b04839edca5105accf2394ede1f05ee6b6f"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-execution-final-tests-2026-10-11.txt",
+      "sha256": "b9eadf0e1ec7516792c5a80765b83e52c5814dd172f575a5bb2b763b2492121c"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-execution-green-controls-2026-10-11.json",
+      "sha256": "9ccf482b3740c655330dd34e3809d23a1dc2217fe21a23c20a8ea1652d478735"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-execution-plan-2026-10-11.json",
+      "sha256": "282c488326c749335754e172b7434d52faf9c76dbd6994de921c422051a589f3"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-execution-plan-v2-2026-10-11.json",
+      "sha256": "c83924145a414ff5eab21c2ba7bcbc58b49675c65365f1bd1f67603f0e2a2bb2"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-execution-recipe-2026-10-11.py",
+      "sha256": "22f2733817ffe441d7bd689cb959c0b1f960b5b97ae1fb26f45e79ce1287da5f"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-execution-recipe-v2-2026-10-11.py",
+      "sha256": "014c00a75988a088d9646ed2906a6a8bb6bc8dc84be6cdfbe26a23d0e9307ec7"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-execution-tests-2026-10-11.txt",
+      "sha256": "1b37539f5a3d765dd54bf3d5eeceb5ae7ae2f7d3fc920ab5f704ff2469183cb2"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-qwen35-2026-10-11.json",
+      "sha256": "a3258b48676b1555deb161aa179f63aa4ef5411bd0927a991bdabb4510486c9f"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-qwen3vl-2026-10-11.json",
+      "sha256": "dff570925348685dbd6aacccf4287650a0bd3989d09a620f7c02b168bc507f9b"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-resource-closing-2026-10-11.json",
+      "sha256": "c6380d2ad9f6d640e303c5ddffdf1c49e56ed787e8a0d559f0a8f7dd78237a25"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-transport-red-2026-10-11.json",
+      "sha256": "59c9e5ec8abecaf4bde12f9603398ac02b93698dbafab8be8f0b01707bf7960f"
+    }
+  ],
+  "json_python_ast_whitespace_valid": true,
+  "credential_scan_including_decoded_http_bodies_passed": true,
+  "historical_docs_plans_results_and_raw_preserved": true,
+  "source_preparation_and_execution_bindings_reverified": true,
+  "test_result": {
+    "passed": 147,
+    "new_cases": 0,
+    "seconds": 2.1,
+    "python_exit_code": 0,
+    "log": "docs/validation/procedural-mug-connections-execution-final-tests-2026-10-11.txt"
+  },
+  "independent_review_P2": 1,
+  "raw_transport_RED_controls": 2,
+  "raw_transport_fix_GREEN_controls": 4,
+  "execution_plan_mutants_rejected": 9,
+  "v1_execution_not_used_for_models": true,
+  "actual_model_requests": 2,
+  "http200_complete_stop_replies": 2,
+  "scope_valid_observations": 0,
+  "unattempted_pairs_total": 4,
+  "schema_validator_discrepancy_verified": true,
+  "cohorts_closed_no_retry_or_enum_repair": true,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "gpu_macro_benchmarks": 0,
+  "shared_service_controls": 0,
+  "app_gates_routing_dependencies_workflows_unchanged": true,
+  "owned_processes_absent": true,
+  "port_8092_free_at_closure": true,
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "tracked_clean": true,
+    "untracked_not_modified_or_enumerated": true
+  },
+  "geometry_judge_approved": false,
+  "human_camera_review": "received",
+  "goal": "active",
+  "next_action": "CPU scope-compatible schema and matrix/archived reply checks; no rewriting invalid old replies or judging unattempted defect pairs"
+}

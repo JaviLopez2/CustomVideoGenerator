@@ -1,0 +1,87 @@
+{
+  "protocol": "procedural-mug-connections-execution-plan-1",
+  "declared_utc": "2026-10-11T20:28:50.610777+00:00",
+  "base_head": "66d019b91884909be909eb40cbb548386af8527c",
+  "source": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\procedural-mug-connections-plan-v2-2026-10-11.json",
+    "sha256": "b72680ff0609fc21cc08968fbdc246371c74a9c83be8bb5f28a5fb02701ce49a"
+  },
+  "preparation": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\procedural-mug-connections-preparation-v2-2026-10-11.json",
+    "sha256": "10a38477762b18d725b6824964569189061663965a791f5496e6e298dc6703a0"
+  },
+  "prepare_recipe": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\procedural-mug-connections-recipe-v2-2026-10-11.py",
+    "sha256": "a99602b44d24c1f56263c4d561c6c5209fb3787a0d642017b7e7fb5113a714e7"
+  },
+  "recipe": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\procedural-mug-connections-execution-recipe-v2-2026-10-11.py",
+    "sha256": "014c00a75988a088d9646ed2906a6a8bb6bc8dc84be6cdfbe26a23d0e9307ec7"
+  },
+  "assets": {
+    "path": "docs/validation/visual-judge-candidates-assets-2026-10-08.json",
+    "sha256": "b8cd3dc4b4703ceab84449bff34c502ea414eeb7e2b17d7e1a39b5313cbc9391"
+  },
+  "pins": {
+    "scripts/scoped_structure_observations.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\scoped_structure_observations.py",
+      "sha256": "c2559fb6b1e2d5ab889ba2b2ff500fc6e4975661bdb5eec219283c57b9dd5e49"
+    },
+    "scripts/paired_shape_observations.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\paired_shape_observations.py",
+      "sha256": "d8f2cf2ac75d3eb9350265cb1108f679bdfef9a75f4b85c7f8819b173dc454d1"
+    },
+    "scripts/observe_paired_shape.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\observe_paired_shape.py",
+      "sha256": "b291198e215c3d4f1d2ee805e4e8c6dd639f7f6e047a1ecd1bf193bc3e574618"
+    },
+    "scripts/paired_shape_preflight.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\paired_shape_preflight.py",
+      "sha256": "f7895f49f8507d27a2ef12db3810d942f4aa0731f524e61b0f3edb0c44b1ac83"
+    },
+    "scripts/evaluate_multimodal_judges.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\evaluate_multimodal_judges.py",
+      "sha256": "22f593ad2d1f6144f9b55595d885937cbe8c70b9334535dc851961613414b71f"
+    },
+    "scripts/observe_visual_geometry.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\scripts\\observe_visual_geometry.py",
+      "sha256": "bb9d8f6f2dad43054c70fa6ed8df3273a263e47bcd5431948245c75da3023a1b"
+    },
+    "docs/validation/adjacent-cue-recipe-2026-10-09.py": {
+      "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\adjacent-cue-recipe-2026-10-09.py",
+      "sha256": "6301e87c02ce603b89a64a8cd8f3eeb962db3a7ba57d89aa08ae11a81e0ed60e"
+    }
+  },
+  "models": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF"
+  ],
+  "budget": {
+    "requests_per_model": 3,
+    "maximum_requests_total": 6,
+    "automatic_retries": 0,
+    "max_tokens": 512,
+    "temperature": 0,
+    "thinking": false,
+    "context": 8192,
+    "min_image_tokens": 1024,
+    "max_image_tokens": 1536,
+    "http_timeout_seconds": 60,
+    "port": 8092,
+    "generation_requests": 0,
+    "downloads": 0
+  },
+  "outputs": {
+    "unsloth/Qwen3.5-9B-GGUF": {
+      "report": "docs/validation/procedural-mug-connections-qwen35-2026-10-11.json",
+      "logs": "local_image_stack/experiments/bridge/target/procedural-mug-connections-qwen35-2026-10-11"
+    },
+    "Qwen/Qwen3-VL-8B-Instruct-GGUF": {
+      "report": "docs/validation/procedural-mug-connections-qwen3vl-2026-10-11.json",
+      "logs": "local_image_stack/experiments/bridge/target/procedural-mug-connections-qwen3vl-2026-10-11"
+    }
+  },
+  "sequential_owned_servers": true,
+  "stop_at_first_invalid_or_unavailable": true,
+  "admission_allowed": false
+}

@@ -1,0 +1,99 @@
+{
+  "protocol": "procedural-mug-connections-analysis-1",
+  "analyzed_utc": "2026-10-11T20:33:11.695335+00:00",
+  "base_head": "66d019b91884909be909eb40cbb548386af8527c",
+  "execution_plan": {
+    "path": "docs/validation/procedural-mug-connections-execution-plan-v2-2026-10-11.json",
+    "sha256": "c83924145a414ff5eab21c2ba7bcbc58b49675c65365f1bd1f67603f0e2a2bb2"
+  },
+  "source_plan": {
+    "path": "docs/validation/procedural-mug-connections-plan-v2-2026-10-11.json",
+    "sha256": "b72680ff0609fc21cc08968fbdc246371c74a9c83be8bb5f28a5fb02701ce49a"
+  },
+  "cohort_closed": true,
+  "models": [
+    {
+      "model": "qwen35",
+      "raw_report": {
+        "path": "docs/validation/procedural-mug-connections-qwen35-2026-10-11.json",
+        "sha256": "a3258b48676b1555deb161aa179f63aa4ef5411bd0927a991bdabb4510486c9f"
+      },
+      "http_requests_attempted": 1,
+      "http_status": 200,
+      "completion_finish_reason": "stop",
+      "reasoning_characters": 0,
+      "reported_answer": {
+        "allowed_state_change": "not_applicable",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "not_observed",
+        "reference_subject_presence": "present",
+        "state_evidence": "No visible vapor or steam is present above the mug rim in either image.",
+        "structural_connections_change": "not_observed",
+        "structure_evidence": "The mug body and handle are present in both images with consistent physical connections; no missing, added, fused, or deformed parts are observed."
+      },
+      "json_schema_accepts_answer": true,
+      "scope_validator_accepts_answer": false,
+      "scope_validator_error": "State observation contradicts declared scope",
+      "saved_row_transport_status": "unavailable",
+      "failure_classification": "Scope-contract rejection after successful HTTP and complete final reply, not network unavailability",
+      "unattempted_cases": [
+        "allowed_vapor_only",
+        "connection_gap_same_vapor"
+      ],
+      "vapor_or_connection_defect_evaluated": false,
+      "raw_body_sha256": "44851887a5f98e6c8869e314b5689d50ac76a7b84917e50582ada9fa5a777a80",
+      "cached_prompt_tokens": 0,
+      "prepare_seconds": 0.001513600000180304,
+      "preflight_http_parse_seconds": 5.151930699998047,
+      "own_load_seconds": 4.042973499999789
+    },
+    {
+      "model": "qwen3vl",
+      "raw_report": {
+        "path": "docs/validation/procedural-mug-connections-qwen3vl-2026-10-11.json",
+        "sha256": "dff570925348685dbd6aacccf4287650a0bd3989d09a620f7c02b168bc507f9b"
+      },
+      "http_requests_attempted": 1,
+      "http_status": 200,
+      "completion_finish_reason": "stop",
+      "reasoning_characters": 0,
+      "reported_answer": {
+        "allowed_state_change": "not_applicable",
+        "candidate_subject_presence": "present",
+        "protected_structure_change": "not_observed",
+        "reference_subject_presence": "present",
+        "state_evidence": "not_applicable",
+        "structural_connections_change": "not_observed",
+        "structure_evidence": "The mug body and handle are visually identical in both images, with no visible changes to their form, connections, or relative positions."
+      },
+      "json_schema_accepts_answer": true,
+      "scope_validator_accepts_answer": false,
+      "scope_validator_error": "State observation contradicts declared scope",
+      "saved_row_transport_status": "unavailable",
+      "failure_classification": "Scope-contract rejection after successful HTTP and complete final reply, not network unavailability",
+      "unattempted_cases": [
+        "allowed_vapor_only",
+        "connection_gap_same_vapor"
+      ],
+      "vapor_or_connection_defect_evaluated": false,
+      "raw_body_sha256": "be52a7eed989bd86d840d30003d3cb5c2f81605c0542ea5e5855b5e772941612",
+      "cached_prompt_tokens": 0,
+      "prepare_seconds": 0.0016029000034905039,
+      "preflight_http_parse_seconds": 5.234356399996614,
+      "own_load_seconds": 4.0438248999998905
+    }
+  ],
+  "new_model_requests_attempted": 2,
+  "successful_http_replies": 2,
+  "valid_scope_observations": 0,
+  "automatic_retries": 0,
+  "generations": 0,
+  "downloads": 0,
+  "human_gold": false,
+  "admission_allowed": false,
+  "natural_image_accuracy_measured": false,
+  "qa_end_to_end_latency_measured": false,
+  "geometry_judge_approved": false,
+  "schema_validator_discrepancy_verified": true,
+  "next_cpu_action": "Make experimental response schema agree with declared-state validator; preserve invalid original rows and closed cohort, prove with scope/schema matrix and archived reply replay before any newly declared inference"
+}

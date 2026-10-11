@@ -1,0 +1,45 @@
+{
+  "checked_utc": "2026-10-11T20:33:11.695335+00:00",
+  "owned_processes": [
+    {
+      "pid": 25528,
+      "open_process": false,
+      "winerror": 87,
+      "absent": true
+    },
+    {
+      "pid": 22376,
+      "open_process": false,
+      "winerror": 87,
+      "absent": true
+    }
+  ],
+  "resource_snapshot": {
+    "ram_free_gib": 17.21688461303711,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060",
+      "used_mib": 1786,
+      "total_mib": 12288,
+      "utilization_percent": 3,
+      "temperature_c": 31
+    },
+    "ports_open": {
+      "8080": false,
+      "8092": false
+    }
+  },
+  "shared_readonly_health": {
+    "8080": {
+      "error_type": "URLError"
+    },
+    "8090": {
+      "http_status": 404,
+      "generation_readiness_claimed": false
+    },
+    "8188": {
+      "http_status": 200
+    }
+  },
+  "gpu_peak_measured": false,
+  "shared_services_controlled": false
+}

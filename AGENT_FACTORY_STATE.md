@@ -1,5 +1,13 @@
 # MPT Agent Factory — Project State
 
+## Checkpoint vigente — dos respuestas inválidas por contrato de estado, 2026-10-11
+
+Desde `66d019b91884909be909eb40cbb548386af8527c`, dos consultas reales de los controles procedurales, una por juez: HTTP200/stop/0reasoning, estructura/conexiones not_observed y estado not_applicable en control idéntico con vapor permitido declarado. Schema genérico acepta ambas, validador de scope las rechaza. Cohorte cerrada tras primera fila inválida; vapor y unión rota no se consultaron, sin retry/enum reparado o pass acreditado. La fila histórica unavailable corresponde a rechazo de contrato, no falta de respuesta. [Informe](docs/PROCEDURAL_MUG_CONNECTIONS_REPORT.md), [análisis](docs/validation/procedural-mug-connections-analysis-2026-10-11.json).
+
+P2 de transporte reproducido en dos RED offline y corregido en ejecución v2: bytes/status/SHA antes de parsear, incluidos errores HTTP. Cuatro controles de transporte y nueve de plan pasan; 147 tests existentes pasan de nuevo, 2,10s/exit0. V1 sin inferencia conservada; cuerpos reales/raw choices ligados y revisados. PID propios25528/22376ausentes/8092libre;8080cerrado/8090HTTP404 liveness/8188HTTP200. Cero retry/generación/descarga/cambios de compartidos/app/gates/routing/deps/workflows/estable. SHA final mediante Git/origin.
+
+Siguiente autónomo CPU: alinear schema experimental con estados declarados, matriz y replay archivado, conservando protocolo/cohortes anteriores y sin reparar sus resultados. Solo después declarar nueva inferencia si procede; no concluir geometría de pares no consultados. Revisión humana de cámara/foto ya recibida; ningún juez geométrico aprobado. Calibración independiente/error/abstención/QA completo aún pendientes. Objetivo activo, sin otra aprobación o intervención rutinaria; bloques siguientes históricos.
+
 ## Checkpoint vigente — controles procedurales de asa/vapor, 2026-10-11
 
 Desde `76acc31257a5e915e7f6cf118ed203cb53ff7c5b`, objetivo reanudado y preparación CPU de tres pares fuera de llaves: idéntico, vapor permitido y unión inferior rota con el mismo vapor. Tres RGB8 512×512 únicos; unión superior conservada, inferior desconectada solo en tercero, cuerpo/vapor exactos, 968 píxeles de diferencia. Etiquetas por construcción, sin gold humano real o juez aprobado. Scope/prompt/schema/roles/requests fijados; máximo futuro seis consultas, ninguna realizada. [Informe](docs/PROCEDURAL_MUG_CONNECTIONS_REPORT.md), [plan v2](docs/validation/procedural-mug-connections-plan-v2-2026-10-11.json).
