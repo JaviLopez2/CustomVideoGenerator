@@ -1,0 +1,131 @@
+{
+  "protocol": "procedural-mug-connections-closing-checks-1",
+  "checked_utc": "2026-10-11T20:22:49.193426+00:00",
+  "base_head": "76acc31257a5e915e7f6cf118ed203cb53ff7c5b",
+  "origin_after_fetch": "76acc31257a5e915e7f6cf118ed203cb53ff7c5b",
+  "branch": "factory/image-model-routing-modernization",
+  "ahead_behind_before_commit": [
+    0,
+    0
+  ],
+  "previous_goal_turn_classification": "progress: published ROI and camera/print human review at76acc31, then session paused; authoritative goal now active",
+  "task_files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "f0f0d005e1b058347664e17e34afcf25c7d117db6771f89f718bd7dad6067100"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "6de702ca223bed678445c7b64561fc708076a84ee3e8bff4482310ecd1d5b635"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "ec5b73d5061a952b4a38c9de594cbcd0df4ed56ba410977699ff98cad63fe2a1"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "c99d39157ad9e2d2d2e9dd1d4a1b6688937772eb0858dbe5f7d62edd50052e95"
+    },
+    {
+      "path": "docs/PROCEDURAL_MUG_CONNECTIONS_REPORT.md",
+      "sha256": "2eefcad635f88236d2c6a632455e9449f8126494ea48d39e797e22a85db576ab"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-cpu-controls-2026-10-11.json",
+      "sha256": "92b360d2dd333ba2804f71f431161cd6757ff5f08bf02bdda959634a6115c8b8"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-plan-2026-10-11.json",
+      "sha256": "2a2ddbd4c01afa6d5e6b6650fe6ed3332a9b801f248d52662aac327a4f94bfab"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-plan-v2-2026-10-11.json",
+      "sha256": "b72680ff0609fc21cc08968fbdc246371c74a9c83be8bb5f28a5fb02701ce49a"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-preparation-2026-10-11.json",
+      "sha256": "f745a4480fc4517b2a7a0388f7ff1f41de4023659d84c03eae61a8cd223f2476"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-preparation-v2-2026-10-11.json",
+      "sha256": "10a38477762b18d725b6824964569189061663965a791f5496e6e298dc6703a0"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-recipe-2026-10-11.py",
+      "sha256": "ef9a12cadcd42d577eea7dea288dd493440715f2d9b8a329b6021786c1e1be8a"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-recipe-v2-2026-10-11.py",
+      "sha256": "a99602b44d24c1f56263c4d561c6c5209fb3787a0d642017b7e7fb5113a714e7"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-review-red-2026-10-11.json",
+      "sha256": "b60d586e92077d986690af41d3476a59e10d1459dae630b0b3a07d2bb502affa"
+    },
+    {
+      "path": "docs/validation/procedural-mug-connections-tests-2026-10-11.txt",
+      "sha256": "1b37539f5a3d765dd54bf3d5eeceb5ae7ae2f7d3fc920ab5f704ff2469183cb2"
+    }
+  ],
+  "credential_scan_passed": true,
+  "json_python_ast_and_whitespace_valid": true,
+  "historical_handoffs_preserved": true,
+  "app_existing_observers_and_tests_unchanged": true,
+  "final_preparation": "docs/validation/procedural-mug-connections-plan-v2-2026-10-11.json",
+  "v1_superseded_and_not_for_inference": true,
+  "P2_independent_review_findings": 1,
+  "P2_reproduced_and_corrected": true,
+  "same_path_mutant_snapshots_rejected": 12,
+  "v1_v2_images_and_requests_equivalent": true,
+  "native_rgb_reconstructed": 3,
+  "actual_pixels_proof": {
+    "measurement": "8-connected foreground paths in fixed local windows, derived from actual RGB pixels",
+    "top_connection": [
+      true,
+      true,
+      true
+    ],
+    "lower_connection": [
+      true,
+      true,
+      false
+    ],
+    "visible_vapor": [
+      false,
+      true,
+      true
+    ],
+    "body_pixel_region_equal": true,
+    "vapor_pixels_equal_for_defect_pair": true,
+    "defect_changed_box": [
+      341,
+      409,
+      385,
+      431
+    ],
+    "defect_changed_pixels": 968,
+    "meaning": "Construction proof for these diagrams only; not a physical truth detector for photographs"
+  },
+  "test_result": {
+    "passed": 147,
+    "new_cases": 0,
+    "seconds": 2.27,
+    "python_exit_code": 0,
+    "log": "docs/validation/procedural-mug-connections-tests-2026-10-11.txt"
+  },
+  "new_model_requests": 0,
+  "generative_model_image_requests": 0,
+  "downloads": 0,
+  "gpu_benchmarks": 0,
+  "services_started_stopped_or_restarted": 0,
+  "production_admission": false,
+  "independent_human_diagram_gold": false,
+  "stable": {
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "tracked_clean": true,
+    "untracked_not_modified_or_enumerated": true
+  },
+  "goal": "active",
+  "next_action": "Bounded once-only cohort of up to6 requests on declared procedural pairs using installed judges; verify resources and own lifecycle, preserve raw, no natural-image accuracy inferred"
+}

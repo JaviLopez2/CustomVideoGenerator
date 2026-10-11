@@ -1,0 +1,10 @@
+{
+  "protocol": "procedural-mug-review-red-1",
+  "original_plan_sha256": "2a2ddbd4c01afa6d5e6b6650fe6ed3332a9b801f248d52662aac327a4f94bfab",
+  "mutant_saved": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\local_image_stack\\experiments\\bridge\\target\\procedural-mug-connections-review-controls-2026-10-11\\changed-claims-and-time.json",
+  "changed_claims_and_timestamp_accepted_by_v1": true,
+  "preparation_binding_not_checked": true,
+  "model_requests": 0,
+  "generations": 0,
+  "v1_not_ready_for_inference": true
+}

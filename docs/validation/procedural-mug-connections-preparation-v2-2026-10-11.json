@@ -1,0 +1,41 @@
+{
+  "protocol": "procedural-mug-connections-preparation-1",
+  "checked_utc": "2026-10-11T20:19:48.990443+00:00",
+  "plan": {
+    "path": "D:\\Apps\\MPT-worktrees\\image-model-routing-modernization\\docs\\validation\\procedural-mug-connections-plan-v2-2026-10-11.json",
+    "sha256": "b72680ff0609fc21cc08968fbdc246371c74a9c83be8bb5f28a5fb02701ce49a"
+  },
+  "pixel_proof": {
+    "measurement": "8-connected foreground paths in fixed local windows, derived from actual RGB pixels",
+    "top_connection": [
+      true,
+      true,
+      true
+    ],
+    "lower_connection": [
+      true,
+      true,
+      false
+    ],
+    "visible_vapor": [
+      false,
+      true,
+      true
+    ],
+    "body_pixel_region_equal": true,
+    "vapor_pixels_equal_for_defect_pair": true,
+    "defect_changed_box": [
+      341,
+      409,
+      385,
+      431
+    ],
+    "defect_changed_pixels": 968,
+    "meaning": "Construction proof for these diagrams only; not a physical truth detector for photographs"
+  },
+  "images_reconstructed_exactly": 3,
+  "requests_prepared": 3,
+  "model_requests": 0,
+  "generations": 0,
+  "human_gold": false
+}

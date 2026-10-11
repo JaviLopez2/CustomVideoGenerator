@@ -1,5 +1,13 @@
 # Continuación autónoma de MPT — 2026-10-09
 
+## Checkpoint vigente — controles procedurales de asa/vapor, 2026-10-11
+
+Desde `76acc31257a5e915e7f6cf118ed203cb53ff7c5b`, objetivo reanudado y preparación CPU de tres pares fuera de llaves: idéntico, vapor permitido y unión inferior rota con el mismo vapor. Tres RGB8 512×512 únicos; unión superior conservada, inferior desconectada solo en tercero, cuerpo/vapor exactos, 968 píxeles de diferencia. Etiquetas por construcción, sin gold humano real o juez aprobado. Scope/prompt/schema/roles/requests fijados; máximo futuro seis consultas, ninguna realizada. [Informe](PROCEDURAL_MUG_CONNECTIONS_REPORT.md), [plan v2](validation/procedural-mug-connections-plan-v2-2026-10-11.json).
+
+147 tests existentes pasan de nuevo, 2,27 s/exit 0. P2 de revisión reproducido: v1 omitía enlace/claims de preparación; v2 lo verifica y rechaza doce alteraciones. V1 conservada y no apta para inferencia; PNG/payloads idénticos entre versiones. Cero inferencia/descarga/generación con modelos/servicios modificados; app/gates/routing/deps/workflows/estable intactos. Revisión humana de cámara/foto ya recibida; conservar sus matices y cohortes cerradas. SHA final mediante Git/origin.
+
+Siguiente autónomo: cohorte única y limitada de hasta seis consultas de estos controles, ligando pesos/runtime/recursos y cerrando solo procesos propios. Un acierto procedural no selecciona juez ni acredita precisión natural/identidad. Calibración independiente, errores/abstención y QA completo siguen pendientes. Objetivo activo, sin otra aprobación o revisión humana rutinaria. Los bloques de cierre de sesión y pasos siguientes anteriores son históricos.
+
 ## Cierre de sesión — revisión de cámara/foto recibida, 2026-10-11
 
 Checkpoint ROI guardado en `e5afe7db34ae7a6fea86d428bcea765954203d35`: cuatro consultas, señal parcial y ningún juez geométrico aprobado; 147 tests pertinentes pasan, 2,04 s/exit 0. Después llegó la [revisión humana de cámara/foto](validation/camera-print-human-review-2026-10-11.json), conservada literal y ligada a cuatro originales/preparados/PNG embebidos del tablero; reconstrucción ICC/alpha verificada. A1/A2 conserva forma/detalles según usuario, con pequeña pestaña superior y textura distinta. B1/B2 conserva la foto a nuevo ángulo; líquido incierto. Distorsiones de cámara/indicador/detalle/texto en B2 se separan del juicio sobre la foto y de A1/A2. No equivale a identidad estricta, cero cambios de partes o cobertura completa de bordes; no se inventa un gold binario. Cuatro observaciones archivadas contrastadas, sin nuevas consultas o cambios de cohortes cerradas; sin tasas de precisión o admisión.

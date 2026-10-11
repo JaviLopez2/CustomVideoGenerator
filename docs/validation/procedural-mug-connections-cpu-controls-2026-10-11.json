@@ -1,0 +1,87 @@
+{
+  "protocol": "procedural-mug-cpu-controls-2",
+  "checked_plan_sha256": "b72680ff0609fc21cc08968fbdc246371c74a9c83be8bb5f28a5fb02701ce49a",
+  "v1_v2_png_and_request_bytes_equivalent": true,
+  "method": "Read-only same-path snapshot substitutions; original plan/result and fixtures preserved. Validate guards rather than incidental alternate-path failures.",
+  "mutant_controls": [
+    {
+      "field": "plan",
+      "fault": "claims",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "plan",
+      "fault": "timestamp",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "plan",
+      "fault": "budget",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "plan",
+      "fault": "budget_boolean",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "plan",
+      "fault": "scope",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "plan",
+      "fault": "expected_label",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "plan",
+      "fault": "request",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "plan",
+      "fault": "source_pin",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "plan",
+      "fault": "roles",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "result",
+      "fault": "binding",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "result",
+      "fault": "human_gold",
+      "rejected": true,
+      "error_type": "ValueError"
+    },
+    {
+      "field": "result",
+      "fault": "requests",
+      "rejected": true,
+      "error_type": "ValueError"
+    }
+  ],
+  "P2_reproduced_then_rejected": true,
+  "all_original_snapshots_preserved": true,
+  "recipe_sha256": "a99602b44d24c1f56263c4d561c6c5209fb3787a0d642017b7e7fb5113a714e7",
+  "metadata_labels_paths_and_case_ids_not_forwarded": true,
+  "assistant_inspected_three_pngs": "Complete constructed mug/handle visible; lower gap clear in third; diagrams only, not independent human review.",
+  "new_model_requests": 0,
+  "generations": 0
+}
