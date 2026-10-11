@@ -1,0 +1,113 @@
+{
+  "protocol": "scope-compatible-state-schema-closing-checks-1",
+  "checked_utc": "2026-10-11T20:50:10.773219+00:00",
+  "base_head": "56db28af2f941acb2888af2ea3f35d77d009a8f6",
+  "origin_after_fetch": "56db28af2f941acb2888af2ea3f35d77d009a8f6",
+  "branch": "factory/image-model-routing-modernization",
+  "ahead_behind_before_commit": [
+    0,
+    0
+  ],
+  "task_files": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "sha256": "a3ef0f80ddf8f1ab37534faad29ec023646096bb814f79e5167f4049d1f3bb85"
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "sha256": "a46074b1b95982aa90d42fe734973264376a8233ab07adb556ab3d46cd45caa3"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "sha256": "d00051d83fa0b011c20bf58e4a06c686d7e82b1516a98bf463fe505c28fd93e0"
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "sha256": "ecb8c772954984867ccc8c2ab71cbae9b5a4f77774cdf8494cd98cb8e3ef5dd7"
+    },
+    {
+      "path": "docs/SCOPE_COMPATIBLE_STATE_SCHEMA_REPORT.md",
+      "sha256": "56b8ad92708d6680321cdad44e9ad0b7be8576858bd082d571e46082fd4c0ff9"
+    },
+    {
+      "path": "docs/validation/scoped-state-schema-red-tests-2026-10-11.txt",
+      "sha256": "24c6a6db41ada5797c1b1ea9f4eeef4e5a696072ede63c0226bb9b1ac8a266a2"
+    },
+    {
+      "path": "docs/validation/scoped-state-schema-final-tests-2026-10-11.txt",
+      "sha256": "99041d3c3655ac537287875e3b7783f0e96761d3e8c4f9f6ddf1230e6eb771f9"
+    },
+    {
+      "path": "docs/validation/scoped-state-schema-replay-recipe-2026-10-11.py",
+      "sha256": "a3ccd29b3480b72e6709306902c2b1a791f3d6fb8d84d75721761b4cf8822405"
+    },
+    {
+      "path": "docs/validation/scoped-state-schema-replay-2026-10-11.json",
+      "sha256": "24e8426ae0f8b71f6e3feb68014f0796be3ff48512ca69e46ef839951fac3d78"
+    },
+    {
+      "path": "scripts/scoped_state_schema.py",
+      "sha256": "70defcba6e304d2f24625e8a94966602cfc9dd66cb80d6819f9b61df2e4b0da1"
+    },
+    {
+      "path": "test/test_scoped_state_schema.py",
+      "sha256": "d952d48e6379b1a9ffc93ccea6c808929a45286a096406dfb1250983b1bab4e8"
+    }
+  ],
+  "tests": {
+    "new": 21,
+    "existing": 147,
+    "total_passed": 168,
+    "seconds": 2.19,
+    "python_exit_code": 0,
+    "red_failed": 21,
+    "red_exit_code": 1,
+    "logs_verified": true
+  },
+  "fresh_cpu_checks": {
+    "applicability_matrix": 40,
+    "archived_replies_preserved_and_rejected": 2,
+    "payload_enum_only_changes": 3,
+    "historical_execution_preparation_pins_verify": true,
+    "python_syntax_and_json_valid": true,
+    "whitespace_checks_pass": true,
+    "raw_test_logs_exempt_from_whitespace_rewriting": true
+  },
+  "historical_handoff_preservation": [
+    {
+      "path": "AGENT_FACTORY_STATE.md",
+      "prior_historical_tail_preserved": true
+    },
+    {
+      "path": "docs/AUTONOMOUS_MPT_WORK_HANDOFF.md",
+      "prior_historical_tail_preserved": true
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_RND.md",
+      "prior_historical_tail_preserved": true
+    },
+    {
+      "path": "docs/IMAGE_MODEL_ROUTING_HANDOFF.md",
+      "prior_historical_tail_preserved": true
+    }
+  ],
+  "secret_pattern_scan_pass": true,
+  "archived_http_bodies_also_scanned": true,
+  "stable": {
+    "branch": "moneyprinter_qwen21_quality_v3_1",
+    "head": "6d27ba4963ffe469d635db71eaeec506a8ff4b61",
+    "tracked_status_clean": true
+  },
+  "experimental_model_port_8092_responds_at_close": false,
+  "new_model_requests": 0,
+  "generations": 0,
+  "downloads": 0,
+  "services_controlled": 0,
+  "gpu_benchmarks": 0,
+  "legacy_collector_or_app_automatically_uses_adapter": false,
+  "strict_runtime_still_required": true,
+  "session_close_requested_by_user": true,
+  "objective_complete": false,
+  "goal_pause_requested": true,
+  "delivery_sha_authority": "Verify actual local HEAD, origin tracking ref and ls-remote after commit/push; this record precedes commit."
+}

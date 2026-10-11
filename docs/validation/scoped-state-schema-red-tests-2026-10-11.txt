@@ -1,0 +1,384 @@
+FFFFFFFFFFFFFFFFFFFFF                                                    [100%]
+================================== FAILURES ===================================
+_ test_emitted_schema_matches_state_applicability_contract[states0-not_applicable-True] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states1-observed-False] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states2-not_observed-False] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states3-uncertain-False] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states4-not_applicable-False] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states5-observed-True] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states6-not_observed-True] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states7-uncertain-True] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states8-not_applicable-False] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_emitted_schema_matches_state_applicability_contract[states9-not_observed-True] _
+test\test_scoped_state_schema.py:40: in test_emitted_schema_matches_state_applicability_contract
+    emitted = adapter().schema(declared)
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_payload_changes_only_state_enum_with_same_images_prompt_and_decoding[states0-allowed0] _
+test\test_scoped_state_schema.py:69: in test_payload_changes_only_state_enum_with_same_images_prompt_and_decoding
+    actual = adapter().payload(*images, declared)
+             ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_payload_changes_only_state_enum_with_same_images_prompt_and_decoding[states1-allowed1] _
+test\test_scoped_state_schema.py:69: in test_payload_changes_only_state_enum_with_same_images_prompt_and_decoding
+    actual = adapter().payload(*images, declared)
+             ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+____ test_schema_cannot_silently_accept_invalid_or_duplicate_scopes[None] _____
+test\test_scoped_state_schema.py:78: in test_schema_cannot_silently_accept_invalid_or_duplicate_scopes
+    adapter().schema(scope(bad_states))
+    ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+____ test_schema_cannot_silently_accept_invalid_or_duplicate_scopes[vapor] ____
+test\test_scoped_state_schema.py:78: in test_schema_cannot_silently_accept_invalid_or_duplicate_scopes
+    adapter().schema(scope(bad_states))
+    ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_schema_cannot_silently_accept_invalid_or_duplicate_scopes[bad_states2] _
+test\test_scoped_state_schema.py:78: in test_schema_cannot_silently_accept_invalid_or_duplicate_scopes
+    adapter().schema(scope(bad_states))
+    ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+_ test_schema_cannot_silently_accept_invalid_or_duplicate_scopes[bad_states3] _
+test\test_scoped_state_schema.py:78: in test_schema_cannot_silently_accept_invalid_or_duplicate_scopes
+    adapter().schema(scope(bad_states))
+    ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+__ test_schema_mutations_cannot_contaminate_later_scope_or_published_schema ___
+test\test_scoped_state_schema.py:83: in test_schema_mutations_cannot_contaminate_later_scope_or_published_schema
+    changed = adapter().schema(scope([]))
+              ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+___________ test_adapter_inherits_prepared_image_metadata_rejection ___________
+test\test_scoped_state_schema.py:100: in test_adapter_inherits_prepared_image_metadata_rejection
+    adapter().payload(*images, scope(["visible vapor"]))
+    ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+__ test_archived_invalid_answers_remain_invalid_and_bytes_unchanged[qwen35] ___
+test\test_scoped_state_schema.py:111: in test_archived_invalid_answers_remain_invalid_and_bytes_unchanged
+    jsonschema.validate(value, adapter().schema(scope(["visible vapor"])))
+                               ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+__ test_archived_invalid_answers_remain_invalid_and_bytes_unchanged[qwen3vl] __
+test\test_scoped_state_schema.py:111: in test_archived_invalid_answers_remain_invalid_and_bytes_unchanged
+    jsonschema.validate(value, adapter().schema(scope(["visible vapor"])))
+                               ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+____ test_strict_runtime_connections_and_admission_policy_are_not_relaxed _____
+test\test_scoped_state_schema.py:122: in test_strict_runtime_connections_and_admission_policy_are_not_relaxed
+    jsonschema.validate(value, adapter().schema(declared))
+                               ^^^^^^^^^
+test\test_scoped_state_schema.py:16: in adapter
+    return importlib.import_module("scripts.scoped_state_schema")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\MoneyPrinterTurbo-Portable-Windows-1.3.6\lib\python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1140: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'scripts.scoped_state_schema'
+=========================== short test summary info ===========================
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states0-not_applicable-True]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states1-observed-False]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states2-not_observed-False]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states3-uncertain-False]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states4-not_applicable-False]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states5-observed-True]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states6-not_observed-True]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states7-uncertain-True]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states8-not_applicable-False]
+FAILED test/test_scoped_state_schema.py::test_emitted_schema_matches_state_applicability_contract[states9-not_observed-True]
+FAILED test/test_scoped_state_schema.py::test_payload_changes_only_state_enum_with_same_images_prompt_and_decoding[states0-allowed0]
+FAILED test/test_scoped_state_schema.py::test_payload_changes_only_state_enum_with_same_images_prompt_and_decoding[states1-allowed1]
+FAILED test/test_scoped_state_schema.py::test_schema_cannot_silently_accept_invalid_or_duplicate_scopes[None]
+FAILED test/test_scoped_state_schema.py::test_schema_cannot_silently_accept_invalid_or_duplicate_scopes[vapor]
+FAILED test/test_scoped_state_schema.py::test_schema_cannot_silently_accept_invalid_or_duplicate_scopes[bad_states2]
+FAILED test/test_scoped_state_schema.py::test_schema_cannot_silently_accept_invalid_or_duplicate_scopes[bad_states3]
+FAILED test/test_scoped_state_schema.py::test_schema_mutations_cannot_contaminate_later_scope_or_published_schema
+FAILED test/test_scoped_state_schema.py::test_adapter_inherits_prepared_image_metadata_rejection
+FAILED test/test_scoped_state_schema.py::test_archived_invalid_answers_remain_invalid_and_bytes_unchanged[qwen35]
+FAILED test/test_scoped_state_schema.py::test_archived_invalid_answers_remain_invalid_and_bytes_unchanged[qwen3vl]
+FAILED test/test_scoped_state_schema.py::test_strict_runtime_connections_and_admission_policy_are_not_relaxed
+21 failed in 0.49s
+
+Python exit code: 1
